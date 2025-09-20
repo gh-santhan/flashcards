@@ -1,0 +1,13 @@
+{
+  "name": "Demo Deck",
+  "cards": [
+    {
+      "Front": "What is 2+2?",
+      "Back": "4"
+    },
+    {
+      "Front": "Capital of France?",
+      "Back": "Paris"
+    }
+  ]
+}
