@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flashcards – SRS Pro</title>
+</head>
+<body>
+  <header>
+    <h1>Flashcards – SRS Pro</h1>
+    <span id="deckName">Deck: loading…</span>
+  </header>
+
+  <main>
+    <section>
+      <div id="front">Loading…</div>
+      <div id="back" style="display:none"></div>
+      <button id="revealBtn">Show Answer</button>
+    </section>
+    <aside>
+      <h3>Decks</h3>
+      <button id="addDeckBtn">Add Deck (Upload JSON)</button>
+      <select id="deckSelect"><option value="__default__">Default (cards.json)</option></select>
+      <button id="downloadSelectedDeckBtn">Download Selected</button>
+      <button id="deleteSelectedDeckBtn">Delete Selected</button>
+      <input id="deckUploadInput" type="file" accept=".json,application/json" style="display:none">
+    </aside>
+  </main>
+
+  <script>
+    const APP_NS = "flashcards.srs.v3";
+    let deck={name:"Demo",cards:[]}, idx=0;
+
+    async function loadDeck(url="cards.json"){
+      const res=await fetch(url,{cache:"no-store"});
+      deck=await res.json(); idx=0;
+      document.getElementById("deckName").textContent="Deck: "+(deck.name||"Deck");
+      updateUI();
+    }
+    function updateUI(){
+      const c=deck.cards[idx];
+      document.getElementById("front").textContent=c?c.Front:"No cards";
+      document.getElementById("back").textContent=c?c.Back:"";
+      document.getElementById("back").style.display="none";
+    }
+    document.getElementById("revealBtn").onclick=()=>{document.getElementById("back").style.display="block"};
+
+    // Multi-deck manager
+    const DECKS_KEY=APP_NS+":userDecks";
+    function loadUserDecks(){try{return JSON.parse(localStorage.getItem(DECKS_KEY))||{items:[],last:"__default__"}}catch{return{items:[],last:"__default__"}}}
+    function saveUserDecks(s){localStorage.setItem(DECKS_KEY,JSON.stringify(s))}
+    function refreshDeckSelect(){
+      const store=loadUserDecks(),sel=document.getElementById("deckSelect"),current=sel.value||store.last||"__default__";
+      sel.innerHTML='<option value="__default__">Default (cards.json)</option>'+store.items.map(it=>`<option value="${encodeURIComponent(it.name)}">${it.name}</option>`).join("");
+      sel.value=current;
+    }
+    function setDeckBySelect(){
+      const val=document.getElementById("deckSelect").value;
+      if(val==="__default__"){loadDeck();const s=loadUserDecks();s.last="__default__";saveUserDecks(s);return}
+      const name=decodeURIComponent(val),it=loadUserDecks().items.find(x=>x.name===name);if(!it)return;
+      deck=it.data;idx=0;document.getElementById("deckName").textContent="Deck: "+(deck.name||name);updateUI();const s=loadUserDecks();s.last=name;saveUserDecks(s);
+    }
+    document.getElementById("deckSelect").onchange=setDeckBySelect;
+    document.getElementById("addDeckBtn").onclick=()=>document.getElementById("deckUploadInput").click();
+    document.getElementById("deckUploadInput").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const obj=JSON.parse(r.result);const store=loadUserDecks();let name=obj.name||f.name.replace(/\.json$/i,"");const seen=new Set(store.items.map(x=>x.name));let k=2,base=name;while(seen.has(name)){name=base+" ("+(k++)+")"}store.items.push({name,data:obj});store.last=name;saveUserDecks(store);refreshDeckSelect();document.getElementById("deckSelect").value=encodeURIComponent(name);setDeckBySelect()}catch{alert("Invalid JSON")}};r.readAsText(f)};
+    document.getElementById("deleteSelectedDeckBtn").onclick=()=>{const sel=document.getElementById("deckSelect");if(sel.value==="__default__"){alert("Default cannot be deleted");return}const name=decodeURIComponent(sel.value),s=loadUserDecks();s.items=s.items.filter(x=>x.name!=name);s.last="__default__";saveUserDecks(s);refreshDeckSelect();setDeckBySelect()};
+    document.getElementById("downloadSelectedDeckBtn").onclick=()=>{const sel=document.getElementById("deckSelect");if(sel.value==="__default__"){const a=document.createElement("a");a.href="cards.json";a.download="cards.json";a.click();return}const name=decodeURIComponent(sel.value),it=loadUserDecks().items.find(x=>x.name===name);if(!it)return;const a=document.createElement("a"),blob=new Blob([JSON.stringify(it.data,null,2)],{type:"application/json"});a.href=URL.createObjectURL(blob);a.download=(it.data.name||name)+".json";a.click()};
+    document.addEventListener("DOMContentLoaded",()=>{refreshDeckSelect();const s=loadUserDecks();if(s.last&&s.last!=="__default__"){document.getElementById("deckSelect").value=encodeURIComponent(s.last);setDeckBySelect()}else{loadDeck()}});
+  </script>
+</body>
+</html>
