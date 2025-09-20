@@ -37,8 +37,6 @@
       "Tags": ["Assessment", "High-Yield"]
     },
 
-    /* --- OBJECTIVE 2: GUIDELINES OVERVIEW (CVD, DM, OBESITY) --- */
-
     {
       "Front": "ACLM dietary stance for coronary disease treatment per text summary",
       "Back": "Low-fat whole-food plant-based (WFPB) pattern is presented as the only eating style shown to reverse coronary artery disease in cited programs (Ornish/Esselstyn).",
@@ -90,8 +88,6 @@
       "Tags": ["Guideline", "Obesity", "Program"]
     },
 
-    /* --- OBJECTIVE 3–4: TREATMENT, SCREEN/DIAGNOSE/MONITOR, ANTICIPATORY GUIDANCE --- */
-
     {
       "Front": "When are medications used in LM?",
       "Back": "As adjuncts while optimizing lifestyle behaviors; aim to reduce medication burden as behavior improves.",
@@ -108,7 +104,6 @@
       "Tags": ["Workflow", "Tracking"]
     },
 
-    /* --- OBJECTIVE 5: RESOURCES --- */
 
     {
       "Front": "Two categories of resources to integrate into LM practice",
@@ -116,7 +111,6 @@
       "Tags": ["Resources", "Practice"]
     },
 
-    /* --- OBJECTIVE 6: INTER-PROFESSIONAL TEAMS --- */
 
     {
       "Front": "Why inter-professional teams matter in LM",
@@ -129,7 +123,6 @@
       "Tags": ["Team-Based", "Applied", "High-Yield"]
     },
 
-    /* --- OBJECTIVE 7: GROUP VISITS & TELEHEALTH --- */
 
     {
       "Front": "Name the common types of group visits",
@@ -157,7 +150,6 @@
       "Tags": ["Telehealth", "Pros-Cons", "High-Yield"]
     },
 
-    /* --- OBJECTIVE 8: EHR & TRACKING --- */
 
     {
       "Front": "Why track in LM? List three reasons",
@@ -180,8 +172,6 @@
       "Tags": ["EHR", "Applied", "QI"]
     },
 
-    /* --- OBJECTIVE 9–10: COLLABORATIVE & PRIMARY CARE MODELS --- */
-
     {
       "Front": "Collaborative/chronic care models: expected benefits in LM",
       "Back": "Better outcomes/experience, coordinated team roles, proactive population management, and self-management support.",
@@ -192,8 +182,6 @@
       "Back": "Team-based PCMH with embedded RD/coach; group-visit-centric chronic disease clinic with telehealth follow-ups.",
       "Tags": ["Models", "Practice"]
     },
-
-    /* --- OBJECTIVE 11: QUALITY IMPROVEMENT (PDSA) --- */
 
     {
       "Front": "PDSA cycle: expand the acronym and purpose",
@@ -226,8 +214,6 @@
       "Tags": ["QI", "RCA", "High-Yield"]
     },
 
-    /* --- OBJECTIVE 12: EBM PRINCIPLES IN LM --- */
-
     {
       "Front": "EBM in LM: what do you balance when recommending interventions?",
       "Back": "Best external evidence, clinical expertise, and patient values/preferences (including cultural and SDOH factors).",
@@ -239,15 +225,11 @@
       "Tags": ["EBM", "Counseling"]
     },
 
-    /* --- OBJECTIVE 13: ASSESSING EFFECTIVENESS (ACTIVATION & ALLIANCE) --- */
-
     {
       "Front": "Why measure patient activation or therapeutic alliance in LM programs?",
       "Back": "Higher activation/alliance predicts engagement and outcomes; supports iterative tailoring of interventions.",
       "Tags": ["Measurement", "High-Yield"]
     },
-
-    /* --- CLINICAL VIGNETTES / APPLIED REASONING --- */
 
     {
       "Front": "Vignette: 48-year-old with BMI 32 and hypertension. First-line obesity management approach?",
@@ -374,8 +356,6 @@
       "Back": "Recommend WFPB dietary pattern, soluble fiber (oats, legumes), plant sterols, regular PA, and recheck in 3 months; explain absolute risk reduction potential.",
       "Tags": ["Lipids", "Applied", "Guideline"]
     },
-
-    /* --- COMPACT REFERENCE VALUE CARDS (ONE PER PARAMETER) --- */
 
     {
       "Front": "BMI categories",
