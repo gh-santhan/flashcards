@@ -1,0 +1,190 @@
+{
+  "name": "Ch2 – Fundamentals of Health Behavior Change (ACLM)",
+  "cards": [
+    {
+      "Front": "Health Belief Model (HBM): What does it primarily propose about why people adopt a preventive behavior?",
+      "Back": "Personal beliefs/perceptions (threat + accessible, low-risk preventive measure) mostly drive adoption of preventive behaviors.",
+      "Tags": ["HBM", "ACLM-Core", "High-Yield"]
+    },
+    {
+      "Front": "HBM: List the six key constructs.",
+      "Back": "Perceived susceptibility; perceived severity; perceived benefits; perceived barriers; cues to action; self-efficacy.",
+      "Tags": ["HBM", "High-Yield", "ACLM-Core"]
+    },
+    {
+      "Front": "Theory of Planned Behavior: What two pillars determine behavioral achievement?",
+      "Back": "Motivation (intention) and ability (behavioral control).",
+      "Tags": ["TPB", "ACLM-Core", "High-Yield"]
+    },
+    {
+      "Front": "TPB: Name the six constructs used to represent control over behavior.",
+      "Back": "Attitude; behavioral intention; subjective norms; social norms; perceived power; perceived behavioral control.",
+      "Tags": ["TPB", "Checklist", "High-Yield"]
+    },
+    {
+      "Front": "Social Learning vs Social Cognitive Theory: What extra idea does Social Cognitive Theory add?",
+      "Back": "Reciprocal determinism: behavior, personal factors, and environment influence one another.",
+      "Tags": ["SCT", "Theory", "High-Yield", "ACLM-Core"]
+    },
+    {
+      "Front": "SCT: List its major constructs.",
+      "Back": "Reciprocal determinism; behavioral capability; observational learning; reinforcement; expectations; self-efficacy.",
+      "Tags": ["SCT", "Checklist", "High-Yield"]
+    },
+    {
+      "Front": "Transtheoretical Model (TTM): Core insight about change?",
+      "Back": "Change is a non-linear process across stages; different interventions fit different stages.",
+      "Tags": ["TTM", "ACLM-Core", "High-Yield"]
+    },
+    {
+      "Front": "TTM: Name the stages (classic 6).",
+      "Back": "Precontemplation; Contemplation; Preparation; Action; Maintenance; Termination.",
+      "Tags": ["TTM", "Stages", "Checklist"]
+    },
+    {
+      "Front": "TTM: Quick stage cues — give the time horizons for Precontemplation, Contemplation, Preparation, Action, Maintenance.",
+      "Back": "Precontemplation: not in next 6 mo; Contemplation: considering within 6 mo; Preparation: intends within 1 mo; Action: <6 mo since change; Maintenance: ≥6 mo.",
+      "Tags": ["TTM", "Timing", "High-Yield"]
+    },
+    {
+      "Front": "Self-Determination Theory: The 3 basic psychological needs that drive autonomous motivation?",
+      "Back": "Autonomy, competence, relatedness.",
+      "Tags": ["SDT", "ACLM-Core", "High-Yield"]
+    },
+    {
+      "Front": "Common components across behavior models (name four).",
+      "Back": "Beliefs about risk/benefit; motivation; self-efficacy; environmental/social influence.",
+      "Tags": ["Theory", "Synthesis", "High-Yield"]
+    },
+    {
+      "Front": "SDOH: Define and list at least five examples.",
+      "Back": "Conditions in which people are born, grow, live, work, age. Examples: income, education, food security, housing, transport, neighborhood safety, environment, social support.",
+      "Tags": ["SDOH", "ACLM-Core", "High-Yield"]
+    },
+    {
+      "Front": "Nonadherence: Define and give the typical range for chronic med regimens.",
+      "Back": "Not following through with prescribed treatment; ~50–80% for chronic medication regimens.",
+      "Tags": ["Adherence", "Stats", "High-Yield", "ACLM-Core"]
+    },
+    {
+      "Front": "People-first language: Give two examples of preferred phrasing.",
+      "Back": "“A patient with diabetes” (not “a diabetic”); “a patient with obesity” (not “an obese patient”).",
+      "Tags": ["Communication", "Therapeutic-Alliance", "High-Yield", "ACLM-Core"]
+    },
+    {
+      "Front": "Motivational Interviewing (MI): The four guiding principles.",
+      "Back": "Express empathy; support self-efficacy; roll with resistance; develop discrepancy.",
+      "Tags": ["MI", "High-Yield", "ACLM-Core"]
+    },
+    {
+      "Front": "MI: OARS skills — expand the acronym.",
+      "Back": "Open questions, Affirmations, Reflections, Summaries.",
+      "Tags": ["MI", "Skills", "High-Yield"]
+    },
+    {
+      "Front": "CBT in behavior change: When is it most useful and what’s the emphasis?",
+      "Back": "Preparation, Action, Maintenance; reframing nonproductive thoughts, problem-solving, ABCDE approaches.",
+      "Tags": ["CBT", "Technique", "High-Yield"]
+    },
+    {
+      "Front": "SMART goals: Expand and give a sample phrasing.",
+      "Back": "Specific, Measurable, Achievable, Relevant, Time-bound. Example: “Walk 10 min after dinner, 3×/week, for 4 weeks.”",
+      "Tags": ["SMART", "Action-Planning", "ACLM-Core", "High-Yield"]
+    },
+    {
+      "Front": "Action planning follow-up: Name three things to do on subsequent visits.",
+      "Back": "Review progress & challenges; affirm strengths; co-create updated action plan (resources, barriers, confidence).",
+      "Tags": ["Follow-up", "Action-Planning", "Therapeutic-Alliance"]
+    },
+    {
+      "Front": "Stage-matched: What to focus on in Precontemplation?",
+      "Back": "Provide information on risks/benefits; ask autonomy-supportive open questions (e.g., “How will you know it’s time to think about change?”).",
+      "Tags": ["TTM", "Stage-Matched", "High-Yield", "ACLM-Core"]
+    },
+    {
+      "Front": "Stage-matched: Contemplation — two key tasks.",
+      "Back": "Explore pros/cons; address barriers; don’t rush to action.",
+      "Tags": ["TTM", "Stage-Matched"]
+    },
+    {
+      "Front": "Stage-matched: Preparation — list three steps.",
+      "Back": "Co-create written action plan; assess confidence; schedule follow-up.",
+      "Tags": ["TTM", "Stage-Matched", "Action-Planning"]
+    },
+    {
+      "Front": "Stage-matched: Action — common risks and supports.",
+      "Back": "High relapse vulnerability; add supports, self-monitoring, problem-solving, celebrate wins.",
+      "Tags": ["TTM", "Stage-Matched"]
+    },
+    {
+      "Front": "Stage-matched: Maintenance — two aims.",
+      "Back": "Reconnect to ‘why’ (values/vision); continue specific, clear goals to sustain behavior.",
+      "Tags": ["TTM", "Stage-Matched"]
+    },
+    {
+      "Front": "Therapeutic alliance: Expert vs Coach roles — what’s the difference?",
+      "Back": "Expert: assess/prescribe; Coach: collaborative style that elicits patient leadership and buy-in.",
+      "Tags": ["Therapeutic-Alliance", "Communication"]
+    },
+    {
+      "Front": "Confidence & Importance rulers: How do you use a score <7?",
+      "Back": "Explore what would raise it to 8–10; ask why not a lower number to elicit change talk.",
+      "Tags": ["MI", "Coaching", "High-Yield"]
+    },
+    {
+      "Front": "Vignette: A patient says, “I don’t need to change and I won’t.” Identify the stage and give a best next step.",
+      "Back": "Precontemplation. Offer information on risks/benefits; ask open, autonomy-supportive questions (no push to action).",
+      "Tags": ["Vignette", "TTM", "Stage-ID", "ACLM-Important"]
+    },
+    {
+      "Front": "Vignette: Patient plans to start walking next week; asks you to help write the plan. Stage and action?",
+      "Back": "Preparation. Co-create SMART plan; assess confidence; set follow-up.",
+      "Tags": ["Vignette", "TTM", "Action-Planning", "ACLM-Important"]
+    },
+    {
+      "Front": "Vignette: Patient quit smoking 2 months ago but is struggling with urges. Stage and one technique?",
+      "Back": "Action. Use CBT reframing and coping strategies; add supports and self-monitoring.",
+      "Tags": ["Vignette", "TTM", "CBT", "ACLM-Important"]
+    },
+    {
+      "Front": "Vignette: Patient has walked 30 min daily for 8 months and feels confident during travel. Stage and focus?",
+      "Back": "Maintenance. Reconnect to values, set sustaining goals, anticipate barriers.",
+      "Tags": ["Vignette", "TTM"]
+    },
+    {
+      "Front": "CBT: Name three common cognitive distortions you might reframe with a patient.",
+      "Back": "All-or-nothing; overgeneralization; mental filter (others: mind reading, fortune telling, magnification/minimization, personalization…).",
+      "Tags": ["CBT", "High-Yield", "Checklist"]
+    },
+    {
+      "Front": "Communication in weight discussions: name two best practices.",
+      "Back": "Ask permission; avoid shame; use MI to enhance self-efficacy; weigh in private.",
+      "Tags": ["Communication", "Weight", "Therapeutic-Alliance", "ACLM-Important"]
+    },
+    {
+      "Front": "Cues to Action (HBM): Give three examples in clinic.",
+      "Back": "Reminder messages; brief risk feedback; handouts/referrals that prompt a concrete first step.",
+      "Tags": ["HBM", "Clinic-Pearls"]
+    },
+    {
+      "Front": "Reinforcement & expectations (SCT): Clinical lever you can use?",
+      "Back": "Celebrate wins; explicitly connect behavior to valued outcomes the patient expects.",
+      "Tags": ["SCT", "Coaching", "Clinic-Pearls"]
+    },
+    {
+      "Front": "When is MI most helpful along TTM?",
+      "Back": "Precontemplation and Contemplation (to elicit change talk and resolve ambivalence).",
+      "Tags": ["MI", "TTM", "High-Yield", "ACLM-Core"]
+    },
+    {
+      "Front": "Action Plan elements (example from exercise prescription): list at least five fields to fill.",
+      "Back": "What; how much/intensity; how long; how often; with whom/where/when; support; biggest barrier; solution; confidence rating.",
+      "Tags": ["Action-Planning", "Template", "High-Yield"]
+    },
+    {
+      "Front": "Global influences on behavior (ecologic levels): list four levels beyond the individual.",
+      "Back": "Interpersonal; institutional; community; public policy.",
+      "Tags": ["Ecologic", "Systems", "ACLM-Core"]
+    }
+  ]
+}
