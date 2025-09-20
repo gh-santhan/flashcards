@@ -12,9 +12,9 @@
     header h1{font-size:1.05rem; margin:0}
     .muted{color:var(--muted)}
     main{flex:1; display:flex; align-items:center; justify-content:center; padding:1rem}
-    .container{width:100%; max-width:1000px; display:grid; gap:1rem; grid-template-columns:1fr}
-    @media(min-width:900px){ .container{grid-template-columns:2fr 1fr} }
-    .card{background:radial-gradient(1200px 600px at 10% 0%, #0b1224, var(--panel) 40%); border:1px solid var(--b); border-radius:1rem; padding:1rem; min-height:46vh; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 10px 30px rgba(0,0,0,.2)}
+    .container{width:100%; max-width:1100px; display:grid; gap:1rem; grid-template-columns:1fr}
+    @media(min-width:980px){ .container{grid-template-columns:2fr 1.1fr} }
+    .card{background:radial-gradient(1200px 600px at 10% 0%, #0b1224, var(--panel) 40%); border:1px solid var(--b); border-radius:1rem; padding:1rem; min-height:48vh; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 10px 30px rgba(0,0,0,.2)}
     .front{font-size:1.15rem; line-height:1.5; white-space:pre-wrap}
     .back{display:none; opacity:.95; white-space:pre-wrap; margin-top:.6rem}
     .btnbar{display:grid; gap:.5rem; grid-template-columns:repeat(4,1fr); margin-top:.75rem}
@@ -28,6 +28,9 @@
     .row{display:flex; gap:.5rem; align-items:center; flex-wrap:wrap}
     .hidden{display:none !important}
     .pill{padding:.25rem .5rem; border:1px solid var(--b); border-radius:.5rem}
+    .chip{display:inline-flex; align-items:center; gap:.35rem; padding:.2rem .45rem; border:1px solid var(--b); border-radius:.6rem; margin:.15rem .25rem .15rem 0; font-size:.9rem}
+    .chip button{padding:.2rem .35rem; border-radius:.4rem}
+    .section-title{margin:.2rem 0 .6rem}
   </style>
 </head>
 <body>
@@ -45,6 +48,13 @@
           <div class="row muted" id="meta"></div>
           <div class="front" id="front">Loading…</div>
           <div class="back" id="back"></div>
+          <div id="tagsRow" class="row" style="margin-top:.6rem"></div>
+          <div class="row" style="gap:.4rem; margin-top:.4rem">
+            <input id="newTagInput" placeholder="Add tag (Enter)" />
+            <button id="addTagBtn">Add tag</button>
+            <button id="suspendBtn" title="Hide this card on this device">Suspend</button>
+            <button id="unsuspendBtn" class="hidden" title="Show again on this device">Unsuspend</button>
+          </div>
         </div>
 
         <div class="btnbar">
@@ -64,7 +74,7 @@
 
       <aside>
         <div class="panel">
-          <h3 style="margin:.2rem 0 .6rem">Decks</h3>
+          <h3 class="section-title">Decks</h3>
           <div class="row" style="gap:.5rem">
             <button id="uploadDeckBtn">Upload Deck (JSON)</button>
             <button id="downloadDeckBtn">Download Current</button>
@@ -77,41 +87,76 @@
         </div>
 
         <div class="panel">
-          <h3 style="margin:.2rem 0 .6rem">Filters</h3>
-          <label class="row"><input type="checkbox" id="dueOnly" checked> <span class="muted">Show due cards only</span></label>
+          <h3 class="section-title">Filters</h3>
+          <label class="row"><input type="checkbox" id="globalTagsMode"> <span class="muted">Global tags view (all public decks)</span></label>
+          <div class="row" style="width:100%">
+            <label class="muted" style="min-width:90px">Status</label>
+            <select id="statusSelect">
+              <option value="due">Due only</option>
+              <option value="all">All</option>
+              <option value="new">New</option>
+              <option value="learn">Learn</option>
+              <option value="review">Review</option>
+              <option value="suspended">Suspended</option>
+            </select>
+          </div>
+          <div class="row" style="width:100%">
+            <label class="muted" style="min-width:90px">Tags</label>
+            <input id="tagFilterInput" placeholder="e.g. ACLM-Core, Vignette" />
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3 class="section-title">Backups & Sync</h3>
+          <div class="row" style="gap:.5rem">
+            <button id="exportBtn">Export Progress</button>
+            <button id="importBtn">Import Progress</button>
+            <input id="importInput" type="file" accept=".json" class="hidden">
+          </div>
+          <div class="row" style="gap:.5rem; margin-top:.5rem">
+            <button id="backupNowBtn">Create Backup Now</button>
+            <select id="backupSelect" style="flex:1; min-width:220px"></select>
+            <button id="restoreBtn">Restore</button>
+            <button id="deleteBackupBtn" title="Delete selected backup">🗑</button>
+          </div>
+          <p class="muted" style="margin:.5rem 0 0">Auto-backup runs every ~2 minutes and keeps the 10 latest snapshots.</p>
         </div>
       </aside>
     </div>
   </main>
 
   <footer class="row" style="justify-content:space-between">
-    <span class="muted">Tip: Space = Reveal/Hide, Arrow keys = Prev/Next, 1–4 = Grade.</span>
-    <a href="cards.json" class="muted" target="_blank" rel="noopener">Open cards.json</a>
+    <span class="muted">Space: Reveal/Hide · ←/→: Prev/Next · 1–4: Grade</span>
+    <a href="decks.json" class="muted" target="_blank" rel="noopener">Open decks.json</a>
   </footer>
 
   <script>
-    const APP_NS = "flashcards.srs.v2";
-    const STATE_PREFIX = APP_NS + ":card:"; // STATE_PREFIX + deckName + ":" + uid
-    const MANIFEST_URL = "decks.json";      // <- public decks manifest (same origin)
+    const APP_NS = "flashcards.srs.v3";
+    const STATE_PREFIX = APP_NS + ":card:";         // per-card schedule state
+    const TAGS_PREFIX  = APP_NS + ":tags:";         // per-card tags overlay
+    const MANIFEST_URL = "decks.json";
+    const BACKUP_NS = APP_NS + ":backup:";          // rolling snapshots
+    const MAX_BACKUPS = 10;
 
     let deck = { name:"Demo", cards:[] };
-    let order = [];   // visible indices (filtered)
+    let order = [];          // visible indices (or virtual list in global mode)
     let idx = 0;
-
+    let publicManifest = { decks: [] };
     const $ = id => document.getElementById(id);
 
-    // ---------- Identifiers & state ----------
+    // ---------- IDs, State, Tags ----------
     function uidFor(card){
       const s = (card.Front||"") + "::" + (card.Back||"");
       let h = 0; for (let i=0;i<s.length;i++){ h = ((h<<5)-h) + s.charCodeAt(i); h|=0; }
       return String(h);
     }
     function stKey(deckName, uid){ return STATE_PREFIX + deckName + ":" + uid; }
-    function loadState(deckName, uid){
-      try{ const raw = localStorage.getItem(stKey(deckName, uid)); return raw ? JSON.parse(raw) : null; }
-      catch{ return null; }
-    }
+    function loadState(deckName, uid){ try{ const raw = localStorage.getItem(stKey(deckName, uid)); return raw ? JSON.parse(raw) : null; } catch { return null; } }
     function saveState(deckName, uid, st){ localStorage.setItem(stKey(deckName, uid), JSON.stringify(st)); }
+
+    function tagKey(deckName, uid){ return TAGS_PREFIX + deckName + ":" + uid; }
+    function loadTags(deckName, uid){ try{ const raw = localStorage.getItem(tagKey(deckName, uid)); return raw ? JSON.parse(raw) : []; } catch { return []; } }
+    function saveTags(deckName, uid, tags){ localStorage.setItem(tagKey(deckName, uid), JSON.stringify(tags)); }
 
     // ---------- Scheduler ----------
     function isDue(deckName, card){
@@ -146,57 +191,149 @@
       saveState(deckName, uid, st);
     }
 
-    // ---------- View ----------
-    function buildOrder(){
-      const onlyDue = $("dueOnly").checked;
+    // ---------- Build order (filters, tags, global) ----------
+    function cardPhase(deckName, card){
+      const st = loadState(deckName, uidFor(card));
+      if(!st) return "new";
+      if(st.suspended) return "suspended";
+      return st.phase || "review";
+    }
+    function parseTagFilter(){
+      const raw = $("tagFilterInput").value.trim();
+      if(!raw) return [];
+      return raw.split(/[,\s]+/).map(t=>t.trim().toLowerCase()).filter(Boolean);
+    }
+    function hasAllTags(deckName, card){
+      const need = parseTagFilter(); if(need.length===0) return true;
+      const uid = uidFor(card);
+      const own = (card.Tag ? [String(card.Tag)] : []).concat(card.Tags || []);
+      const overlay = loadTags(deckName, uid);
+      const have = new Set(own.concat(overlay).map(t=>String(t).toLowerCase()));
+      return need.every(t => have.has(t));
+    }
+
+    function buildOrderCurrentDeck(){
+      const status = $("statusSelect").value;  // due, all, new, learn, review, suspended
       const arr = [];
       for(let i=0;i<(deck.cards||[]).length;i++){
-        if(onlyDue && !isDue(deck.name, deck.cards[i])) continue;
+        const c = deck.cards[i];
+        if(!hasAllTags(deck.name, c)) continue;
+        const phase = cardPhase(deck.name, c);
+        if(status === "due"){ if(!isDue(deck.name,c)) continue; }
+        else if(status !== "all"){ if(phase !== status) continue; }
         arr.push(i);
       }
       order = arr;
       if(idx >= order.length) idx = Math.max(0, order.length-1);
-      updateHeader();
     }
+
+    // In Global Tags View we build a virtual list of entries:
+    // { deckName, card, source: "public" }
+    let globalList = [];
+    async function buildGlobalList(){
+      const status = $("statusSelect").value;
+      const list = [];
+      for(const d of publicManifest.decks){
+        try{
+          const res = await fetch(d.file, {cache:"no-store"});
+          if(!res.ok) continue;
+          const obj = await res.json();
+          const dn = obj.name || d.name || d.file;
+          (obj.cards||[]).forEach(card=>{
+            if(!hasAllTags(dn, card)) return;
+            const ph = cardPhase(dn, card);
+            if(status === "due"){ if(!isDue(dn, card)) return; }
+            else if(status !== "all"){ if(ph !== status) return; }
+            list.push({ deckName: dn, card });
+          });
+        }catch{}
+      }
+      globalList = list;
+      order = list.map((_,i)=>i);
+      if(idx >= order.length) idx = Math.max(0, order.length-1);
+    }
+
     function updateHeader(){
-      $("deckName").textContent = "Deck: " + (deck.name || "Deck");
-      $("posPill").textContent  = `Card ${ order.length ? (idx+1) : 0 } / ${ order.length }`;
-      const dueCount = (deck.cards||[]).filter(c => isDue(deck.name, c)).length;
-      $("duePill").textContent  = `Due: ${dueCount}`;
+      $("deckName").textContent = ($("globalTagsMode").checked)
+        ? "Global tags view"
+        : ("Deck: " + (deck.name || "Deck"));
+      const total = order.length;
+      $("posPill").textContent  = `Card ${ total ? (idx+1) : 0 } / ${ total }`;
+
+      // Due count for current deck only (in global mode, show total due across all public decks)
+      if($("globalTagsMode").checked){
+        let dueCount = 0;
+        globalList.forEach(({deckName,card})=>{ if(isDue(deckName,card)) dueCount++; });
+        $("duePill").textContent = `Due: ${dueCount}`;
+      } else {
+        const dueCount = (deck.cards||[]).filter(c => isDue(deck.name, c)).length;
+        $("duePill").textContent = `Due: ${dueCount}`;
+      }
     }
-    function currentCard(){ return order.length ? deck.cards[order[idx]] : null; }
+
+    function currentCardEntry(){
+      if(!$("globalTagsMode").checked){
+        if(!order.length) return null;
+        return { deckName: deck.name, card: deck.cards[order[idx]] };
+      } else {
+        if(!order.length) return null;
+        return globalList[order[idx]] || null;
+      }
+    }
+
     function render(){
       updateHeader();
-      const c = currentCard(); const back = $("back"); const gradeBar = $("gradeBar");
-      if(!c){
+      const entry = currentCardEntry();
+      const back = $("back");
+      const gradeBar = $("gradeBar");
+      const suspendBtn = $("suspendBtn");
+      const unsuspendBtn = $("unsuspendBtn");
+      const tagsRow = $("tagsRow");
+
+      if(!entry){
         $("front").textContent = "No cards match this view.";
         back.style.display = "none"; $("revealBtn").disabled = true; gradeBar.classList.add("hidden"); $("meta").textContent = "";
+        suspendBtn.classList.add("hidden"); unsuspendBtn.classList.add("hidden");
+        tagsRow.innerHTML = "";
         return;
       }
+
+      const { deckName, card } = entry;
       $("revealBtn").disabled = false;
-      $("front").textContent = c.Front || "";
-      $("back").textContent  = c.Back  || "";
+      $("front").textContent = card.Front || "";
+      $("back").textContent  = card.Back  || "";
       back.style.display = "none";
-      $("meta").textContent = c.Tag ? ("Tag: " + c.Tag) : "";
+      gradeBar.classList.add("hidden");
+
+      // meta + suspend/unsuspend
+      const st = loadState(deckName, uidFor(card)) || {};
+      const phase = st.suspended ? "suspended" : (st.phase || "new");
+      $("meta").textContent = `Phase: ${phase}` + (st.due ? ` · Due: ${new Date(st.due).toLocaleString()}` : "");
+
+      suspendBtn.classList.toggle("hidden", !!st.suspended);
+      unsuspendBtn.classList.toggle("hidden", !st.suspended);
+
+      // tags view (own + overlay)
+      const own = (card.Tag ? [String(card.Tag)] : []).concat(card.Tags || []);
+      const overlay = loadTags(deckName, uidFor(card));
+      const allTags = Array.from(new Set(own.concat(overlay)));
+      tagsRow.innerHTML = allTags.map(t => `
+        <span class="chip">${t}<button data-tag="${encodeURIComponent(t)}" class="removeTagBtn">×</button></span>
+      `).join("");
+
+      // Disable grading in global mode? We CAN allow it: schedule against source deckName.
       gradeBar.classList.add("hidden");
     }
 
-    // ---------- Deck loading ----------
-    async function loadDeck(url="cards.json"){
-      const res = await fetch(url, { cache:"no-store" });
-      deck = await res.json();
-      idx = 0; buildOrder(); render();
-    }
-    function loadDeckObject(obj){
-      deck = obj || {name:"Untitled", cards:[]};
-      idx = 0; buildOrder(); render();
+    function rebuildAndRender(){
+      if($("globalTagsMode").checked){
+        buildGlobalList().then(()=>{ updateHeader(); render(); });
+      } else {
+        buildOrderCurrentDeck(); updateHeader(); render();
+      }
     }
 
-    // ---------- Public manifest + Local uploads ----------
-    const DECKS_KEY = APP_NS + ":userDecks";
-    function getStore(){ try{ return JSON.parse(localStorage.getItem(DECKS_KEY)) || {items:[], last:"__default__"} } catch { return {items:[], last:"__default__"} } }
-    function setStore(s){ localStorage.setItem(DECKS_KEY, JSON.stringify(s)); }
-
+    // ---------- Deck loading & manifest ----------
     async function fetchManifest(){
       try{
         const res = await fetch(MANIFEST_URL, {cache:"no-store"});
@@ -205,20 +342,33 @@
         return Array.isArray(json.decks) ? json : { decks: [] };
       }catch{ return { decks: [] }; }
     }
+    async function loadDeck(url="cards.json"){
+      const res = await fetch(url, { cache:"no-store" });
+      deck = await res.json();
+      idx = 0; buildOrderCurrentDeck(); render();
+    }
+    function loadDeckObject(obj){
+      deck = obj || {name:"Untitled", cards:[]};
+      idx = 0; buildOrderCurrentDeck(); render();
+    }
+
+    // Local user decks
+    const DECKS_KEY = APP_NS + ":userDecks";
+    function getStore(){ try{ return JSON.parse(localStorage.getItem(DECKS_KEY)) || {items:[], last:"__default__"} } catch { return {items:[], last:"__default__"} } }
+    function setStore(s){ localStorage.setItem(DECKS_KEY, JSON.stringify(s)); }
 
     async function refreshDeckSelect(){
-      const manifest = await fetchManifest(); // public decks on GitHub
-      const local = getStore();               // private decks in this browser
-
+      publicManifest = await fetchManifest();
+      const local = getStore();
       const sel = $("deckSelect");
       const parts = [];
-      // Public group (from repo)
+
       parts.push('<optgroup label="Public (GitHub)">');
-      const pub = (manifest.decks||[]);
+      const pub = (publicManifest.decks||[]);
       if(pub.length===0) parts.push('<option disabled>(No public decks found)</option>');
       pub.forEach(d => parts.push(`<option value="${encodeURIComponent(d.file)}">${d.name}</option>`));
       parts.push('</optgroup>');
-      // Local group
+
       parts.push('<optgroup label="Local (This device)">');
       const items = (local.items||[]);
       if(items.length===0) parts.push('<option disabled>(No local decks)</option>');
@@ -226,22 +376,102 @@
       parts.push('</optgroup>');
 
       sel.innerHTML = parts.join("");
-      // Try to keep last selection if it exists in either list
-      const last = local.last || "__default__";
-      if (last === "__default__"){
-        // default to first public deck if available, else load cards.json
-        if (pub.length > 0){
-          sel.value = encodeURIComponent(pub[0].file);
-        } else {
-          sel.value = encodeURIComponent("cards.json");
-        }
-      } else {
-        // prefer matching local
+      // Prefer last local selection if exists
+      const last = local.last || "";
+      if (last){
         const localVal = "local:" + encodeURIComponent(last);
         if ([...sel.options].some(o=>o.value===localVal)) sel.value = localVal;
+      } else if (pub.length > 0){
+        sel.value = encodeURIComponent(pub[0].file);
       }
     }
 
+    // ---------- Actions & UI wiring ----------
+    function showAnswer(){
+      const back = $("back"); const gradeBar = $("gradeBar");
+      if(back.style.display === "block"){ back.style.display = "none"; gradeBar.classList.add("hidden"); }
+      else { back.style.display = "block"; gradeBar.classList.remove("hidden"); }
+    }
+    function next(){ if (idx < order.length-1) { idx++; render(); } }
+    function prev(){ if (idx > 0) { idx--; render(); } }
+    function doGrade(g){
+      const entry = currentCardEntry(); if(!entry) return;
+      schedule(entry.deckName, entry.card, g);
+      rebuildAndRender();
+    }
+
+    $("revealBtn").onclick = showAnswer;
+    $("prevBtn").onclick   = prev;
+    $("nextBtn").onclick   = next;
+    $("restartBtn").onclick= () => { idx = 0; render(); };
+
+    $("againBtn").onclick = () => doGrade("again");
+    $("hardBtn").onclick  = () => doGrade("hard");
+    $("goodBtn").onclick  = () => doGrade("good");
+    $("easyBtn").onclick  = () => doGrade("easy");
+
+    $("statusSelect").onchange = rebuildAndRender;
+    $("tagFilterInput").addEventListener("keyup", (e)=>{ if(e.key==="Enter"){ rebuildAndRender(); }});
+    $("tagFilterInput").addEventListener("blur", rebuildAndRender);
+    $("globalTagsMode").onchange = rebuildAndRender;
+
+    // Tag editing
+    function addTagTo(entry, tag){
+      const deckName = entry.deckName, card = entry.card; if(!tag) return;
+      const uid = uidFor(card);
+      const tags = loadTags(deckName, uid);
+      if(!tags.map(s=>s.toLowerCase()).includes(tag.toLowerCase())){
+        tags.push(tag);
+        saveTags(deckName, uid, tags);
+      }
+    }
+    function removeTagFrom(entry, tag){
+      const deckName = entry.deckName, card = entry.card;
+      const uid = uidFor(card);
+      const tags = loadTags(deckName, uid).filter(t => t.toLowerCase() !== tag.toLowerCase());
+      saveTags(deckName, uid, tags);
+    }
+
+    $("addTagBtn").onclick = ()=>{
+      const entry = currentCardEntry(); if(!entry) return;
+      const val = $("newTagInput").value.trim(); if(!val) return;
+      val.split(/[,\s]+/).forEach(t=> addTagTo(entry, t.trim()));
+      $("newTagInput").value = "";
+      render();
+    };
+    $("newTagInput").addEventListener("keydown",(e)=>{
+      if(e.key==="Enter"){ e.preventDefault(); $("addTagBtn").click(); }
+    });
+    document.addEventListener("click",(e)=>{
+      if(e.target && e.target.classList.contains("removeTagBtn")){
+        const tag = decodeURIComponent(e.target.dataset.tag);
+        const entry = currentCardEntry(); if(!entry) return;
+        removeTagFrom(entry, tag);
+        render();
+      }
+    });
+
+    // Suspend / Unsuspend
+    $("suspendBtn").onclick = ()=>{
+      const entry = currentCardEntry(); if(!entry) return;
+      const {deckName, card} = entry;
+      const uid = uidFor(card);
+      const st = loadState(deckName, uid) || { phase:"new", ease:2.5, interval:0, reps:0, lapses:0 };
+      st.suspended = true;
+      saveState(deckName, uid, st);
+      rebuildAndRender();
+    };
+    $("unsuspendBtn").onclick = ()=>{
+      const entry = currentCardEntry(); if(!entry) return;
+      const {deckName, card} = entry;
+      const uid = uidFor(card);
+      const st = loadState(deckName, uid) || {};
+      st.suspended = false;
+      saveState(deckName, uid, st);
+      rebuildAndRender();
+    };
+
+    // Upload / download decks
     $("uploadDeckBtn").onclick = () => $("fileInput").click();
     $("fileInput").onchange = e => {
       const f = e.target.files[0]; if(!f) return;
@@ -265,18 +495,17 @@
     };
 
     $("deckSelect").onchange = () => {
+      $("globalTagsMode").checked = false; // leaving global mode when switching deck
       const val = $("deckSelect").value;
       if (val.startsWith("local:")){
         const name = decodeURIComponent(val.slice("local:".length));
         const it = getStore().items.find(x=>x.name===name);
         if(it){ loadDeckObject(it.data); const s=getStore(); s.last=name; setStore(s); }
       } else {
-        // Public deck from repo (same-origin path)
         loadDeck(decodeURIComponent(val));
-        const s=getStore(); s.last="__default__"; setStore(s);
+        const s=getStore(); s.last=""; setStore(s);
       }
     };
-
     $("downloadDeckBtn").onclick = () => {
       const blob = new Blob([JSON.stringify(deck,null,2)], {type:"application/json"});
       const url = URL.createObjectURL(blob);
@@ -286,36 +515,7 @@
       setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },0);
     };
 
-    // ---------- Actions ----------
-    function showAnswer(){
-      const back = $("back"); const gradeBar = $("gradeBar");
-      if(back.style.display === "block"){ back.style.display = "none"; gradeBar.classList.add("hidden"); }
-      else { back.style.display = "block"; gradeBar.classList.remove("hidden"); }
-    }
-    function next(){ if (idx < order.length-1) { idx++; render(); } }
-    function prev(){ if (idx > 0) { idx--; render(); } }
-
-    function doGrade(g){
-      const c = currentCard(); if(!c) return;
-      schedule(deck.name, c, g);
-      buildOrder();
-      if(order.length === 0){ render(); return; }
-      if (idx >= order.length) idx = Math.max(0, order.length-1);
-      render();
-    }
-
-    $("revealBtn").onclick = showAnswer;
-    $("prevBtn").onclick   = prev;
-    $("nextBtn").onclick   = next;
-    $("restartBtn").onclick= () => { idx = 0; render(); };
-
-    $("againBtn").onclick = () => doGrade("again");
-    $("hardBtn").onclick  = () => doGrade("hard");
-    $("goodBtn").onclick  = () => doGrade("good");
-    $("easyBtn").onclick  = () => doGrade("easy");
-
-    $("dueOnly").onchange = () => { buildOrder(); render(); };
-
+    // Keyboard shortcuts
     document.addEventListener("keydown",(e)=>{
       if(e.code === "Space"){ e.preventDefault(); showAnswer(); }
       if(e.key === "ArrowRight") next();
@@ -326,18 +526,110 @@
       if(e.key === "4") $("easyBtn").click();
     });
 
+    // ---------- Backups ----------
+    function collectAllProgress(){
+      const out = {};
+      for(let i=0;i<localStorage.length;i++){
+        const k = localStorage.key(i);
+        if(k && (k.startsWith(STATE_PREFIX) || k.startsWith(TAGS_PREFIX) || k.startsWith(DECKS_KEY))){
+          out[k] = localStorage.getItem(k);
+        }
+      }
+      return out;
+    }
+    function applyProgressDump(obj){
+      // Clear only our namespaces, then restore
+      const toRemove = [];
+      for(let i=0;i<localStorage.length;i++){
+        const k = localStorage.key(i);
+        if(k && (k.startsWith(STATE_PREFIX) || k.startsWith(TAGS_PREFIX) || k.startsWith(DECKS_KEY))){
+          toRemove.push(k);
+        }
+      }
+      toRemove.forEach(k=>localStorage.removeItem(k));
+      Object.entries(obj).forEach(([k,v])=>{
+        localStorage.setItem(k, v);
+      });
+    }
+    function refreshBackupsDropdown(){
+      const sel = $("backupSelect");
+      const keys = [];
+      for(let i=0;i<localStorage.length;i++){
+        const k = localStorage.key(i);
+        if(k && k.startsWith(BACKUP_NS)) keys.push(k);
+      }
+      keys.sort(); // chronological by suffix
+      sel.innerHTML = keys.map(k=>`<option value="${k}">${k.slice(BACKUP_NS.length)}</option>`).join("");
+    }
+    function createBackup(){
+      const stamp = new Date().toISOString().replace(/[:.]/g,"-");
+      const data = JSON.stringify(collectAllProgress());
+      localStorage.setItem(BACKUP_NS + stamp, data);
+      // prune
+      const keys = [];
+      for(let i=0;i<localStorage.length;i++){
+        const k = localStorage.key(i);
+        if(k && k.startsWith(BACKUP_NS)) keys.push(k);
+      }
+      keys.sort();
+      while(keys.length > MAX_BACKUPS){
+        const k = keys.shift();
+        localStorage.removeItem(k);
+      }
+      refreshBackupsDropdown();
+    }
+
+    $("exportBtn").onclick = ()=>{
+      const blob = new Blob([JSON.stringify(collectAllProgress(), null, 2)], {type:"application/json"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = "flashcards-progress.json";
+      document.body.appendChild(a); a.click();
+      setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },0);
+    };
+    $("importBtn").onclick = ()=> $("importInput").click();
+    $("importInput").onchange = e=>{
+      const f = e.target.files[0]; if(!f) return;
+      const r = new FileReader();
+      r.onload = ()=>{
+        try{
+          const obj = JSON.parse(r.result);
+          applyProgressDump(obj);
+          rebuildAndRender();
+          alert("Progress imported.");
+        }catch{ alert("Invalid progress file."); }
+      };
+      r.readAsText(f);
+      e.target.value = "";
+    };
+    $("backupNowBtn").onclick = ()=>{ createBackup(); alert("Backup created."); };
+    $("restoreBtn").onclick   = ()=>{
+      const k = $("backupSelect").value; if(!k){ alert("No backup selected."); return; }
+      const raw = localStorage.getItem(k); if(!raw){ alert("Backup not found."); return; }
+      try{ const obj = JSON.parse(raw); applyProgressDump(obj); rebuildAndRender(); alert("Backup restored."); }
+      catch{ alert("Backup corrupted."); }
+    };
+    $("deleteBackupBtn").onclick = ()=>{
+      const k = $("backupSelect").value; if(!k) return;
+      localStorage.removeItem(k); refreshBackupsDropdown();
+    };
+
+    // Auto-backup timer (~2 minutes)
+    setInterval(()=>{ createBackup(); }, 2*60*1000);
+
     // ---------- Boot ----------
     document.addEventListener("DOMContentLoaded", async ()=>{
       await refreshDeckSelect();
-      // If URL has ?deck=<path.json>, prefer that (handy shortcuts)
+      // URL override ?deck=path.json
       const params = new URLSearchParams(location.search);
       const urlDeck = params.get("deck");
-      if (urlDeck){ await loadDeck(urlDeck); return; }
-
-      // Otherwise load current selection or default
-      const val = $("deckSelect").value;
-      if (val && !val.startsWith("local:")) await loadDeck(decodeURIComponent(val));
-      else await loadDeck("cards.json");
+      if (urlDeck){ await loadDeck(urlDeck); }
+      else {
+        const val = $("deckSelect").value;
+        if (val && !val.startsWith("local:")) await loadDeck(decodeURIComponent(val));
+        else await loadDeck("cards.json");
+      }
+      refreshBackupsDropdown();
     });
   </script>
 </body>
