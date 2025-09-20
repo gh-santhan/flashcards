@@ -1,0 +1,310 @@
+{
+  "name": "Chapter 1 \u2013 Introduction to Lifestyle Medicine (ACLM)",
+  "cards": [
+    {
+      "Front": "Define Lifestyle Medicine (per ACLM).",
+      "Back": "A medical specialty using therapeutic lifestyle interventions as a primary modality to treat chronic conditions (e.g., CVD, type 2 diabetes, obesity). Clinicians apply evidence\u2011based, whole\u2011person, prescriptive lifestyle change; when used intensively, these interventions can often reverse disease. Applying the six pillars also provides prevention.",
+      "Tag": "ACLM-Core"
+    },
+    {
+      "Front": "List the six pillars of Lifestyle Medicine.",
+      "Back": "1) Whole\u2011food, plant\u2011predominant eating pattern\n2) Physical activity\n3) Restorative sleep\n4) Stress management\n5) Avoidance of risky substances\n6) Positive social connections",
+      "Tag": "ACLM-Core"
+    },
+    {
+      "Front": "What are Intensive Therapeutic Lifestyle Change (ITLC) programs?",
+      "Back": "Multimodal, team\u2011based treatment programs that encourage dramatic changes in daily routine across diet, physical activity, sleep, and stress; typically group\u2011based visits, 60\u2011min sessions, 1\u20133\u00d7/week for 8\u201318 weeks (or shorter immersion). Evidence\u2011based programs include Pritikin, Ornish, and CHIP/Pivio.",
+      "Tag": "ACLM-Core"
+    },
+    {
+      "Front": "Name the five core competency categories for prescribing lifestyle medicine (JAMA 2010).",
+      "Back": "1) Leadership\n2) Knowledge\n3) Assessment skills\n4) Management skills\n5) Use of office & community support systems",
+      "Tag": "ACLM-Core"
+    },
+    {
+      "Front": "Give 2 examples of actions under the Leadership competency.",
+      "Back": "Examples: Promote healthy behaviors as foundational to medical care; lead by example (personal healthy behaviors); create environments that support healthy behaviors at school, work, and home.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Give 3 examples of actions under the Knowledge competency.",
+      "Back": "Know the evidence that specific lifestyle changes affect health outcomes (e.g., smoking cessation and lung disease/cancer; exercise and breast cancer; fitness and CVD outcomes; plant\u2011based dietary patterns and BP/lipids/cancer). Know how engagement with patients/families affects behavior.",
+      "Tag": "General"
+    },
+    {
+      "Front": "What are key Assessment skills in Lifestyle Medicine?",
+      "Back": "Assess biopsychosocial predispositions to behaviors and outcomes; assess readiness/willingness/ability to change (stages of change); take a lifestyle\u2011focused history/exam including lifestyle vital signs (tobacco, alcohol, diet, activity, BMI, stress, sleep, emotional well\u2011being); order/interpret tests to screen/diagnose/monitor lifestyle\u2011related disease.",
+      "Tag": "General"
+    },
+    {
+      "Front": "What are examples of Management skills in LM?",
+      "Back": "Use nationally recognized practice guidelines; collaborate within interdisciplinary teams; co\u2011create prescriptions, SMART goals, and follow\u2011ups; track outcomes and adjust plans; integrate behavior\u2011change techniques and referrals to community programs.",
+      "Tag": "General"
+    },
+    {
+      "Front": "What does \u2018Use of office & community support systems\u2019 entail?",
+      "Back": "Integrate systems that support behavior change: EMR prompts/vital signs, care pathways, group visits, health coaching, dietitian partnerships, and links to community resources (e.g., cooking classes, walking groups).",
+      "Tag": "General"
+    },
+    {
+      "Front": "Define disease reversal (per the manual).",
+      "Back": "All laboratory markers or diagnostic tests of a disease are within normal range, without current use of any medications, and with no present signs or symptoms of disease.",
+      "Tag": "ACLM-Core"
+    },
+    {
+      "Front": "How is disease \u2018control\u2019 different from \u2018reversal\u2019?",
+      "Back": "Control = improvement to accepted standard levels but without complete normalization; may occur with or without medications/interventions. Reversal = normalization without meds and no signs/symptoms.",
+      "Tag": "ACLM-Core"
+    },
+    {
+      "Front": "Define disease remission.",
+      "Back": "Disappearance of the signs and symptoms of disease (can be temporary or permanent).",
+      "Tag": "General"
+    },
+    {
+      "Front": "Define a whole\u2011food, plant\u2011predominant dietary pattern.",
+      "Back": "Mostly foods from plants (whole grains, vegetables, fruits, beans/legumes) with little to no animal products (dairy, meat, eggs).",
+      "Tag": "General"
+    },
+    {
+      "Front": "Define Planetary Health (manual glossary).",
+      "Back": "A solutions\u2011oriented, transdisciplinary field and social movement focused on addressing impacts of human disruptions to Earth\u2019s systems on human health and all life on Earth.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Which LM prescriptions support both personal and planetary health? Name examples.",
+      "Back": "Plant\u2011predominant diet reduces carbon/environmental footprint and provides antioxidants; physical activity as active transport lowers carbon footprint and bolsters immunity; stress management for climate anxiety/trauma; social connection for resilience; restorative sleep for immunity; avoidance of toxic substances to reduce pollutant load.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Who is often (incorrectly) credited with 'Let food be thy medicine...' and what\u2019s the nuance?",
+      "Back": "The quote is often attributed to Hippocrates; best evidence indicates it\u2019s not actually his, though he advocated healthy diet and physical activity to prevent/combat disease.",
+      "Tag": "General"
+    },
+    {
+      "Front": "What did Thomas Edison famously say about the 'doctor of the future'?",
+      "Back": "He said the doctor would \u2018interest his patients in the care of the human frame, in diet, and in the cause and prevention of disease.\u2019",
+      "Tag": "General"
+    },
+    {
+      "Front": "What was the Pritikin Longevity Center known for (1970s)?",
+      "Back": "A residential program using nutrition, exercise, and education to treat and reverse heart disease.",
+      "Tag": "General"
+    },
+    {
+      "Front": "What did the John McDougall Program emphasize (1970s)?",
+      "Back": "Unlimited whole\u2011food, plant\u2011based diet, stress reduction, and exercise to treat/reverse disease.",
+      "Tag": "General"
+    },
+    {
+      "Front": "What was shown in the Ornish Lifestyle Heart Trial (1980s)?",
+      "Back": "Regression of coronary artery stenosis at 1 year and continued improvement at 5 years using low\u2011fat vegetarian diet, stress management, exercise, and smoking cessation in small\u2011group settings emphasizing positive psychology/connectedness.",
+      "Tag": "ACLM-Core"
+    },
+    {
+      "Front": "What long\u2011term work did Caldwell Esselstyn lead at Cleveland Clinic (1990s)?",
+      "Back": "A >20\u2011year longitudinal study on arresting/reversing heart disease in critically ill patients.",
+      "Tag": "General"
+    },
+    {
+      "Front": "What is CHIP (now Pivio)?",
+      "Back": "An outpatient ITLC program promoting a whole\u2011food, plant\u2011based diet and exercise to prevent, treat, and reverse lifestyle\u2011related chronic disease.",
+      "Tag": "General"
+    },
+    {
+      "Front": "What did the WHO (1990) report on diet and chronic disease address?",
+      "Back": "Links between poor diet quality/excess calories and chronic disease; included nutrient guidance on fats, proteins, carbohydrates, and salt.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Who authored the first comprehensive Lifestyle Medicine text (1990s)?",
+      "Back": "James Rippe authored a comprehensive medical text focused on Lifestyle Medicine.",
+      "Tag": "General"
+    },
+    {
+      "Front": "When was ACLM founded and by whom?",
+      "Back": "Founded in early 2004 by John Kelly, MD, MPH (Loma Linda University), with a small group of providers.",
+      "Tag": "ACLM-Core"
+    },
+    {
+      "Front": "How large is ACLM (as of 2023)?",
+      "Back": "More than 10,000 members and rapidly expanding.",
+      "Tag": "ACLM-Core"
+    },
+    {
+      "Front": "What is ABLM and when was it organized?",
+      "Back": "American Board of Lifestyle Medicine (ABLM), organized in 2016 to develop a credible LM certification exam process.",
+      "Tag": "ACLM-Core"
+    },
+    {
+      "Front": "What is IBLM and how does it relate to ABLM?",
+      "Back": "International Board of Lifestyle Medicine (IBLM), organized in 2016 to provide an international certification exam consistent with ABLM to ensure global standardization.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Distinguish Lifestyle Medicine vs Allopathic (Conventional) Medicine.",
+      "Back": "Allopathic medicine emphasizes diagnosing/treating disease with conventional evidence\u2011based measures (drugs/surgery). Lifestyle Medicine uses therapeutic lifestyle interventions as a primary modality; lifestyle approaches are often included in conventional guidelines as first\u2011line for chronic disease.",
+      "Tag": "ACLM-Core"
+    },
+    {
+      "Front": "What is Preventive Medicine, and how does it overlap with LM?",
+      "Back": "Promotes preventive health to improve well\u2011being and prevent disease/disability/death at individual and population levels; many public health recommendations (exercise, dietary pattern, substance exposure) overlap with LM pillars.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Define Integrative Medicine (per table) in contrast to LM.",
+      "Back": "Brings conventional and complementary approaches together in a coordinated way; emphasizes multimodal interventions and treating the whole person; may utilize LM domains but differs in scope/approach.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Define Mind\u2011Body Medicine in contrast to LM.",
+      "Back": "Grounded in the mind\u2011body connection and self\u2011responsibility; utilizes practices like relaxation, imagery, meditation, yoga, biofeedback; overlaps with LM but is a distinct focus.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Define Functional Medicine in contrast to LM.",
+      "Back": "Individualized, patient\u2011centered approach focused on underlying causes using detailed genetic/biochemical/lifestyle data to direct personalized treatment; may use LM domains but differs in framework.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Define Complementary & Alternative Medicine (CAM) in contrast to LM.",
+      "Back": "Non\u2011mainstream approaches; \u2018complementary\u2019 when used with conventional care, \u2018alternative\u2019 when used in place of it; may use LM domains but differs in evidence pathways and scope.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Vignette: A 55\u2011year\u2011old with new T2D asks for \u2018natural options first.\u2019 What aligns with Lifestyle Medicine\u2019s role?",
+      "Back": "Offer an LM\u2011first plan (dietary pattern change, physical activity, sleep, stress, substance avoidance, social support) with close follow\u2011up, while integrating guideline\u2011based monitoring; add medications as adjuncts if needed.",
+      "Tag": "Vignette"
+    },
+    {
+      "Front": "Vignette: Clinic wants to \u2018do LM.\u2019 First step to align team messages?",
+      "Back": "Hold an interdisciplinary meeting (physician, RD, PT/coach, etc.) to agree on LM pillars and specific counseling content (e.g., shared nutrition framework) before launching services.",
+      "Tag": "Vignette"
+    },
+    {
+      "Front": "Vignette: You\u2019re designing LM workflow. Which vital signs/check\u2011ins belong at every visit?",
+      "Back": "Brief lifestyle \u2018vital signs\u2019: tobacco/alcohol use, dietary pattern, physical activity, BMI/weight, sleep, stress/emotional well\u2011being; with EMR prompts and referrals as needed.",
+      "Tag": "Vignette"
+    },
+    {
+      "Front": "Vignette: Your hospital asks for a program that catalyzes rapid change for severe cardiometabolic disease. Best LM\u2011aligned option?",
+      "Back": "Implement or refer to an ITLC program (e.g., Ornish/Pritikin/CHIP), then transition to maintenance/support phases.",
+      "Tag": "Vignette"
+    },
+    {
+      "Front": "Why is \u2018lifestyle\u2011first\u2019 prioritized in chronic lifestyle\u2011related disease?",
+      "Back": "Because evidence shows intensive lifestyle change can prevent, treat, and often reverse disease, with medications as adjuncts when appropriate.",
+      "Tag": "ACLM-Core"
+    },
+    {
+      "Front": "Name 3 system\u2011level supports that enhance LM delivery.",
+      "Back": "Group visits; EMR prompts/templates for LM vital signs; partnerships with community resources (e.g., cooking classes, walking groups).",
+      "Tag": "General"
+    },
+    {
+      "Front": "What is meant by \u2018whole\u2011person\u2019 in LM?",
+      "Back": "Plans integrate multiple domains (nutrition, activity, sleep, stress, social connection, substance avoidance) tailored to biopsychosocial context.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Leadership competency: give 3 ways clinicians can lead beyond the clinic.",
+      "Back": "Give grand rounds/community talks; advocate to policymakers for environments that support healthy behaviors; model healthy personal behaviors.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Assessment competency: what is meant by assessing \u2018readiness, willingness, and ability\u2019 to change?",
+      "Back": "Identify stage of change and practical barriers/facilitators; co\u2011create goals appropriate to current stage and capacity.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Management competency: why use nationally recognized guidelines in LM?",
+      "Back": "They anchor prescriptions to evidence\u2011based targets and safety thresholds while LM provides the therapeutic lifestyle framework.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Systems competency: why are group visits powerful in LM?",
+      "Back": "They increase access, peer support, and outcomes; allow longer education + brief 1:1 time; and improve satisfaction for patients/providers.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Name at least 5 ACLM presidents from early years to recent.",
+      "Back": "Examples: John Kelly, Marc Braman, Wayne Dysinger, Liana Lianov, David Katz, George Guthrie, Dexter Shurney, Cate Collings, Beth Frates.",
+      "Tag": "General"
+    },
+    {
+      "Front": "What is the role of ABLM/IBLM in LM certification?",
+      "Back": "They provide standardized exams (ABLM US; IBLM international) to ensure core LM knowledge and skills.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Planetary: How does diet pillar contribute to planetary health?",
+      "Back": "Plant\u2011predominant dietary patterns reduce personal carbon/environmental footprints and provide antioxidants against pollutant\u2011related oxidative stress.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Planetary: How does the physical activity pillar support the planet?",
+      "Back": "Active transport (walking/cycling) reduces carbon footprint and supports immune health.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Planetary: How does \u2018avoidance of risky substances\u2019 relate to planetary health?",
+      "Back": "Reduces toxic exposures and overall pollutant load at an individual level.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Planetary: How can stress management & social connection help communities?",
+      "Back": "They address climate\u2011related anxiety/trauma and build resilience and mutual support structures.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Planetary: How does restorative sleep fit in?",
+      "Back": "Supports immune function and overall resilience, enabling sustained engagement in healthy/planet\u2011friendly behaviors.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Which field: \u2018coordinated use of conventional and complementary approaches; multimodal; whole\u2011person\u2019?",
+      "Back": "Integrative Medicine.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Which field: \u2018focus on underlying causes using detailed genetic/biochemical/lifestyle data to direct personalized plans\u2019?",
+      "Back": "Functional Medicine.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Which field: \u2018mind\u2011body interconnection; practices include relaxation, imagery, meditation, yoga, biofeedback\u2019?",
+      "Back": "Mind\u2011Body Medicine.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Which field: \u2018population\u2011based prevention; immunizations, screening, bioterrorism preparedness\u2019?",
+      "Back": "Preventive/Allopathic public health focus (not LM per se).",
+      "Tag": "General"
+    },
+    {
+      "Front": "True or False: Lifestyle Medicine is primarily the promotion of vegetarianism as a cure for disease.",
+      "Back": "False. LM is evidence\u2011based therapeutic lifestyle interventions across multiple domains; medications/supplements are adjuncts as needed.",
+      "Tag": "ACLM-Core"
+    },
+    {
+      "Front": "True or False: \u2018There are few rigorous studies showing lifestyle change can treat or reverse disease.\u2019",
+      "Back": "False. Decades of rigorous studies show intensive lifestyle changes can prevent, treat, and often reverse disease.",
+      "Tag": "ACLM-Core"
+    },
+    {
+      "Front": "List 3 components of an LM office/community support system.",
+      "Back": "EMR prompts & templates; group visits; partnerships with RDs, health coaches, community programs.",
+      "Tag": "General"
+    },
+    {
+      "Front": "Give examples of positive social connections as an LM target.",
+      "Back": "Family engagement, peer groups, group classes, community walking or cooking programs.",
+      "Tag": "General"
+    },
+    {
+      "Front": "What is the aim of LM becoming the \u2018foundation of healthcare\u2019?",
+      "Back": "To integrate lifestyle\u2011first principles into all care pathways while collaborating with other specialties.",
+      "Tag": "General"
+    }
+  ]
+}
