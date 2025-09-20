@@ -64,16 +64,14 @@
 
       <aside>
         <div class="panel">
-          <h3 style="margin:.2rem 0 .6rem">Deck</h3>
+          <h3 style="margin:.2rem 0 .6rem">Decks</h3>
           <div class="row" style="gap:.5rem">
             <button id="uploadDeckBtn">Upload Deck (JSON)</button>
             <button id="downloadDeckBtn">Download Current</button>
           </div>
           <div style="margin-top:.6rem">
             <label class="muted" for="deckSelect">Switch deck</label>
-            <select id="deckSelect">
-              <option value="__default__">Default (cards.json)</option>
-            </select>
+            <select id="deckSelect"></select>
           </div>
           <input id="fileInput" type="file" accept=".json,application/json" class="hidden">
         </div>
@@ -92,14 +90,15 @@
   </footer>
 
   <script>
-    const APP_NS = "flashcards.srs.v1";
+    const APP_NS = "flashcards.srs.v2";
     const STATE_PREFIX = APP_NS + ":card:"; // STATE_PREFIX + deckName + ":" + uid
+    const MANIFEST_URL = "decks.json";      // <- public decks manifest (same origin)
 
     let deck = { name:"Demo", cards:[] };
-    let order = [];   // indices of cards currently visible (filtered)
-    let idx = 0;      // pointer into 'order'
+    let order = [];   // visible indices (filtered)
+    let idx = 0;
 
-    const qs = id => document.getElementById(id);
+    const $ = id => document.getElementById(id);
 
     // ---------- Identifiers & state ----------
     function uidFor(card){
@@ -114,7 +113,7 @@
     }
     function saveState(deckName, uid, st){ localStorage.setItem(stKey(deckName, uid), JSON.stringify(st)); }
 
-    // ---------- Scheduler (simple SM-2 like) ----------
+    // ---------- Scheduler ----------
     function isDue(deckName, card){
       const st = loadState(deckName, uidFor(card));
       if(!st) return true;
@@ -122,95 +121,67 @@
       if(!st.due) return true;
       return new Date(st.due) <= new Date();
     }
-
     function schedule(deckName, card, grade){
       const uid = uidFor(card);
       let st = loadState(deckName, uid) || { interval:0, ease:2.5, reps:0, lapses:0, phase:"new", suspended:false };
       const now = new Date();
-
       if(grade === "again"){
-        st.lapses += 1;
-        st.reps = Math.max(0, st.reps - 1);
-        st.interval = 0;
-        st.phase = "learn";
-        st.due = new Date(now.getTime() + 10*60*1000).toISOString(); // 10 mins
+        st.lapses += 1; st.reps = Math.max(0, st.reps - 1); st.interval = 0; st.phase = "learn";
+        st.due = new Date(now.getTime() + 10*60*1000).toISOString();
       } else {
-        st.reps += 1;
-        st.ease = st.ease || 2.5;
+        st.reps += 1; st.ease = st.ease || 2.5;
         if(grade === "hard") st.ease = Math.max(1.3, st.ease - 0.15);
         if(grade === "good") st.ease = Math.max(1.3, st.ease - 0.05);
         if(grade === "easy") st.ease = Math.min(3.2, st.ease + 0.15);
-
-        if(st.phase === "new"){
-          st.interval = (grade === "easy") ? 3 : (grade === "hard" ? 1 : 2);
-          st.phase = "review";
-        } else if(st.phase === "learn"){
-          st.interval = (grade === "hard") ? 1 : 2;
-          st.phase = "review";
-        } else {
-          const mult = (grade === "easy") ? 1.5 : (grade === "hard" ? 0.7 : 1.0);
+        if(st.phase === "new"){ st.interval = (grade==="easy")?3:(grade==="hard"?1:2); st.phase="review"; }
+        else if(st.phase === "learn"){ st.interval = (grade==="hard")?1:2; st.phase="review"; }
+        else {
+          const mult = (grade==="easy")?1.5:(grade==="hard"?0.7:1.0);
           st.interval = Math.ceil(Math.max(1, st.interval) * st.ease * mult);
-          st.interval = Math.max(st.interval, (grade === "easy" ? 3 : (grade === "good" ? 2 : 1)));
+          st.interval = Math.max(st.interval, (grade==="easy"?3:(grade==="good"?2:1)));
         }
-
         st.due = new Date(now.getTime() + st.interval*24*60*60*1000).toISOString();
       }
-
-      if(st.lapses >= 8){ st.suspended = true; } // auto-suspend leeches
+      if(st.lapses >= 8) st.suspended = true;
       saveState(deckName, uid, st);
     }
 
-    // ---------- View building ----------
+    // ---------- View ----------
     function buildOrder(){
-      const onlyDue = qs("dueOnly").checked;
+      const onlyDue = $("dueOnly").checked;
       const arr = [];
       for(let i=0;i<(deck.cards||[]).length;i++){
-        const c = deck.cards[i];
-        if(onlyDue && !isDue(deck.name, c)) continue;
+        if(onlyDue && !isDue(deck.name, deck.cards[i])) continue;
         arr.push(i);
       }
       order = arr;
       if(idx >= order.length) idx = Math.max(0, order.length-1);
       updateHeader();
     }
-
     function updateHeader(){
-      qs("deckName").textContent = "Deck: " + (deck.name || "Deck");
-      qs("posPill").textContent  = `Card ${ order.length ? (idx+1) : 0 } / ${ order.length }`;
+      $("deckName").textContent = "Deck: " + (deck.name || "Deck");
+      $("posPill").textContent  = `Card ${ order.length ? (idx+1) : 0 } / ${ order.length }`;
       const dueCount = (deck.cards||[]).filter(c => isDue(deck.name, c)).length;
-      qs("duePill").textContent  = `Due: ${dueCount}`;
+      $("duePill").textContent  = `Due: ${dueCount}`;
     }
-
-    function currentCard(){
-      if(!order.length) return null;
-      return deck.cards[order[idx]];
-    }
-
+    function currentCard(){ return order.length ? deck.cards[order[idx]] : null; }
     function render(){
       updateHeader();
-      const c = currentCard();
-      const back = qs("back");
-      const revealBtn = qs("revealBtn");
-      const gradeBar = qs("gradeBar");
-
+      const c = currentCard(); const back = $("back"); const gradeBar = $("gradeBar");
       if(!c){
-        qs("front").textContent = "No cards match this view.";
-        back.style.display = "none";
-        revealBtn.disabled = true;
-        gradeBar.classList.add("hidden");
-        qs("meta").textContent = "";
+        $("front").textContent = "No cards match this view.";
+        back.style.display = "none"; $("revealBtn").disabled = true; gradeBar.classList.add("hidden"); $("meta").textContent = "";
         return;
       }
-
-      revealBtn.disabled = false;
-      qs("front").textContent = c.Front || "";
-      qs("back").textContent  = c.Back  || "";
+      $("revealBtn").disabled = false;
+      $("front").textContent = c.Front || "";
+      $("back").textContent  = c.Back  || "";
       back.style.display = "none";
-      qs("meta").textContent = c.Tag ? ("Tag: " + c.Tag) : "";
+      $("meta").textContent = c.Tag ? ("Tag: " + c.Tag) : "";
       gradeBar.classList.add("hidden");
     }
 
-    // ---------- Deck loading / upload ----------
+    // ---------- Deck loading ----------
     async function loadDeck(url="cards.json"){
       const res = await fetch(url, { cache:"no-store" });
       deck = await res.json();
@@ -221,21 +192,58 @@
       idx = 0; buildOrder(); render();
     }
 
-    // Multi-deck local store
+    // ---------- Public manifest + Local uploads ----------
     const DECKS_KEY = APP_NS + ":userDecks";
     function getStore(){ try{ return JSON.parse(localStorage.getItem(DECKS_KEY)) || {items:[], last:"__default__"} } catch { return {items:[], last:"__default__"} } }
     function setStore(s){ localStorage.setItem(DECKS_KEY, JSON.stringify(s)); }
-    function refreshDeckSelect(){
-      const s = getStore();
-      const sel = qs("deckSelect");
-      const current = sel.value || s.last || "__default__";
-      sel.innerHTML = '<option value="__default__">Default (cards.json)</option>' +
-        s.items.map(it => `<option value="${encodeURIComponent(it.name)}">${it.name}</option>`).join("");
-      sel.value = current;
+
+    async function fetchManifest(){
+      try{
+        const res = await fetch(MANIFEST_URL, {cache:"no-store"});
+        if(!res.ok) return { decks: [] };
+        const json = await res.json();
+        return Array.isArray(json.decks) ? json : { decks: [] };
+      }catch{ return { decks: [] }; }
     }
 
-    qs("uploadDeckBtn").onclick = () => qs("fileInput").click();
-    qs("fileInput").onchange = e => {
+    async function refreshDeckSelect(){
+      const manifest = await fetchManifest(); // public decks on GitHub
+      const local = getStore();               // private decks in this browser
+
+      const sel = $("deckSelect");
+      const parts = [];
+      // Public group (from repo)
+      parts.push('<optgroup label="Public (GitHub)">');
+      const pub = (manifest.decks||[]);
+      if(pub.length===0) parts.push('<option disabled>(No public decks found)</option>');
+      pub.forEach(d => parts.push(`<option value="${encodeURIComponent(d.file)}">${d.name}</option>`));
+      parts.push('</optgroup>');
+      // Local group
+      parts.push('<optgroup label="Local (This device)">');
+      const items = (local.items||[]);
+      if(items.length===0) parts.push('<option disabled>(No local decks)</option>');
+      items.forEach(it => parts.push(`<option value="local:${encodeURIComponent(it.name)}">${it.name}</option>`));
+      parts.push('</optgroup>');
+
+      sel.innerHTML = parts.join("");
+      // Try to keep last selection if it exists in either list
+      const last = local.last || "__default__";
+      if (last === "__default__"){
+        // default to first public deck if available, else load cards.json
+        if (pub.length > 0){
+          sel.value = encodeURIComponent(pub[0].file);
+        } else {
+          sel.value = encodeURIComponent("cards.json");
+        }
+      } else {
+        // prefer matching local
+        const localVal = "local:" + encodeURIComponent(last);
+        if ([...sel.options].some(o=>o.value===localVal)) sel.value = localVal;
+      }
+    }
+
+    $("uploadDeckBtn").onclick = () => $("fileInput").click();
+    $("fileInput").onchange = e => {
       const f = e.target.files[0]; if(!f) return;
       const r = new FileReader();
       r.onload = () => {
@@ -246,26 +254,30 @@
           const seen = new Set(s.items.map(x=>x.name));
           let k=2, base=name; while(seen.has(name)) name = base + " (" + (k++) + ")";
           s.items.push({name, data:obj}); s.last=name; setStore(s);
-          refreshDeckSelect(); qs("deckSelect").value = encodeURIComponent(name);
-          loadDeckObject(obj);
+          refreshDeckSelect().then(()=>{
+            $("deckSelect").value = "local:" + encodeURIComponent(name);
+            loadDeckObject(obj);
+          });
         }catch{ alert("Invalid JSON deck file."); }
         e.target.value="";
       };
       r.readAsText(f);
     };
 
-    qs("deckSelect").onchange = () => {
-      const val = qs("deckSelect").value;
-      if (val === "__default__"){
-        const s = getStore(); s.last="__default__"; setStore(s); loadDeck("cards.json");
-      } else {
-        const name = decodeURIComponent(val);
+    $("deckSelect").onchange = () => {
+      const val = $("deckSelect").value;
+      if (val.startsWith("local:")){
+        const name = decodeURIComponent(val.slice("local:".length));
         const it = getStore().items.find(x=>x.name===name);
         if(it){ loadDeckObject(it.data); const s=getStore(); s.last=name; setStore(s); }
+      } else {
+        // Public deck from repo (same-origin path)
+        loadDeck(decodeURIComponent(val));
+        const s=getStore(); s.last="__default__"; setStore(s);
       }
     };
 
-    qs("downloadDeckBtn").onclick = () => {
+    $("downloadDeckBtn").onclick = () => {
       const blob = new Blob([JSON.stringify(deck,null,2)], {type:"application/json"});
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -276,15 +288,9 @@
 
     // ---------- Actions ----------
     function showAnswer(){
-      const back = qs("back");
-      const gradeBar = qs("gradeBar");
-      if(back.style.display === "block"){
-        back.style.display = "none";
-        gradeBar.classList.add("hidden");
-      }else{
-        back.style.display = "block";
-        gradeBar.classList.remove("hidden");
-      }
+      const back = $("back"); const gradeBar = $("gradeBar");
+      if(back.style.display === "block"){ back.style.display = "none"; gradeBar.classList.add("hidden"); }
+      else { back.style.display = "block"; gradeBar.classList.remove("hidden"); }
     }
     function next(){ if (idx < order.length-1) { idx++; render(); } }
     function prev(){ if (idx > 0) { idx--; render(); } }
@@ -292,47 +298,46 @@
     function doGrade(g){
       const c = currentCard(); if(!c) return;
       schedule(deck.name, c, g);
-      buildOrder(); // rebuild due list after scheduling
+      buildOrder();
       if(order.length === 0){ render(); return; }
       if (idx >= order.length) idx = Math.max(0, order.length-1);
       render();
-      // auto-advance if there are remaining cards and answer is still showing
     }
 
-    // Buttons
-    qs("revealBtn").onclick = showAnswer;
-    qs("prevBtn").onclick   = prev;
-    qs("nextBtn").onclick   = next;
-    qs("restartBtn").onclick= () => { idx = 0; render(); };
+    $("revealBtn").onclick = showAnswer;
+    $("prevBtn").onclick   = prev;
+    $("nextBtn").onclick   = next;
+    $("restartBtn").onclick= () => { idx = 0; render(); };
 
-    qs("againBtn").onclick = () => doGrade("again");
-    qs("hardBtn").onclick  = () => doGrade("hard");
-    qs("goodBtn").onclick  = () => doGrade("good");
-    qs("easyBtn").onclick  = () => doGrade("easy");
+    $("againBtn").onclick = () => doGrade("again");
+    $("hardBtn").onclick  = () => doGrade("hard");
+    $("goodBtn").onclick  = () => doGrade("good");
+    $("easyBtn").onclick  = () => doGrade("easy");
 
-    // Filters
-    qs("dueOnly").onchange = () => { buildOrder(); render(); };
+    $("dueOnly").onchange = () => { buildOrder(); render(); };
 
-    // Keyboard shortcuts
     document.addEventListener("keydown",(e)=>{
       if(e.code === "Space"){ e.preventDefault(); showAnswer(); }
       if(e.key === "ArrowRight") next();
       if(e.key === "ArrowLeft")  prev();
-      if(e.key === "1") qs("againBtn").click();
-      if(e.key === "2") qs("hardBtn").click();
-      if(e.key === "3") qs("goodBtn").click();
-      if(e.key === "4") qs("easyBtn").click();
+      if(e.key === "1") $("againBtn").click();
+      if(e.key === "2") $("hardBtn").click();
+      if(e.key === "3") $("goodBtn").click();
+      if(e.key === "4") $("easyBtn").click();
     });
 
     // ---------- Boot ----------
-    document.addEventListener("DOMContentLoaded", ()=>{
-      refreshDeckSelect();
-      const store = getStore();
-      if(store.last && store.last !== "__default__"){
-        const it = store.items.find(x=>x.name===store.last);
-        if(it){ qs("deckSelect").value = encodeURIComponent(store.last); loadDeckObject(it.data); return; }
-      }
-      loadDeck(); // default
+    document.addEventListener("DOMContentLoaded", async ()=>{
+      await refreshDeckSelect();
+      // If URL has ?deck=<path.json>, prefer that (handy shortcuts)
+      const params = new URLSearchParams(location.search);
+      const urlDeck = params.get("deck");
+      if (urlDeck){ await loadDeck(urlDeck); return; }
+
+      // Otherwise load current selection or default
+      const val = $("deckSelect").value;
+      if (val && !val.startsWith("local:")) await loadDeck(decodeURIComponent(val));
+      else await loadDeck("cards.json");
     });
   </script>
 </body>
