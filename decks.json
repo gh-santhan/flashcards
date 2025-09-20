@@ -1,0 +1,7 @@
+{
+  "decks": [
+    { "name": "Default Demo", "file": "cards.json" }
+    { "name": "Chapter 1 – Intro", "file": "chapter1.json" }
+
+  ]
+}
