@@ -1,161 +1,389 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flashcards App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flashcards</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; background: #f5f5f5; }
-    #flashcard { background: white; padding: 20px; margin: 20px auto; width: 80%; max-width: 600px; 
-                 border-radius: 10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); cursor: pointer; }
-    .hidden { display: none; }
-    .controls, .filters { margin: 10px; }
-    .metadata { font-size: 0.8em; color: gray; margin-top: 10px; }
-    .difficulty-counts { margin: 10px; font-size: 0.9em; color: #333; }
+    :root { --bg:#f6f7fb; --card:#fff; --ink:#202124; --muted:#6b7280; --accent:#2563eb; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color:var(--ink); background:var(--bg); }
+    header { padding:16px; background:#fff; box-shadow:0 1px 4px rgba(0,0,0,.06); position:sticky; top:0; z-index:2; }
+    header h1 { margin:0 0 8px; font-size:20px; }
+    .bar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+    select, input[type="text"], button, label { font-size:14px; }
+    input[type="text"], select { padding:8px 10px; border:1px solid #e5e7eb; border-radius:8px; background:#fff; min-width:160px; }
+    button { padding:8px 12px; border:1px solid #e5e7eb; background:#fff; border-radius:8px; cursor:pointer; }
+    button.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+    button.ghost { background:transparent; border-color:transparent; color:var(--accent); }
+    main { padding:20px; max-width:1100px; margin:0 auto; }
+    .grid { display:grid; grid-template-columns: 1fr 320px; gap:20px; align-items:start; }
+    #flashcard { background:var(--card); border-radius:12px; padding:20px; box-shadow:0 6px 24px rgba(0,0,0,.06); cursor:pointer; min-height:220px; }
+    #front { font-size:18px; line-height:1.5; }
+    #back { font-size:16px; line-height:1.6; margin-top:14px; display:none; }
+    .meta { margin-top:12px; font-size:12px; color:var(--muted); }
+    .controls { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+    .panel { background:#fff; border-radius:12px; padding:16px; box-shadow:0 6px 24px rgba(0,0,0,.06); }
+    .panel h3 { margin:0 0 10px; font-size:14px; color:#111827; }
+    .counts { font-size:13px; color:#111827; }
+    .sep { height:1px; background:#e5e7eb; margin:12px 0; }
+    .tagline { font-size:12px; color:var(--muted); }
+    .hidden { display:none; }
   </style>
 </head>
 <body>
-  <h1>Flashcards App</h1>
+  <header>
+    <h1>Flashcards</h1>
+    <div class="bar">
+      <select id="deckSelect"></select>
+      <button id="refreshBtn">Refresh decks</button>
 
-  <div class="filters">
-    <input type="text" id="searchBox" placeholder="Global search (Q & A)">
-    <input type="text" id="tagSearchBox" placeholder="Search by tag">
-    <select id="difficultyFilter">
-      <option value="">All difficulties</option>
-      <option value="Easy">Easy</option>
-      <option value="Good">Good</option>
-      <option value="Hard">Hard</option>
-      <option value="Again">Again</option>
-      <option value="Ungraded">Ungraded</option>
-    </select>
-  </div>
+      <input id="searchBox" type="text" placeholder="Global search (Q & A)"/>
+      <input id="tagSearchBox" type="text" placeholder="Filter by tag"/>
 
-  <div id="flashcard">
-    <div id="front"></div>
-    <div id="back" class="hidden"></div>
-    <div class="metadata" id="metadata"></div>
-  </div>
+      <select id="difficultyFilter">
+        <option value="">All difficulties</option>
+        <option value="Easy">Easy</option>
+        <option value="Good">Good</option>
+        <option value="Hard">Hard</option>
+        <option value="Again">Again</option>
+        <option value="Ungraded">Ungraded</option>
+      </select>
 
-  <div class="controls">
-    <button onclick="prevCard()">Previous</button>
-    <button onclick="nextCard()">Next</button>
-    <button onclick="flipCard()">Flip</button>
-  </div>
+      <select id="statusFilter">
+        <option value="active">Active</option>
+        <option value="suspended">Suspended</option>
+        <option value="all">All cards</option>
+      </select>
 
-  <div class="controls">
-    <button onclick="gradeCard('Easy')">Easy</button>
-    <button onclick="gradeCard('Good')">Good</button>
-    <button onclick="gradeCard('Hard')">Hard</button>
-    <button onclick="gradeCard('Again')">Again</button>
-  </div>
+      <button id="exportBtn" class="ghost">Export progress</button>
+      <label class="ghost">
+        Import progress
+        <input id="importInput" type="file" accept="application/json" style="display:none"/>
+      </label>
+    </div>
+  </header>
 
-  <div class="difficulty-counts" id="difficultyCounts"></div>
+  <main>
+    <div class="grid">
+      <div>
+        <div id="flashcard" onclick="flipCard()">
+          <div id="front"></div>
+          <div id="back"></div>
+          <div class="meta" id="meta"></div>
+        </div>
+
+        <div class="controls">
+          <button onclick="prevCard()">Previous</button>
+          <button onclick="nextCard()">Next</button>
+          <button onclick="flipCard()">Flip</button>
+        </div>
+
+        <div class="controls">
+          <button onclick="gradeCard('Easy')">Easy</button>
+          <button onclick="gradeCard('Good')">Good</button>
+          <button onclick="gradeCard('Hard')">Hard</button>
+          <button onclick="gradeCard('Again')">Again</button>
+          <button onclick="toggleSuspend()" title="Suspend/Unsuspend this card">Suspend</button>
+        </div>
+
+        <div class="controls">
+          <input id="addTagInput" type="text" placeholder="Add custom tag to this card"/>
+          <button onclick="addCustomTag()">Add tag</button>
+        </div>
+        <div class="tagline">Tip: Your grading, suspensions, and custom tags are saved in your browser (and via Export/Import).</div>
+      </div>
+
+      <div class="panel">
+        <h3>Deck Stats</h3>
+        <div class="counts" id="counts">Loading…</div>
+        <div class="sep"></div>
+        <div class="tagline">
+          • Global search scans question & answer<br/>
+          • Tag search matches any tag (built-in or custom)<br/>
+          • Filter by Difficulty or Suspended status
+        </div>
+      </div>
+    </div>
+  </main>
 
   <script>
-    let decks = [];
-    let currentDeck = [];
-    let currentIndex = 0;
-    let progress = {};
+    // ---------- Storage & IDs ----------
+    const PROGRESS_KEY = "fc_progress_v2";
+    let userProgress = loadProgress();
 
-    async function loadDecks() {
-      const res = await fetch('decks/decks.json');
-      const data = await res.json();
-      decks = [];
-      for (let d of data.decks) {
-        const deckRes = await fetch('decks/' + d.file);
-        const deckData = await deckRes.json();
-        deckData.cards.forEach(card => {
-          card.Difficulty = card.Difficulty || null; // always start ungraded
-          decks.push(card);
-        });
-      }
-      applyFilters();
+    function loadProgress() {
+      try { return JSON.parse(localStorage.getItem(PROGRESS_KEY)) || {}; }
+      catch { return {}; }
+    }
+    function saveProgress() {
+      localStorage.setItem(PROGRESS_KEY, JSON.stringify(userProgress));
+    }
+    function cardId(card) {
+      // Stable ID across decks/ordering: hash of Front + Back
+      const str = (card.Front || "") + "||" + (card.Back || "");
+      let h = 2166136261 >>> 0; // FNV-1a
+      for (let i=0; i<str.length; i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+      return "c_" + (h >>> 0).toString(16);
     }
 
+    // ---------- Data ----------
+    let decksList = [];   // from decks/decks.json
+    let allCards = [];    // flattened cards with deck info
+    let filtered = [];
+    let currentIndex = 0;
+
+    async function loadDeckManifest() {
+      const res = await fetch("decks/decks.json", { cache: "no-store" });
+      if (!res.ok) throw new Error("Cannot load decks/decks.json");
+      const data = await res.json();
+      decksList = data.decks || [];
+    }
+
+    async function loadAllDecks() {
+      allCards = [];
+      for (const d of decksList) {
+        try {
+          const r = await fetch("decks/" + d.file + "?t=" + Date.now());
+          const deck = await r.json();
+          (deck.cards || []).forEach((card, idx) => {
+            const id = cardId(card);
+            const prog = userProgress[id] || { difficulty: null, suspended: false, extraTags: [] };
+            allCards.push({
+              ...card,
+              __deckName: d.name || deck.name || "Deck",
+              __file: d.file,
+              __idx: idx,
+              __id: id,
+              __difficulty: prog.difficulty ?? null,
+              __suspended: !!prog.suspended,
+              __extraTags: prog.extraTags || []
+            });
+          });
+        } catch (e) {
+          console.warn("Failed deck", d, e);
+        }
+      }
+    }
+
+    function buildDeckSelect() {
+      const sel = document.getElementById("deckSelect");
+      sel.innerHTML = "";
+      const optAll = document.createElement("option");
+      optAll.value = "__ALL__";
+      optAll.textContent = "All decks";
+      sel.appendChild(optAll);
+      decksList.forEach(d => {
+        const o = document.createElement("option");
+        o.value = d.file;
+        o.textContent = d.name;
+        sel.appendChild(o);
+      });
+    }
+
+    // ---------- Filters ----------
     function applyFilters() {
-      const query = document.getElementById('searchBox').value.toLowerCase();
-      const tagQuery = document.getElementById('tagSearchBox').value.toLowerCase();
-      const diffFilter = document.getElementById('difficultyFilter').value;
+      const deckVal = document.getElementById("deckSelect").value;
+      const q = document.getElementById("searchBox").value.trim().toLowerCase();
+      const t = document.getElementById("tagSearchBox").value.trim().toLowerCase();
+      const diff = document.getElementById("difficultyFilter").value;
+      const status = document.getElementById("statusFilter").value;
 
-      currentDeck = decks.filter(c => {
-        const matchesSearch = !query || 
-          c.Front.toLowerCase().includes(query) || 
-          c.Back.toLowerCase().includes(query);
+      filtered = allCards.filter(c => {
+        // Deck filter
+        if (deckVal !== "__ALL__" && c.__file !== deckVal) return false;
 
-        const matchesTag = !tagQuery || (c.Tags && c.Tags.some(tag => tag.toLowerCase().includes(tagQuery)));
+        // Status filter
+        if (status === "active" && c.__suspended) return false;
+        if (status === "suspended" && !c.__suspended) return false;
 
-        let matchesDiff = true;
-        if (diffFilter) {
-          if (diffFilter === "Ungraded") {
-            matchesDiff = (c.Difficulty === null);
+        // Difficulty filter
+        if (diff) {
+          if (diff === "Ungraded") {
+            if (c.__difficulty !== null) return false;
           } else {
-            matchesDiff = (c.Difficulty === diffFilter);
+            if (c.__difficulty !== diff) return false;
           }
         }
 
-        return matchesSearch && matchesTag && matchesDiff;
+        // Global search (Front + Back)
+        const front = (c.Front || "").toLowerCase();
+        const back  = (c.Back || "").toLowerCase();
+        const matchesQ = !q || front.includes(q) || back.includes(q);
+
+        // Tag search (built-in + custom)
+        const tags = [...(c.Tags || []), ...(c.__extraTags || [])].map(x => (x||"").toLowerCase());
+        const matchesTag = !t || tags.some(tag => tag.includes(t));
+
+        return matchesQ && matchesTag;
       });
 
       currentIndex = 0;
-      showCard();
-      updateDifficultyCounts();
+      render();
+      updateCounts();
     }
 
-    function showCard() {
-      if (currentDeck.length === 0) {
-        document.getElementById('front').innerText = "No cards found";
-        document.getElementById('back').classList.add("hidden");
-        document.getElementById('metadata').innerText = "";
+    // ---------- Render ----------
+    function render() {
+      const frontEl = document.getElementById("front");
+      const backEl  = document.getElementById("back");
+      const metaEl  = document.getElementById("meta");
+
+      if (filtered.length === 0) {
+        frontEl.textContent = "No cards found";
+        backEl.style.display = "none";
+        backEl.textContent = "";
+        metaEl.textContent = "";
         return;
       }
 
-      const card = currentDeck[currentIndex];
-      document.getElementById('front').innerText = card.Front;
-      document.getElementById('back').innerText = card.Back;
-      document.getElementById('back').classList.add("hidden");
+      const c = filtered[currentIndex];
+      frontEl.textContent = c.Front;
+      backEl.textContent = c.Back;
+      backEl.style.display = "none";
 
-      document.getElementById('metadata').innerText = 
-        `Chapter: ${card.Chapter || ""} | Section: ${card.Section || ""} | ` +
-        `Difficulty: ${card.Difficulty || "Ungraded"} | Tags: ${(card.Tags || []).join(", ")}`;
+      const allTags = [...(c.Tags || []), ...(c.__extraTags || [])];
+      metaEl.textContent =
+        `Deck: ${c.__deckName}  |  Chapter: ${c.Chapter || ""}  |  Section: ${c.Section || ""}  |  ` +
+        `Difficulty: ${c.__difficulty ?? "Ungraded"}  |  ` +
+        `Status: ${c.__suspended ? "Suspended" : "Active"}  |  ` +
+        `Tags: ${allTags.join(", ")}`;
     }
 
     function flipCard() {
-      document.getElementById('back').classList.toggle("hidden");
+      const backEl = document.getElementById("back");
+      backEl.style.display = (backEl.style.display === "none") ? "block" : "none";
     }
 
     function nextCard() {
-      if (currentIndex < currentDeck.length - 1) currentIndex++;
-      showCard();
+      if (filtered.length === 0) return;
+      currentIndex = (currentIndex + 1) % filtered.length;
+      render();
     }
 
     function prevCard() {
-      if (currentIndex > 0) currentIndex--;
-      showCard();
+      if (filtered.length === 0) return;
+      currentIndex = (currentIndex - 1 + filtered.length) % filtered.length;
+      render();
+    }
+
+    // ---------- Grade / Suspend / Tags ----------
+    function writeProgressFor(card, patch) {
+      const id = card.__id;
+      const prev = userProgress[id] || { difficulty: null, suspended: false, extraTags: [] };
+      userProgress[id] = { ...prev, ...patch };
+      // reflect immediately on allCards
+      const i = allCards.findIndex(x => x.__id === id);
+      if (i >= 0) {
+        if (patch.hasOwnProperty("difficulty")) allCards[i].__difficulty = patch.difficulty;
+        if (patch.hasOwnProperty("suspended")) allCards[i].__suspended = patch.suspended;
+        if (patch.hasOwnProperty("extraTags")) allCards[i].__extraTags = patch.extraTags;
+      }
+      saveProgress();
     }
 
     function gradeCard(level) {
-      const card = currentDeck[currentIndex];
-      card.Difficulty = level;
-      progress[card.Front] = level;
-      showCard();
-      updateDifficultyCounts();
+      if (filtered.length === 0) return;
+      const c = filtered[currentIndex];
+      writeProgressFor(c, { difficulty: level });
+      render();
+      updateCounts();
     }
 
-    function updateDifficultyCounts() {
-      const counts = {Easy:0, Good:0, Hard:0, Again:0, Ungraded:0};
-      for (let c of decks) {
-        if (!c.Difficulty) counts.Ungraded++;
-        else counts[c.Difficulty]++;
+    function toggleSuspend() {
+      if (filtered.length === 0) return;
+      const c = filtered[currentIndex];
+      const newVal = !c.__suspended;
+      writeProgressFor(c, { suspended: newVal });
+      // reapply filters so Suspended disappears if status=Active
+      applyFilters();
+    }
+
+    function addCustomTag() {
+      if (filtered.length === 0) return;
+      const input = document.getElementById("addTagInput");
+      const tag = (input.value || "").trim();
+      if (!tag) return;
+      const c = filtered[currentIndex];
+      const current = c.__extraTags ? [...c.__extraTags] : [];
+      if (!current.includes(tag)) current.push(tag);
+      writeProgressFor(c, { extraTags: current });
+      input.value = "";
+      render();
+    }
+
+    // ---------- Counts ----------
+    function updateCounts() {
+      const counts = { Easy:0, Good:0, Hard:0, Again:0, Ungraded:0, Suspended:0, Total: allCards.length };
+      for (const c of allCards) {
+        if (c.__suspended) counts.Suspended++;
+        const d = c.__difficulty ?? "Ungraded";
+        counts[d] = (counts[d] || 0) + 1;
       }
-      document.getElementById('difficultyCounts').innerText = 
-        `Easy: ${counts.Easy} | Good: ${counts.Good} | Hard: ${counts.Hard} | Again: ${counts.Again} | Ungraded: ${counts.Ungraded}`;
+      const el = document.getElementById("counts");
+      el.textContent =
+        `Total: ${counts.Total}  |  Suspended: ${counts.Suspended}  |  ` +
+        `Easy: ${counts.Easy}  |  Good: ${counts.Good}  |  Hard: ${counts.Hard}  |  Again: ${counts.Again}  |  Ungraded: ${counts.Ungraded}`;
     }
 
-    document.getElementById('searchBox').addEventListener('input', applyFilters);
-    document.getElementById('tagSearchBox').addEventListener('input', applyFilters);
-    document.getElementById('difficultyFilter').addEventListener('change', applyFilters);
+    // ---------- Export / Import ----------
+    function exportProgress() {
+      const blob = new Blob([JSON.stringify(userProgress, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = "flashcards-progress.json";
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    }
 
-    loadDecks();
+    async function importProgress(file) {
+      const txt = await file.text();
+      const data = JSON.parse(txt);
+      if (!data || typeof data !== "object") throw new Error("Invalid progress file");
+      userProgress = data;
+      saveProgress();
+      // refresh derived fields on allCards
+      allCards = allCards.map(c => {
+        const p = userProgress[c.__id] || { difficulty:null, suspended:false, extraTags:[] };
+        return { ...c, __difficulty: p.difficulty ?? null, __suspended: !!p.suspended, __extraTags: p.extraTags || [] };
+      });
+      applyFilters();
+    }
+
+    // ---------- Init ----------
+    async function init() {
+      try {
+        await loadDeckManifest();
+        await loadAllDecks();
+        buildDeckSelect();
+        applyFilters();
+        // default to All decks
+        document.getElementById("deckSelect").value = "__ALL__";
+        applyFilters();
+      } catch (e) {
+        console.error(e);
+        document.getElementById("front").textContent = "Failed to load decks. Ensure decks/decks.json and deck files exist.";
+      }
+    }
+
+    // ---------- Events ----------
+    document.getElementById("deckSelect").addEventListener("change", applyFilters);
+    document.getElementById("refreshBtn").addEventListener("click", async () => {
+      await loadDeckManifest();
+      await loadAllDecks();
+      buildDeckSelect();
+      applyFilters();
+    });
+    document.getElementById("searchBox").addEventListener("input", applyFilters);
+    document.getElementById("tagSearchBox").addEventListener("input", applyFilters);
+    document.getElementById("difficultyFilter").addEventListener("change", applyFilters);
+    document.getElementById("statusFilter").addEventListener("change", applyFilters);
+    document.getElementById("exportBtn").addEventListener("click", exportProgress);
+    document.getElementById("importInput").addEventListener("change", (e)=> {
+      if (e.target.files && e.target.files[0]) importProgress(e.target.files[0]);
+    });
+
+    init();
   </script>
 </body>
 </html>
