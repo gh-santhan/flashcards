@@ -1,0 +1,265 @@
+{
+  "name": "Ch5 – Nutrition (ACLM)",
+  "cards": [
+    {
+      "Front": "Added sugars: WHO vs AHA limits",
+      "Back": "WHO: <10% kcal (goal <5%). AHA: ≤100 kcal/day (women/children/teens) or ≤150 kcal/day (men). Examples: 24 g vs 36 g sugar.",
+      "Tags": [
+        "ACLM-Important",
+        "Guideline",
+        "Labeling"
+      ],
+      "Difficulty": "High",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Overconsumed Nutrients – Added Sugars",
+      "Page": 129
+    },
+    {
+      "Front": "Top sources of added sugars in US diets",
+      "Back": "Sugar‑sweetened beverages; breads/rolls/tortillas; sweet bakery products; coffee/tea drinks; sugars/syrups/jams; fats/oils (dressings/condiments); ready‑to‑eat cereals; other prepared foods.",
+      "Tags": [
+        "ACLM-Important",
+        "Counseling",
+        "Epidemiology"
+      ],
+      "Difficulty": "Medium",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Overconsumed Nutrients – Added Sugars",
+      "Page": 130
+    },
+    {
+      "Front": "Saturated fat: AHA limit & high‑SFA foods",
+      "Back": "Limit to 5–6% of kcal. High sources: fatty cuts of beef, pork, lamb; salami/sausages/processed meats; many fast foods; lard; butter; cheese; coconut & palm oils.",
+      "Tags": [
+        "ACLM-Important",
+        "Guideline"
+      ],
+      "Difficulty": "High",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Overconsumed Nutrients – Saturated Fat",
+      "Page": 130
+    },
+    {
+      "Front": "Saturated fat in ‘healthy’ plant foods (context)",
+      "Back": "Whole plant foods are usually low in SFA; exceptions include tropical oils (coconut, palm). Nuts/seeds vary (~1–4 g/oz). Avocado ~2.1 g/100 g; most plant oils 1–2 g/Tbsp (except coconut/palm).",
+      "Tags": [
+        "Counseling",
+        "Nuance"
+      ],
+      "Difficulty": "Medium",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Overconsumed Nutrients – Saturated Fat",
+      "Page": 131
+    },
+    {
+      "Front": "Sodium: main contributors & counseling rule of thumb",
+      "Back": "~70%+ comes from purchased/restaurant foods. Keep mg sodium per serving ≤ calories per serving to roughly stay ≤2,300 mg/day.",
+      "Tags": [
+        "ACLM-Important",
+        "Guideline",
+        "Practical Tip"
+      ],
+      "Difficulty": "Medium",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Overconsumed Nutrients – Sodium",
+      "Page": 131
+    },
+    {
+      "Front": "Trans fat status",
+      "Back": "Industrial trans fats removed from US food supply (GRAS revoked). Still occurs naturally in some animal foods; scan labels/ingredients for partially hydrogenated oils.",
+      "Tags": [
+        "Labeling",
+        "Policy"
+      ],
+      "Difficulty": "Easy",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Overconsumed Nutrients – Trans Fat",
+      "Page": 132
+    },
+    {
+      "Front": "Under‑consumed nutrients in US (shortfalls)",
+      "Back": "Calcium*, Fiber*, Potassium*, Vitamin D*, plus Vitamin A, C, E, K, Magnesium, Choline (*=public health concern).",
+      "Tags": [
+        "ACLM-Important",
+        "Reference"
+      ],
+      "Difficulty": "Medium",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Underconsumed Nutrients",
+      "Page": 132
+    },
+    {
+      "Front": "Best fiber sources & targets",
+      "Back": "AI ≈14 g per 1,000 kcal (~25 g women, ~38 g men). Sources: legumes, whole‑grains, vegetables, fruits, nuts, seeds (no fiber in animal foods).",
+      "Tags": [
+        "ACLM-Important",
+        "Counseling",
+        "Reference"
+      ],
+      "Difficulty": "Medium",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Carbohydrate – Fiber",
+      "Page": 127
+    },
+    {
+      "Front": "Label: %DV quick rule",
+      "Back": "5% DV or less = low; 20% DV or more = high, per serving.",
+      "Tags": [
+        "Labeling",
+        "Practical Tip"
+      ],
+      "Difficulty": "Easy",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Food Labels – %DV",
+      "Page": 139
+    },
+    {
+      "Front": "Whole‑grain label heuristics",
+      "Back": "Look for “100% whole” and the word ‘whole’ before the grain; avoid ‘multigrain’, ‘made with whole grain’. Use 10:1 carbs:fiber screen for packaged grains.",
+      "Tags": [
+        "Counseling",
+        "Labeling"
+      ],
+      "Difficulty": "Medium",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Food Labels – Ingredients",
+      "Page": 140
+    },
+    {
+      "Front": "Western diet/UPFs: risks",
+      "Back": "Low in whole plants; high in red/processed meat, refined grains, added sugars, sodium, UPFs. Linked to obesity, CVD, T2DM; UPFs drive excess kcal and mortality risk.",
+      "Tags": [
+        "ACLM-Important",
+        "Epidemiology"
+      ],
+      "Difficulty": "High",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Dietary Patterns – Western/UPFs",
+      "Page": 143
+    },
+    {
+      "Front": "Plant‑predominant diet: benefits",
+      "Back": "Lower risk of diabetes, IHD, some cancers; emphasizes legumes, whole grains, fruits/veg, nuts/seeds; limit animal products/refined foods.",
+      "Tags": [
+        "ACLM-Important",
+        "Guideline"
+      ],
+      "Difficulty": "High",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Dietary Patterns – Plant‑Predominant",
+      "Page": 144
+    },
+    {
+      "Front": "MIND diet—components & neuro benefit",
+      "Back": "Mediterranean + DASH; emphasize greens/berries; reduce meats/sweets/fried foods/cheese; fish ~1×/wk. May protect against Alzheimer’s.",
+      "Tags": [
+        "Neurology",
+        "Pattern"
+      ],
+      "Difficulty": "Medium",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Dietary Patterns – MIND",
+      "Page": 145
+    },
+    {
+      "Front": "Oxidation & antioxidants—pattern signal",
+      "Back": "Plant‑predominant patterns associate with lower oxidative stress/inflammation; frying oils generate aldehydes (LOPS).",
+      "Tags": [
+        "Counseling",
+        "Mechanism"
+      ],
+      "Difficulty": "High",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Mechanisms – Oxidation",
+      "Page": 150
+    },
+    {
+      "Front": "Center intake on nutrient‑dense plants",
+      "Back": "Nutrient density winners: vegetables (incl. mushrooms), herbs/spices, fruits, legumes, whole grains, nuts, seeds.",
+      "Tags": [
+        "ACLM-Important",
+        "Counseling",
+        "Diet Quality"
+      ],
+      "Difficulty": "Medium",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Diet Quality – Nutrient Density",
+      "Page": 134
+    },
+    {
+      "Front": "GBD: top dietary risk",
+      "Back": "Diet high in sodium has the highest attributable mortality globally; low whole grains/fruits/nuts & seeds/vegetables also major contributors.",
+      "Tags": [
+        "ACLM-Important",
+        "Epidemiology",
+        "GBD"
+      ],
+      "Difficulty": "High",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Epidemiology – GBD Risks",
+      "Page": 142
+    },
+    {
+      "Front": "Mediterranean diet: CVD outcomes",
+      "Back": "Higher adherence → ~41% lower CVD mortality & ~27% lower incidence; PREDIMED: Med + EVOO/nuts ↓ major CV events.",
+      "Tags": [
+        "ACLM-Important",
+        "Cardiology",
+        "Evidence"
+      ],
+      "Difficulty": "High",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Dietary Patterns – Mediterranean",
+      "Page": 146
+    },
+    {
+      "Front": "Vignette: 2 SSBs/day",
+      "Back": "Replace with water/unsweetened drinks; aim <10% kcal added sugars (goal <5%); check labels for syrups and ‘-ose’.",
+      "Tags": [
+        "Applied",
+        "SSB"
+      ],
+      "Difficulty": "Medium",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Counseling – Added Sugar",
+      "Page": 129
+    },
+    {
+      "Front": "Vignette: High LDL‑C on processed ‘keto’ snacks",
+      "Back": "Shift to whole‑food plant‑predominant; ↑ soluble fiber; nuts/seeds; reassess in ~3 months.",
+      "Tags": [
+        "ACLM-Important",
+        "Applied",
+        "Lipids"
+      ],
+      "Difficulty": "High",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Vignette – Lipids",
+      "Page": 131
+    },
+    {
+      "Front": "Vignette: Restaurant‑heavy diet & HTN",
+      "Back": "Home‑prep meals 5+ days/week; mg≤kcal rule; request no added salt; consider DASH/Mediterranean.",
+      "Tags": [
+        "Applied",
+        "BP",
+        "Sodium"
+      ],
+      "Difficulty": "Medium",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Vignette – Hypertension",
+      "Page": 131
+    },
+    {
+      "Front": "Your custom card prompt here",
+      "Back": "Your custom answer here",
+      "Tags": [
+        "Custom"
+      ],
+      "Difficulty": "Medium",
+      "Chapter": "Nutrition – Foundations of LM (Section 5)",
+      "Section": "Custom",
+      "Page": null
+    }
+  ]
+}
