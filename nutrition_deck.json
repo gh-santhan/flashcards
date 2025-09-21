@@ -1,2742 +1,535 @@
 {
-  "name": "Ch5 – Nutrition (ACLM) – Comprehensive",
+  "name": "Ch5 – Nutrition (ACLM) — Foundational Background (Clean Merge)",
   "cards": [
     {
-      "Front": "Define 'diet' in clinical nutrition context",
-      "Back": "The habitual pattern of foods and beverages consumed over time—quality and pattern matter more than single nutrients.",
+      "Front": "Define 'diet'.",
+      "Back": "The foods habitually eaten by an individual or group.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
         "Definition"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vocabulary",
-      "Page": 2
+      ]
     },
     {
-      "Front": "Define 'nutrient density' vs 'energy density'",
-      "Back": "Nutrient density: more vitamins/minerals/fiber/beneficial compounds per kcal (e.g., vegetables, legumes). Energy density: high kcal with fewer nutrients (ultra-processed snacks, fried foods).",
+      "Front": "Define 'dietary pattern' (USDA).",
+      "Back": "The quantities, proportions, variety, or combination of different foods, drinks, and nutrients in diets, and the frequency with which they are habitually consumed.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Definition"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vocabulary",
-      "Page": 16
-    },
-    {
-      "Front": "Whole-food, plant-predominant pattern—core idea",
-      "Back": "Base most intake on minimally processed vegetables, fruits, whole grains, legumes, nuts and seeds; minimize added sugars, refined grains, sodium, and saturated fat.",
-      "Tags": [
-        "ACLM-Important",
+        "Definition",
         "Guideline"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Core Principles",
-      "Page": 1
-    },
-    {
-      "Front": "Dietary fiber—why it matters (rapid list)",
-      "Back": "Improves glycemic control and satiety, lowers LDL-C via bile acid binding, increases SCFA production, supports gut barrier, reduces risk of T2DM and colorectal cancer.",
-      "Tags": [
-        "ACLM-Important",
-        "Mechanism"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Carbohydrate – Fiber",
-      "Page": [
-        "fiber",
-        "shortfalls",
-        "scfa"
       ]
     },
     {
-      "Front": "Daily fiber targets and best sources",
-      "Back": "≈14 g per 1,000 kcal (~25 g women; ~38 g men). Sources: legumes, whole grains, vegetables, fruits, nuts, seeds (animal foods contain 0 g fiber).",
+      "Front": "Define 'healthy diet' (WHO/USDA).",
+      "Back": "High in fruits, vegetables, legumes, nuts, and grains; lower in salt, free sugars, and fats (especially saturated and trans fats); nutritionally adequate to maintain weight, supply energy, and reduce disease risk.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Reference"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Carbohydrate – Fiber",
-      "Page": [
-        "fiber",
-        "per1000kcal"
-      ]
-    },
-    {
-      "Front": "Soluble vs insoluble fiber—key differences",
-      "Back": "Soluble: viscous, slows gastric emptying, lowers LDL (oats, legumes). Insoluble: adds bulk, speeds transit (whole grains, many veg).",
-      "Tags": [
-        "Counseling",
-        "Mechanism"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Carbohydrate – Fiber",
-      "Page": [
-        "soluble",
-        "insoluble"
-      ]
-    },
-    {
-      "Front": "Glycemic control—food swaps that lower postprandial glucose",
-      "Back": "Swap refined grains/sugars for legumes, intact whole grains, non-starchy vegetables; pair carbohydrate with fiber, protein, and healthy fats.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Carbohydrate – Glycemic",
-      "Page": [
-        "glycemic",
-        "refinedgrains"
-      ]
-    },
-    {
-      "Front": "Whole grain identification on labels",
-      "Back": "Look for '100% whole' and 'whole' before the grain name; use 10:1 carbs:fiber heuristic for packaged grain products.",
-      "Tags": [
-        "Labeling",
-        "Practical Tip"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Carbohydrate – Labeling",
-      "Page": [
-        "wholegrain",
-        "10:1"
-      ]
-    },
-    {
-      "Front": "Added sugars—WHO and AHA limits",
-      "Back": "WHO: <10% kcal (ideal <5%). AHA: ≤100 kcal/day for most women/children & ≤150 kcal/day for most men.",
-      "Tags": [
-        "ACLM-Important",
-        "Guideline"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Sugars",
-      "Page": [
-        "addedsugars",
-        "who",
-        "aha"
-      ]
-    },
-    {
-      "Front": "Top sources of added sugar in US diets",
-      "Back": "Sugar-sweetened beverages, desserts/sweet bakery, breads/tortillas, ready-to-eat cereals, condiments/sauces, coffee/tea drinks, syrups/jams.",
-      "Tags": [
-        "Epidemiology"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Sugars",
-      "Page": [
-        "addedsugars",
-        "beverages",
-        "bakery"
-      ]
-    },
-    {
-      "Front": "Counseling script: replacing SSBs",
-      "Back": "Replace SSBs with water/unsweetened tea/coffee; flavor with fruit/herbs; set a daily limit; track in log.",
-      "Tags": [
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Sugars – Counseling",
-      "Page": [
-        "ssb"
-      ]
-    },
-    {
-      "Front": "Ultra-processed foods (UPFs)—why they matter",
-      "Back": "UPFs are energy-dense, hyper-palatable and often high in added sugars, refined starch, sodium and unhealthy fats—drive excess intake and weight gain.",
-      "Tags": [
-        "Epidemiology",
-        "Mechanism"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "UPFs",
-      "Page": [
-        "ultra-processed",
-        "upf"
-      ]
-    },
-    {
-      "Front": "UPFs: practical avoidance tips",
-      "Back": "Shop the perimeter for produce/whole foods; choose short ingredient lists; cook more at home; prepare snacks like fruit, nuts, roasted chickpeas.",
-      "Tags": [
-        "Applied",
-        "Practical Tip"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "UPFs – Counseling",
-      "Page": [
-        "ingredientlist",
-        "home cooking"
-      ]
-    },
-    {
-      "Front": "Saturated fat—AHA limit",
-      "Back": "Aim for 5–6% of kcal from saturated fat; emphasize swaps to MUFA/PUFA (olive oil, nuts, seeds, fish).",
-      "Tags": [
-        "ACLM-Important",
-        "Guideline"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Saturated",
-      "Page": [
-        "saturatedfat",
-        "5–6%",
-        "aha"
-      ]
-    },
-    {
-      "Front": "Common high-SFA foods to limit",
-      "Back": "Fatty cuts of beef/pork/lamb, processed meats (sausages/salami), high-fat dairy/cheese, butter/lard, many fast foods, tropical oils (coconut/palm).",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Saturated",
-      "Page": [
-        "beef",
-        "butter",
-        "coconut"
-      ]
-    },
-    {
-      "Front": "Trans fats—current status",
-      "Back": "Industrial trans fats largely removed from US food supply (PHOs revoked); still read labels and avoid 'partially hydrogenated' ingredients.",
-      "Tags": [
-        "Labeling",
-        "Policy"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Trans",
-      "Page": [
-        "trans fat",
-        "partially hydrogenated"
-      ]
-    },
-    {
-      "Front": "Omega-3 vs omega-6—diet pattern guidance",
-      "Back": "Favor whole-food sources of ALA (flax, chia, walnuts) and marine EPA/DHA where used; keep overall dietary pattern plant-predominant and minimally processed.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – PUFA",
-      "Page": [
-        "omega-3",
-        "flax",
-        "walnuts"
-      ]
-    },
-    {
-      "Front": "High-heat frying & LOPS",
-      "Back": "High-heat frying produces lipid oxidation products (aldehydes/LOPS); prefer baking, steaming, sautéing; if frying, keep temp/time minimal.",
-      "Tags": [
-        "Applied",
-        "Mechanism"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Cooking",
-      "Page": [
-        "frying",
-        "aldehydes",
-        "lops"
-      ]
-    },
-    {
-      "Front": "Protein adequacy on plant-predominant diets",
-      "Back": "All essential amino acids are present across varied plant foods; RDA 0.8 g/kg met with balanced intake of legumes, whole grains, nuts/seeds.",
-      "Tags": [
-        "Counseling",
-        "Reference"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein",
-      "Page": [
-        "protein",
-        "essentialaminoacids"
-      ]
-    },
-    {
-      "Front": "Limiting amino acids concept",
-      "Back": "Single plant foods can be lower in lysine or methionine, but variety across the day supplies all essential amino acids—no special combining at the same meal required.",
-      "Tags": [
-        "Counseling",
-        "Definition"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein",
-      "Page": [
-        "lysine",
-        "methionine"
-      ]
-    },
-    {
-      "Front": "Higher-fiber protein choices",
-      "Back": "Beans, lentils, peas, soy foods (tofu/tempeh/edamame) provide protein plus fiber and micronutrients missing from animal-only diets.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein",
-      "Page": [
-        "beans",
-        "lentils",
-        "soy"
-      ]
-    },
-    {
-      "Front": "Processed meat vs legumes—health impact",
-      "Back": "Replacing processed/red meat with legumes/nuts is associated with lower cardiometabolic risk; aligns with plant-predominant pattern.",
-      "Tags": [
-        "Epidemiology"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein",
-      "Page": [
-        "processed meat",
-        "legumes"
-      ]
-    },
-    {
-      "Front": "Calcium on plant-predominant diets—sources",
-      "Back": "Fortified plant milks/juices, tofu set with calcium sulfate, leafy greens (low-oxalate), beans, almonds/SESAME (tahini).",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Micronutrients – Calcium",
-      "Page": [
-        "calcium",
-        "fortified"
-      ]
-    },
-    {
-      "Front": "Vitamin D—dietary + sun context",
-      "Back": "Few natural food sources; fortified foods common. Sunlight synthesis varies by latitude/skin/policy; consider supplementation per guidelines.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Micronutrients – Vitamin D",
-      "Page": [
-        "vitamin d",
-        "fortified"
-      ]
-    },
-    {
-      "Front": "Potassium—why it's a shortfall and sources",
-      "Back": "Low intake common; higher in fruits/vegetables/legumes/whole grains; helps counter sodium’s BP effects.",
-      "Tags": [
-        "BP",
-        "Reference"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Micronutrients – Potassium",
-      "Page": [
-        "potassium"
-      ]
-    },
-    {
-      "Front": "Magnesium—metabolic roles & sources",
-      "Back": "Cofactor in hundreds of reactions (energy, glucose); sources include legumes, nuts, seeds, whole grains, greens.",
-      "Tags": [
-        "Reference"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Micronutrients – Magnesium",
-      "Page": [
-        "magnesium"
-      ]
-    },
-    {
-      "Front": "Iron—plant vs animal and absorption tips",
-      "Back": "Plant (non-heme) iron absorbs better with vitamin C and when minimizing tea/coffee with meals; include legumes, greens, fortified grains.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Micronutrients – Iron",
-      "Page": [
-        "iron",
-        "vitamin c"
-      ]
-    },
-    {
-      "Front": "Vitamin B12—plant-based caveat",
-      "Back": "Reliable B12 sources are fortified foods or supplements when intake of animal products is minimal.",
-      "Tags": [
-        "Counseling",
+        "Definition",
+        "Guideline",
         "High-Yield"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Micronutrients – B12",
-      "Page": [
-        "b12",
-        "fortified"
       ]
     },
     {
-      "Front": "Choline—role & sources",
-      "Back": "Important for membranes and methylation; sources include legumes, soy, some nuts/seeds, and fortified foods.",
+      "Front": "Define 'nutrition'.",
+      "Back": "The study of foods and food substances that help animals (and plants) grow and stay healthy. Food provides energy (calories) and nutrients; nutrition science also examines behaviors and social factors related to food choices.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Reference"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Micronutrients – Choline",
-      "Page": [
-        "choline"
+        "Definition"
       ]
     },
     {
-      "Front": "Vitamins A, C, E, K—plant sources",
-      "Back": "Colorful vegetables/fruits (A,C), nuts/seeds/plant oils (E), leafy greens (K); overall plant-predominant pattern covers needs for most.",
+      "Front": "What is 'dietary intake'?",
+      "Back": "The consumption of specific foods and food components that comprise an individual's diet.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Reference"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Micronutrients – Vitamins",
-      "Page": [
-        "vitamin a",
-        "vitamin c",
-        "vitamin e",
-        "vitamin k"
+        "Definition"
       ]
     },
     {
-      "Front": "Mediterranean pattern—key components",
-      "Back": "Vegetables, fruits, legumes, whole grains, nuts, olive oil; fish/poultry moderate; red/processed meats and sweets limited.",
+      "Front": "What are 'Dietary Reference Intakes (DRIs)'?",
+      "Back": "Values issued by the Food and Nutrition Board of the National Academies that represent current knowledge on nutrient needs of healthy populations; individual needs may be higher or lower.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Counseling",
-        "Pattern"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – Mediterranean",
-      "Page": [
-        "mediterranean"
+        "ReferenceValue",
+        "High-Yield"
       ]
     },
     {
-      "Front": "Mediterranean pattern—CV outcomes",
-      "Back": "Higher adherence associated with lower CVD incidence/mortality; RCTs like PREDIMED showed fewer major CV events with Med + EVOO or nuts.",
+      "Front": "Recommended Dietary Allowance (RDA).",
+      "Back": "Intake that meets the needs of 97–98% of healthy individuals of a given age and sex.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Cardiology",
-        "Evidence"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – Mediterranean",
-      "Page": [
-        "predimed",
-        "cv events"
+        "ReferenceValue",
+        "High-Yield"
       ]
     },
     {
-      "Front": "DASH—what to emphasize",
-      "Back": "High fruits/vegetables/low-fat dairy; includes whole grains, nuts, legumes; low in sodium, sweets, and red/processed meats.",
+      "Front": "Adequate Intake (AI).",
+      "Back": "A recommended intake based on observed or experimentally determined approximations when an RDA cannot be determined.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "BP",
-        "Pattern"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – DASH",
-      "Page": [
-        "dash"
+        "ReferenceValue",
+        "High-Yield"
       ]
     },
     {
-      "Front": "MIND diet—neuro focus",
-      "Back": "Hybrid of Mediterranean and DASH; emphasizes leafy greens and berries; limits butter, cheese, pastries, fried/fast food.",
+      "Front": "Tolerable Upper Intake Level (UL).",
+      "Back": "The highest daily intake unlikely to pose risk of adverse health effects; intake above the UL increases risk of adverse effects.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Neurology"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": [
-        "mind",
-        "berries"
+        "ReferenceValue",
+        "High-Yield"
       ]
     },
     {
-      "Front": "Plant-predominant/WFPB vs Western",
-      "Back": "WFPB emphasizes minimally processed plants; Western diet high in UPFs, refined grains, added sugar, sodium and saturated fat—linked to obesity/T2DM/CVD.",
+      "Front": "Daily Value (DV) on labels.",
+      "Back": "Standardized reference amounts used on labels, expressed as a percentage per serving toward a daily level; often similar to RDA or AI but not always.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Epidemiology"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – Contrast",
-      "Page": [
-        "western",
-        "upf"
-      ]
-    },
-    {
-      "Front": "Percent Daily Value (%DV) heuristic",
-      "Back": "≈5% DV or less is low; ≈20% DV or more is high—per serving.",
-      "Tags": [
+        "ReferenceValue",
         "Labeling",
-        "Practical Tip"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Labels – %DV",
-      "Page": [
-        "%dv",
-        "percent daily value"
+        "Applied"
       ]
     },
     {
-      "Front": "Ingredients list—whole grain check",
-      "Back": "Look for the word 'whole' before the grain (e.g., whole wheat). Beware 'multigrain'/'made with whole grain' claims.",
+      "Front": "Define 'nutrient-dense' foods",
+      "Back": "Foods high in nutrients and relatively low in calories, such as fruits, vegetables, whole grains, low-fat or fat-free milk products, seafood, lean meats, eggs, peas, beans, and nuts.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Labeling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Labels – Ingredients",
-      "Page": [
-        "ingredients",
-        "whole wheat"
+        "Definition",
+        "FoodSources",
+        "High-Yield"
       ]
     },
     {
-      "Front": "Added Sugars on label—why it's important",
-      "Back": "Added Sugars line separates added from naturally occurring sugars; track to guide counseling toward <10% kcal.",
+      "Front": "Define 'nutrient-poor, energy-dense' foods.",
+      "Back": "Foods high in calories but low in essential nutrients; overconsumption is linked with overweight/obesity, type 2 diabetes, and some cancers; common in Western countries.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Guideline",
-        "Labeling"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Labels – Added Sugar",
-      "Page": [
-        "added sugars",
-        "label"
+        "Definition",
+        "Epidemiology"
       ]
     },
     {
-      "Front": "Front-of-pack claims vs reality",
-      "Back": "Claims don't guarantee overall quality; verify with Nutrition Facts and ingredients; prefer shorter, recognizable ingredient lists.",
+      "Front": "Name the three macronutrients and primary roles.",
+      "Back": "Carbohydrates: primary energy source. Protein: structural and functional roles (enzymes, carriers, hormones). Fat: structural membrane components, signaling, energy storage.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Labels – Claims",
-      "Page": [
-        "claims"
+        "Macronutrients",
+        "High-Yield"
       ]
     },
     {
-      "Front": "Where sodium comes from & practical rule",
-      "Back": "Most sodium comes from commercially prepared/restaurant foods; quick rule: keep mg sodium per serving ≤ calories per serving to stay near 2,300 mg/day.",
+      "Front": "Simple vs complex carbohydrates.",
+      "Back": "Simple carbohydrates are sugars; complex carbohydrates include starches and fiber.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "ACLM-Important",
-        "Guideline",
-        "Practical Tip"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Sodium/BP",
-      "Page": [
-        "sodium",
-        "2,300"
+        "Carbohydrate",
+        "Definition"
       ]
     },
     {
-      "Front": "DASH pattern and BP",
-      "Back": "DASH lowers BP by emphasizing fruits/vegetables/low-fat dairy/whole grains and reducing sodium and processed meats/sweets.",
+      "Front": "Starch—what is it?",
+      "Back": "A complex carbohydrate composed of glucose units; a major storage form of carbohydrate in plants.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "BP",
-        "Pattern"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Sodium/BP",
-      "Page": [
-        "dash",
-        "bp"
+        "Carbohydrate",
+        "Definition"
       ]
     },
     {
-      "Front": "Potassium helps counter sodium",
-      "Back": "Higher potassium from plant foods supports BP control; encourage beans, greens, potatoes, bananas, squash.",
+      "Front": "Sugars—what are they?",
+      "Back": "Simple carbohydrates that provide energy; naturally present in fruits and milk and added to many processed foods.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "BP",
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Sodium/BP",
-      "Page": [
-        "potassium"
+        "Carbohydrate",
+        "Definition"
       ]
     },
     {
-      "Front": "Simple meal pattern for busy patients",
-      "Back": "Build plates: ½ non-starchy vegetables, ¼ intact whole grains or starchy veg, ¼ legumes/lean proteins; add fruit; water/unsweetened beverages.",
+      "Front": "Dietary fiber—key points.",
+      "Back": "Found only in plants; improves laxation and satiety, lowers coronary heart disease risk, and helps maintain normal glucose.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Action Plan"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Prescriptions",
-      "Page": [
-        "plate",
-        "nonstarchy"
+        "Fiber",
+        "High-Yield"
       ]
     },
     {
-      "Front": "SMART goals for nutrition change",
-      "Back": "Specific, Measurable, Achievable, Relevant, Time-bound: e.g., 'Add 1 cup vegetables at lunch 5 days/week for 4 weeks.'",
+      "Front": "Soluble fiber—physiology & sources.",
+      "Back": "Forms viscous solutions that can slow gastric emptying and help lower LDL cholesterol; found in oats, barley, legumes, and many fruits.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Prescriptions",
-      "Page": [
-        "smart"
+        "Fiber",
+        "Soluble",
+        "FoodSources"
       ]
     },
     {
-      "Front": "Food environment hacks",
-      "Back": "Keep fruit visible; prep veg ahead; carry nuts/fruit; default water/tea; plan shopping list around produce and legumes.",
+      "Front": "Insoluble fiber—physiology & sources.",
+      "Back": "Adds bulk and speeds transit through the gut; found in whole grains and many vegetables.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Prescriptions",
-      "Page": [
-        "environment"
+        "Fiber",
+        "Insoluble",
+        "FoodSources"
       ]
     },
     {
-      "Front": "Vignette (Sugars) #1: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
+      "Front": "Adult fiber intake targets.",
+      "Back": "Approximately 14 g per 1,000 kcal; about 38 g/day for men and 25 g/day for women.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
+        "Fiber",
+        "ReferenceValue",
+        "High-Yield"
+      ]
     },
     {
-      "Front": "Vignette (Sugars) #2: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
+      "Front": "Complete vs incomplete proteins.",
+      "Back": "Complete proteins contain all essential amino acids in needed amounts; incomplete proteins lack one or more in needed proportions.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
+        "Protein",
+        "Definition",
+        "High-Yield"
+      ]
     },
     {
-      "Front": "Vignette (Sugars) #3: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
+      "Front": "Which plant protein is complete?",
+      "Back": "Soy protein contains all nine essential amino acids in adequate amounts.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
+        "Protein",
+        "FoodSources"
+      ]
     },
     {
-      "Front": "Vignette (Sugars) #4: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
+      "Front": "Essential amino acids—original source.",
+      "Back": "Plants and microbes are the original source of essential amino acids.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
+        "Protein",
+        "High-Yield"
+      ]
     },
     {
-      "Front": "Vignette (Sugars) #5: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
+      "Front": "Protein digestion & absorption (overview).",
+      "Back": "Proteins are broken down by stomach acid and proteases into amino acids, which are absorbed and rebuilt into body proteins as needed.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
-    },
-    {
-      "Front": "Vignette (Sugars) #6: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
-      "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
-    },
-    {
-      "Front": "Vignette (Sugars) #7: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
-      "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
-    },
-    {
-      "Front": "Vignette (Sugars) #8: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
-      "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
-    },
-    {
-      "Front": "Vignette (Sugars) #9: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
-      "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
-    },
-    {
-      "Front": "Vignette (Sugars) #10: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
-      "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
-    },
-    {
-      "Front": "Vignette (Sugars) #11: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
-      "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
-    },
-    {
-      "Front": "Vignette (Sugars) #12: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
-      "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
-    },
-    {
-      "Front": "Vignette (Sugars) #13: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
-      "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
-    },
-    {
-      "Front": "Vignette (Sugars) #14: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
-      "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
-    },
-    {
-      "Front": "Vignette (Sugars) #15: drinks 2 SSBs/day, evening cravings, weight gain.",
-      "Back": "Replace SSBs with water/unsweetened beverages; set daily limit; add fiber-rich snacks; track intake; aim <10% kcal added sugars.",
-      "Tags": [
-        "ACLM-Important",
-        "Applied",
-        "SSB"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sugars",
-      "Page": 7
-    },
-    {
-      "Front": "Vignette (Sodium) #1: restaurant meals most nights; stage 1 hypertension.",
-      "Back": "Coach home cooking 5+ nights/week; mg≤kcal rule; request no added salt; choose DASH-style sides; monitor BP trend.",
-      "Tags": [
-        "Applied",
-        "BP"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sodium",
-      "Page": 11
-    },
-    {
-      "Front": "Vignette (Sodium) #2: restaurant meals most nights; stage 1 hypertension.",
-      "Back": "Coach home cooking 5+ nights/week; mg≤kcal rule; request no added salt; choose DASH-style sides; monitor BP trend.",
-      "Tags": [
-        "Applied",
-        "BP"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sodium",
-      "Page": 11
-    },
-    {
-      "Front": "Vignette (Sodium) #3: restaurant meals most nights; stage 1 hypertension.",
-      "Back": "Coach home cooking 5+ nights/week; mg≤kcal rule; request no added salt; choose DASH-style sides; monitor BP trend.",
-      "Tags": [
-        "Applied",
-        "BP"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sodium",
-      "Page": 11
-    },
-    {
-      "Front": "Vignette (Sodium) #4: restaurant meals most nights; stage 1 hypertension.",
-      "Back": "Coach home cooking 5+ nights/week; mg≤kcal rule; request no added salt; choose DASH-style sides; monitor BP trend.",
-      "Tags": [
-        "Applied",
-        "BP"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sodium",
-      "Page": 11
-    },
-    {
-      "Front": "Vignette (Sodium) #5: restaurant meals most nights; stage 1 hypertension.",
-      "Back": "Coach home cooking 5+ nights/week; mg≤kcal rule; request no added salt; choose DASH-style sides; monitor BP trend.",
-      "Tags": [
-        "Applied",
-        "BP"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sodium",
-      "Page": 11
-    },
-    {
-      "Front": "Vignette (Sodium) #6: restaurant meals most nights; stage 1 hypertension.",
-      "Back": "Coach home cooking 5+ nights/week; mg≤kcal rule; request no added salt; choose DASH-style sides; monitor BP trend.",
-      "Tags": [
-        "Applied",
-        "BP"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sodium",
-      "Page": 11
-    },
-    {
-      "Front": "Vignette (Sodium) #7: restaurant meals most nights; stage 1 hypertension.",
-      "Back": "Coach home cooking 5+ nights/week; mg≤kcal rule; request no added salt; choose DASH-style sides; monitor BP trend.",
-      "Tags": [
-        "Applied",
-        "BP"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sodium",
-      "Page": 11
-    },
-    {
-      "Front": "Vignette (Sodium) #8: restaurant meals most nights; stage 1 hypertension.",
-      "Back": "Coach home cooking 5+ nights/week; mg≤kcal rule; request no added salt; choose DASH-style sides; monitor BP trend.",
-      "Tags": [
-        "Applied",
-        "BP"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sodium",
-      "Page": 11
-    },
-    {
-      "Front": "Vignette (Sodium) #9: restaurant meals most nights; stage 1 hypertension.",
-      "Back": "Coach home cooking 5+ nights/week; mg≤kcal rule; request no added salt; choose DASH-style sides; monitor BP trend.",
-      "Tags": [
-        "Applied",
-        "BP"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sodium",
-      "Page": 11
-    },
-    {
-      "Front": "Vignette (Sodium) #10: restaurant meals most nights; stage 1 hypertension.",
-      "Back": "Coach home cooking 5+ nights/week; mg≤kcal rule; request no added salt; choose DASH-style sides; monitor BP trend.",
-      "Tags": [
-        "Applied",
-        "BP"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sodium",
-      "Page": 11
-    },
-    {
-      "Front": "Vignette (Sodium) #11: restaurant meals most nights; stage 1 hypertension.",
-      "Back": "Coach home cooking 5+ nights/week; mg≤kcal rule; request no added salt; choose DASH-style sides; monitor BP trend.",
-      "Tags": [
-        "Applied",
-        "BP"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Sodium",
-      "Page": 11
-    },
-    {
-      "Front": "Vignette (Label) #1: '0 g trans fat' but lists partially hydrogenated oil.",
-      "Back": "Avoid products with 'partially hydrogenated'; per-serving rounding can hide up to 0.5 g—choose alternatives.",
-      "Tags": [
-        "Applied",
-        "Labeling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Labels",
-      "Page": null
-    },
-    {
-      "Front": "Vignette (Label) #2: '0 g trans fat' but lists partially hydrogenated oil.",
-      "Back": "Avoid products with 'partially hydrogenated'; per-serving rounding can hide up to 0.5 g—choose alternatives.",
-      "Tags": [
-        "Applied",
-        "Labeling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Labels",
-      "Page": null
-    },
-    {
-      "Front": "Vignette (Label) #3: '0 g trans fat' but lists partially hydrogenated oil.",
-      "Back": "Avoid products with 'partially hydrogenated'; per-serving rounding can hide up to 0.5 g—choose alternatives.",
-      "Tags": [
-        "Applied",
-        "Labeling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Labels",
-      "Page": null
-    },
-    {
-      "Front": "Vignette (Label) #4: '0 g trans fat' but lists partially hydrogenated oil.",
-      "Back": "Avoid products with 'partially hydrogenated'; per-serving rounding can hide up to 0.5 g—choose alternatives.",
-      "Tags": [
-        "Applied",
-        "Labeling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Labels",
-      "Page": null
-    },
-    {
-      "Front": "Vignette (Label) #5: '0 g trans fat' but lists partially hydrogenated oil.",
-      "Back": "Avoid products with 'partially hydrogenated'; per-serving rounding can hide up to 0.5 g—choose alternatives.",
-      "Tags": [
-        "Applied",
-        "Labeling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Labels",
-      "Page": null
-    },
-    {
-      "Front": "Vignette (Label) #6: '0 g trans fat' but lists partially hydrogenated oil.",
-      "Back": "Avoid products with 'partially hydrogenated'; per-serving rounding can hide up to 0.5 g—choose alternatives.",
-      "Tags": [
-        "Applied",
-        "Labeling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Labels",
-      "Page": null
-    },
-    {
-      "Front": "Vignette (Label) #7: '0 g trans fat' but lists partially hydrogenated oil.",
-      "Back": "Avoid products with 'partially hydrogenated'; per-serving rounding can hide up to 0.5 g—choose alternatives.",
-      "Tags": [
-        "Applied",
-        "Labeling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Labels",
-      "Page": null
-    },
-    {
-      "Front": "Vignette (Label) #8: '0 g trans fat' but lists partially hydrogenated oil.",
-      "Back": "Avoid products with 'partially hydrogenated'; per-serving rounding can hide up to 0.5 g—choose alternatives.",
-      "Tags": [
-        "Applied",
-        "Labeling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Labels",
-      "Page": null
-    },
-    {
-      "Front": "Vignette (Label) #9: '0 g trans fat' but lists partially hydrogenated oil.",
-      "Back": "Avoid products with 'partially hydrogenated'; per-serving rounding can hide up to 0.5 g—choose alternatives.",
-      "Tags": [
-        "Applied",
-        "Labeling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Labels",
-      "Page": null
-    },
-    {
-      "Front": "Vignette (UPF) #1: snack foods with long ingredient lists, weight plateau.",
-      "Back": "Swap to minimally processed, short-ingredient-list foods; plan whole-food snacks (fruit, nuts, roasted legumes).",
-      "Tags": [
+        "Protein",
         "Applied"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – UPF",
-      "Page": 6
+      ]
     },
     {
-      "Front": "Vignette (UPF) #2: snack foods with long ingredient lists, weight plateau.",
-      "Back": "Swap to minimally processed, short-ingredient-list foods; plan whole-food snacks (fruit, nuts, roasted legumes).",
+      "Front": "Protein RDA and typical % of energy.",
+      "Back": "RDA is 0.8 g/kg/day. Example: ~55 g/day (~10–11% of 2000 kcal) for a 150 lb adult.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
+        "Protein",
+        "ReferenceValue",
+        "High-Yield"
+      ]
+    },
+    {
+      "Front": "Plant foods and protein adequacy.",
+      "Back": "Varied whole plant foods easily meet protein requirements, especially with legumes, grains, and greens.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
+      "Tags": [
+        "Protein",
+        "FoodSources",
+        "High-Yield"
+      ]
+    },
+    {
+      "Front": "Protein combining at meals—necessary?",
+      "Back": "No; eating a variety of plant foods over time provides a complete amino acid profile.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
+      "Tags": [
+        "Protein",
         "Applied"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – UPF",
-      "Page": 6
+      ]
     },
     {
-      "Front": "Vignette (UPF) #3: snack foods with long ingredient lists, weight plateau.",
-      "Back": "Swap to minimally processed, short-ingredient-list foods; plan whole-food snacks (fruit, nuts, roasted legumes).",
+      "Front": "Animal protein and acid load (bone concern).",
+      "Back": "High animal protein intake may contribute to diet-derived metabolic acidosis, with calcium mobilized from bone to buffer acid (area of active study).",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
+        "Protein",
         "Applied"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – UPF",
-      "Page": 6
+      ]
     },
     {
-      "Front": "Vignette (UPF) #4: snack foods with long ingredient lists, weight plateau.",
-      "Back": "Swap to minimally processed, short-ingredient-list foods; plan whole-food snacks (fruit, nuts, roasted legumes).",
+      "Front": "Saturated fat—general guidance.",
+      "Back": "Limit saturated fat; high intake is common in Western dietary patterns.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – UPF",
-      "Page": 6
-    },
-    {
-      "Front": "Vignette (UPF) #5: snack foods with long ingredient lists, weight plateau.",
-      "Back": "Swap to minimally processed, short-ingredient-list foods; plan whole-food snacks (fruit, nuts, roasted legumes).",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – UPF",
-      "Page": 6
-    },
-    {
-      "Front": "Vignette (UPF) #6: snack foods with long ingredient lists, weight plateau.",
-      "Back": "Swap to minimally processed, short-ingredient-list foods; plan whole-food snacks (fruit, nuts, roasted legumes).",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – UPF",
-      "Page": 6
-    },
-    {
-      "Front": "Vignette (UPF) #7: snack foods with long ingredient lists, weight plateau.",
-      "Back": "Swap to minimally processed, short-ingredient-list foods; plan whole-food snacks (fruit, nuts, roasted legumes).",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – UPF",
-      "Page": 6
-    },
-    {
-      "Front": "Vignette (UPF) #8: snack foods with long ingredient lists, weight plateau.",
-      "Back": "Swap to minimally processed, short-ingredient-list foods; plan whole-food snacks (fruit, nuts, roasted legumes).",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – UPF",
-      "Page": 6
-    },
-    {
-      "Front": "Vignette (UPF) #9: snack foods with long ingredient lists, weight plateau.",
-      "Back": "Swap to minimally processed, short-ingredient-list foods; plan whole-food snacks (fruit, nuts, roasted legumes).",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – UPF",
-      "Page": 6
-    },
-    {
-      "Front": "Vignette (Lipids) #1: LDL-C 160 mg/dL, prefers 'natural' coconut oil.",
-      "Back": "Limit saturated fat; replace coconut oil with olive/canola; increase soluble fiber (oats, legumes); recheck lipids in ~3 months.",
-      "Tags": [
-        "Applied",
-        "Lipids"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Fats",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Lipids) #2: LDL-C 160 mg/dL, prefers 'natural' coconut oil.",
-      "Back": "Limit saturated fat; replace coconut oil with olive/canola; increase soluble fiber (oats, legumes); recheck lipids in ~3 months.",
-      "Tags": [
-        "Applied",
-        "Lipids"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Fats",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Lipids) #3: LDL-C 160 mg/dL, prefers 'natural' coconut oil.",
-      "Back": "Limit saturated fat; replace coconut oil with olive/canola; increase soluble fiber (oats, legumes); recheck lipids in ~3 months.",
-      "Tags": [
-        "Applied",
-        "Lipids"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Fats",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Lipids) #4: LDL-C 160 mg/dL, prefers 'natural' coconut oil.",
-      "Back": "Limit saturated fat; replace coconut oil with olive/canola; increase soluble fiber (oats, legumes); recheck lipids in ~3 months.",
-      "Tags": [
-        "Applied",
-        "Lipids"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Fats",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Lipids) #5: LDL-C 160 mg/dL, prefers 'natural' coconut oil.",
-      "Back": "Limit saturated fat; replace coconut oil with olive/canola; increase soluble fiber (oats, legumes); recheck lipids in ~3 months.",
-      "Tags": [
-        "Applied",
-        "Lipids"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Fats",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Lipids) #6: LDL-C 160 mg/dL, prefers 'natural' coconut oil.",
-      "Back": "Limit saturated fat; replace coconut oil with olive/canola; increase soluble fiber (oats, legumes); recheck lipids in ~3 months.",
-      "Tags": [
-        "Applied",
-        "Lipids"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Fats",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Lipids) #7: LDL-C 160 mg/dL, prefers 'natural' coconut oil.",
-      "Back": "Limit saturated fat; replace coconut oil with olive/canola; increase soluble fiber (oats, legumes); recheck lipids in ~3 months.",
-      "Tags": [
-        "Applied",
-        "Lipids"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Fats",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Lipids) #8: LDL-C 160 mg/dL, prefers 'natural' coconut oil.",
-      "Back": "Limit saturated fat; replace coconut oil with olive/canola; increase soluble fiber (oats, legumes); recheck lipids in ~3 months.",
-      "Tags": [
-        "Applied",
-        "Lipids"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Fats",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Lipids) #9: LDL-C 160 mg/dL, prefers 'natural' coconut oil.",
-      "Back": "Limit saturated fat; replace coconut oil with olive/canola; increase soluble fiber (oats, legumes); recheck lipids in ~3 months.",
-      "Tags": [
-        "Applied",
-        "Lipids"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Fats",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Protein) #1: concerned about protein on plant diet.",
-      "Back": "Reassure adequacy with variety; include legumes, soy, whole grains, nuts/seeds; RDA 0.8 g/kg typically met.",
-      "Tags": [
-        "Applied",
-        "Protein"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Protein",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Protein) #2: concerned about protein on plant diet.",
-      "Back": "Reassure adequacy with variety; include legumes, soy, whole grains, nuts/seeds; RDA 0.8 g/kg typically met.",
-      "Tags": [
-        "Applied",
-        "Protein"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Protein",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Protein) #3: concerned about protein on plant diet.",
-      "Back": "Reassure adequacy with variety; include legumes, soy, whole grains, nuts/seeds; RDA 0.8 g/kg typically met.",
-      "Tags": [
-        "Applied",
-        "Protein"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Protein",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Protein) #4: concerned about protein on plant diet.",
-      "Back": "Reassure adequacy with variety; include legumes, soy, whole grains, nuts/seeds; RDA 0.8 g/kg typically met.",
-      "Tags": [
-        "Applied",
-        "Protein"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Protein",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Protein) #5: concerned about protein on plant diet.",
-      "Back": "Reassure adequacy with variety; include legumes, soy, whole grains, nuts/seeds; RDA 0.8 g/kg typically met.",
-      "Tags": [
-        "Applied",
-        "Protein"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Protein",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Protein) #6: concerned about protein on plant diet.",
-      "Back": "Reassure adequacy with variety; include legumes, soy, whole grains, nuts/seeds; RDA 0.8 g/kg typically met.",
-      "Tags": [
-        "Applied",
-        "Protein"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Protein",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Protein) #7: concerned about protein on plant diet.",
-      "Back": "Reassure adequacy with variety; include legumes, soy, whole grains, nuts/seeds; RDA 0.8 g/kg typically met.",
-      "Tags": [
-        "Applied",
-        "Protein"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Protein",
-      "Page": 2
-    },
-    {
-      "Front": "Vignette (Micros) #1: minimal animal products; unsure about B12.",
-      "Back": "Recommend reliable B12 via fortified foods or supplementation per guideline; review dosing and adherence.",
-      "Tags": [
-        "Applied",
-        "B12"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Micros",
-      "Page": 8
-    },
-    {
-      "Front": "Vignette (Micros) #2: minimal animal products; unsure about B12.",
-      "Back": "Recommend reliable B12 via fortified foods or supplementation per guideline; review dosing and adherence.",
-      "Tags": [
-        "Applied",
-        "B12"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Micros",
-      "Page": 8
-    },
-    {
-      "Front": "Vignette (Micros) #3: minimal animal products; unsure about B12.",
-      "Back": "Recommend reliable B12 via fortified foods or supplementation per guideline; review dosing and adherence.",
-      "Tags": [
-        "Applied",
-        "B12"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Micros",
-      "Page": 8
-    },
-    {
-      "Front": "Vignette (Micros) #4: minimal animal products; unsure about B12.",
-      "Back": "Recommend reliable B12 via fortified foods or supplementation per guideline; review dosing and adherence.",
-      "Tags": [
-        "Applied",
-        "B12"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Micros",
-      "Page": 8
-    },
-    {
-      "Front": "Vignette (Micros) #5: minimal animal products; unsure about B12.",
-      "Back": "Recommend reliable B12 via fortified foods or supplementation per guideline; review dosing and adherence.",
-      "Tags": [
-        "Applied",
-        "B12"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Micros",
-      "Page": 8
-    },
-    {
-      "Front": "Vignette (Micros) #6: minimal animal products; unsure about B12.",
-      "Back": "Recommend reliable B12 via fortified foods or supplementation per guideline; review dosing and adherence.",
-      "Tags": [
-        "Applied",
-        "B12"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Micros",
-      "Page": 8
-    },
-    {
-      "Front": "Vignette (Micros) #7: minimal animal products; unsure about B12.",
-      "Back": "Recommend reliable B12 via fortified foods or supplementation per guideline; review dosing and adherence.",
-      "Tags": [
-        "Applied",
-        "B12"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Micros",
-      "Page": 8
-    },
-    {
-      "Front": "Vignette (Micros) #8: minimal animal products; unsure about B12.",
-      "Back": "Recommend reliable B12 via fortified foods or supplementation per guideline; review dosing and adherence.",
-      "Tags": [
-        "Applied",
-        "B12"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Micros",
-      "Page": 8
-    },
-    {
-      "Front": "Vignette (Micros) #9: minimal animal products; unsure about B12.",
-      "Back": "Recommend reliable B12 via fortified foods or supplementation per guideline; review dosing and adherence.",
-      "Tags": [
-        "Applied",
-        "B12"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Micros",
-      "Page": 8
-    },
-    {
-      "Front": "Vignette (Micros) #10: minimal animal products; unsure about B12.",
-      "Back": "Recommend reliable B12 via fortified foods or supplementation per guideline; review dosing and adherence.",
-      "Tags": [
-        "Applied",
-        "B12"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Micros",
-      "Page": 8
-    },
-    {
-      "Front": "Vignette (Micros) #11: minimal animal products; unsure about B12.",
-      "Back": "Recommend reliable B12 via fortified foods or supplementation per guideline; review dosing and adherence.",
-      "Tags": [
-        "Applied",
-        "B12"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Vignettes – Micros",
-      "Page": 8
-    },
-    {
-      "Front": "Added sugars limits (WHO/AHA) – compact",
-      "Back": "WHO: <10% kcal (ideal <5%). AHA: ≤100 kcal/day women/teens; ≤150 kcal/day men.",
-      "Tags": [
-        "#ReferenceValue",
+        "Fats",
+        "Saturated",
         "Guideline"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Reference – Sugars",
-      "Page": [
-        "addedsugars",
-        "who",
-        "aha"
       ]
     },
     {
-      "Front": "Saturated fat limit (AHA) – compact",
-      "Back": "Aim 5–6% of kcal from saturated fat; replace with MUFA/PUFA.",
+      "Front": "Monounsaturated fats (MUFA).",
+      "Back": "Present in foods such as olive oil, nuts, and avocados.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "#ReferenceValue",
+        "Fats",
+        "MUFA",
+        "FoodSources"
+      ]
+    },
+    {
+      "Front": "Polyunsaturated fats (PUFA).",
+      "Back": "Include essential fatty acids; found in nuts, seeds, and certain plant oils.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
+      "Tags": [
+        "Fats",
+        "PUFA",
+        "FoodSources"
+      ]
+    },
+    {
+      "Front": "Omega-6 (linoleic acid) daily intake.",
+      "Back": "Men: 17 g/day; Women: 12 g/day.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
+      "Tags": [
+        "Fats",
+        "Omega-6",
+        "ReferenceValue",
+        "High-Yield"
+      ]
+    },
+    {
+      "Front": "Omega-3 (alpha-linolenic acid) daily intake.",
+      "Back": "Men: 1.6 g/day; Women: 1.1 g/day.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
+      "Tags": [
+        "Fats",
+        "Omega-3",
+        "ReferenceValue",
+        "High-Yield"
+      ]
+    },
+    {
+      "Front": "Trans fat—status & avoidance.",
+      "Back": "Avoid partially hydrogenated oils; industrial trans fats have been largely removed from the food supply.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
+      "Tags": [
+        "Fats",
+        "Trans",
+        "Labeling",
         "Guideline"
-      ],
-      "Difficulty": "High",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Reference – Fats",
-      "Page": [
-        "saturated fat",
-        "aha"
       ]
     },
     {
-      "Front": "Sodium practical cap – compact",
-      "Back": "Keep mg sodium per serving ≤ calories per serving to be near ~2,300 mg/day overall.",
+      "Front": "Cholesterol—dietary note.",
+      "Back": "Cholesterol is found in animal-derived foods; dietary patterns emphasize plant-predominant choices.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "#ReferenceValue",
-        "Practical Tip"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Reference – Sodium",
-      "Page": [
-        "sodium",
-        "2,300"
+        "Fats",
+        "Cholesterol",
+        "FoodSources"
       ]
     },
     {
-      "Front": "Fiber intake targets – compact",
-      "Back": "≈14 g/1,000 kcal (~25 g women; ~38 g men).",
+      "Front": "Why micronutrients matter.",
+      "Back": "They enable cellular metabolism and act as cofactors; deficiencies or excesses impair health.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "#ReferenceValue"
-      ],
-      "Difficulty": "Medium",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Reference – Fiber",
-      "Page": [
-        "fiber",
-        "1,000 kcal"
+        "Micronutrients",
+        "High-Yield"
       ]
     },
     {
-      "Front": "Whole-grain 10:1 heuristic – compact",
-      "Back": "Grams carbohydrate ≤ 10 × grams fiber → generally higher-quality grain choice.",
+      "Front": "Whole foods vs supplements for micronutrients.",
+      "Back": "Nutrient-dense whole foods are preferred; supplements do not consistently replicate benefits and can sometimes cause harm.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
       "Tags": [
-        "#ReferenceValue",
-        "Labeling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Reference – Label",
-      "Page": [
-        "10:1",
-        "fiber"
+        "Micronutrients",
+        "Applied",
+        "High-Yield"
       ]
     },
     {
-      "Front": "Quick recall #1: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #2: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 8
-    },
-    {
-      "Front": "Quick recall #3: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #4: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #5: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 5
-    },
-    {
-      "Front": "Quick recall #6: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 29
-    },
-    {
-      "Front": "Quick recall #7: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 3
-    },
-    {
-      "Front": "Quick recall #8: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #9: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 8
-    },
-    {
-      "Front": "Quick recall #10: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #11: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #12: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 5
-    },
-    {
-      "Front": "Quick recall #13: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 29
-    },
-    {
-      "Front": "Quick recall #14: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 3
-    },
-    {
-      "Front": "Quick recall #15: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #16: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 8
-    },
-    {
-      "Front": "Quick recall #17: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #18: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #19: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 5
-    },
-    {
-      "Front": "Quick recall #20: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 29
-    },
-    {
-      "Front": "Quick recall #21: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 3
-    },
-    {
-      "Front": "Quick recall #22: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #23: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 8
-    },
-    {
-      "Front": "Quick recall #24: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #25: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #26: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 5
-    },
-    {
-      "Front": "Quick recall #27: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 29
-    },
-    {
-      "Front": "Quick recall #28: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 3
-    },
-    {
-      "Front": "Quick recall #29: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #30: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 8
-    },
-    {
-      "Front": "Quick recall #31: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #32: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #33: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 5
-    },
-    {
-      "Front": "Quick recall #34: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 29
-    },
-    {
-      "Front": "Quick recall #35: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 3
-    },
-    {
-      "Front": "Quick recall #36: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #37: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 8
-    },
-    {
-      "Front": "Quick recall #38: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #39: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #40: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 5
-    },
-    {
-      "Front": "Quick recall #41: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 29
-    },
-    {
-      "Front": "Quick recall #42: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 3
-    },
-    {
-      "Front": "Quick recall #43: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #44: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 8
-    },
-    {
-      "Front": "Quick recall #45: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #46: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #47: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 5
-    },
-    {
-      "Front": "Quick recall #48: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 29
-    },
-    {
-      "Front": "Quick recall #49: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 3
-    },
-    {
-      "Front": "Quick recall #50: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #51: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 8
-    },
-    {
-      "Front": "Quick recall #52: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #53: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #54: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 5
-    },
-    {
-      "Front": "Quick recall #55: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 29
-    },
-    {
-      "Front": "Quick recall #56: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 3
-    },
-    {
-      "Front": "Quick recall #57: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #58: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 8
-    },
-    {
-      "Front": "Quick recall #59: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #60: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #61: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 5
-    },
-    {
-      "Front": "Quick recall #62: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 29
-    },
-    {
-      "Front": "Quick recall #63: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 3
-    },
-    {
-      "Front": "Quick recall #64: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #65: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 8
-    },
-    {
-      "Front": "Quick recall #66: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #67: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #68: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 5
-    },
-    {
-      "Front": "Quick recall #69: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 29
-    },
-    {
-      "Front": "Quick recall #70: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 3
-    },
-    {
-      "Front": "Quick recall #71: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #72: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 8
-    },
-    {
-      "Front": "Quick recall #73: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #74: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #75: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 5
-    },
-    {
-      "Front": "Quick recall #76: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 29
-    },
-    {
-      "Front": "Quick recall #77: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 3
-    },
-    {
-      "Front": "Quick recall #78: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #79: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 8
-    },
-    {
-      "Front": "Quick recall #80: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #81: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #82: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 5
-    },
-    {
-      "Front": "Quick recall #83: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 29
-    },
-    {
-      "Front": "Quick recall #84: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 3
-    },
-    {
-      "Front": "Quick recall #85: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #86: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 8
-    },
-    {
-      "Front": "Quick recall #87: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #88: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #89: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 5
-    },
-    {
-      "Front": "Quick recall #90: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 29
-    },
-    {
-      "Front": "Quick recall #91: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 3
-    },
-    {
-      "Front": "Quick recall #92: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #93: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 8
-    },
-    {
-      "Front": "Quick recall #94: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #95: Hydration habit",
-      "Back": "Default to water; keep a bottle visible; add citrus/herbs for flavor.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Counseling – Hydration",
-      "Page": 2
-    },
-    {
-      "Front": "Quick recall #96: Greens & berries emphasis (MIND)",
-      "Back": "Add leafy greens most days and berries several times per week.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Patterns – MIND",
-      "Page": 5
-    },
-    {
-      "Front": "Quick recall #97: Legumes frequency",
-      "Back": "Aim legumes most days (beans/lentils/peas/soy) for fiber and protein.",
-      "Tags": [
-        "Counseling"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Protein/Carbs – Legumes",
-      "Page": 29
-    },
-    {
-      "Front": "Quick recall #98: Nuts & seeds snack swap",
-      "Back": "Use a handful of nuts/seeds instead of UPF snacks for satiety and cardiometabolic benefits.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Fats – Nuts/Seeds",
-      "Page": 3
-    },
-    {
-      "Front": "Quick recall #99: Cooking method swap",
-      "Back": "Prefer baking/steaming/sautéing over deep-frying to lower LOPS.",
-      "Tags": [
-        "Applied"
-      ],
-      "Difficulty": "Easy",
-      "Chapter": "Ch5 – Nutrition (ACLM)",
-      "Section": "Cooking – Methods",
-      "Page": 2
-    },
-  { "Front": "Protein-rich plant foods (per serving) — quick list", "Back": "Soy foods (tofu, tempeh, edamame) · Lentils/beans · Chickpeas · Peas · Seitan · Hemp hearts · Peanut/almond butter · Quinoa · High-protein whole-grain pastas.", "Tags": ["Protein", "#ReferenceValue", "Counseling"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Macros – Protein", "Page": null },
-  { "Front": "High-fiber foods to prioritize (≥5–7 g/serving)", "Back": "Lentils · Black beans · Chickpeas · Split peas · Raspberries/blackberries · Pears (with skin) · Artichokes · Oats (steel-cut) · Chia/flax · Barley.", "Tags": ["Fiber", "#ReferenceValue", "Counseling"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Carbohydrate – Fiber", "Page": null },
-  { "Front": "Soluble-fiber leaders for LDL lowering", "Back": "Oats/oat bran (β-glucan) · Barley · Psyllium · Beans/lentils/peas · Ground flax/chia · Apples/citrus · Okra · Eggplant.", "Tags": ["Fiber", "Lipids", "#ReferenceValue", "Applied"], "Difficulty": "High", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Carbohydrate – Soluble Fiber", "Page": null },
-  { "Front": "Low-glycemic carbohydrate swaps", "Back": "Refined rice → intact brown rice/farro · White pasta → lentil/chickpea pasta · White bread → 100% whole grain/rye · Sugary cereal → oats/muesli · Juice → whole fruit.", "Tags": ["Glycemic", "Counseling"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Carbohydrate – Glycemic", "Page": null },
-  { "Front": "ALA omega-3 sources (plant)", "Back": "Ground flax (1–2 Tbsp) · Chia seeds · Walnuts · Hemp seeds · Canola/soy oil (minimal, prefer whole foods).", "Tags": ["Fats", "Omega-3", "#ReferenceValue"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Fats – PUFA", "Page": null },
-  { "Front": "EPA/DHA options", "Back": "Fish/seafood (where used) · Algae-derived EPA/DHA supplements for plant-exclusive eaters.", "Tags": ["Fats", "Omega-3", "Counseling"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Fats – PUFA", "Page": null },
-  { "Front": "Replace saturated fat: food swaps", "Back": "Butter → avocado/olive oil (light sauté) · Cream/cheese → cashew/soy yogurt or tofu-based sauces · Fatty red meat → beans/soy/legumes; add mushrooms/umami for satisfaction.", "Tags": ["Fats", "Counseling", "Applied"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Fats – SFA Reduction", "Page": null },
-  { "Front": "Top potassium foods for BP control", "Back": "Beans/lentils · Potatoes/sweet potatoes · Leafy greens · Squash · Bananas · Avocado · Yogurt alternatives fortified with potassium.", "Tags": ["Micronutrients", "BP", "#ReferenceValue"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Potassium", "Page": null },
-  { "Front": "Magnesium-rich foods (metabolic support)", "Back": "Pumpkin seeds · Almonds/cashews · Black beans · Soy (edamame/tofu/tempeh) · Spinach/chard · Whole grains (brown rice, oats, barley).", "Tags": ["Micronutrients", "#ReferenceValue"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Magnesium", "Page": null },
-  { "Front": "Plant calcium sources (and tips)", "Back": "Fortified plant milks/yogurts · Tofu set with calcium sulfate · Low-oxalate greens (bok choy, kale) · Tahini/sesame · Almonds · Beans. Tip: shake fortified milks; calcium settles.", "Tags": ["Micronutrients", "Calcium", "Counseling"], "Difficulty": "High", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Calcium", "Page": null },
-  { "Front": "Vitamin D—food/supplement strategy", "Back": "Few foods naturally rich; rely on fortified foods plus sensible sun exposure as allowed; consider D3/D2 supplement per guideline and labs/history.", "Tags": ["Micronutrients", "Vitamin D", "Counseling"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Vitamin D", "Page": null },
-  { "Front": "Iron—plant sources + absorption tips", "Back": "Legumes · Lentils · Soy · Pumpkin seeds · Quinoa · Dark greens; enhance with vitamin C (citrus, peppers). Inhibitors: tea/coffee with meals; high-calcium with iron foods.", "Tags": ["Micronutrients", "Iron", "Counseling"], "Difficulty": "High", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Iron", "Page": null },
-  { "Front": "Zinc—plant sources", "Back": "Legumes · Lentils · Chickpeas · Nuts/seeds (pumpkin, sesame) · Whole grains; soaking/sprouting reduces phytates and can improve availability.", "Tags": ["Micronutrients", "Zinc"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Zinc", "Page": null },
-  { "Front": "Iodine—ensure adequacy", "Back": "Use iodized salt in home cooking (within sodium limits) or seaweed in moderation; check prenatal needs; avoid excess from kelp concentrates.", "Tags": ["Micronutrients", "Iodine", "Counseling"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Iodine", "Page": null },
-  { "Front": "Selenium—key sources", "Back": "Brazil nuts (1–2 pieces occasionally) · Whole grains · Legumes; avoid excess (UL risk) with high Brazil nut intake.", "Tags": ["Micronutrients", "Selenium", "#ReferenceValue"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Selenium", "Page": null },
-  { "Front": "B12 on plant-predominant diets", "Back": "Reliable sources are fortified foods or B12 supplements; check dosing schedule and adherence; monitor per clinical context.", "Tags": ["Micronutrients", "B12", "High-Yield"], "Difficulty": "High", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – B12", "Page": null },
-  { "Front": "Choline—why and where", "Back": "Membrane and methylation roles; sources include soy/legumes, quinoa, broccoli/cauliflower, peanuts, and fortified products.", "Tags": ["Micronutrients", "Choline"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Choline", "Page": null },
-  { "Front": "Folate & vitamin C—plant standouts", "Back": "Folate: leafy greens, legumes, citrus. Vitamin C: citrus, berries, peppers, crucifers; enhances non-heme iron absorption.", "Tags": ["Micronutrients", "Folate", "Vitamin C"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Folate/Vitamin C", "Page": null },
-  { "Front": "Vitamin K and E—plant sources", "Back": "K: leafy greens (phylloquinone). E: nuts/seeds and plant oils (prefer minimal processing).", "Tags": ["Micronutrients", "Vitamin K", "Vitamin E"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – K/E", "Page": null },
-
-  { "Front": "Diabetes nutrition: plate build & priorities", "Back": "½ non-starchy veg · ¼ intact whole grains/starchy veg · ¼ legumes/lean proteins · Whole fruit; replace refined carbs/added sugars; fiber target ≈25–38 g/day; weight management if needed.", "Tags": ["Diabetes", "Counseling", "Plate"], "Difficulty": "High", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Disease – Type 2 Diabetes", "Page": null },
-  { "Front": "Diabetes: carbohydrate quality upgrades", "Back": "Swap refined grains for intact whole grains/legumes; add viscous fiber (oats/psyllium); avoid SSBs; prefer whole fruit over juice.", "Tags": ["Diabetes", "Glycemic", "Applied"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Disease – Type 2 Diabetes", "Page": null },
-  { "Front": "Diabetes: snack ideas (satiety + glycemic)", "Back": "Fruit + nuts; veggies + hummus; edamame; chia pudding; plain soy yogurt + berries; roasted chickpeas.", "Tags": ["Diabetes", "Applied"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Disease – Type 2 Diabetes", "Page": null },
-
-  { "Front": "Hypertension: DASH focus foods", "Back": "Fruits/vegetables · Low-fat or fortified alternatives · Whole grains · Nuts/legumes; limit sodium, processed meats, sweets, sugar drinks.", "Tags": ["Hypertension", "DASH", "Pattern"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Disease – Hypertension", "Page": null },
-  { "Front": "Hypertension: sodium tactics", "Back": "Home cooking ≥5 days/wk; mg sodium ≤ kcal per serving rule; request no added salt at restaurants; choose fresh/low-sodium items; use herbs/acid for flavor.", "Tags": ["Hypertension", "Sodium", "Applied"], "Difficulty": "High", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Disease – Hypertension", "Page": null },
-  { "Front": "Hypertension: potassium boosters", "Back": "Beans/lentils, potatoes, bananas, leafy greens, squash; check meds/renal status when advising high-K foods.", "Tags": ["Hypertension", "Potassium", "Counseling"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Disease – Hypertension", "Page": null },
-
-  { "Front": "Dyslipidemia: nutrition prescription", "Back": "Reduce SFA & trans; add soluble fiber (oats/psyllium/legumes) · Nuts/seeds daily · Emphasize WFPB pattern; consider stanols/sterols per context.", "Tags": ["Lipids", "Counseling", "Pattern"], "Difficulty": "High", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Disease – Dyslipidemia", "Page": null },
-  { "Front": "LDL-lowering food swaps", "Back": "Fatty beef/cheese → beans/soy · Butter → avocado/olive · Refined cereal → oats/barley · Snacks → nuts/seeds · Desserts → fruit-based options.", "Tags": ["Lipids", "Applied", "Food Swaps"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Disease – Dyslipidemia", "Page": null },
-
-  { "Front": "NAFLD: dietary priorities", "Back": "Weight loss if indicated; cut SSBs/fructose-heavy UPFs; plant-predominant pattern with high fiber; limit alcohol; prioritize physical activity.", "Tags": ["Liver", "NAFLD", "Counseling"], "Difficulty": "High", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Disease – NAFLD", "Page": null },
-  { "Front": "NAFLD: snack/meal pattern examples", "Back": "Breakfast: oats + berries + flax; Lunch: grain bowl (quinoa/beans/greens) · Dinner: lentil/veg stew + salad · Snacks: fruit + nuts; water/unsweetened drinks.", "Tags": ["Liver", "NAFLD", "Applied"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Disease – NAFLD", "Page": null },
-
-  { "Front": "Obesity: energy density strategy", "Back": "Shift toward high-volume, low-energy-density foods (vegetables, fruits, soups, legumes, intact grains); minimize UPFs; self-monitor portions and triggers.", "Tags": ["Obesity", "Counseling", "Pattern"], "Difficulty": "High", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Disease – Obesity", "Page": null },
-  { "Front": "Obesity: restaurant playbook", "Back": "Choose grilled/steamed; ask for sauces/dressings on side; double vegetables; swap fries for salad/veg; zero-cal beverages.", "Tags": ["Obesity", "Applied", "Restaurant"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Disease – Obesity", "Page": null },
-
-  { "Front": "Constipation: first-line nutrition", "Back": "Increase fiber gradually (legumes, whole grains, fruits/veg) + fluids; consider ground flax/chia and prunes; regular activity.", "Tags": ["GI", "Constipation", "Counseling"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "GI – Constipation", "Page": null },
-  { "Front": "GERD: meal pattern adjustments", "Back": "Smaller meals, avoid late eating; reduce high-fat/fried and trigger foods; weight loss if indicated; elevate head of bed.", "Tags": ["GI", "GERD", "Counseling"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "GI – GERD", "Page": null },
-
-  { "Front": "‘Protein with fiber’ snack combos", "Back": "Apple + peanut butter · Carrots + hummus · Edamame · Soy yogurt + berries · Whole-grain toast + tahini.", "Tags": ["Protein", "Fiber", "Applied"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Meals – Snacks", "Page": null },
-  { "Front": "Herbs/spices to replace salt", "Back": "Citrus/vinegars · Garlic/ginger · Pepper/chili · Cumin/coriander · Italian blend · Smoked paprika · Fresh herbs (cilantro, basil, dill, parsley).", "Tags": ["Sodium", "Applied", "Culinary"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Culinary – Flavor Without Sodium", "Page": null },
-
-  { "Front": "Label reading: whole-grain proof points", "Back": "Ingredient starts with 'whole …'; ≥3 g fiber/serving on many items; 10:1 carbs:fiber heuristic; watch added sugars/sodium.", "Tags": ["Labeling", "Whole Grain", "#ReferenceValue"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Labels – Whole Grains", "Page": null },
-  { "Front": "Label reading: Added Sugars triage", "Back": "Prefer ≤5–6% kcal SFA AND <10% kcal added sugars overall; choose items with lower Added Sugars line; avoid syrups/sugar words high on list.", "Tags": ["Labeling", "Added Sugars", "Counseling"], "Difficulty": "High", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Labels – Added Sugars", "Page": null },
-
-  { "Front": "Micronutrient bundle: legumes do a lot", "Back": "Fiber, protein, potassium, magnesium, iron, folate—anchor meals around beans/lentils/peas/soy for multi-nutrient coverage.", "Tags": ["Legumes", "Micronutrients", "Counseling"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Bundles", "Page": null },
-  { "Front": "Micronutrient bundle: nuts & seeds", "Back": "Healthy fats, protein, magnesium, vitamin E, selenium (Brazil nuts), zinc; small portions boost satiety and lipid profile.", "Tags": ["Nuts/Seeds", "Micronutrients", "Fats"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Bundles", "Page": null },
-  { "Front": "Micronutrient bundle: leafy greens", "Back": "Folate, vitamin K, magnesium, potassium, nitrates; pair with vitamin C foods to enhance iron absorption from meals.", "Tags": ["Leafy Greens", "Micronutrients"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Bundles", "Page": null },
-
-  { "Front": "Vignette: LDL 160 mg/dL, loves cheese & butter", "Back": "Swap butter/cheese for avocado/olive and tofu/soy yogurt sauces; add soluble fiber (oats/psyllium/legumes); daily nuts; recheck in ~3 months.", "Tags": ["Vignette", "Lipids", "Applied"], "Difficulty": "High", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Vignettes – Lipids", "Page": null },
-  { "Front": "Vignette: Stage 1 HTN, eats out 6 nights/week", "Back": "Home-cook 5+ nights; mg≤kcal rule; no added salt requests; potassium-rich sides; consider DASH pattern; monitor home BP.", "Tags": ["Vignette", "Hypertension", "Sodium"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Vignettes – Hypertension", "Page": null },
-  { "Front": "Vignette: Prediabetes, nighttime cravings", "Back": "High-fiber dinners, protein + fiber snacks (apple+nuts), pre-portion snacks; remove SSBs/UPFs; consistent meal timing.", "Tags": ["Vignette", "Diabetes", "Counseling"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Vignettes – Diabetes", "Page": null },
-
-  { "Front": "Quick pick list: high-protein whole grains", "Back": "Quinoa · Teff · Farro · Amaranth · Buckwheat; also legume-based pastas.", "Tags": ["Protein", "Whole Grains", "#ReferenceValue"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Macros – Protein", "Page": null },
-  { "Front": "Quick pick list: vitamin C standouts", "Back": "Citrus · Kiwi · Berries · Bell peppers · Broccoli/cauliflower · Tomatoes.", "Tags": ["Vitamin C", "Micronutrients"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Vitamin C", "Page": null },
-  { "Front": "Quick pick list: folate leaders", "Back": "Spinach · Kale · Lentils · Chickpeas · Black beans · Asparagus · Oranges.", "Tags": ["Folate", "Micronutrients"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Folate", "Page": null },
-  { "Front": "Quick pick list: vitamin K", "Back": "Leafy greens (kale, collards, spinach, chard) · Broccoli · Brussels sprouts.", "Tags": ["Vitamin K", "Micronutrients"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Vitamin K", "Page": null },
-  { "Front": "Quick pick list: vitamin E", "Back": "Sunflower seeds · Almonds · Hazelnuts · Peanuts · Wheat germ; minimally processed plant oils.", "Tags": ["Vitamin E", "Micronutrients"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Vitamin E", "Page": null },
-  { "Front": "Quick pick list: iodine (plant-predominant)", "Back": "Iodized salt (home use) · Nori/seaweed in moderation · Fortified products; avoid excessive kelp.", "Tags": ["Iodine", "Micronutrients"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Micros – Iodine", "Page": null },
-
-  { "Front": "Breakfast patterns (glycemic + satiety)", "Back": "Oats + berries + ground flax; Tofu veggie scramble + whole-grain toast; Overnight oats/chia; Fruit + soy yogurt + nuts/seeds.", "Tags": ["Meals", "Applied", "Glycemic"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Meals – Breakfast", "Page": null },
-  { "Front": "Lunch patterns (fiber-forward)", "Back": "Grain bowl: quinoa/farro + beans + greens + veg + seeds; Big salad + legumes; Veg soup + whole-grain bread.", "Tags": ["Meals", "Applied", "Fiber"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Meals – Lunch", "Page": null },
-  { "Front": "Dinner patterns (WFPB)", "Back": "Lentil/bean chili or stew; Stir-fry with tofu/edamame over brown rice; Baked potato/sweet potato with bean/veg toppings; Whole-grain pasta + tomato/veg sauce.", "Tags": ["Meals", "Applied", "Pattern"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Meals – Dinner", "Page": null },
-
-  { "Front": "Cooking oils—practical guidance", "Back": "Favor small amounts of olive/canola/soy/peanut oils for light cooking; prefer whole-food fat sources (nuts/avocado) overall; minimize deep-frying to avoid LOPS.", "Tags": ["Fats", "Culinary", "Applied"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Culinary – Oils", "Page": null },
-  { "Front": "Hydration choices", "Back": "Water first; unsweetened tea/coffee; seltzer with citrus; avoid SSBs/energy drinks; check meds/conditions for limits.", "Tags": ["Hydration", "Counseling"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Counseling – Hydration", "Page": null },
-
-  { "Front": "Snack replacements for UPFs", "Back": "Fresh fruit; raw veg + hummus; roasted chickpeas/edamame; nuts/seeds (pre-portioned); whole-grain crackers + bean dip.", "Tags": ["UPF", "Applied", "Snacks"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "UPF – Replacements", "Page": null },
-  { "Front": "Dessert ideas aligned with goals", "Back": "Fruit salad; baked apples/pears with cinnamon; dark chocolate (small portion) + berries; chia pudding.", "Tags": ["Applied", "Desserts"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Meals – Desserts", "Page": null }
+      "Front": "Vitamin D—special consideration.",
+      "Back": "Few foods naturally contain vitamin D; many adults have low levels, so supplementation is often needed with low sun exposure.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
+      "Tags": [
+        "Micronutrients",
+        "Vitamin D",
+        "High-Yield"
+      ]
+    },
+    {
+      "Front": "Vitamin B12—special consideration.",
+      "Back": "Not reliably present in plants; fortified foods or supplements are recommended for plant-based eaters.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
+      "Tags": [
+        "Micronutrients",
+        "Vitamin B12",
+        "High-Yield"
+      ]
+    },
+    {
+      "Front": "Iron—forms and absorption.",
+      "Back": "Heme iron is more readily absorbed; non‑heme iron absorption improves with vitamin C. Plant sources include legumes, greens, whole grains, nuts, and seeds.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
+      "Tags": [
+        "Micronutrients",
+        "Iron",
+        "Applied",
+        "FoodSources"
+      ]
+    },
+    {
+      "Front": "Calcium—plant-based sources & caveat.",
+      "Back": "Use fortified plant milks/yogurts, calcium‑set tofu, and low‑oxalate leafy greens; spinach and similar high‑oxalate greens have poor calcium bioavailability.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
+      "Tags": [
+        "Micronutrients",
+        "Calcium",
+        "FoodSources",
+        "High-Yield"
+      ]
+    },
+    {
+      "Front": "Iodine—plant-based note.",
+      "Back": "Plants provide little iodine unless soil is iodine‑rich; iodized salt or sea vegetables can supply iodine.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
+      "Tags": [
+        "Micronutrients",
+        "Iodine",
+        "FoodSources"
+      ]
+    },
+    {
+      "Front": "Antioxidants—role and examples.",
+      "Back": "Neutralize free radicals and reduce oxidative stress. Examples include vitamin C, vitamin E, carotenoids, selenium, and zinc.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
+      "Tags": [
+        "Micronutrients",
+        "Antioxidants",
+        "High-Yield"
+      ]
+    },
+    {
+      "Front": "Potassium—dietary message.",
+      "Back": "Commonly low intake; plant foods such as beans, potatoes, leafy greens, squash, bananas, and other fruits/vegetables provide potassium.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
+      "Tags": [
+        "Minerals",
+        "Potassium",
+        "FoodSources"
+      ]
+    },
+    {
+      "Front": "Zinc—plant sources note.",
+      "Back": "Legumes, nuts, seeds, and whole grains provide zinc; traditional preparation (soaking/sprouting) can improve availability.",
+      "Chapter": "Nutrition",
+      "Section": "Foundational Background",
+      "Difficulty": null,
+      "Tags": [
+        "Minerals",
+        "Zinc",
+        "FoodSources"
+      ]
+    },
+    {
+  "Front": "Macronutrient energy values (kcal per gram)",
+  "Back": "Carbohydrates: 4 kcal/g · Protein: 4 kcal/g · Fat: 9 kcal/g.",
+  "Chapter": "Nutrition",
+  "Section": "Foundational Background",
+  "Difficulty": null,
+  "Tags": ["ReferenceValue", "Macronutrients", "High-Yield"]
+}
   ]
 }
