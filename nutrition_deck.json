@@ -2668,7 +2668,6 @@
       "Section": "Cooking – Methods",
       "Page": 2
     },
-    ,
   { "Front": "Protein-rich plant foods (per serving) — quick list", "Back": "Soy foods (tofu, tempeh, edamame) · Lentils/beans · Chickpeas · Peas · Seitan · Hemp hearts · Peanut/almond butter · Quinoa · High-protein whole-grain pastas.", "Tags": ["Protein", "#ReferenceValue", "Counseling"], "Difficulty": "Easy", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Macros – Protein", "Page": null },
   { "Front": "High-fiber foods to prioritize (≥5–7 g/serving)", "Back": "Lentils · Black beans · Chickpeas · Split peas · Raspberries/blackberries · Pears (with skin) · Artichokes · Oats (steel-cut) · Chia/flax · Barley.", "Tags": ["Fiber", "#ReferenceValue", "Counseling"], "Difficulty": "Medium", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Carbohydrate – Fiber", "Page": null },
   { "Front": "Soluble-fiber leaders for LDL lowering", "Back": "Oats/oat bran (β-glucan) · Barley · Psyllium · Beans/lentils/peas · Ground flax/chia · Apples/citrus · Okra · Eggplant.", "Tags": ["Fiber", "Lipids", "#ReferenceValue", "Applied"], "Difficulty": "High", "Chapter": "Ch5 – Nutrition (ACLM) – Comprehensive", "Section": "Carbohydrate – Soluble Fiber", "Page": null },
