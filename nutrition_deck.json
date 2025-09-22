@@ -530,6 +530,312 @@
   "Section": "Foundational Background",
   "Difficulty": null,
   "Tags": ["ReferenceValue", "Macronutrients", "High-Yield"]
-}
+},
+    [
+  {
+    "Front": "Added sugars — common names you’ll see on labels",
+    "Back": "High-fructose corn syrup, corn syrup, cane sugar, fructose, sucrose, dextrose, lactose, honey, brown sugar, turbinado sugar (plus syrups and concentrates in ingredient lists).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Labeling", "Sugar", "High-Yield"]
+  },
+  {
+    "Front": "Added sugars — major food categories contributing the most",
+    "Back": "Sugar-sweetened beverages (sodas, energy drinks), sweets/desserts, sweetened dairy, many packaged sauces/dressings/condiments, ready-to-eat cereals, and other prepared foods.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Sugar", "Epidemiology", "Applied"]
+  },
+  {
+    "Front": "AHA guidance on saturated fat intake",
+    "Back": "Limit saturated fat intake; prioritize unsaturated fats (from plant-predominant sources) in place of saturated fat.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Fats", "Saturated", "Guideline", "High-Yield"]
+  },
+  {
+    "Front": "Common sources of saturated fat in the diet",
+    "Back": "Full-fat dairy (cheese, butter), red and processed meats, many baked goods, fried/fast foods, and some tropical oils.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Fats", "FoodSources"]
+  },
+  {
+    "Front": "Monounsaturated fats (MUFA) — food sources",
+    "Back": "Olive oil and other plant oils, nuts (e.g., almonds, hazelnuts), seeds, and avocados.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Fats", "MUFA", "FoodSources"]
+  },
+  {
+    "Front": "Polyunsaturated fats (PUFA) — food sources",
+    "Back": "Nuts, seeds, and plant oils (provide essential fatty acids, including omega-6 linoleic acid and omega-3 alpha-linolenic acid).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Fats", "PUFA", "FoodSources"]
+  },
+  {
+    "Front": "Industrial trans fats — what to do?",
+    "Back": "Avoid partially hydrogenated oils; industrial trans fats have largely been removed from the food supply, but small amounts may persist in some packaged foods.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Fats", "Trans", "Labeling", "Guideline"]
+  },
+  {
+    "Front": "Dietary cholesterol — counseling note",
+    "Back": "Cholesterol is present in animal-derived foods; a plant-predominant pattern naturally lowers dietary cholesterol intake.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Fats", "Cholesterol", "Counseling"]
+  },
+  {
+    "Front": "Nuts — typical fat/protein profile per ounce",
+    "Back": "Nuts provide a mix of unsaturated fats and several grams of protein per ounce (exact values vary by nut; Brazil nuts are among the highest in fat per ounce).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["FoodSources", "Fats", "Protein"]
+  },
+  {
+    "Front": "Processed meats — exam-relevant counseling point",
+    "Back": "Processed meats are consistently linked with higher cardiometabolic and cancer risk; counsel to minimize and replace with plant-predominant proteins.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["CVD", "Cancer", "Applied", "High-Yield"]
+  },
+  {
+    "Front": "Refined vs whole grains — practical distinction",
+    "Back": "Refined grains are milled/processed (removing bran and germ); whole grains retain bran, germ, and endosperm, offering fiber and micronutrients.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Carbohydrate", "Fiber", "FoodSources"]
+  },
+  {
+    "Front": "Added sugars on the Nutrition Facts label",
+    "Back": "“Includes X g Added Sugars” indicates sugars added during processing; use the % Daily Value to quickly gauge high/low contributions per serving.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Labeling", "Sugar", "High-Yield"]
+  },
+  {
+    "Front": "% Daily Value (DV) — how to use it at a glance",
+    "Back": "The %DV shows how much a serving contributes to a daily level. ~5% DV is low; ~20% DV is high. Use it to limit nutrients like saturated fat and added sugar.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Labeling", "ReferenceValue", "Applied"]
+  },
+  {
+    "Front": "Ingredient lists — spotting added sugars quickly",
+    "Back": "Scan for multiple sugar terms (e.g., syrups, “-ose” sugars, honey). Ingredients are listed by weight, so early placement indicates larger amounts.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Labeling", "Sugar", "Applied"]
+  },
+  {
+    "Front": "Dietary pattern emphasis for lipid improvement",
+    "Back": "Replace saturated fats with unsaturated fats and shift toward a plant-predominant pattern (legumes, whole grains, nuts, seeds, vegetables, fruits).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Guideline", "Fats", "CVD"]
+  },
+  {
+    "Front": "Sugar-sweetened beverages — counseling approach",
+    "Back": "Prioritize water and unsweetened beverages; reduce SSBs (sodas, energy drinks, sweetened teas) to lower added sugar intake rapidly.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Sugar", "Counseling", "Applied"]
+  },
+  {
+    "Front": "Avocados — quick profile",
+    "Back": "Avocados are rich in monounsaturated fats and fiber; useful as a replacement for saturated-fat sources in meals/snacks.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["FoodSources", "MUFA", "Fiber"]
+  },
+  {
+    "Front": "Eggs — key point for lipid counseling",
+    "Back": "Eggs contain cholesterol and fat; the overall pattern matters — emphasize plant-predominant choices and unsaturated fats.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Cholesterol", "Counseling"]
+  },
+  {
+    "Front": "Label literacy — two fast checks for patients",
+    "Back": "1) %DV for saturated fat and added sugars (aim low)  2) Ingredient list for added sugars and refined grains.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Labeling", "Applied", "High-Yield"]
+  },
+  {
+    "Front": "Snack patterns — practical swaps to reduce saturated fat",
+    "Back": "Swap fried/packaged snacks for nuts/seeds, fruit, or vegetables with hummus; use olive oil–based dressings instead of creamy dressings.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Applied", "Counseling", "Fats"]
+  },
+  {
+    "Front": "Culinary guidance — where added sugar hides",
+    "Back": "Sauces and dressings (ketchup, BBQ, teriyaki), yogurts, cereals, granola bars, coffee drinks, and “health” snacks often carry substantial added sugars.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Sugar", "Applied"]
+  },
+  {
+    "Front": "Plant-predominant diet — quick lipid mechanism",
+    "Back": "Higher fiber and unsaturated fats support LDL lowering; replacing SFA with MUFA/PUFA improves lipid profiles.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["CVD", "Fiber", "Fats"]
+  },
+  {
+    "Front": "Refined-grain bakery items — what to flag on labels",
+    "Back": "Look for enriched wheat flour and added sugars listed early; prefer products labeled 100% whole-grain with minimal added sugar.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Carbohydrate", "Labeling", "Applied"]
+  },
+  {
+    "Front": "Processed meats — two reasons they’re problematic",
+    "Back": "High in sodium/saturated fat and associated with higher cardiometabolic/cancer risk; emphasize plant proteins instead.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["CVD", "Cancer", "Applied"]
+  },
+  {
+    "Front": "Quick counseling script: cutting added sugar by half",
+    "Back": "Replace SSBs with water/unsweetened tea; swap sweetened yogurt/cereal for plain yogurt + fruit and plain oatmeal + nuts; check dressings and sauces.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Counseling", "Applied", "Sugar"]
+  },
+  [
+  {
+    "Front": "Top food categories contributing sodium in the U.S. diet",
+    "Back": "Mixed dishes (burgers, sandwiches, tacos, rice/pasta dishes, pizza, meat/seafood dishes, soups) contribute ~50% of sodium intake.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Sodium", "FoodSources", "High-Yield"]
+  },
+  {
+    "Front": "Sodium counseling — Jeff Novick’s ‘rule of thumb’",
+    "Back": "If sodium per serving (mg) is ≤ kcal per serving, a 2300-kcal diet will stay around 2300 mg sodium/day.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Sodium", "Counseling", "High-Yield"]
+  },
+  {
+    "Front": "Sodium intake thresholds to highlight for patients",
+    "Back": "General limit ≤2300 mg/day. Low-sodium intake is <1500 mg/day. Prepared/packaged foods can quickly exceed these thresholds.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Sodium", "ReferenceValue"]
+  },
+  {
+    "Front": "AHA stance on dietary cholesterol",
+    "Back": "Observational evidence does not show strong risk, but AHA advises dietary patterns inherently low in cholesterol (plant-predominant).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Cholesterol", "Guideline", "High-Yield"]
+  },
+  {
+    "Front": "Top sources of cholesterol in U.S. diet",
+    "Back": "Meats (≈42%), eggs (25%), grain products with animal ingredients (17%), milk/dairy (11%).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Cholesterol", "FoodSources"]
+  },
+  {
+    "Front": "FDA ruling on industrial trans fats",
+    "Back": "Declared unsafe; mandated removal from food supply. Associated with reduced cardiovascular events (ischemic heart disease).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["TransFat", "Policy", "High-Yield"]
+  },
+  {
+    "Front": "Where do trans fats still occur?",
+    "Back": "Naturally in some meat and dairy; historically in partially hydrogenated plant oils (doughnuts, cookies, crackers, cakes, etc.).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["TransFat", "FoodSources"]
+  },
+  {
+    "Front": "Foods classified as Group 1 carcinogens (Nutrition Objective 1)",
+    "Back": "Alcoholic beverages and processed meats (per IARC). Both carry sufficient evidence of carcinogenicity in humans.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Cancer", "Carcinogen", "High-Yield"]
+  },
+  {
+    "Front": "Vignette: Patient eats out daily, sodium 3500–4000 mg. What to recommend?",
+    "Back": "Counsel on checking labels, choosing lower-sodium entrées, asking for sauces/dressings on the side, and cooking at home to control sodium.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Sodium", "Counseling", "Applied"]
+  },
+  {
+    "Front": "Vignette: Patient reads ‘0 g trans fat’ but sees partially hydrogenated oil in ingredients. How to respond?",
+    "Back": "Explain labeling loophole (<0.5 g/serving can be rounded to 0). Advise avoiding products listing partially hydrogenated oils.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["TransFat", "Labeling", "Applied", "High-Yield"]
+  },
+  {
+    "Front": "Counseling: quick swaps to reduce sodium",
+    "Back": "Use herbs/spices, vinegar, or citrus instead of salt; choose unsalted nuts; opt for fresh/frozen vegetables over canned with added sodium.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Sodium", "Applied", "Counseling"]
+  },
+  {
+    "Front": "Counseling: quick swaps to reduce added sugars",
+    "Back": "Replace sugar-sweetened beverages with water or unsweetened tea; choose plain yogurt + fruit over sweetened yogurt; oatmeal over sugary cereals.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Sugar", "Applied", "Counseling"]
+  },
+  {
+    "Front": "Quick tip for interpreting %DV on labels",
+    "Back": "≈5% DV is low, ≈20% DV is high. Use to compare brands and choose lower sugar, sodium, or saturated fat options.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1",
+    "Difficulty": null,
+    "Tags": ["Labeling", "ReferenceValue", "High-Yield"]
+  }
   ]
 }
