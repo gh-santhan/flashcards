@@ -1,0 +1,30 @@
+{
+  "name": "Objective 1 – Components of Physical Activity",
+  "cards": [
+    {"Front":"Name the four core components of a comprehensive physical activity program.","Back":"Aerobic/endurance; resistance/strength; flexibility; balance/neuromotor.","Tags":["Objective1","Components","Definitions"]},
+    {"Front":"Define aerobic exercise in one sentence.","Back":"Rhythmic, sustained use of large muscle groups that stresses the cardiorespiratory system.","Tags":["Objective1","Aerobic","Definitions"]},
+    {"Front":"Define resistance training in one sentence.","Back":"Muscle contractions against external resistance to improve strength, muscular endurance, and lean mass.","Tags":["Objective1","Resistance","Definitions"]},
+    {"Front":"What does flexibility training target?","Back":"Joint-specific range of motion via muscle–tendon–ligament extensibility.","Tags":["Objective1","Flexibility","Definitions"]},
+    {"Front":"What does balance (neuromotor) training improve?","Back":"Static/dynamic postural control and tolerance to destabilizing stimuli.","Tags":["Objective1","Balance","Definitions"]},
+    {"Front":"List three hallmark benefits of aerobic training.","Back":"↓ all-cause/CVD mortality; ↓ several cancers; ↑ sleep/quality of life.","Tags":["Objective1","Aerobic","Benefits"]},
+    {"Front":"List five benefits of resistance training.","Back":"↓ injury; ↑ basal metabolic rate; ↓ fatigue; ↑ sleep; ↑ performance/strength; ↑ bone mineral density (early post-menopause); ↓ body fat; ↑ glucose tolerance/insulin action; ↓ low back pain; ↓ falls; ↑ mental health.","Tags":["Objective1","Resistance","Benefits"]},
+    {"Front":"Give two evidence-supported benefits of flexibility training.","Back":"↑ muscle length & joint ROM; aligns collagen during healing (especially when tissues are warmed).","Tags":["Objective1","Flexibility","Benefits"]},
+    {"Front":"Give two common balance drills used in clinic.","Back":"Single-leg stance; tandem or backward walking; wobble/foam surface drills.","Tags":["Objective1","Balance","Training"]},
+    {"Front":"Which component most directly improves VO₂max?","Back":"Aerobic (endurance) training.","Tags":["Objective1","Aerobic","Mechanisms"]},
+    {"Front":"Which component most directly improves bone mineral density?","Back":"Resistance training (and some impact/plyometric activities).","Tags":["Objective1","Resistance","Bone"]},
+    {"Front":"Which component has the most mixed evidence for preventing injury when done alone?","Back":"Flexibility training, in part because intensity/dose is hard to quantify.","Tags":["Objective1","Flexibility","Evidence"]},
+    {"Front":"Simple balance progression you can cue in clinic.","Back":"Wider → narrow stance → tandem → single-leg; then add eyes closed or unstable surfaces, or dual-tasking.","Tags":["Objective1","Balance","Progressions"]},
+    {"Front":"How do aerobic and resistance training typically affect HDL and LDL?","Back":"Small ↑ HDL; minimal ↓ LDL with either alone (larger lipid changes usually require diet).","Tags":["Objective1","Aerobic","Resistance","Lipids"]},
+    {"Front":"What underpins muscle hypertrophy at the cellular level?","Back":"Periods where muscle protein synthesis exceeds breakdown (positive net protein balance) via adequate training stimulus and nutrition.","Tags":["Objective1","Resistance","Physiology"]},
+    {"Front":"Cloze: Aerobic exercise uses {{_____}} in a {{_____}} manner.","Back":"large muscle groups; rhythmic, sustained","Tags":["Objective1","Cloze","Aerobic"]},
+    {"Front":"Cloze: Resistance training improves {{_____}}, {{_____}}, and {{_____}}.","Back":"strength; muscular endurance; lean mass","Tags":["Objective1","Cloze","Resistance"]},
+    {"Front":"Cloze: Flexibility is {{_____}}.","Back":"joint-specific range of motion","Tags":["Objective1","Cloze","Flexibility"]},
+    {"Front":"Cloze: Balance training enhances {{_____}} under {{_____}} conditions.","Back":"postural control; static and dynamic","Tags":["Objective1","Cloze","Balance"]},
+    {"Front":"Cloze: Aerobic + resistance alone typically cause {{_____}} and {{_____}}.","Back":"small ↑ HDL; minimal ↓ LDL","Tags":["Objective1","Cloze","Lipids"]},
+    {"Front":"Cloze: Muscle hypertrophy requires {{_____}}.","Back":"positive net protein balance (MPS > MPB)","Tags":["Objective1","Cloze","Physiology"]},
+    {"Front":"Cloze: Flexibility training has {{_____}} for injury prevention due to {{_____}}.","Back":"mixed evidence; hard-to-quantify intensity","Tags":["Objective1","Cloze","Flexibility"]},
+    {"Front":"Cloze: Balance programs in older adults {{_____}}.","Back":"reduce falls and related injuries","Tags":["Objective1","Cloze","Balance","Older-Adults"]},
+    {"Front":"Cloze: Flexibility sessions typically use {{_____}} per stretch, {{_____}} reps, about {{_____}} per muscle group.","Back":"10–30 seconds; 2–4; ~60 seconds total","Tags":["Objective1","Cloze","Flexibility","Programming"]},
+    {"Front":"Cloze: Resistance training frequency—train {{_____}}.","Back":"all major muscle groups ≥2 days/week","Tags":["Objective1","Cloze","Resistance","Programming"]}
+  ]
+}
