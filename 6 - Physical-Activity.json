@@ -25,6 +25,28 @@
     {"Front":"Cloze: Flexibility training has {{_____}} for injury prevention due to {{_____}}.","Back":"mixed evidence; hard-to-quantify intensity","Tags":["Objective1","Cloze","Flexibility"]},
     {"Front":"Cloze: Balance programs in older adults {{_____}}.","Back":"reduce falls and related injuries","Tags":["Objective1","Cloze","Balance","Older-Adults"]},
     {"Front":"Cloze: Flexibility sessions typically use {{_____}} per stretch, {{_____}} reps, about {{_____}} per muscle group.","Back":"10–30 seconds; 2–4; ~60 seconds total","Tags":["Objective1","Cloze","Flexibility","Programming"]},
-    {"Front":"Cloze: Resistance training frequency—train {{_____}}.","Back":"all major muscle groups ≥2 days/week","Tags":["Objective1","Cloze","Resistance","Programming"]}
+    {"Front":"Cloze: Resistance training frequency—train {{_____}}.","Back":"all major muscle groups ≥2 days/week","Tags":["Objective1","Cloze","Resistance","Programming"]},
+    {"Front":"Differentiate physical activity (PA) from exercise.","Back":"PA: any skeletal-muscle movement that raises energy expenditure above rest (occupational, transport, household, leisure). Exercise: a planned, structured, repetitive subset of PA performed to improve or maintain fitness.","Tags":["Objective2","Definitions"]},
+  {"Front":"Define sedentary behavior.","Back":"Any waking behavior ≤1.5 METs in a seated, reclined, or lying posture; has distinct determinants/effects and confers independent health risk.","Tags":["Objective2","Sedentary","Definitions"]},
+  {"Front":"Define “inactive” and “insufficiently active.”","Back":"Inactive: 0 min/week of MVPA. Insufficiently active: >0 but <150 min/week of MVPA.","Tags":["Objective2","Definitions"]},
+  {"Front":"Does meeting MVPA targets eliminate the harms of prolonged sitting?","Back":"No. Prolonged sedentary time independently increases morbidity and mortality; break up sitting even if you meet MVPA.","Tags":["Objective2","Sedentary","Risk"]},
+  {"Front":"Clinic prescription to break up sitting.","Back":"Take a 5-minute movement break every 50–60 minutes of sitting (walk, stairs, light calisthenics).","Tags":["Objective2","Sedentary","Counseling"]},
+  {"Front":"Do health benefits require reaching 150 min/week?","Back":"No. Benefits begin below 150 min/week; the biggest relative gains occur when moving from very low to modest activity.","Tags":["Objective2","Dose-Response"]},
+  {"Front":"What MET-hour range captures most mortality benefit?","Back":"Roughly 10–20 MET·h/week, with diminishing returns at higher volumes.","Tags":["Objective2","Dose-Response","METs"]},
+  {"Front":"Weekend-warrior pattern—what’s the bottom line?","Back":"Concentrating ≥150 min/week into 1–2 days lowers mortality vs sedentary; distributing across ≥3 days may reduce injury risk.","Tags":["Objective2","Dose-Response","Patterns"]},
+  {"Front":"Two acute (single-bout) effects of physical activity.","Back":"Improved executive function and transient reductions in blood pressure; reduced state anxiety; improved sleep quality.","Tags":["Objective2","Acute-Effects"]},
+  {"Front":"Two early training effects (days–weeks).","Back":"Improved insulin sensitivity/glycemic control and better sleep quality.","Tags":["Objective2","Acute-Effects","Metabolic"]},
+  {"Front":"Three long-term effects of regular physical activity.","Back":"Lower all-cause/CVD mortality; reduced T2D risk; improved physical function across the lifespan.","Tags":["Objective2","Chronic-Effects","Benefits"]},
+  {"Front":"Steps and health—what’s the practical message?","Back":"Use **steps/day** as a simple volume proxy: more is generally better with diminishing returns; there is **no magic 10,000**—focus on gradual increases from baseline.","Tags":["Objective2","Steps"]},
+  {"Front":"Step intensity—what cadence suggests moderate effort?","Back":"About **100 steps/min** is a practical marker for moderate intensity for many adults (individual variation applies).","Tags":["Objective2","Steps","Intensity"]},
+  {"Front":"Older adults and steps—what to emphasize?","Back":"Emphasize consistent daily stepping and breaking up sitting; moderate step goals (e.g., gradual increases of 1,000–2,000 steps/day from baseline) are effective and safer than aggressive jumps.","Tags":["Objective2","Steps","Older-Adults"]},
+  {"Front":"How to progress step goals from a low baseline.","Back":"Add ~1,000–2,000 steps/day above baseline over several weeks; pair with hourly 5-minute movement breaks.","Tags":["Objective2","Steps","Counseling"]},
+  {"Front":"Cloze: **Sedentary behavior** is {{_____}} in a {{_____}} posture.","Back":"≤1.5 METs; seated/reclined/lying","Tags":["Objective2","Cloze","Sedentary"]},
+  {"Front":"Cloze: Meeting MVPA targets {{_____}} offset risks from {{_____}}.","Back":"does not; prolonged sitting","Tags":["Objective2","Cloze","Sedentary"]},
+  {"Front":"Cloze: Take a {{_____}} movement break every {{_____}} minutes of sitting.","Back":"5-minute; 50–60","Tags":["Objective2","Cloze","Counseling"]},
+  {"Front":"Cloze: Largest relative mortality benefit around {{_____}} MET·h/week.","Back":"10–20","Tags":["Objective2","Cloze","Dose-Response"]},
+  {"Front":"Cloze: ‘Weekend-warrior’ = activity in {{_____}} days; still {{_____}} vs being sedentary.","Back":"1–2; beneficial","Tags":["Objective2","Cloze","Patterns"]},
+  {"Front":"Cloze: Moderate-intensity walking cadence ≈ {{_____}} steps/min (rule-of-thumb).","Back":"100","Tags":["Objective2","Cloze","Steps"]}
+  
   ]
 }
