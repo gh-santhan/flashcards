@@ -2111,6 +2111,198 @@
   "Section": "Objective 7 – Major nutrition studies",
   "Difficulty": null,
   "Tags": ["Vignette","PREDIMED","CVD","High-Yield"]
+},
+    {
+  "Front": "What lifestyle/diet patterns are associated with higher inflammatory biomarkers?",
+  "Back": "Western dietary patterns—especially higher red/processed meats, refined flours and sugars, saturated and trans fats—are associated with higher inflammatory biomarkers.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Inflammation","Diet Patterns","High-Yield"]
+},
+{
+  "Front": "Which dietary patterns are associated with lower inflammation?",
+  "Back": "Mediterranean and DASH patterns and diets with greater fruit and vegetable content are associated with lower inflammation; higher plant-food and antioxidant-rich patterns are protective.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Inflammation","Mediterranean","DASH","High-Yield"]
+},
+{
+  "Front": "What is the Dietary Inflammatory Index (DII)?",
+  "Back": "A tool quantifying the inflammatory potential of diets using ~45 food parameters (whole foods, macro/micronutrients, and constituents like flavonoids). Higher scores indicate more pro-inflammatory diets.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Inflammation","Index","Definition","High-Yield"]
+},
+{
+  "Front": "Name specific foods identified to regulate inflammation in a systematic review of clinical trials.",
+  "Back": "Cranberries, grapes, pomegranate, strawberries, wheat and whole-grain products, low-fat dairy, yogurt, green tea, cardamom, turmeric, soy foods, almonds, chia seeds, flaxseed, pistachios, algae oil, flaxseed oil, and grape seed oil.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Inflammation","FoodSources","High-Yield"]
+},
+{
+  "Front": "Do dairy products consistently reduce inflammation?",
+  "Back": "Evidence is mixed; the ability of dairy products to modify inflammation is unresolved and more research is needed.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Inflammation","Dairy","Evidence"]
+},
+{
+  "Front": "How do healthy dietary patterns relate to telomere length?",
+  "Back": "Observational data suggest antioxidative nutrients, higher fruit/vegetable intake, and Mediterranean-style patterns are associated with longer telomeres (a marker linked to aging).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Inflammation","Telomeres","High-Yield"]
+},
+{
+  "Front": "Anti- vs pro-inflammatory dietary patterns — quick summary.",
+  "Back": "Reduce inflammation: plant-forward patterns (vegetables/fruits), Mediterranean. Promote inflammation: Western diets with high red/processed meat and low vegetables.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Inflammation","Summary","High-Yield"]
+},
+{
+  "Front": "Define oxidation and oxidative stress in plain terms.",
+  "Back": "Oxidation involves loss of electrons; metabolism generates ROS/free radicals normally countered by endogenous antioxidants. Oxidative stress arises when excess free radicals accumulate beyond antioxidant defenses.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Oxidation","Definition","High-Yield"]
+},
+{
+  "Front": "Which patterns promote oxidative damage? Which protect against it?",
+  "Back": "Promote: Western patterns low in fiber/vegetables/fruits/legumes and high in refined grains, SSBs, and red/processed meat. Protect: plant-rich patterns (phytochemical-dense fruits/vegetables, dark-colored plants) and unsaturated fats; Mediterranean and DASH patterns.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Oxidation","Diet Patterns","High-Yield"]
+},
+{
+  "Front": "What happens to oils during high-temperature frying?",
+  "Back": "High-heat frying generates cytotoxic and genotoxic aldehydic lipid oxidation products (LOPs) that penetrate foods; repeated consumption may increase risk for CHD and cancer.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Oxidation","LOPs","High-Yield"]
+},
+{
+  "Front": "How do antioxidant-rich patterns affect HDL?",
+  "Back": "Mediterranean-style and antioxidant-rich patterns improve HDL functionality (e.g., enhanced cholesterol efflux capacity) and decrease HDL oxidation.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Oxidation","HDL","Mediterranean","High-Yield"]
+},
+{
+  "Front": "Name plant compounds that inhibit oxidation and potential carcinogenesis.",
+  "Back": "Polyphenols and carotenoids in herbal plants inhibit oxidation of lipids, proteins, and nucleic acids, preventing oxidizing chain reactions and inhibiting colon carcinogenesis.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Oxidation","Phytochemicals","High-Yield"]
+},
+{
+  "Front": "Define glycosylation and glycoconjugates.",
+  "Back": "Glycosylation attaches carbohydrate chains (glycans) to proteins/lipids, forming glycoconjugates; essential to many physiological and pathophysiological processes.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Glycosylation","Definition","High-Yield"]
+},
+{
+  "Front": "Why does glycosylation matter clinically?",
+  "Back": "Glycoconjugates are implicated in inflammatory responses, apoptosis, cancer metastasis, immune responses, and viral immune escape; dietary patterns may influence these pathways.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Glycosylation","Clinical","High-Yield"]
+},
+{
+  "Front": "How may plant-predominant diets influence glycosylation-related markers?",
+  "Back": "Data summarized here indicate plant-predominant patterns may improve inflammation-related markers linked to glycosylation compared with meat-rich diets.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Glycosylation","Diet Patterns"]
+},
+{
+  "Front": "Define epigenetics and list core mechanisms.",
+  "Back": "Epigenetics studies heritable gene-expression changes independent of DNA sequence. Mechanisms: DNA methylation, histone modification, and non-coding RNA–associated gene silencing.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Epigenetics","Definition","High-Yield"]
+},
+{
+  "Front": "Are epigenetic modifications reversible and what factors influence them?",
+  "Back": "Yes—epigenetic modifications are reversible. Influencing factors include age, diet, smoking, stress, and diseases (e.g., cancer).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Epigenetics","Mechanisms","High-Yield"]
+},
+{
+  "Front": "What did recent reviews conclude about diet and epigenetic aging?",
+  "Back": "Systematic reviews suggest anti-inflammatory diets associate with slower biological aging; the NU-Age pilot found a tailored Mediterranean intervention promoted epigenetic rejuvenation in older adults.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Epigenetics","Mediterranean","High-Yield"]
+},
+{
+  "Front": "What is the human gastrointestinal microbiome?",
+  "Back": "The diverse community of bacteria, viruses, and fungi in the intestinal tract; fundamental to host metabolic functions, affecting risks for IBD, type 2 diabetes, CVD, and cancer.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Microbiome","Definition","High-Yield"]
+},
+{
+  "Front": "How quickly can diet alter the microbiome?",
+  "Back": "Dietary patterns and environmental factors can change gut microbiota in real time.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Microbiome","Diet","High-Yield"]
+},
+{
+  "Front": "Which bacterial phyla dominate the human gut?",
+  "Back": "Five phyla predominate: Bacteroidetes, Firmicutes, Actinobacteria, Proteobacteria, and Verrucomicrobia; ~90% of species are Bacteroidetes or Firmicutes.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Microbiome","Phyla","High-Yield"]
+},
+{
+  "Front": "Vignette: Patient with elevated CRP asks for diet changes to lower inflammation. What do you recommend?",
+  "Back": "Adopt a Mediterranean/DASH-style, plant-forward pattern rich in fruits and vegetables; include functional foods with anti-inflammatory evidence (e.g., berries, green tea, turmeric, soy, nuts/seeds); minimize red/processed meat, refined flours/sugars, and trans/saturated fats.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Vignette","Inflammation","Counseling","High-Yield"]
+},
+{
+  "Front": "Vignette: A patient frequently eats deep-fried foods. What risk and swap do you counsel?",
+  "Back": "High-heat frying produces aldehydic lipid oxidation products (LOPs) linked to CHD and cancer risk. Swap to baking, steaming, or sautéing with unsaturated oils; increase antioxidant-rich plant foods.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Vignette","Oxidation","Counseling","High-Yield"]
+},
+{
+  "Front": "Vignette: Older adult asks whether diet can 'turn genes on/off'.",
+  "Back": "Explain epigenetic mechanisms are modifiable by diet; Mediterranean-style interventions in older adults have shown epigenetic rejuvenation markers; emphasize plant-predominant, antioxidant-rich foods.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
+  "Difficulty": null,
+  "Tags": ["Vignette","Epigenetics","Counseling","High-Yield"]
 }
 
 ]
