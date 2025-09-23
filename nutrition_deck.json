@@ -806,6 +806,103 @@
     "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
     "Difficulty": null,
     "Tags": ["FoodSources","Counseling"]
-  }
+  },
+    {
+  "Front": "What is the key principle when evaluating the healthfulness of a food?",
+  "Back": "Think beyond a single nutrient and consider the entire 'food package.' A food may be high in one nutrient but unhealthy overall if the rest of the package is not ideal.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 1 – General principles on foods to consume",
+  "Difficulty": null,
+  "Tags": ["Counseling","High-Yield"]
+},
+{
+  "Front": "Give an example of a food that is a top source of a nutrient but also a top source of a harmful component.",
+  "Back": "Whole-fat and 2% milk are top sources of calcium but also top sources of saturated fat.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 1 – General principles on foods to consume",
+  "Difficulty": null,
+  "Tags": ["Counseling","Fats","Saturated"]
+},
+{
+  "Front": "What is the key counseling question when considering nutrient sources?",
+  "Back": "Ask: 'Is there a better source or package to get these nutrients?'",
+  "Chapter": "Nutrition",
+  "Section": "Objective 1 – General principles on foods to consume",
+  "Difficulty": null,
+  "Tags": ["Counseling"]
+},
+{
+  "Front": "Define whole foods according to the patient-facing statement.",
+  "Back": "Whole foods are unrefined or minimally processed in such a way as to not substantially diminish their nutrient content. Frozen vegetables are not considered refined foods.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 1 – General principles on foods to consume",
+  "Difficulty": null,
+  "Tags": ["Definition","FoodSources"]
+},
+{
+  "Front": "What is a simple way to identify a whole food?",
+  "Back": "Whole foods often have no ingredient list because they are single ingredient foods (e.g., an apple or a carrot).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 1 – General principles on foods to consume",
+  "Difficulty": null,
+  "Tags": ["Counseling","FoodSources"]
+},
+{
+  "Front": "How can visualization help determine if something is a whole food?",
+  "Back": "If you can easily imagine everything that has happened to the food before eating it, it is likely a whole food (e.g., an apple picked, cleaned, shipped). In contrast, apple-flavored candy is processed.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 1 – General principles on foods to consume",
+  "Difficulty": null,
+  "Tags": ["Counseling","FoodSources"]
+},
+{
+  "Front": "Example: How does an apple progress from whole to highly processed?",
+  "Back": "Apple → applesauce → apple juice → apple fritter.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 1 – General principles on foods to consume",
+  "Difficulty": null,
+  "Tags": ["Counseling","FoodSources"]
+},
+{
+  "Front": "What is the general rule about whole foods and nutrition?",
+  "Back": "Generally, the more whole the food (the less processed), the more nutritious it is.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 1 – General principles on foods to consume",
+  "Difficulty": null,
+  "Tags": ["Counseling","High-Yield"]
+},
+{
+  "Front": "What is Michael Pollan’s signature summary guideline?",
+  "Back": "\"Eat food, not too much, mostly plants.\" Food = unprocessed natural foods; Not too much = appropriate portion sizes; Mostly plants = diet should consist mostly of plants (doesn’t require vegan/vegetarian).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 1 – General principles on foods to consume",
+  "Difficulty": null,
+  "Tags": ["Counseling","High-Yield"]
+},
+{
+  "Front": "Which food groups should be emphasized according to general principles?",
+  "Back": "Legumes, vegetables, fruits, whole-grains, nuts, and seeds.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 1 – General principles on foods to consume",
+  "Difficulty": null,
+  "Tags": ["FoodSources","High-Yield"]
+},
+{
+  "Front": "What does 'Eat a rainbow every day' mean?",
+  "Back": "It refers to eating a variety of plants of different colors, which come from different flavonoids and vitamins essential to disease prevention and health.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 1 – General principles on foods to consume",
+  "Difficulty": null,
+  "Tags": ["Counseling","FoodSources","High-Yield"]
+},
+{
+  "Front": "How does 'eating a rainbow' support nutrition adequacy?",
+  "Back": "Consuming a wide variety of plant foods daily allows most people to meet macronutrient and micronutrient needs, with possible supplementation for vitamins B12 and D.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 1 – General principles on foods to consume",
+  "Difficulty": null,
+  "Tags": ["Micronutrients","Counseling","High-Yield"]
+}
+
 ]
 }
