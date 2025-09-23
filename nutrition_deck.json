@@ -1550,6 +1550,159 @@
   "Section": "Objective 4 – Dietary patterns and disease risk",
   "Difficulty": null,
   "Tags": ["Vignette","Diet Patterns","Epidemiology","High-Yield"]
+},
+    {
+  "Front": "How does the USDA define a processed food item?",
+  "Back": "A processed food item is one that has been altered from its natural state. Processing can include methods such as washing, cutting, heating, pasteurizing, canning, freezing, fermenting, refining, and packaging.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Labeling","Definition","High-Yield"]
+},
+{
+  "Front": "Why are foods processed, and what are potential downsides?",
+  "Back": "Processing can improve affordability, safety, palatability, and shelf life. However, some processes introduce or concentrate undesirable components and can be associated with adverse health effects.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Counseling","Epidemiology"]
+},
+{
+  "Front": "List common food processing methods mentioned in the guidelines.",
+  "Back": "Washing, cutting, heating, pasteurizing, canning, freezing, fermenting, refining, and packaging.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Labeling","FoodSources"]
+},
+{
+  "Front": "Which additives in processed foods are commonly highlighted as undesirable?",
+  "Back": "Preservatives, colorings, flavorings, hydrogenated oils, and nitrites.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Labeling","TransFat","Counseling","High-Yield"]
+},
+{
+  "Front": "What is the NOVA food processing classification?",
+  "Back": "A system that groups foods by the extent and purpose of processing into four categories: unprocessed/minimally processed, processed culinary ingredients, processed foods, and ultra-processed foods.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Labeling","High-Yield"]
+},
+{
+  "Front": "NOVA Group 1 — define and give examples.",
+  "Back": "Unprocessed or minimally processed foods: edible parts of plants and animals, mushrooms, algae, and those altered by minimal processes that do not add substances (e.g., washed, cut, chilled). Examples: fresh or frozen vegetables and fruits, plain grains and legumes.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Labeling","FoodSources"]
+},
+{
+  "Front": "NOVA Group 2 — define and give examples.",
+  "Back": "Processed culinary ingredients derived from Group 1 by pressing, refining, grinding or milling. Examples: oils, butter, sugar, and salt.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Labeling","FoodSources"]
+},
+{
+  "Front": "NOVA Group 3 — define and give examples.",
+  "Back": "Processed foods made by adding Group 2 ingredients (oil, sugar, salt) to Group 1 foods. Examples: breads, cheeses, canned vegetables or legumes with added salt.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Labeling","FoodSources"]
+},
+{
+  "Front": "NOVA Group 4 — define and give examples.",
+  "Back": "Ultra-processed foods: formulations of ingredients, mostly of industrial use, with little or no whole foods, often with additives such as flavors, colors, emulsifiers, and preservatives. Examples: packaged snacks, reconstituted meat products, sweetened breakfast cereals, sugary drinks.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Labeling","FoodSources","High-Yield"]
+},
+{
+  "Front": "What are typical characteristics and health concerns of ultra-processed foods (UPFs)?",
+  "Back": "UPFs are often energy-dense, high in refined carbohydrates, added sugars, sodium, and unhealthy fats, and low in fiber and micronutrients. Higher consumption is associated with poorer diet quality and adverse health outcomes.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Epidemiology","High-Yield"]
+},
+{
+  "Front": "How do UPFs affect overall diet quality?",
+  "Back": "As UPF intake increases, minimally processed nutrient-dense foods are displaced, reducing intake of fiber and essential nutrients.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Epidemiology","Counseling"]
+},
+{
+  "Front": "Counseling message on processing level.",
+  "Back": "Prioritize unprocessed or minimally processed foods and limit ultra-processed products.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Counseling","High-Yield"]
+},
+{
+  "Front": "What are advanced glycation end-products (AGEs) and how do they form in cooking?",
+  "Back": "AGEs are compounds formed when proteins or lipids become glycated in the presence of sugars, particularly with dry-heat, high-temperature, and prolonged cooking methods.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Labeling","Counseling","High-Yield"]
+},
+{
+  "Front": "Which cooking methods tend to generate higher AGEs?",
+  "Back": "Dry-heat, high-temperature methods such as grilling, broiling, frying, and roasting.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Counseling","High-Yield"]
+},
+{
+  "Front": "Which cooking methods can help reduce dietary AGEs?",
+  "Back": "Moist-heat, lower-temperature, and shorter-duration methods such as boiling, steaming, stewing, poaching, and pressure cooking.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Counseling","High-Yield"]
+},
+{
+  "Front": "What preparation strategies can further lower AGEs when cooking?",
+  "Back": "Marinating (especially with acidic ingredients), adding moisture, using lower temperatures, and reducing cooking time.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Counseling"]
+},
+{
+  "Front": "Applied: Which ingredient list cues suggest an ultra-processed food?",
+  "Back": "A long list of industrial ingredients and additives (e.g., emulsifiers, artificial flavors, colors, preservatives) and few recognizable whole-food ingredients.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Vignette","Applied","Labeling"]
+},
+{
+  "Front": "Applied: Provide a minimally processed swap for a common UPF snack.",
+  "Back": "Example: Replace packaged sweetened breakfast cereal with cooked plain oats plus fruit and nuts; replace packaged chips with roasted chickpeas or nuts (portion-aware).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Vignette","Applied","Counseling"]
+},
+{
+  "Front": "Applied: How can a patient reduce AGEs when cooking meat at home?",
+  "Back": "Advise moist-heat methods (stewing, steaming, pressure cooking), marinating with acidic ingredients before cooking, lowering heat, and shortening cooking time.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
+  "Difficulty": null,
+  "Tags": ["Vignette","Applied","Counseling"]
 }
+
 ]
 }
