@@ -2303,6 +2303,166 @@
   "Section": "Objective 8 – Nutrition prescriptions by pathophysiology (inflammation, oxidation, glycosylation, epigenetics, microbiome)",
   "Difficulty": null,
   "Tags": ["Vignette","Epigenetics","Counseling","High-Yield"]
+},
+    {
+  "Front": "What is a nutrition prescription in lifestyle medicine?",
+  "Back": "A specific, written plan that translates dietary guidance into actionable, measurable instructions for a patient, tailored to their conditions and readiness to change.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Prescription","Counseling","High-Yield"]
+},
+{
+  "Front": "USPSTF counseling grades relevant to nutrition counseling in primary care.",
+  "Back": "Grade B: Provide intensive behavioral counseling on healthy diet and physical activity for adults who are overweight/obese and have CVD risk factors; benefit is moderate to substantial. Grade C: Offer counseling selectively for adults without risk factors, based on clinical judgment and patient preference.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["USPSTF","Counseling","High-Yield"]
+},
+{
+  "Front": "What precedent supports 'prescriptions' for lifestyle behaviors?",
+  "Back": "Exercise prescriptions in primary care improve physical activity; similar structured 'nutrition prescriptions' can drive adherence and outcomes.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Prescription","Exercise","Counseling"]
+},
+{
+  "Front": "Core elements of a nutrition prescription.",
+  "Back": "1) Food(s) to include or limit; 2) Amount (be exact); 3) Frequency/timing; 4) Duration (time-limited when appropriate); 5) Substitutions/swaps; 6) Follow-up plan and supports (RDN/health coach).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Prescription","Structure","High-Yield"]
+},
+{
+  "Front": "Positive vs negative nutrition prescriptions—what’s the difference?",
+  "Back": "Positive: add or swap in whole, healthful foods (e.g., legumes, whole grains, leafy greens). Negative: reduce or remove items (e.g., processed meats, sweets). Positive framing is generally better accepted; always offer swaps.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Prescription","Counseling"]
+},
+{
+  "Front": "When should SMART goals be used for nutrition prescriptions?",
+  "Back": "When crystallizing specific actions. Convert the plan into Specific, Measurable, Achievable, Relevant, Time-bound steps aligned with readiness to change.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Prescription","SMART","Counseling"]
+},
+{
+  "Front": "Stages-of-change lens for nutrition counseling.",
+  "Back": "Gauge readiness. For action-ready patients, co-create a written prescription; for contemplation/preparation, start with small, positive adds and education; reassess at follow-up.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Counseling","Behavior Change"]
+},
+{
+  "Front": "Referral targets to support a nutrition prescription.",
+  "Back": "Registered dietitian nutritionist, certified health coach, or other appropriate providers for education, meal planning, and accountability.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Counseling","Team-Based Care"]
+},
+{
+  "Front": "Hypertension—what should be reduced?",
+  "Back": "Reduce sodium; limit processed foods, cured/processed meats, and restaurant foods; minimize saturated and trans fats.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Hypertension","Sodium","Prescription","High-Yield"]
+},
+{
+  "Front": "Hypertension—what should be increased?",
+  "Back": "Adopt a DASH-style pattern: vegetables, fruits, whole grains, legumes, nuts; emphasize potassium-, magnesium-, and calcium-rich foods; choose low-fat dairy if used.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Hypertension","DASH","Prescription","High-Yield"]
+},
+{
+  "Front": "Hyperlipidemia—what should be reduced?",
+  "Back": "Trans fats and saturated fats (high-fat dairy, fatty/processed meats); processed foods; overall meat intake as appropriate.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Lipids","Saturated","TransFat","Prescription","High-Yield"]
+},
+{
+  "Front": "Hyperlipidemia—what should be increased?",
+  "Back": "Replace SFA/trans fats with polyunsaturated fats; emphasize complex carbohydrates from whole-plant foods; add plant sterols/stanols and viscous fibers (e.g., oatmeal, legumes, okra, eggplant; nuts such as almonds).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Lipids","PUFA","Fiber","Prescription","High-Yield"]
+},
+{
+  "Front": "Diabetes—what should be reduced?",
+  "Back": "Refined carbohydrates and added sugars; saturated fat; highly processed foods; proinflammatory foods (processed meat, red meat).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Diabetes","Added Sugars","Saturated","Prescription","High-Yield"]
+},
+{
+  "Front": "Diabetes—what should be increased?",
+  "Back": "Shift protein proportion toward plant sources; increase dietary fiber to at least ~30–35 g/day; emphasize antioxidant-rich foods (beta-carotene, lycopene, resveratrol sources; vitamin C/E foods; selenium sources).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Diabetes","Fiber","Antioxidants","Prescription","High-Yield"]
+},
+{
+  "Front": "Cancer prevention—antioxidants: foods vs supplements.",
+  "Back": "Antioxidant supplements do not reduce cancer risk, whereas antioxidant-rich whole foods are associated with risk reduction; prioritize foods over pills.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Cancer","Antioxidants","Counseling","High-Yield"]
+},
+{
+  "Front": "Breast cancer—dietary risk and protective factors.",
+  "Back": "Higher risk: obesity (BMI≥30), alcohol, increased meat intake. Protective: greater intake of soy, fruits, and vegetables.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Cancer","Breast","Prescription","High-Yield"]
+},
+{
+  "Front": "Prostate cancer—dietary protective signals.",
+  "Back": "Higher intake of lycopene- and selenium-rich foods is associated with lower prostate cancer risk.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Cancer","Prostate","Prescription","High-Yield"]
+},
+{
+  "Front": "Vignette: Patient drinks 2 L soda daily—how to write the first prescription?",
+  "Back": "Positive, realistic swap: Replace one 12-oz soda per day with flavored water for 2 weeks; add berries + ground flaxseed to breakfast daily. Reassess in 2 weeks; escalate as readiness improves.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Vignette","Counseling","SMART"]
+},
+{
+  "Front": "Vignette: Hypertension on high-sodium takeout—write a prescription.",
+  "Back": "For 4 weeks: Cook at home ≥5 nights/week; include 2 cups vegetables at lunch and dinner; choose no-salt-added canned beans 5×/week; aim sodium ≤2,300 mg/day; schedule BP check in 4 weeks.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Vignette","Hypertension","Sodium","SMART"]
+},
+{
+  "Front": "Vignette: Hyperlipidemia—portfolio-style add.",
+  "Back": "For 6 weeks: Add 1/3 cup oats AM + 1/4 cup almonds PM daily; swap butter for olive oil; replace red/processed meat with beans/lentils at ≥7 meals/week; repeat lipids in 8–12 weeks.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
+  "Difficulty": null,
+  "Tags": ["Vignette","Lipids","Portfolio","SMART"]
 }
 
 ]
