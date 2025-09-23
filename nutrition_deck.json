@@ -1702,6 +1702,415 @@
   "Section": "Objective 5 – Food processing, ultra-processed foods, and cooking methods",
   "Difficulty": null,
   "Tags": ["Vignette","Applied","Counseling"]
+},
+    {
+  "Front": "Nurses’ Health Study (NHS) — what type of study is it?",
+  "Back": "A large prospective cohort study of U.S. registered nurses with repeated assessments of diet and lifestyle over decades.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["NHS","Epidemiology","Cohort","High-Yield"]
+},
+{
+  "Front": "Nurses’ Health Study — who was studied and how were data collected?",
+  "Back": "U.S. female nurses; repeated biennial questionnaires for diseases and lifestyle; periodic food-frequency questionnaires (FFQs) to quantify dietary intake.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["NHS","Methods","FFQ"]
+},
+{
+  "Front": "Nurses’ Health Study — what was the core objective for diet research?",
+  "Back": "To examine long-term associations between dietary patterns/components and chronic disease risk (e.g., CVD, cancer, diabetes) while adjusting for lifestyle factors.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["NHS","Objective"]
+},
+{
+  "Front": "Nurses’ Health Study — headline findings relevant to plant-forward guidance.",
+  "Back": "Prudent plant-forward patterns, higher whole grains, nuts, legumes, fruits/vegetables are linked with lower chronic disease risk; Western patterns and trans fats are linked with higher risk.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["NHS","Diet Patterns","Findings","High-Yield"]
+},
+{
+  "Front": "Nurses’ Health Study — clinical takeaway for counseling.",
+  "Back": "Favor prudent/plant-predominant patterns and minimize Western pattern elements (red/processed meat, refined grains, sweets/trans fats).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["NHS","Counseling","High-Yield"]
+},
+
+{
+  "Front": "Health Professionals Follow-Up Study (HPFS) — what type of study is it?",
+  "Back": "A parallel prospective cohort to NHS in U.S. male health professionals with repeated diet and lifestyle assessment.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["HPFS","Epidemiology","Cohort","High-Yield"]
+},
+{
+  "Front": "HPFS — who was studied and how were controls handled?",
+  "Back": "~51k U.S. male health professionals; repeated FFQs and covariate updates; confounding addressed via multivariable adjustment (no randomized control arm; observational design).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["HPFS","Methods","FFQ"]
+},
+{
+  "Front": "HPFS — primary objective for nutrition analyses.",
+  "Back": "To evaluate dietary factors and patterns in relation to chronic disease outcomes in men, complementing NHS findings in women.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["HPFS","Objective"]
+},
+{
+  "Front": "HPFS — headline findings aligned with prudent patterns.",
+  "Back": "Higher intakes of whole grains, nuts, legumes, fruits/vegetables and prudent/Mediterranean-like patterns associate with lower cardiometabolic risk; Western patterns associate with higher risk.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["HPFS","Diet Patterns","Findings","High-Yield"]
+},
+{
+  "Front": "HPFS — counseling implication.",
+  "Back": "Reinforce plant-predominant, minimally processed foods; limit red/processed meats, refined grains, sweets, and high-saturated-fat foods.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["HPFS","Counseling"]
+},
+
+{
+  "Front": "Women’s Health Initiative (WHI) — what is it and how is it structured?",
+  "Back": "One of the largest U.S. women’s health programs including a massive observational cohort and several randomized clinical trials (e.g., diet, hormones).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["WHI","Cohort","RCT","High-Yield"]
+},
+{
+  "Front": "WHI — who was studied and what about controls?",
+  "Back": ">161k postmenopausal women at 40 centers; RCTs used randomized control arms; observational cohort used multivariable adjustments (no randomization).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["WHI","Methods"]
+},
+{
+  "Front": "WHI — diet/nutrition objective focus for this section.",
+  "Back": "To evaluate how dietary patterns and targeted dietary changes relate to cardiometabolic and cancer outcomes in postmenopausal women.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["WHI","Objective"]
+},
+{
+  "Front": "WHI — high-yield diet findings summarized in this chapter.",
+  "Back": "Plant-forward patterns and lower SFA/trans fat align with improved risk profiles; refined carbohydrates and trans fats associate with higher cardiometabolic risk.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["WHI","Findings","High-Yield"]
+},
+{
+  "Front": "WHI — actionable recommendation distilled for counseling.",
+  "Back": "Emphasize vegetables, fruits, whole grains, legumes, and unsaturated fats; reduce refined carbs, added sugars, and foods high in saturated/trans fats.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["WHI","Counseling"]
+},
+
+{
+  "Front": "EPIC-Oxford — what type of study and why is it unique?",
+  "Back": "A large prospective cohort within EPIC that includes many non-meat-eaters (vegetarians and vegans), enabling robust comparisons by diet group.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["EPIC-Oxford","Cohort","High-Yield"]
+},
+{
+  "Front": "EPIC-Oxford — who was studied and how were participants grouped?",
+  "Back": "Started in 1993; ~65k adults (20–97y) with high proportion of non-meat-eaters; grouped as meat-eaters (~33.8k), fish-eaters (~9.9k), vegetarians (~18.8k), vegans (~2.6k).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["EPIC-Oxford","Population","High-Yield"]
+},
+{
+  "Front": "EPIC-Oxford — original aim/objective highlighted here.",
+  "Back": "To compare nutrient intakes and chronic disease risk across defined diet groups (meat-eaters, fish-eaters, vegetarians, vegans).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["EPIC-Oxford","Objective"]
+},
+{
+  "Front": "EPIC-Oxford — macronutrient and micronutrient profile differences in vegans.",
+  "Back": "Vegans had lower % energy from saturated fat (~5% vs ~10–11% in meat-eaters); higher fiber and certain vitamins/minerals (e.g., B1, C, E, folate, Mg, Fe) but lower B12, D, Ca, Zn.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["EPIC-Oxford","Micronutrients","Findings","High-Yield"]
+},
+{
+  "Front": "EPIC-Oxford — diabetes and lipids signals by diet group.",
+  "Back": "Vegetarian/vegan groups showed lower diabetes risk vs meat-eaters; vegetarians had lower total and non-HDL cholesterol than meat-eaters, even lower in vegans (HDL differences smaller).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["EPIC-Oxford","Diabetes","Lipids","Findings","High-Yield"]
+},
+{
+  "Front": "EPIC-Oxford — counseling points that flow from findings.",
+  "Back": "Well-planned plant-predominant diets can improve lipid and glycemic risk profiles; ensure attention to B12, D, calcium, zinc (dietary or supplemental) in vegans.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["EPIC-Oxford","Counseling","High-Yield"]
+},
+
+{
+  "Front": "Adventist Health Studies (AHS) — what are they?",
+  "Back": "A family of large U.S. cohorts (e.g., Adventist Mortality Study, AHS-1, AHS-2) designed to identify protective components of Adventist lifestyle, including diet.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["AHS","Cohort","High-Yield"]
+},
+{
+  "Front": "AHS — who was studied, and what’s notable about AHS-2?",
+  "Back": "Tens of thousands of Adventists; AHS-2 (~96k) includes one of the largest dietary cohorts of Black Americans; repeated diet/lifestyle assessment with disease follow-up.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["AHS","Population","Disparities"]
+},
+{
+  "Front": "AHS — study objectives emphasized here.",
+  "Back": "To evaluate how vegetarian spectrum diets (vegan, lacto-ovo, pesco, semi-veg) relate to outcomes like cancer, CHD, stroke, type 2 diabetes, and obesity.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["AHS","Objective"]
+},
+{
+  "Front": "AHS — high-yield findings summarized.",
+  "Back": "Vegetarian spectrum patterns are associated with more favorable cardiometabolic profiles and lower rates of several chronic diseases compared with non-vegetarians.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["AHS","Diet Patterns","Findings","High-Yield"]
+},
+{
+  "Front": "AHS — counseling implication.",
+  "Back": "Counsel toward well-planned vegetarian spectrum patterns with attention to whole foods and adequate B12/vitamin D as clinically appropriate.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["AHS","Counseling"]
+},
+
+{
+  "Front": "Lyon Heart Trial — what type of study was it?",
+  "Back": "Randomized controlled secondary-prevention trial comparing a Mediterranean-style dietary pattern vs usual diet after first MI.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["Lyon","RCT","CVD","High-Yield"]
+},
+{
+  "Front": "Lyon Heart — who was studied and what were the controls?",
+  "Back": "N≈600 post-MI participants randomized to a Mediterranean-type diet (intervention) or a control/usual diet arm (control).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["Lyon","Population","Controls"]
+},
+{
+  "Front": "Lyon Heart — objective of the trial.",
+  "Back": "To test whether a Mediterranean-style dietary pattern reduces recurrent cardiovascular events and mortality after MI compared with a control diet.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["Lyon","Objective"]
+},
+{
+  "Front": "Lyon Heart — key findings.",
+  "Back": "Sustained cardioprotection up to ~4 years post-MI in the Mediterranean-style arm versus control, supporting secondary prevention benefits independent of lipid changes alone.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["Lyon","Findings","High-Yield"]
+},
+{
+  "Front": "Lyon Heart — clinical recommendation derived.",
+  "Back": "In secondary prevention after MI, counsel toward a Mediterranean-type dietary pattern as part of comprehensive risk reduction.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["Lyon","Counseling","High-Yield"]
+},
+
+{
+  "Front": "DASH Trial — what type of study and population?",
+  "Back": "Feeding RCT enrolling adults with diastolic BP 80–95 mmHg to test predefined eating patterns on blood pressure.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["DASH","RCT","Hypertension","High-Yield"]
+},
+{
+  "Front": "DASH — diet arms and controls.",
+  "Back": "Control diet vs the DASH pattern (rich in vegetables, fruits, whole grains, low-fat dairy; lower in sweets/SSBs, red/processed meat, sodium).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["DASH","Methods","Diet"]
+},
+{
+  "Front": "DASH — primary objective.",
+  "Back": "To determine whether the DASH dietary pattern lowers systolic and diastolic blood pressure vs a control diet.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["DASH","Objective"]
+},
+{
+  "Front": "DASH — headline findings.",
+  "Back": "DASH significantly reduced SBP and DBP vs control; effects were greater when background sodium intake was high (>~2,400 mg/day).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["DASH","Findings","Sodium","High-Yield"]
+},
+{
+  "Front": "DASH — clinical recommendation.",
+  "Back": "Use DASH as first-line diet for BP reduction; combine with sodium reduction for greater effect sizes.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["DASH","Counseling","High-Yield"]
+},
+
+{
+  "Front": "OmniHeart — what type of study and who was enrolled?",
+  "Back": "Feeding RCT with crossover design; adults with prehypertension or stage 1 hypertension tested three DASH-like patterns differing in macronutrient emphasis.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["OmniHeart","RCT","Hypertension","High-Yield"]
+},
+{
+  "Front": "OmniHeart — diet arms and control structure.",
+  "Back": "Isocaloric arms: carbohydrate-rich (DASH-like), protein-emphasized, and unsaturated-fat–emphasized; each participant consumed all three in crossover (within-person control).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["OmniHeart","Methods","Diet"]
+},
+{
+  "Front": "OmniHeart — objective.",
+  "Back": "To compare effects of macronutrient-tweaked DASH variants on BP, lipids, and estimated CHD risk.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["OmniHeart","Objective"]
+},
+{
+  "Front": "OmniHeart — findings relevant to counseling.",
+  "Back": "Protein- and unsat-fat–emphasized DASH variants improved lipids and further reduced estimated 10-yr CHD risk compared with carb-rich DASH, while maintaining BP benefit.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["OmniHeart","Findings","Lipids","High-Yield"]
+},
+{
+  "Front": "OmniHeart — clinical recommendation.",
+  "Back": "For patients needing lipid improvement plus BP control, favor protein- or unsaturated-fat–emphasized DASH variants over the carbohydrate-rich version.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["OmniHeart","Counseling","High-Yield"]
+},
+
+{
+  "Front": "PREDIMED — what kind of trial and who was enrolled?",
+  "Back": "Large primary-prevention RCT in older adults at high CVD risk (men ~55–80, women ~60–80), initially free of CVD at baseline.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["PREDIMED","RCT","CVD","High-Yield"]
+},
+{
+  "Front": "PREDIMED — diet arms and control.",
+  "Back": "Three arms: Mediterranean diet + extra-virgin olive oil; Mediterranean diet + mixed nuts; control reduced-fat diet. Randomized parallel groups.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["PREDIMED","Methods","Diet"]
+},
+{
+  "Front": "PREDIMED — predefined objective.",
+  "Back": "To test whether Mediterranean diet patterns reduce major cardiovascular events compared with a reduced-fat control pattern in high-risk adults.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["PREDIMED","Objective"]
+},
+{
+  "Front": "PREDIMED — headline primary outcomes.",
+  "Back": "Both Mediterranean diet arms showed fewer major cardiovascular events (MI, stroke, CV death) than the reduced-fat control, with larger differences among participants with better adherence.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["PREDIMED","Findings","High-Yield"]
+},
+{
+  "Front": "PREDIMED — clinical recommendation derived.",
+  "Back": "For high-risk adults without established CVD, recommend a Mediterranean dietary pattern (EVOO or nuts) for primary prevention of cardiovascular events.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["PREDIMED","Counseling","High-Yield"]
+},
+
+{
+  "Front": "Vignette — post-MI patient asks: Which RCT supports using a Mediterranean diet to prevent recurrent events?",
+  "Back": "Cite the Lyon Heart Trial: Mediterranean-type diet after MI showed sustained cardioprotection versus control for several years.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["Vignette","Lyon","CVD","High-Yield"]
+},
+{
+  "Front": "Vignette — patient with stage-1 HTN on a high-sodium diet asks about diet for BP lowering.",
+  "Back": "Use the DASH Trial: DASH lowers BP vs control; BP reductions are greater when baseline sodium intake is high, and combining DASH + sodium reduction enhances effect.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["Vignette","DASH","Sodium","High-Yield"]
+},
+{
+  "Front": "Vignette — patient needs lipid improvement and BP control; which feeding trial guides macronutrient tweaks?",
+  "Back": "OmniHeart: protein- or unsaturated-fat–emphasized DASH variants further improved lipids and reduced estimated CHD risk vs carb-rich DASH, while maintaining BP benefit.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["Vignette","OmniHeart","Lipids","High-Yield"]
+},
+{
+  "Front": "Vignette — high CVD-risk patient without ASCVD asks which eating pattern prevents first events in RCTs.",
+  "Back": "PREDIMED: Mediterranean diet (EVOO or nuts) reduced major cardiovascular events compared with reduced-fat control in high-risk adults.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 7 – Major nutrition studies",
+  "Difficulty": null,
+  "Tags": ["Vignette","PREDIMED","CVD","High-Yield"]
 }
 
 ]
