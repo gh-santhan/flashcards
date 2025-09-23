@@ -536,124 +536,276 @@
       ]
     },
   {
-    "Front": "What is the health risk of added sugars, and what threshold is emphasized?",
-    "Back": "Added sugars contribute to obesity, type 2 diabetes, and cardiovascular disease. A threshold of <10% of daily calories is emphasized.",
-    "Tags": ["Objective1", "Added Sugars", "Nutrition", "Guideline"],
+    "Front": "Define 'Underconsumed nutrient or food component'.",
+    "Back": "A nutrient or food component that is underconsumed by 5% or more of the population or in specific groups relative to the EAR, AI or other quantitative authoritative recommendations from the diet alone. Used to replace the term 'shortfall nutrient.'",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Definition","ReferenceValue"]
   },
   {
-    "Front": "What does the Nutrition Facts label %DV indicate for added sugars?",
-    "Back": "A %DV of 5% or less is low; 20% or more is high. This helps patients interpret added sugar content quickly.",
-    "Tags": ["Objective1", "Added Sugars", "Label", "Counseling"],
+    "Front": "Define 'Overconsumed nutrient or food component'.",
+    "Back": "A nutrient or food component that is consumed in potential excess of the UL, CDRR, or other quantitative authoritative recommendations by 5% or more of the population or in specific groups from the diet alone.",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Definition","ReferenceValue"]
   },
   {
-    "Front": "Which foods are top sources of added sugars in the American diet?",
-    "Back": "Sugar-sweetened beverages, desserts, candy, sweetened cereals, and yogurt with added sugar.",
-    "Tags": ["Objective1", "Added Sugars", "Food Sources"],
+    "Front": "Define 'Nutrient or food component of public health concern'.",
+    "Back": "Underconsumed and overconsumed nutrients or food components with supporting evidence through biochemical indices or functional status indicators, plus evidence that inadequacy or excess is directly related to a specific health condition, indicating public health relevance.",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Definition","High-Yield"]
   },
   {
-    "Front": "What is the health risk of saturated fat, and what replacement is recommended?",
-    "Back": "Saturated fat increases LDL cholesterol and CVD risk. Replacing it with unsaturated fats, especially polyunsaturated, lowers risk.",
-    "Tags": ["Objective1", "Saturated Fat", "CVD", "Guideline"],
+    "Front": "List examples of added sugars as they appear on labels.",
+    "Back": "Cane sugar, high fructose corn syrup, fructose, sucrose, dextrose, lactose, honey, brown sugar, turbinado sugar, beet sugar, raw sugar, malt syrup, maltose, rice syrup, agave, molasses, Florida crystals, fruit juice, and others.",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Added Sugars","Labeling"]
   },
   {
-    "Front": "Vignette: A patient avoids nuts due to fat content. How do you counsel?",
-    "Back": "Explain that nuts contain unsaturated fats, which are cardioprotective, and replacing saturated fats with these improves outcomes.",
-    "Tags": ["Objective1", "Vignette", "Fat Quality", "Counseling"],
+    "Front": "What proportion of calories comes from added sugars in US adults and children > 6 years?",
+    "Back": "Approximately 14.1% of total calories.",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Added Sugars","Epidemiology","High-Yield"]
+  },
+  {
+    "Front": "What is the WHO recommendation for added sugar intake?",
+    "Back": "Both adults and children should limit daily consumption of added sugar to less than 10% of total calories (less than 200 kcal in a 2,000 kcal diet; up to 12 teaspoons or 48 g), with a goal of less than 5% (less than 100 kcal; up to 6 teaspoons or 24 g).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Added Sugars","WHO","Guideline","ReferenceValue","High-Yield"]
+  },
+  {
+    "Front": "What is the AHA recommendation for added sugar intake?",
+    "Back": "Maximum of 100 kcal (6 teaspoons or 24 g) per day for women, children, and teens; no more than 150 kcal (9 teaspoons or 36 g) per day for men.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Added Sugars","AHA","Guideline","ReferenceValue","High-Yield"]
+  },
+  {
+    "Front": "List top sources of added sugar in the US diet.",
+    "Back": "Sugar-sweetened beverages, breads/rolls/tortillas, sweet bakery products, coffee and tea, sugars (honey, syrups, jams), fats and oils (salad dressings, condiments), ready-to-eat cereals, other prepared foods.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Added Sugars","FoodSources"]
+  },
+  {
+    "Front": "What is the AHA recommendation for saturated fat intake?",
+    "Back": "Limit saturated fat intake to no more than 5–6% of total calories.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Fats","Saturated","AHA","Guideline","ReferenceValue","High-Yield"]
+  },
+  {
+    "Front": "List foods high in saturated fat.",
+    "Back": "Higher fat cuts of beef, pork, lamb; salami; sausages; processed meats; fast foods (e.g., cheeseburgers); lard; butter; cheese; coconut oil; palm oil; palm kernel oil.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Fats","Saturated","FoodSources"]
+  },
+  {
+    "Front": "List plant foods containing notable saturated fat.",
+    "Back": "Nuts and seeds (typically 1–2 g per oz, Brazil nuts highest), avocados (2.1 g per 100 g), plant oils (1–2 g per tablespoon, coconut oil 12 g/tbsp, palm oil 7 g/tbsp).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Fats","Saturated","FoodSources"]
+  },
+  {
+    "Front": "Top 5 sources of saturated fat in US adult diets (by % contribution).",
+    "Back": "Cheese (16.5%), beef (9.1%), other fats and oils (8.9%), milk (6.7%), frankfurters/sausages/luncheon meats (6.7%).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Fats","Saturated","Epidemiology","FoodSources","High-Yield"]
+  },
+  {
+    "Front": "What proportion of sodium intake comes from mixed dishes?",
+    "Back": "Almost 50%, including burgers, sandwiches, tacos, rice/pasta/grain dishes, pizza, meat/poultry/seafood dishes, and soups.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Sodium","FoodSources","High-Yield"]
+  },
+  {
+    "Front": "List sources of sodium in the US diet (percent contributions).",
+    "Back": "Added outside the home (70.9%), inherent to food (14.2%), added in home preparation (5.6%), added at the table (4.9%).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Sodium","Epidemiology","FoodSources"]
+  },
+  {
+    "Front": "Counseling tip: What is Jeff Novick’s sodium rule of thumb?",
+    "Back": "If sodium per serving (mg) ≤ kcal per serving, someone eating 2,300 kcal/day will keep salt intake ≈2,300 mg/day or less.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Sodium","Counseling","High-Yield"]
+  },
+  {
+    "Front": "What sodium intake defines 'low sodium'?",
+    "Back": "Less than 1,500 mg/day.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Sodium","ReferenceValue"]
   },
   {
     "Front": "What is the AHA stance on dietary cholesterol?",
-    "Back": "Dietary cholesterol is no longer given a strict numeric limit, but diets inherently low in cholesterol (plant-based) are recommended for cardiovascular health.",
-    "Tags": ["Objective1", "Cholesterol", "Guideline", "AHA"],
+    "Back": "Food-based dietary guidance should emphasize overall dietary patterns inherently low in cholesterol.",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Cholesterol","AHA","Guideline","High-Yield"]
   },
   {
-    "Front": "What foods contribute most dietary cholesterol in U.S. diets?",
-    "Back": "Eggs and mixed egg dishes (25%), chicken (12%), beef (6%), processed meats (6%), and full-fat dairy.",
-    "Tags": ["Objective1", "Cholesterol", "Food Sources"],
+    "Front": "List foods high in cholesterol.",
+    "Back": "Eggs, dairy, cheese, organ meats, shellfish, other meats including poultry and fish.",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Cholesterol","FoodSources"]
   },
   {
-    "Front": "What are trans fats, and what did the FDA rule in 2015?",
-    "Back": "Trans fats are artificially hydrogenated oils that increase CVD risk. In 2015, the FDA ruled they are no longer 'generally recognized as safe' and should be eliminated.",
-    "Tags": ["Objective1", "Trans Fats", "FDA", "Guideline"],
+    "Front": "Top sources of cholesterol in the US diet (with %).",
+    "Back": "Meat (42%: 12% poultry, 12% mixed dishes, 8% red meat, 5% processed meat, 5% seafood), eggs (25%), grain products (17%), milk and products (11%).",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Cholesterol","Epidemiology","FoodSources","High-Yield"]
   },
   {
-    "Front": "How can trans fats still appear on labels despite bans?",
-    "Back": "If a product contains <0.5 g per serving, labels can still list '0 g trans fat.' Multiple servings may add up to harmful intake.",
-    "Tags": ["Objective1", "Trans Fats", "Label Loophole"],
+    "Front": "What did the FDA declare about trans fats?",
+    "Back": "The FDA declared trans fatty acids unsafe for human consumption and mandated removal from food. All manufacturing of artificial trans fats ended January 1, 2021.",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["TransFat","FDA","Guideline","High-Yield"]
   },
   {
-    "Front": "What is the general sodium intake limit recommended?",
-    "Back": "Limit sodium to <2300 mg/day for the general population; some groups benefit from <1500 mg/day.",
-    "Tags": ["Objective1", "Sodium", "Guideline", "ReferenceValue"],
+    "Front": "What health outcome improved after removal of industrial trans fats?",
+    "Back": "Associated with decreased cardiovascular risk, such as ischemic heart disease.",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["TransFat","Epidemiology"]
   },
   {
-    "Front": "What are the top sources of sodium in the U.S. diet?",
-    "Back": "Breads/rolls, pizza, sandwiches, cold cuts, soups, burritos/tacos, and savory snacks.",
-    "Tags": ["Objective1", "Sodium", "Food Sources"],
+    "Front": "List foods where trans fats are found.",
+    "Back": "Partially hydrogenated plant oils (processed foods), naturally in some meat and dairy products. Examples: animal foods (especially red/processed meats), butter (~10% of butter’s total fat), refined grain products (doughnuts, cookies, crackers, muffins, pies, cakes).",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["TransFat","FoodSources"]
   },
   {
-    "Front": "What is Jeff Novick’s 1:1 rule for sodium?",
-    "Back": "Aim for milligrams of sodium not exceeding calories per serving (mg ≤ kcal).",
-    "Tags": ["Objective1", "Sodium", "Counseling Tip"],
+    "Front": "Which foods/beverages are listed as Group 1 carcinogens to humans?",
+    "Back": "Alcoholic beverages and processed meats.",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["High-Yield","FoodSources","Epidemiology"]
   },
   {
-    "Front": "Which substances are classified as Group 1 carcinogens by WHO/IARC?",
-    "Back": "Processed meats and alcohol are classified as Group 1 carcinogens.",
-    "Tags": ["Objective1", "Carcinogens", "WHO", "High-Yield"],
+    "Front": "List nutrients underconsumed by the entire population.",
+    "Back": "Calcium*, choline, fiber*, magnesium, potassium*, vitamin A, vitamin C, vitamin D*, vitamin E, vitamin K. (* = nutrients of public health concern).",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Micronutrients","Minerals","Vitamins","High-Yield"]
   },
   {
-    "Front": "What is the effect of alcohol on cancer and chronic disease risk?",
-    "Back": "Alcohol increases the risk of several cancers, CVD, and liver disease. No safe threshold has been established.",
-    "Tags": ["Objective1", "Alcohol", "Cancer", "Guideline"],
+    "Front": "List foods high in calcium (%DV examples).",
+    "Back": "¼ cup cheese, ¼ cup tofu with calcium sulfate, ½ cup soybeans, 1 cup enriched cornmeal, 4 oz fortified plant milks, 1 cup cooked spinach/collards.",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Calcium","FoodSources"]
   },
   {
-    "Front": "Counseling vignette: A patient drinks 'moderate' alcohol daily for heart health. How do you respond?",
-    "Back": "Explain that evidence does not support alcohol for prevention. Highlight increased cancer risk and suggest alternative cardioprotective behaviors.",
-    "Tags": ["Objective1", "Alcohol", "Counseling", "Vignette"],
+    "Front": "List foods high in fiber (%DV examples).",
+    "Back": "½ cup black beans, ½ cup split peas, ½ cup lentils, ½ avocado, ½ cup raspberries, 7 dried figs, 3 tbsp flaxseed, 1 cup oatmeal, 1 cup whole-wheat pasta.",
     "Chapter": "Nutrition",
-    "Section": "Objective 1 – Dietary Components",
-    "Difficulty": ""
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Fiber","FoodSources"]
+  },
+  {
+    "Front": "List foods high in magnesium (%DV examples).",
+    "Back": "4 Brazil nuts; 1 oz almonds, cashews, or pine nuts; 2 oz peanuts; 1 oz cooked spinach; ½ cup amaranth; ¾ cup edamame; 2 oz dark chocolate.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Magnesium","FoodSources"]
+  },
+  {
+    "Front": "List foods high in potassium (%DV examples).",
+    "Back": "1 small baked potato, ½ cup yams, ½ avocado, ½ cup beans (white, adzuki, soy, black turtle, lima), 1 cup mashed banana, ½ cup beet greens, 5 dried apricots or dates.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Potassium","FoodSources"]
+  },
+  {
+    "Front": "List foods high in vitamin A (%DV examples).",
+    "Back": "½ cup cooked sweet potato or spinach, ½ cup raw carrots, 1 cup cantaloupe or butternut squash. (Beef liver: 4 oz exceeds UL 3,000 µg).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Vitamin A","FoodSources","ReferenceValue"]
+  },
+  {
+    "Front": "List foods high in vitamin C (%DV examples).",
+    "Back": "½ cup bok choy, parsley, daikon radish, broccoli, cantaloupe, Brussels sprouts, pineapple, cabbage, mustard greens, papaya, green peas, kale, tomatoes, strawberries, turnip greens, oranges, guava, kiwi, mango, red peppers.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Vitamin C","FoodSources"]
+  },
+  {
+    "Front": "List foods high in vitamin D (%DV examples).",
+    "Back": "½ cup salmon or other high-fat fish, 1 cup fortified milk (dairy or nondairy), 1 cup fortified cereals.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Vitamin D","FoodSources"]
+  },
+  {
+    "Front": "List foods high in vitamin E (%DV examples).",
+    "Back": "1 oz sunflower seeds, almonds, or hazelnuts; 1 tbsp sunflower or safflower oils; 1 small trout fillet (113 g).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["Vitamin E","FoodSources"]
+  },
+  {
+    "Front": "What are the top food groups to consume based on nutrients per kcal?",
+    "Back": "Vegetables (including mushrooms), herbs and spices, fruits, legumes, whole grains, nuts, seeds.",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["FoodSources","High-Yield"]
+  },
+  {
+    "Front": "List foods to avoid/limit based on calorie density and low nutrient density.",
+    "Back": "Sugar-sweetened beverages, desserts/sweet snacks, sandwiches (esp. with processed meats), added oils from tropical plants (coconut, palm kernel, palm oil), added fats (butter, shortening, lard), fried foods, red and processed meats (hot dogs, sausages, ham, luncheon meats), refined grains (white).",
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Assess food intake patterns and nutrients of deficit and excess",
+    "Difficulty": null,
+    "Tags": ["FoodSources","Counseling"]
   }
 ]
 }
