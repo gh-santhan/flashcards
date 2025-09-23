@@ -2463,6 +2463,174 @@
   "Section": "Objective 9 – Write evidence-based nutrition prescriptions",
   "Difficulty": null,
   "Tags": ["Vignette","Lipids","Portfolio","SMART"]
+},
+    {
+  "Front": "Objective 10 focus",
+  "Back": "Describe when to refer to a lifestyle-medicine trained registered dietitian (RDN) to translate and further personalize nutrition prescriptions.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["Definition","High-Yield"]
+},
+{
+  "Front": "Role of the physician/provider in nutrition assessment",
+  "Back": "Obtain baseline H&P; identify risk factors and current diagnoses; create a treatment framework and explain the role of nutrition for the patient’s conditions; initiate first-line counseling and orders; coordinate the team.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["Counseling","Team-Based Care"]
+},
+{
+  "Front": "Role of the registered dietitian (RDN)",
+  "Back": "Assess and monitor nutrition status; determine macro- and micronutrient needs/deficiencies; develop individualized dietary recommendations; coach toward goals with medical history in mind; reinforce and operationalize the clinician’s prescription.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["RDN","Team-Based Care","High-Yield"]
+},
+{
+  "Front": "Indications for referral to an RDN — general",
+  "Back": "Need for individualized meal planning beyond brief counseling; complex comorbidity; poor response to initial counseling; patient requests detailed food plans or troubleshooting; need for behavior-change coaching and monitoring.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["RDN","Indications","High-Yield"]
+},
+{
+  "Front": "Indications for referral — nutrition risk or special populations",
+  "Back": "Unintentional weight loss or gain; suspected malnutrition; pregnancy/lactation; pediatrics; older adults; food allergies or intolerances; celiac disease; eating disorders; food insecurity.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["RDN","Indications"]
+},
+{
+  "Front": "Indications for referral — disease-specific management",
+  "Back": "Diabetes (medical nutrition therapy), CKD or nephrolithiasis, liver disease, CHF, IBD/IBS, severe hyperlipidemia, hypertension requiring intensive sodium reduction, GI disorders affecting absorption, bariatric pre/post-op needs.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["RDN","Indications","Disease"]
+},
+{
+  "Front": "Indications for referral — micronutrient concerns",
+  "Back": "Suspected or documented vitamin/mineral deficiencies (e.g., B12, D, iron/ferritin, calcium, zinc); complex supplementation planning (vegan/vegetarian, malabsorption).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["RDN","Micronutrients"]
+},
+{
+  "Front": "Indications for referral — performance & special goals",
+  "Back": "Athletes/performance nutrition, weight-class sports, chronic GI symptoms with food triggers, severe picky eating, cultural/religious dietary pattern planning.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["RDN","Indications"]
+},
+{
+  "Front": "Nutrition assessment — Anthropometrics (A)",
+  "Back": "Weight, height, BMI, waist circumference; track trends over time.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["Assessment","Anthropometrics","High-Yield"]
+},
+{
+  "Front": "Nutrition assessment — Biochemical (B): common labs",
+  "Back": "Sodium, potassium, hemoglobin, hematocrit, glucose, HbA1c, albumin, total cholesterol, LDL-C, HDL-C, triglycerides, calcium, vitamin D, vitamin B12, iron, ferritin.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["Assessment","Labs","High-Yield"]
+},
+{
+  "Front": "Interpreting labs for nutrition status",
+  "Back": "Interpret in context of medical history, current diagnoses, medications, hydration status, and acute illness; confirm abnormalities and re-check when appropriate.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["Assessment","Labs"]
+},
+{
+  "Front": "Nutrition assessment — Clinical (C)",
+  "Back": "Age, sex, medical/surgical history; medications; allergies/intolerances; GI symptoms; physical exam findings related to nutrition.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["Assessment","Clinical"]
+},
+{
+  "Front": "Nutrition assessment — Dietary (D) & history",
+  "Back": "Weight history (highs/lows, recent change); typical intake; meal timing; beverages; supplements; pattern (e.g., vegan, vegetarian); access/cost barriers; cultural preferences.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["Assessment","Dietary","High-Yield"]
+},
+{
+  "Front": "Behavioral strategies often initiated before/with referral",
+  "Back": "Food & activity journal; consistent meal schedule; mindful eating (slow down, chew well; attend to hunger/satiety); identify triggers and environmental cues; CBT techniques (self-monitoring, structure, rewards, social support, cognitive restructuring, stress management).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["Counseling","Behavior Change"]
+},
+{
+  "Front": "Team-based approach for durable change",
+  "Back": "Combine clinician oversight with RDN visits, health coaching, and community resources; schedule follow-ups for accountability and titration of goals.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["Team-Based Care","Counseling"]
+},
+{
+  "Front": "What to include in an RDN referral",
+  "Back": "Diagnosis and goals; pertinent history; relevant labs and medications; nutrition prescription to date; barriers and patient preferences; urgency; follow-up plan and communication method.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["RDN","Referral","Practical"]
+},
+{
+  "Front": "Follow-up cadence after referral",
+  "Back": "Set specific intervals (e.g., 2–4 weeks initially, then monthly) to review progress, labs, anthropometrics, adherence, and adjust the care plan collaboratively.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["Follow-up","Team-Based Care"]
+},
+{
+  "Front": "Vignette — persistent A1c 8.4% despite initial counseling: what next?",
+  "Back": "Refer to an RDN for medical nutrition therapy to individualize carbohydrate patterning, fiber targets, meal timing, and troubleshooting; coordinate medication and lab follow-up.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["Vignette","Diabetes","RDN","High-Yield"]
+},
+{
+  "Front": "Vignette — CKD with hyperkalemia on ACEi: who optimizes diet safely?",
+  "Back": "Refer to an RDN experienced in CKD to manage potassium, phosphorus, protein, and fluid targets, and align with nephrology plan.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["Vignette","CKD","RDN"]
+},
+{
+  "Front": "Vignette — unintentional 8% weight loss in 3 months with low albumin",
+  "Back": "Urgent RDN referral for malnutrition assessment, calorie/protein prescription, and monitoring; evaluate for underlying illness and coordinate with GI/oncology as needed.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["Vignette","Malnutrition","RDN","High-Yield"]
+},
+{
+  "Front": "Vignette — newly vegan patient post-bariatric surgery",
+  "Back": "Refer to RDN for staged texture advancement, protein adequacy, and micronutrient protocol (B12, iron, D, calcium), and to prevent deficiencies.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 10 – Indications for referral to a lifestyle-medicine trained registered dietitian",
+  "Difficulty": null,
+  "Tags": ["Vignette","Bariatric","Vegan","RDN","High-Yield"]
 }
 
 ]
