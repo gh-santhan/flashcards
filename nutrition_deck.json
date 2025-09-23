@@ -534,6 +534,129 @@
         "Macronutrients",
         "High-Yield"
       ]
-    }
+    },
+    [
+  {
+    "Front": "What is the health risk of added sugars, and what threshold is emphasized?",
+    "Back": "Added sugars contribute to obesity, type 2 diabetes, and cardiovascular disease. A threshold of <10% of daily calories is emphasized.",
+    "Tags": ["Objective1", "Added Sugars", "Nutrition", "Guideline"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  },
+  {
+    "Front": "What does the Nutrition Facts label %DV indicate for added sugars?",
+    "Back": "A %DV of 5% or less is low; 20% or more is high. This helps patients interpret added sugar content quickly.",
+    "Tags": ["Objective1", "Added Sugars", "Label", "Counseling"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  },
+  {
+    "Front": "Which foods are top sources of added sugars in the American diet?",
+    "Back": "Sugar-sweetened beverages, desserts, candy, sweetened cereals, and yogurt with added sugar.",
+    "Tags": ["Objective1", "Added Sugars", "Food Sources"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  },
+  {
+    "Front": "What is the health risk of saturated fat, and what replacement is recommended?",
+    "Back": "Saturated fat increases LDL cholesterol and CVD risk. Replacing it with unsaturated fats, especially polyunsaturated, lowers risk.",
+    "Tags": ["Objective1", "Saturated Fat", "CVD", "Guideline"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  },
+  {
+    "Front": "Vignette: A patient avoids nuts due to fat content. How do you counsel?",
+    "Back": "Explain that nuts contain unsaturated fats, which are cardioprotective, and replacing saturated fats with these improves outcomes.",
+    "Tags": ["Objective1", "Vignette", "Fat Quality", "Counseling"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  },
+  {
+    "Front": "What is the AHA stance on dietary cholesterol?",
+    "Back": "Dietary cholesterol is no longer given a strict numeric limit, but diets inherently low in cholesterol (plant-based) are recommended for cardiovascular health.",
+    "Tags": ["Objective1", "Cholesterol", "Guideline", "AHA"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  },
+  {
+    "Front": "What foods contribute most dietary cholesterol in U.S. diets?",
+    "Back": "Eggs and mixed egg dishes (25%), chicken (12%), beef (6%), processed meats (6%), and full-fat dairy.",
+    "Tags": ["Objective1", "Cholesterol", "Food Sources"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  },
+  {
+    "Front": "What are trans fats, and what did the FDA rule in 2015?",
+    "Back": "Trans fats are artificially hydrogenated oils that increase CVD risk. In 2015, the FDA ruled they are no longer 'generally recognized as safe' and should be eliminated.",
+    "Tags": ["Objective1", "Trans Fats", "FDA", "Guideline"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  },
+  {
+    "Front": "How can trans fats still appear on labels despite bans?",
+    "Back": "If a product contains <0.5 g per serving, labels can still list '0 g trans fat.' Multiple servings may add up to harmful intake.",
+    "Tags": ["Objective1", "Trans Fats", "Label Loophole"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  },
+  {
+    "Front": "What is the general sodium intake limit recommended?",
+    "Back": "Limit sodium to <2300 mg/day for the general population; some groups benefit from <1500 mg/day.",
+    "Tags": ["Objective1", "Sodium", "Guideline", "ReferenceValue"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  },
+  {
+    "Front": "What are the top sources of sodium in the U.S. diet?",
+    "Back": "Breads/rolls, pizza, sandwiches, cold cuts, soups, burritos/tacos, and savory snacks.",
+    "Tags": ["Objective1", "Sodium", "Food Sources"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  },
+  {
+    "Front": "What is Jeff Novick’s 1:1 rule for sodium?",
+    "Back": "Aim for milligrams of sodium not exceeding calories per serving (mg ≤ kcal).",
+    "Tags": ["Objective1", "Sodium", "Counseling Tip"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  },
+  {
+    "Front": "Which substances are classified as Group 1 carcinogens by WHO/IARC?",
+    "Back": "Processed meats and alcohol are classified as Group 1 carcinogens.",
+    "Tags": ["Objective1", "Carcinogens", "WHO", "High-Yield"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  },
+  {
+    "Front": "What is the effect of alcohol on cancer and chronic disease risk?",
+    "Back": "Alcohol increases the risk of several cancers, CVD, and liver disease. No safe threshold has been established.",
+    "Tags": ["Objective1", "Alcohol", "Cancer", "Guideline"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  },
+  {
+    "Front": "Counseling vignette: A patient drinks 'moderate' alcohol daily for heart health. How do you respond?",
+    "Back": "Explain that evidence does not support alcohol for prevention. Highlight increased cancer risk and suggest alternative cardioprotective behaviors.",
+    "Tags": ["Objective1", "Alcohol", "Counseling", "Vignette"],
+    "Chapter": "Nutrition",
+    "Section": "Objective 1 – Dietary Components",
+    "Difficulty": ""
+  }
+]
+
   ]
 }
