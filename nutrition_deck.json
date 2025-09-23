@@ -1022,7 +1022,158 @@
   "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
   "Difficulty": null,
   "Tags": ["Added Sugars","Labeling","Counseling","High-Yield"]
+},
+    {
+  "Front": "What was the purpose of ACLM’s 2021–2022 meta-epidemiological study on dietary guidelines?",
+  "Back": "To assess commonalities among global dietary guidelines and evaluate alignment with ACLM’s dietary position statement.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Guidelines","ACLM","High-Yield"]
+},
+{
+  "Front": "How many dietary guidelines were included in ACLM’s meta-epidemiological study, and from what period?",
+  "Back": "78 clinical practice guidelines published between 2010 and 2021.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Guidelines","Epidemiology","High-Yield"]
+},
+{
+  "Front": "What proportion of guidelines in the ACLM meta-study came from major medical professional societies?",
+  "Back": "83% were from major medical professional societies.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Guidelines","Epidemiology","High-Yield"]
+},
+{
+  "Front": "What were the main areas of comparison in the ACLM study of global dietary guidelines?",
+  "Back": "1. Overall dietary patterns\n2. Major food groups\n3. Food components (salt, saturated fat, protein, sugar, etc.).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Guidelines","High-Yield"]
+},
+{
+  "Front": "Who issues the US Dietary Guidelines and how often are they updated?",
+  "Back": "They are jointly issued by the USDA and HHS every 5 years.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["US","Guidelines","Policy","High-Yield"]
+},
+{
+  "Front": "What process concern exists regarding the US Dietary Guidelines?",
+  "Back": "After the Scientific Report is drafted, USDA and HHS consider evidence and public comment, allowing industry and special interests to influence the final guidelines, causing discrepancies between science and recommendations.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["US","Guidelines","Policy","High-Yield"]
+},
+{
+  "Front": "What did the National Academies recommend in 2017 about the US dietary guideline process?",
+  "Back": "They called for an overhaul of the process to eliminate bias.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["US","Guidelines","Policy","High-Yield"]
+},
+{
+  "Front": "What are Canada’s key dietary guideline messages?",
+  "Back": "1. Nutritious foods are the foundation of healthy eating.\n2. Eat vegetables, fruits, whole grains, and protein foods regularly, with emphasis on plant-based proteins.\n3. Replace foods high in saturated fat with those high in unsaturated fat.\n4. Water should be the beverage of choice.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Canada","Guidelines","Counseling","High-Yield"]
+},
+{
+  "Front": "A 45-year-old man with hypertension asks what beverage should be prioritized according to Canada’s dietary guidelines. What is the correct counseling point?",
+  "Back": "Water should be the beverage of choice.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Vignette","Canada","Counseling","High-Yield"]
+},
+{
+  "Front": "You are reviewing nutrition guidelines across multiple countries. What three major domains are consistently compared across guidelines?",
+  "Back": "Overall dietary patterns, major food groups, and key food components such as salt, saturated fat, protein, and sugar.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Vignette","Guidelines","High-Yield"]
+},
+{
+  "Front": "A patient asks why the US dietary guidelines sometimes seem inconsistent with the latest scientific evidence. What is one reason?",
+  "Back": "The guideline process allows industry and special interests to influence the final recommendations after public comment, leading to discrepancies between science and final guidelines.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Vignette","US","Policy","High-Yield"]
+},
+{
+  "Front": "A nutrition researcher summarizes the findings of a meta-epidemiological study of global dietary guidelines. Which professional groups authored most of the guidelines included?",
+  "Back": "83% were authored by major medical professional societies.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Vignette","Guidelines","Epidemiology","High-Yield"]
+},
+    {
+  "Front": "According to the ACLM review of global guidelines, which three food groups were most frequently encouraged, and by what percentages?",
+  "Back": "Vegetables (74%), fruit (69%), whole grains (58%).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Guidelines","FoodSources","Epidemiology","High-Yield"]
+},
+{
+  "Front": "Beyond the top three, which categories had encouraged intake and what were the percentages?",
+  "Back": "Legumes/pulses (47%), any nuts and seeds (44%), lowfat dairy (38%), any fish/seafood (36%).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Guidelines","FoodSources","Epidemiology","High-Yield"]
+},
+{
+  "Front": "Which food groups were most frequently discouraged across guidelines, and by what percentages?",
+  "Back": "Red meat (32% discouraged intake), processed meat (27%), refined grains (19%), fatty meat (e.g., high-fat meats, fatty cuts of meat, meat fat, or organ meats; 12%).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Guidelines","FoodSources","Epidemiology","High-Yield"]
+},
+{
+  "Front": "Which items were NOT explicitly recommended to include/increase by any of the reviewed guidelines?",
+  "Back": "Fatty meat, red meat, full-fat dairy, refined grains, or salted nuts.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Guidelines","FoodSources","High-Yield"]
+},
+{
+  "Front": "Canada’s guidelines—how should protein foods be chosen?",
+  "Back": "Eat protein foods regularly with an emphasis on plant-based more often (e.g., legumes, nuts, seeds, tofu, fortified soy beverage).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Canada","Guidelines","Counseling","High-Yield"]
+},
+{
+  "Front": "Vignette: A clinic wants to align its cafeteria with global dietary guideline consensus. Which three food groups should be prioritized most strongly based on frequency of encouragement in guidelines?",
+  "Back": "Vegetables, fruit, and whole grains (encouraged in 74%, 69%, and 58% of guidelines, respectively).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Vignette","Guidelines","FoodSources","High-Yield"]
+},
+{
+  "Front": "Vignette: A patient asks whether guidelines typically encourage adding red meat for protein. What does the cross-guideline analysis show?",
+  "Back": "Red meat was discouraged in 32% of guidelines and was not explicitly recommended to include/increase by any reviewed guideline.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
+  "Difficulty": null,
+  "Tags": ["Vignette","Guidelines","FoodSources","High-Yield"]
 }
-
 ]
 }
