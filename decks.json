@@ -3,6 +3,7 @@
     { "name": "Chapter 1 – Intro to LM", "file": "chapter1.json" },
     { "name": "Chapter 2 – Behavior Change", "file": "chapter2-behavior-change.json" },
     { "name": "Chapter 3 – Clinical Processes", "file": "chapter3-clinical.json" },
-    { "name": "Chapter 5 – Nutrition", "file": "nutrition_deck.json" }
+    { "name": "Chapter 5 – Nutrition", "file": "nutrition_deck.json" },
+    { "name": "Chapter 6 – Physical Activity", "file": "6 - Physical-Activity.json" } 
   ]
 }
