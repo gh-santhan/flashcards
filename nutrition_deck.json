@@ -1174,6 +1174,382 @@
   "Section": "Objective 3 – Commonalities and key messages of global dietary guidelines",
   "Difficulty": null,
   "Tags": ["Vignette","Guidelines","FoodSources","High-Yield"]
+},
+    {
+  "Front": "What Western lifestyle factor did Burkitt link to 'diseases of affluence'?",
+  "Back": "Inadequate dietary fiber, associated with diseases such as ischemic heart disease, gallstones, appendicitis, diverticulosis, colorectal cancer, hemorrhoids, varicose veins, hernia, and obesity.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Fiber","Epidemiology","High-Yield"]
+},
+{
+  "Front": "Typical Western (SAD) diet—what are its core features?",
+  "Back": "Low in whole plant foods (whole grains, vegetables, fruits, legumes); high in red/processed meat, fat (including trans fat), sodium, processed foods, added sugar, and calories.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","FoodSources","High-Yield"]
+},
+{
+  "Front": "How much sodium intake in the US comes from purchased foods and restaurants?",
+  "Back": "About 70% of sodium intake comes from purchased foods and restaurants.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Sodium","Epidemiology","High-Yield"]
+},
+{
+  "Front": "What proportion of energy intake comes from ultra-processed foods (UPFs) in the US, and how many kcal do added sugars contribute?",
+  "Back": "UPFs make up ~60% of energy intake; added sugars contribute ~266 kcal/day.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Added Sugars","Epidemiology","High-Yield"]
+},
+{
+  "Front": "UPF intake—what is the mortality risk signal with higher consumption?",
+  "Back": "More than 4 servings/day (vs <2/day) was associated with a 62% increased risk of all-cause mortality; each additional daily UPF serving adds an 18% increased risk of death.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Epidemiology","High-Yield"]
+},
+{
+  "Front": "Ultra-processed foods (UPFs)—definition and nutrient profile.",
+  "Back": "UPFs are made mostly from substances extracted from foods and have many added ingredients (e.g., sugar, fat, artificial colors, preservatives); they tend to be 'nutrient-poor' with few naturally occurring essential nutrients.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Labeling","Epidemiology","High-Yield"]
+},
+{
+  "Front": "UPFs and diet quality—what happens as UPF intake rises?",
+  "Back": "The more UPFs consumed, the greater the risk of a diet lacking important nutrients, with higher refined carbohydrate, added sugar, and sodium intake.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Epidemiology"]
+},
+{
+  "Front": "Western diet and obesity—what role do UPFs play?",
+  "Back": "UPFs are considered a major contributor to the US obesity epidemic and are directly associated with high all-cause mortality in large cohorts.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Epidemiology","High-Yield"]
+},
+{
+  "Front": "Overall, what outcomes are plant-based (vegetarian/vegan) patterns associated with?",
+  "Back": "Beneficial effects across diabetes, ischemic heart disease, and cancer risk.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Epidemiology","High-Yield"]
+},
+{
+  "Front": "Name variations of plant-predominant diets described.",
+  "Back": "Semi-vegetarian (flexitarian), pesco-vegetarian, lacto-ovo vegetarian, vegan, whole food plant-based.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns"]
+},
+{
+  "Front": "Global contrasts: what characterizes diets where CAD rates are lower?",
+  "Back": "Plant-based, low-fat diets (e.g., rural Africa/Uganda: vegetables and whole grains; plant-derived protein; average total cholesterol ~145 mg/dL at age 40).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Epidemiology","Counseling"]
+},
+{
+  "Front": "Rural China vs US (Campbell): key diet and cholesterol differences associated with CAD mortality gaps.",
+  "Back": "Rural China: ~½ the fat, 1/10 the meat, 3× the fiber of the US; mean TC 127 mg/dL vs 203 mg/dL (US); 16.7× higher CAD mortality in US men and 5.6× in US women vs rural China.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Epidemiology","High-Yield"]
+},
+{
+  "Front": "Mediterranean diet—what features define it?",
+  "Back": "High in vegetables, fruits, legumes, nuts, whole grains; olive oil as the principal fat; moderate fish; limited red/processed meats and sweets; optional moderate alcohol with meals where culturally appropriate.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","FoodSources"]
+},
+{
+  "Front": "Mediterranean diet—what is the CVD risk difference with high versus low adherence?",
+  "Back": "High vs low adherence: 41% lower risk of CVD mortality and 27% lower risk of CVD incidence.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Epidemiology","High-Yield"]
+},
+{
+  "Front": "DASH diet—nutrient profile and sodium target.",
+  "Back": "Low in saturated and trans fats; rich in potassium, calcium, magnesium, fiber, and protein; low in sodium (1,500–2,300 mg/day).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Sodium","ReferenceValue","High-Yield"]
+},
+{
+  "Front": "DASH diet—key food recommendations.",
+  "Back": "Eat vegetables, fruits, and whole grains; include fat-free or low-fat dairy; include fish and poultry; choose nuts and legumes; limit sodium, sweets/SSBs, and red/processed meats.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Counseling"]
+},
+{
+  "Front": "Which fats should be limited in DASH, and which oils are specifically called out?",
+  "Back": "Limit foods high in saturated fat (fatty meats, full-fat dairy) and tropical oils such as coconut, palm kernel, and palm oils.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Saturated","Counseling"]
+},
+{
+  "Front": "DASH diet—documented health effects.",
+  "Back": "Decreases LDL cholesterol, blood pressure, and other cardiometabolic risk factors; associated with decreased diabetes and cardiovascular mortality.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Epidemiology","High-Yield"]
+},
+{
+  "Front": "Portfolio diet—what is it and what LDL change was observed?",
+  "Back": "An RCT dietary portfolio for hypercholesterolemia: very low saturated fat with plant sterols, soy protein, viscous fibers, and almonds; LDL decreased by 28.6%, similar to low-intensity lovastatin 20 mg (30.9%).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Cholesterol","High-Yield"]
+},
+{
+  "Front": "MIND diet—core focus and components.",
+  "Back": "Combines Mediterranean and DASH patterns for neuroprotection; predominantly plant-based with unprocessed vegetables, fruits, nuts, whole grains, beans; berry consumption; daily leafy greens; reduces meat, processed sweets, fried foods, and cheese.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Cognition","High-Yield"]
+},
+{
+  "Front": "MIND diet—primary outcome association.",
+  "Back": "Associated with lower risk of Alzheimer's disease; protective even with moderate adherence.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Cognition","High-Yield"]
+},
+{
+  "Front": "Vegetarian/vegan patterns—CVD outcomes summary.",
+  "Back": "Associated with lower cardiovascular disease and ischemic heart disease; effects on stroke appear neutral in pooled analyses referenced here.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Epidemiology"]
+},
+{
+  "Front": "Across patterns, which foods are repeatedly linked with increased risk?",
+  "Back": "Red/processed meat, refined grains, sweets/sugar-sweetened beverages, high-fat dairy, and fried foods.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","FoodSources"]
+},
+{
+  "Front": "Across patterns, which foods are repeatedly linked with reduced risk?",
+  "Back": "Vegetables, fruits, legumes, whole grains, nuts, seeds, and (pattern-dependent) fish.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","FoodSources"]
+},
+{
+  "Front": "Define semi-vegetarian (flexitarian).",
+  "Back": "Minimizes but does not completely eliminate animal flesh foods.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Definition"]
+},
+{
+  "Front": "Define pesco-vegetarian (pescatarian).",
+  "Back": "Includes some fish/seafood but no other animal flesh foods.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Definition"]
+},
+{
+  "Front": "Define lacto-ovo vegetarian.",
+  "Back": "Includes dairy and eggs; excludes animal flesh foods.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Definition"]
+},
+{
+  "Front": "Define vegan diet.",
+  "Back": "Excludes all animal flesh foods and typically excludes foods from animals (e.g., no eggs or dairy).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Definition"]
+},
+{
+  "Front": "Define whole food, plant-based (WFPB) diet.",
+  "Back": "Avoids or eliminates animal foods and processed foods; focuses on whole foods with emphasis on vegetables, legumes, whole grains, fruits, nuts, and seeds.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Definition"]
+},
+{
+  "Front": "Vignette: A statin-intolerant patient asks about non-drug options to lower LDL.",
+  "Back": "Consider the Portfolio diet: very low saturated fat with plant sterols, soy protein, viscous fibers, and almonds; LDL reduction ~28.6%, comparable to low-intensity lovastatin 20 mg (~30.9%).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Vignette","Cholesterol","Diet Patterns","High-Yield"]
+},
+{
+  "Front": "Vignette: A patient with obesity consumes many convenience foods. What high-yield teaching point connects UPFs with outcomes?",
+  "Back": "UPFs contribute to the US obesity epidemic; higher UPF intake is directly associated with increased all-cause mortality; >4 servings/day vs <2/day: +62% mortality risk; +18% per additional serving.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Vignette","Epidemiology","High-Yield"]
+},
+{
+  "Front": "Vignette: Patient asks which general approach matters more—macronutrient counting or overall pattern?",
+  "Back": "Counsel that evidence emphasizes overall dietary patterns and food matrices over single-nutrient focus for chronic disease prevention.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Vignette","Counseling"]
+},
+{
+  "Front": "Vignette: Patient consuming >4 UPF servings/day asks about risk; how do you counsel using quantitative evidence?",
+  "Back": "Explain that >4 UPF servings/day vs <2/day is associated with a 62% higher all-cause mortality; each additional daily serving adds ~18% increased risk.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Vignette","Epidemiology","High-Yield"]
+},
+{
+  "Front": "Vignette: 58-year-old with stage 1 hypertension wants an evidence-based diet for BP.",
+  "Back": "Recommend the DASH diet for BP reduction and overall cardiometabolic benefits; include low sodium (1,500–2,300 mg/day).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Vignette","Sodium","Diet Patterns","High-Yield"]
+},
+{
+  "Front": "Vignette: 66-year-old with parental Alzheimer’s asks for a practical pattern for brain health.",
+  "Back": "Recommend the MIND diet: leafy greens daily, berries, plant-predominant foods; limit fried foods, sweets, cheese, and meats.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Vignette","Cognition","Diet Patterns","High-Yield"]
+},
+{
+  "Front": "Vignette: Cafeteria redesign to lower CVD risk—what foods should be minimized?",
+  "Back": "Minimize red/processed meats, refined grains, sweets/SSBs, high-fat dairy, and fried foods; emphasize vegetables, fruits, legumes, whole grains, nuts, seeds, and fish (pattern-dependent).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Vignette","Diet Patterns","Counseling"]
+},
+{
+  "Front": "Clinical takeaway: pattern over single nutrients.",
+  "Back": "Prospective evidence and meta-analyses emphasize overall dietary patterns and food matrices rather than isolated single-nutrient focus for chronic disease prevention.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Counseling","Diet Patterns","High-Yield"]
+},
+    {
+  "Front": "What defines a Prudent or Healthy dietary pattern?",
+  "Back": "High in vegetables, fruits, legumes, whole grains, fish, and nuts; low in red/processed meats, refined grains, and sweets. Represents an opposite pattern to the Western diet.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Definition","High-Yield"]
+},
+{
+  "Front": "What outcomes are consistently associated with a Prudent/Healthy dietary pattern?",
+  "Back": "Lower risk of major chronic diseases, including cardiovascular disease, diabetes, and certain cancers, in prospective cohorts and meta-analyses.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Epidemiology","High-Yield"]
+},
+{
+  "Front": "Define a semi-vegetarian (flexitarian) diet.",
+  "Back": "Minimizes but does not completely eliminate animal flesh foods.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Definition"]
+},
+{
+  "Front": "Define a pesco-vegetarian diet.",
+  "Back": "Includes fish and seafood but excludes other animal flesh foods.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Definition"]
+},
+{
+  "Front": "Define a lacto-ovo vegetarian diet.",
+  "Back": "Includes dairy products and eggs but excludes all animal flesh foods.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Definition"]
+},
+{
+  "Front": "Define a vegan diet.",
+  "Back": "Excludes all animal flesh foods and typically excludes all foods derived from animals (e.g., no eggs or dairy).",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Definition"]
+},
+{
+  "Front": "Define a whole-food, plant-based (WFPB) diet.",
+  "Back": "Avoids or eliminates animal foods and processed foods; focuses on whole foods including vegetables, legumes, whole grains, fruits, nuts, and seeds.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Definition"]
+},
+{
+  "Front": "What LDL reduction was achieved in the Portfolio diet compared to low-intensity lovastatin?",
+  "Back": "Portfolio diet reduced LDL by 28.6%; lovastatin 20 mg reduced LDL by 30.9%.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Cholesterol","High-Yield"]
+},
+{
+  "Front": "Mediterranean diet adherence—quantify CVD risk reduction.",
+  "Back": "High vs low adherence associated with 41% lower risk of CVD mortality and 27% lower risk of CVD incidence.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Diet Patterns","Epidemiology","High-Yield"]
+},
+{
+  "Front": "Vignette: A patient asks if a Prudent diet is truly protective or just theoretical. What outcomes support your answer?",
+  "Back": "Prospective cohort and meta-analytic data show that a Prudent diet lowers risk of chronic diseases including CVD, diabetes, and certain cancers.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 4 – Dietary patterns and disease risk",
+  "Difficulty": null,
+  "Tags": ["Vignette","Diet Patterns","Epidemiology","High-Yield"]
 }
 ]
 }
