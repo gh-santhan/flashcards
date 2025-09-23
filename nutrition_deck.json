@@ -902,6 +902,126 @@
   "Section": "Objective 1 – General principles on foods to consume",
   "Difficulty": null,
   "Tags": ["Micronutrients","Counseling","High-Yield"]
+},
+    {
+  "Front": "Where is serving size information found on a food label?",
+  "Back": "At the top, listing serving size and number of servings per container in bold. Containers may appear to be one serving but may contain double or triple servings.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["Labeling","High-Yield","Counseling"]
+},
+{
+  "Front": "Where is calorie information found on a food label and what does it represent?",
+  "Back": "Calories are shown below serving size, bolded and in large font. It reflects calories per serving, not per container.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["Labeling","High-Yield"]
+},
+{
+  "Front": "What does the FDA recommend regarding saturated fat intake, and how is this shown on the label?",
+  "Back": "Saturated fat is listed in grams and %DV on the Nutrition Facts label. The AHA recommends limiting saturated fat to 5–6% of total calories.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["Fats","Saturated","Labeling","AHA","Guideline","High-Yield"]
+},
+{
+  "Front": "What should consumers know about trans fat on food labels?",
+  "Back": "Trans fat may be listed as 0 g if the amount is up to 0.5 g per serving. Consumers should also check the ingredient list for 'partially hydrogenated oil.' The FDA removed GRAS status for artificial trans fat in 2018.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["TransFat","FDA","Labeling","High-Yield"]
+},
+{
+  "Front": "What is the FDA Daily Value (DV) for fiber, and what foods are good sources?",
+  "Back": "DV for fiber is 28 g/day for adults on a 2,000 kcal diet. Whole grains such as whole wheat, brown rice, bulgur, oatmeal, barley, and quinoa are good sources.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["Fiber","Labeling","ReferenceValue","High-Yield"]
+},
+{
+  "Front": "How should carbohydrate-to-fiber ratio be used when assessing food labels?",
+  "Back": "Researchers at Harvard recommend a maximum carbohydrate-to-fiber ratio of 10:1.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["Fiber","Counseling","High-Yield"]
+},
+{
+  "Front": "Which nutrients are required on the Nutrition Facts label?",
+  "Back": "Total fat, saturated fat, trans fat, cholesterol, sodium, total carbohydrate, dietary fiber, total sugars, added sugars, protein, vitamin D, calcium, iron, potassium.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["Labeling","ReferenceValue","High-Yield"]
+},
+{
+  "Front": "How are percent Daily Values (%DV) interpreted?",
+  "Back": "%DV shows how much a nutrient contributes to a daily diet based on 2,000 kcal/day. ~5% DV is low, ~20% DV is high.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["Labeling","ReferenceValue","High-Yield"]
+},
+{
+  "Front": "What are examples of unregulated front-of-package claims?",
+  "Back": "‘Natural’ or ‘All-natural’: can contain artificial ingredients, not regulated; 'Low sugar': not defined; companies use terms like 'lightly sweetened,' 'less sweet.'",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["Labeling","Counseling"]
+},
+{
+  "Front": "What are examples of regulated front-of-package claims?",
+  "Back": "‘Good Source’: 10–19% DV; ‘Excellent Source’: ≥20% DV; ‘Gluten-free’: <20 ppm gluten; ‘Certified Organic’: produced without pesticides, herbicides, synthetic fertilizers, sewage sludge, bioengineering, ionizing radiation; not GMO.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["Labeling","ReferenceValue","High-Yield"]
+},
+    {
+  "Front": "How are ingredients ordered on a food label?",
+  "Back": "Ingredients are listed in descending order by weight. The ingredient that weighs the most is listed first, and the one that weighs the least is listed last.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["Labeling","High-Yield"]
+},
+{
+  "Front": "Why is the first ingredient on an ingredient list important?",
+  "Back": "The first ingredient is often considered the most important. Ideally, it should be a healthful whole food, such as a legume, fruit, vegetable, or whole grain. The first three ingredients can provide a sense of the product’s nutritional makeup.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["Labeling","Counseling","FoodSources"]
+},
+{
+  "Front": "What should you look for when browsing whole-grain products?",
+  "Back": "Ensure the ingredient list says 'whole' in front of the grain (e.g., whole wheat, whole oats). Brown rice and oats are almost always whole. Quinoa and amaranth are rarely refined and are good choices.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["Fiber","Labeling","Counseling","FoodSources"]
+},
+{
+  "Front": "What front-of-package labels are reliable indicators of whole grains, and which should be avoided?",
+  "Back": "Look for '100% whole wheat' or '100% whole grain.' Avoid terms like 'multigrain,' 'made with whole grain,' 'stone-ground,' 'wheat flour,' and 'enriched flour,' which indicate the product is not whole grain.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["Fiber","Labeling","Counseling","High-Yield"]
+},
+{
+  "Front": "What should consumers watch for regarding added sugars in the ingredient list?",
+  "Back": "Be on the lookout for added sugars in packaged foods and beverages (sugar-sweetened beverages, desserts, cereals, sweet snacks). Common terms include brown sugar, corn syrup, high-fructose corn syrup, dextrose, fructose, agave nectar, honey, maple syrup, coconut sugar.",
+  "Chapter": "Nutrition",
+  "Section": "Objective 2 – Analyze food labels for the health impacts of ingredients",
+  "Difficulty": null,
+  "Tags": ["Added Sugars","Labeling","Counseling","High-Yield"]
 }
 
 ]
