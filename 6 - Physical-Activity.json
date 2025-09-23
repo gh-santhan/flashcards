@@ -47,6 +47,57 @@
   {"Front":"Cloze: Largest relative mortality benefit around {{_____}} MET·h/week.","Back":"10–20","Tags":["Objective2","Cloze","Dose-Response"]},
   {"Front":"Cloze: ‘Weekend-warrior’ = activity in {{_____}} days; still {{_____}} vs being sedentary.","Back":"1–2; beneficial","Tags":["Objective2","Cloze","Patterns"]},
   {"Front":"Cloze: Moderate-intensity walking cadence ≈ {{_____}} steps/min (rule-of-thumb).","Back":"100","Tags":["Objective2","Cloze","Steps"]}
-  
+  ,{"Front":"Which special populations are explicitly included under Objective 3 (list at least six)?","Back":"Older adults; pregnancy/postpartum; children & adolescents; obesity; disability; cardiovascular disease; type 2 diabetes; cancer; stroke.","Tags":["Objective3","Overview"]}
+
+,{"Front":"An independent 78-year-old reports slow gait and difficulty rising from a chair. What simple assessment predicts mobility/disability and improves with training?","Back":"The Short Physical Performance Battery (SPPB: gait speed, balance, chair rise).","Tags":["Objective3","Older-Adults","SPPB","Assessment"]}
+
+,{"Front":"What *minimum* weekly structure should most adults ≥65 aim for (aerobic, resistance, balance, flexibility)?","Back":"150 min/wk moderate (or 75 min/wk vigorous or combo) **as able**; resistance ≥2 days/wk; balance ≥3 days/wk; flexibility ≥2 days/wk; progress conservatively if deconditioned.","Tags":["Objective3","Older-Adults","Guidelines"]}
+
+,{"Front":"In older adults, which declines faster—strength or muscle mass—and which better predicts disability/mortality?","Back":"Strength declines 2–5× faster than mass; strength (muscle quality) better predicts disability and mortality.","Tags":["Objective3","Older-Adults","Sarcopenia"]}
+
+,{"Front":"Clinic ask: You have 30 seconds with an older adult who fell twice this year. What specific training emphasis and frequency should you prescribe to reduce fall risk?","Back":"Neuromotor/balance training ≥3 times/week (e.g., progressive stance, Tai Chi) alongside strength work.","Tags":["Objective3","Older-Adults","Falls","Prescription"]}
+
+,{"Front":"Vignette: A 30-week pregnant patient (previously a recreational runner) asks whether she can continue jogging. What’s the weekly target and key cautions?","Back":"~150 min/wk moderate, spread across the week; may continue vigorous training if already well-tolerated with clinician guidance; avoid supine work after 1st trimester and direct spinal loading; hydrate and avoid heat stress.","Tags":["Objective3","Pregnancy","Guidelines","Safety"]}
+
+,{"Front":"Exam-style: Name three **absolute contraindications** to exercise during pregnancy that would prompt deferral and medical management.","Back":"Examples: severe heart disease with intolerance; severe respiratory disease; uncontrolled/severe arrhythmia; placental abruption; vasa previa; active preterm labor; severe preeclampsia; cervical insufficiency; uncontrolled type 1 diabetes.","Tags":["Objective3","Pregnancy","Contraindications"]}
+
+,{"Front":"What **types of activities** should be avoided during pregnancy due to fall or abdominal-trauma risk?","Back":"Contact/collision sports; horseback riding; downhill skiing; soccer; basketball; other high-fall or abdominal-trauma risk activities.","Tags":["Objective3","Pregnancy","Safety"]}
+
+,{"Front":"Board-style: What is the **daily** physical activity dose for children and adolescents, and which elements must be included weekly?","Back":"≥60 min/day total PA; include **vigorous** activity ≥3 days/wk and **muscle- and bone-strengthening** activities ≥3 days/wk.","Tags":["Objective3","Children","Adolescents","Guidelines"]}
+
+,{"Front":"A school consult asks: beyond fitness, which **health and cognitive** outcomes improve with regular PA in youth?","Back":"Better cardiorespiratory and muscular fitness, bone health, weight/adiposity and cardiometabolic risk; fewer depressive symptoms; cognitive/academic gains (notably ages 6–13).","Tags":["Objective3","Children","Adolescents","Benefits"]}
+
+,{"Front":"Weight management OSCE: quote the **ACSM volumes** for weight **maintenance** and typical **loss** without diet.","Back":">250 min/wk moderate PA often needed for maintenance; for loss: <150 min minimal change; >150 min modest (~2–3 kg); 225–420 min/wk yields ~5–7.5 kg. Diet + PA works best; PA is critical for long-term maintenance.","Tags":["Objective3","Obesity","ACSM","Dose"]}
+
+,{"Front":"Your patient increased exercise by 3000 kcal/week but lost less weight than expected. What two concepts explain this and what should you protect?","Back":"Energy compensation (increased intake) and reduced NEAT; intentionally preserve NEAT (daily steps/standing/incidental movement).","Tags":["Objective3","Obesity","Energy-Compensation","NEAT"]}
+
+,{"Front":"Adaptation check: When counseling adults with **mobility-limiting disabilities**, what principles guide safe, effective PA programming?","Back":"Use adult targets as tolerated; if not feasible, be as active as possible. Screen for balance/asymmetry, ROM limits, spasticity, autonomic issues; tailor modes (arm ergometer, seated resistance, aquatic, assisted gait).","Tags":["Objective3","Disability","Adaptation","Guidelines"]}
+
+,{"Front":"Population question: How does **active commuting** (walking/cycling) relate to ischemic heart disease risk compared with inactive commuting?","Back":"Associated with lower IHD risk (HR ≈0.89 vs inactive commuting).","Tags":["Objective3","CVD","Active-Commuting"]}
+
+,{"Front":"Clinic pearl: What is the **minimum effective dose** of moderate-intensity activity to reduce **incident type 2 diabetes** risk, and which training mode lowers HbA1c **most**?","Back":"~150 min/wk moderate lowers T2D risk; structured **combined aerobic + resistance** training generally reduces HbA1c more than either alone, with >150 min/wk giving larger reductions.","Tags":["Objective3","Diabetes","HbA1c","Programming"]}
+
+,{"Front":"Oncology consult: Which cancers show the strongest **prevention** evidence with higher PA, and what is the typical **risk reduction** range?","Back":"Colon (~17–30% lower) and breast (~20–30% lower) show strong evidence with dose–response patterns.","Tags":["Objective3","Cancer","Prevention"]}
+
+,{"Front":"Survivorship counseling: What are the **exercise benefits during/after cancer treatment**, and how safe are supervised programs?","Back":"Improved cardiorespiratory fitness, body composition, treatment symptoms, and quality of life; supervised programs report low adverse-event rates.","Tags":["Objective3","Cancer","Treatment","Safety"]}
+
+,{"Front":"Breast cancer follow-up: How does **post-diagnosis physical activity** relate to recurrence and survival?","Back":"Greater activity is associated with lower recurrence and improved survival.","Tags":["Objective3","Cancer","Survivorship"]}
+
+,{"Front":"Stroke rehab OSCE: Write a concise **FITT** anchor for exercise after stroke (aerobic, resistance, balance).","Back":"Aerobic ≥3x/wk progressing to 20–40 min/session at moderate intensity as tolerated; resistance 2x/wk for major muscle groups; add balance/gait training; monitor BP/HR and neurologic safety.","Tags":["Objective3","Stroke","Rehab","FITT"]}
+
+,{"Front":"Stroke outcomes: Over weeks to months, what **functional changes** should you expect from aerobic ± resistance/balance training?","Back":"Improved maximal walking speed and 6-minute walk distance; adding resistance + balance further improves gait speed and balance.","Tags":["Objective3","Stroke","Rehab","Outcomes"]}
+
+,{"Front":"Vignette: A 67-year-old with CHF NYHA II asks if exercise ‘can replace meds.’ What’s the accurate counseling point on **exercise vs pharmacotherapy** across CVD conditions?","Back":"Exercise confers mortality/functional benefits comparable to some drugs for CHD secondary prevention and stroke rehab, but in heart failure medication often outperforms exercise alone—use exercise **with** optimal medical therapy.","Tags":["Objective3","CVD","Counseling"]}
+
+,{"Front":"Quick recall (cloze): Children/adolescents need {{_____}} min/day, with {{_____}} intensity and {{_____}}/{{_____}} strengthening ≥3 days/week.","Back":"60; vigorous; muscle; bone.","Tags":["Objective3","Cloze","Children"]}
+
+,{"Front":"Quick recall (cloze): Pregnancy—avoid {{_____}} after the {{_____}} trimester and avoid activities with high {{_____}} risk.","Back":"supine exercises; first; abdominal trauma/falls.","Tags":["Objective3","Cloze","Pregnancy","Safety"]}
+
+,{"Front":"Quick recall (cloze): For weight maintenance often need {{_____}} min/wk; ~5–7.5 kg loss typically requires {{_____}}–{{_____}} min/wk + diet.","Back":">250; 225; 420.","Tags":["Objective3","Cloze","Obesity","ACSM"]}
+
+,{"Front":"Quick recall (cloze): In elders, adding {{_____}} training ≥3x/wk reduces {{_____}} and related injuries.","Back":"balance; falls.","Tags":["Objective3","Cloze","Older-Adults"]}
+
+,{"Front":"Quick recall (cloze): In T2D, {{_____}} training often reduces HbA1c more than aerobic or resistance alone.","Back":"combined (aerobic + resistance).","Tags":["Objective3","Cloze","Diabetes"]}
+
   ]
 }
