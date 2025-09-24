@@ -1,421 +1,179 @@
 {
-  "name": "Ch3 – Clinical Processes in Lifestyle Medicine (ACLM)",
+  "name": "Chapter 3 – Clinical Processes in Lifestyle Medicine",
   "cards": [
-    {
-      "Front": "Lifestyle Medicine visit: What most differentiates it from a standard primary care visit?",
-      "Back": "A deliberate focus on the root causes (behavioral lifestyle drivers) integrated into history, exam, goals, and follow-up—using stage-matched counseling and action plans, not just diagnosis/prescriptions.",
-      "Tags": ["Definition", "High-Yield", "Applied"]
-    },
-    {
-      "Front": "Lifestyle vital signs: What are they and why capture them at intake?",
-      "Back": "Structured measures of tobacco, alcohol, dietary pattern, physical activity, BMI/waist, sleep, stress/emotional well-being. Capturing them standardizes prevention/treatment decisions and enables tracking in the EHR.",
-      "Tags": ["Definition", "Workflow", "High-Yield"]
-    },
-    {
-      "Front": "PAVS (Physical Activity Vital Sign): What does it ask and how is 'insufficiently active' defined?",
-      "Back": "Minutes of moderate-to-vigorous activity/week and days per week. <150 min/week is 'insufficiently active.'",
-      "Tags": ["PAVS", "High-Yield", "Guideline"]
-    },
-    {
-      "Front": "Vignette: Patient reports walking 20 min, 2 days/week. Classify PAVS and next step.",
-      "Back": "Insufficiently active (40 min/week). Co-create a SMART action plan to progress toward ≥150 min/week.",
-      "Tags": ["PAVS", "Applied", "Action-Planning"]
-    },
-    {
-      "Front": "IPAQ-Short: What does it measure and typical use?",
-      "Back": "7-day physical activity recall classifying intensity/time; useful for baseline and follow-up classification.",
-      "Tags": ["Assessment", "Definition"]
-    },
-    {
-      "Front": "Dietary assessment in LM: two quick methods you can embed in intake.",
-      "Back": "Brief food frequency (e.g., servings of fruits/veg, whole grains, ultra-processed intake) and a 24-hour recall.",
-      "Tags": ["Assessment", "Workflow"]
-    },
-    {
-      "Front": "Sleep, stress, emotional well-being: why integrate into vital signs?",
-      "Back": "They materially affect cardiometabolic risk and adherence; tracking enables targeted counseling and referrals.",
-      "Tags": ["Assessment", "High-Yield"]
-    },
 
-    {
-      "Front": "ACLM dietary stance for coronary disease treatment per text summary",
-      "Back": "Low-fat whole-food plant-based (WFPB) pattern is presented as the only eating style shown to reverse coronary artery disease in cited programs (Ornish/Esselstyn).",
-      "Tags": ["Guideline", "High-Yield", "CVD", "Diet"]
-    },
-    {
-      "Front": "CVD counseling emphasis in LM visit",
-      "Back": "WFPB diet, physical activity, tobacco cessation, stress reduction, sleep optimization, healthy relationships; use stage-matched MI and written plans.",
-      "Tags": ["CVD", "Guideline", "Counseling"]
-    },
-    {
-      "Front": "USPSTF (Diabetes): Who gets screened?",
-      "Back": "Adults aged 35–70 years with overweight/obesity; offer/referral to effective preventive interventions for prediabetes (Grade B).",
-      "Tags": ["Guideline", "Diabetes", "High-Yield"]
-    },
-    {
-      "Front": "Diabetes Plate Method (ADA): Core composition",
-      "Back": "½ non-starchy vegetables; ¼ carbohydrate foods (whole grains/starchy veg); ¼ protein (beans/lean). Water or calorie-free beverage.",
-      "Tags": ["Guideline", "Diabetes", "Diet"]
-    },
-    {
-      "Front": "CDC physical activity for adults (diabetes prevention context)",
-      "Back": "Progress toward ≥150 min/week moderate intensity; combine with dietary quality improvements.",
-      "Tags": ["Guideline", "Diabetes", "Activity"]
-    },
-    {
-      "Front": "ACLM stance for type 2 diabetes clinical goal",
-      "Back": "Target remission with intensive lifestyle intervention as a primary component of care.",
-      "Tags": ["Guideline", "Diabetes", "High-Yield"]
-    },
-    {
-      "Front": "USPSTF (Obesity): Screening and referral",
-      "Back": "Screen all adults; refer BMI ≥30 to intensive, multicomponent behavioral interventions (Grade B).",
-      "Tags": ["Guideline", "Obesity", "High-Yield"]
-    },
-    {
-      "Front": "CMS coverage note for obesity interventions",
-      "Back": "Intensive behavioral therapy considered reasonable/necessary for obesity (BMI ≥30) for prevention/early detection of illness/disability.",
-      "Tags": ["Guideline", "Obesity", "Policy"]
-    },
-    {
-      "Front": "ACC/AHA/TOS (2013) referral thresholds to comprehensive lifestyle programs",
-      "Back": "BMI ≥25 with CVD risk factors or BMI ≥30 should be referred to comprehensive, high-intensity lifestyle intervention.",
-      "Tags": ["Guideline", "Obesity", "High-Yield"]
-    },
-    {
-      "Front": "Comprehensive lifestyle intervention characteristics",
-      "Back": "In-person, high-intensity (≥14 sessions/6 months); individual or group; led by trained interventionists; includes caloric restriction, PA increase, behavioral strategies.",
-      "Tags": ["Guideline", "Obesity", "Program"]
-    },
+    {"Front":"Lifestyle ‘vital signs’—what’s the chapter’s **first sentence** stance about them vs traditional vitals?","Back":"They’re best thought of as brief assessments/tools for each lifestyle domain; only the **Physical Activity Vital Sign (PAVS)** is a formally validated traditional vital sign.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • LM Vital Signs – Overview","Tags":["Objective1","High-Yield","Definition"]},
 
-    {
-      "Front": "When are medications used in LM?",
-      "Back": "As adjuncts while optimizing lifestyle behaviors; aim to reduce medication burden as behavior improves.",
-      "Tags": ["Treatment", "Principle"]
-    },
-    {
-      "Front": "Anticipatory guidance in LM: define & give 2 examples",
-      "Back": "Proactive coaching about expected barriers and solutions. Examples: travel exercise plan; relapse prevention steps for tobacco cessation.",
-      "Tags": ["Counseling", "Applied"]
-    },
-    {
-      "Front": "Monitoring plan—3 universal elements to document for lifestyle interventions",
-      "Back": "Outcome metrics (e.g., weight, A1c, BP), behavior metrics (mins PA, servings), and follow-up schedule/reminders.",
-      "Tags": ["Workflow", "Tracking"]
-    },
+    {"Front":"Which LM domain currently has the **only validated traditional vital sign**, and what is it called?","Back":"**Physical activity** → the **Physical Activity Vital Sign (PAVS)**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Vital Signs – Validation","Tags":["Objective1","PAVS","VitalSigns"]},
 
+    {"Front":"Assessment cadence—how often should LM domains be assessed per the chapter?","Back":"No predefined frequency; assess at **baseline** and to **monitor progress**; provider and patient decide interval. All six domains should be evaluated over time, not necessarily at the same visit.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Assessment Cadence","Tags":["Objective1","Workflow"]},
 
-    {
-      "Front": "Two categories of resources to integrate into LM practice",
-      "Back": "Clinic-based (dietitian/coach, group visits, digital tools) and community-based (DPP, quitlines, walking groups, food security programs).",
-      "Tags": ["Resources", "Practice"]
-    },
+    {"Front":"Nutrition screen—give three **practical** ways to assess diet in a short visit (chapter examples).","Back":"(1) 3-day diet history (meals, beverages, snacks). (2) “Typical day” recall. (3) Ask servings of vegetables/fruits and probe SSBs, ultra-processed, and animal-based foods; consider meal photos on phones.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Nutrition – Brief Tools","Tags":["Objective1","Nutrition","Clinic"]},
 
+    {"Front":"Mini-items—what two **Lifestyle Assessment Short Form** questions does the chapter highlight for diet?","Back":"(1) Frequency of fast food/SSBs/packaged foods in past 2 weeks (Never→Nearly every day). (2) Average daily servings of whole fruits/vegetables (bins).","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Nutrition – LASF Items","Tags":["Objective1","Nutrition","Screen"]},
 
-    {
-      "Front": "Why inter-professional teams matter in LM",
-      "Back": "Improve adherence, outcomes, and efficiency; align messaging across disciplines to avoid patient confusion.",
-      "Tags": ["Team-Based", "High-Yield"]
-    },
-    {
-      "Front": "Vignette: MD promotes WFPB; RD promotes keto; PT promotes high-protein bodybuilding diet. First step?",
-      "Back": "Align team messaging on LM pillars—establish consistent nutrition guidance to prevent patient confusion.",
-      "Tags": ["Team-Based", "Applied", "High-Yield"]
-    },
+    {"Front":"Validated diet tools—name **three** the chapter lists.","Back":"Starting the Conversation (8-item simplified FFQ); MEDAS (Mediterranean adherence); ASA24; DSQ.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Nutrition – Validated Tools","Tags":["Objective1","Nutrition","Validated"]},
 
+    {"Front":"PAVS—write the **two core questions** word-for-word enough to remember them for clinic.","Back":"(1) On average, **how many days/week** do you engage in **moderate to strenuous** exercise (like a brisk walk)? (2) On average, **how many minutes/day** at this level? → Multiply for **minutes/week**; classify inactive (0), insufficient (1–149), sufficient (≥150). Plus resistance training days/week.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Physical Activity – PAVS","Tags":["Objective1","PA","PAVS"]},
 
-    {
-      "Front": "Name the common types of group visits",
-      "Back": "Shared Medical Appointments (SMAs), Drop-In Group Medical Appointments (DIGMAs), and physical shared medical appointments (with a private exam component).",
-      "Tags": ["Group-Visits", "Definition", "High-Yield"]
-    },
-    {
-      "Front": "Group visit operations: key consent elements",
-      "Back": "Patients consent to have their information discussed in group and agree not to share others’ information afterward.",
-      "Tags": ["Group-Visits", "Operations", "High-Yield"]
-    },
-    {
-      "Front": "Group visit benefits—patients & system",
-      "Back": "Improved satisfaction/outcomes, peer support, better access, lower costs, increased efficiency and clinician productivity.",
-      "Tags": ["Group-Visits", "Benefits", "High-Yield"]
-    },
-    {
-      "Front": "Vignette: Uncontrolled T2DM clinic adopts group visits. Likely outcomes?",
-      "Back": "Better metabolic control, lower total cost, higher satisfaction, improved monitoring—without needing more staff.",
-      "Tags": ["Group-Visits", "Applied", "High-Yield"]
-    },
-    {
-      "Front": "Telehealth—two advantages and two limitations in LM",
-      "Back": "Advantages: access and convenience/cost savings; more frequent follow-ups. Limitations: limited physical exam; home devices needed; perceived less personal; regulatory barriers.",
-      "Tags": ["Telehealth", "Pros-Cons", "High-Yield"]
-    },
+    {"Front":"PA follow-ups—list one **brief** and two **in-depth** validated PA tools.","Back":"Brief: **IPAQ-Short**. In-depth: **STAR-Q** (sedentary + activity) and **IPAQ-Long**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Physical Activity – Tools","Tags":["Objective1","PA","Tools"]},
 
+    {"Front":"Sleep—what **single-item** scale does the chapter showcase and how is it scored?","Back":"**Single-Item Sleep Quality Scale**: rate overall sleep quality for the past 7 days on a **1 (terrible) → 10 (excellent)** scale.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Sleep – SISQS","Tags":["Objective1","Sleep","Screen"]},
 
-    {
-      "Front": "Why track in LM? List three reasons",
-      "Back": "Demonstrate effectiveness to patients/payers; drive quality improvement; support reimbursement & cost analyses.",
-      "Tags": ["EHR", "Tracking", "High-Yield"]
-    },
-    {
-      "Front": "HEDIS: what is it and why it matters",
-      "Back": "Widely used performance measurement set; ratings impact health plans/providers; aligns with quality tracking in clinics.",
-      "Tags": ["EHR", "Quality", "Definition"]
-    },
-    {
-      "Front": "EHR use: two pragmatic reports to identify high-risk patients",
-      "Back": "Diagnosis code–based registries (e.g., T2DM, HF) and rule-based flags (e.g., A1c > target, no eye exam in 12 months).",
-      "Tags": ["EHR", "Tracking", "Applied"]
-    },
-    {
-      "Front": "Vignette: You code 'dietary counseling & surveillance' for weight-loss visits. What can the EMR tell you next quarter?",
-      "Back": "Create a cohort via that diagnosis code and analyze weight change over time to evaluate program impact.",
-      "Tags": ["EHR", "Applied", "QI"]
-    },
+    {"Front":"Sleep—name **two** validated screeners for disorders and one deeper follow-up measure.","Back":"Screeners: **GSAQ** (11 items, Never→Always; any non-‘never’ merits eval); **STOP-BANG** for OSA risk. Follow-up: **PSQI Long** (7 domains).","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Sleep – Tools","Tags":["Objective1","Sleep","Validated"]},
 
-    {
-      "Front": "Collaborative/chronic care models: expected benefits in LM",
-      "Back": "Better outcomes/experience, coordinated team roles, proactive population management, and self-management support.",
-      "Tags": ["Team-Based", "Models", "High-Yield"]
-    },
-    {
-      "Front": "Primary-care models to embed LM: name two examples",
-      "Back": "Team-based PCMH with embedded RD/coach; group-visit-centric chronic disease clinic with telehealth follow-ups.",
-      "Tags": ["Models", "Practice"]
-    },
+    {"Front":"Stress/mental well-being—list the four **brief** screeners the chapter recommends.","Back":"**PHQ-2**, **PSS-4**, **GAD-2**, abbreviated **SWLS** (life satisfaction items, 1→7).","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Stress – Brief Tools","Tags":["Objective1","Stress","Screen"]},
 
-    {
-      "Front": "PDSA cycle: expand the acronym and purpose",
-      "Back": "Plan-Do-Study-Act; rapid cycles to test and implement practice changes with data feedback.",
-      "Tags": ["QI", "Definition", "High-Yield"]
-    },
-    {
-      "Front": "PDSA example goal for LM vital signs",
-      "Back": "Target ≥90% of charts to contain LM vital signs by adding a written prompt and dual checks by assistant/provider.",
-      "Tags": ["QI", "Applied"]
-    },
-    {
-      "Front": "PDSA — 'Do' phase: two steps you would take",
-      "Back": "Map process flow (check-in → rooming → vital signs → chart check) and pilot on a limited schedule (e.g., 1 day/week).",
-      "Tags": ["QI", "Process"]
-    },
-    {
-      "Front": "PDSA — 'Study' phase: what do you examine?",
-      "Back": "Completeness percentage, workflow bottlenecks; interview staff for pros/cons; compare busy vs non-busy days.",
-      "Tags": ["QI", "Measurement"]
-    },
-    {
-      "Front": "PDSA — 'Act' phase: three choices",
-      "Back": "Adopt (scale up), Adapt (modify based on insights), Abandon (try a different approach, e.g., waiting-room questionnaires).",
-      "Tags": ["QI", "Decision"]
-    },
-    {
-      "Front": "Root-cause analysis: two tools you can use",
-      "Back": "Five Whys and fishbone (Ishikawa) diagrams to categorize causes (people, methods, machines, materials, environment, measures, policy, patients).",
-      "Tags": ["QI", "RCA", "High-Yield"]
-    },
+    {"Front":"Stress—name **four** in-depth tools suggested for follow-up.","Back":"**PHQ-9**, **PSS-10**, **GAD-7**, full **SWLS**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Stress – Follow-ups","Tags":["Objective1","Stress","FollowUp"]},
 
-    {
-      "Front": "EBM in LM: what do you balance when recommending interventions?",
-      "Back": "Best external evidence, clinical expertise, and patient values/preferences (including cultural and SDOH factors).",
-      "Tags": ["EBM", "Definition", "High-Yield"]
-    },
-    {
-      "Front": "When discussing nutrition evidence with patients, what transparency principle should you follow?",
-      "Back": "Clarify trial intensity, population, duration, and endpoints; distinguish disease reversal vs risk reduction.",
-      "Tags": ["EBM", "Counseling"]
-    },
+    {"Front":"Social connection—name **two** validated measures called out.","Back":"A **Brief Measure of Social Support**; domain-specific support scales (diet; exercise).","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Social – Tools","Tags":["Objective1","Connectedness"]},
 
-    {
-      "Front": "Why measure patient activation or therapeutic alliance in LM programs?",
-      "Back": "Higher activation/alliance predicts engagement and outcomes; supports iterative tailoring of interventions.",
-      "Tags": ["Measurement", "High-Yield"]
-    },
+    {"Front":"Substance use—what three brief tools does the chapter feature (and when to escalate)?","Back":"**NIDA Quick Screen**, **TAPS-1**, **AUDIT-C**; escalate to **NIDA-Modified ASSIST** or **TAPS-2** if any positives.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Substance – Tools","Tags":["Objective1","Substances","Screen"]},
 
-    {
-      "Front": "Vignette: 48-year-old with BMI 32 and hypertension. First-line obesity management approach?",
-      "Back": "Refer to intensive, multicomponent lifestyle intervention program; create a written action plan and follow-up.",
-      "Tags": ["Obesity", "Guideline", "Applied", "High-Yield"]
-    },
-    {
-      "Front": "Vignette: 58-year-old with A1c 6.1%, BMI 29. Screening recommendation?",
-      "Back": "USPSTF: Screen adults 35–70 with overweight/obesity and refer those with prediabetes to effective interventions.",
-      "Tags": ["Diabetes", "Guideline", "Applied"]
-    },
-    {
-      "Front": "Vignette: After 3 months, patient’s PA increased to 120 min/week. Next step?",
-      "Back": "Affirm progress; adjust SMART plan to reach ≥150 min/week; add self-monitoring and plan for barriers.",
-      "Tags": ["PAVS", "Action-Planning", "Applied"]
-    },
-    {
-      "Front": "Vignette: Clinic wants to evaluate its new LM class. What EMR strategy helps?",
-      "Back": "Use a consistent diagnosis code (e.g., dietary counseling & surveillance) and track weight/BP/A1c changes over time.",
-      "Tags": ["EHR", "QI", "Applied"]
-    },
-    {
-      "Front": "Vignette: Group visit launch for HF and DM populations. Two setup steps to ensure privacy and individualization?",
-      "Back": "Obtain group confidentiality consent; include brief one-on-one component during sessions.",
-      "Tags": ["Group-Visits", "Operations", "Applied"]
-    },
-    {
-      "Front": "MI core principles used during LM intake/follow-up (name two)",
-      "Back": "Express empathy and support self-efficacy (also: roll with resistance; develop discrepancy).",
-      "Tags": ["MI", "Counseling", "High-Yield"]
-    },
-    {
-      "Front": "SMART goals — give an LM example for sleep",
-      "Back": "“Lights out by 11 pm, phone outside bedroom, 5 nights/week for 4 weeks; track in sleep log.”",
-      "Tags": ["Sleep", "Action-Planning"]
-    },
-    {
-      "Front": "CBT techniques applied to lifestyle relapse risk",
-      "Back": "Identify distortions (all-or-nothing, catastrophizing), reframe, practice problem-solving and coping plans.",
-      "Tags": ["CBT", "Counseling"]
-    },
-    {
-      "Front": "Two documentation habits that enable QI and reimbursement in LM",
-      "Back": "Record standardized LM vital signs and use consistent codes for counseling/interventions to enable cohort tracking.",
-      "Tags": ["EHR", "Billing", "QI"]
-    },
-    {
-      "Front": "List the lifestyle vital signs to capture at intake",
-      "Back": "Tobacco; alcohol; dietary pattern/quality; physical activity (PAVS); BMI/waist; sleep; stress/emotional well-being.",
-      "Tags": ["Checklist", "High-Yield"]
-    },
-    {
-      "Front": "Group visits: name 4 benefits",
-      "Back": "Peer support; improved monitoring/outcomes; increased access; lower cost/greater efficiency.",
-      "Tags": ["Group-Visits", "Checklist"]
-    },
-    {
-      "Front": "Telehealth: 2 advantages + 2 limitations",
-      "Back": "Advantages: access, convenience/cost; Limitations: limited exam, need devices; may feel less personal; regs.",
-      "Tags": ["Telehealth", "Checklist"]
-    },
-    {
-      "Front": "Comprehensive lifestyle interventions: 4 core features",
-      "Back": "High-intensity (≥14 sessions/6 mo), trained staff, caloric restriction + PA increase, behavior strategies.",
-      "Tags": ["Obesity", "Checklist"]
-    },
-    {
-      "Front": "PDSA: 4 phases with a one-liner each",
-      "Back": "Plan (set aim & plan change) · Do (pilot & collect data) · Study (analyze) · Act (adopt/adapt/abandon).",
-      "Tags": ["QI", "Checklist", "High-Yield"]
-    },
-    {
-      "Front": "Root-cause analysis: two named tools",
-      "Back": "Five Whys; Fishbone (people, methods, machines, materials, environment, measures, policy, patients).",
-      "Tags": ["QI", "Checklist"]
-    },
-    {
-      "Front": "EHR tracking: 3 items to routinely review for T2DM population",
-      "Back": "A1c trend and last value; eye/foot exams up to date; attendance/completion of lifestyle classes/coaching.",
-      "Tags": ["EHR", "Checklist"]
-    },
-    {
-      "Front": "Vignette: Patient in Contemplation about diet change but Action for PA. How to tailor the visit?",
-      "Back": "Keep PA momentum (Action supports) and use MI to explore ambivalence for diet; avoid pushing action prematurely.",
-      "Tags": ["TTM", "Applied"]
-    },
-    {
-      "Front": "Vignette: After group visits start, new patient wait times drop. What explains this?",
-      "Back": "Group visits increase efficiency/productivity and access, allowing more patients to be served effectively.",
-      "Tags": ["Group-Visits", "Applied"]
-    },
-    {
-      "Front": "Vignette: EMR report flags BMI ≥30 with no follow-up plan. What action aligns with USPSTF & CMS?",
-      "Back": "Refer to intensive multicomponent behavioral intervention; document IBT and schedule structured follow-ups.",
-      "Tags": ["Obesity", "Guideline", "Applied", "High-Yield"]
-    },
-    {
-      "Front": "Vignette: Patient requests 'just meds' for prediabetes. LM response?",
-      "Back": "Educate on remission potential via intensive lifestyle; co-create a practical action plan and offer DPP referral.",
-      "Tags": ["Diabetes", "Applied", "Counseling"]
-    },
-    {
-      "Front": "Vignette: Telehealth-only clinic struggles with vitals. Low-cost fix?",
-      "Back": "Provide guidance for acquiring/using home devices; schedule periodic in-person vitals or community lab/mobile phlebotomy.",
-      "Tags": ["Telehealth", "Applied"]
-    },
-    {
-      "Front": "Vignette: 45-year-old with BMI 28, BP 138/86, no symptoms. According to USPSTF, what screening should be offered?",
-      "Back": "Screen for diabetes (35–70 years with overweight/obesity) and confirmatory BP measurements to evaluate for hypertension.",
-      "Tags": ["USPSTF", "Screening", "Applied", "High-Yield"]
-    },
-    {
-      "Front": "Vignette: 60-year-old, BMI 31, BP 138/88, A1c 6.7%. Which guideline-based referrals?",
-      "Back": "Refer to intensive multicomponent obesity program; treat type 2 diabetes with LM + meds if needed; counsel on hypertension risk and monitor.",
-      "Tags": ["Obesity", "Diabetes", "BP", "Applied"]
-    },
-    {
-      "Front": "Vignette: Patient in group visit says they don’t trust online food trackers. How to address?",
-      "Back": "Validate concern, offer alternative self-monitoring methods (written log, photos, or simplified serving counts).",
-      "Tags": ["Group-Visits", "Applied", "Counseling"]
-    },
-    {
-      "Front": "Vignette: Patient with LDL 160 mg/dL, refuses statins, asks for LM plan. What’s your answer?",
-      "Back": "Recommend WFPB dietary pattern, soluble fiber (oats, legumes), plant sterols, regular PA, and recheck in 3 months; explain absolute risk reduction potential.",
-      "Tags": ["Lipids", "Applied", "Guideline"]
-    },
+    {"Front":"Anthropometrics—what BMI table logic (with WC cut-points) does the chapter print?","Back":"Risk increases with both **BMI class** and **waist circumference**; increased WC: **≥40 in (102 cm) men**, **≥35 in (88 cm) women**; Asians face higher risk at lower BMI. BMI is easy/cheap but can misclassify high-muscle or elderly low-muscle patients.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Anthropometrics – BMI/WC","Tags":["Objective1","Anthropometrics","High-Yield"]},
 
-    {
-      "Front": "BMI categories",
-      "Back": "Normal: 18.5–24.9 · Overweight: 25–29.9 · Obesity Class I: 30–34.9 · Class II: 35–39.9 · Class III: ≥40",
-      "Tags": ["#ReferenceValue", "Obesity", "High-Yield"]
-    },
-    {
-      "Front": "Waist circumference cutoffs (increased risk)",
-      "Back": "Men: ≥102 cm (40 in) · Women: ≥88 cm (35 in)",
-      "Tags": ["#ReferenceValue", "Obesity", "CVD", "High-Yield"]
-    },
-    {
-      "Front": "Blood pressure categories (ACC/AHA 2017)",
-      "Back": "Normal: <120/<80 · Elevated: 120–129/<80 · Stage 1 HTN: 130–139 or 80–89 · Stage 2 HTN: ≥140 or ≥90",
-      "Tags": ["#ReferenceValue", "BP", "High-Yield"]
-    },
-    {
-      "Front": "Fasting plasma glucose categories",
-      "Back": "Normal: <100 mg/dL · Prediabetes: 100–125 · Diabetes: ≥126 (confirmed)",
-      "Tags": ["#ReferenceValue", "Diabetes", "High-Yield"]
-    },
-    {
-      "Front": "HbA1c categories",
-      "Back": "Normal: <5.7% · Prediabetes: 5.7–6.4% · Diabetes: ≥6.5% (confirmed)",
-      "Tags": ["#ReferenceValue", "Diabetes", "High-Yield"]
-    },
-    {
-      "Front": "OGTT 2-hr plasma glucose categories (after 75g load)",
-      "Back": "Normal: <140 mg/dL · Prediabetes: 140–199 · Diabetes: ≥200",
-      "Tags": ["#ReferenceValue", "Diabetes", "High-Yield"]
-    },
-    {
-      "Front": "Random plasma glucose diagnostic cutoff",
-      "Back": "≥200 mg/dL with classic symptoms → diagnostic for diabetes",
-      "Tags": ["#ReferenceValue", "Diabetes", "High-Yield"]
-    },
-    {
-      "Front": "Triglyceride categories",
-      "Back": "Normal: <150 mg/dL · Borderline high: 150–199 · High: 200–499 · Very high: ≥500",
-      "Tags": ["#ReferenceValue", "Lipids", "High-Yield"]
-    },
-    {
-      "Front": "HDL cholesterol cutoffs",
-      "Back": "Men: <40 mg/dL low · Women: <50 mg/dL low",
-      "Tags": ["#ReferenceValue", "Lipids", "High-Yield"]
-    },
-    {
-      "Front": "LDL cholesterol targets",
-      "Back": "Desirable: <100 mg/dL general · <70 mg/dL very high-risk patients",
-      "Tags": ["#ReferenceValue", "Lipids", "High-Yield"]
-    },
-    {
-      "Front": "Total cholesterol categories",
-      "Back": "Desirable: <200 mg/dL · Borderline: 200–239 · High: ≥240",
-      "Tags": ["#ReferenceValue", "Lipids", "High-Yield"]
-    },
-    {
-      "Front": "Physical activity guideline for adults",
-      "Back": "≥150 min/week moderate OR 75 min vigorous · Additional benefit up to 300 min/week · Strength training ≥2 days/week",
-      "Tags": ["#ReferenceValue", "Physical-Activity", "High-Yield"]
-    }
+    {"Front":"Waist-to-hip ratio—what ‘normal’ thresholds are printed?","Back":"Men **<0.90**; Women **<0.85**; above these correlates with increased metabolic risk.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Anthropometrics – WHR","Tags":["Objective1","Anthropometrics"]},
+
+    {"Front":"Body fat %—list methods with one strength/limitation (exam-style).","Back":"Skinfolds: easy/portable; operator-dependent. BIA: cheap/portable; hydration sensitive. Underwater weighing: accurate; cumbersome. Bod Pod: accurate/easier; costly. DEXA/CT/MRI: accurate; expensive/non-portable.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Anthropometrics – Body Fat","Tags":["Objective1","Anthropometrics"]},
+
+    {"Front":"BP categories—according to **ACC/AHA 2017**, fill the grid for Normal, Elevated, Stage 1, Stage 2.","Back":"Normal **<120** and **<80**; Elevated **120–129** and **<80**; Stage 1 **130–139** or **80–89**; Stage 2 **≥140** or **≥90**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • BP – Categories","Tags":["Objective1","Hypertension","Numbers"]},
+
+    {"Front":"BP reduction benefits—give the **INTERSALT-based** mortality deltas for a **5 mmHg** drop.","Back":"Approximate mortality reduction: **Stroke −14%**, **Coronary −9%**, **Total −7%**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • BP – Benefit Table","Tags":["Objective1","Hypertension","High-Yield"]},
+
+    {"Front":"Clinic fitness measures—list **five** simple options acceptable in office per chapter.","Back":"Step test (CRF); squats/pushups/sit-ups (endurance); sit-and-reach (flexibility); skinfolds (composition); hand-grip dynamometer (proxy strength).","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Fitness – Office Measures","Tags":["Objective1","Fitness","Clinic"]},
+
+    {"Front":"AHA **diet & activity** guidance for CVD prevention (chapter summary).","Back":"≥150 min/wk moderate or ≥75 min/wk vigorous PA; diet emphasizing fruits/veg/whole grains; mostly plant proteins (legumes/nuts), fish/seafood, low-fat dairy; **minimize** processed foods, added sugars, salt, alcohol; **avoid tobacco**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj2 • CVD – AHA","Tags":["Objective2","Guidelines","AHA"]},
+
+    {"Front":"USPSTF—two primary prevention items for CVD in this chapter.","Back":"Refer adults with CVD risk factors to **behavioral counseling** for healthy diet/PA (**Grade B**). Prescribe **statin** for ages 40–75 with ≥1 risk factor and 10-yr risk ≥10% (**Grade B**).","Chapter":"Ch3 – Clinical Processes","Section":"Obj2 • CVD – USPSTF","Tags":["Objective2","Guidelines","USPSTF"]},
+
+    {"Front":"ACLM stance for **CAD reversal** in Obj2—what diet and why is it singled out?","Back":"A **low-fat, whole-food, plant-based** diet (Ornish/Esselstyn style) is the only pattern shown to **reverse** coronary atherosclerosis in studies; more liberal plant or Mediterranean patterns may prevent but haven’t shown reversal.","Chapter":"Ch3 – Clinical Processes","Section":"Obj2 • CAD – ACLM Note","Tags":["Objective2","Guidelines","Reversal"]},
+
+    {"Front":"Diabetes—USPSTF screening and follow-up recommendation printed here.","Back":"Screen adults **35–70** with **overweight/obesity**; offer or refer those with **prediabetes** to effective **preventive interventions** (**Grade B**).","Chapter":"Ch3 – Clinical Processes","Section":"Obj2 • DM – USPSTF","Tags":["Objective2","Diabetes","USPSTF"]},
+
+    {"Front":"Diabetes—ACLM treatment emphasis (target wording).","Back":"Use a **low-fat, whole-food, plant-based** pattern to reverse/minimize insulin resistance; aim for **remission** of type 2 diabetes with **intensive lifestyle** as a primary treatment component.","Chapter":"Ch3 – Clinical Processes","Section":"Obj2 • DM – ACLM Aim","Tags":["Objective2","Diabetes","ACLM"]},
+
+    {"Front":"Obesity—USPSTF/CMS/AHA-ACC-TOS: who should be referred and what intensity is ‘most effective’?","Back":"Refer **all adults** with BMI ≥30 (USPSTF) and those ≥25 with CVD risk or ≥30 (AHA/ACC/TOS) to **comprehensive**, **in-person**, **high-intensity** programs (≥14 sessions/6 months) led by trained staff; include caloric restriction, PA, and behavioral strategies; CMS covers IBT for BMI ≥30.","Chapter":"Ch3 – Clinical Processes","Section":"Obj2 • Obesity – Programs","Tags":["Objective2","Obesity","Programs"]},
+
+    {"Front":"Weight-loss math (chapter framing)—what daily deficit maps to ~1 lb/week? Why is exercise-only often insufficient?","Back":"About **500 kcal/day** deficit ≈ **1 lb/week**. Exercise-only requires ~500 kcal/day extra expenditure (≈5 miles/day walking), which many can’t sustain; diet composition and calorie density often more actionable.","Chapter":"Ch3 – Clinical Processes","Section":"Obj2 • Weight – Energy Concepts","Tags":["Objective2","Obesity","Counseling"]},
+
+    {"Front":"Bariatric surgery—list the **BMI criteria** printed (with the diabetes exception).","Back":"BMI **≥40**; BMI **≥35** with ≥1 comorbidity; BMI **≥30** with **inadequately controlled T2D** despite optimal oral agents.","Chapter":"Ch3 – Clinical Processes","Section":"Obj2 • Obesity – Bariatric Criteria","Tags":["Objective2","Obesity","Surgery"]},
+
+    {"Front":"Cancer—name **two** prevention recommendation sets the chapter quotes and one common thread.","Back":"**AICR** and **ACS** recommendations; both emphasize healthy weight, PA, plant-rich diet, minimize red/processed/ultra-processed foods and alcohol; ACS: aim up to **300 min/wk** moderate PA.","Chapter":"Ch3 – Clinical Processes","Section":"Obj2 • Cancer – AICR/ACS","Tags":["Objective2","Cancer","Guidelines"]},
+
+    {"Front":"WHO & CDC cancer prevention—list **four** items that appear in both lists.","Back":"Avoid tobacco; maintain healthy weight; healthy diet rich in fruits/vegetables; regular PA; limit alcohol; UV protection (CDC highlights sunscreen/shade).","Chapter":"Ch3 – Clinical Processes","Section":"Obj2 • Cancer – WHO/CDC","Tags":["Objective2","Cancer","PublicHealth"]},
+
+    {"Front":"Trial ID→Outcome (rapid recall): **Ornish Lifestyle Heart** 5-year RCT—single line finding.","Back":"Intensive low-fat vegetarian + PA + stress mgmt + group support **regressed** coronary atherosclerosis and reduced angina/events vs usual care **without lipid-lowering drugs**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj3 • CAD – Ornish","Tags":["Objective3","Trials","High-Yield"]},
+
+    {"Front":"PCI vs exercise in stable CAD—what improved and how did costs compare at 12 months?","Back":"Exercise training ↑ max exercise tolerance and ischemic threshold; **VO2max +16%**; cost **$3,708** vs **$6,086** with PCI; both improved symptoms.","Chapter":"Ch3 – Clinical Processes","Section":"Obj3 • CAD – PCI vs Exercise","Tags":["Objective3","Trials","Economics"]},
+
+    {"Front":"DPP (lifestyle vs metformin) in high-risk adults—core conclusion.","Back":"Both reduced diabetes incidence; **lifestyle** was **more effective** than metformin over ~2.8 years.","Chapter":"Ch3 – Clinical Processes","Section":"Obj3 • Diabetes – DPP","Tags":["Objective3","Trials"]},
+
+    {"Front":"DIRECT primary-care remission trial—what % off meds at 12 months?","Back":"**46%** achieved remission to non-diabetic state **off antidiabetic drugs** at 12 months; remission tracked with weight loss.","Chapter":"Ch3 – Clinical Processes","Section":"Obj3 • Diabetes – DIRECT","Tags":["Objective3","Trials","Remission"]},
+
+    {"Front":"Portfolio diet vs lovastatin (3-mo RCT)—LDL reduction comparison.","Back":"LDL ↓: control **8%**, **statin 30.9%**, **portfolio 28.6%**; CRP reductions similar in statin/portfolio; both superior to control.","Chapter":"Ch3 – Clinical Processes","Section":"Obj3 • Lipids – Portfolio","Tags":["Objective3","Trials","Lipids"]},
+
+    {"Front":"Exercise vs drugs—what did the meta-epidemiology suggest re **mortality** across conditions?","Back":"Exercise ≈ many drugs for mortality in secondary prevention of CHD and prediabetes; **more effective** post-stroke; **less effective** than diuretics in heart failure.","Chapter":"Ch3 – Clinical Processes","Section":"Obj3 • Comparative – Exercise vs Drugs","Tags":["Objective3","Comparative","Mortality"]},
+
+    {"Front":"Metabolic syndrome TLC ± amlodipine/atorvastatin—two takeaways.","Back":"TLC alone **comparable** to TLC+combo for improving MetS; weight change drove Ox-LDL improvements.","Chapter":"Ch3 – Clinical Processes","Section":"Obj3 • MetS – TLC±Med","Tags":["Objective3","Trials","MetS"]},
+
+    {"Front":"Exercise for depression (meta-analysis)—what’s the nuanced conclusion?","Back":"Exercise better than control for depressive symptoms; effect attenuates in methodologically robust trials; **no better** than psych/pharm comparators in small trials.","Chapter":"Ch3 – Clinical Processes","Section":"Obj3 • Depression – Exercise","Tags":["Objective3","Trials","MentalHealth"]},
+
+    {"Front":"Obj4 workflow—**who** to screen for DM and **how often**, per the chapter?","Back":"Adults with overweight/obesity **plus risk factors**; if none, start at **45** and repeat **q3y**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj4 • Diabetes – Screen","Tags":["Objective4","Diabetes","Screen"]},
+
+    {"Front":"DM diagnosis grid—fill the **four** lab anchors printed (A1c, FPG, 2-hr OGTT, RPG).","Back":"Diabetes: **A1c ≥6.5%**, **FPG ≥126 mg/dL**, **2-hr ≥200 mg/dL**, **Random ≥200 mg/dL** (with symptoms). Prediabetes: **A1c 5.7–6.4%**, **FPG 100–125**, **2-hr 140–199**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj4 • Diabetes – Diagnose","Tags":["Objective4","Diabetes","Numbers"]},
+
+    {"Front":"DM monitoring—list the **quarterly/annual** labs the chapter recommends.","Back":"**Quarterly**: HbA1c. **Annual**: BMP, urine microalbumin, fasting lipids.","Chapter":"Ch3 – Clinical Processes","Section":"Obj4 • Diabetes – Monitor","Tags":["Objective4","Diabetes","FollowUp"]},
+
+    {"Front":"Obesity—what **initial weight-loss goal** and what metabolic gains occur at 2–5% vs ≥5%?","Back":"Target **5–10%** body weight. **2–5%** improves glucose, A1c, TGs, SBP; **≥5%** yields greater benefits incl. DBP, HDL, and potential med reduction.","Chapter":"Ch3 – Clinical Processes","Section":"Obj4 • Obesity – Goals","Tags":["Objective4","Obesity","Targets"]},
+
+    {"Front":"Weight plateau—what two physiologic mechanisms are highlighted?","Back":"Non-resting EE ↓ ~30% after ~10% weight loss → must eat **10–15% fewer calories** than expected at the new weight; hypothalamic structural/adaptive changes require time to readapt.","Chapter":"Ch3 – Clinical Processes","Section":"Obj4 • Obesity – Plateau","Tags":["Objective4","Obesity","Physiology"]},
+
+    {"Front":"Hyperlipidemia—targets & formula: state **LDL-C goal(s)** and the **Friedewald** calculation.","Back":"LDL-C goal **<100 mg/dL** (ideally **<70** in high risk). **LDL = TC − HDL − (TG/5)** (when TG not high).","Chapter":"Ch3 – Clinical Processes","Section":"Obj4 • Lipids – Basics","Tags":["Objective4","Lipids","Numbers"]},
+
+    {"Front":"Advanced lipid markers—why measure **apoB** and who should get **Lp(a)**?","Back":"**apoB** counts atherogenic particles—stronger indicator than LDL-C alone. **Lp(a)** is highly heritable; consider especially with strong FHx; **~20%** have elevated Lp(a) (≥50 mg/dL or 125 nmol/L) → ↑ASCVD risk.","Chapter":"Ch3 – Clinical Processes","Section":"Obj4 • Lipids – Advanced","Tags":["Objective4","Lipids","Advanced"]},
+
+    {"Front":"Counseling line—chapter’s primary **diet** message for hyperlipidemia.","Back":"Prioritize a **plant-based** pattern: animal foods provide cholesterol/saturated fat; fiber is plant-only and removes cholesterol; plant-predominant intake rapidly improves lipids.","Chapter":"Ch3 – Clinical Processes","Section":"Obj4 • Lipids – Diet Counseling","Tags":["Objective4","Lipids","Diet"]},
+
+    {"Front":"Clinic resources—what operational steps does Obj5 prescribe for **maintaining** a resource network?","Back":"Designate a **resource coordinator**; review/refresh list **semi-annually** (health dept, hospitals, systems); ensure alignment with LM values; route patients to appropriate local, national, or **online** options.","Chapter":"Ch3 – Clinical Processes","Section":"Obj5 • Resources – Ops","Tags":["Objective5","Operations"]},
+
+    {"Front":"Obj5—list **five** national resources cited (verbatim acronyms acceptable).","Back":"CDC DPP; NDEP; 1-800-QUIT-NOW; AHA “Getting Healthy”; **Million Hearts**; 211.org; state/area agency on aging; SAMHSA helpline.","Chapter":"Ch3 – Clinical Processes","Section":"Obj5 • Resources – National","Tags":["Objective5","Resources"]},
+
+    {"Front":"Team-based care—what does Obj6 say to **train support staff** to do (three bullets)?","Back":"Collect LM vital signs; provide basic counseling/tools; help patients identify and navigate community resources.","Chapter":"Ch3 – Clinical Processes","Section":"Obj6 • Teams – Staff Roles","Tags":["Objective6","Teams","Workflow"]},
+
+    {"Front":"Team visit flow—assign **who does what** (chapter example sequence).","Back":"Check-in: admin; Lifestyle vital signs & pre-visit assessments: MA; Clinical encounter: provider; Coaching: provider/MA/coach/RN/RD; Check-out: admin; Referral follow-up: coordinator.","Chapter":"Ch3 – Clinical Processes","Section":"Obj6 • Teams – Flow","Tags":["Objective6","Teams","Clinic"]},
+
+    {"Front":"Effective interdisciplinary teams—name **five** of the ten characteristics printed.","Back":"Positive leadership; robust communication; appropriate resources/procedures; appropriate skill mix; supportive climate; clear roles; clarity of vision; reward/training; quality/outcomes focus; role respect/understanding.","Chapter":"Ch3 – Clinical Processes","Section":"Obj6 • Teams – Characteristics","Tags":["Objective6","Teams","Quality"]},
+
+    {"Front":"Referral targets—list **five** professionals the chapter recommends (prefer LM-trained).","Back":"LM specialists/ITLC programs; registered dietitians; pharmacists; PT/OT; nurses; health educators; clinical exercise physiologists; fitness trainers; coaches; psychologists.","Chapter":"Ch3 – Clinical Processes","Section":"Obj6 • Teams – Referrals","Tags":["Objective6","Referral"]},
+
+    {"Front":"Group visits (SMAs)—list **three** major **values** for patients/providers printed in Obj7.","Back":"Access (shorter waits, more frequent follow-ups); ↑ satisfaction/adherence; ↓ hospitalization; peer support; provider efficiency/time leverage; cost reduction and ↑ productivity.","Chapter":"Ch3 – Clinical Processes","Section":"Obj7 • Group Visits – Value","Tags":["Objective7","SMAs","Benefits"]},
+
+    {"Front":"Group visits—operations that protect privacy while staying efficient?","Back":"Confidentiality consent; individualized management in front of the group **and** brief private exams as needed; team of 2–4 clinicians; education included every visit; billable at individual rates.","Chapter":"Ch3 – Clinical Processes","Section":"Obj7 • Group Visits – Ops","Tags":["Objective7","SMAs","Ops"]},
+
+    {"Front":"Telehealth—give **two** advantages and **two** disadvantages as listed.","Back":"Advantages: better access (remote/specialist/disability), cost savings and amenability to frequent touchpoints. Disadvantages: tech barriers; vitals require home devices; limited PE; labs still needed; bond may feel less personal; regulatory issues.","Chapter":"Ch3 – Clinical Processes","Section":"Obj7 • Telehealth – Pros/Cons","Tags":["Objective7","Telehealth"]},
+
+    {"Front":"Tracking/quality—why is **EHR/registry** tracking essential in LM (Obj8)?","Back":"Demonstrates effectiveness to patients/payers; powers QI and cost-savings analyses; supports reimbursement tracking; identifies **high-risk** or uncontrolled patients via reports.","Chapter":"Ch3 – Clinical Processes","Section":"Obj8 • EHR/Registry – Rationale","Tags":["Objective8","EHR","Quality"]},
+
+    {"Front":"HEDIS—why does Obj8 mention it in primary care context?","Back":"It’s a widely used performance improvement set; clinics already track vitals/labs/patient-experience partly to meet HEDIS metrics tied to ratings/reimbursement.","Chapter":"Ch3 – Clinical Processes","Section":"Obj8 • HEDIS – Context","Tags":["Objective8","Quality","Metrics"]},
+
+    {"Front":"MCQ—Which item is the **only** validated traditional LM vital sign in this chapter?\\nA) PHQ-2\\nB) PAVS\\nC) MEDAS\\nD) STOP-BANG","Back":"**B) PAVS**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • MCQ – Vital Signs","Tags":["Objective1","MCQ"]},
+
+    {"Front":"MCQ—Which PA category corresponds to **120 min/week** on PAVS?\\nA) Inactive\\nB) Insufficiently active\\nC) Sufficiently active\\nD) Highly active","Back":"**B) Insufficiently active** (1–149 min/wk).","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • MCQ – PAVS","Tags":["Objective1","MCQ"]},
+
+    {"Front":"MCQ—Which is **not** listed as a brief **stress** screener?\\nA) PSS-4\\nB) GAD-2\\nC) PHQ-2\\nD) PSQI","Back":"**D) PSQI** (it’s an in-depth sleep follow-up tool).","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • MCQ – Stress Tools","Tags":["Objective1","MCQ"]},
+
+    {"Front":"MCQ—BP category **128/78** per ACC/AHA 2017?\\nA) Normal\\nB) Elevated\\nC) Stage 1 HTN\\nD) Stage 2 HTN","Back":"**B) Elevated** (SBP 120–129 and DBP <80).","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • MCQ – BP","Tags":["Objective1","MCQ"]},
+
+    {"Front":"MCQ—Which **dietary** recommendation is **ACLM-specific** for CAD reversal per Obj2?\\nA) DASH\\nB) Mediterranean\\nC) Low-fat whole-food plant-based with minimal oils/nuts/seeds\\nD) Keto","Back":"**C)** — Ornish/Esselstyn-style has reversal evidence cited.","Chapter":"Ch3 – Clinical Processes","Section":"Obj2 • MCQ – CAD Diet","Tags":["Objective2","MCQ"]},
+
+    {"Front":"MCQ—DIRECT trial: What share of participants were in **remission off meds** at 12 months?\\nA) 25%\\nB) 33%\\nC) 46%\\nD) 66%","Back":"**C) 46%**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj3 • MCQ – DIRECT","Tags":["Objective3","MCQ"]},
+
+    {"Front":"MCQ—Which pairing is correct from the **Portfolio** RCT?\\nA) Control −30% LDL\\nB) Statin −8% LDL\\nC) Portfolio −28.6% LDL\\nD) Portfolio no CRP change","Back":"**C)** — Portfolio ≈ −28.6% LDL; CRP reductions similar to statin.","Chapter":"Ch3 – Clinical Processes","Section":"Obj3 • MCQ – Portfolio","Tags":["Objective3","MCQ"]},
+
+    {"Front":"MCQ—Which **advanced lipid** statement aligns with the chapter?\\nA) apoB is less informative than LDL-C\\nB) Lp(a) is lifestyle-driven not hereditary\\nC) Elevated Lp(a) (~≥50 mg/dL) raises ASCVD risk in ~1/5 people\\nD) Non-HDL = TG/5","Back":"**C)**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj4 • MCQ – Advanced Lipids","Tags":["Objective4","MCQ"]},
+
+    {"Front":"Vignette—10-min visit: you need fast diet + PA + sleep + stress + substance screens. Which **one-liners** (tools) do you deploy today?","Back":"Diet: LASF 2 items or ‘typical day’; PA: **PAVS**; Sleep: **Single-Item Sleep Quality** (1–10) ± **STOP-BANG** if OSA risk; Stress: **PHQ-2/GAD-2/PSS-4**; Substance: **AUDIT-C** + **NIDA Quick Screen**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj1 • Vignette – Fast Screen","Tags":["Objective1","Vignette"]},
+
+    {"Front":"Vignette—hyperlipidemia with strong FHx premature ASCVD and LDL-C at goal: what **additional labs** may change risk estimation or plan?","Back":"Add **apoB** and **Lp(a)** per chapter; consider hs-CRP; continue plant-predominant diet and lifestyle optimization.","Chapter":"Ch3 – Clinical Processes","Section":"Obj4 • Vignette – Lipids","Tags":["Objective4","Vignette"]},
+
+    {"Front":"Vignette—BMI 37, T2D on orals, interested in ‘programs not pills.’ What **program intensity** does Obj2 endorse and what else to discuss?","Back":"**High-intensity** comprehensive lifestyle intervention (≥14 sessions/6 months) led by trained staff; discuss **ITLC** options, program availability/coverage, and bariatric criteria if lifestyle trial insufficient.","Chapter":"Ch3 – Clinical Processes","Section":"Obj2 • Vignette – Obesity","Tags":["Objective2","Vignette"]},
+
+    {"Front":"Vignette—clinic redesign: How do you structure your **team workflow** to embed LM?","Back":"Assign vitals/screens to MAs; provider focuses on diagnosis + LM plan; integrate coach/RD for behavior change; admin handles check-in/out and referrals; weekly team huddles; build EHR templates and registries.","Chapter":"Ch3 – Clinical Processes","Section":"Obj6/8 • Vignette – Clinic Build","Tags":["Objective6","Objective8","Vignette"]},
+
+    {"Front":"Vignette—uncontrolled T2D panel costs rising. Which **EHR/registry** tactics from Obj8 cut through fastest?","Back":"Create reports by ICD/A1c thresholds and high-risk behaviors; bulk-message scheduling for SMAs; track goal attainment; export for **HEDIS** metrics and QI dashboards.","Chapter":"Ch3 – Clinical Processes","Section":"Obj8 • Vignette – Registry","Tags":["Objective8","Vignette","Quality"]}
+
+    ,{"Front":"Collaborative & chronic care models—what outcomes headline does the chapter ask you to ‘analyze’ evidence for?","Back":"Enhanced outcomes in chronic disease management when care is **team-based**, protocolized, registry-supported, and includes **self-management support**; benefits include clinical markers, utilization, and patient experience (evidence synthesis noted in text).","Chapter":"Ch3 – Clinical Processes","Section":"Obj9 • Collaborative/Chronic Care – Evidence","Tags":["Objective9","Teams","Outcomes"]}
+
+    ,{"Front":"Primary care/office models—what makes LM models ‘successful’ per Obj10 (two structural features)?","Back":"Routine **lifestyle vital signs** + stage-matched counseling embedded in every visit; **group visits/telehealth** leveraged; **community resource** tie-ins; **EHR tracking** with registries and prompts.","Chapter":"Ch3 – Clinical Processes","Section":"Obj10 • Primary Care Models","Tags":["Objective10","Models","Clinic"]}
+
+    ,{"Front":"PDSA—write the four phases and ONE example QI aim from this chapter’s context.","Back":"**Plan–Do–Study–Act**. Example aim: “Increase PAVS completion to 80% of adult visits in 12 weeks.”","Chapter":"Ch3 – Clinical Processes","Section":"Obj11 • QI – PDSA","Tags":["Objective11","QI","PDSA"]}
+
+    ,{"Front":"EBM—state the principle the chapter emphasizes for applying guidelines in LM.","Back":"Integrate **best evidence**, **clinical expertise**, and **patient values**—including stage/readiness and social context—when tailoring LM prescriptions and intensity.","Chapter":"Ch3 – Clinical Processes","Section":"Obj12 • EBM – Application","Tags":["Objective12","EBM"]}
+
+    ,{"Front":"Measuring intervention effectiveness—what two **patient-reported** measures does Obj13 highlight?","Back":"**Patient Activation Measure (PAM)** and **therapeutic alliance** measures (trust/relationship quality).","Chapter":"Ch3 – Clinical Processes","Section":"Obj13 • Effectiveness – Patient Measures","Tags":["Objective13","Measurement","PAM","Alliance"]}
+
+    ,{"Front":"Alliance measurement—list **two** alliance attributes aligned with earlier chapter content.","Back":"Perceived **empathy/attunement** and **shared decision-making/goal alignment** (trust components).","Chapter":"Ch3 – Clinical Processes","Section":"Obj13 • Effectiveness – Alliance","Tags":["Objective13","Alliance","Measures"]}
+
+    ,{"Front":"MCQ—Which office approach best aligns with **Obj9**?\\nA) Solo physician, no registries\\nB) Team-based, registries, protocols, and self-management support\\nC) Referral-only model\\nD) Annual advice letter","Back":"**B)**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj9 • MCQ – Collaborative Care","Tags":["Objective9","MCQ"]}
+
+    ,{"Front":"MCQ—Choose the **best QI aim** for PDSA in Obj11.\\nA) ‘Do better on lifestyle’\\nB) ‘Reduce no-shows’\\nC) ‘Raise PAVS completion from 30%→80% in 12 weeks in Family Medicine’\\nD) ‘Increase profits’","Back":"**C)** — Specific, measurable, time-bound.","Chapter":"Ch3 – Clinical Processes","Section":"Obj11 • MCQ – PDSA Aim","Tags":["Objective11","MCQ"]}
+
+    ,{"Front":"MCQ—EBM in LM means prioritizing: \\nA) Guidelines over patient values\\nB) Clinical hunches only\\nC) Best evidence + clinician expertise + patient values/context\\nD) Insurance rules only","Back":"**C)**.","Chapter":"Ch3 – Clinical Processes","Section":"Obj12 • MCQ – EBM","Tags":["Objective12","MCQ"]}
+
+    ,{"Front":"Vignette—Design a **chronic care model** micro-pilot for HTN in your clinic per Obj9/10.","Back":"Build registry of patients with BP ≥140/90; embed ACC/AHA **self-measured BP** supplies; SMAs for DASH/PA; pharmacist titration protocol; monthly dashboard; patient **PAM** baseline and 90-day re-measure.","Chapter":"Ch3 – Clinical Processes","Section":"Obj9/10 • Vignette – CCM Pilot","Tags":["Objective9","Objective10","Vignette"]}
+
+    ,{"Front":"Vignette—demonstrate **evidence-based** LM decision-making (Obj12) for a patient preferring diet over statin at border-risk lipids.","Back":"Discuss absolute risk; offer **Portfolio** diet trial with follow-up **lipids/apoB**; shared decision on timeline/thresholds; document **values/preferences** and safety net.","Chapter":"Ch3 – Clinical Processes","Section":"Obj12 • Vignette – EBM","Tags":["Objective12","Vignette","Lipids"]}
+
+    ,{"Front":"Vignette—how will you **measure success** of a new SMA program (Obj13 measures)?","Back":"Track biometrics (A1c, BP, LDL), utilization (ED visits), **PAM scores**, patient-reported **alliance**/satisfaction; compare to baseline and matched controls if possible.","Chapter":"Ch3 – Clinical Processes","Section":"Obj13 • Vignette – Measurement","Tags":["Objective13","Vignette","Metrics"]}
+
+    ,{"Front":"Glossary—Lifestyle Vital Signs (LMV) in this chapter: define in one line.","Back":"Brief, pillar-based assessments (often validated questionnaires) embedded in history/PE to quantify behaviors; **PAVS** is the only validated traditional ‘vital sign.’","Chapter":"Ch3 – Clinical Processes","Section":"Glossary","Tags":["Glossary","VitalSigns"]}
+
+    ,{"Front":"Glossary—Shared Medical Appointment (SMA).","Back":"A group visit model (billable individually) where consenting patients with similar concerns are seen together by a team, with education plus individualized care while preserving privacy.","Chapter":"Ch3 – Clinical Processes","Section":"Glossary","Tags":["Glossary","SMA"]}
+
+    ,{"Front":"Glossary—PDSA cycle.","Back":"Iterative **Plan–Do–Study–Act** quality-improvement method to test and scale workflow changes.","Chapter":"Ch3 – Clinical Processes","Section":"Glossary","Tags":["Glossary","QI"]}
+
+    ,{"Front":"Glossary—Patient Activation Measure (PAM).","Back":"A validated scale assessing a patient’s knowledge, skill, and confidence for self-management; used to tailor support and evaluate intervention impact.","Chapter":"Ch3 – Clinical Processes","Section":"Glossary","Tags":["Glossary","PAM"]}
+
+    ,{"Front":"Glossary—Therapeutic alliance (LM context).","Back":"The collaborative relationship quality between patient and clinician (trust, empathy, shared goals) that influences adherence and outcomes.","Chapter":"Ch3 – Clinical Processes","Section":"Glossary","Tags":["Glossary","Alliance"]}
   ]
 }
