@@ -1,0 +1,142 @@
+{
+  "name": "Chapter 9 - Tobacco & Other Substances",
+  "cards": [
+
+    {"Front":"Tobacco—what are the **annual US economic costs** (direct + productivity)?","Back":"Total **>$300B**/yr: ≈$225B medical + ≈$156B lost productivity.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj1: Tobacco – Economics","Tags":["Objective1","Epidemiology","High-Yield"]},
+
+    {"Front":"Tobacco—headline health impact in the US and worldwide.","Back":"US: ~**480,000** deaths/yr (≈1 in 5 deaths, includes secondhand). Global: **~8M** premature deaths/yr; >80% of users live in LMICs.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj1: Tobacco – Mortality","Tags":["Objective1","Mortality","Global"]},
+
+    {"Front":"Smokers vs never-smokers—two high-yield contrasts for exams.","Back":"More health problems/disability and **≥10 years** shorter life expectancy.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj1: Tobacco – Human Cost","Tags":["Objective1","Prognosis"]},
+
+    {"Front":"US smoking-related deaths—top three disease categories & counts.","Back":"Cancer **163,700**; CVD **153,000**; Respiratory **113,100** annually.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj1: Tobacco – Mortality Detail","Tags":["Objective1","Numbers"]},
+
+    {"Front":"Tobacco & cancer—four pearls to quote.","Back":"Many cancers across body sites; **~90%** lung cancer risk in men and **70–80%** in women due to smoking; adenocarcinoma now most common smoking-related lung CA; **1/3** of cancer deaths wouldn’t occur if no tobacco use.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj1: Tobacco – Cancer","Tags":["Objective1","Oncology","High-Yield"]},
+
+    {"Front":"Smoking—list **six** non-cancer risks often tested.","Back":"Diabetes (30–40% ↑ risk in current smokers), RA, impaired immunity, poor wound healing, reproductive problems, TB risk/recurrence/tx impairment, ectopic/preterm/stillbirth/LBW/SIDS, erectile dysfunction, AMD, ↑ fracture risk, ↑ cancer treatment failure, ↓ QoL.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj1: Tobacco – Other Risks","Tags":["Objective1","Systemic","Lists"]},
+
+    {"Front":"Nicotine dependence—two exam points + quit attempts stat.","Back":"Most common chemical dependence in US; nicotine drives addiction cycle; ~**70%** of smokers want to quit; long-term abstinence typically after **~6 quit attempts** on average.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj1: Tobacco – Dependence","Tags":["Objective1","Dependence"]},
+
+    {"Front":"Alcohol—current US patterns you should remember.","Back":"Past-month binge ~**22%** (61.6M); heavy use **6.4%** (17.7M). Of **40.3M** with any SUD (2020), **28.3M** had AUD. Excessive alcohol: **>140k** deaths/yr; **3.6M YPLL**.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj1: Alcohol – Epidemiology","Tags":["Objective1","Alcohol","Numbers"]},
+
+    {"Front":"Alcohol—cancer & mortality notes to counsel with.","Back":"Alcohol is an **HHS carcinogen**; dose–response risk; strong links: head/neck, esophagus, liver, breast, colorectal; alcohol + tobacco → additive cancer risk; alcohol-related deaths ↑ **49%** (2006→2019).","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj1: Alcohol – Risks","Tags":["Objective1","Cancer","Trends"]},
+
+    {"Front":"Binge drinking—definition & who binges more (regional/demographic).","Back":"Binge = BAC to **0.08** (~5 drinks/2h men; 4 drinks/2h women). More common in NE/Upper Midwest/Hawaii; men > women (≈2×); highest in **18–25y**; increases with income; White > Black/Asian.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj1: Alcohol – Binge","Tags":["Objective1","Definitions"]},
+
+    {"Front":"Illicit drugs (SAMHSA definition) & 2020 prevalence snapshot.","Back":"Illicit = marijuana, cocaine/crack, heroin, hallucinogens, inhalants, nonmedical Rx psychotherapeutics. 2020: **21.4%** (59.3M) ≥12y used an illicit drug; marijuana most common.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj1: Illicit Drugs – Overview","Tags":["Objective1","Drugs"]},
+
+    {"Front":"Opioids—misuse prevalence & synthetic overdose trend lines.","Back":"~**9.5M** (≥13y) misused in 2020; overdose deaths involving opioids ↑ >6-fold since 1999; synthetic opioid death rate ↑ **1,040%** (2013→2019). Economic impact (2017): OUD **$471B**; fatal overdose **$550B**.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj1: Opioids – Trends","Tags":["Objective1","Opioids","Numbers"]},
+
+    {"Front":"USPHS tobacco guidelines—five key points (clinician tasks).","Back":"Treat tobacco dependence as chronic disease; assess/document consistently; treatments effective & cost-effective across populations; **brief advice (<3 min)** helps; individual/group/phone counseling effective with dose-response; use MI if not ready.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj2: USPHS Keys","Tags":["Objective2","Guidelines"]},
+
+    {"Front":"USPSTF lung cancer screening—who qualifies?","Back":"**Annual LDCT** if: **20+ pack-years**, current or quit within **15 years**, **age 50–80**.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj2: Lung CA Screening","Tags":["Objective2","USPSTF","Screening"]},
+
+    {"Front":"FTND (Fagerström Test)—what it measures and cut bands.","Back":"Tobacco dependence severity (10 items). **7–10 high**, **4–6 moderate**, **<4 minimal** dependence.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj2: Nicotine Dependence Tools","Tags":["Objective2","FTND","Screening"]},
+
+    {"Front":"HSI—what two questions and how to interpret?","Back":"(1) **Time to first cigarette** after waking; (2) **Cigs/day**. 6-point scale → **0–1 low**, **2–4 medium**, **5–6 high** dependence.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj2: Nicotine Dependence Tools","Tags":["Objective2","HSI"]},
+
+    {"Front":"Withdrawal scales—what symptoms do Minnesota/Hughes tools track?","Back":"Craving; irritability/anger/frustration; anxiety/tense; depressed mood; restlessness/impatient; plus drowsiness, headache, difficulty concentrating—rated absent→severe.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj2: Withdrawal Assessment","Tags":["Objective2","Withdrawal"]},
+
+    {"Front":"AUDIT-C vs full AUDIT—workflow and score actions.","Back":"Positive **AUDIT-C** → complete **10-item AUDIT**. Actions: Women 0–6 / Men 0–7 → feedback; **7/8–15** brief intervention; **16–24** BI + monitoring + outpatient tx; **≥25** refer for evaluation/treatment. This overall flow is **SBIRT**.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj2: Alcohol – AUDIT Workflow","Tags":["Objective2","AUDIT","SBIRT"]},
+
+    {"Front":"NIAAA one-question screen—verbatim and thresholds.","Back":"“How many times in the past year have you had >4 (women) or 5 (men) drinks in a day?” If ≥1: document days/wk and drinks/day; advise reduction if **women >3/day or >7/wk**, **men >4/day or >14/wk**; add written screening.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj2: Alcohol – NIAAA","Tags":["Objective2","Alcohol","Screening"]},
+
+    {"Front":"CAGE vs AUDIT—why AUDIT is preferred for earlier detection.","Back":"CAGE focuses on dependence; **AUDIT detects problematic use before dependence** and guides graded intervention.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj2: Alcohol – Tools","Tags":["Objective2","CAGE","Compare"]},
+
+    {"Front":"When to screen for unhealthy alcohol use—five high-yield visit types.","Back":"Annual preventive exam, family planning, prenatal care, problem visits tied to alcohol (e.g., reflux/HTN/liver), and high-risk groups (youth, trauma history, SUD history/family hx, pregnancy plans, heavy smokers).","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj2: Alcohol – Timing","Tags":["Objective2","Workflow"]},
+
+    {"Front":"TAPS—structure and performance.","Back":"Two parts: **TAPS-1** (4 questions); **TAPS-2** longer follow-up if positive. **Sensitivity >70%** for SUD at score ≥2.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj2: Drug – TAPS","Tags":["Objective2","Drugs","TAPS"]},
+
+    {"Front":"DSM-5-TR SUD—severity bands & remission timing.","Back":"Severity: **mild 2–3**, **mod 4–5**, **severe ≥6** criteria. Remission: **early** ≥3 months, **sustained** ≥12 months without meeting criteria (except craving).","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj3: SUD – Severity/Remission","Tags":["Objective3","DSM-5-TR"]},
+
+    {"Front":"DSM-5-TR SUD—list **five** core criteria you must recall.","Back":"Larger/longer than intended; persistent desire/unsuccessful cut-down; much time spent obtaining/using/recovering; craving; role failures; social/interpersonal problems; activities given up; hazardous use; continued use despite problems; tolerance; withdrawal.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj3: SUD – Criteria","Tags":["Objective3","Criteria"]},
+
+    {"Front":"HHS first-line tobacco meds—how many and which classes?","Back":"**7 FDA-approved first-line**: 5 NRTs (patch, gum, lozenge, inhaler, nasal spray) + **varenicline** + **bupropion SR**.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Tobacco – Meds Overview","Tags":["Objective4","Pharmacotherapy","High-Yield"]},
+
+    {"Front":"NRT—long- vs short-acting and best practice.","Back":"Long-acting **patch**; short-acting **gum/lozenge/inhaler/nasal**. **Combination NRT (patch + short-acting)** improves quit rates **34–54%** vs patch alone; monotherapy oral forms often underdose.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: NRT – Strategy","Tags":["Objective4","NRT","Effectiveness"]},
+
+    {"Front":"Nicotine patch—starting doses by cigarettes/day and taper rule of thumb.","Back":">40 CPD: ≈**42 mg/day**; 21–39: **21–35 mg/day**; 10–20: **14–21 mg/day**; <10: **14 mg/day**. After **4–6 weeks** abstinent, taper q2–4 weeks in **7–14 mg** steps as tolerated.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: NRT – Patch Dosing","Tags":["Objective4","NRT","Dosing"]},
+
+    {"Front":"Gum/lozenge—choose **2 mg vs 4 mg** and usage cautions.","Back":"If time to first cigarette <30 min → **4 mg**; ≥30 min → **2 mg**. Frequent dosing initially. Avoid food/acidic drinks **15 min** before; “chew-and-park” for gum; lozenge **don’t chew or swallow**.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: NRT – Oral Tips","Tags":["Objective4","NRT","Counseling"]},
+
+    {"Front":"Nasal spray vs inhaler—pros, limits, and Rx status.","Back":"**Nasal**: fastest delivery; nose/throat irritation common but transient; **Rx only**; spray onto lining (don’t sniff). **Inhaler**: mouth/throat irritation; mimics hand-to-mouth; min **6** / max **16** cartridges/day; **Rx only**.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: NRT – Devices","Tags":["Objective4","NRT","Devices"]},
+
+    {"Front":"Varenicline—mechanism, schedule, and a tolerability pearl.","Back":"**Partial α4β2 agonist**: blunts withdrawal and blocks nicotine reward. Start 1 week pre-quit: 0.5 mg qd ×3 d → 0.5 mg bid ×4 d → **1 mg bid** 11 wks; extend 12 more if abstinent. **Take with food** to reduce nausea.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Varenicline","Tags":["Objective4","Varenicline","Dosing"]},
+
+    {"Front":"Bupropion SR—mechanism, schedule, and contraindications.","Back":"**NE/DA reuptake inhibitor**. Start 1 wk pre-quit: **150 mg qd ×3 d → 150 mg bid**; 12 wks up to 12 months. Avoid if seizures, TBI, eating disorders, MAOI use; caution meds lowering seizure threshold.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Bupropion","Tags":["Objective4","Bupropion","Safety"]},
+
+    {"Front":"Efficacy head-to-head (EAGLES trial) and combinations—exam line.","Back":"6-mo quit: **varenicline 21.8% > bupropion 16.2% ≈ patch 15.7% > placebo 9.4%**. Combo **patch+short-acting** > single NRT. **Varenicline+patch** sometimes > varenicline alone; heavy smokers may benefit from **varenicline+bupropion**.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Efficacy Evidence","Tags":["Objective4","Trials","High-Yield"]},
+
+    {"Front":"Special populations—CVD and surgery: safety of NRT & options.","Back":"Patch **not linked** to acute CV events (even if patient smokes while on patch). Meta-analyses: **varenicline** and **combo NRT** first-line in CVD. Surgical inpatients: NRT **safe**; prescribing often underused—admission is a teachable moment.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Special – CVD/Surgery","Tags":["Objective4","Special-Populations","Safety"]},
+
+    {"Front":"Pregnancy—cessation approach and med categories.","Back":"**Counseling first-line**. OTC NRT likely **benefits > risks** (limited research). Bupropion & varenicline: **Category C**. Rx NRT: **Category D**. Continuing to smoke carries **greater risk** than NRT’s potential birth-defect risk.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Special – Pregnancy","Tags":["Objective4","Pregnancy","Counseling"]},
+
+    {"Front":"Adolescents—what’s first-line and evidence on NRT?","Back":"**CBT** first-line. NRT appears **safe** but evidence in adolescents is limited for cessation efficacy.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Special – Adolescents","Tags":["Objective4","Adolescents"]},
+
+    {"Front":"Recurrent relapse/persistent withdrawal—long-term therapy stance.","Back":"Long-term **NRT** has **no known health risks**; **bupropion** approved up to **6 months**; **varenicline** 12 wks + repeat 12 wks (total 6 months) when indicated.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Long-Term Therapy","Tags":["Objective4","Maintenance"]},
+
+    {"Front":"E-cigarettes—safety/risks and EVALI association.","Back":"Aerosol has fewer toxins than smoke but includes heavy metals and carcinogens; nicotine liquid can poison if ingested/splashed; **EVALI** linked largely to **THC** products and **vitamin E acetate**; battery risks (fires/explosions).","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: ENDS – Safety","Tags":["Objective4","E-Cig","EVALI"]},
+
+    {"Front":"E-cigs for cessation—what does the text conclude?","Back":"With behavioral support, **may be as good or better than NRT** short-term; nicotine e-cigs improve short-term abstinence, **not clearly long-term**; heterogeneity/limited safety data → hard to advise specifics.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: ENDS – Effectiveness","Tags":["Objective4","E-Cig","Cessation"]},
+
+    {"Front":"Non-evidence-based cessation modalities—name two to avoid.","Back":"**Acupuncture**, **hypnosis** not effective; insufficient evidence for biofeedback/REST/incentives. Prior failures with proven methods do **not** justify unproven alternatives—retry evidence-based options.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Not Recommended","Tags":["Objective4","Evidence"]},
+
+    {"Front":"Practical counseling—four buckets to cover with every smoker.","Back":"Identify reasons to smoke & dependence level (tools); anticipate/manage high-risk situations; list triggers (stress, driving, caffeine, meals, social, purchase locations, alcohol); build coping (3 D’s—delay, drink water, do something else; relaxation, PA, social change).","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Counseling – Skills","Tags":["Objective4","Counseling"]},
+
+    {"Front":"Alcohol/substance brief interventions—principles & tone.","Back":"Listen/reflect; be nonjudgmental; give clear opinions if desired; use **OARS** (Open questions, Affirm, Reflect, Summarize); roll with resistance; normalize slow change; build sober community supports.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Alcohol/Other – BI","Tags":["Objective4","MI","OARS"]},
+
+    {"Front":"AUD medications—three FDA-approved and how they help.","Back":"**Naltrexone 50 mg qd** (μ-antagonist; during use or abstinence; modestly lowers relapse/craving); **Acamprosate** (glutamate modulator; TID; best in abstinent); **Disulfiram 250 mg qd** (ALDH inhibitor—aversive; high non-adherence; no better than placebo overall).","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: AUD – Meds","Tags":["Objective4","AUD","Pharmacotherapy"]},
+
+    {"Front":"AUD off-label options to know.","Back":"**Gabapentin 900–1800 mg/day**: higher abstinence vs placebo (12 wks); watch misuse. **Topiramate**: reduces % heavy drinking days; paresthesia/cognitive side-effects limit some.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: AUD – Off-Label","Tags":["Objective4","AUD","Off-Label"]},
+
+    {"Front":"OUD medications—three FDA-approved and key pearls.","Back":"**Naltrexone** PO 50 mg → IM 380 mg q4w after **7–14 d** opioid-free; **Buprenorphine** partial agonist with high affinity—start carefully to avoid precipitated withdrawal (forms SL tabs/films, combo with naloxone, ER inj); **Methadone** full agonist via OTP with take-home limits.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: OUD – Meds","Tags":["Objective4","OUD","Pharmacotherapy"]},
+
+    {"Front":"5A’s—map general behavior model to tobacco cessation tasks.","Back":"Ask/Assess → Advise → Assess/Agree → Assist → Arrange. Tobacco version: **Ask** every visit; **Advise** clear/strong/personalized; **Assess** readiness; **Assist** (counseling+meds, quit plan); **Arrange** follow-ups (around quit date, 1 month, then 3 & 6 months).","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj5: 5A’s","Tags":["Objective5","Framework","High-Yield"]},
+
+    {"Front":"Time-limited alternative: AAR model and referral resource.","Back":"**Ask, Advise, Refer** to intensive treatment (e.g., **1-800-QUIT-NOW**, e-referrals).","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj5: AAR","Tags":["Objective5","Workflow"]},
+
+    {"Front":"Follow-up cadence after quit date—minimum schedule.","Back":"First contact near quit date (ideally within first week), then within first month; additional at **3** and **6** months; review meds/SE, triggers, supports, any slips, reinforce successes.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj5: Follow-up","Tags":["Objective5","Continuity"]},
+
+    {"Front":"Motivational Interviewing—core strategies and **5R’s** for reluctance.","Back":"MI: open Qs, reflective listening, normalize, support autonomy, build discrepancy, roll with resistance, enhance self-efficacy. **5R’s**: Relevance, Risks (acute/long-term/secondhand), Rewards, Roadblocks, Repetition.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj5: MI & 5R’s","Tags":["Objective5","MI","Counseling"]},
+
+    {"Front":"Referral to addiction specialist—four triggers.","Back":"Life impairment; inability to change with initial care; complex co-occurring psych/medical conditions; concern for significant withdrawal or need for higher level of care.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4/5: Referral","Tags":["Objective4","Objective5","Referral"]},
+
+    {"Front":"USPSTF 2021—tobacco cessation recommendations (Grades).","Back":"**Grade A**: Ask all adults about tobacco, advise to stop, and provide **behavioral + FDA-approved pharmacotherapy** (non-pregnant). **Pregnant**: ask, advise, **behavioral** interventions (insufficient evidence for meds & for e-cigs).","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj6: USPSTF – Tobacco","Tags":["Objective6","USPSTF","High-Yield"]},
+
+    {"Front":"USPSTF 2020—unhealthy drug use; and alcohol screening.","Back":"Drugs (adults ≥18): **Grade B**—ask about unhealthy drug use when diagnostic/tx services available. Alcohol: **Grade B**—screen adults (including pregnant) and provide brief behavioral counseling for risky/hazardous drinking; insufficient evidence for 12–17y.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj6: USPSTF – Drugs/Alcohol","Tags":["Objective6","USPSTF"]},
+
+    {"Front":"MCQ—LDCT lung screening eligibility:\nA) 10 PY, age 40–70\nB) 20+ PY, current or quit ≤15y, age 50–80\nC) 30+ PY, quit ≤10y, age 60–85\nD) 15+ PY, any age","Back":"**B** — **20+ pack-years**, **current or quit ≤15 years**, **age 50–80**.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj2: MCQ – Lung Screen","Tags":["Objective2","MCQ","USPSTF"]},
+
+    {"Front":"MCQ—Best single intervention to boost quit rates today:\nA) Advice only\nB) Patch monotherapy\nC) Patch + short-acting NRT (combo)\nD) Hypnosis","Back":"**C** — **Combination NRT** outperforms single-agent NRT; add behavioral support.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: MCQ – NRT","Tags":["Objective4","MCQ","NRT"]},
+
+    {"Front":"MCQ—Most effective monotherapy for smoking cessation per chapter:\nA) Bupropion SR\nB) Varenicline\nC) Gum 2 mg\nD) E-cigs nicotine","Back":"**B** — **Varenicline** showed higher quit rates than bupropion or patch in EAGLES.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: MCQ – Varenicline","Tags":["Objective4","MCQ"]},
+
+    {"Front":"MCQ—Which **does not** require PSG to diagnose?\nA) PLMD\nB) Narcolepsy\nC) Insomnia disorder\nD) REM behavior disorder","Back":"**C** — Insomnia/circadian/RLS do **not** require PSG; PLMD, RBD, narcolepsy do.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj2: MCQ – PSG (context carryover)","Tags":["Objective2","MCQ"]},
+
+    {"Front":"MCQ—AUDIT result **18** (adult). Next step?\nA) Reassure\nB) Feedback only\nC) Brief intervention + monitoring + outpatient treatment\nD) Inpatient detox mandatory","Back":"**C** — **16–24** suggests concern → feedback, monitoring, BI, and **outpatient treatment**.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj2: MCQ – AUDIT","Tags":["Objective2","MCQ","AUDIT"]},
+
+    {"Front":"MCQ—TAPS interpretation: score 2 indicates…\nA) Low likelihood of SUD\nB) High specificity only\nC) ≥70% sensitivity for SUD; proceed with assessment\nD) Not validated","Back":"**C** — At **≥2**, TAPS has **>70% sensitivity** to identify SUD.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj2: MCQ – TAPS","Tags":["Objective2","MCQ","TAPS"]},
+
+    {"Front":"MCQ—Pregnancy and cessation:\nA) Varenicline proven safe and first-line\nB) Counseling first; OTC NRT likely benefits > risks; meds evidence limited\nC) Disulfiram is helpful\nD) Avoid any intervention until postpartum","Back":"**B** — Counseling first; OTC NRT may be used when benefits outweigh risks; evidence limited.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: MCQ – Pregnancy","Tags":["Objective4","MCQ","Pregnancy"]},
+
+    {"Front":"MCQ—OUD medication requiring opioid-free interval before start:\nA) Buprenorphine\nB) Methadone\nC) Naltrexone\nD) Any NRT","Back":"**C** — **Naltrexone** should begin **7–14 days** after last opioid to avoid precipitated withdrawal.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: MCQ – OUD","Tags":["Objective4","MCQ","OUD"]},
+
+    {"Front":"Vignette—HSI shows time to first cigarette **<5 min** + 25 CPD. Pick an initial pharmacotherapy plan.","Back":"High dependence: **Patch** at higher dose tier **+** **short-acting NRT** (gum/lozenge) for cravings; add behavioral counseling; consider **varenicline** alternative/step-up based on preferences and contraindications.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Vignette – High Dependence","Tags":["Objective4","Vignette","NRT"]},
+
+    {"Front":"Vignette—CVD patient wants to quit; worried about patch safety and peri-op use.","Back":"Reassure: patch **not linked** to acute CV events; NRT **safe** around surgery; prescribe evidence-based therapy (varenicline or combo NRT) plus counseling; use surgical admission as a teachable moment.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Vignette – CVD/Surgery","Tags":["Objective4","Vignette","Safety"]},
+
+    {"Front":"Vignette—AUD: prefers to ‘cut down’ first. Medication pick and counseling line.","Back":"Consider **naltrexone 50 mg qd** to reduce heavy-drinking days/cravings; pair with **BI/MI**; discuss triggers/plan; offer group supports (AA/SMART/others).","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Vignette – AUD","Tags":["Objective4","Vignette","AUD"]},
+
+    {"Front":"Vignette—Teen experimenting with vaping; parents ask if it’s safe for quitting.","Back":"Explain risks (nicotine exposure, toxins, battery injury, **EVALI** with THC oils). Evidence shows better **short-term** abstinence but unclear **long-term** and heterogeneous devices → not first-line; emphasize **behavioral** supports and prevention.","Chapter":"Ch9 – Tobacco & Substances","Section":"Obj4: Vignette – Youth/ENDS","Tags":["Objective4","Vignette","E-Cig"]},
+
+    {"Front":"Glossary—SBIRT in one line.","Back":"**Screening, Brief Intervention, and Referral to Treatment**—framework linking risk identification to brief counseling and next-step treatment/referral.","Chapter":"Ch9 – Tobacco & Substances","Section":"Glossary","Tags":["Glossary","Framework"]},
+
+    {"Front":"Glossary—AUDIT vs CAGE.",
+     "Back":"**AUDIT**: 10-item WHO tool; ≥8 suggests harmful use; sensitive to early problems. **CAGE**: 4-item; focuses on dependence; CAGE-AID adds drugs; favored for simplicity but less nuanced for early risky use.",
+     "Chapter":"Ch9 – Tobacco & Substances","Section":"Glossary","Tags":["Glossary","Alcohol"]},
+
+    {"Front":"Glossary—TAPS and NMASSIST.",
+     "Back":"**TAPS**: primary-care tobacco/alcohol/prescription/other substance screen (self or interviewer), 2-part with score guidance. **NMASSIST**: NIDA-modified ASSIST, adult screen, patient- or interviewer-administered.",
+     "Chapter":"Ch9 – Tobacco & Substances","Section":"Glossary","Tags":["Glossary","Drugs","Screening"]}
+
+  ]
+}
