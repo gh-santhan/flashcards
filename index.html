@@ -32,10 +32,18 @@
     .chip button{padding:.2rem .35rem; border-radius:.4rem}
     .section-title{margin:.2rem 0 .6rem}
     mark{background:rgba(34,211,238,.25)}
-    /* NEW: sidebar toggle + modal lock */
+
+    /* NEW: top toolbar (filters) */
+    .toolbar{padding:.5rem 1rem; display:flex; gap:.6rem; align-items:center; flex-wrap:wrap; background:rgba(17,24,39,.7); border-top:1px solid var(--b); border-bottom:1px solid var(--b)}
+    .toolbar label{color:var(--muted); font-size:.95rem}
+    .toolbar select, .toolbar input{min-width:140px}
+
+    /* Sidebar toggle + modal lock */
     body.sidebar-hidden aside{ display:none; }
     @media(min-width:980px){ body.sidebar-hidden .container{ grid-template-columns:1fr; } }
     body.modal-open { overflow:hidden; }
+    body.modal-open header, body.modal-open .toolbar, body.modal-open main, body.modal-open footer { filter: blur(2px) brightness(.85); }
+
     /* Search hit styling */
     #searchResults .hit{border:1px solid var(--b); border-radius:.7rem; padding:.6rem; margin:.35rem 0; background:#0b1224}
     #searchResults .hit h4{margin:.1rem 0 .25rem; font-size:1rem}
@@ -43,17 +51,48 @@
     #searchResults .hit .muted{font-size:.9rem}
   </style>
 </head>
-<body>
+<body class="sidebar-hidden"><!-- start with sidebar hidden -->
   <header>
     <h1>Flashcards – SRS</h1>
-    <span id="deckName" class="muted">Deck: loading…</span>
+
+    <!-- Deck switcher moved to header -->
+    <label class="muted" for="deckSelect" style="margin-right:-.35rem">Deck</label>
+    <select id="deckSelect" style="min-width:220px"></select>
+
     <span class="pill" id="duePill">Due: 0</span>
     <span class="pill" id="posPill">Card 0 / 0</span>
     <span id="gradePill" class="pill">A 0 · H 0 · G 0 · E 0</span>
+
     <button id="searchBtn" title="Search all decks (/)">Search (/)</button>
-    <!-- NEW: sidebar toggle -->
     <button id="toggleSidebarBtn" title="Show/Hide sidebar">☰ Menu</button>
   </header>
+
+  <!-- NEW: Top toolbar with filters (Status, Tags, Grade, Global) -->
+  <div class="toolbar">
+    <label for="statusSelect">Status</label>
+    <select id="statusSelect">
+      <option value="due">Due only</option>
+      <option value="all">All</option>
+      <option value="new">New</option>
+      <option value="learn">Learn</option>
+      <option value="review">Review</option>
+      <option value="suspended">Suspended</option>
+    </select>
+
+    <label for="tagFilterInput">Tags</label>
+    <input id="tagFilterInput" placeholder="e.g. ACLM-Core, Vignette" style="min-width:220px" />
+
+    <label for="gradeSelect">Grade</label>
+    <select id="gradeSelect">
+      <option value="all">All</option>
+      <option value="again">Again (ever)</option>
+      <option value="hard">Hard (ever)</option>
+      <option value="good">Good (ever)</option>
+      <option value="easy">Easy (ever)</option>
+    </select>
+
+    <label class="row" style="gap:.35rem"><input type="checkbox" id="globalTagsMode"> <span class="muted">Global tags view</span></label>
+  </div>
 
   <main>
     <div class="container">
@@ -87,50 +126,8 @@
         </div>
       </section>
 
+      <!-- Sidebar now only has Backups & Sync -->
       <aside>
-        <div class="panel">
-          <h3 class="section-title">Decks</h3>
-          <div class="row" style="gap:.5rem">
-            <button id="uploadDeckBtn">Upload Deck (JSON)</button>
-            <button id="downloadDeckBtn">Download Current</button>
-          </div>
-          <div style="margin-top:.6rem">
-            <label class="muted" for="deckSelect">Switch deck</label>
-            <select id="deckSelect"></select>
-          </div>
-          <input id="fileInput" type="file" accept=".json,application/json" class="hidden">
-        </div>
-
-        <div class="panel">
-          <h3 class="section-title">Filters</h3>
-          <label class="row"><input type="checkbox" id="globalTagsMode"> <span class="muted">Global tags view (all public decks)</span></label>
-          <div class="row" style="width:100%">
-            <label class="muted" style="min-width:90px">Status</label>
-            <select id="statusSelect">
-              <option value="due">Due only</option>
-              <option value="all">All</option>
-              <option value="new">New</option>
-              <option value="learn">Learn</option>
-              <option value="review">Review</option>
-              <option value="suspended">Suspended</option>
-            </select>
-          </div>
-          <div class="row" style="width:100%">
-            <label class="muted" style="min-width:90px">Tags</label>
-            <input id="tagFilterInput" placeholder="e.g. ACLM-Core, Vignette" />
-          </div>
-          <div class="row" style="width:100%">
-            <label class="muted" style="min-width:90px">Grade</label>
-            <select id="gradeSelect">
-              <option value="all">All</option>
-              <option value="again">Again</option>
-              <option value="hard">Hard</option>
-              <option value="good">Good</option>
-              <option value="easy">Easy</option>
-            </select>
-          </div>
-        </div>
-
         <div class="panel">
           <h3 class="section-title">Backups & Sync</h3>
           <div class="row" style="gap:.5rem">
@@ -155,9 +152,9 @@
     <a href="decks.json" class="muted" target="_blank" rel="noopener">Open decks.json</a>
   </footer>
 
-  <!-- Global Search modal (darker backdrop) -->
+  <!-- Global Search modal (dark backdrop + locked scroll + background blur) -->
   <div id="searchModal" class="hidden" role="dialog" aria-modal="true" aria-label="Global Search"
-       style="position:fixed; inset:0; background:rgba(0,0,0,.72); display:flex; align-items:center; justify-content:center; z-index:50">
+       style="position:fixed; inset:0; background:rgba(0,0,0,.85); display:flex; align-items:center; justify-content:center; z-index:50">
     <div class="panel" style="width:min(950px,96vw); max-height:80vh; overflow:auto">
       <div class="row" style="justify-content:space-between; align-items:center">
         <h3 class="section-title" style="margin:.2rem 0">Global Search</h3>
@@ -174,25 +171,22 @@
 
   <script>
     const APP_NS = "flashcards.srs.v3";
-    const STATE_PREFIX = APP_NS + ":card:";         // per-card schedule state
-    const TAGS_PREFIX  = APP_NS + ":tags:";         // per-card tags overlay
+    const STATE_PREFIX = APP_NS + ":card:";
+    const TAGS_PREFIX  = APP_NS + ":tags:";
     const MANIFEST_URL = "decks.json";
-    const BACKUP_NS = APP_NS + ":backup:";          // rolling snapshots
+    const BACKUP_NS = APP_NS + ":backup:";
     const MAX_BACKUPS = 10;
 
-    // App settings (default: exam OFF, auto-advance ON)
+    // Settings (auto-advance ON)
     const SETTINGS_KEY = APP_NS + ":settings";
     const settings = (()=>{ 
-      try { 
-        return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || { exam:false, auto:true }; 
-      } catch { 
-        return { exam:false, auto:true }; 
-      } 
+      try { return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || { exam:false, auto:true }; }
+      catch { return { exam:false, auto:true }; } 
     })();
     function saveSettings(){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); }
 
     let deck = { name:"Demo", cards:[] };
-    let order = [];          // visible indices (or virtual list in global mode)
+    let order = [];
     let idx = 0;
     let publicManifest = { decks: [] };
     const $ = id => document.getElementById(id);
@@ -200,7 +194,7 @@
     // Search-results browse mode
     const searchMode = { active:false, list:[], pos:0 };
 
-    // ---------- Global Search helpers ----------
+    // -------- Global Search helpers --------
     const deckCache = new Map();
     async function getDeckJSON(file){
       if(deckCache.has(file)) return deckCache.get(file);
@@ -227,7 +221,7 @@
       return {terms, tags};
     }
 
-    // ---------- IDs, State, Tags ----------
+    // -------- IDs, State, Tags --------
     function uidFor(card){
       const s = (card.Front||"") + "::" + (card.Back||"");
       let h = 0; for (let i=0;i<s.length;i++){ h = ((h<<5)-h) + s.charCodeAt(i); h|=0; }
@@ -241,13 +235,13 @@
     function loadTags(deckName, uid){ try{ const raw = localStorage.getItem(tagKey(deckName, uid)); return raw ? JSON.parse(raw) : []; } catch { return []; } }
     function saveTags(deckName, uid, tags){ localStorage.setItem(tagKey(deckName, uid), JSON.stringify(tags)); }
 
-    // ---- Undo helpers ----
+    // Undo helpers
     const UNDO_PREFIX = APP_NS + ":undo:";
     function undoKey(d,u){ return UNDO_PREFIX + d + ":" + u; }
     function saveUndo(d,u,st){ localStorage.setItem(undoKey(d,u), JSON.stringify(st)); }
     function loadUndo(d,u){ try { return JSON.parse(localStorage.getItem(undoKey(d,u))) } catch { return null } }
 
-    // ---------- Scheduler ----------
+    // -------- Scheduler --------
     function isDue(deckName, card){
       const st = loadState(deckName, uidFor(card));
       if(!st) return true;
@@ -261,7 +255,9 @@
       const prev = loadState(deckName, uid);
       if(prev) saveUndo(deckName, uid, prev);
 
-      let st = loadState(deckName, uid) || { interval:0, ease:2.5, reps:0, lapses:0, phase:"new", suspended:false };
+      let st = loadState(deckName, uid) || { interval:0, ease:2.5, reps:0, lapses:0, phase:"new", suspended:false, history:[] };
+      if(!Array.isArray(st.history)) st.history = [];
+
       const now = new Date();
       if(grade === "again"){
         st.lapses += 1; st.reps = Math.max(0, st.reps - 1); st.interval = 0; st.phase = "learn";
@@ -289,14 +285,15 @@
         if(review.tag){ const t = loadTags(deckName, uid); if(!t.includes("Leech")){ t.push("Leech"); saveTags(deckName, uid, t); } }
       }
 
-      // Track last grade
+      // Track last grade + history
       st.lastGrade = grade;
       st.lastGradedAt = Date.now();
+      st.history.push({ g:grade, t:st.lastGradedAt });
 
       saveState(deckName, uid, st);
     }
 
-    // ---------- Build order (filters, tags, global) ----------
+    // -------- Build order (filters, tags, global) --------
     function cardPhase(deckName, card){
       const st = loadState(deckName, uidFor(card));
       if(!st) return "new";
@@ -320,11 +317,13 @@
       const val = $("gradeSelect")?.value || "all";
       if (val === "all") return true;
       const st = loadState(deckName, uidFor(card)) || {};
-      return st.lastGrade === val;
+      if(st.lastGrade === val) return true;
+      if(Array.isArray(st.history)) return st.history.some(h => h.g === val);
+      return false;
     }
 
     function buildOrderCurrentDeck(){
-      const status = $("statusSelect").value;  // due, all, new, learn, review, suspended
+      const status = $("statusSelect").value;
       const arr = [];
       for(let i=0;i<(deck.cards||[]).length;i++){
         const c = deck.cards[i];
@@ -381,7 +380,7 @@
         $("duePill").textContent = `Due: ${dueCount}`;
       }
 
-      // Grade counts across the WHOLE CURRENT DECK (ignores filters)
+      // Grade counts across whole current deck
       (()=>{
         const all = deck.cards || [];
         const gc = {again:0, hard:0, good:0, easy:0};
@@ -394,7 +393,6 @@
     }
 
     function currentCardEntry(){
-      // When browsing search results, source the card from searchMode.list
       if(searchMode.active){
         if(!searchMode.list.length) return null;
         const {deckName, card} = searchMode.list[searchMode.pos];
@@ -433,7 +431,6 @@
       back.style.display = "none";
       gradeBar.classList.add("hidden");
 
-      // meta + suspend/unsuspend
       const st = loadState(deckName, uidFor(card)) || {};
       const phase = st.suspended ? "suspended" : (st.phase || "new");
       $("meta").textContent = `Phase: ${phase}` + (st.due ? ` · Due: ${new Date(st.due).toLocaleString()}` : "");
@@ -441,7 +438,7 @@
       suspendBtn.classList.toggle("hidden", !!st.suspended);
       unsuspendBtn.classList.toggle("hidden", !st.suspended);
 
-      // tags view (own + overlay) — SAFE DOM creation
+      // tags view (own + overlay) — safe DOM
       const own = (card.Tag ? [String(card.Tag)] : []).concat(card.Tags || []);
       const overlay = loadTags(deckName, uidFor(card));
       const allTags = Array.from(new Set(own.concat(overlay)));
@@ -456,7 +453,6 @@
         tagsRow.appendChild(chip);
       });
 
-      // hide grade bar until reveal
       gradeBar.classList.add("hidden");
       updateSearchRibbonCount();
     }
@@ -469,7 +465,7 @@
       }
     }
 
-    // ---------- Deck loading & manifest ----------
+    // -------- Deck loading & manifest --------
     async function fetchManifest(){
       try{
         const res = await fetch(MANIFEST_URL, {cache:"no-store"});
@@ -521,7 +517,7 @@
       }
     }
 
-    // ---------- Actions & UI wiring ----------
+    // -------- Actions & UI wiring --------
     function showAnswer(){
       const back = $("back"); const gradeBar = $("gradeBar");
       if(back.style.display === "block"){ back.style.display = "none"; gradeBar.classList.add("hidden"); }
@@ -558,8 +554,7 @@
       // safety snapshot every 25 grades
       window._gradesSinceBackup = (window._gradesSinceBackup||0) + 1;
       if(window._gradesSinceBackup % 25 === 0) createBackup();
-      if(settings.auto){ next(); rebuildAndRender(); }
-      else { rebuildAndRender(); }
+      if(settings.auto){ next(); rebuildAndRender(); } else { rebuildAndRender(); }
     }
 
     $("revealBtn").onclick = showAnswer;
@@ -576,8 +571,6 @@
     $("tagFilterInput").addEventListener("keyup", (e)=>{ if(e.key==="Enter"){ rebuildAndRender(); }});
     $("tagFilterInput").addEventListener("blur", rebuildAndRender);
     $("globalTagsMode").onchange = rebuildAndRender;
-
-    // Grade filter
     $("gradeSelect").onchange = rebuildAndRender;
 
     // Sidebar toggle
@@ -639,44 +632,11 @@
       rebuildAndRender();
     };
 
-    // Upload / download decks
-    function validateDeck(obj){
-      const err = [];
-      if(!obj || typeof obj!=="object") err.push("Root must be an object.");
-      if(!Array.isArray(obj.cards)) err.push("cards[] missing or not an array.");
-      else obj.cards.forEach((c,i)=>{
-        if(typeof c.Front!=="string") err.push(`cards[${i}].Front must be string`);
-        if(typeof c.Back!=="string")  err.push(`cards[${i}].Back must be string`);
-      });
-      return err;
-    }
+    // Upload / download decks — removed at your request (UI gone)
 
-    $("uploadDeckBtn").onclick = () => $("fileInput").click();
-    $("fileInput").onchange = e => {
-      const f = e.target.files[0]; if(!f) return;
-      const r = new FileReader();
-      r.onload = () => {
-        try{
-          const obj = JSON.parse(r.result);
-          const errors = validateDeck(obj);
-          if(errors.length){ alert("Deck validation failed:\n" + errors.join("\n")); e.target.value=""; return; }
-          const s = getStore();
-          let name = obj.name || f.name.replace(/\.json$/i,"");
-          const seen = new Set(s.items.map(x=>x.name));
-          let k=2, base=name; while(seen.has(name)) name = base + " (" + (k++) + ")";
-          s.items.push({name, data:obj}); s.last=name; setStore(s);
-          refreshDeckSelect().then(()=>{
-            $("deckSelect").value = "local:" + encodeURIComponent(name);
-            loadDeckObject(obj);
-          });
-        }catch{ alert("Invalid JSON deck file."); }
-        e.target.value="";
-      };
-      r.readAsText(f);
-    };
-
+    // Deck switcher (same logic as before)
     $("deckSelect").onchange = () => {
-      $("globalTagsMode").checked = false; // leaving global mode when switching deck
+      $("globalTagsMode").checked = false;
       const val = $("deckSelect").value;
       if (val.startsWith("local:")){
         const name = decodeURIComponent(val.slice("local:".length));
@@ -687,16 +647,8 @@
         const s=getStore(); s.last=""; setStore(s);
       }
     };
-    $("downloadDeckBtn").onclick = () => {
-      const blob = new Blob([JSON.stringify(deck,null,2)], {type:"application/json"});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url; a.download = (deck.name || "deck") + ".json";
-      document.body.appendChild(a); a.click();
-      setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },0);
-    };
 
-    // Keyboard shortcuts
+    // Shortcuts
     document.addEventListener("keydown",(e)=>{
       if(e.code === "Space"){ e.preventDefault(); showAnswer(); }
       if(e.key === "ArrowRight") next();
@@ -709,7 +661,7 @@
       if(e.key==="?"){ alert("Shortcuts:\nSpace Reveal/Hide\n←/→ Prev/Next\n1–4 Grade\n/ Search\nU Undo\n"); }
     });
 
-    // ---------- Backups ----------
+    // -------- Backups --------
     function collectAllProgress(){
       const out = {};
       for(let i=0;i<localStorage.length;i++){
@@ -740,14 +692,13 @@
         const k = localStorage.key(i);
         if(k && k.startsWith(BACKUP_NS)) keys.push(k);
       }
-      keys.sort(); // chronological by suffix
+      keys.sort();
       sel.innerHTML = keys.map(k=>`<option value="${k}">${k.slice(BACKUP_NS.length)}</option>`).join("");
     }
     function createBackup(){
       const stamp = new Date().toISOString().replace(/[:.]/g,"-");
       const data = JSON.stringify(collectAllProgress());
       localStorage.setItem(BACKUP_NS + stamp, data);
-      // prune
       const keys = [];
       for(let i=0;i<localStorage.length;i++){
         const k = localStorage.key(i);
@@ -802,7 +753,7 @@
     document.addEventListener("visibilitychange", ()=>{ if(document.hidden) createBackup(); });
     window.addEventListener("beforeunload", ()=>{ try{ createBackup(); }catch{} });
 
-    // ---------- Global Search UI ----------
+    // -------- Global Search UI --------
     const searchModal = $("searchModal");
     const searchInput  = $("searchInput");
     const searchResults = $("searchResults");
@@ -858,7 +809,6 @@
       return hits;
     }
 
-    // Search results mode helpers
     function enterSearchMode(hits){
       searchMode.active = true;
       searchMode.list = hits.map(h=>({ deckName:h.deckName, card:h.card }));
@@ -931,7 +881,7 @@
         if(browseBtn){
           browseBtn.onclick = ()=>{
             enterSearchMode(hits);
-            closeSearch(); // enter browse mode in main UI
+            closeSearch();
           };
         }
 
@@ -940,7 +890,7 @@
           btn.addEventListener("click", async ()=>{
             const h = hits[Number(btn.dataset.i)];
             await jumpToSearchHit(h);
-            // DO NOT close the modal here — allows opening multiple hits
+            // keep modal open
           });
         });
 
@@ -980,15 +930,14 @@
       const e = currentCardEntry(); if(!e) return;
       const uid = uidFor(e.card);
       const snap = loadUndo(e.deckName, uid); if(!snap) return;
-      saveState(e.deckName, uid, snap); 
+      saveState(e.deckName, uid, snap);
       rebuildAndRender();
     };
     document.addEventListener("keydown",(ev)=>{ if(ev.key.toLowerCase()==="u") $("undoBtn").click(); });
 
-    // ---------- Boot ----------
+    // -------- Boot --------
     document.addEventListener("DOMContentLoaded", async ()=>{
       await refreshDeckSelect();
-      // URL override ?deck=path.json
       const params = new URLSearchParams(location.search);
       const urlDeck = params.get("deck");
       if (urlDeck){ await loadDeck(urlDeck); }
