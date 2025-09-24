@@ -1,0 +1,176 @@
+{
+  "name": "Chapter 8 - Sleep Health",
+  "cards": [
+
+    {"Front":"Sleep—define duration, timing, and quality (why all three matter).","Back":"Duration = total sleep time; Timing = when sleep occurs; Quality = continuity/efficiency/architecture. All three independently affect health and chronic disease risk; don’t ask only ‘how many hours.’","Chapter":"Ch8 – Sleep","Section":"Obj1: Basics","Tags":["Objective1","Definitions","High-Yield"]},
+
+    {"Front":"US sleep stats—list four high-yield numbers relevant for counseling.","Back":"Avg adult sleep ≈ 6h57m; ~20% <6h; ~37% of young adults <7h; ~60M adults have frequent difficulty sleeping and only ~10% seek care; insomnia indirect costs ≈ $60B/yr; sleep disorders ↑ all-cause mortality ~1.5× (adjusted).","Chapter":"Ch8 – Sleep","Section":"Obj1: Epidemiology","Tags":["Objective1","Epidemiology","Counseling"]},
+
+    {"Front":"Average sleep needs across lifespan—give the adult & adolescent anchors.","Back":"Adults (18+): 7–9 h; Adolescents (13–18): 9–10 h. (Table also lists: 5–12y: 10–11 h; 3–5y: 11–13 h; toddlers ~12–15 h; infants higher.)","Chapter":"Ch8 – Sleep","Section":"Obj1: Sleep Needs","Tags":["Objective1","Lifespan","Numbers"]},
+
+    {"Front":"Estimating an individual’s sleep need in clinic without a lab test—what protocol?","Back":"Sleep diary; extend time in bed by ~15 min every 3–7 days until the entire period is no longer fully filled with sleep (plateau).","Chapter":"Ch8 – Sleep","Section":"Obj1: Sleep Need Estimation","Tags":["Objective1","Practical","Protocol"]},
+
+    {"Front":"Functional impairment from sleep loss—what’s the recognition pitfall?","Back":"People often underestimate their level of impairment despite measurable performance decrements.","Chapter":"Ch8 – Sleep","Section":"Obj1: Performance","Tags":["Objective1","Safety"]},
+
+    {"Front":"Circadian 101—what is the SCN and its most potent zeitgeber?","Back":"Suprachiasmatic nucleus (SCN) in the hypothalamus is the master pacemaker; **light** (brightness via melanopsin RGCs) is the strongest zeitgeber.","Chapter":"Ch8 – Sleep","Section":"Obj1: Circadian","Tags":["Objective1","Circadian","SCN"]},
+
+    {"Front":"Why is it easier to delay bedtime than to wake earlier (physiology)?","Back":"The intrinsic master clock runs ~24.1–24.4 h on average, biasing delays; phase advances are harder than delays.","Chapter":"Ch8 – Sleep","Section":"Obj1: Circadian","Tags":["Objective1","Circadian"]},
+
+    {"Front":"Phase Response Curve (PRC)—what does a brief light pulse do at different times?","Back":"Subjective day: little/no shift; pre-night & early night: **delays** (~30–60 min); around mid-night: **advance** (~60 min); late night/pre-wake: **advance** (~30 min). Timing, not duration, drives effect.","Chapter":"Ch8 – Sleep","Section":"Obj1: PRC","Tags":["Objective1","Circadian","PRC"]},
+
+    {"Front":"Melatonin—what does it ‘say’ biologically and how should we time it naturally?","Back":"Signals ‘it’s night’ (not a direct sleep switch). Peaks ~30 min before habitual bedtime; falls toward morning; first light stops production ~30 min after waking.","Chapter":"Ch8 – Sleep","Section":"Obj1: Melatonin Physiology","Tags":["Objective1","Melatonin"]},
+
+    {"Front":"Adenosine & sleep pressure—two key clinical pearls.","Back":"Adenosine builds during wake → sleep drive; caffeine antagonizes during day. Insufficient nocturnal sleep leaves residual pressure → afternoon dip (~2–4 pm) and napping tendency.","Chapter":"Ch8 – Sleep","Section":"Obj1: Homeostatic Drive","Tags":["Objective1","Adenosine"]},
+
+    {"Front":"Healthy sleep & metabolic physiology—name three favorable changes.","Back":"↓ cortisol/glucose; ↑ insulin sensitivity; ↑ daytime leptin with reduced food seeking.","Chapter":"Ch8 – Sleep","Section":"Obj1: Metabolic Benefits","Tags":["Objective1","Metabolic"]},
+
+    {"Front":"Circadian misalignment—two causes and three high-impact consequences.","Back":"Causes: travel/time zone/DST; behavioral ‘social jet lag’ (weekend shifts). Consequences: adverse metabolic, autonomic, endocrine effects and ↑ risk for obesity, diabetes, stroke, cancer, depression, suicide.","Chapter":"Ch8 – Sleep","Section":"Obj1: Misalignment","Tags":["Objective1","Circadian","Risk"]},
+
+    {"Front":"Short/disrupted sleep—list five cardio-metabolic markers that worsen.","Back":"↑ nighttime cortisol/glucose; ↓ insulin sensitivity; dyslipidemia; endothelial dysfunction; ↑ AGEs deposition; ↓ GH/testosterone; ↓ leptin & ↑ carb intake.","Chapter":"Ch8 – Sleep","Section":"Obj1: Metabolic Risks","Tags":["Objective1","Pathophysiology"]},
+
+    {"Front":"Sleep & CVD—give five adverse changes when sleep is poor/short.","Back":"↑ sympathetic tone; endothelial injury; dyslipidemia; nocturnal & early AM hypertension/non-dipping; ↓ peripheral perfusion/↑ core temp; ↑ MI and CVD mortality; vasospastic disorders.","Chapter":"Ch8 – Sleep","Section":"Obj1: CVD","Tags":["Objective1","Cardiovascular"]},
+
+    {"Front":"REM sleep—two roles and its nightly distribution.","Back":"Roles: memory consolidation, emotional processing. Distribution: 20–25% of night; first REM at 90–120 min; longer episodes later night (second half).","Chapter":"Ch8 – Sleep","Section":"Obj1: Architecture","Tags":["Objective1","REM"]},
+
+    {"Front":"NREM stages—what percent is Stage 2 and why it matters on EEG?","Back":"Stage 2 ≈ ~50% of night; EEG shows sleep spindles & K-complexes; logical dreams possible.","Chapter":"Ch8 – Sleep","Section":"Obj1: Architecture","Tags":["Objective1","NREM","EEG"]},
+
+    {"Front":"Sleep loss & cognition/mood—list five outcomes to remember.","Back":"↓ REM (and ↑ SWS if not OSA-related pressure), ↓ BDNF, impaired learning/memory, slower processing, misread social cues/moral judgment, worse fear extinction.","Chapter":"Ch8 – Sleep","Section":"Obj1: Cognition","Tags":["Objective1","Neurocognition"]},
+
+    {"Front":"Short sleep—name six psychiatric associations to screen for.","Back":"Major depression, bipolar disorder, SAD, PMS, worse PTSD when deprived before trauma, worse TBI outcomes when deprived before/after injury.","Chapter":"Ch8 – Sleep","Section":"Obj1: Psych","Tags":["Objective1","Psychiatry"]},
+
+    {"Front":"Sleep & cancer—two protective functions of healthy sleep and four cancers linked with disruption.","Back":"Protective: DNA repair/histone modification; apoptosis and anti-cancer cytokines. Linked with disruption: breast, endometrial, prostate, colorectal; also AML.","Chapter":"Ch8 – Sleep","Section":"Obj1: Cancer","Tags":["Objective1","Oncology"]},
+
+    {"Front":"PSG—five indications and five ‘not required’ scenarios.","Back":"Indicate PSG for: OSA/other breathing disorder, narcolepsy, nocturnal seizures, PLMD, REM behavior disorder. Not required for: circadian rhythm disorders, insomnia disorder, NREM parasomnias, nightmare disorder, RLS.","Chapter":"Ch8 – Sleep","Section":"Obj2: PSG Indications","Tags":["Objective2","Assessment","PSG"]},
+
+    {"Front":"Home sleep test vs PSG—what can HST not do?","Back":"HST lacks EEG → cannot stage sleep; primarily for OSA symptoms. Typical channels: airflow & respiratory effort, HR/ECG, SpO₂.","Chapter":"Ch8 – Sleep","Section":"Obj2: HST","Tags":["Objective2","Assessment","OSA"]},
+
+    {"Front":"Actigraphy vs consumer wearables—what to tell patients?","Back":"Actigraphs are validated against PSG and may slightly overestimate sleep; fitness trackers often **underestimate** and vary widely, causing misconceptions about need.","Chapter":"Ch8 – Sleep","Section":"Obj2: Actigraphy","Tags":["Objective2","Assessment","Actigraphy"]},
+
+    {"Front":"Sleep diary—why better than single-night recall? Name three data points it captures.","Back":"Improves accuracy over recall; shows variability. Captures: time in bed, latency & WASO, bedtime & waketime, naps, perceived quality.","Chapter":"Ch8 – Sleep","Section":"Obj2: Diary","Tags":["Objective2","Assessment","Diary"]},
+
+    {"Front":"Red flags in diaries/mini-assessments—list four.","Back":"<7 h or >9 h; ≥1 h weekday/weekend difference; irregular timing (shiftwork); frequent daytime sleepiness/fatigue or difficult wake-up.","Chapter":"Ch8 – Sleep","Section":"Obj2: Screening Clues","Tags":["Objective2","Assessment"]},
+
+    {"Front":"PSQI—why might you skip it for initial triage?","Back":"General index and relatively extensive; not specific; may overload patients. Prefer targeted questioning + specific tools for likely disorders.","Chapter":"Ch8 – Sleep","Section":"Obj2: PSQI","Tags":["Objective2","Questionnaires"]},
+
+    {"Front":"SQS—what is it (one-liner)?","Back":"Single-item sleep quality scale; see earlier chapter section for scoring; quick global quality rating.","Chapter":"Ch8 – Sleep","Section":"Obj2: SQS","Tags":["Objective2","Screening"]},
+
+    {"Front":"STOP-BANG—what does it screen, and how do you score high risk quickly?","Back":"Screens OSA (not central apnea). 0–2 low; 3–4 intermediate; 5–8 high risk → refer for sleep study. ‘High’ also if ≥2 STOP + (male OR BMI>35 OR large neck: ≥17\" M / ≥16\" F).","Chapter":"Ch8 – Sleep","Section":"Obj2: STOP-BANG","Tags":["Objective2","OSA","Screening"]},
+
+    {"Front":"Epworth Sleepiness Scale—what threshold triggers deeper workup?","Back":"ESS ≥8 = excessive daytime sleepiness → review sleep patterns & consider disorder evaluation.","Chapter":"Ch8 – Sleep","Section":"Obj2: ESS","Tags":["Objective2","Sleepiness"]},
+
+    {"Front":"ASHS—when to use and what it reveals.","Back":"Adolescent Sleep Hygiene Survey (also usable in adults) identifies maladaptive beliefs/behaviors, myths, and environmental barriers contributing to poor/insufficient sleep.","Chapter":"Ch8 – Sleep","Section":"Obj2: ASHS","Tags":["Objective2","Behavior","Hygiene"]},
+
+    {"Front":"WHIIRS—what does it measure and in whom?","Back":"Five-item insomnia symptom frequency + overall quality; validated in women but used in teens/adults of all genders; maps to insomnia criteria.","Chapter":"Ch8 – Sleep","Section":"Obj2: WHIIRS","Tags":["Objective2","Insomnia","Screening"]},
+
+    {"Front":"Composite Scale of Morningness—what cutoffs matter?","Back":"13 items; ≤22 eveningness (‘night owl’); ≥44 morningness (‘early bird’).","Chapter":"Ch8 – Sleep","Section":"Obj2: Chronotype","Tags":["Objective2","Chronotype"]},
+
+    {"Front":"Lifestyle intervention targets—name the three buckets.","Back":"Sleep patterns (duration/timing/regularity), sleep environment (cool/dark/quiet cues), daytime & pre-bed behaviors (light, routine, diet, exercise, stress).","Chapter":"Ch8 – Sleep","Section":"Obj3: Overview","Tags":["Objective3","Interventions"]},
+
+    {"Front":"Pattern fix—insufficient vs excessive time in bed (TIB): what’s the principle?","Back":"Extend TIB gradually when insufficient; **limit** TIB when excessive (to improve efficiency). Change in 15–30 min steps; stabilize schedule slowly for adherence.","Chapter":"Ch8 – Sleep","Section":"Obj3: Patterns","Tags":["Objective3","Timing","Adherence"]},
+
+    {"Front":"Irregular schedules—how to stabilize weekday/weekend drift.","Back":"Set a fixed **wake time** first; derive bedtime from need; reduce Wkday-Weekend drift by 15–30 min/week toward ≤30–60 min difference overall; address duration mismatch too.","Chapter":"Ch8 – Sleep","Section":"Obj3: Regularity","Tags":["Objective3","Consistency"]},
+
+    {"Front":"Naps—what’s optimal policy in adults?","Back":"Eliminate if possible (increase nocturnal TIB instead). If needed, cap to ~20 min and avoid after ~14:00 to protect night sleep.","Chapter":"Ch8 – Sleep","Section":"Obj3: Naps","Tags":["Objective3","Hygiene"]},
+
+    {"Front":"Environment—why ‘cool, dark, quiet (not silent)’ and two tricks for each.","Back":"Cool: body thermoregulation limited during sleep → fan/cooling pad; warm extremities if cold. Dark: remove/dim lights, blackout curtains, mask. Quiet: buffer with **white noise**; replace TV/radio with steady noise source.","Chapter":"Ch8 – Sleep","Section":"Obj3: Environment","Tags":["Objective3","Environment"]},
+
+    {"Front":"Light management—what to do after waking vs evenings.","Back":"Morning: bright natural/artificial light immediately (even alarms with light). Evening: use lamps/close blinds; reduce blue light; consider blue-blocking glasses.","Chapter":"Ch8 – Sleep","Section":"Obj3: Light","Tags":["Objective3","Circadian","Light"]},
+
+    {"Front":"Stimulus Control Therapy (SCT)—the two golden rules.","Back":"Use bed **only** for sleep and sex; if unable to sleep/return to sleep in ~15–20 min, get up for a low-key activity in dim light, then return when sleepy; repeat.","Chapter":"Ch8 – Sleep","Section":"Obj3: SCT","Tags":["Objective3","CBT-I","Cornerstone"]},
+
+    {"Front":"Bedtime routine—timing and components.","Back":"Stop stimulating tasks 60–90 min pre-bed; start a 15–20 min wind-down of low-stimulation tasks (outside bed) ending with relaxing activity in low light; externalize worry with to-do list; consider relaxation/MBSR.","Chapter":"Ch8 – Sleep","Section":"Obj3: Routine","Tags":["Objective3","Behavior"]},
+
+    {"Front":"Diet & fluids—five concrete rules that affect sleep physiology.","Back":"No caffeine at night; limit daytime caffeine; avoid alcohol within ~3 h of bed; eliminate late snacking; reduce dinner sodium; ensure adequate late-afternoon hydration; weight loss if BMI elevated.","Chapter":"Ch8 – Sleep","Section":"Obj3: Diet","Tags":["Objective3","Diet"]},
+
+    {"Front":"Exercise timing—general rule and the individualized caveat.","Back":"Daily activity supports circadian regulation and quality. Prefer morning or late-afternoon/early evening; avoid very late exercise for most—though some individuals sleep better later; avoid over-exertion that produces pain.","Chapter":"Ch8 – Sleep","Section":"Obj3: Exercise","Tags":["Objective3","Exercise"]},
+
+    {"Front":"Melatonin (for phase shifting/jet lag)—dose and timing protocol.","Back":"It’s a **phase shifter**, not a sedative. Use **0.25 mg** ~3–4 h before target bedtime; if not sleepy 30–60 min pre-bed, a second **0.25 mg** may be taken. Use adjunct to light timing.","Chapter":"Ch8 – Sleep","Section":"Obj3: Melatonin Rx","Tags":["Objective3","Melatonin","Protocol"]},
+
+    {"Front":"Problem set—delayed sleep onset: give a five-domain plan.","Back":"Environment (bed for sleep/sex; minimize noise/light; warm extremities); Light (AM light ↑; PM light ↓); Diet (cut evening caffeine/alcohol/salt; carb-rich breakfast, lower-carb dinner); Exercise (AM/PM not late); Stress (1-h wind-down + relaxation).","Chapter":"Ch8 – Sleep","Section":"Obj3: Troubleshooting","Tags":["Objective3","Algorithms"]},
+
+    {"Front":"Problem set—sleep fragmentation: name four countermeasures.","Back":"Darken room; allow cooling through the night; morning & mid-afternoon sunlight + outdoor activity; red-toned nightlights; avoid flipping on bright lights during awakenings; hydrate late afternoon; avoid evening diuretics.","Chapter":"Ch8 – Sleep","Section":"Obj3: Troubleshooting","Tags":["Objective3","Maintenance"]},
+
+    {"Front":"Problem set—early morning awakening: three circadian/diet tweaks.","Back":"Avoid bright light till ideal wake time; increase late-PM/evening sunlight; evening activity; use 6500K lights until 1 h before bed; delay caffeine 30–60 min after ideal wake; shift carbs toward dinner.","Chapter":"Ch8 – Sleep","Section":"Obj3: Troubleshooting","Tags":["Objective3","Early-Wake"]},
+
+    {"Front":"Jet lag—eastbound vs westbound light & meal timing.","Back":"East: bright light near new wake; dim light 1 h pre-sleep; hearty breakfast within 30–45 min of new wake; consider low-dose melatonin. West: late-PM/evening bright light; avoid dim until 1 h pre-sleep; breakfast within 30–45 min after new wake; complex-carb dinner 2–3 h before new bedtime; melatonin as needed.","Chapter":"Ch8 – Sleep","Section":"Obj3: Jet Lag","Tags":["Objective3","Travel","PRC"]},
+
+    {"Front":"Most common pediatric/teen sleep issues—list three.","Back":"Insomnia; circadian rhythm sleep-wake disorders; OSA; plus partial arousal parasomnias (sleep terrors/walking).","Chapter":"Ch8 – Sleep","Section":"Obj4: Common Disorders (Youth)","Tags":["Objective4","Peds"]},
+
+    {"Front":"Most common adult/pregnancy sleep issues—name three.","Back":"Insomnia; OSA; Restless Legs Syndrome (RLS). Shift workers: shift-work sleep disorder.","Chapter":"Ch8 – Sleep","Section":"Obj4: Common Disorders (Adults)","Tags":["Objective4","Adults","Pregnancy"]},
+
+    {"Front":"OSA prevalence by age—memorize the ladder.","Back":"0–19y: ~1.2–5.7%; 20–44y: ~3.2%; 45–64y: ~11.3%; 65+: ~18.1%. High-risk: pregnancy 1.4–16.9%; higher risk in Black individuals (e.g., kids ~4×).","Chapter":"Ch8 – Sleep","Section":"Obj4: OSA Epidemiology","Tags":["Objective4","OSA","Numbers"]},
+
+    {"Front":"OSA diagnosis—AHI thresholds for adults vs pediatrics.","Back":"Adults: mild 5–<15; moderate 15–<30; severe ≥30. Pediatrics: mild 2–<5; moderate 5–<10; severe ≥10.","Chapter":"Ch8 – Sleep","Section":"Obj4: OSA Severity","Tags":["Objective4","OSA","AHI"]},
+
+    {"Front":"OSA clinical clues—five exam/history features to document.","Back":"Elevated BMI; large neck (≥17\" M, ≥15\" F noted in text for exam; STOP-BANG uses ≥17\" M/≥16\" F); crowded upper airway/craniofacial features; resistant HTN; GERD/asthma/COPD; witnessed apneas/snoring.","Chapter":"Ch8 – Sleep","Section":"Obj4: OSA Clues","Tags":["Objective4","OSA","Exam"]},
+
+    {"Front":"Insomnia—define/chronicity and list daytime consequences.","Back":"Difficulty initiating/maintaining sleep **despite adequate opportunity**, ≥3 nights/week for ≥3 months, with daytime impacts: fatigue/sleepiness, cognitive/motivation deficits, mood/irritability, errors/accidents, somatic complaints, persistent worry about sleep.","Chapter":"Ch8 – Sleep","Section":"Obj4: Insomnia Core","Tags":["Objective4","Insomnia","Definition"]},
+
+    {"Front":"Pediatric insomnia subtypes—what three patterns do caregivers report?","Back":"Limit-setting (bedtime stalling/refusal); Sleep-onset association (needs object/parental presence); Combined type.","Chapter":"Ch8 – Sleep","Section":"Obj4: Insomnia – Pediatrics","Tags":["Objective4","Peds","Insomnia"]},
+
+    {"Front":"Insomnia risk groups & triggers—list three notable associations.","Back":"Pregnancy (12.6–73.5%); increased risk in females and older Latino adults; onset rises at puberty (~2×). Triggers include medications, vascular dysfunction, visual impairment, renin-angiotensin issues.","Chapter":"Ch8 – Sleep","Section":"Obj4: Insomnia Risks","Tags":["Objective4","Insomnia","Risk"]},
+
+    {"Front":"Circadian phase disorders—two prevalence anchors and a worker stat.","Back":"Delayed phase (13–40y): ~7–16%; Advanced phase (65+): ~1%; Shift-work sleep disorder occurs in ~26.5% of shift workers.","Chapter":"Ch8 – Sleep","Section":"Obj4: Circadian Disorders","Tags":["Objective4","Circadian"]},
+
+    {"Front":"NREM partial arousal parasomnias—two distinctions vs nightmares.","Back":"Timing: NREM parasomnias in first third (SWS heavy); nightmares in last third (REM heavy). Memory: parasomnias lack cognitive recall despite sympathetic activation; nightmares are recalled.","Chapter":"Ch8 – Sleep","Section":"Obj4: Parasomnias","Tags":["Objective4","Parasomnia"]},
+
+    {"Front":"Narcolepsy—four hallmark features and core pathophysiology.","Back":"EDS; frequent sleep–wake transitions (daytime sleep, fragmented night); REM-intrusions (hypnagogic/pompic hallucinations, sleep paralysis); ± cataplexy. Pathophys: orexin loss affecting sleep-wake switch.","Chapter":"Ch8 – Sleep","Section":"Obj4: Narcolepsy","Tags":["Objective4","Hypersomnolence"]},
+
+    {"Front":"BIISS (behaviorally induced insufficient sleep syndrome)—definition and who’s at risk.","Back":"Voluntary sleep curtailment with functional impairment and weekend catch-up. Prevalence ~7.3–20%. Risks: age 30–39, alcohol abuse, >40 h/wk work, stress, depression.","Chapter":"Ch8 – Sleep","Section":"Obj4: BIISS","Tags":["Objective4","Hypersomnolence"]},
+
+    {"Front":"RLS—diagnostic essentials (four) and common association.","Back":"Urge to move legs with unpleasant sensations; starts/worsens at rest; worse/evening-night; not better explained by another disorder. Often associated with periodic limb movements (PLMS in ~85%).","Chapter":"Ch8 – Sleep","Section":"Obj4: RLS","Tags":["Objective4","RLS"]},
+
+    {"Front":"RLS—risk group and iron note to check.","Back":"Pregnancy (26–32%); check ferritin (low <75 ng/mL) or sometimes elevated; magnesium link not confirmed.","Chapter":"Ch8 – Sleep","Section":"Obj4: RLS Workup","Tags":["Objective4","RLS","Labs"]},
+
+    {"Front":"Periodic Limb Movement Disorder—two clinical clues and who’s at risk.","Back":"~30-sec interval limb movements during sleep with brief arousals; patient unaware; restless sleep/MNA and daytime sleepiness. Risk: female, shiftwork, stress, caffeine; prevalence 4–11% and ↑ with age (>50).","Chapter":"Ch8 – Sleep","Section":"Obj4: PLMD","Tags":["Objective4","PLMD"]},
+
+    {"Front":"OSA—when can you manage without specialist referral?","Back":"If trained, you can order PSG and treat with PAP yourself. Gold standard: CPAP; consider BiPAP if CPAP ineffective or certain comorbidities. Non-adherence → refer to behavioral sleep medicine.","Chapter":"Ch8 – Sleep","Section":"Obj5: OSA Management","Tags":["Objective5","OSA","PAP"]},
+
+    {"Front":"PAP adherence—what barrier dominates and what’s the payer rule of thumb?","Back":"Non-adherence is the major impediment; third-party payers commonly define adherence as **≥4 h/night**. Long-term nonadherence ~34% over 20 years → use behavioral interventions.","Chapter":"Ch8 – Sleep","Section":"Obj5: PAP Adherence","Tags":["Objective5","OSA","Adherence"]},
+
+    {"Front":"When to refer to a **sleep medicine specialist** vs **behavioral sleep medicine**.","Back":"Sleep medicine (physician): PSG-requiring diagnoses (OSA, narcolepsy, PLMD, REM behavior disorder) and RLS medication mgmt. Behavioral sleep medicine (non-physician): insomnia/CBT-I, CPAP non-adherence, behavioral components of disorders.","Chapter":"Ch8 – Sleep","Section":"Obj5/6: Referral Map","Tags":["Objective5","Objective6","Referral"]},
+
+    {"Front":"Insomnia—what is first-line therapy per chapter?","Back":"**CBT-I** is first-line for chronic insomnia (preferred over meds): more durable benefit, fewer side effects, no tolerance issues.","Chapter":"Ch8 – Sleep","Section":"Obj6: CBT-I First Line","Tags":["Objective6","CBT-I","Guideline"]},
+
+    {"Front":"CBT-I components—name the ‘big four’.","Back":"Stimulus Control Therapy (SCT), Sleep Restriction Therapy (SRT), Relaxation training, Cognitive therapy (restructuring maladaptive beliefs).","Chapter":"Ch8 – Sleep","Section":"Obj6: Components","Tags":["Objective6","CBT-I"]},
+
+    {"Front":"SCT—patient instructions (operant conditioning angle).","Back":"Bed only for sleep/sex; leave bed if not asleep in ~15–20 min; do a low-key activity in dim light; return when sleepy; repeat; consistent wake time every day.","Chapter":"Ch8 – Sleep","Section":"Obj6: SCT Instructions","Tags":["Objective6","SCT","Protocol"]},
+
+    {"Front":"SRT—how to set times and progress safely.","Back":"Fix a daily **wake time**; set initial TIB ≈ average sleep − ~20–30 min (from diary); hold for a week (all days); then add **15–20 min/week** if sleep efficiency ≥90% until need is met. Expect ~15–20 min SOL as normal.","Chapter":"Ch8 – Sleep","Section":"Obj6: SRT Protocol","Tags":["Objective6","SRT"]},
+
+    {"Front":"Relaxation training—when is it standalone?","Back":"Effective across RCTs but does **not** meet standalone evidence-based criteria in adults >60 y; best as part of CBT-I package.","Chapter":"Ch8 – Sleep","Section":"Obj6: Relaxation","Tags":["Objective6","Relaxation"]},
+
+    {"Front":"Hypnotics & sedatives—two mortality takeaways and why not first-line.","Back":"Prescription hypnotics associated with ↑ death rates in adults 18–55 and ↑ all-cause mortality across ages (overdose, crashes, falls, depression, cancer, suicide). They don’t fix root issues and foster dependence (‘crash night’ illusion).","Chapter":"Ch8 – Sleep","Section":"Obj6: Hypnotics","Tags":["Objective6","Medications","Safety"]},
+
+    {"Front":"Vignette—Snoring, witnessed apneas, large neck; STOP-BANG = 5. Next step?","Back":"High-risk OSA → order PSG or home sleep test (if appropriate) and arrange OSA management (PAP first-line) or refer to sleep medicine if not managing OSA yourself.","Chapter":"Ch8 – Sleep","Section":"Obj2/4/5: OSA Workflow","Tags":["Objective4","Objective5","Vignette","OSA"]},
+
+    {"Front":"Vignette—Wakes at 03:45 daily, alert, can’t return to sleep (advanced phase). Plan.","Back":"Shift sleep later: increase **late-afternoon** bright light; consider **AM low-dose melatonin** to delay; protect evening routine; manage early-morning light exposure (avoid until target wake).","Chapter":"Ch8 – Sleep","Section":"Obj4/3: Advanced Phase","Tags":["Objective4","Circadian","Vignette"]},
+
+    {"Front":"Vignette—Teen ‘night owl’ with weekday 6 h and weekend 11 h: fix without meds.","Back":"Set consistent wake time; reduce weekend drift by 15–30 min/week; extend weekday sleep; SCT rules; morning bright light; discourage naps; consider **0.25 mg melatonin 3–4 h before target bed** early in plan.","Chapter":"Ch8 – Sleep","Section":"Obj3/4: Delayed Phase","Tags":["Objective3","Objective4","Vignette","Adolescent"]},
+
+    {"Front":"Vignette—Pregnant patient with leg discomfort and urge to move evenings. What to check first?","Back":"Evaluate for RLS; order ferritin (treat if <75 ng/mL); counsel on evening rest/activities; consider behavioral measures and obstetric-aligned management.","Chapter":"Ch8 – Sleep","Section":"Obj4: RLS – Pregnancy","Tags":["Objective4","RLS","Vignette","Pregnancy"]},
+
+    {"Front":"MCQ—Which condition **requires** PSG for diagnosis?\\nA) Insomnia disorder\\nB) Narcolepsy\\nC) Circadian rhythm disorder\\nD) RLS","Back":"B — **Narcolepsy** (also PLMD, REM Behavior Disorder, and OSA workups use PSG). Insomnia/circadian/RLS do not require PSG to diagnose initially.","Chapter":"Ch8 – Sleep","Section":"Obj2: PSG Knowledge","Tags":["Objective2","MCQ"]},
+
+    {"Front":"MCQ—Adult OSA severity cutoffs by AHI are:\\nA) 2–<5, 5–<10, ≥10\\nB) 5–<15, 15–<30, ≥30\\nC) 10–<20, 20–<40, ≥40\\nD) 1–<5, 5–<15, ≥15","Back":"B — **5–<15 (mild), 15–<30 (moderate), ≥30 (severe)** for adults; pediatrics uses lower thresholds (mild 2–<5, etc.).","Chapter":"Ch8 – Sleep","Section":"Obj4: OSA Severity MCQ","Tags":["Objective4","OSA","MCQ"]},
+
+    {"Front":"MCQ—Which four STOP-BANG items are the ‘STOP’ half?\\nA) Snoring, Tired, Observed apnea, Pressure (HTN)\\nB) BMI, Age, Neck, Gender\\nC) Sleepiness, Tachycardia, Oxygen, Position\\nD) Stress, Tobacco, Obesity, Pain","Back":"A — STOP = **Snoring, Tired, Observed apneas, Pressure**. BANG = BMI, Age, Neck, Gender.","Chapter":"Ch8 – Sleep","Section":"Obj2: STOP-BANG MCQ","Tags":["Objective2","Screening","MCQ"]},
+
+    {"Front":"MCQ—Best first-line for chronic insomnia per chapter:\\nA) Sleep hygiene alone\\nB) Benzodiazepines\\nC) CBT-I (SCT + SRT + relaxation + cognitive therapy)\\nD) Melatonin 5 mg nightly","Back":"C — **CBT-I** is first-line and more durable than meds; hygiene alone is insufficient as treatment.","Chapter":"Ch8 – Sleep","Section":"Obj6: CBT-I MCQ","Tags":["Objective6","MCQ"]},
+
+    {"Front":"MCQ—Which statement about melatonin here is most accurate?\\nA) It is a powerful hypnotic\\nB) Dose 3–5 mg at bedtime for everyone\\nC) It is a **phase shifter**; try ~0.25 mg **3–4 h** before target bed (plus light timing)\\nD) Use only for shift workers","Back":"C — Low-dose timed **before** bed shifts circadian phase; it isn’t a sedative sleep pill.","Chapter":"Ch8 – Sleep","Section":"Obj3: Melatonin MCQ","Tags":["Objective3","Melatonin","MCQ"]},
+
+    {"Front":"MCQ—Which statement about hypnotics/sedatives is supported?\\nA) Safe long-term and first-line\\nB) Associated with increased mortality and not first-line\\nC) Necessary for CBT-I\\nD) Superior to CBT-I for sustained benefit","Back":"B — Associated with ↑ mortality; not first-line; CBT-I preferred for chronic insomnia.","Chapter":"Ch8 – Sleep","Section":"Obj6: Meds MCQ","Tags":["Objective6","Safety","MCQ"]},
+
+    {"Front":"MCQ—Which light strategy most effectively **advances** circadian phase?\\nA) Bright light late evening\\nB) Bright light mid-night\\nC) Bright light soon after the habitual wake time\\nD) No morning light","Back":"C — Morning bright light produces phase **advance**; late evening/early night tends to **delay**.","Chapter":"Ch8 – Sleep","Section":"Obj1/3: PRC MCQ","Tags":["Objective1","Objective3","PRC","MCQ"]},
+
+    {"Front":"Glossary—Actigraph vs PSG in one line for the exam.","Back":"Actigraph = accelerometer with sleep algorithms (valid vs PSG) estimating sleep/wake; PSG = multi-channel gold standard with EEG to stage sleep.","Chapter":"Ch8 – Sleep","Section":"Glossary","Tags":["Glossary","Assessment"]},
+
+    {"Front":"Glossary—SCN and circadian rhythm definitions.","Back":"SCN = hypothalamic ‘master clock’ coordinating rhythms and melatonin; circadian rhythm = ~24-h physiologic/behavior cycles regulated by internal oscillators and entrained by zeitgebers (light).","Chapter":"Ch8 – Sleep","Section":"Glossary","Tags":["Glossary","Circadian"]},
+
+    {"Front":"Glossary—Phase Response Curve (PRC) and zeitgeber.","Back":"PRC = clock’s direction/magnitude of phase shift to a stimulus (e.g., light) at different circadian times; zeitgeber = time cue (light strongest).","Chapter":"Ch8 – Sleep","Section":"Glossary","Tags":["Glossary","PRC"]},
+
+    {"Front":"Glossary—REM vs NREM in one line.","Back":"NREM (Stages 1–3) enters first after infancy; S3 = slow-wave deep sleep. REM = dreaming dominant, emotional/memory consolidation; atonia except eyes/diaphragm.","Chapter":"Ch8 – Sleep","Section":"Glossary","Tags":["Glossary","Architecture"]}
+
+  ]
+}
