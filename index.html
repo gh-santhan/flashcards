@@ -182,8 +182,16 @@ function saveSettings(){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(setti
       if(!st.due) return true;
       return new Date(st.due) <= new Date();
     }
+    // ---- Undo helpers ----
+const UNDO_PREFIX = APP_NS + ":undo:";
+function undoKey(d,u){ return UNDO_PREFIX + d + ":" + u; }
+function saveUndo(d,u,st){ localStorage.setItem(undoKey(d,u), JSON.stringify(st)); }
+function loadUndo(d,u){ try { return JSON.parse(localStorage.getItem(undoKey(d,u))) } catch { return null } }
+
     function schedule(deckName, card, grade){
       const uid = uidFor(card);
+      const prev = loadState(deckName, uid);
+if(prev) saveUndo(deckName, uid, prev);
       let st = loadState(deckName, uid) || { interval:0, ease:2.5, reps:0, lapses:0, phase:"new", suspended:false };
       const now = new Date();
       if(grade === "again"){
@@ -204,6 +212,8 @@ function saveSettings(){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(setti
         st.due = new Date(now.getTime() + st.interval*24*60*60*1000).toISOString();
       }
       if(st.lapses >= 8) st.suspended = true;
+      st.lastGrade = grade;
+st.lastGradedAt = Date.now();
       saveState(deckName, uid, st);
     }
 
@@ -284,6 +294,18 @@ function saveSettings(){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(setti
       } else {
         const dueCount = (deck.cards||[]).filter(c => isDue(deck.name, c)).length;
         $("duePill").textContent = `Due: ${dueCount}`;
+        // Grade counts across current view
+const entries = $("globalTagsMode").checked
+  ? globalList.map(x=>({deckName:x.deckName, card:x.card}))
+  : order.map(i=>({deckName:deck.name, card:deck.cards[i]}));
+
+const gc = {again:0, hard:0, good:0, easy:0};
+entries.forEach(e=>{
+  const st = loadState(e.deckName, uidFor(e.card)) || {};
+  if (gc[st.lastGrade] !== undefined) gc[st.lastGrade] += 1;
+});
+$("gradePill").textContent = `A ${gc.again} · H ${gc.hard} · G ${gc.good} · E ${gc.easy}`;
+
       }
     }
 
@@ -425,6 +447,18 @@ function saveSettings(){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(setti
     $("hardBtn").onclick  = () => doGrade("hard");
     $("goodBtn").onclick  = () => doGrade("good");
     $("easyBtn").onclick  = () => doGrade("easy");
+
+    $("undoBtn").onclick = ()=>{
+  const e = currentCardEntry(); if(!e) return;
+  const uid = uidFor(e.card);
+  const snap = loadUndo(e.deckName, uid); if(!snap) return;
+  saveState(e.deckName, uid, snap); 
+  rebuildAndRender();
+};
+document.addEventListener("keydown",(ev)=>{ 
+  if(ev.key.toLowerCase()==="u") $("undoBtn").click(); 
+});
+
 
     $("statusSelect").onchange = rebuildAndRender;
     $("tagFilterInput").addEventListener("keyup", (e)=>{ if(e.key==="Enter"){ rebuildAndRender(); }});
