@@ -1,6 +1,6 @@
 {
   "decks": [
-    { "name": "Chapter 1 – Intro to LM", "file": "chapter1.json" },
+    { "name": "Chapter 1 – Introduction to LM", "file": "chapter1.json" },
     { "name": "Chapter 2 – Behavior Change", "file": "chapter2-behavior-change.json" },
     { "name": "Chapter 3 – Clinical Processes", "file": "chapter3-clinical.json" },
     { "name": "Chapter 4 – Role of Practitioner", "file": "practitioner.json" },
