@@ -3,8 +3,13 @@
     { "name": "Chapter 1 – Intro to LM", "file": "chapter1.json" },
     { "name": "Chapter 2 – Behavior Change", "file": "chapter2-behavior-change.json" },
     { "name": "Chapter 3 – Clinical Processes", "file": "chapter3-clinical.json" },
+    { "name": "Chapter 4 – Role of Practitioner", "file": "practitioner.json" },
     { "name": "Chapter 5 – Nutrition", "file": "nutrition_deck.json" },
     { "name": "Chapter 6 – Physical Activity", "file": "6 - Physical-Activity.json" },
-    { "name": "Chapter 7 – Mental Health", "file": "mental-health.json" }
+    { "name": "Chapter 7 – Mental Health", "file": "mental-health.json" },
+    { "name": "Chapter 8 – Sleep", "file": "sleep.json" },
+    { "name": "Chapter 9 – Tobacco & Substance Abuse", "file": "tobacco.json" },
+    { "name": "Chapter 10 – Positive Psychology", "file": "positive-psychology.json" }
+    
   ]
 }
