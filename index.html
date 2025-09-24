@@ -32,6 +32,15 @@
     .chip button{padding:.2rem .35rem; border-radius:.4rem}
     .section-title{margin:.2rem 0 .6rem}
     mark{background:rgba(34,211,238,.25)}
+    /* NEW: sidebar toggle + modal lock */
+    body.sidebar-hidden aside{ display:none; }
+    @media(min-width:980px){ body.sidebar-hidden .container{ grid-template-columns:1fr; } }
+    body.modal-open { overflow:hidden; }
+    /* Search hit styling */
+    #searchResults .hit{border:1px solid var(--b); border-radius:.7rem; padding:.6rem; margin:.35rem 0; background:#0b1224}
+    #searchResults .hit h4{margin:.1rem 0 .25rem; font-size:1rem}
+    #searchResults .hit p{margin:.15rem 0; white-space:pre-wrap}
+    #searchResults .hit .muted{font-size:.9rem}
   </style>
 </head>
 <body>
@@ -40,9 +49,10 @@
     <span id="deckName" class="muted">Deck: loading…</span>
     <span class="pill" id="duePill">Due: 0</span>
     <span class="pill" id="posPill">Card 0 / 0</span>
-    <!-- NEW: grade counts + search -->
     <span id="gradePill" class="pill">A 0 · H 0 · G 0 · E 0</span>
     <button id="searchBtn" title="Search all decks (/)">Search (/)</button>
+    <!-- NEW: sidebar toggle -->
+    <button id="toggleSidebarBtn" title="Show/Hide sidebar">☰ Menu</button>
   </header>
 
   <main>
@@ -68,7 +78,6 @@
           <button id="restartBtn">Restart</button>
         </div>
 
-        <!-- NEW: Undo button added -->
         <div id="gradeBar" class="btnbar hidden">
           <button class="again" id="againBtn">Again (1)</button>
           <button class="hard"  id="hardBtn">Hard (2)</button>
@@ -110,7 +119,6 @@
             <label class="muted" style="min-width:90px">Tags</label>
             <input id="tagFilterInput" placeholder="e.g. ACLM-Core, Vignette" />
           </div>
-          <!-- NEW: Grade filter -->
           <div class="row" style="width:100%">
             <label class="muted" style="min-width:90px">Grade</label>
             <select id="gradeSelect">
@@ -147,9 +155,9 @@
     <a href="decks.json" class="muted" target="_blank" rel="noopener">Open decks.json</a>
   </footer>
 
-  <!-- NEW: Global Search modal -->
+  <!-- Global Search modal (darker backdrop) -->
   <div id="searchModal" class="hidden" role="dialog" aria-modal="true" aria-label="Global Search"
-       style="position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:50">
+       style="position:fixed; inset:0; background:rgba(0,0,0,.72); display:flex; align-items:center; justify-content:center; z-index:50">
     <div class="panel" style="width:min(950px,96vw); max-height:80vh; overflow:auto">
       <div class="row" style="justify-content:space-between; align-items:center">
         <h3 class="section-title" style="margin:.2rem 0">Global Search</h3>
@@ -188,6 +196,9 @@
     let idx = 0;
     let publicManifest = { decks: [] };
     const $ = id => document.getElementById(id);
+
+    // Search-results browse mode
+    const searchMode = { active:false, list:[], pos:0 };
 
     // ---------- Global Search helpers ----------
     const deckCache = new Map();
@@ -328,7 +339,6 @@
       if(idx >= order.length) idx = Math.max(0, order.length-1);
     }
 
-    // In Global Tags View we build a virtual list of entries:
     let globalList = [];
     async function buildGlobalList(){
       const status = $("statusSelect").value;
@@ -371,19 +381,25 @@
         $("duePill").textContent = `Due: ${dueCount}`;
       }
 
-      // Grade counts across current view
-      const entries = $("globalTagsMode").checked
-        ? globalList.map(x=>({deckName:x.deckName, card:x.card}))
-        : order.map(i=>({deckName:deck.name, card:deck.cards[i]}));
-      const gc = {again:0, hard:0, good:0, easy:0};
-      entries.forEach(e=>{
-        const st = loadState(e.deckName, uidFor(e.card)) || {};
-        if (gc[st.lastGrade] !== undefined) gc[st.lastGrade] += 1;
-      });
-      $("gradePill").textContent = `A ${gc.again} · H ${gc.hard} · G ${gc.good} · E ${gc.easy}`;
+      // Grade counts across the WHOLE CURRENT DECK (ignores filters)
+      (()=>{
+        const all = deck.cards || [];
+        const gc = {again:0, hard:0, good:0, easy:0};
+        all.forEach(c=>{
+          const st = loadState(deck.name, uidFor(c)) || {};
+          if (gc[st.lastGrade] !== undefined) gc[st.lastGrade] += 1;
+        });
+        $("gradePill").textContent = `A ${gc.again} · H ${gc.hard} · G ${gc.good} · E ${gc.easy}`;
+      })();
     }
 
     function currentCardEntry(){
+      // When browsing search results, source the card from searchMode.list
+      if(searchMode.active){
+        if(!searchMode.list.length) return null;
+        const {deckName, card} = searchMode.list[searchMode.pos];
+        return { deckName, card };
+      }
       if(!$("globalTagsMode").checked){
         if(!order.length) return null;
         return { deckName: deck.name, card: deck.cards[order[idx]] };
@@ -442,6 +458,7 @@
 
       // hide grade bar until reveal
       gradeBar.classList.add("hidden");
+      updateSearchRibbonCount();
     }
 
     function rebuildAndRender(){
@@ -515,8 +532,26 @@
       params.set("i", String(idx));
       history.replaceState(null, "", "?" + params.toString());
     }
-    function next(){ if (idx < order.length-1) { idx++; render(); pushURLIndex(); } }
-    function prev(){ if (idx > 0) { idx--; render(); pushURLIndex(); } }
+
+    function next(){
+      if(searchMode.active){
+        if(searchMode.pos < searchMode.list.length-1) searchMode.pos++;
+        updateSearchRibbonCount();
+        render();
+        return;
+      }
+      if (idx < order.length-1) { idx++; render(); pushURLIndex(); }
+    }
+    function prev(){
+      if(searchMode.active){
+        if(searchMode.pos > 0) searchMode.pos--;
+        updateSearchRibbonCount();
+        render();
+        return;
+      }
+      if (idx > 0) { idx--; render(); pushURLIndex(); }
+    }
+
     function doGrade(g){
       const entry = currentCardEntry(); if(!entry) return;
       schedule(entry.deckName, entry.card, g);
@@ -544,6 +579,9 @@
 
     // Grade filter
     $("gradeSelect").onchange = rebuildAndRender;
+
+    // Sidebar toggle
+    $("toggleSidebarBtn").onclick = ()=>{ document.body.classList.toggle("sidebar-hidden"); };
 
     // Tag editing
     function addTagTo(entry, tag){
@@ -769,8 +807,8 @@
     const searchInput  = $("searchInput");
     const searchResults = $("searchResults");
 
-    function openSearch(){ searchModal.classList.remove("hidden"); searchInput.focus(); }
-    function closeSearch(){ searchModal.classList.add("hidden"); }
+    function openSearch(){ searchModal.classList.remove("hidden"); searchInput.focus(); document.body.classList.add("modal-open"); }
+    function closeSearch(){ searchModal.classList.add("hidden"); document.body.classList.remove("modal-open"); }
 
     $("searchBtn").onclick = openSearch;
     $("closeSearchBtn").onclick = closeSearch;
@@ -781,6 +819,16 @@
       if(e.key==="Enter") runSearch();
       else { clearTimeout(searchTimer); searchTimer = setTimeout(runSearch, 250); }
     });
+
+    function matchesSearchCard(deckName, card, terms, tagFilters){
+      const uid = uidFor(card);
+      const own = (card.Tag ? [String(card.Tag)] : []).concat(card.Tags || []);
+      const overlay = loadTags(deckName, uid);
+      const allTags = new Set(own.concat(overlay).map(t=>String(t).toLowerCase()));
+      if(tagFilters.length && !tagFilters.every(t => allTags.has(t))) return false;
+      const hay = [card.Front||"", card.Back||"", card.Section||"", card.Chapter||""].join(" ").toLowerCase();
+      return terms.every(t => hay.includes(t.toLowerCase()));
+    }
 
     async function searchAcrossDecks(query){
       const {terms, tags} = parseSearchQuery(query);
@@ -809,14 +857,40 @@
       }
       return hits;
     }
-    function matchesSearchCard(deckName, card, terms, tagFilters){
-      const uid = uidFor(card);
-      const own = (card.Tag ? [String(card.Tag)] : []).concat(card.Tags || []);
-      const overlay = loadTags(deckName, uid);
-      const allTags = new Set(own.concat(overlay).map(t=>String(t).toLowerCase()));
-      if(tagFilters.length && !tagFilters.every(t => allTags.has(t))) return false;
-      const hay = [card.Front||"", card.Back||"", card.Section||"", card.Chapter||""].join(" ").toLowerCase();
-      return terms.every(t => hay.includes(t.toLowerCase()));
+
+    // Search results mode helpers
+    function enterSearchMode(hits){
+      searchMode.active = true;
+      searchMode.list = hits.map(h=>({ deckName:h.deckName, card:h.card }));
+      searchMode.pos = 0;
+      showSearchRibbon(hits.length);
+      render();
+    }
+    function exitSearchMode(){
+      searchMode.active = false;
+      searchMode.list = [];
+      searchMode.pos = 0;
+      hideSearchRibbon();
+      rebuildAndRender();
+    }
+    function showSearchRibbon(total){
+      if($("searchRibbon")) return;
+      const bar = document.createElement("div");
+      bar.id = "searchRibbon";
+      bar.className = "pill";
+      bar.style.cssText = "position:fixed;right:12px;bottom:12px;z-index:55;background:#0b1224;border:1px solid var(--b);";
+      bar.innerHTML = `Search results — <span id="srCount">1/${total}</span> <button id="exitSearchBtn" style="margin-left:.5rem">Exit</button>`;
+      document.body.appendChild(bar);
+      $("exitSearchBtn").onclick = exitSearchMode;
+    }
+    function hideSearchRibbon(){
+      const el = $("searchRibbon"); if(el) el.remove();
+    }
+    function updateSearchRibbonCount(){
+      if(!searchMode.active) return;
+      const n = searchMode.list.length;
+      const i = Math.min(searchMode.pos+1, n);
+      const el = $("srCount"); if(el) el.textContent = `${i}/${n}`;
     }
 
     async function runSearch(){
@@ -826,14 +900,22 @@
         const hits = await searchAcrossDecks(q);
         if(hits.length===0){ searchResults.innerHTML = `<div class="muted">No matches.</div>`; return; }
         const {terms} = parseSearchQuery(q);
+
+        // Header with Browse All
+        const header = `
+          <div class="row" style="justify-content:space-between; align-items:center; margin:.25rem 0 .5rem">
+            <span class="muted">${hits.length} matches</span>
+            <button id="browseAllBtn">Browse All</button>
+          </div>`;
+
         const parts = hits.slice(0,500).map((h, idx)=>{
           const front = highlight(h.card.Front||"", terms);
           const back  = highlight((h.card.Back||"").slice(0,240), terms);
           const tags = (h.card.Tags||[]).concat(h.card.Tag?[h.card.Tag]:[]);
           const tagTxt = tags.length ? `<span class="muted">Tags: ${escapeHTML(tags.join(", "))}</span>` : "";
           return `
-            <div class="hit" style="border:1px solid var(--b); border-radius:.7rem; padding:.6rem; margin:.35rem 0; background:#0b1224">
-              <h4 style="margin:.1rem 0 .25rem; font-size:1rem">${escapeHTML(h.deckName)} • #${h.index+1}</h4>
+            <div class="hit">
+              <h4>${escapeHTML(h.deckName)} • #${h.index+1}</h4>
               <p><strong>Q:</strong> ${front}</p>
               <p class="muted"><strong>A (preview):</strong> ${back}${(h.card.Back||"").length>240?"…":""}</p>
               ${tagTxt}
@@ -842,14 +924,26 @@
               </div>
             </div>`;
         });
-        searchResults.innerHTML = parts.join("");
+        searchResults.innerHTML = header + parts.join("");
+
+        // wire browse all
+        const browseBtn = document.getElementById("browseAllBtn");
+        if(browseBtn){
+          browseBtn.onclick = ()=>{
+            enterSearchMode(hits);
+            closeSearch(); // enter browse mode in main UI
+          };
+        }
+
+        // attach open handlers (keep modal open for multi-open)
         [...searchResults.querySelectorAll(".openHitBtn")].forEach(btn=>{
           btn.addEventListener("click", async ()=>{
             const h = hits[Number(btn.dataset.i)];
             await jumpToSearchHit(h);
-            closeSearch();
+            // DO NOT close the modal here — allows opening multiple hits
           });
         });
+
       }catch{
         searchResults.innerHTML = `<div class="muted">Search failed. Check console.</div>`;
       }
