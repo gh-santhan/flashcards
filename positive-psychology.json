@@ -1,0 +1,126 @@
+{
+  "name": "Chapter 10 - Connectedness & Positive Psychology",
+  "cards": [
+
+    {"Front":"Positive psychology—exam definition in one line (don’t omit its stance on negatives).","Back":"Study of what allows individuals/communities to flourish; it doesn’t ignore negative states but focuses on amplifying well-being via positive affect, engagement, and meaning.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj1: Definition","Tags":["Objective1","Definition","High-Yield"]},
+
+    {"Front":"Vignette—You’re counseling lifestyle change: what makes positive psychology **complementary** to LM, and what are PPIs?","Back":"PP is complementary to lifestyle medicine; PPIs are intentional methods/activities that cultivate positive feelings, behaviors, or cognitions (used alongside other treatments).","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj1: Role in LM","Tags":["Objective1","PPIs","Counseling"]},
+
+    {"Front":"PERMA—expand the acronym and match each element to its essence.","Back":"P: Positive emotion; E: Engagement (flow); R: Relationships; M: Meaning (purpose/values); A: Accomplishment (achievement/efficacy).","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj1: PERMA","Tags":["Objective1","Framework","PERMA"]},
+
+    {"Front":"‘Engagement’ in PERMA—whose concept is it aligned with and what state does it describe?","Back":"Aligned with Csikszentmihalyi’s ‘flow’; being fully absorbed in the present with immersive challenge stretching skills and emotion.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj1: PERMA – Engagement","Tags":["Objective1","Flow","PERMA"]},
+
+    {"Front":"Character strengths—how many core virtue families, and why do they matter clinically?","Back":"Six virtue families (Wisdom, Courage, Humanity, Justice, Temperance, Transcendence); using strengths increases engagement and positive emotion; only ~1/3 of adults know their strengths.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj1: Strengths","Tags":["Objective1","Strengths","Virtues"]},
+
+    {"Front":"Exam recall—list **five** common positive emotions per Fredrickson’s broaden-and-build theory.","Back":"Joy, gratitude, serenity, interest, hope, pride, amusement, inspiration, awe, love (any five). These broaden thought–action repertoires and build resources.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj1: Positive Emotions","Tags":["Objective1","Broaden-and-Build"]},
+
+    {"Front":"Longevity tie-in—what optimism data point is quoted in this chapter?","Back":"Optimism is associated with up to ~15% increased longevity, with survival advantage persisting past age 85 (observational data referenced).","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj1: Outcomes","Tags":["Objective1","Longevity"]},
+
+    {"Front":"Exam stem—Past/Present/Future: give **one** PPI example for each temporal frame.","Back":"Past: gratitude/forgiveness/satisfaction with achievements. Present: savoring/contentment. Future: hope/vision/optimism.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj1: PPI Timing","Tags":["Objective1","PPIs"]},
+
+    {"Front":"Behavior-change conversation—give a **one-line opener** that elicits positive affect.","Back":"“What was the best experience you had managing [condition] this past month?” Then reflect/affirm to cultivate commitment to change.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj2: Conversation Skill","Tags":["Objective2","Communication","MI"]},
+
+    {"Front":"Why integrate positive psychology into LM visits (mechanistic summary)?","Back":"PP supports an upward cycle of optimism → effort → efficacy → learning; evokes positive affect that reinforces health behaviors.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj2: Rationale","Tags":["Objective2","Mechanism"]},
+
+    {"Front":"Provider tasks—beyond screening/referral, name **two** PP ways to support behavior change in clinic.","Back":"Prescribe PPIs (e.g., strengths, gratitude, savoring); intentionally leverage positive questions/frames during counseling to elicit commitment.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj2: How-To","Tags":["Objective2","PPIs","Clinic"]},
+
+    {"Front":"PPI menu—list any **five** habits for emotional well-being you could prescribe today.","Back":"Identify/use signature strengths; count blessings; express appreciation; savor daily; write a legacy statement; acts of kindness; revisit happiest memories; do meaningful activities; connect in-person regularly.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj2/7: PPI Menu","Tags":["Objective2","Objective7","PPIs"]},
+
+    {"Front":"Positive emotions in chronic disease—what dual benefit is highlighted?","Back":"PPAs increase positive emotions and produce emotional well-being while lowering distressing thoughts and suicidal ideation risk.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj2: Chronic Disease","Tags":["Objective2","Safety","Benefits"]},
+
+    {"Front":"Evidence nuance—what’s the chapter’s stance on PP as **sole** treatment for chronic disease?","Back":"Positive assets correlate prospectively with better health, but it’s not known if PP alone treats chronic diseases; PPI effects on well-being/depression are small but significant.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj2: Evidence Limits","Tags":["Objective2","Evidence"]},
+
+    {"Front":"Define **eudaimonia** for the exam (Deci & Ryan framing).","Back":"Living well by actualizing one’s human potentials/true nature; process of fulfilling virtuous potentials—goal-directed meaning, not just end-state happiness.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj3: Eudaimonia","Tags":["Objective3","Definitions"]},
+
+    {"Front":"Define **hedonia** and its markers.","Back":"Well-being via maximizing happiness: presence of positive emotions/expressions, absence of negative emotions, satisfaction of desires.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj3: Hedonia","Tags":["Objective3","Definitions"]},
+
+    {"Front":"Life purpose—quote a mortality association you can use in counseling.","Back":"Higher purpose in life associated with reduced mortality in community elders (HR ≈ 0.60).","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj3: Purpose & Mortality","Tags":["Objective3","Longevity","Counseling"]},
+
+    {"Front":"Cognition—how does higher life purpose relate to neurodegenerative outcomes?","Back":"Higher purpose linked to lower incidence of Alzheimer’s/MCI and slower cognitive decline.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj3: Purpose & Cognition","Tags":["Objective3","Neuro"]},
+
+    {"Front":"Cardiometabolic behavior—how did purpose map to prevention behaviors in HRS?","Back":"Older adults with higher purpose were more likely to obtain preventive labs and screenings and had lower stroke/MI risk.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj3: Purpose & CVD","Tags":["Objective3","Prevention"]},
+
+    {"Front":"Inflammation & gene expression—contrast eudaimonia vs hedonia signal.","Back":"Eudaimonia: downregulated pro-inflammatory gene expression and upregulated antibody synthesis genes; hedonia shows the opposite pattern.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj3: Biology","Tags":["Objective3","Immunology"]},
+
+    {"Front":"Brain structure—what region’s grey matter correlates with eudaimonic well-being?","Back":"Insular cortex grey matter volume positively associated with eudaimonic well-being.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj3: Neuroanatomy","Tags":["Objective3","Neuro"]},
+
+    {"Front":"Social connectedness—give the exam-ready definition used here.","Back":"Relationships where people feel seen, heard, valued, and from which they derive sustenance and strength.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj4: Definition","Tags":["Objective4","Definition"]},
+
+    {"Front":"Harvard Study of Adult Development—what single predictor did it elevate for happiness/longevity?","Back":"The quality of social connections was the single most important predictor of happiness and longevity across a 75-year cohort.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj4: Longevity","Tags":["Objective4","Landmark","Longevity"]},
+
+    {"Front":"Social networks—what’s meant by ‘emotions are contagious to three degrees,’ and why do we care clinically?","Back":"Emotional states propagate to friends of friends’ friends, influencing health behaviors/outcomes—so network context matters for behavior change.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj4: Networks","Tags":["Objective4","Networks"]},
+
+    {"Front":"Isolation hurts—what neuro-analogy does the chapter make?","Back":"Social isolation registers in neuroimaging similarly to physical pain.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj4: Isolation","Tags":["Objective4","Neuroscience"]},
+
+    {"Front":"Define **positivity resonance** and **micro-moments of connection**; name a physiologic link.","Back":"Resonance: interactions with shared positivity, mutual care, concern. Micro-moments: brief authentic connections; associated with better HR/physiology and longevity.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj4: Resonance","Tags":["Objective4","Physiology"]},
+
+    {"Front":"Social media—dose-response finding in young adults to keep on the tip of your tongue.","Back":"Highest-quartile social media users had significantly higher depression odds (aOR ≈ 2.74 vs lowest quartile); dose-dependent trend; causation not established.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj5: Mood Data","Tags":["Objective5","Depression","Numbers"]},
+
+    {"Front":"Problematic social media use (PSMU)—two independent associations called out.","Back":"PSMU strongly and independently associates with depressive symptoms; frequency of use may be a distinct behavioral driver.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj5: PSMU","Tags":["Objective5","Risk"]},
+
+    {"Front":"Adolescents—what aspect of social media use most tracks poor sleep vs anxiety/depression?","Back":"Poor sleep ties most to **nighttime-specific** use; anxiety/depression ties most to **emotional investment** in platforms.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj5: Teens & Sleep","Tags":["Objective5","Sleep","Youth"]},
+
+    {"Front":"Mechanisms—briefly explain ‘displacement’ and ‘reinforcing spirals’ theories for social media harms.","Back":"Displacement: time online displaces healthy behaviors. Reinforcing spirals: curated feeds confirm biases, perpetuating negative attitudes and worse well-being.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj5: Mechanisms","Tags":["Objective5","Mechanism"]},
+
+    {"Front":"State of science—how strong is the consensus on social media and health?","Back":"No broad consensus yet due to limited high-quality studies; benefits and harms can co-exist, shaped by user intentions and actions.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj5: Evidence Limits","Tags":["Objective5","Evidence"]},
+
+    {"Front":"Lifestyle pillars ↔ emotions—what’s the high-level claim about TLC?","Back":"Therapeutic lifestyle change can promote mental/emotional well-being and, in some contexts, be as effective as psychotherapy/pharmacotherapy for promoting good mental health.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj6: TLC Overview","Tags":["Objective6","TLC"]},
+
+    {"Front":"List **five** TLC components to prescribe with dose.","Back":"Exercise/physical activity; nutrition/dietary pattern; time in nature; supportive relationships; recreation/relaxation/stress management; religious/spiritual involvement; service; sleep modification; mindfulness; avoidance of risky substances.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj6: TLC Menu","Tags":["Objective6","Prescription"]},
+
+    {"Front":"Exercise & depression—what comparative and population notes appear here?","Back":"Exercise shows small positive effects vs no/control; as effective as pharmacotherapy for mild–moderate depression; potential synergy with meds; protective when routine in childhood; effective in elderly (evidence cited).","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj6: Exercise","Tags":["Objective6","Depression","Exercise"]},
+
+    {"Front":"Sleep interventions—what mental health changes were observed in the UK student digital CBT trial?","Back":"Improved sleep reduced insomnia, paranoia, and hallucinations after a 10-week digital CBT intervention vs usual practice.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj6: Sleep & MH","Tags":["Objective6","Sleep","CBT"]},
+
+    {"Front":"Sleep duration—what pattern did ~100k Japanese young adults show?","Back":"7–9 h/night associated with better mental health than <7 h or >9 h; mental health improved linearly with better sleep quality.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj6: Sleep Dose","Tags":["Objective6","Sleep","Epidemiology"]},
+
+    {"Front":"Meditation—what effect size language should you use with patients?","Back":"Can yield mild to moderate reductions in negative dimensions of mental stress; field needs more rigorous study and clearer definitions.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj6/7: Meditation","Tags":["Objective6","Objective7","Mindfulness"]},
+
+    {"Front":"Alcohol—give the long-term harm list headline for counseling.","Back":"Hypertension, CVD, stroke, liver disease, cancers, impaired immunity, memory/learning problems, depression/anxiety, and social/work/relationship difficulties.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj6: Alcohol Harms","Tags":["Objective6","Alcohol"]},
+
+    {"Front":"Vignette—2-minute add-on: craft a micro-PPI ‘prescription’ for a stressed patient starting PA and sleep work.","Back":"“Daily 3-good-things before bed; one 5-min savoring break after lunch; ask a colleague or family member one appreciation question daily; complete VIA strengths and use one strength at work this week.”","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj7: PPI Rx","Tags":["Objective7","PPIs","Practical"]},
+
+    {"Front":"Strengths activation—what’s the quick entry point if you can’t administer VIA today?","Back":"Ask the patient to list words that describe their character strengths, then plan one concrete way to use a selected strength this week.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj7: Strengths","Tags":["Objective7","Strengths"]},
+
+    {"Front":"Gratitude practice—give a precise patient instruction.","Back":"Each evening, write three things from today you’re thankful for and one sentence about why each mattered.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj7: Gratitude","Tags":["Objective7","Gratitude"]},
+
+    {"Front":"Legacy/meaning—turn the ‘how I want to be remembered’ task into a clinic prompt.","Back":"“Complete: ‘50 years from now, I want people to remember me for…’ Then name one weekly action that moves you toward that statement.”","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj7: Meaning","Tags":["Objective7","Meaning","Purpose"]},
+
+    {"Front":"Acts of kindness—how to prescribe and reflect.","Back":"Commit one kindness (known person or stranger) this week; note the act, context, and how you felt afterward; discuss next visit.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj7: Kindness","Tags":["Objective7","Behavior"]},
+
+    {"Front":"Savoring—what’s the minimal effective dose you can recommend?","Back":"Devote 5 minutes/day to savoring one pleasant activity (e.g., tea outdoors, mindful fruit tasting), focusing on sensory detail and present-moment awareness.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj7: Savoring","Tags":["Objective7","Savoring"]},
+
+    {"Front":"Memory positivity—how to leverage photos without inducing comparison?","Back":"Review personal happy-day photos and reconnect with the feelings from those moments; avoid social comparison—focus on your internal experience.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj7: Happiest Days","Tags":["Objective7","Emotion"]},
+
+    {"Front":"In-person connection—what guidance does the chapter give vs social-media-only contact?","Back":"Encourage regular **in-person** connection in valued networks (family, social, sport, spiritual) rather than relying mainly on social media.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj7: In-Person","Tags":["Objective7","Social"]},
+
+    {"Front":"Mindfulness caveat—what two caveats should you say aloud when recommending it?","Back":"Advocated widely but needs more rigorous research and uniform definitions; still, it can modestly lower stress and improve coping skills in students and clinical groups.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj7: Mindfulness Caveat","Tags":["Objective7","Evidence"]},
+
+    {"Front":"Clinician self-care—why does the chapter want you to prioritize it?","Back":"Your own emotional well-being influences your therapeutic presence with patients; celebrate successes and model TLC.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj7: Clinician Presence","Tags":["Objective7","Professionalism"]},
+
+    {"Front":"MCQ—Which PERMA element best matches: “linking daily life to a larger narrative via values and beliefs”?","Back":"**Meaning**. (Relationships = social connections; Engagement = flow; Accomplishment = goal achievement).","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj1: PERMA MCQ","Tags":["Objective1","PERMA","MCQ"]},
+
+    {"Front":"MCQ—Which statement about social networks is most accurate?\nA) Emotions don’t spread beyond direct friends\nB) Emotional states can spread up to ~3 degrees\nC) Only negative emotions spread\nD) Network effects don’t alter health behaviors","Back":"**B** — Emotional states can be socially contagious to friends of friends’ friends and can influence health behaviors/outcomes.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj4: Networks MCQ","Tags":["Objective4","Networks","MCQ"]},
+
+    {"Front":"MCQ—Young adult reports very high social media use. Which association is supported here?\nA) Guaranteed causation of depression\nB) aOR ≈ 2.74 for depression in highest vs lowest quartile use\nC) Only sleep is affected\nD) Benefits always outweigh risks","Back":"**B** — Highest quartile users showed ~2.74 adjusted odds for depression vs lowest; causation not established.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj5: Social Media MCQ","Tags":["Objective5","Depression","MCQ"]},
+
+    {"Front":"Vignette—Your patient reports isolation and poor mood. Give one ‘micro-moment’ assignment and one resonance cue.","Back":"Assignment: initiate a daily 30-second authentic check-in with a coworker/barista/neighbor. Cue: seek shared positivity and mutual care in that moment (positivity resonance).","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj4/7: Vignette","Tags":["Objective4","Objective7","Vignette"]},
+
+    {"Front":"MCQ—Which pairing is correct?\nA) Hedonia → downregulated inflammation genes; Eudaimonia → upregulated pro-inflammatory genes\nB) Eudaimonia → ↓ pro-inflammatory & ↑ antibody genes; Hedonia → opposite pattern\nC) No gene-expression associations\nD) Only sleep mediates eudaimonia","Back":"**B** — Eudaimonia links to lower pro-inflammatory and higher antibody-synthesis gene expression; hedonia shows the opposite pattern.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj3: Biology MCQ","Tags":["Objective3","MCQ","Immunology"]},
+
+    {"Front":"MCQ—Which TLC claim is supported here?\nA) TLC cannot affect mental health\nB) TLC may be as effective as psychotherapy/pharmacotherapy for promoting good mental health (context-dependent)\nC) TLC replaces all therapy\nD) TLC harms emotional well-being","Back":"**B** — TLC can promote mental/emotional well-being and in some contexts be as effective for promoting good mental health.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj6: TLC MCQ","Tags":["Objective6","MCQ"]},
+
+    {"Front":"MCQ—Best initial counseling line when recommending mindfulness per this chapter:\nA) ‘It cures depression fast’\nB) ‘Evidence is mixed; expect mild–moderate stress reduction; keep up other treatments’\nC) ‘Skip sleep and do more mindfulness’\nD) ‘Only for students’","Back":"**B** — Set modest expectations; use alongside other care.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Obj6/7: Mindfulness MCQ","Tags":["Objective6","Objective7","MCQ"]},
+
+    {"Front":"Glossary—define **PERMA**.","Back":"Acronym for Positive emotion, Engagement, Relationships, Meaning, Accomplishment—five elements contributing to flourishing.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Glossary","Tags":["Glossary","PERMA"]},
+
+    {"Front":"Glossary—define **positive health**.","Back":"A state of health/well-being that extends beyond mere absence of disease or infirmity.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Glossary","Tags":["Glossary","Positive Health"]},
+
+    {"Front":"Glossary—define **positive affect**.","Back":"Experience of pleasurable emotions arising from engagement with one’s environment.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Glossary","Tags":["Glossary","Affect"]},
+
+    {"Front":"Glossary—define **micro-moment of connection**.","Back":"A brief, authentic social interaction that fosters connection.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Glossary","Tags":["Glossary","Connection"]},
+
+    {"Front":"Glossary—define **positive resonance**.","Back":"A positive social interaction marked by shared positivity, mutual care, and concern.","Chapter":"Ch10 – Connectedness & Positive Psychology","Section":"Glossary","Tags":["Glossary","Resonance"]}
+
+  ]
+}
