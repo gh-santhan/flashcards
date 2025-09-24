@@ -2,76 +2,144 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <title>Flashcards – Minimal SRS</title>
 <style>
   :root{
-    --bg:#0f1115; --card:#12151b; --ink:#e7e9ee; --muted:#9aa3b2; --line:#1d2230;
-    --btn:#191d27; --accent:#22d3ee; --ok:#16a34a; --hard:#ea580c; --bad:#dc2626; --info:#3b82f6;
+    /* Typography */
+    --font-body: ui-sans-serif, system-ui, -apple-system, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial;
+    --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+    --fs-1: clamp(17px, 0.9rem + 0.2vw, 18px);  /* body */
+    --fs-2: clamp(18px, 1.0rem + 0.4vw, 20px);  /* card front/back */
+    --fs-3: clamp(20px, 1.05rem + 0.7vw, 22px); /* section title / deck name */
+    --fs-4: clamp(22px, 1.1rem + 1.2vw, 26px);  /* page heading */
+
+    --lh-tight: 1.35;
+    --lh-body: 1.6;
+    --lh-relaxed: 1.7;
+
+    /* Spacing (4pt grid) */
+    --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+    --sp-5: 20px; --sp-6: 24px; --sp-7: 28px; --sp-8: 32px;
+
+    /* Radii */
+    --radius-card: 14px;
+    --radius-chip: 999px;
+
+    /* Colors (premium B/W with tiny color on grading) */
+    --bg: #0b0e13;      /* near-black */
+    --panel: #0f131a;   /* card surface */
+    --ink: #f4f6fa;     /* off-white */
+    --muted: #a6b0c2;   /* secondary text */
+    --line: rgba(255,255,255,.08); /* separators */
+    --elev: rgba(0,0,0,.25);       /* shadows */
+
+    --accent-good: #16a34a;
+    --accent-hard: #ea580c;
+    --accent-again:#dc2626;
+    --accent-easy: #3b82f6;
+
+    --thumb-pad: max(12px, env(safe-area-inset-bottom));
   }
+
   *{box-sizing:border-box}
   html,body{height:100%}
-  body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial}
-  .wrap{max-width:980px;margin:0 auto;padding:18px}
-  header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-  h1{margin:0;font-size:18px;font-weight:600}
-  #menuBtn{margin-left:auto;background:var(--btn);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer}
-  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-  .stack{display:flex;flex-direction:column;gap:10px}
-  select,input[type="text"],button{border-radius:8px;border:1px solid var(--line);background:var(--btn);color:var(--ink)}
-  select,input[type="text"]{padding:8px 10px}
-  button{padding:9px 12px;cursor:pointer}
-  button:hover{border-color:#2a3248}
+  body{
+    margin:0; font: 400 var(--fs-1)/var(--lh-body) var(--font-body);
+    background: var(--bg); color: var(--ink);
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:var(--sp-6)}
+  @media (min-width:768px){ .wrap{ padding: var(--sp-8); } }
+
+  /* Header + Menu */
+  header{display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-3)}
+  h1{margin:0;font-size:var(--fs-4);line-height:var(--lh-tight);letter-spacing:.1px}
+  #menuBtn{margin-left:auto;background:#0b0f16;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:10px 14px;cursor:pointer;min-height:44px}
+  #menuBtn:hover{border-color:#2a3248}
+  .menu{position:fixed;top:60px;right:18px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px;display:none;min-width:240px;z-index:20}
+  .menu a, .menu button{display:block;width:100%;text-align:left;background:transparent;border:1px solid transparent;padding:10px 12px;border-radius:10px;min-height:44px}
+  .menu a:hover, .menu button:hover{background:#0b0f18;border-color:#2a3248}
   .muted{color:var(--muted)}
-  .counts{display:flex;gap:8px;align-items:center;margin:10px 0 6px}
-  .pill{border:1px solid var(--line);border-radius:999px;padding:4px 10px;display:flex;gap:6px;align-items:center}
-  .pill b{font-variant-numeric:tabular-nums}
+
+  /* Rows / layout */
+  .row{display:flex;gap:var(--sp-2);align-items:center;flex-wrap:wrap}
+  .counts{display:flex;gap:var(--sp-2);align-items:center;margin-top:var(--sp-2);margin-bottom:var(--sp-2);overflow-x:auto;padding-bottom:2px}
+  .counts::-webkit-scrollbar{display:none}
+
+  /* Select / inputs / buttons */
+  select,input[type="text"],button{
+    border-radius:10px;border:1px solid var(--line);background:#0c1118;color:var(--ink)
+  }
+  select,input[type="text"]{padding:10px 12px;min-height:44px}
+  button{padding:10px 14px;min-height:44px;cursor:pointer;transition:background .18s, border-color .18s, transform .08s}
+  button:hover{border-color:#2a3248}
+  button:active{transform:translateY(1px)}
+  .primary{background:#111927;border-color:#2a3248;box-shadow:0 10px 24px var(--elev);font-weight:600}
+  .ghost{background:#0b0f16}
+
+  /* Chips / Counters */
+  .pill{padding:6px 10px;border-radius:var(--radius-chip);border:1px solid var(--line);font-size:13px;display:flex;gap:6px;align-items:center;white-space:nowrap}
+  .pill b{font-variant-numeric: tabular-nums}
+  .pill.active{outline:2px solid rgba(255,255,255,.12);outline-offset:2px}
+  .pill.total{background:#11141c}
   .pill.again{border-color:#7f1d1d;background:#1b1111}
   .pill.hard{border-color:#7c2d12;background:#1b130e}
   .pill.good{border-color:#14532d;background:#0e1a14}
   .pill.easy{border-color:#1e3a8a;background:#0d1525}
-  .pill.total{border-color:#2a3248;background:#11141c}
-  .filters{display:flex;gap:10px;align-items:center;margin:6px 0 12px}
+
+  /* Card */
   .card{
-    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-card);
+    padding: var(--sp-5) var(--sp-5) var(--sp-4);
   }
-  .meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;color:var(--muted);font-size:14px}
-  .front,.back{white-space:pre-wrap}
-  .front{font-size:18px;line-height:1.6}
-  .back{display:none;margin-top:10px;opacity:.98}
-  .btnbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-  .primary{background:#1a2335;border-color:#2a3248}
-  .ok{background:rgba(22,163,74,.08);border-color:#14532d}
-  .hard{background:rgba(234,88,12,.08);border-color:#7c2d12}
-  .bad{background:rgba(220,38,38,.08);border-color:#7f1d1d}
-  .easy{background:rgba(37,99,235,.08);border-color:#1e3a8a}
-  .ghost{background:#0b0f18}
-  .tagline{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
-  .tag{background:#0b0f18;border:1px solid var(--line);border-radius:999px;padding:3px 8px;font-size:12px}
-  .tag input{background:transparent;border:none;color:var(--ink);outline:none}
-  .section{margin-top:14px}
-  .searchRow{display:flex;gap:8px;align-items:center}
-  .help{font-size:13px;color:var(--muted)}
-  /* Menu */
-  .menu{position:fixed;top:56px;right:18px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;display:none;min-width:240px;z-index:20}
-  .menu a, .menu button{display:block;width:100%;text-align:left;background:transparent;border:1px solid transparent;padding:8px;border-radius:8px}
-  .menu a:hover, .menu button:hover{background:#0b0f18;border-color:#2a3248}
-  /* Modal (solid black bg) */
+  .meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:var(--sp-3);color:var(--muted);font-size:13px;letter-spacing:.2px}
+  .card-body{min-height:38vh; overscroll-behavior-y: contain;}
+  .front,.back{white-space:pre-wrap; max-width:68ch; font-size:var(--fs-2); line-height:var(--lh-relaxed)}
+  .back{opacity:.98; transition:opacity .18s ease}
+  .back.hidden{opacity:0; height:0; overflow:hidden}
+  .back.shown{opacity:.98; height:auto}
+
+  .btnbar{display:flex;gap:var(--sp-2);flex-wrap:wrap;margin-top:var(--sp-5)}
+  /* Sticky grading bar */
+  #gradeBar{
+    position: sticky; bottom: 0; display:none; gap:var(--sp-2); flex-wrap:wrap;
+    padding: var(--sp-3) var(--sp-4) calc(env(safe-area-inset-bottom) + var(--sp-3));
+    background: linear-gradient(180deg, rgba(11,14,19,0) 0%, rgba(11,14,19,.92) 30%, rgba(11,14,19,1) 100%);
+    border-top:1px solid var(--line);
+  }
+  #gradeBar.shown{display:flex}
+  #gradeBar .bad  { color:#ffd7d7; border-color:rgba(220,38,38,.4); background:rgba(220,38,38,.08) }
+  #gradeBar .hard { color:#ffd9c6; border-color:rgba(234,88,12,.4); background:rgba(234,88,12,.08) }
+  #gradeBar .ok   { color:#d6ffe0; border-color:rgba(22,163,74,.4); background:rgba(22,163,74,.08) }
+  #gradeBar .easy { color:#d6e7ff; border-color:rgba(59,130,246,.4); background:rgba(59,130,246,.08) }
+
+  /* Tags */
+  .tagline{display:flex;gap:var(--sp-2);overflow-x:auto;padding:var(--sp-2) 0}
+  .tagline::-webkit-scrollbar{display:none}
+  .tag{padding:6px 10px;border-radius:var(--radius-chip);border:1px solid var(--line);background:#0b0f16;font-size:12px}
+
+  /* Search section */
+  .section{margin-top:var(--sp-6)}
+  .searchRow{display:flex;gap:var(--sp-2);align-items:center;flex:1}
+
+  /* Search Modal (solid black) */
   .modal{position:fixed;inset:0;background:#000;display:none;z-index:50;color:#eaecef}
-  .modal .box{max-width:1100px;margin:40px auto;background:#0d1117;border:1px solid #222a3a;border-radius:12px;display:grid;grid-template-columns:320px 1fr;min-height:540px;overflow:hidden}
-  .modal header{padding:10px 12px;border-bottom:1px solid #222a3a}
-  .modal .left{border-right:1px solid #222a3a;display:flex;flex-direction:column}
-  .modal .left .searchbar{padding:10px;border-bottom:1px solid #222a3a}
-  .modal .left input{width:100%;background:#0b0f18;border:1px solid #222a3a}
-  .modal .left .results{flex:1;overflow:auto}
-  .modal .item{padding:10px 12px;border-bottom:1px solid #141a24;cursor:pointer}
+  .modal .box{max-width:1100px;margin:40px auto;background:#0d1117;border:1px solid #1a1f2b;border-radius:12px;display:grid;grid-template-columns:320px 1fr;min-height:540px;overflow:hidden}
+  .modal header{padding:10px 12px;border-bottom:1px solid #1a1f2b;background:#0d1117;position:sticky;top:0;z-index:1}
+  .modal .left{border-right:1px solid #1a1f2b;display:flex;flex-direction:column}
+  .modal .left .searchbar{padding:10px;border-bottom:1px solid #1a1f2b}
+  .modal .left input{width:100%;background:#0b0f18;border:1px solid #222a3a;color:#eaecef}
+  .modal .left .results{flex:1;overflow:auto;position:relative}
+  .modal .item{padding:10px 12px;border-bottom:1px solid #141a24;cursor:pointer;position:absolute;left:0;right:0;height:56px}
   .modal .item:hover{background:#0b0f18}
   .modal .item .small{color:#99a3b3;font-size:12px}
   .modal .right{padding:12px;display:flex;flex-direction:column}
   .modal .preview{flex:1;border:1px solid #222a3a;border-radius:10px;padding:12px;background:#0b0f18}
-  .modal .btns{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+  .modal .btns{position:sticky;bottom:0;background:#0d1117;padding:var(--sp-3);border-top:1px solid #1a1f2b;display:flex;gap:var(--sp-2)}
   .solid-accent{background:#122231;border-color:#224062}
-  .hidden{display:none}
 </style>
 </head>
 <body>
@@ -81,13 +149,13 @@
     <button id="menuBtn" aria-label="Menu">☰ Menu</button>
   </header>
 
-  <!-- Deck selector below heading -->
-  <div class="row">
+  <!-- Deck selector under heading -->
+  <div class="row" style="margin-bottom:var(--sp-2)">
     <label class="muted" for="deckSelect">Deck</label>
     <select id="deckSelect" aria-label="Select deck"></select>
   </div>
 
-  <!-- Card count + difficulty counters -->
+  <!-- Counters -->
   <div class="counts">
     <div class="pill total"><span>Total</span> <b id="totalCount">0</b></div>
     <div class="pill again"><span>Again</span> <b id="cntAgain">0</b></div>
@@ -97,30 +165,33 @@
     <div class="pill"><span>Ungraded</span> <b id="cntNone">0</b></div>
   </div>
 
-  <!-- Card UI -->
+  <!-- Card -->
   <div class="card">
     <div class="meta">
       <div id="metaLeft" class="muted">—</div>
       <div id="metaRight" class="muted">—</div>
     </div>
-    <div id="front" class="front"></div>
-    <div id="back" class="back"></div>
+    <div class="card-body" id="cardBody">
+      <div id="front" class="front"></div>
+      <div id="back" class="back hidden"></div>
+    </div>
 
     <div class="btnbar">
       <button id="revealBtn" class="primary">Reveal</button>
       <button id="prevBtn" class="ghost">◀ Prev</button>
       <button id="nextBtn" class="ghost">Next ▶</button>
-
-      <span id="afterReveal" class="hidden" style="display:flex;gap:8px;flex-wrap:wrap">
-        <button id="suspendBtn" class="ghost">Suspend</button>
-        <button id="gradeAgain" class="bad">Again (1)</button>
-        <button id="gradeHard" class="hard">Hard (2)</button>
-        <button id="gradeGood" class="ok">Good (3)</button>
-        <button id="gradeEasy" class="easy">Easy (4)</button>
-      </span>
     </div>
 
-    <!-- Tags editor -->
+    <!-- Sticky grading bar (appears after reveal) -->
+    <div id="gradeBar">
+      <button id="suspendBtn" class="ghost">Suspend</button>
+      <button id="gradeAgain" class="bad">Again (1)</button>
+      <button id="gradeHard"  class="hard">Hard (2)</button>
+      <button id="gradeGood"  class="ok">Good (3)</button>
+      <button id="gradeEasy"  class="easy">Easy (4)</button>
+    </div>
+
+    <!-- Tags -->
     <div class="tagline" id="tagline"></div>
     <div class="row">
       <input id="addTagInput" type="text" placeholder="Add tag then press Enter" aria-label="Add tag"/>
@@ -128,10 +199,10 @@
     </div>
   </div>
 
-  <!-- Search & difficulty filter (only) -->
+  <!-- Search & difficulty filter -->
   <div class="section">
     <div class="row">
-      <div class="searchRow">
+      <div class="searchRow" style="flex:1">
         <input id="searchText" type="text" placeholder="Search keyword or #tag across ALL decks" aria-label="Search text"/>
         <button id="searchBtn" class="solid-accent">Search</button>
       </div>
@@ -147,7 +218,7 @@
         </select>
       </div>
     </div>
-    <div class="help">Tip: use <code>#tag</code> in search to match tags across all decks. Press <b>/</b> to focus search.</div>
+    <div class="muted" style="font-size:13px;margin-top:6px">Tip: use <code>#tag</code> in search. Press <b>/</b> to focus search.</div>
   </div>
 </div>
 
@@ -196,45 +267,43 @@
 (() => {
   "use strict";
 
-  // ---------- Config / storage keys ----------
+  /* ======================= Config & storage ======================= */
   const DEFAULT_MANIFEST = "decks.json";
   const MANIFEST_URL = new URLSearchParams(location.search).get("manifest") || DEFAULT_MANIFEST;
-  const SETTINGS_KEY = "srs.min.settings.v1";
-  const GRADES_KEY   = "srs.min.grades.v1";     // { cardId: "again"|"hard"|"good"|"easy" }
-  const SUSP_KEY     = "srs.min.suspended.v1";  // Set of cardIds
-  const TAGS_KEY     = "srs.min.tags.v1";       // { cardId: ["tag", ...] }
 
-  // ---------- State ----------
+  const SETTINGS_KEY = "srs.min.settings.v2";
+  const GRADES_KEY   = "srs.min.grades.v2";     // { cardId: "again"|"hard"|"good"|"easy" }
+  const SUSP_KEY     = "srs.min.suspended.v2";  // Set of cardIds
+  const TAGS_KEY     = "srs.min.tags.v2";       // { cardId: ["tag", ...] }
+
+  /* ======================= State ======================= */
   let manifest = {decks:[]};
   let deck = { name:"", cards:[] };
   let deckURL = null;
-  let order = []; // filtered indices (respecting difficulty filter and suspended)
+  let order = []; // filtered indices
   let idx = 0;
 
-  // Cross-deck caches for search
+  // caches for search (all decks)
   const deckCache = new Map(); // url -> {name,cards}
-  const allDecksLoaded = new Map(); // name -> data
+  const allDecksLoaded = new Map(); // name -> {url, data}
 
-  // Persistent maps
+  // persistence
   const grades = loadJSON(GRADES_KEY, {}); // cardId -> diff
   const suspended = new Set(loadJSON(SUSP_KEY, []));
-  const tagOver = loadJSON(TAGS_KEY, {});  // overrides
+  const tagOver = loadJSON(TAGS_KEY, {});
+  const settings = Object.assign({ lastDeckURL:null, diffFilter:"all" }, loadJSON(SETTINGS_KEY, {}));
 
-  const settings = Object.assign({
-    lastDeckURL: null,
-    diffFilter: "all"
-  }, loadJSON(SETTINGS_KEY, {}));
-
-  // ---------- Elements ----------
-  const $ = (id)=>document.getElementById(id);
+  /* ======================= Elements ======================= */
+  const $=id=>document.getElementById(id);
   const els = {
     deckSelect: $("deckSelect"),
     total: $("totalCount"),
     cntAgain: $("cntAgain"), cntHard: $("cntHard"), cntGood: $("cntGood"), cntEasy: $("cntEasy"), cntNone: $("cntNone"),
     metaLeft: $("metaLeft"), metaRight: $("metaRight"),
+    cardBody: $("cardBody"),
     front: $("front"), back: $("back"),
     reveal: $("revealBtn"), prev: $("prevBtn"), next: $("nextBtn"),
-    after: $("afterReveal"), suspend: $("suspendBtn"),
+    gradeBar: $("gradeBar"), suspend: $("suspendBtn"),
     gAgain: $("gradeAgain"), gHard: $("gradeHard"), gGood: $("gradeGood"), gEasy: $("gradeEasy"),
     tagLine: $("tagline"), addTagInput: $("addTagInput"), clearTagsBtn: $("clearTagsBtn"),
     diffFilter: $("diffFilter"),
@@ -243,37 +312,29 @@
     downloadDeckBtn: $("downloadDeckBtn"), uploadDeckBtn: $("uploadDeckBtn"),
     backupBtn: $("backupBtn"), restoreBtn: $("restoreBtn"), reloadManifestBtn: $("reloadManifestBtn"),
     manifestInfo: $("manifestInfo"),
-    // Search modal
     modal: $("searchModal"), closeSearch: $("closeSearch"), modalInput: $("modalSearchInput"),
     resultsList: $("resultsList"), previewFront: $("previewFront"), previewBack: $("previewBack"),
     previewMeta: $("previewMeta"), prevResult: $("prevResult"), nextResult: $("nextResult"), openResult: $("openResult"),
   };
 
-  // Search state
+  // search state
   let results = []; // [{deckName, deckURL, index, card, id}]
   let rIdx = 0;
 
-  // ---------- Utils ----------
-  function loadJSON(k, fallback){ try{ return JSON.parse(localStorage.getItem(k) || JSON.stringify(fallback)); }catch{return fallback} }
+  /* ======================= Utils ======================= */
+  function loadJSON(k, f){ try{ return JSON.parse(localStorage.getItem(k) || JSON.stringify(f)); }catch{return f} }
   function saveJSON(k, v){ localStorage.setItem(k, JSON.stringify(v)); }
   function esc(s){ return String(s ?? "").replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c]); }
   const tagify = (tags)=>Array.isArray(tags)? tags : (typeof tags==="string"? tags.split(",").map(s=>s.trim()).filter(Boolean) : []);
 
   function cardId(dName, i){ return `${dName}::${i}`; }
+  async function fetchJSON(url){ const r=await fetch(url,{cache:"no-store"}); if(!r.ok) throw new Error(`Fetch ${r.status} for ${url}`); return r.json(); }
 
-  async function fetchJSON(url){
-    const res = await fetch(url, {cache:"no-store"});
-    if(!res.ok) throw new Error(`Fetch ${res.status} for ${url}`);
-    return res.json();
-  }
-
-  // ---------- Manifest & deck loading ----------
+  /* ======================= Manifest & decks ======================= */
   async function loadManifest(){
     const m = await fetchJSON(MANIFEST_URL);
     if(!m || !Array.isArray(m.decks)) throw new Error("Manifest missing 'decks' array");
-    manifest = m;
-    els.manifestInfo.textContent = `Manifest: ${MANIFEST_URL}`;
-    // populate select
+    manifest = m; els.manifestInfo.textContent = `Manifest: ${MANIFEST_URL}`;
     els.deckSelect.innerHTML = "";
     const base = new URL(MANIFEST_URL, location.href);
     manifest.decks.forEach(d=>{
@@ -294,7 +355,6 @@
     if(deckCache.has(url)) return deckCache.get(url);
     const data = await fetchJSON(url);
     if(!data || !Array.isArray(data.cards)) throw new Error(`Deck JSON missing 'cards' (${url})`);
-    // assign ids
     const d = JSON.parse(JSON.stringify(data));
     d.cards.forEach((c,i)=> c.__id = cardId(d.name||"deck", i));
     deckCache.set(url, d);
@@ -304,34 +364,31 @@
 
   async function switchDeck(url){
     const d = await getDeck(url);
-    deck = d;
-    deckURL = url;
+    deck = d; deckURL = url;
     settings.lastDeckURL = url; saveJSON(SETTINGS_KEY, settings);
-    // ensure tag overrides applied
-    deck.cards.forEach(c=>{
-      if(tagOver[c.__id]) c.Tags = tagOver[c.__id];
-    });
-    rebuildOrder(); renderCard(); renderCounts();
+    // reapply per-card tag overrides
+    deck.cards.forEach(c=>{ if(tagOver[c.__id]) c.Tags = tagOver[c.__id]; });
+    rebuildOrder(); renderCard(); renderCounts(); highlightActiveChip();
   }
 
-  // ---------- Filtering (by difficulty + suspended only) ----------
+  /* ======================= Filtering (difficulty + suspended) ======================= */
   function matchesDiff(c){
     const id = c.__id;
     const g = grades[id] || "none";
     const want = settings.diffFilter || "all";
-    if(want === "all") return true;
+    if(want==="all") return true;
     return g === want;
   }
   function rebuildOrder(){
     order = deck.cards.map((c,i)=>({c,i}))
-      .filter(({c})=> !suspended.has(c.__id) )
+      .filter(({c})=> !suspended.has(c.__id))
       .filter(({c})=> matchesDiff(c))
       .map(({i})=>i);
     idx = Math.min(idx, Math.max(0, order.length-1));
     if(order.length===0) idx = 0;
   }
 
-  // ---------- Counters ----------
+  /* ======================= Counters ======================= */
   function renderCounts(){
     const tot = deck.cards.length;
     let a=0,h=0,g=0,e=0,n=0;
@@ -342,13 +399,16 @@
     els.total.textContent = tot;
     els.cntAgain.textContent = a; els.cntHard.textContent = h; els.cntGood.textContent = g; els.cntEasy.textContent = e; els.cntNone.textContent = n;
   }
-
-  // ---------- Render card ----------
-  function curCard(){
-    if(!order.length) return null;
-    const i = order[idx];
-    return {i, c: deck.cards[i]};
+  function highlightActiveChip(){
+    document.querySelectorAll(".pill").forEach(p=>p.classList.remove("active"));
+    const map = {again:"cntAgain",hard:"cntHard",good:"cntGood",easy:"cntEasy",none:"cntNone"};
+    if(settings.diffFilter==="all") return;
+    const el = document.getElementById(map[settings.diffFilter]);
+    if(el) el.parentElement.classList.add("active");
   }
+
+  /* ======================= Render card ======================= */
+  function curCard(){ if(!order.length) return null; const i = order[idx]; return {i, c: deck.cards[i]}; }
   function renderTags(c){
     const tags = tagify(c.Tags);
     els.tagLine.innerHTML = tags.map(t=>`<span class="tag">#${esc(t)}</span>`).join("") || `<span class="muted">No tags</span>`;
@@ -359,27 +419,28 @@
       els.metaLeft.textContent = deck.name || "—";
       els.metaRight.textContent = "0 / 0";
       els.front.textContent = "No cards match your current difficulty filter.";
-      els.back.style.display = "none";
-      els.after.classList.add("hidden");
+      els.back.classList.add("hidden"); els.back.classList.remove("shown");
+      els.gradeBar.classList.remove("shown");
       els.tagLine.innerHTML = "";
       return;
     }
     const {i,c} = cur;
     const totalShown = order.length;
-    els.metaLeft.textContent = `${deck.name} — ${grades[c.__id] ? ('Last: '+grades[c.__id]) : 'Ungraded'} ${suspended.has(c.__id)? ' (Suspended)':''}`;
+    const last = grades[c.__id] ? ('Last: '+grades[c.__id]) : 'Ungraded';
+    els.metaLeft.textContent = `${deck.name} — ${last}${suspended.has(c.__id)?' (Suspended)':''}`;
     els.metaRight.textContent = `${idx+1} / ${totalShown}`;
     els.front.innerHTML = String(c.Front || "");
     els.back.innerHTML  = String(c.Back || "");
-    els.back.style.display = "none";
-    els.after.classList.add("hidden");
+    els.back.classList.add("hidden"); els.back.classList.remove("shown");
+    els.gradeBar.classList.remove("shown");
     renderTags(c);
   }
 
-  // ---------- Actions ----------
+  /* ======================= Actions ======================= */
   function reveal(){
     if(!curCard()) return;
-    els.back.style.display = "block";
-    els.after.classList.remove("hidden");
+    els.back.classList.remove("hidden"); els.back.classList.add("shown");
+    els.gradeBar.classList.add("shown");
   }
   function step(delta){
     if(!order.length) return;
@@ -389,10 +450,9 @@
   function grade(kind){
     const cur = curCard(); if(!cur) return;
     const id = cur.c.__id;
-    grades[id] = kind;
-    saveJSON(GRADES_KEY, grades);
-    renderCounts();
-    step(1);
+    grades[id] = kind; saveJSON(GRADES_KEY, grades);
+    renderCounts(); highlightActiveChip(); step(1);
+    haptic();
   }
   function toggleSuspend(){
     const cur = curCard(); if(!cur) return;
@@ -403,46 +463,34 @@
   }
   function addTag(){
     const cur = curCard(); if(!cur) return;
-    const raw = els.addTagInput.value.trim();
-    if(!raw) return;
+    const raw = els.addTagInput.value.trim(); if(!raw) return;
     const newTags = raw.split(",").map(s=>s.trim()).filter(Boolean);
     const id = cur.c.__id;
     const prev = tagify(cur.c.Tags);
     const merged = Array.from(new Set([...prev, ...newTags]));
-    cur.c.Tags = merged;
-    tagOver[id] = merged;
-    saveJSON(TAGS_KEY, tagOver);
-    els.addTagInput.value = "";
+    cur.c.Tags = merged; tagOver[id]=merged; saveJSON(TAGS_KEY, tagOver);
+    els.addTagInput.value=""; els.addTagInput.focus();
     renderTags(cur.c);
   }
   function clearTags(){
     const cur = curCard(); if(!cur) return;
-    const id = cur.c.__id;
-    cur.c.Tags = [];
-    tagOver[id] = [];
-    saveJSON(TAGS_KEY, tagOver);
-    renderTags(cur.c);
+    const id = cur.c.__id; cur.c.Tags = []; tagOver[id]=[]; saveJSON(TAGS_KEY, tagOver); renderTags(cur.c);
   }
 
-  // Difficulty filter change
   function setDiffFilter(v){
-    settings.diffFilter = v;
-    saveJSON(SETTINGS_KEY, settings);
-    rebuildOrder();
-    renderCard();
+    settings.diffFilter = v; saveJSON(SETTINGS_KEY, settings);
+    rebuildOrder(); renderCard(); renderCounts(); highlightActiveChip();
   }
 
-  // ---------- Search (modal, across all decks) ----------
+  /* ======================= Search (modal, across all decks) ======================= */
   async function ensureAllDecksLoaded(){
     const base = new URL(MANIFEST_URL, location.href);
-    // fetch all decks not yet loaded
     for(const d of manifest.decks){
       const url = new URL(d.file, base).href;
       if(!deckCache.has(url)) await getDeck(url);
     }
   }
   function queryResults(q){
-    // q may have #tag tokens; do simple search across name/Front/Back/Tags
     q = q.trim();
     const tagTokens = q.split(/\s+/).filter(t=>t.startsWith("#")).map(t=>t.slice(1).toLowerCase());
     const text = q.replace(/#[^\s]+/g,"").trim().toLowerCase();
@@ -454,121 +502,132 @@
         const tags = tagify(c.Tags).map(s=>s.toLowerCase());
         const textHit = !text || (String(c.Front||"").toLowerCase().includes(text) || String(c.Back||"").toLowerCase().includes(text));
         const tagHit = !tagTokens.length || tagTokens.every(t => tags.includes(t));
-        if(textHit && tagHit){
-          out.push({deckName:name, deckURL:url, index:i, card:c, id});
-        }
+        if(textHit && tagHit) out.push({deckName:name, deckURL:url, index:i, card:c, id});
       });
     }
     return out;
   }
   function openSearchModal(initial=""){
-    els.modal.style.display = "block";
-    els.modal.setAttribute("aria-hidden","false");
-    els.modalInput.value = initial || els.searchText.value || "";
-    els.modalInput.focus();
+    els.modal.style.display = "block"; els.modal.setAttribute("aria-hidden","false");
+    els.modalInput.value = initial || els.searchText.value || ""; els.modalInput.focus();
     updateSearchResults();
   }
-  function closeSearchModal(){
-    els.modal.style.display = "none";
-    els.modal.setAttribute("aria-hidden","true");
-  }
+  function closeSearchModal(){ els.modal.style.display = "none"; els.modal.setAttribute("aria-hidden","true"); }
   function updateSearchResults(){
-    const q = els.modalInput.value;
-    results = queryResults(q);
-    rIdx = 0;
-    renderResultsList();
-    renderResultPreview();
+    const q = els.modalInput.value; results = queryResults(q); rIdx = 0; renderResultsList(0); renderResultPreview();
   }
-  function renderResultsList(){
-    els.resultsList.innerHTML = results.map((r,i)=>`
-      <div class="item" data-i="${i}">
-        <div><strong>${esc(r.deckName)}</strong> — #${r.index+1}</div>
-        <div class="small">${esc(String(r.card.Front).slice(0,120))}${String(r.card.Front).length>120?"…":""}</div>
-      </div>
-    `).join("") || `<div class="item"><div>No matches.</div></div>`;
+
+  // Simple virtualization
+  const ROW = 56, VIEW = 9;
+  function renderResultsList(scrollTop=0){
+    const total = results.length;
+    const start = Math.max(0, Math.floor(scrollTop/ROW)-2);
+    const end = Math.min(total, start + VIEW + 4);
+    els.resultsList.innerHTML = "";
+    els.resultsList.style.height = `${Math.min(total, VIEW)*ROW}px`;
+    if(!total){ els.resultsList.innerHTML = `<div class="item" style="position:relative;height:auto">No matches.</div>`; return; }
+    const frag = document.createDocumentFragment();
+    for(let i=start;i<end;i++){
+      const r = results[i];
+      const item = document.createElement("div");
+      item.className = "item";
+      item.dataset.i = i;
+      item.style.top = (i*ROW)+"px";
+      item.innerHTML = `<div><strong>${esc(r.deckName)}</strong> — #${r.index+1}</div>
+        <div class="small">${esc(String(r.card.Front).slice(0,120))}${String(r.card.Front).length>120?"…":""}</div>`;
+      frag.appendChild(item);
+    }
+    els.resultsList.appendChild(frag);
+    // highlight selected
+    [...els.resultsList.children].forEach(el=>{
+      if(el.dataset.i){ el.style.background = (Number(el.dataset.i)===rIdx) ? "#101828" : "transparent"; }
+    });
+    els.resultsList.onscroll = (e)=> renderResultsList(e.target.scrollTop);
   }
   function renderResultPreview(){
     if(!results.length){
-      els.previewMeta.textContent = "—";
-      els.previewFront.textContent = "";
-      els.previewBack.textContent = "";
-      return;
+      els.previewMeta.textContent = "—"; els.previewFront.textContent=""; els.previewBack.textContent=""; return;
     }
     const r = results[rIdx];
     els.previewMeta.textContent = `${r.deckName} — card ${r.index+1} / ${allDecksLoaded.get(r.deckName).data.cards.length}`;
     els.previewFront.innerHTML = String(r.card.Front||"");
     els.previewBack.innerHTML  = String(r.card.Back||"");
-    // highlight selected in list
-    [...els.resultsList.children].forEach((el,i)=>{
-      el.style.background = i===rIdx ? "#101828" : "transparent";
+    // sync highlight
+    [...els.resultsList.children].forEach(el=>{
+      if(el.dataset.i){ el.style.background = (Number(el.dataset.i)===rIdx) ? "#101828" : "transparent"; }
     });
   }
   function openResultInMain(){
     if(!results.length) return;
     const r = results[rIdx];
-    // switch deck if needed, then jump to index
     switchDeck(r.deckURL).then(()=>{
-      // set filter to show this card even if filter hides it
-      settings.diffFilter = "all"; els.diffFilter.value = "all"; saveJSON(SETTINGS_KEY, settings);
+      settings.diffFilter="all"; els.diffFilter.value="all"; saveJSON(SETTINGS_KEY, settings);
       rebuildOrder();
-      // find its position in order
-      const pos = order.indexOf(r.index);
-      idx = pos>=0 ? pos : 0;
-      renderCard(); renderCounts();
+      const pos = order.indexOf(r.index); idx = pos>=0 ? pos : 0;
+      renderCard(); renderCounts(); highlightActiveChip();
       closeSearchModal();
     });
   }
 
-  // ---------- Import/Export ----------
-  function download(name, obj){
-    const blob = new Blob([JSON.stringify(obj, null, 2)], {type:"application/json"});
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = name; a.click(); URL.revokeObjectURL(a.href);
-  }
+  /* ======================= Import/Export & Menu ======================= */
+  function download(name, obj){ const b=new Blob([JSON.stringify(obj,null,2)],{type:"application/json"});
+    const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download=name; a.click(); URL.revokeObjectURL(a.href); }
 
-  // ---------- Events ----------
+  /* ======================= Events ======================= */
   els.deckSelect.addEventListener("change", e=> switchDeck(e.target.value));
   els.reveal.addEventListener("click", reveal);
   els.prev.addEventListener("click", ()=> step(-1));
   els.next.addEventListener("click", ()=> step(+1));
+
+  // Tap to reveal / tap again to next
+  els.cardBody.addEventListener("click", ()=>{
+    if(els.back.classList.contains("hidden")) reveal(); else step(1);
+  });
+  // Long-press to suspend
+  let pressTimer=null;
+  els.cardBody.addEventListener("pointerdown", ()=>{ pressTimer=setTimeout(()=>toggleSuspend(),700); });
+  ["pointerup","pointerleave","pointercancel"].forEach(evt => els.cardBody.addEventListener(evt, ()=>{ if(pressTimer){clearTimeout(pressTimer);pressTimer=null;} }));
+
+  // Swipe navigation
+  let sx=null, sy=null;
+  els.cardBody.addEventListener("touchstart", e=>{ const t=e.changedTouches[0]; sx=t.clientX; sy=t.clientY; }, {passive:true});
+  els.cardBody.addEventListener("touchend", e=>{
+    const t=e.changedTouches[0]; const dx=t.clientX-sx, dy=t.clientY-sy;
+    if(Math.abs(dx)>40 && Math.abs(dy)<30){ if(dx<0) step(+1); else step(-1); }
+  }, {passive:true});
+
+  // Grading
   els.suspend.addEventListener("click", toggleSuspend);
   els.gAgain.addEventListener("click", ()=> grade("again"));
   els.gHard .addEventListener("click", ()=> grade("hard"));
   els.gGood .addEventListener("click", ()=> grade("good"));
   els.gEasy .addEventListener("click", ()=> grade("easy"));
 
+  // Tags
   els.addTagInput.addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ e.preventDefault(); addTag(); }});
   els.clearTagsBtn.addEventListener("click", clearTags);
 
+  // Diff filter
   els.diffFilter.value = settings.diffFilter || "all";
   els.diffFilter.addEventListener("change", (e)=> setDiffFilter(e.target.value));
 
   // Search
-  document.addEventListener("keydown", (e)=>{ if(e.key === "/"){ e.preventDefault(); els.searchText.focus(); }});
-  els.searchBtn.addEventListener("click", ()=> openSearchModal());
-  els.searchText.addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ openSearchModal(); }});
-
+  document.addEventListener("keydown", (e)=>{ if(e.key==="/"){ e.preventDefault(); els.searchText.focus(); }});
+  els.searchBtn.addEventListener("click", async ()=>{ await ensureAllDecksLoaded(); openSearchModal(); });
+  els.searchText.addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ e.preventDefault(); els.searchBtn.click(); }});
   els.closeSearch.addEventListener("click", closeSearchModal);
   els.modalInput.addEventListener("input", updateSearchResults);
-  els.resultsList.addEventListener("click", (e)=>{
-    const item = e.target.closest(".item"); if(!item) return;
-    rIdx = Number(item.dataset.i)||0;
-    renderResultPreview();
-  });
+  els.resultsList.addEventListener("click", (e)=>{ const it=e.target.closest(".item"); if(!it) return; rIdx=Number(it.dataset.i)||0; renderResultPreview(); });
   els.prevResult.addEventListener("click", ()=>{ if(!results.length) return; rIdx=(rIdx-1+results.length)%results.length; renderResultPreview(); });
   els.nextResult.addEventListener("click", ()=>{ if(!results.length) return; rIdx=(rIdx+1)%results.length; renderResultPreview(); });
   els.openResult.addEventListener("click", openResultInMain);
+  document.addEventListener("keydown", (e)=>{ if(e.key==="Escape" && els.modal.style.display==="block") closeSearchModal(); });
 
   // Menu
-  els.menuBtn.addEventListener("click", ()=>{
-    els.menu.style.display = (els.menu.style.display==="block" ? "none" : "block");
-  });
-  document.addEventListener("click", (e)=>{
-    if(e.target.id==="menuBtn" || e.target.closest("#menu")) return;
-    els.menu.style.display = "none";
-  });
+  els.menuBtn.addEventListener("click", ()=>{ els.menu.style.display = (els.menu.style.display==="block" ? "none" : "block"); });
+  document.addEventListener("click", (e)=>{ if(e.target.id==="menuBtn" || e.target.closest("#menu")) return; els.menu.style.display="none"; });
 
+  // Import/Export
   els.downloadDeckBtn.addEventListener("click", ()=> download(`${(deck.name||"deck").replace(/\s+/g,'-').toLowerCase()}.json`, deck));
   els.uploadDeckBtn.addEventListener("click", ()=> els.fileInput.click());
   els.fileInput.addEventListener("change", (e)=>{
@@ -578,19 +637,14 @@
       try{
         const data = JSON.parse(r.result);
         if(data.cards){
-          // Load as current deck (local)
           deck = data; deck.cards.forEach((c,i)=> c.__id = cardId(deck.name||"deck", i));
           deckURL = null; settings.lastDeckURL=null; saveJSON(SETTINGS_KEY, settings);
-          rebuildOrder(); renderCard(); renderCounts();
+          rebuildOrder(); renderCard(); renderCounts(); highlightActiveChip();
         }else if(data.decks){
           manifest = data;
-          // Rebuild deck select from local manifest (relative URLs won't work from file://)
           els.deckSelect.innerHTML = "";
           manifest.decks.forEach(d=>{
-            const opt = document.createElement("option");
-            opt.value = d.file;
-            opt.textContent = d.name || d.file;
-            els.deckSelect.appendChild(opt);
+            const opt=document.createElement("option"); opt.value=d.file; opt.textContent=d.name||d.file; els.deckSelect.appendChild(opt);
           });
         }else throw new Error("JSON is neither a deck nor a manifest");
       }catch(err){ alert("Import failed: "+err.message); }
@@ -599,14 +653,11 @@
   });
 
   els.backupBtn.addEventListener("click", ()=>{
-    const payload = {
-      settings, grades, suspended:[...suspended], tags: tagOver, timestamp:new Date().toISOString()
-    };
+    const payload = { settings, grades, suspended:[...suspended], tags:tagOver, timestamp:new Date().toISOString() };
     download("flashcards-backup.json", payload);
   });
   els.restoreBtn.addEventListener("click", ()=>{
-    const inp = document.createElement("input");
-    inp.type="file"; inp.accept=".json,application/json";
+    const inp=document.createElement("input"); inp.type="file"; inp.accept=".json,application/json";
     inp.onchange = e=>{
       const f = e.target.files?.[0]; if(!f) return;
       const r = new FileReader();
@@ -618,7 +669,7 @@
           if(Array.isArray(data.suspended)){ suspended.clear(); data.suspended.forEach(x=>suspended.add(x)); }
           if(data.tags) Object.assign(tagOver, data.tags);
           saveJSON(SETTINGS_KEY, settings); saveJSON(GRADES_KEY, grades); saveJSON(SUSP_KEY, [...suspended]); saveJSON(TAGS_KEY, tagOver);
-          rebuildOrder(); renderCounts(); renderCard();
+          rebuildOrder(); renderCounts(); highlightActiveChip(); renderCard();
           alert("Backup restored.");
         }catch(err){ alert("Restore failed: "+err.message); }
       };
@@ -628,9 +679,9 @@
   });
   els.reloadManifestBtn.addEventListener("click", ()=> loadManifest());
 
-  // Keyboard shortcuts on main card
+  // Keyboard shortcuts on main
   document.addEventListener("keydown", (e)=>{
-    if(e.key===" "){ e.preventDefault(); if(els.back.style.display==="block") step(+1); else reveal(); }
+    if(e.key===" "){ e.preventDefault(); if(els.back.classList.contains("hidden")) reveal(); else step(+1); }
     if(e.key==="ArrowRight"){ step(+1); }
     if(e.key==="ArrowLeft"){ step(-1); }
     if(e.key==="1"){ grade("again"); }
@@ -639,21 +690,24 @@
     if(e.key==="4"){ grade("easy"); }
   });
 
-  // Close modal on ESC
-  document.addEventListener("keydown", (e)=>{ if(e.key==="Escape" && els.modal.style.display==="block") closeSearchModal(); });
+  // Haptics (light vibration when grading)
+  function haptic(){ try{ if("vibrate" in navigator) navigator.vibrate(10); }catch{} }
 
-  // ---------- Init ----------
+  // Keep screen awake (optional; ignore if unsupported)
+  let wakeLock;
+  async function keepAwake(){ try{ wakeLock = await navigator.wakeLock.request("screen"); }catch{} }
+  document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState==="visible" && wakeLock?.released) keepAwake(); });
+  keepAwake();
+
+  /* ======================= Init ======================= */
   (async function init(){
     els.diffFilter.value = settings.diffFilter || "all";
-    // Load manifest & default deck
     try{
       await loadManifest();
-      // Preload all decks for search when opening modal (on demand)
-      els.searchBtn.addEventListener("click", async ()=>{ await ensureAllDecksLoaded(); openSearchModal(); });
+      // preload decks for search when opening
+      els.searchBtn.addEventListener("click", async ()=>{ await ensureAllDecksLoaded(); openSearchModal(); }, {once:false});
       els.modalInput.addEventListener("focus", ensureAllDecksLoaded, {once:true});
-    }catch(err){
-      alert("Failed to load manifest: "+err.message);
-    }
+    }catch(err){ alert("Failed to load manifest: "+err.message); }
   })();
 
 })();
