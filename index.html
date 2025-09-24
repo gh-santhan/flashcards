@@ -6,24 +6,22 @@
 <title>Flashcards – Minimal SRS</title>
 <style>
   :root{
+    /* Typography */
     --font-body: ui-sans-serif, system-ui, -apple-system, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial;
     --fs-1: clamp(17px, 0.9rem + 0.2vw, 18px);
     --fs-2: clamp(18px, 1.0rem + 0.4vw, 20px);
     --fs-3: clamp(20px, 1.05rem + 0.7vw, 22px);
     --fs-4: clamp(22px, 1.1rem + 1.2vw, 26px);
+    --lh-tight: 1.35; --lh-body: 1.6; --lh-relaxed: 1.7;
 
-    --lh-tight: 1.35;
-    --lh-body: 1.6;
-    --lh-relaxed: 1.7;
-
+    /* Spacing (4pt grid) */
     --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
     --sp-5: 20px; --sp-6: 24px; --sp-7: 28px; --sp-8: 32px;
 
+    /* Shape & Color */
     --radius-card: 14px; --radius-chip: 999px;
-
     --bg:#0b0e13; --panel:#0f131a; --ink:#f4f6fa; --muted:#a6b0c2;
     --line:rgba(255,255,255,.08); --elev:rgba(0,0,0,.25);
-
     --accent-good:#16a34a; --accent-hard:#ea580c; --accent-again:#dc2626; --accent-easy:#3b82f6;
 
     --thumb-pad: max(12px, env(safe-area-inset-bottom));
@@ -32,17 +30,26 @@
   html,body{height:100%}
   body{
     margin:0; font:400 var(--fs-1)/var(--lh-body) var(--font-body);
-    background:var(--bg); color:var(--ink); -webkit-font-smoothing:antialiased; -webkit-tap-highlight-color:transparent;
+    background:var(--bg); color:var(--ink);
+    -webkit-font-smoothing:antialiased; -webkit-tap-highlight-color:transparent;
   }
   .wrap{max-width:980px;margin:0 auto;padding:var(--sp-6)}
   @media (min-width:768px){ .wrap{ padding: var(--sp-8); } }
 
+  /* Header + Menu */
   header{display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-3)}
   h1{margin:0;font-size:var(--fs-4);line-height:var(--lh-tight)}
   .muted{color:var(--muted)}
-  #menuBtn{margin-left:auto;background:#0b0f16;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:10px 14px;min-height:44px;cursor:pointer}
+  #menuBtn{margin-left:auto;background:#0b0f16;border:1px solid var(--line);color:var(--ink);
+    border-radius:10px;padding:10px 14px;min-height:44px;cursor:pointer}
   #menuBtn:hover{border-color:#2a3248}
+  .menu{position:fixed;top:60px;right:18px;background:var(--panel);border:1px solid var(--line);
+    border-radius:10px;padding:10px;display:none;min-width:240px;z-index:20}
+  .menu a,.menu button{display:block;width:100%;text-align:left;background:transparent;border:1px solid transparent;
+    padding:10px 12px;border-radius:10px;min-height:44px}
+  .menu a:hover,.menu button:hover{background:#0b0f18;border-color:#2a3248}
 
+  /* Rows / inputs / buttons */
   .row{display:flex;gap:var(--sp-2);align-items:center;flex-wrap:wrap}
   select,input[type="text"],button{border-radius:10px;border:1px solid var(--line);background:#0c1118;color:var(--ink)}
   select,input[type="text"]{padding:10px 12px;min-height:44px}
@@ -51,9 +58,11 @@
   .primary{background:#111927;border-color:#2a3248;box-shadow:0 10px 24px var(--elev);font-weight:600}
   .ghost{background:#0b0f16}
 
+  /* Counter chips (clickable filters) */
   .counts{display:flex;gap:var(--sp-2);align-items:center;margin:var(--sp-2) 0;overflow-x:auto;padding-bottom:2px}
   .counts::-webkit-scrollbar{display:none}
-  .pill{padding:6px 10px;border-radius:var(--radius-chip);border:1px solid var(--line);font-size:13px;display:flex;gap:6px;align-items:center;white-space:nowrap}
+  .pill{padding:6px 10px;border-radius:var(--radius-chip);border:1px solid var(--line);
+    font-size:13px;display:flex;gap:6px;align-items:center;white-space:nowrap;cursor:pointer;user-select:none}
   .pill b{font-variant-numeric:tabular-nums}
   .pill.active{outline:2px solid rgba(255,255,255,.12);outline-offset:2px}
   .pill.total{background:#11141c}
@@ -62,8 +71,15 @@
   .pill.good{border-color:#14532d;background:#0e1a14}
   .pill.easy{border-color:#1e3a8a;background:#0d1525}
 
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-card);padding:var(--sp-5) var(--sp-5) var(--sp-4)}
-  .meta{display:flex;justify-content:space-between;gap:var(--sp-2);align-items:center;margin-bottom:var(--sp-3);color:var(--muted);font-size:13px}
+  /* Session banner */
+  #sessionBanner .pill { background:#11141c; }
+  #sessionBanner button { padding:8px 12px; }
+
+  /* Card */
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-card);
+    padding:var(--sp-5) var(--sp-5) var(--sp-4)}
+  .meta{display:flex;justify-content:space-between;gap:var(--sp-2);align-items:center;margin-bottom:var(--sp-3);
+    color:var(--muted);font-size:13px}
   .card-body{min-height:38vh;overscroll-behavior-y:contain}
   .front,.back{white-space:pre-wrap;max-width:68ch;font-size:var(--fs-2);line-height:var(--lh-relaxed)}
   .back{opacity:.98;transition:opacity .18s ease}
@@ -71,6 +87,7 @@
   .back.shown{opacity:.98;height:auto}
 
   .btnbar{display:flex;gap:var(--sp-2);flex-wrap:wrap;margin-top:var(--sp-5)}
+  /* Sticky grading bar */
   #gradeBar{
     position:sticky;bottom:0;display:none;gap:var(--sp-2);flex-wrap:wrap;
     padding:var(--sp-3) var(--sp-4) calc(var(--thumb-pad) + var(--sp-3));
@@ -83,21 +100,19 @@
   #gradeBar .ok   {color:#d6ffe0;border-color:rgba(22,163,74,.4);background:rgba(22,163,74,.08)}
   #gradeBar .easy {color:#d6e7ff;border-color:rgba(59,130,246,.4);background:rgba(59,130,246,.08)}
 
+  /* Tags */
   .tagline{display:flex;gap:var(--sp-2);overflow-x:auto;padding:var(--sp-2) 0}
   .tagline::-webkit-scrollbar{display:none}
   .tag{padding:6px 10px;border-radius:var(--radius-chip);border:1px solid var(--line);background:#0b0f16;font-size:12px}
 
+  /* Section under card (search) */
   .section{margin-top:var(--sp-6)}
   .searchRow{display:flex;gap:var(--sp-2);align-items:center;flex:1}
 
-  .menu{position:fixed;top:60px;right:18px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px;display:none;min-width:240px;z-index:20}
-  .menu a,.menu button{display:block;width:100%;text-align:left;background:transparent;border:1px solid transparent;padding:10px 12px;border-radius:10px;min-height:44px}
-  .menu a:hover,.menu button:hover{background:#0b0f18;border-color:#2a3248}
-
-  /* Search modal (simplified & mobile robust) */
+  /* Search modal (mobile robust) */
   .modal{position:fixed;inset:0;background:#000;display:none;z-index:50;color:#eaecef}
   .modal .box{max-width:1100px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
-  .modal header{padding:10px 12px;border-bottom:1px solid #1a1f2b;background:#0d1117;position:sticky;top:0;z-index:1;display:flex;justify-content:space-between;align-items:center}
+  .modal header{padding:10px 12px;border-bottom:1px solid #1a1f2b;background:#0d1117;position:sticky;top:0;z-index:1;display:flex;gap:var(--sp-2)}
   .modal .headbar{display:flex;gap:var(--sp-2);width:100%}
   .modal .headbar input{flex:1;background:#0b0f18;border:1px solid #222a3a;color:#eaecef;padding:10px 12px;border-radius:10px;min-height:44px}
   .modal .content{flex:1;display:flex;flex-direction:column;min-height:0}
@@ -117,20 +132,29 @@
     <button id="menuBtn" aria-label="Menu">☰ Menu</button>
   </header>
 
+  <!-- Deck selector -->
   <div class="row" style="margin-bottom:var(--sp-2)">
     <label class="muted" for="deckSelect">Deck</label>
     <select id="deckSelect" aria-label="Select deck"></select>
   </div>
 
-  <div class="counts">
-    <div class="pill total"><span>Total</span> <b id="totalCount">0</b></div>
-    <div class="pill again"><span>Again</span> <b id="cntAgain">0</b></div>
-    <div class="pill hard"><span>Hard</span> <b id="cntHard">0</b></div>
-    <div class="pill good"><span>Good</span> <b id="cntGood">0</b></div>
-    <div class="pill easy"><span>Easy</span> <b id="cntEasy">0</b></div>
-    <div class="pill"><span>Ungraded</span> <b id="cntNone">0</b></div>
+  <!-- Clickable counter chips (act as filters) -->
+  <div class="counts" id="chips">
+    <div id="chipTotal" class="pill total" role="button" tabindex="0"><span>Total</span> <b id="totalCount">0</b></div>
+    <div id="chipAgain" class="pill again" role="button" tabindex="0"><span>Again</span> <b id="cntAgain">0</b></div>
+    <div id="chipHard"  class="pill hard"  role="button" tabindex="0"><span>Hard</span>  <b id="cntHard">0</b></div>
+    <div id="chipGood"  class="pill good"  role="button" tabindex="0"><span>Good</span>  <b id="cntGood">0</b></div>
+    <div id="chipEasy"  class="pill easy"  role="button" tabindex="0"><span>Easy</span>  <b id="cntEasy">0</b></div>
+    <div id="chipNone"  class="pill"       role="button" tabindex="0"><span>Ungraded</span> <b id="cntNone">0</b></div>
   </div>
 
+  <!-- Search Review session banner -->
+  <div id="sessionBanner" class="row" style="display:none; margin: 8px 0">
+    <div class="pill total" id="sessionLabel">Search Review — 0 cards</div>
+    <button id="exitSessionBtn" class="ghost">Exit</button>
+  </div>
+
+  <!-- Card -->
   <div class="card">
     <div class="meta">
       <div id="metaLeft" class="muted">—</div>
@@ -147,6 +171,7 @@
       <button id="nextBtn" class="ghost">Next ▶</button>
     </div>
 
+    <!-- Sticky grading bar -->
     <div id="gradeBar">
       <button id="suspendBtn" class="ghost">Suspend</button>
       <button id="gradeAgain" class="bad">Again (1)</button>
@@ -155,6 +180,7 @@
       <button id="gradeEasy"  class="easy">Easy (4)</button>
     </div>
 
+    <!-- Tags -->
     <div class="tagline" id="tagline"></div>
     <div class="row">
       <input id="addTagInput" type="text" placeholder="Add tag then press Enter" aria-label="Add tag"/>
@@ -162,22 +188,12 @@
     </div>
   </div>
 
+  <!-- Search (only) -->
   <div class="section">
     <div class="row">
       <div class="searchRow" style="flex:1">
         <input id="searchText" type="text" placeholder="Search keyword or #tag across ALL decks" aria-label="Search text"/>
         <button id="searchBtn" class="solid-accent">Search</button>
-      </div>
-      <div class="row" style="margin-left:auto">
-        <label class="muted" for="diffFilter">Difficulty</label>
-        <select id="diffFilter" aria-label="Difficulty filter">
-          <option value="all">All</option>
-          <option value="again">Again</option>
-          <option value="hard">Hard</option>
-          <option value="good">Good</option>
-          <option value="easy">Easy</option>
-          <option value="none">Ungraded</option>
-        </select>
       </div>
     </div>
     <div class="muted" style="font-size:13px;margin-top:6px">Tip: use <code>#tag</code>. Press <b>/</b> to focus search.</div>
@@ -216,6 +232,7 @@
       <div class="btns">
         <button id="prevResult" class="ghost">◀ Prev</button>
         <button id="nextResult" class="ghost">Next ▶</button>
+        <button id="reviewAll" class="solid-accent" disabled>Review all (0)</button>
         <button id="openResult" class="solid-accent">Open in main</button>
       </div>
     </div>
@@ -226,58 +243,78 @@
 (() => {
   "use strict";
 
+  /* ========= Config & storage ========= */
   const DEFAULT_MANIFEST = "decks.json";
   const MANIFEST_URL = new URLSearchParams(location.search).get("manifest") || DEFAULT_MANIFEST;
 
-  const SETTINGS_KEY = "srs.min.settings.v3";
-  const GRADES_KEY   = "srs.min.grades.v3";
-  const SUSP_KEY     = "srs.min.suspended.v3";
-  const TAGS_KEY     = "srs.min.tags.v3";
+  const SETTINGS_KEY = "srs.min.settings.v4";
+  const GRADES_KEY   = "srs.min.grades.v4";
+  const SUSP_KEY     = "srs.min.suspended.v4";
+  const TAGS_KEY     = "srs.min.tags.v4";
 
+  /* ========= State ========= */
   let manifest = {decks:[]};
   let deck = { name:"", cards:[] };
   let deckURL = null;
   let order = []; let idx = 0;
 
-  const deckCache = new Map();      // url -> deck
-  const allDecksLoaded = new Map(); // name -> {url,data}
+  // Search review session
+  let sessionMode = false;
+  let session = [];        // [{ deckURL, deckName, index }]
+  let sessionPos = 0;
 
+  // caches for search
+  const deckCache = new Map();      // url -> deck
+  const allDecksLoaded = new Map(); // name -> {url, data}
+
+  // persistence
   const grades = loadJSON(GRADES_KEY, {});
   const suspended = new Set(loadJSON(SUSP_KEY, []));
   const tagOver = loadJSON(TAGS_KEY, {});
   const settings = Object.assign({ lastDeckURL:null, diffFilter:"all" }, loadJSON(SETTINGS_KEY, {}));
 
+  /* ========= Elements ========= */
   const $=id=>document.getElementById(id);
   const els = {
     deckSelect:$("deckSelect"),
-    total:$("totalCount"), cntAgain:$("cntAgain"), cntHard:$("cntHard"), cntGood:$("cntGood"), cntEasy:$("cntEasy"), cntNone:$("cntNone"),
+    total:$("totalCount"), cntAgain:$("cntAgain"), cntHard:$("cntHard"),
+    cntGood:$("cntGood"), cntEasy:$("cntEasy"), cntNone:$("cntNone"),
+    chipTotal:$("chipTotal"), chipAgain:$("chipAgain"), chipHard:$("chipHard"),
+    chipGood:$("chipGood"), chipEasy:$("chipEasy"), chipNone:$("chipNone"),
+    sessionBanner:$("sessionBanner"), sessionLabel:$("sessionLabel"), exitSessionBtn:$("exitSessionBtn"),
+
     metaLeft:$("metaLeft"), metaRight:$("metaRight"),
     cardBody:$("cardBody"), front:$("front"), back:$("back"),
     reveal:$("revealBtn"), prev:$("prevBtn"), next:$("nextBtn"),
     gradeBar:$("gradeBar"), suspend:$("suspendBtn"),
     gAgain:$("gradeAgain"), gHard:$("gradeHard"), gGood:$("gradeGood"), gEasy:$("gradeEasy"),
+
     tagLine:$("tagline"), addTagInput:$("addTagInput"), clearTagsBtn:$("clearTagsBtn"),
-    diffFilter:$("diffFilter"),
+
     searchText:$("searchText"), searchBtn:$("searchBtn"),
     menuBtn:$("menuBtn"), menu:$("menu"), fileInput:$("fileInput"),
     downloadDeckBtn:$("downloadDeckBtn"), uploadDeckBtn:$("uploadDeckBtn"),
     backupBtn:$("backupBtn"), restoreBtn:$("restoreBtn"), reloadManifestBtn:$("reloadManifestBtn"),
     manifestInfo:$("manifestInfo"),
+
+    // Search modal
     modal:$("searchModal"), closeSearch:$("closeSearch"), modalInput:$("modalSearchInput"),
     resultsList:$("resultsList"), previewFront:$("previewFront"), previewBack:$("previewBack"),
-    previewMeta:$("previewMeta"), prevResult:$("prevResult"), nextResult:$("nextResult"), openResult:$("openResult"),
+    previewMeta:$("previewMeta"), prevResult:$("prevResult"), nextResult:$("nextResult"),
+    openResult:$("openResult"), reviewAll:$("reviewAll"),
   };
 
   let results=[]; let rIdx=0;
 
+  /* ========= Utils ========= */
   function loadJSON(k,f){ try{return JSON.parse(localStorage.getItem(k)||JSON.stringify(f));}catch{return f} }
   function saveJSON(k,v){ localStorage.setItem(k, JSON.stringify(v)); }
-  function esc(s){ return String(s??"").replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+  function esc(s){ return String(s??"").replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c]); }
   const tagify = (tags)=>Array.isArray(tags)? tags : (typeof tags==="string"? tags.split(",").map(s=>s.trim()).filter(Boolean):[]);
-
   function cardId(dName,i){ return `${dName}::${i}`; }
   async function fetchJSON(url){ const r=await fetch(url,{cache:"no-store"}); if(!r.ok) throw new Error(`Fetch ${r.status} for ${url}`); return r.json(); }
 
+  /* ========= Manifest & decks ========= */
   async function loadManifest(){
     const m = await fetchJSON(MANIFEST_URL);
     if(!m || !Array.isArray(m.decks)) throw new Error("Manifest missing 'decks' array");
@@ -315,66 +352,122 @@
     rebuildOrder(); renderCard(); renderCounts(); highlightActiveChip();
   }
 
+  /* ========= Filtering by difficulty (via chips) ========= */
   function matchesDiff(c){
     const g = grades[c.__id] || "none"; const want = settings.diffFilter || "all";
     return want==="all" ? true : g===want;
   }
-  function rebuildOrder(){
-    order = deck.cards.map((c,i)=>({c,i})).filter(({c})=>!suspended.has(c.__id)).filter(({c})=>matchesDiff(c)).map(({i})=>i);
-    idx = Math.min(idx, Math.max(0, order.length-1)); if(order.length===0) idx=0;
-  }
-
-  function renderCounts(){
-    const tot=deck.cards.length; let a=0,h=0,g=0,e=0,n=0;
-    deck.cards.forEach(c=>{ const v=grades[c.__id]||"none"; if(v==="again")a++; else if(v==="hard")h++; else if(v==="good")g++; else if(v==="easy")e++; else n++; });
-    els.total.textContent=tot; els.cntAgain.textContent=a; els.cntHard.textContent=h; els.cntGood.textContent=g; els.cntEasy.textContent=e; els.cntNone.textContent=n;
+  function setDiffFilter(v){
+    // clicking active chip toggles back to "all"
+    const current = settings.diffFilter || "all";
+    const next = (current === v) ? "all" : v;
+    settings.diffFilter = next; saveJSON(SETTINGS_KEY, settings);
+    rebuildOrder(); renderCard(); renderCounts(); highlightActiveChip();
   }
   function highlightActiveChip(){
-    document.querySelectorAll(".pill").forEach(p=>p.classList.remove("active"));
-    const map={again:"cntAgain",hard:"cntHard",good:"cntGood",easy:"cntEasy",none:"cntNone"};
-    if(settings.diffFilter==="all") return; const el=document.getElementById(map[settings.diffFilter]); if(el) el.parentElement.classList.add("active");
+    [els.chipTotal,els.chipAgain,els.chipHard,els.chipGood,els.chipEasy,els.chipNone].forEach(el=>el.classList.remove("active"));
+    const f = settings.diffFilter || "all";
+    if(f==="all") { els.chipTotal.classList.add("active"); return; }
+    if(f==="again") els.chipAgain.classList.add("active");
+    else if(f==="hard") els.chipHard.classList.add("active");
+    else if(f==="good") els.chipGood.classList.add("active");
+    else if(f==="easy") els.chipEasy.classList.add("active");
+    else if(f==="none") els.chipNone.classList.add("active");
+  }
+  function rebuildOrder(){
+    order = deck.cards.map((c,i)=>({c,i}))
+      .filter(({c})=> !suspended.has(c.__id))
+      .filter(({c})=> matchesDiff(c))
+      .map(({i})=>i);
+    idx = Math.min(idx, Math.max(0, order.length-1));
+    if(order.length===0) idx = 0;
   }
 
-  function curCard(){ if(!order.length) return null; const i=order[idx]; return {i, c:deck.cards[i]}; }
-  function renderTags(c){ const tags=tagify(c.Tags); els.tagLine.innerHTML = tags.map(t=>`<span class="tag">#${esc(t)}</span>`).join("") || `<span class="muted">No tags</span>`; }
+  /* ========= Counters ========= */
+  function renderCounts(){
+    const tot=deck.cards.length; let a=0,h=0,g=0,e=0,n=0;
+    deck.cards.forEach(c=>{ const v=grades[c.__id]||"none";
+      if(v==="again")a++; else if(v==="hard")h++; else if(v==="good")g++; else if(v==="easy")e++; else n++; });
+    els.total.textContent=tot; els.cntAgain.textContent=a; els.cntHard.textContent=h;
+    els.cntGood.textContent=g; els.cntEasy.textContent=e; els.cntNone.textContent=n;
+  }
+
+  /* ========= Render card ========= */
+  function curCard(){ if(!order.length) return null; const i = order[idx]; return {i, c: deck.cards[i]}; }
+  function renderTags(c){
+    const tags = tagify(c.Tags);
+    els.tagLine.innerHTML = tags.map(t=>`<span class="tag">#${esc(t)}</span>`).join("") || `<span class="muted">No tags</span>`;
+  }
   function renderCard(){
     const cur = curCard();
     if(!cur){
-      els.metaLeft.textContent = deck.name || "—"; els.metaRight.textContent = "0 / 0";
+      els.metaLeft.textContent = deck.name || "—";
+      els.metaRight.textContent = "0 / 0";
       els.front.textContent = "No cards match your current difficulty filter.";
-      els.back.classList.add("hidden"); els.back.classList.remove("shown"); els.gradeBar.classList.remove("shown"); els.tagLine.innerHTML="";
+      els.back.classList.add("hidden"); els.back.classList.remove("shown");
+      els.gradeBar.classList.remove("shown"); els.tagLine.innerHTML="";
       return;
     }
-    const {i,c} = cur; const totalShown=order.length; const last = grades[c.__id] ? ('Last: '+grades[c.__id]) : 'Ungraded';
+    const {i,c} = cur;
+    const totalShown = order.length;
+    const last = grades[c.__id] ? ('Last: '+grades[c.__id]) : 'Ungraded';
     els.metaLeft.textContent = `${deck.name} — ${last}${suspended.has(c.__id)?' (Suspended)':''}`;
     els.metaRight.textContent = `${idx+1} / ${totalShown}`;
-    els.front.innerHTML = String(c.Front||""); els.back.innerHTML = String(c.Back||"");
-    els.back.classList.add("hidden"); els.back.classList.remove("shown"); els.gradeBar.classList.remove("shown");
+    els.front.innerHTML = String(c.Front || "");
+    els.back.innerHTML  = String(c.Back  || "");
+    els.back.classList.add("hidden"); els.back.classList.remove("shown");
+    els.gradeBar.classList.remove("shown");
     renderTags(c);
+    // Update session label position/count if in session
+    if(sessionMode){
+      els.sessionLabel.textContent = `Search Review — ${sessionPos+1}/${session.length}`;
+    }
   }
 
-  function reveal(){ if(!curCard()) return; els.back.classList.remove("hidden"); els.back.classList.add("shown"); els.gradeBar.classList.add("shown"); }
-  function step(d){ if(!order.length) return; idx = (idx + d + order.length)%order.length; renderCard(); }
+  /* ========= Actions ========= */
+  function reveal(){
+    if(!curCard()) return;
+    els.back.classList.remove("hidden"); els.back.classList.add("shown");
+    els.gradeBar.classList.add("shown");
+  }
+  async function step(delta){
+    if(sessionMode){
+      if(!session.length) return;
+      await gotoSession(sessionPos + delta);
+      return;
+    }
+    if(!order.length) return;
+    idx = (idx + delta + order.length) % order.length;
+    renderCard();
+  }
   function grade(kind){
     const cur = curCard(); if(!cur) return;
     grades[cur.c.__id]=kind; saveJSON(GRADES_KEY, grades);
-    renderCounts(); highlightActiveChip(); step(1); haptic();
+    renderCounts(); highlightActiveChip();
+    // In session, auto-advance within the result set
+    step(1); haptic();
   }
   function toggleSuspend(){
     const cur = curCard(); if(!cur) return; const id=cur.c.__id;
     if(suspended.has(id)) suspended.delete(id); else suspended.add(id);
-    saveJSON(SUSP_KEY, [...suspended]); rebuildOrder(); renderCounts(); renderCard();
+    saveJSON(SUSP_KEY, [...suspended]);
+    rebuildOrder(); renderCounts(); renderCard();
   }
   function addTag(){
-    const cur=curCard(); if(!cur) return; const raw=els.addTagInput.value.trim(); if(!raw) return;
-    const newTags=raw.split(",").map(s=>s.trim()).filter(Boolean); const id=cur.c.__id;
-    const prev=tagify(cur.c.Tags); const merged=[...new Set([...prev,...newTags])];
+    const cur = curCard(); if(!cur) return; const raw=els.addTagInput.value.trim(); if(!raw) return;
+    const newTags=raw.split(",").map(s=>s.trim()).filter(Boolean);
+    const id=cur.c.__id; const prev=tagify(cur.c.Tags);
+    const merged=[...new Set([...prev,...newTags])];
     cur.c.Tags=merged; tagOver[id]=merged; saveJSON(TAGS_KEY, tagOver);
-    els.addTagInput.value=""; els.addTagInput.focus(); renderTags(cur.c);
+    els.addTagInput.value=""; els.addTagInput.focus();
+    renderTags(cur.c);
   }
-  function clearTags(){ const cur=curCard(); if(!cur) return; const id=cur.c.__id; cur.c.Tags=[]; tagOver[id]=[]; saveJSON(TAGS_KEY, tagOver); renderTags(cur.c); }
-  function setDiffFilter(v){ settings.diffFilter=v; saveJSON(SETTINGS_KEY, settings); rebuildOrder(); renderCard(); renderCounts(); highlightActiveChip(); }
+  function clearTags(){
+    const cur=curCard(); if(!cur) return; const id=cur.c.__id;
+    cur.c.Tags=[]; tagOver[id]=[]; saveJSON(TAGS_KEY, tagOver); renderTags(cur.c);
+  }
 
+  /* ========= Search (modal) ========= */
   async function ensureAllDecksLoaded(){
     const base = new URL(MANIFEST_URL, location.href);
     for(const d of manifest.decks){
@@ -383,19 +476,21 @@
     }
   }
   function queryResults(q){
-    q=q.trim(); const tagTokens=q.split(/\s+/).filter(t=>t.startsWith("#")).map(t=>t.slice(1).toLowerCase());
-    const text=q.replace(/#[^\s]+/g,"").trim().toLowerCase(); const out=[];
+    q=q.trim();
+    const tagTokens=q.split(/\s+/).filter(t=>t.startsWith("#")).map(t=>t.slice(1).toLowerCase());
+    const text=q.replace(/#[^\s]+/g,"").trim().toLowerCase();
+    const out=[];
     for(const [name,{url,data}] of allDecksLoaded.entries()){
       data.cards.forEach((c,i)=>{
-        const id=c.__id; const tags=tagify(c.Tags).map(s=>s.toLowerCase());
-        const textHit=!text || (String(c.Front||"").toLowerCase().includes(text)||String(c.Back||"").toLowerCase().includes(text));
-        const tagHit=!tagTokens.length || tagTokens.every(t=>tags.includes(t));
+        const id=c.__id;
+        const tags=tagify(c.Tags).map(s=>s.toLowerCase());
+        const textHit=!text || (String(c.Front||"").toLowerCase().includes(text) || String(c.Back||"").toLowerCase().includes(text));
+        const tagHit=!tagTokens.length || tagTokens.every(t => tags.includes(t));
         if(textHit && tagHit) out.push({deckName:name, deckURL:url, index:i, card:c, id});
       });
     }
     return out;
   }
-
   function openSearchModal(initial=""){
     els.modal.style.display="block"; els.modal.setAttribute("aria-hidden","false");
     els.modalInput.value = initial || els.searchText.value || ""; els.modalInput.focus();
@@ -403,8 +498,10 @@
   }
   function closeSearchModal(){ els.modal.style.display="none"; els.modal.setAttribute("aria-hidden","true"); }
   function updateSearchResults(){
-    const q=els.modalInput.value; results=queryResults(q); rIdx=0;
-    renderResultsList(); renderResultPreview();
+    results = queryResults(els.modalInput.value);
+    rIdx = 0; renderResultsList(); renderResultPreview();
+    els.reviewAll.textContent = `Review all (${results.length})`;
+    els.reviewAll.disabled = results.length===0;
   }
   function renderResultsList(){
     els.resultsList.innerHTML = results.map((r,i)=>`
@@ -418,59 +515,114 @@
     if(!results.length){ els.previewMeta.textContent="—"; els.previewFront.textContent=""; els.previewBack.textContent=""; return; }
     const r=results[rIdx];
     els.previewMeta.textContent = `${r.deckName} — card ${r.index+1} / ${allDecksLoaded.get(r.deckName).data.cards.length}`;
-    els.previewFront.innerHTML = String(r.card.Front||""); els.previewBack.innerHTML = String(r.card.Back||"");
+    els.previewFront.innerHTML = String(r.card.Front||"");
+    els.previewBack.innerHTML  = String(r.card.Back ||"");
     // highlight current
     [...els.resultsList.children].forEach((el,i)=> el.style.background = (i===rIdx? "#101828":"transparent"));
   }
-  function openResultInMain(){
+  async function openResultInMain(){
     if(!results.length) return; const r=results[rIdx];
-    switchDeck(r.deckURL).then(()=>{
-      settings.diffFilter="all"; els.diffFilter.value="all"; saveJSON(SETTINGS_KEY, settings);
-      rebuildOrder(); const pos=order.indexOf(r.index); idx = pos>=0? pos:0; renderCard(); renderCounts(); highlightActiveChip(); closeSearchModal();
-    });
+    await switchDeck(r.deckURL);
+    settings.diffFilter="all"; saveJSON(SETTINGS_KEY, settings);
+    rebuildOrder();
+    const pos=order.indexOf(r.index); idx = pos>=0? pos:0; renderCard(); renderCounts(); highlightActiveChip();
+    closeSearchModal();
   }
 
-  function download(name,obj){ const b=new Blob([JSON.stringify(obj,null,2)],{type:"application/json"}); const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download=name; a.click(); URL.revokeObjectURL(a.href); }
+  /* ========= Search Review session ========= */
+  async function startSearchSession(){
+    if(!results.length) return;
+    session = results.map(r => ({ deckURL: r.deckURL, deckName: r.deckName, index: r.index }));
+    sessionPos = 0; sessionMode = true;
+    els.sessionBanner.style.display = "flex";
+    els.sessionLabel.textContent = `Search Review — ${session.length} cards`;
+    await gotoSession(sessionPos);
+    closeSearchModal();
+  }
+  async function endSearchSession(){
+    sessionMode = false; session = []; sessionPos = 0;
+    els.sessionBanner.style.display = "none";
+    rebuildOrder(); renderCard();
+  }
+  async function gotoSession(pos){
+    if(!session.length) return;
+    sessionPos = (pos + session.length) % session.length;
+    const item = session[sessionPos];
+    await switchDeck(item.deckURL);
+    // Show the card regardless of filter
+    settings.diffFilter="all"; saveJSON(SETTINGS_KEY, settings);
+    rebuildOrder();
+    const positionInOrder = order.indexOf(item.index);
+    idx = positionInOrder >= 0 ? positionInOrder : 0;
+    renderCard();
+  }
 
-  // Events
+  /* ========= Import/Export & helpers ========= */
+  function download(name,obj){ const b=new Blob([JSON.stringify(obj,null,2)],{type:"application/json"});
+    const a=document.createElement("a"); a.href=URL.createObjectURL(b); a.download=name; a.click(); URL.revokeObjectURL(a.href); }
+  function haptic(){ try{ if("vibrate" in navigator) navigator.vibrate(10); }catch{} }
+
+  /* ========= Events ========= */
   els.deckSelect.addEventListener("change", e=> switchDeck(e.target.value));
+
+  // Chip filters
+  els.chipTotal.addEventListener("click", ()=> setDiffFilter("all"));
+  els.chipAgain.addEventListener("click", ()=> setDiffFilter("again"));
+  els.chipHard .addEventListener("click", ()=> setDiffFilter("hard"));
+  els.chipGood .addEventListener("click", ()=> setDiffFilter("good"));
+  els.chipEasy .addEventListener("click", ()=> setDiffFilter("easy"));
+  els.chipNone .addEventListener("click", ()=> setDiffFilter("none"));
+
+  // Card buttons
   els.reveal.addEventListener("click", reveal);
   els.prev.addEventListener("click", ()=> step(-1));
   els.next.addEventListener("click", ()=> step(+1));
 
   // Tap to reveal / tap to next
   els.cardBody.addEventListener("click", ()=>{ if(els.back.classList.contains("hidden")) reveal(); else step(1); });
+
   // Long press to suspend
   let pressTimer=null;
   els.cardBody.addEventListener("pointerdown", ()=>{ pressTimer=setTimeout(()=>toggleSuspend(),700); });
   ["pointerup","pointerleave","pointercancel"].forEach(evt=> els.cardBody.addEventListener(evt, ()=>{ if(pressTimer){clearTimeout(pressTimer);pressTimer=null;} }));
+
   // Swipe nav
   let sx=null,sy=null;
   els.cardBody.addEventListener("touchstart", e=>{ const t=e.changedTouches[0]; sx=t.clientX; sy=t.clientY; }, {passive:true});
-  els.cardBody.addEventListener("touchend", e=>{ const t=e.changedTouches[0]; const dx=t.clientX-sx, dy=t.clientY-sy; if(Math.abs(dx)>40 && Math.abs(dy)<30){ if(dx<0) step(+1); else step(-1);} }, {passive:true});
+  els.cardBody.addEventListener("touchend", e=>{
+    const t=e.changedTouches[0]; const dx=t.clientX-sx, dy=t.clientY-sy;
+    if(Math.abs(dx)>40 && Math.abs(dy)<30){ if(dx<0) step(+1); else step(-1); }
+  }, {passive:true});
 
+  // Grade buttons
   els.suspend.addEventListener("click", toggleSuspend);
   els.gAgain.addEventListener("click", ()=> grade("again"));
   els.gHard .addEventListener("click", ()=> grade("hard"));
   els.gGood .addEventListener("click", ()=> grade("good"));
   els.gEasy .addEventListener("click", ()=> grade("easy"));
 
+  // Tags
   els.addTagInput.addEventListener("keydown", e=>{ if(e.key==="Enter"){ e.preventDefault(); addTag(); }});
   els.clearTagsBtn.addEventListener("click", clearTags);
 
-  els.diffFilter.value = settings.diffFilter || "all";
-  els.diffFilter.addEventListener("change", e=> setDiffFilter(e.target.value));
-
+  // Search
   document.addEventListener("keydown", e=>{ if(e.key==="/"){ e.preventDefault(); els.searchText.focus(); }});
   els.searchBtn.addEventListener("click", async ()=>{ await ensureAllDecksLoaded(); openSearchModal(); });
   els.searchText.addEventListener("keydown", e=>{ if(e.key==="Enter"){ e.preventDefault(); els.searchBtn.click(); }});
   els.closeSearch.addEventListener("click", closeSearchModal);
   els.modalInput.addEventListener("input", updateSearchResults);
-  els.resultsList.addEventListener("click", e=>{ const it=e.target.closest(".item"); if(!it) return; rIdx=[...els.resultsList.children].indexOf(it); renderResultPreview(); });
+  els.resultsList.addEventListener("click", e=>{
+    const it=e.target.closest(".item"); if(!it) return;
+    rIdx=[...els.resultsList.children].indexOf(it); renderResultPreview();
+  });
   els.prevResult.addEventListener("click", ()=>{ if(!results.length) return; rIdx=(rIdx-1+results.length)%results.length; renderResultPreview(); });
   els.nextResult.addEventListener("click", ()=>{ if(!results.length) return; rIdx=(rIdx+1)%results.length; renderResultPreview(); });
   els.openResult.addEventListener("click", openResultInMain);
+  els.reviewAll.addEventListener("click", startSearchSession);
   document.addEventListener("keydown", e=>{ if(e.key==="Escape" && els.modal.style.display==="block") closeSearchModal(); });
+
+  // Session controls
+  els.exitSessionBtn.addEventListener("click", endSearchSession);
 
   // Menu & import/export
   els.menuBtn.addEventListener("click", ()=>{ els.menu.style.display = (els.menu.style.display==="block" ? "none" : "block"); });
@@ -524,6 +676,7 @@
   });
   els.reloadManifestBtn.addEventListener("click", ()=> loadManifest());
 
+  // Keyboard shortcuts
   document.addEventListener("keydown", e=>{
     if(e.key===" "){ e.preventDefault(); if(els.back.classList.contains("hidden")) reveal(); else step(+1); }
     if(e.key==="ArrowRight"){ step(+1); }
@@ -534,20 +687,23 @@
     if(e.key==="4"){ grade("easy"); }
   });
 
-  function haptic(){ try{ if("vibrate" in navigator) navigator.vibrate(10); }catch{} }
-
+  // Keep screen awake (optional)
   let wakeLock; async function keepAwake(){ try{ wakeLock = await navigator.wakeLock.request("screen"); }catch{} }
   document.addEventListener("visibilitychange", ()=>{ if(document.visibilityState==="visible" && wakeLock?.released) keepAwake(); });
   keepAwake();
 
+  // Init
   (async function init(){
-    els.diffFilter.value = settings.diffFilter || "all";
+    // default chip highlight
+    highlightActiveChip();
     try{
       await loadManifest();
+      // preload decks for search when opening
       els.searchBtn.addEventListener("click", async ()=>{ await ensureAllDecksLoaded(); openSearchModal(); });
       els.modalInput.addEventListener("focus", ensureAllDecksLoaded, {once:true});
     }catch(err){ alert("Failed to load manifest: "+err.message); }
   })();
+
 })();
 </script>
 </body>
