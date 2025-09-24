@@ -17,7 +17,7 @@
     .card{background:radial-gradient(1200px 600px at 10% 0%, #0b1224, var(--panel) 40%); border:1px solid var(--b); border-radius:1rem; padding:1rem; min-height:48vh; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 10px 30px rgba(0,0,0,.2)}
     .front{font-size:1.15rem; line-height:1.5; white-space:pre-wrap}
     .back{display:none; opacity:.95; white-space:pre-wrap; margin-top:.6rem}
-    .btnbar{display:grid; gap:.5rem; grid-template-columns:repeat(4,1fr); margin-top:.75rem}
+    .btnbar{display:grid; gap:.5rem; grid-template-columns:repeat(5,1fr); margin-top:.75rem}
     button{background:#1f2937; color:var(--text); border:1px solid var(--b); border-radius:.7rem; padding:.7rem .8rem; font-size:1rem; cursor:pointer}
     .again{background:rgba(220,38,38,.12); border-color:#7f1d1d}
     .hard{ background:rgba(234,88,12,.12); border-color:#7c2d12}
@@ -31,6 +31,7 @@
     .chip{display:inline-flex; align-items:center; gap:.35rem; padding:.2rem .45rem; border:1px solid var(--b); border-radius:.6rem; margin:.15rem .25rem .15rem 0; font-size:.9rem}
     .chip button{padding:.2rem .35rem; border-radius:.4rem}
     .section-title{margin:.2rem 0 .6rem}
+    mark{background:rgba(34,211,238,.25)}
   </style>
 </head>
 <body>
@@ -39,8 +40,9 @@
     <span id="deckName" class="muted">Deck: loading…</span>
     <span class="pill" id="duePill">Due: 0</span>
     <span class="pill" id="posPill">Card 0 / 0</span>
+    <!-- NEW: grade counts + search -->
     <span id="gradePill" class="pill">A 0 · H 0 · G 0 · E 0</span>
-<button id="searchBtn" title="Search all decks (/)">Search (/)</button>
+    <button id="searchBtn" title="Search all decks (/)">Search (/)</button>
   </header>
 
   <main>
@@ -66,14 +68,14 @@
           <button id="restartBtn">Restart</button>
         </div>
 
+        <!-- NEW: Undo button added -->
         <div id="gradeBar" class="btnbar hidden">
-  <button class="again" id="againBtn">Again (1)</button>
-  <button class="hard"  id="hardBtn">Hard (2)</button>
-  <button class="good"  id="goodBtn">Good (3)</button>
-  <button class="easy"  id="easyBtn">Easy (4)</button>
-  <button id="undoBtn" title="Undo last grade">Undo (U)</button>
-</div>
-
+          <button class="again" id="againBtn">Again (1)</button>
+          <button class="hard"  id="hardBtn">Hard (2)</button>
+          <button class="good"  id="goodBtn">Good (3)</button>
+          <button class="easy"  id="easyBtn">Easy (4)</button>
+          <button id="undoBtn" title="Undo last grade">Undo (U)</button>
+        </div>
       </section>
 
       <aside>
@@ -108,6 +110,17 @@
             <label class="muted" style="min-width:90px">Tags</label>
             <input id="tagFilterInput" placeholder="e.g. ACLM-Core, Vignette" />
           </div>
+          <!-- NEW: Grade filter -->
+          <div class="row" style="width:100%">
+            <label class="muted" style="min-width:90px">Grade</label>
+            <select id="gradeSelect">
+              <option value="all">All</option>
+              <option value="again">Again</option>
+              <option value="hard">Hard</option>
+              <option value="good">Good</option>
+              <option value="easy">Easy</option>
+            </select>
+          </div>
         </div>
 
         <div class="panel">
@@ -123,16 +136,33 @@
             <button id="restoreBtn">Restore</button>
             <button id="deleteBackupBtn" title="Delete selected backup">🗑</button>
           </div>
-          <p class="muted" style="margin:.5rem 0 0">Auto-backup runs every ~2 minutes and keeps the 10 latest snapshots.</p>
+          <p class="muted" style="margin:.5rem 0 0">Auto-backup runs every ~6 hours and keeps the 10 latest snapshots. A safety backup is taken when the app is closed.</p>
         </div>
       </aside>
     </div>
   </main>
 
   <footer class="row" style="justify-content:space-between">
-    <span class="muted">Space: Reveal/Hide · ←/→: Prev/Next · 1–4: Grade</span>
+    <span class="muted">Space: Reveal/Hide · ←/→: Prev/Next · 1–4: Grade · /: Search · U: Undo</span>
     <a href="decks.json" class="muted" target="_blank" rel="noopener">Open decks.json</a>
   </footer>
+
+  <!-- NEW: Global Search modal -->
+  <div id="searchModal" class="hidden" role="dialog" aria-modal="true" aria-label="Global Search"
+       style="position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:50">
+    <div class="panel" style="width:min(950px,96vw); max-height:80vh; overflow:auto">
+      <div class="row" style="justify-content:space-between; align-items:center">
+        <h3 class="section-title" style="margin:.2rem 0">Global Search</h3>
+        <button id="closeSearchBtn" aria-label="Close search">✕</button>
+      </div>
+      <div class="row" style="gap:.5rem; margin:.25rem 0 .5rem">
+        <input id="searchInput" placeholder="Type keywords… use #tag for tags (e.g., diabetes #Vignette)" />
+        <button id="runSearchBtn">Search</button>
+      </div>
+      <div class="muted" style="margin:.25rem 0 .5rem">Searches: Front, Back, Tags, Section, Chapter (all decks)</div>
+      <div id="searchResults"></div>
+    </div>
+  </div>
 
   <script>
     const APP_NS = "flashcards.srs.v3";
@@ -143,22 +173,48 @@
     const MAX_BACKUPS = 10;
 
     // App settings (default: exam OFF, auto-advance ON)
-const SETTINGS_KEY = APP_NS + ":settings";
-const settings = (()=>{ 
-  try { 
-    return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || { exam:false, auto:true }; 
-  } catch { 
-    return { exam:false, auto:true }; 
-  } 
-})();
-function saveSettings(){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); }
-
+    const SETTINGS_KEY = APP_NS + ":settings";
+    const settings = (()=>{ 
+      try { 
+        return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || { exam:false, auto:true }; 
+      } catch { 
+        return { exam:false, auto:true }; 
+      } 
+    })();
+    function saveSettings(){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); }
 
     let deck = { name:"Demo", cards:[] };
     let order = [];          // visible indices (or virtual list in global mode)
     let idx = 0;
     let publicManifest = { decks: [] };
     const $ = id => document.getElementById(id);
+
+    // ---------- Global Search helpers ----------
+    const deckCache = new Map();
+    async function getDeckJSON(file){
+      if(deckCache.has(file)) return deckCache.get(file);
+      const res = await fetch(file, {cache:"no-store"});
+      if(!res.ok) throw new Error("Failed to fetch " + file);
+      const json = await res.json();
+      deckCache.set(file, json);
+      return json;
+    }
+    function escapeHTML(s){ return String(s).replace(/[&<>"]/g, m=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[m])); }
+    function highlight(text, terms){
+      let safe = escapeHTML(text);
+      terms.forEach(t=>{
+        if(!t) return;
+        const rx = new RegExp("(" + t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&") + ")", "ig");
+        safe = safe.replace(rx, "<mark>$1</mark>");
+      });
+      return safe;
+    }
+    function parseSearchQuery(q){
+      const parts = q.trim().split(/\s+/).filter(Boolean);
+      const tags = parts.filter(p=>p.startsWith("#")).map(p=>p.slice(1).toLowerCase());
+      const terms = parts.filter(p=>!p.startsWith("#"));
+      return {terms, tags};
+    }
 
     // ---------- IDs, State, Tags ----------
     function uidFor(card){
@@ -174,6 +230,12 @@ function saveSettings(){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(setti
     function loadTags(deckName, uid){ try{ const raw = localStorage.getItem(tagKey(deckName, uid)); return raw ? JSON.parse(raw) : []; } catch { return []; } }
     function saveTags(deckName, uid, tags){ localStorage.setItem(tagKey(deckName, uid), JSON.stringify(tags)); }
 
+    // ---- Undo helpers ----
+    const UNDO_PREFIX = APP_NS + ":undo:";
+    function undoKey(d,u){ return UNDO_PREFIX + d + ":" + u; }
+    function saveUndo(d,u,st){ localStorage.setItem(undoKey(d,u), JSON.stringify(st)); }
+    function loadUndo(d,u){ try { return JSON.parse(localStorage.getItem(undoKey(d,u))) } catch { return null } }
+
     // ---------- Scheduler ----------
     function isDue(deckName, card){
       const st = loadState(deckName, uidFor(card));
@@ -182,16 +244,12 @@ function saveSettings(){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(setti
       if(!st.due) return true;
       return new Date(st.due) <= new Date();
     }
-    // ---- Undo helpers ----
-const UNDO_PREFIX = APP_NS + ":undo:";
-function undoKey(d,u){ return UNDO_PREFIX + d + ":" + u; }
-function saveUndo(d,u,st){ localStorage.setItem(undoKey(d,u), JSON.stringify(st)); }
-function loadUndo(d,u){ try { return JSON.parse(localStorage.getItem(undoKey(d,u))) } catch { return null } }
-
     function schedule(deckName, card, grade){
       const uid = uidFor(card);
+      // capture previous state for undo
       const prev = loadState(deckName, uid);
-if(prev) saveUndo(deckName, uid, prev);
+      if(prev) saveUndo(deckName, uid, prev);
+
       let st = loadState(deckName, uid) || { interval:0, ease:2.5, reps:0, lapses:0, phase:"new", suspended:false };
       const now = new Date();
       if(grade === "again"){
@@ -211,9 +269,19 @@ if(prev) saveUndo(deckName, uid, prev);
         }
         st.due = new Date(now.getTime() + st.interval*24*60*60*1000).toISOString();
       }
-      if(st.lapses >= 8) st.suspended = true;
+
+      // Leech handling (suspend at threshold and tag)
+      const REVIEW_SETTINGS = APP_NS + ":review";
+      const review = (()=>{ try{return JSON.parse(localStorage.getItem(REVIEW_SETTINGS))||{leech:8,tag:true}}catch{return{leech:8,tag:true}}})();
+      if(st.lapses >= review.leech){
+        st.suspended = true;
+        if(review.tag){ const t = loadTags(deckName, uid); if(!t.includes("Leech")){ t.push("Leech"); saveTags(deckName, uid, t); } }
+      }
+
+      // Track last grade
       st.lastGrade = grade;
-st.lastGradedAt = Date.now();
+      st.lastGradedAt = Date.now();
+
       saveState(deckName, uid, st);
     }
 
@@ -237,6 +305,12 @@ st.lastGradedAt = Date.now();
       const have = new Set(own.concat(overlay).map(t=>String(t).toLowerCase()));
       return need.every(t => have.has(t));
     }
+    function matchesGradeFilter(deckName, card){
+      const val = $("gradeSelect")?.value || "all";
+      if (val === "all") return true;
+      const st = loadState(deckName, uidFor(card)) || {};
+      return st.lastGrade === val;
+    }
 
     function buildOrderCurrentDeck(){
       const status = $("statusSelect").value;  // due, all, new, learn, review, suspended
@@ -244,6 +318,7 @@ st.lastGradedAt = Date.now();
       for(let i=0;i<(deck.cards||[]).length;i++){
         const c = deck.cards[i];
         if(!hasAllTags(deck.name, c)) continue;
+        if(!matchesGradeFilter(deck.name, c)) continue;
         const phase = cardPhase(deck.name, c);
         if(status === "due"){ if(!isDue(deck.name,c)) continue; }
         else if(status !== "all"){ if(phase !== status) continue; }
@@ -254,7 +329,6 @@ st.lastGradedAt = Date.now();
     }
 
     // In Global Tags View we build a virtual list of entries:
-    // { deckName, card, source: "public" }
     let globalList = [];
     async function buildGlobalList(){
       const status = $("statusSelect").value;
@@ -267,6 +341,7 @@ st.lastGradedAt = Date.now();
           const dn = obj.name || d.name || d.file;
           (obj.cards||[]).forEach(card=>{
             if(!hasAllTags(dn, card)) return;
+            if(!matchesGradeFilter(dn, card)) return;
             const ph = cardPhase(dn, card);
             if(status === "due"){ if(!isDue(dn, card)) return; }
             else if(status !== "all"){ if(ph !== status) return; }
@@ -286,7 +361,7 @@ st.lastGradedAt = Date.now();
       const total = order.length;
       $("posPill").textContent  = `Card ${ total ? (idx+1) : 0 } / ${ total }`;
 
-      // Due count for current deck only (in global mode, show total due across all public decks)
+      // Due count
       if($("globalTagsMode").checked){
         let dueCount = 0;
         globalList.forEach(({deckName,card})=>{ if(isDue(deckName,card)) dueCount++; });
@@ -294,19 +369,18 @@ st.lastGradedAt = Date.now();
       } else {
         const dueCount = (deck.cards||[]).filter(c => isDue(deck.name, c)).length;
         $("duePill").textContent = `Due: ${dueCount}`;
-        // Grade counts across current view
-const entries = $("globalTagsMode").checked
-  ? globalList.map(x=>({deckName:x.deckName, card:x.card}))
-  : order.map(i=>({deckName:deck.name, card:deck.cards[i]}));
-
-const gc = {again:0, hard:0, good:0, easy:0};
-entries.forEach(e=>{
-  const st = loadState(e.deckName, uidFor(e.card)) || {};
-  if (gc[st.lastGrade] !== undefined) gc[st.lastGrade] += 1;
-});
-$("gradePill").textContent = `A ${gc.again} · H ${gc.hard} · G ${gc.good} · E ${gc.easy}`;
-
       }
+
+      // Grade counts across current view
+      const entries = $("globalTagsMode").checked
+        ? globalList.map(x=>({deckName:x.deckName, card:x.card}))
+        : order.map(i=>({deckName:deck.name, card:deck.cards[i]}));
+      const gc = {again:0, hard:0, good:0, easy:0};
+      entries.forEach(e=>{
+        const st = loadState(e.deckName, uidFor(e.card)) || {};
+        if (gc[st.lastGrade] !== undefined) gc[st.lastGrade] += 1;
+      });
+      $("gradePill").textContent = `A ${gc.again} · H ${gc.hard} · G ${gc.good} · E ${gc.easy}`;
     }
 
     function currentCardEntry(){
@@ -351,15 +425,22 @@ $("gradePill").textContent = `A ${gc.again} · H ${gc.hard} · G ${gc.good} · E
       suspendBtn.classList.toggle("hidden", !!st.suspended);
       unsuspendBtn.classList.toggle("hidden", !st.suspended);
 
-      // tags view (own + overlay)
+      // tags view (own + overlay) — SAFE DOM creation
       const own = (card.Tag ? [String(card.Tag)] : []).concat(card.Tags || []);
       const overlay = loadTags(deckName, uidFor(card));
       const allTags = Array.from(new Set(own.concat(overlay)));
-      tagsRow.innerHTML = allTags.map(t => `
-        <span class="chip">${t}<button data-tag="${encodeURIComponent(t)}" class="removeTagBtn">×</button></span>
-      `).join("");
+      tagsRow.textContent = "";
+      allTags.forEach(t=>{
+        const chip = document.createElement("span");
+        chip.className="chip";
+        const txt = document.createElement("span"); txt.textContent = t;
+        const btn = document.createElement("button"); btn.textContent = "×"; btn.className="removeTagBtn";
+        btn.dataset.tag = t;
+        chip.appendChild(txt); chip.appendChild(btn);
+        tagsRow.appendChild(chip);
+      });
 
-      // Disable grading in global mode? We CAN allow it: schedule against source deckName.
+      // hide grade bar until reveal
       gradeBar.classList.add("hidden");
     }
 
@@ -383,11 +464,11 @@ $("gradePill").textContent = `A ${gc.again} · H ${gc.hard} · G ${gc.good} · E
     async function loadDeck(url="cards.json"){
       const res = await fetch(url, { cache:"no-store" });
       deck = await res.json();
-      idx = 0; buildOrderCurrentDeck(); render();
+      idx = 0; buildOrderCurrentDeck(); render(); pushURLIndex();
     }
     function loadDeckObject(obj){
       deck = obj || {name:"Untitled", cards:[]};
-      idx = 0; buildOrderCurrentDeck(); render();
+      idx = 0; buildOrderCurrentDeck(); render(); pushURLIndex();
     }
 
     // Local user decks
@@ -414,7 +495,6 @@ $("gradePill").textContent = `A ${gc.again} · H ${gc.hard} · G ${gc.good} · E
       parts.push('</optgroup>');
 
       sel.innerHTML = parts.join("");
-      // Prefer last local selection if exists
       const last = local.last || "";
       if (last){
         const localVal = "local:" + encodeURIComponent(last);
@@ -430,12 +510,21 @@ $("gradePill").textContent = `A ${gc.again} · H ${gc.hard} · G ${gc.good} · E
       if(back.style.display === "block"){ back.style.display = "none"; gradeBar.classList.add("hidden"); }
       else { back.style.display = "block"; gradeBar.classList.remove("hidden"); }
     }
-    function next(){ if (idx < order.length-1) { idx++; render(); } }
-    function prev(){ if (idx > 0) { idx--; render(); } }
+    function pushURLIndex(){
+      const params = new URLSearchParams(location.search);
+      params.set("i", String(idx));
+      history.replaceState(null, "", "?" + params.toString());
+    }
+    function next(){ if (idx < order.length-1) { idx++; render(); pushURLIndex(); } }
+    function prev(){ if (idx > 0) { idx--; render(); pushURLIndex(); } }
     function doGrade(g){
       const entry = currentCardEntry(); if(!entry) return;
       schedule(entry.deckName, entry.card, g);
-      rebuildAndRender();
+      // safety snapshot every 25 grades
+      window._gradesSinceBackup = (window._gradesSinceBackup||0) + 1;
+      if(window._gradesSinceBackup % 25 === 0) createBackup();
+      if(settings.auto){ next(); rebuildAndRender(); }
+      else { rebuildAndRender(); }
     }
 
     $("revealBtn").onclick = showAnswer;
@@ -448,22 +537,13 @@ $("gradePill").textContent = `A ${gc.again} · H ${gc.hard} · G ${gc.good} · E
     $("goodBtn").onclick  = () => doGrade("good");
     $("easyBtn").onclick  = () => doGrade("easy");
 
-    $("undoBtn").onclick = ()=>{
-  const e = currentCardEntry(); if(!e) return;
-  const uid = uidFor(e.card);
-  const snap = loadUndo(e.deckName, uid); if(!snap) return;
-  saveState(e.deckName, uid, snap); 
-  rebuildAndRender();
-};
-document.addEventListener("keydown",(ev)=>{ 
-  if(ev.key.toLowerCase()==="u") $("undoBtn").click(); 
-});
-
-
     $("statusSelect").onchange = rebuildAndRender;
     $("tagFilterInput").addEventListener("keyup", (e)=>{ if(e.key==="Enter"){ rebuildAndRender(); }});
     $("tagFilterInput").addEventListener("blur", rebuildAndRender);
     $("globalTagsMode").onchange = rebuildAndRender;
+
+    // Grade filter
+    $("gradeSelect").onchange = rebuildAndRender;
 
     // Tag editing
     function addTagTo(entry, tag){
@@ -494,7 +574,7 @@ document.addEventListener("keydown",(ev)=>{
     });
     document.addEventListener("click",(e)=>{
       if(e.target && e.target.classList.contains("removeTagBtn")){
-        const tag = decodeURIComponent(e.target.dataset.tag);
+        const tag = e.target.dataset.tag;
         const entry = currentCardEntry(); if(!entry) return;
         removeTagFrom(entry, tag);
         render();
@@ -522,6 +602,17 @@ document.addEventListener("keydown",(ev)=>{
     };
 
     // Upload / download decks
+    function validateDeck(obj){
+      const err = [];
+      if(!obj || typeof obj!=="object") err.push("Root must be an object.");
+      if(!Array.isArray(obj.cards)) err.push("cards[] missing or not an array.");
+      else obj.cards.forEach((c,i)=>{
+        if(typeof c.Front!=="string") err.push(`cards[${i}].Front must be string`);
+        if(typeof c.Back!=="string")  err.push(`cards[${i}].Back must be string`);
+      });
+      return err;
+    }
+
     $("uploadDeckBtn").onclick = () => $("fileInput").click();
     $("fileInput").onchange = e => {
       const f = e.target.files[0]; if(!f) return;
@@ -529,6 +620,8 @@ document.addEventListener("keydown",(ev)=>{
       r.onload = () => {
         try{
           const obj = JSON.parse(r.result);
+          const errors = validateDeck(obj);
+          if(errors.length){ alert("Deck validation failed:\n" + errors.join("\n")); e.target.value=""; return; }
           const s = getStore();
           let name = obj.name || f.name.replace(/\.json$/i,"");
           const seen = new Set(s.items.map(x=>x.name));
@@ -574,6 +667,8 @@ document.addEventListener("keydown",(ev)=>{
       if(e.key === "2") $("hardBtn").click();
       if(e.key === "3") $("goodBtn").click();
       if(e.key === "4") $("easyBtn").click();
+      if(e.key==="/"){ e.preventDefault(); openSearch(); }
+      if(e.key==="?"){ alert("Shortcuts:\nSpace Reveal/Hide\n←/→ Prev/Next\n1–4 Grade\n/ Search\nU Undo\n"); }
     });
 
     // ---------- Backups ----------
@@ -588,7 +683,6 @@ document.addEventListener("keydown",(ev)=>{
       return out;
     }
     function applyProgressDump(obj){
-      // Clear only our namespaces, then restore
       const toRemove = [];
       for(let i=0;i<localStorage.length;i++){
         const k = localStorage.key(i);
@@ -661,14 +755,141 @@ document.addEventListener("keydown",(ev)=>{
     };
     $("deleteBackupBtn").onclick = ()=>{
       const k = $("backupSelect").value; if(!k) return;
+      if(!confirm("Delete this backup?")) return;
       localStorage.removeItem(k); refreshBackupsDropdown();
     };
 
-   // Auto-backup every 6 hours (skip if tab is hidden) + safety backups on exit
-setInterval(()=>{ if(!document.hidden) createBackup(); }, 6*60*60*1000);
-document.addEventListener("visibilitychange", ()=>{ if(document.hidden) createBackup(); });
-window.addEventListener("beforeunload", ()=>{ try{ createBackup(); }catch{} });
+    // Auto-backup timer (6 hours) + safety backups
+    setInterval(()=>{ if(!document.hidden) createBackup(); }, 6*60*60*1000);
+    document.addEventListener("visibilitychange", ()=>{ if(document.hidden) createBackup(); });
+    window.addEventListener("beforeunload", ()=>{ try{ createBackup(); }catch{} });
 
+    // ---------- Global Search UI ----------
+    const searchModal = $("searchModal");
+    const searchInput  = $("searchInput");
+    const searchResults = $("searchResults");
+
+    function openSearch(){ searchModal.classList.remove("hidden"); searchInput.focus(); }
+    function closeSearch(){ searchModal.classList.add("hidden"); }
+
+    $("searchBtn").onclick = openSearch;
+    $("closeSearchBtn").onclick = closeSearch;
+
+    let searchTimer = null;
+    $("runSearchBtn").onclick = runSearch;
+    searchInput.addEventListener("keyup", (e)=>{
+      if(e.key==="Enter") runSearch();
+      else { clearTimeout(searchTimer); searchTimer = setTimeout(runSearch, 250); }
+    });
+
+    async function searchAcrossDecks(query){
+      const {terms, tags} = parseSearchQuery(query);
+      if(terms.length===0 && tags.length===0) return [];
+      const hits = [];
+
+      // Public decks
+      for(const d of (publicManifest.decks||[])){
+        try{
+          const obj = await getDeckJSON(d.file);
+          const dn = obj.name || d.name || d.file;
+          (obj.cards||[]).forEach((card, i)=>{
+            if(!matchesSearchCard(dn, card, terms, tags)) return;
+            hits.push({source:"public", file:d.file, deckName:dn, card, index:i});
+          });
+        }catch{}
+      }
+      // Local decks
+      const local = getStore();
+      for(const it of (local.items||[])){
+        const dn = it.name;
+        (it.data?.cards||[]).forEach((card, i)=>{
+          if(!matchesSearchCard(dn, card, terms, tags)) return;
+          hits.push({source:"local", deckName:dn, card, index:i});
+        });
+      }
+      return hits;
+    }
+    function matchesSearchCard(deckName, card, terms, tagFilters){
+      const uid = uidFor(card);
+      const own = (card.Tag ? [String(card.Tag)] : []).concat(card.Tags || []);
+      const overlay = loadTags(deckName, uid);
+      const allTags = new Set(own.concat(overlay).map(t=>String(t).toLowerCase()));
+      if(tagFilters.length && !tagFilters.every(t => allTags.has(t))) return false;
+      const hay = [card.Front||"", card.Back||"", card.Section||"", card.Chapter||""].join(" ").toLowerCase();
+      return terms.every(t => hay.includes(t.toLowerCase()));
+    }
+
+    async function runSearch(){
+      const q = searchInput.value.trim();
+      searchResults.innerHTML = `<div class="muted">Searching…</div>`;
+      try{
+        const hits = await searchAcrossDecks(q);
+        if(hits.length===0){ searchResults.innerHTML = `<div class="muted">No matches.</div>`; return; }
+        const {terms} = parseSearchQuery(q);
+        const parts = hits.slice(0,500).map((h, idx)=>{
+          const front = highlight(h.card.Front||"", terms);
+          const back  = highlight((h.card.Back||"").slice(0,240), terms);
+          const tags = (h.card.Tags||[]).concat(h.card.Tag?[h.card.Tag]:[]);
+          const tagTxt = tags.length ? `<span class="muted">Tags: ${escapeHTML(tags.join(", "))}</span>` : "";
+          return `
+            <div class="hit" style="border:1px solid var(--b); border-radius:.7rem; padding:.6rem; margin:.35rem 0; background:#0b1224">
+              <h4 style="margin:.1rem 0 .25rem; font-size:1rem">${escapeHTML(h.deckName)} • #${h.index+1}</h4>
+              <p><strong>Q:</strong> ${front}</p>
+              <p class="muted"><strong>A (preview):</strong> ${back}${(h.card.Back||"").length>240?"…":""}</p>
+              ${tagTxt}
+              <div class="row" style="margin-top:.35rem; gap:.4rem">
+                <button class="openHitBtn" data-i="${idx}">Open</button>
+              </div>
+            </div>`;
+        });
+        searchResults.innerHTML = parts.join("");
+        [...searchResults.querySelectorAll(".openHitBtn")].forEach(btn=>{
+          btn.addEventListener("click", async ()=>{
+            const h = hits[Number(btn.dataset.i)];
+            await jumpToSearchHit(h);
+            closeSearch();
+          });
+        });
+      }catch{
+        searchResults.innerHTML = `<div class="muted">Search failed. Check console.</div>`;
+      }
+    }
+
+    async function jumpToSearchHit(h){
+      $("statusSelect").value = "all";
+      const gradeSel = $("gradeSelect"); if(gradeSel) gradeSel.value = "all";
+      $("tagFilterInput").value = "";
+      $("globalTagsMode").checked = false;
+
+      if(h.source==="public"){
+        $("deckSelect").value = encodeURIComponent(h.file);
+        await loadDeck(h.file);
+      } else if(h.source==="local"){
+        const local = getStore();
+        const it = (local.items||[]).find(x=>x.name===h.deckName);
+        if(it){
+          $("deckSelect").value = "local:" + encodeURIComponent(h.deckName);
+          loadDeckObject(it.data);
+        }
+      } else { return; }
+
+      buildOrderCurrentDeck();
+      const targetUID = uidFor(h.card);
+      const absoluteIndex = (deck.cards||[]).findIndex(c => uidFor(c)===targetUID);
+      const posInOrder = order.indexOf(absoluteIndex);
+      if(posInOrder >= 0){ idx = posInOrder; render(); }
+      else { idx = 0; render(); }
+    }
+
+    // Undo button + hotkey
+    $("undoBtn").onclick = ()=>{
+      const e = currentCardEntry(); if(!e) return;
+      const uid = uidFor(e.card);
+      const snap = loadUndo(e.deckName, uid); if(!snap) return;
+      saveState(e.deckName, uid, snap); 
+      rebuildAndRender();
+    };
+    document.addEventListener("keydown",(ev)=>{ if(ev.key.toLowerCase()==="u") $("undoBtn").click(); });
 
     // ---------- Boot ----------
     document.addEventListener("DOMContentLoaded", async ()=>{
@@ -684,25 +905,11 @@ window.addEventListener("beforeunload", ()=>{ try{ createBackup(); }catch{} });
       }
       refreshBackupsDropdown();
     });
-    if ("serviceWorker" in navigator) {
-  window.addEventListener("load", ()=> navigator.serviceWorker.register("sw.js").catch(()=>{}));
-}
-  </script>
-  <div id="searchModal" class="hidden" role="dialog" aria-modal="true" aria-label="Global Search"
-     style="position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:50">
-  <div class="panel" style="width:min(950px,96vw); max-height:80vh; overflow:auto">
-    <div class="row" style="justify-content:space-between; align-items:center">
-      <h3 class="section-title" style="margin:.2rem 0">Global Search</h3>
-      <button id="closeSearchBtn" aria-label="Close search">✕</button>
-    </div>
-    <div class="row" style="gap:.5rem; margin:.25rem 0 .5rem">
-      <input id="searchInput" placeholder="Type keywords… use #tag for tags (e.g., diabetes #Vignette)" />
-      <button id="runSearchBtn">Search</button>
-    </div>
-    <div class="muted" style="margin:.25rem 0 .5rem">Searches: Front, Back, Tags, Section, Chapter (all decks)</div>
-    <div id="searchResults"></div>
-  </div>
-</div>
 
+    // Register SW (offline)
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", ()=> navigator.serviceWorker.register("sw.js").catch(()=>{}));
+    }
+  </script>
 </body>
 </html>
