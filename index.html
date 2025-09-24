@@ -1,916 +1,662 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flashcards – SRS</title>
-  <style>
-    :root { --bg:#0f172a; --panel:#111827; --text:#e5e7eb; --muted:#94a3b8; --accent:#22d3ee; --b:#334155; }
-    *{box-sizing:border-box}
-    body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial; background:linear-gradient(135deg,#0b1024,var(--bg) 35%,#0b1024 70%); color:var(--text); min-height:100vh; display:flex; flex-direction:column}
-    header, footer{padding:.75rem 1rem; display:flex; gap:.6rem; align-items:center; flex-wrap:wrap}
-    header h1{font-size:1.05rem; margin:0}
-    .muted{color:var(--muted)}
-    main{flex:1; display:flex; align-items:center; justify-content:center; padding:1rem}
-    .container{width:100%; max-width:1100px; display:grid; gap:1rem; grid-template-columns:1fr}
-    @media(min-width:980px){ .container{grid-template-columns:2fr 1.1fr} }
-    .card{background:radial-gradient(1200px 600px at 10% 0%, #0b1224, var(--panel) 40%); border:1px solid var(--b); border-radius:1rem; padding:1rem; min-height:48vh; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 10px 30px rgba(0,0,0,.2)}
-    .front{font-size:1.15rem; line-height:1.5; white-space:pre-wrap}
-    .back{display:none; opacity:.95; white-space:pre-wrap; margin-top:.6rem}
-    .btnbar{display:grid; gap:.5rem; grid-template-columns:repeat(5,1fr); margin-top:.75rem}
-    button{background:#1f2937; color:var(--text); border:1px solid var(--b); border-radius:.7rem; padding:.7rem .8rem; font-size:1rem; cursor:pointer}
-    .again{background:rgba(220,38,38,.12); border-color:#7f1d1d}
-    .hard{ background:rgba(234,88,12,.12); border-color:#7c2d12}
-    .good{ background:rgba(22,163,74,.12); border-color:#14532d}
-    .easy{ background:rgba(37,99,235,.12); border-color:#1e3a8a}
-    aside .panel{background:var(--panel); border:1px solid var(--b); border-radius:.8rem; padding:.75rem}
-    input, select{background:#0b1224; color:var(--text); border:1px solid var(--b); border-radius:.6rem; padding:.55rem .6rem; width:100%}
-    .row{display:flex; gap:.5rem; align-items:center; flex-wrap:wrap}
-    .hidden{display:none !important}
-    .pill{padding:.25rem .5rem; border:1px solid var(--b); border-radius:.5rem}
-    .chip{display:inline-flex; align-items:center; gap:.35rem; padding:.2rem .45rem; border:1px solid var(--b); border-radius:.6rem; margin:.15rem .25rem .15rem 0; font-size:.9rem}
-    .chip button{padding:.2rem .35rem; border-radius:.4rem}
-    .section-title{margin:.2rem 0 .6rem}
-    mark{background:rgba(34,211,238,.25)}
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Flashcards – Minimal SRS</title>
+<style>
+  :root{
+    --bg:#0f1115; --card:#12151b; --ink:#e7e9ee; --muted:#9aa3b2; --line:#1d2230;
+    --btn:#191d27; --accent:#22d3ee; --ok:#16a34a; --hard:#ea580c; --bad:#dc2626; --info:#3b82f6;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial}
+  .wrap{max-width:980px;margin:0 auto;padding:18px}
+  header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  h1{margin:0;font-size:18px;font-weight:600}
+  #menuBtn{margin-left:auto;background:var(--btn);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer}
+  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .stack{display:flex;flex-direction:column;gap:10px}
+  select,input[type="text"],button{border-radius:8px;border:1px solid var(--line);background:var(--btn);color:var(--ink)}
+  select,input[type="text"]{padding:8px 10px}
+  button{padding:9px 12px;cursor:pointer}
+  button:hover{border-color:#2a3248}
+  .muted{color:var(--muted)}
+  .counts{display:flex;gap:8px;align-items:center;margin:10px 0 6px}
+  .pill{border:1px solid var(--line);border-radius:999px;padding:4px 10px;display:flex;gap:6px;align-items:center}
+  .pill b{font-variant-numeric:tabular-nums}
+  .pill.again{border-color:#7f1d1d;background:#1b1111}
+  .pill.hard{border-color:#7c2d12;background:#1b130e}
+  .pill.good{border-color:#14532d;background:#0e1a14}
+  .pill.easy{border-color:#1e3a8a;background:#0d1525}
+  .pill.total{border-color:#2a3248;background:#11141c}
+  .filters{display:flex;gap:10px;align-items:center;margin:6px 0 12px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;
+  }
+  .meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;color:var(--muted);font-size:14px}
+  .front,.back{white-space:pre-wrap}
+  .front{font-size:18px;line-height:1.6}
+  .back{display:none;margin-top:10px;opacity:.98}
+  .btnbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .primary{background:#1a2335;border-color:#2a3248}
+  .ok{background:rgba(22,163,74,.08);border-color:#14532d}
+  .hard{background:rgba(234,88,12,.08);border-color:#7c2d12}
+  .bad{background:rgba(220,38,38,.08);border-color:#7f1d1d}
+  .easy{background:rgba(37,99,235,.08);border-color:#1e3a8a}
+  .ghost{background:#0b0f18}
+  .tagline{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+  .tag{background:#0b0f18;border:1px solid var(--line);border-radius:999px;padding:3px 8px;font-size:12px}
+  .tag input{background:transparent;border:none;color:var(--ink);outline:none}
+  .section{margin-top:14px}
+  .searchRow{display:flex;gap:8px;align-items:center}
+  .help{font-size:13px;color:var(--muted)}
+  /* Menu */
+  .menu{position:fixed;top:56px;right:18px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;display:none;min-width:240px;z-index:20}
+  .menu a, .menu button{display:block;width:100%;text-align:left;background:transparent;border:1px solid transparent;padding:8px;border-radius:8px}
+  .menu a:hover, .menu button:hover{background:#0b0f18;border-color:#2a3248}
+  /* Modal (solid black bg) */
+  .modal{position:fixed;inset:0;background:#000;display:none;z-index:50;color:#eaecef}
+  .modal .box{max-width:1100px;margin:40px auto;background:#0d1117;border:1px solid #222a3a;border-radius:12px;display:grid;grid-template-columns:320px 1fr;min-height:540px;overflow:hidden}
+  .modal header{padding:10px 12px;border-bottom:1px solid #222a3a}
+  .modal .left{border-right:1px solid #222a3a;display:flex;flex-direction:column}
+  .modal .left .searchbar{padding:10px;border-bottom:1px solid #222a3a}
+  .modal .left input{width:100%;background:#0b0f18;border:1px solid #222a3a}
+  .modal .left .results{flex:1;overflow:auto}
+  .modal .item{padding:10px 12px;border-bottom:1px solid #141a24;cursor:pointer}
+  .modal .item:hover{background:#0b0f18}
+  .modal .item .small{color:#99a3b3;font-size:12px}
+  .modal .right{padding:12px;display:flex;flex-direction:column}
+  .modal .preview{flex:1;border:1px solid #222a3a;border-radius:10px;padding:12px;background:#0b0f18}
+  .modal .btns{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+  .solid-accent{background:#122231;border-color:#224062}
+  .hidden{display:none}
+</style>
 </head>
 <body>
+<div class="wrap">
   <header>
-    <h1>Flashcards – SRS</h1>
-    <span id="deckName" class="muted">Deck: loading…</span>
-    <span class="pill" id="duePill">Due: 0</span>
-    <span class="pill" id="posPill">Card 0 / 0</span>
-    <!-- NEW: grade counts + search -->
-    <span id="gradePill" class="pill">A 0 · H 0 · G 0 · E 0</span>
-    <button id="searchBtn" title="Search all decks (/)">Search (/)</button>
+    <h1>Flashcards</h1>
+    <button id="menuBtn" aria-label="Menu">☰ Menu</button>
   </header>
 
-  <main>
-    <div class="container">
-      <section class="card">
-        <div>
-          <div class="row muted" id="meta"></div>
-          <div class="front" id="front">Loading…</div>
-          <div class="back" id="back"></div>
-          <div id="tagsRow" class="row" style="margin-top:.6rem"></div>
-          <div class="row" style="gap:.4rem; margin-top:.4rem">
-            <input id="newTagInput" placeholder="Add tag (Enter)" />
-            <button id="addTagBtn">Add tag</button>
-            <button id="suspendBtn" title="Hide this card on this device">Suspend</button>
-            <button id="unsuspendBtn" class="hidden" title="Show again on this device">Unsuspend</button>
-          </div>
-        </div>
+  <!-- Deck selector below heading -->
+  <div class="row">
+    <label class="muted" for="deckSelect">Deck</label>
+    <select id="deckSelect" aria-label="Select deck"></select>
+  </div>
 
-        <div class="btnbar">
-          <button id="revealBtn">Show Answer (Space)</button>
-          <button id="prevBtn">⟵ Prev</button>
-          <button id="nextBtn">Next ⟶</button>
-          <button id="restartBtn">Restart</button>
-        </div>
+  <!-- Card count + difficulty counters -->
+  <div class="counts">
+    <div class="pill total"><span>Total</span> <b id="totalCount">0</b></div>
+    <div class="pill again"><span>Again</span> <b id="cntAgain">0</b></div>
+    <div class="pill hard"><span>Hard</span> <b id="cntHard">0</b></div>
+    <div class="pill good"><span>Good</span> <b id="cntGood">0</b></div>
+    <div class="pill easy"><span>Easy</span> <b id="cntEasy">0</b></div>
+    <div class="pill"><span>Ungraded</span> <b id="cntNone">0</b></div>
+  </div>
 
-        <!-- NEW: Undo button added -->
-        <div id="gradeBar" class="btnbar hidden">
-          <button class="again" id="againBtn">Again (1)</button>
-          <button class="hard"  id="hardBtn">Hard (2)</button>
-          <button class="good"  id="goodBtn">Good (3)</button>
-          <button class="easy"  id="easyBtn">Easy (4)</button>
-          <button id="undoBtn" title="Undo last grade">Undo (U)</button>
-        </div>
-      </section>
-
-      <aside>
-        <div class="panel">
-          <h3 class="section-title">Decks</h3>
-          <div class="row" style="gap:.5rem">
-            <button id="uploadDeckBtn">Upload Deck (JSON)</button>
-            <button id="downloadDeckBtn">Download Current</button>
-          </div>
-          <div style="margin-top:.6rem">
-            <label class="muted" for="deckSelect">Switch deck</label>
-            <select id="deckSelect"></select>
-          </div>
-          <input id="fileInput" type="file" accept=".json,application/json" class="hidden">
-        </div>
-
-        <div class="panel">
-          <h3 class="section-title">Filters</h3>
-          <label class="row"><input type="checkbox" id="globalTagsMode"> <span class="muted">Global tags view (all public decks)</span></label>
-          <div class="row" style="width:100%">
-            <label class="muted" style="min-width:90px">Status</label>
-            <select id="statusSelect">
-              <option value="due">Due only</option>
-              <option value="all">All</option>
-              <option value="new">New</option>
-              <option value="learn">Learn</option>
-              <option value="review">Review</option>
-              <option value="suspended">Suspended</option>
-            </select>
-          </div>
-          <div class="row" style="width:100%">
-            <label class="muted" style="min-width:90px">Tags</label>
-            <input id="tagFilterInput" placeholder="e.g. ACLM-Core, Vignette" />
-          </div>
-          <!-- NEW: Grade filter -->
-          <div class="row" style="width:100%">
-            <label class="muted" style="min-width:90px">Grade</label>
-            <select id="gradeSelect">
-              <option value="all">All</option>
-              <option value="again">Again</option>
-              <option value="hard">Hard</option>
-              <option value="good">Good</option>
-              <option value="easy">Easy</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="panel">
-          <h3 class="section-title">Backups & Sync</h3>
-          <div class="row" style="gap:.5rem">
-            <button id="exportBtn">Export Progress</button>
-            <button id="importBtn">Import Progress</button>
-            <input id="importInput" type="file" accept=".json" class="hidden">
-          </div>
-          <div class="row" style="gap:.5rem; margin-top:.5rem">
-            <button id="backupNowBtn">Create Backup Now</button>
-            <select id="backupSelect" style="flex:1; min-width:220px"></select>
-            <button id="restoreBtn">Restore</button>
-            <button id="deleteBackupBtn" title="Delete selected backup">🗑</button>
-          </div>
-          <p class="muted" style="margin:.5rem 0 0">Auto-backup runs every ~6 hours and keeps the 10 latest snapshots. A safety backup is taken when the app is closed.</p>
-        </div>
-      </aside>
+  <!-- Card UI -->
+  <div class="card">
+    <div class="meta">
+      <div id="metaLeft" class="muted">—</div>
+      <div id="metaRight" class="muted">—</div>
     </div>
-  </main>
+    <div id="front" class="front"></div>
+    <div id="back" class="back"></div>
 
-  <footer class="row" style="justify-content:space-between">
-    <span class="muted">Space: Reveal/Hide · ←/→: Prev/Next · 1–4: Grade · /: Search · U: Undo</span>
-    <a href="decks.json" class="muted" target="_blank" rel="noopener">Open decks.json</a>
-  </footer>
+    <div class="btnbar">
+      <button id="revealBtn" class="primary">Reveal</button>
+      <button id="prevBtn" class="ghost">◀ Prev</button>
+      <button id="nextBtn" class="ghost">Next ▶</button>
 
-  <!-- NEW: Global Search modal -->
-  <div id="searchModal" class="hidden" role="dialog" aria-modal="true" aria-label="Global Search"
-       style="position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:50">
-    <div class="panel" style="width:min(950px,96vw); max-height:80vh; overflow:auto">
-      <div class="row" style="justify-content:space-between; align-items:center">
-        <h3 class="section-title" style="margin:.2rem 0">Global Search</h3>
-        <button id="closeSearchBtn" aria-label="Close search">✕</button>
-      </div>
-      <div class="row" style="gap:.5rem; margin:.25rem 0 .5rem">
-        <input id="searchInput" placeholder="Type keywords… use #tag for tags (e.g., diabetes #Vignette)" />
-        <button id="runSearchBtn">Search</button>
-      </div>
-      <div class="muted" style="margin:.25rem 0 .5rem">Searches: Front, Back, Tags, Section, Chapter (all decks)</div>
-      <div id="searchResults"></div>
+      <span id="afterReveal" class="hidden" style="display:flex;gap:8px;flex-wrap:wrap">
+        <button id="suspendBtn" class="ghost">Suspend</button>
+        <button id="gradeAgain" class="bad">Again (1)</button>
+        <button id="gradeHard" class="hard">Hard (2)</button>
+        <button id="gradeGood" class="ok">Good (3)</button>
+        <button id="gradeEasy" class="easy">Easy (4)</button>
+      </span>
+    </div>
+
+    <!-- Tags editor -->
+    <div class="tagline" id="tagline"></div>
+    <div class="row">
+      <input id="addTagInput" type="text" placeholder="Add tag then press Enter" aria-label="Add tag"/>
+      <button id="clearTagsBtn" class="ghost">Clear tags (card)</button>
     </div>
   </div>
 
-  <script>
-    const APP_NS = "flashcards.srs.v3";
-    const STATE_PREFIX = APP_NS + ":card:";         // per-card schedule state
-    const TAGS_PREFIX  = APP_NS + ":tags:";         // per-card tags overlay
-    const MANIFEST_URL = "decks.json";
-    const BACKUP_NS = APP_NS + ":backup:";          // rolling snapshots
-    const MAX_BACKUPS = 10;
+  <!-- Search & difficulty filter (only) -->
+  <div class="section">
+    <div class="row">
+      <div class="searchRow">
+        <input id="searchText" type="text" placeholder="Search keyword or #tag across ALL decks" aria-label="Search text"/>
+        <button id="searchBtn" class="solid-accent">Search</button>
+      </div>
+      <div class="row" style="margin-left:auto">
+        <label class="muted" for="diffFilter">Difficulty</label>
+        <select id="diffFilter" aria-label="Difficulty filter">
+          <option value="all">All</option>
+          <option value="again">Again</option>
+          <option value="hard">Hard</option>
+          <option value="good">Good</option>
+          <option value="easy">Easy</option>
+          <option value="none">Ungraded</option>
+        </select>
+      </div>
+    </div>
+    <div class="help">Tip: use <code>#tag</code> in search to match tags across all decks. Press <b>/</b> to focus search.</div>
+  </div>
+</div>
 
-    // App settings (default: exam OFF, auto-advance ON)
-    const SETTINGS_KEY = APP_NS + ":settings";
-    const settings = (()=>{ 
-      try { 
-        return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || { exam:false, auto:true }; 
-      } catch { 
-        return { exam:false, auto:true }; 
-      } 
-    })();
-    function saveSettings(){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); }
+<!-- Menu -->
+<div class="menu" id="menu">
+  <button id="downloadDeckBtn">Download current deck</button>
+  <button id="uploadDeckBtn">Upload deck (JSON)</button>
+  <button id="backupBtn">Download backup (settings + grades + tags)</button>
+  <button id="restoreBtn">Restore backup JSON</button>
+  <hr style="border:none;border-top:1px solid var(--line);margin:8px 0">
+  <div class="muted" style="padding:6px 8px;font-size:13px">Manifest</div>
+  <button id="reloadManifestBtn">Reload manifest</button>
+  <div class="muted" id="manifestInfo" style="padding:6px 8px;font-size:12px"></div>
+  <input id="fileInput" type="file" accept=".json,application/json" style="display:none"/>
+</div>
 
-    let deck = { name:"Demo", cards:[] };
-    let order = [];          // visible indices (or virtual list in global mode)
-    let idx = 0;
-    let publicManifest = { decks: [] };
-    const $ = id => document.getElementById(id);
+<!-- Search Modal -->
+<div class="modal" id="searchModal" aria-hidden="true">
+  <div class="box">
+    <div class="left">
+      <header class="row" style="justify-content:space-between;width:100%">
+        <strong>Search</strong>
+        <button id="closeSearch" class="ghost">✕ Close</button>
+      </header>
+      <div class="searchbar">
+        <input id="modalSearchInput" type="text" placeholder="Type to search across all decks…"/>
+      </div>
+      <div class="results" id="resultsList"></div>
+    </div>
+    <div class="right">
+      <div class="preview" id="previewBox">
+        <div class="muted" id="previewMeta">—</div>
+        <div id="previewFront" style="margin-top:8px;white-space:pre-wrap"></div>
+        <div id="previewBack" style="margin-top:8px;white-space:pre-wrap"></div>
+      </div>
+      <div class="btns">
+        <button id="prevResult" class="ghost">◀ Prev</button>
+        <button id="nextResult" class="ghost">Next ▶</button>
+        <button id="openResult" class="solid-accent">Open in main</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-    // ---------- Global Search helpers ----------
-    const deckCache = new Map();
-    async function getDeckJSON(file){
-      if(deckCache.has(file)) return deckCache.get(file);
-      const res = await fetch(file, {cache:"no-store"});
-      if(!res.ok) throw new Error("Failed to fetch " + file);
-      const json = await res.json();
-      deckCache.set(file, json);
-      return json;
+<script>
+(() => {
+  "use strict";
+
+  // ---------- Config / storage keys ----------
+  const DEFAULT_MANIFEST = "decks.json";
+  const MANIFEST_URL = new URLSearchParams(location.search).get("manifest") || DEFAULT_MANIFEST;
+  const SETTINGS_KEY = "srs.min.settings.v1";
+  const GRADES_KEY   = "srs.min.grades.v1";     // { cardId: "again"|"hard"|"good"|"easy" }
+  const SUSP_KEY     = "srs.min.suspended.v1";  // Set of cardIds
+  const TAGS_KEY     = "srs.min.tags.v1";       // { cardId: ["tag", ...] }
+
+  // ---------- State ----------
+  let manifest = {decks:[]};
+  let deck = { name:"", cards:[] };
+  let deckURL = null;
+  let order = []; // filtered indices (respecting difficulty filter and suspended)
+  let idx = 0;
+
+  // Cross-deck caches for search
+  const deckCache = new Map(); // url -> {name,cards}
+  const allDecksLoaded = new Map(); // name -> data
+
+  // Persistent maps
+  const grades = loadJSON(GRADES_KEY, {}); // cardId -> diff
+  const suspended = new Set(loadJSON(SUSP_KEY, []));
+  const tagOver = loadJSON(TAGS_KEY, {});  // overrides
+
+  const settings = Object.assign({
+    lastDeckURL: null,
+    diffFilter: "all"
+  }, loadJSON(SETTINGS_KEY, {}));
+
+  // ---------- Elements ----------
+  const $ = (id)=>document.getElementById(id);
+  const els = {
+    deckSelect: $("deckSelect"),
+    total: $("totalCount"),
+    cntAgain: $("cntAgain"), cntHard: $("cntHard"), cntGood: $("cntGood"), cntEasy: $("cntEasy"), cntNone: $("cntNone"),
+    metaLeft: $("metaLeft"), metaRight: $("metaRight"),
+    front: $("front"), back: $("back"),
+    reveal: $("revealBtn"), prev: $("prevBtn"), next: $("nextBtn"),
+    after: $("afterReveal"), suspend: $("suspendBtn"),
+    gAgain: $("gradeAgain"), gHard: $("gradeHard"), gGood: $("gradeGood"), gEasy: $("gradeEasy"),
+    tagLine: $("tagline"), addTagInput: $("addTagInput"), clearTagsBtn: $("clearTagsBtn"),
+    diffFilter: $("diffFilter"),
+    searchText: $("searchText"), searchBtn: $("searchBtn"),
+    menuBtn: $("menuBtn"), menu: $("menu"), fileInput: $("fileInput"),
+    downloadDeckBtn: $("downloadDeckBtn"), uploadDeckBtn: $("uploadDeckBtn"),
+    backupBtn: $("backupBtn"), restoreBtn: $("restoreBtn"), reloadManifestBtn: $("reloadManifestBtn"),
+    manifestInfo: $("manifestInfo"),
+    // Search modal
+    modal: $("searchModal"), closeSearch: $("closeSearch"), modalInput: $("modalSearchInput"),
+    resultsList: $("resultsList"), previewFront: $("previewFront"), previewBack: $("previewBack"),
+    previewMeta: $("previewMeta"), prevResult: $("prevResult"), nextResult: $("nextResult"), openResult: $("openResult"),
+  };
+
+  // Search state
+  let results = []; // [{deckName, deckURL, index, card, id}]
+  let rIdx = 0;
+
+  // ---------- Utils ----------
+  function loadJSON(k, fallback){ try{ return JSON.parse(localStorage.getItem(k) || JSON.stringify(fallback)); }catch{return fallback} }
+  function saveJSON(k, v){ localStorage.setItem(k, JSON.stringify(v)); }
+  function esc(s){ return String(s ?? "").replace(/[&<>]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c]); }
+  const tagify = (tags)=>Array.isArray(tags)? tags : (typeof tags==="string"? tags.split(",").map(s=>s.trim()).filter(Boolean) : []);
+
+  function cardId(dName, i){ return `${dName}::${i}`; }
+
+  async function fetchJSON(url){
+    const res = await fetch(url, {cache:"no-store"});
+    if(!res.ok) throw new Error(`Fetch ${res.status} for ${url}`);
+    return res.json();
+  }
+
+  // ---------- Manifest & deck loading ----------
+  async function loadManifest(){
+    const m = await fetchJSON(MANIFEST_URL);
+    if(!m || !Array.isArray(m.decks)) throw new Error("Manifest missing 'decks' array");
+    manifest = m;
+    els.manifestInfo.textContent = `Manifest: ${MANIFEST_URL}`;
+    // populate select
+    els.deckSelect.innerHTML = "";
+    const base = new URL(MANIFEST_URL, location.href);
+    manifest.decks.forEach(d=>{
+      const opt = document.createElement("option");
+      opt.value = new URL(d.file, base).href;
+      opt.textContent = d.name || d.file;
+      els.deckSelect.appendChild(opt);
+    });
+    if(settings.lastDeckURL){
+      const found = [...els.deckSelect.options].find(o=>o.value===settings.lastDeckURL);
+      if(found) els.deckSelect.value = found.value;
     }
-    function escapeHTML(s){ return String(s).replace(/[&<>"]/g, m=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[m])); }
-    function highlight(text, terms){
-      let safe = escapeHTML(text);
-      terms.forEach(t=>{
-        if(!t) return;
-        const rx = new RegExp("(" + t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&") + ")", "ig");
-        safe = safe.replace(rx, "<mark>$1</mark>");
-      });
-      return safe;
+    if(!els.deckSelect.value && els.deckSelect.options.length) els.deckSelect.selectedIndex = 0;
+    if(els.deckSelect.value) await switchDeck(els.deckSelect.value);
+  }
+
+  async function getDeck(url){
+    if(deckCache.has(url)) return deckCache.get(url);
+    const data = await fetchJSON(url);
+    if(!data || !Array.isArray(data.cards)) throw new Error(`Deck JSON missing 'cards' (${url})`);
+    // assign ids
+    const d = JSON.parse(JSON.stringify(data));
+    d.cards.forEach((c,i)=> c.__id = cardId(d.name||"deck", i));
+    deckCache.set(url, d);
+    allDecksLoaded.set(d.name||url, {url, data:d});
+    return d;
+  }
+
+  async function switchDeck(url){
+    const d = await getDeck(url);
+    deck = d;
+    deckURL = url;
+    settings.lastDeckURL = url; saveJSON(SETTINGS_KEY, settings);
+    // ensure tag overrides applied
+    deck.cards.forEach(c=>{
+      if(tagOver[c.__id]) c.Tags = tagOver[c.__id];
+    });
+    rebuildOrder(); renderCard(); renderCounts();
+  }
+
+  // ---------- Filtering (by difficulty + suspended only) ----------
+  function matchesDiff(c){
+    const id = c.__id;
+    const g = grades[id] || "none";
+    const want = settings.diffFilter || "all";
+    if(want === "all") return true;
+    return g === want;
+  }
+  function rebuildOrder(){
+    order = deck.cards.map((c,i)=>({c,i}))
+      .filter(({c})=> !suspended.has(c.__id) )
+      .filter(({c})=> matchesDiff(c))
+      .map(({i})=>i);
+    idx = Math.min(idx, Math.max(0, order.length-1));
+    if(order.length===0) idx = 0;
+  }
+
+  // ---------- Counters ----------
+  function renderCounts(){
+    const tot = deck.cards.length;
+    let a=0,h=0,g=0,e=0,n=0;
+    deck.cards.forEach(c=>{
+      const val = grades[c.__id] || "none";
+      if(val==="again") a++; else if(val==="hard") h++; else if(val==="good") g++; else if(val==="easy") e++; else n++;
+    });
+    els.total.textContent = tot;
+    els.cntAgain.textContent = a; els.cntHard.textContent = h; els.cntGood.textContent = g; els.cntEasy.textContent = e; els.cntNone.textContent = n;
+  }
+
+  // ---------- Render card ----------
+  function curCard(){
+    if(!order.length) return null;
+    const i = order[idx];
+    return {i, c: deck.cards[i]};
+  }
+  function renderTags(c){
+    const tags = tagify(c.Tags);
+    els.tagLine.innerHTML = tags.map(t=>`<span class="tag">#${esc(t)}</span>`).join("") || `<span class="muted">No tags</span>`;
+  }
+  function renderCard(){
+    const cur = curCard();
+    if(!cur){
+      els.metaLeft.textContent = deck.name || "—";
+      els.metaRight.textContent = "0 / 0";
+      els.front.textContent = "No cards match your current difficulty filter.";
+      els.back.style.display = "none";
+      els.after.classList.add("hidden");
+      els.tagLine.innerHTML = "";
+      return;
     }
-    function parseSearchQuery(q){
-      const parts = q.trim().split(/\s+/).filter(Boolean);
-      const tags = parts.filter(p=>p.startsWith("#")).map(p=>p.slice(1).toLowerCase());
-      const terms = parts.filter(p=>!p.startsWith("#"));
-      return {terms, tags};
+    const {i,c} = cur;
+    const totalShown = order.length;
+    els.metaLeft.textContent = `${deck.name} — ${grades[c.__id] ? ('Last: '+grades[c.__id]) : 'Ungraded'} ${suspended.has(c.__id)? ' (Suspended)':''}`;
+    els.metaRight.textContent = `${idx+1} / ${totalShown}`;
+    els.front.innerHTML = String(c.Front || "");
+    els.back.innerHTML  = String(c.Back || "");
+    els.back.style.display = "none";
+    els.after.classList.add("hidden");
+    renderTags(c);
+  }
+
+  // ---------- Actions ----------
+  function reveal(){
+    if(!curCard()) return;
+    els.back.style.display = "block";
+    els.after.classList.remove("hidden");
+  }
+  function step(delta){
+    if(!order.length) return;
+    idx = (idx + delta + order.length) % order.length;
+    renderCard();
+  }
+  function grade(kind){
+    const cur = curCard(); if(!cur) return;
+    const id = cur.c.__id;
+    grades[id] = kind;
+    saveJSON(GRADES_KEY, grades);
+    renderCounts();
+    step(1);
+  }
+  function toggleSuspend(){
+    const cur = curCard(); if(!cur) return;
+    const id = cur.c.__id;
+    if(suspended.has(id)) suspended.delete(id); else suspended.add(id);
+    saveJSON(SUSP_KEY, [...suspended]);
+    rebuildOrder(); renderCounts(); renderCard();
+  }
+  function addTag(){
+    const cur = curCard(); if(!cur) return;
+    const raw = els.addTagInput.value.trim();
+    if(!raw) return;
+    const newTags = raw.split(",").map(s=>s.trim()).filter(Boolean);
+    const id = cur.c.__id;
+    const prev = tagify(cur.c.Tags);
+    const merged = Array.from(new Set([...prev, ...newTags]));
+    cur.c.Tags = merged;
+    tagOver[id] = merged;
+    saveJSON(TAGS_KEY, tagOver);
+    els.addTagInput.value = "";
+    renderTags(cur.c);
+  }
+  function clearTags(){
+    const cur = curCard(); if(!cur) return;
+    const id = cur.c.__id;
+    cur.c.Tags = [];
+    tagOver[id] = [];
+    saveJSON(TAGS_KEY, tagOver);
+    renderTags(cur.c);
+  }
+
+  // Difficulty filter change
+  function setDiffFilter(v){
+    settings.diffFilter = v;
+    saveJSON(SETTINGS_KEY, settings);
+    rebuildOrder();
+    renderCard();
+  }
+
+  // ---------- Search (modal, across all decks) ----------
+  async function ensureAllDecksLoaded(){
+    const base = new URL(MANIFEST_URL, location.href);
+    // fetch all decks not yet loaded
+    for(const d of manifest.decks){
+      const url = new URL(d.file, base).href;
+      if(!deckCache.has(url)) await getDeck(url);
     }
+  }
+  function queryResults(q){
+    // q may have #tag tokens; do simple search across name/Front/Back/Tags
+    q = q.trim();
+    const tagTokens = q.split(/\s+/).filter(t=>t.startsWith("#")).map(t=>t.slice(1).toLowerCase());
+    const text = q.replace(/#[^\s]+/g,"").trim().toLowerCase();
 
-    // ---------- IDs, State, Tags ----------
-    function uidFor(card){
-      const s = (card.Front||"") + "::" + (card.Back||"");
-      let h = 0; for (let i=0;i<s.length;i++){ h = ((h<<5)-h) + s.charCodeAt(i); h|=0; }
-      return String(h);
-    }
-    function stKey(deckName, uid){ return STATE_PREFIX + deckName + ":" + uid; }
-    function loadState(deckName, uid){ try{ const raw = localStorage.getItem(stKey(deckName, uid)); return raw ? JSON.parse(raw) : null; } catch { return null; } }
-    function saveState(deckName, uid, st){ localStorage.setItem(stKey(deckName, uid), JSON.stringify(st)); }
-
-    function tagKey(deckName, uid){ return TAGS_PREFIX + deckName + ":" + uid; }
-    function loadTags(deckName, uid){ try{ const raw = localStorage.getItem(tagKey(deckName, uid)); return raw ? JSON.parse(raw) : []; } catch { return []; } }
-    function saveTags(deckName, uid, tags){ localStorage.setItem(tagKey(deckName, uid), JSON.stringify(tags)); }
-
-    // ---- Undo helpers ----
-    const UNDO_PREFIX = APP_NS + ":undo:";
-    function undoKey(d,u){ return UNDO_PREFIX + d + ":" + u; }
-    function saveUndo(d,u,st){ localStorage.setItem(undoKey(d,u), JSON.stringify(st)); }
-    function loadUndo(d,u){ try { return JSON.parse(localStorage.getItem(undoKey(d,u))) } catch { return null } }
-
-    // ---------- Scheduler ----------
-    function isDue(deckName, card){
-      const st = loadState(deckName, uidFor(card));
-      if(!st) return true;
-      if(st.suspended) return false;
-      if(!st.due) return true;
-      return new Date(st.due) <= new Date();
-    }
-    function schedule(deckName, card, grade){
-      const uid = uidFor(card);
-      // capture previous state for undo
-      const prev = loadState(deckName, uid);
-      if(prev) saveUndo(deckName, uid, prev);
-
-      let st = loadState(deckName, uid) || { interval:0, ease:2.5, reps:0, lapses:0, phase:"new", suspended:false };
-      const now = new Date();
-      if(grade === "again"){
-        st.lapses += 1; st.reps = Math.max(0, st.reps - 1); st.interval = 0; st.phase = "learn";
-        st.due = new Date(now.getTime() + 10*60*1000).toISOString();
-      } else {
-        st.reps += 1; st.ease = st.ease || 2.5;
-        if(grade === "hard") st.ease = Math.max(1.3, st.ease - 0.15);
-        if(grade === "good") st.ease = Math.max(1.3, st.ease - 0.05);
-        if(grade === "easy") st.ease = Math.min(3.2, st.ease + 0.15);
-        if(st.phase === "new"){ st.interval = (grade==="easy")?3:(grade==="hard"?1:2); st.phase="review"; }
-        else if(st.phase === "learn"){ st.interval = (grade==="hard")?1:2; st.phase="review"; }
-        else {
-          const mult = (grade==="easy")?1.5:(grade==="hard"?0.7:1.0);
-          st.interval = Math.ceil(Math.max(1, st.interval) * st.ease * mult);
-          st.interval = Math.max(st.interval, (grade==="easy"?3:(grade==="good"?2:1)));
+    const out = [];
+    for(const [name, {url, data}] of allDecksLoaded.entries()){
+      data.cards.forEach((c,i)=>{
+        const id = c.__id;
+        const tags = tagify(c.Tags).map(s=>s.toLowerCase());
+        const textHit = !text || (String(c.Front||"").toLowerCase().includes(text) || String(c.Back||"").toLowerCase().includes(text));
+        const tagHit = !tagTokens.length || tagTokens.every(t => tags.includes(t));
+        if(textHit && tagHit){
+          out.push({deckName:name, deckURL:url, index:i, card:c, id});
         }
-        st.due = new Date(now.getTime() + st.interval*24*60*60*1000).toISOString();
-      }
-
-      // Leech handling (suspend at threshold and tag)
-      const REVIEW_SETTINGS = APP_NS + ":review";
-      const review = (()=>{ try{return JSON.parse(localStorage.getItem(REVIEW_SETTINGS))||{leech:8,tag:true}}catch{return{leech:8,tag:true}}})();
-      if(st.lapses >= review.leech){
-        st.suspended = true;
-        if(review.tag){ const t = loadTags(deckName, uid); if(!t.includes("Leech")){ t.push("Leech"); saveTags(deckName, uid, t); } }
-      }
-
-      // Track last grade
-      st.lastGrade = grade;
-      st.lastGradedAt = Date.now();
-
-      saveState(deckName, uid, st);
-    }
-
-    // ---------- Build order (filters, tags, global) ----------
-    function cardPhase(deckName, card){
-      const st = loadState(deckName, uidFor(card));
-      if(!st) return "new";
-      if(st.suspended) return "suspended";
-      return st.phase || "review";
-    }
-    function parseTagFilter(){
-      const raw = $("tagFilterInput").value.trim();
-      if(!raw) return [];
-      return raw.split(/[,\s]+/).map(t=>t.trim().toLowerCase()).filter(Boolean);
-    }
-    function hasAllTags(deckName, card){
-      const need = parseTagFilter(); if(need.length===0) return true;
-      const uid = uidFor(card);
-      const own = (card.Tag ? [String(card.Tag)] : []).concat(card.Tags || []);
-      const overlay = loadTags(deckName, uid);
-      const have = new Set(own.concat(overlay).map(t=>String(t).toLowerCase()));
-      return need.every(t => have.has(t));
-    }
-    function matchesGradeFilter(deckName, card){
-      const val = $("gradeSelect")?.value || "all";
-      if (val === "all") return true;
-      const st = loadState(deckName, uidFor(card)) || {};
-      return st.lastGrade === val;
-    }
-
-    function buildOrderCurrentDeck(){
-      const status = $("statusSelect").value;  // due, all, new, learn, review, suspended
-      const arr = [];
-      for(let i=0;i<(deck.cards||[]).length;i++){
-        const c = deck.cards[i];
-        if(!hasAllTags(deck.name, c)) continue;
-        if(!matchesGradeFilter(deck.name, c)) continue;
-        const phase = cardPhase(deck.name, c);
-        if(status === "due"){ if(!isDue(deck.name,c)) continue; }
-        else if(status !== "all"){ if(phase !== status) continue; }
-        arr.push(i);
-      }
-      order = arr;
-      if(idx >= order.length) idx = Math.max(0, order.length-1);
-    }
-
-    // In Global Tags View we build a virtual list of entries:
-    let globalList = [];
-    async function buildGlobalList(){
-      const status = $("statusSelect").value;
-      const list = [];
-      for(const d of publicManifest.decks){
-        try{
-          const res = await fetch(d.file, {cache:"no-store"});
-          if(!res.ok) continue;
-          const obj = await res.json();
-          const dn = obj.name || d.name || d.file;
-          (obj.cards||[]).forEach(card=>{
-            if(!hasAllTags(dn, card)) return;
-            if(!matchesGradeFilter(dn, card)) return;
-            const ph = cardPhase(dn, card);
-            if(status === "due"){ if(!isDue(dn, card)) return; }
-            else if(status !== "all"){ if(ph !== status) return; }
-            list.push({ deckName: dn, card });
-          });
-        }catch{}
-      }
-      globalList = list;
-      order = list.map((_,i)=>i);
-      if(idx >= order.length) idx = Math.max(0, order.length-1);
-    }
-
-    function updateHeader(){
-      $("deckName").textContent = ($("globalTagsMode").checked)
-        ? "Global tags view"
-        : ("Deck: " + (deck.name || "Deck"));
-      const total = order.length;
-      $("posPill").textContent  = `Card ${ total ? (idx+1) : 0 } / ${ total }`;
-
-      // Due count
-      if($("globalTagsMode").checked){
-        let dueCount = 0;
-        globalList.forEach(({deckName,card})=>{ if(isDue(deckName,card)) dueCount++; });
-        $("duePill").textContent = `Due: ${dueCount}`;
-      } else {
-        const dueCount = (deck.cards||[]).filter(c => isDue(deck.name, c)).length;
-        $("duePill").textContent = `Due: ${dueCount}`;
-      }
-
-      // Grade counts across current view
-      const entries = $("globalTagsMode").checked
-        ? globalList.map(x=>({deckName:x.deckName, card:x.card}))
-        : order.map(i=>({deckName:deck.name, card:deck.cards[i]}));
-      const gc = {again:0, hard:0, good:0, easy:0};
-      entries.forEach(e=>{
-        const st = loadState(e.deckName, uidFor(e.card)) || {};
-        if (gc[st.lastGrade] !== undefined) gc[st.lastGrade] += 1;
       });
-      $("gradePill").textContent = `A ${gc.again} · H ${gc.hard} · G ${gc.good} · E ${gc.easy}`;
     }
-
-    function currentCardEntry(){
-      if(!$("globalTagsMode").checked){
-        if(!order.length) return null;
-        return { deckName: deck.name, card: deck.cards[order[idx]] };
-      } else {
-        if(!order.length) return null;
-        return globalList[order[idx]] || null;
-      }
+    return out;
+  }
+  function openSearchModal(initial=""){
+    els.modal.style.display = "block";
+    els.modal.setAttribute("aria-hidden","false");
+    els.modalInput.value = initial || els.searchText.value || "";
+    els.modalInput.focus();
+    updateSearchResults();
+  }
+  function closeSearchModal(){
+    els.modal.style.display = "none";
+    els.modal.setAttribute("aria-hidden","true");
+  }
+  function updateSearchResults(){
+    const q = els.modalInput.value;
+    results = queryResults(q);
+    rIdx = 0;
+    renderResultsList();
+    renderResultPreview();
+  }
+  function renderResultsList(){
+    els.resultsList.innerHTML = results.map((r,i)=>`
+      <div class="item" data-i="${i}">
+        <div><strong>${esc(r.deckName)}</strong> — #${r.index+1}</div>
+        <div class="small">${esc(String(r.card.Front).slice(0,120))}${String(r.card.Front).length>120?"…":""}</div>
+      </div>
+    `).join("") || `<div class="item"><div>No matches.</div></div>`;
+  }
+  function renderResultPreview(){
+    if(!results.length){
+      els.previewMeta.textContent = "—";
+      els.previewFront.textContent = "";
+      els.previewBack.textContent = "";
+      return;
     }
+    const r = results[rIdx];
+    els.previewMeta.textContent = `${r.deckName} — card ${r.index+1} / ${allDecksLoaded.get(r.deckName).data.cards.length}`;
+    els.previewFront.innerHTML = String(r.card.Front||"");
+    els.previewBack.innerHTML  = String(r.card.Back||"");
+    // highlight selected in list
+    [...els.resultsList.children].forEach((el,i)=>{
+      el.style.background = i===rIdx ? "#101828" : "transparent";
+    });
+  }
+  function openResultInMain(){
+    if(!results.length) return;
+    const r = results[rIdx];
+    // switch deck if needed, then jump to index
+    switchDeck(r.deckURL).then(()=>{
+      // set filter to show this card even if filter hides it
+      settings.diffFilter = "all"; els.diffFilter.value = "all"; saveJSON(SETTINGS_KEY, settings);
+      rebuildOrder();
+      // find its position in order
+      const pos = order.indexOf(r.index);
+      idx = pos>=0 ? pos : 0;
+      renderCard(); renderCounts();
+      closeSearchModal();
+    });
+  }
 
-    function render(){
-      updateHeader();
-      const entry = currentCardEntry();
-      const back = $("back");
-      const gradeBar = $("gradeBar");
-      const suspendBtn = $("suspendBtn");
-      const unsuspendBtn = $("unsuspendBtn");
-      const tagsRow = $("tagsRow");
+  // ---------- Import/Export ----------
+  function download(name, obj){
+    const blob = new Blob([JSON.stringify(obj, null, 2)], {type:"application/json"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = name; a.click(); URL.revokeObjectURL(a.href);
+  }
 
-      if(!entry){
-        $("front").textContent = "No cards match this view.";
-        back.style.display = "none"; $("revealBtn").disabled = true; gradeBar.classList.add("hidden"); $("meta").textContent = "";
-        suspendBtn.classList.add("hidden"); unsuspendBtn.classList.add("hidden");
-        tagsRow.innerHTML = "";
-        return;
-      }
+  // ---------- Events ----------
+  els.deckSelect.addEventListener("change", e=> switchDeck(e.target.value));
+  els.reveal.addEventListener("click", reveal);
+  els.prev.addEventListener("click", ()=> step(-1));
+  els.next.addEventListener("click", ()=> step(+1));
+  els.suspend.addEventListener("click", toggleSuspend);
+  els.gAgain.addEventListener("click", ()=> grade("again"));
+  els.gHard .addEventListener("click", ()=> grade("hard"));
+  els.gGood .addEventListener("click", ()=> grade("good"));
+  els.gEasy .addEventListener("click", ()=> grade("easy"));
 
-      const { deckName, card } = entry;
-      $("revealBtn").disabled = false;
-      $("front").textContent = card.Front || "";
-      $("back").textContent  = card.Back  || "";
-      back.style.display = "none";
-      gradeBar.classList.add("hidden");
+  els.addTagInput.addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ e.preventDefault(); addTag(); }});
+  els.clearTagsBtn.addEventListener("click", clearTags);
 
-      // meta + suspend/unsuspend
-      const st = loadState(deckName, uidFor(card)) || {};
-      const phase = st.suspended ? "suspended" : (st.phase || "new");
-      $("meta").textContent = `Phase: ${phase}` + (st.due ? ` · Due: ${new Date(st.due).toLocaleString()}` : "");
+  els.diffFilter.value = settings.diffFilter || "all";
+  els.diffFilter.addEventListener("change", (e)=> setDiffFilter(e.target.value));
 
-      suspendBtn.classList.toggle("hidden", !!st.suspended);
-      unsuspendBtn.classList.toggle("hidden", !st.suspended);
+  // Search
+  document.addEventListener("keydown", (e)=>{ if(e.key === "/"){ e.preventDefault(); els.searchText.focus(); }});
+  els.searchBtn.addEventListener("click", ()=> openSearchModal());
+  els.searchText.addEventListener("keydown", (e)=>{ if(e.key==="Enter"){ openSearchModal(); }});
 
-      // tags view (own + overlay) — SAFE DOM creation
-      const own = (card.Tag ? [String(card.Tag)] : []).concat(card.Tags || []);
-      const overlay = loadTags(deckName, uidFor(card));
-      const allTags = Array.from(new Set(own.concat(overlay)));
-      tagsRow.textContent = "";
-      allTags.forEach(t=>{
-        const chip = document.createElement("span");
-        chip.className="chip";
-        const txt = document.createElement("span"); txt.textContent = t;
-        const btn = document.createElement("button"); btn.textContent = "×"; btn.className="removeTagBtn";
-        btn.dataset.tag = t;
-        chip.appendChild(txt); chip.appendChild(btn);
-        tagsRow.appendChild(chip);
-      });
+  els.closeSearch.addEventListener("click", closeSearchModal);
+  els.modalInput.addEventListener("input", updateSearchResults);
+  els.resultsList.addEventListener("click", (e)=>{
+    const item = e.target.closest(".item"); if(!item) return;
+    rIdx = Number(item.dataset.i)||0;
+    renderResultPreview();
+  });
+  els.prevResult.addEventListener("click", ()=>{ if(!results.length) return; rIdx=(rIdx-1+results.length)%results.length; renderResultPreview(); });
+  els.nextResult.addEventListener("click", ()=>{ if(!results.length) return; rIdx=(rIdx+1)%results.length; renderResultPreview(); });
+  els.openResult.addEventListener("click", openResultInMain);
 
-      // hide grade bar until reveal
-      gradeBar.classList.add("hidden");
-    }
+  // Menu
+  els.menuBtn.addEventListener("click", ()=>{
+    els.menu.style.display = (els.menu.style.display==="block" ? "none" : "block");
+  });
+  document.addEventListener("click", (e)=>{
+    if(e.target.id==="menuBtn" || e.target.closest("#menu")) return;
+    els.menu.style.display = "none";
+  });
 
-    function rebuildAndRender(){
-      if($("globalTagsMode").checked){
-        buildGlobalList().then(()=>{ updateHeader(); render(); });
-      } else {
-        buildOrderCurrentDeck(); updateHeader(); render();
-      }
-    }
-
-    // ---------- Deck loading & manifest ----------
-    async function fetchManifest(){
+  els.downloadDeckBtn.addEventListener("click", ()=> download(`${(deck.name||"deck").replace(/\s+/g,'-').toLowerCase()}.json`, deck));
+  els.uploadDeckBtn.addEventListener("click", ()=> els.fileInput.click());
+  els.fileInput.addEventListener("change", (e)=>{
+    const f = e.target.files?.[0]; if(!f) return;
+    const r = new FileReader();
+    r.onload = ()=>{
       try{
-        const res = await fetch(MANIFEST_URL, {cache:"no-store"});
-        if(!res.ok) return { decks: [] };
-        const json = await res.json();
-        return Array.isArray(json.decks) ? json : { decks: [] };
-      }catch{ return { decks: [] }; }
-    }
-    async function loadDeck(url="cards.json"){
-      const res = await fetch(url, { cache:"no-store" });
-      deck = await res.json();
-      idx = 0; buildOrderCurrentDeck(); render(); pushURLIndex();
-    }
-    function loadDeckObject(obj){
-      deck = obj || {name:"Untitled", cards:[]};
-      idx = 0; buildOrderCurrentDeck(); render(); pushURLIndex();
-    }
-
-    // Local user decks
-    const DECKS_KEY = APP_NS + ":userDecks";
-    function getStore(){ try{ return JSON.parse(localStorage.getItem(DECKS_KEY)) || {items:[], last:"__default__"} } catch { return {items:[], last:"__default__"} } }
-    function setStore(s){ localStorage.setItem(DECKS_KEY, JSON.stringify(s)); }
-
-    async function refreshDeckSelect(){
-      publicManifest = await fetchManifest();
-      const local = getStore();
-      const sel = $("deckSelect");
-      const parts = [];
-
-      parts.push('<optgroup label="Public (GitHub)">');
-      const pub = (publicManifest.decks||[]);
-      if(pub.length===0) parts.push('<option disabled>(No public decks found)</option>');
-      pub.forEach(d => parts.push(`<option value="${encodeURIComponent(d.file)}">${d.name}</option>`));
-      parts.push('</optgroup>');
-
-      parts.push('<optgroup label="Local (This device)">');
-      const items = (local.items||[]);
-      if(items.length===0) parts.push('<option disabled>(No local decks)</option>');
-      items.forEach(it => parts.push(`<option value="local:${encodeURIComponent(it.name)}">${it.name}</option>`));
-      parts.push('</optgroup>');
-
-      sel.innerHTML = parts.join("");
-      const last = local.last || "";
-      if (last){
-        const localVal = "local:" + encodeURIComponent(last);
-        if ([...sel.options].some(o=>o.value===localVal)) sel.value = localVal;
-      } else if (pub.length > 0){
-        sel.value = encodeURIComponent(pub[0].file);
-      }
-    }
-
-    // ---------- Actions & UI wiring ----------
-    function showAnswer(){
-      const back = $("back"); const gradeBar = $("gradeBar");
-      if(back.style.display === "block"){ back.style.display = "none"; gradeBar.classList.add("hidden"); }
-      else { back.style.display = "block"; gradeBar.classList.remove("hidden"); }
-    }
-    function pushURLIndex(){
-      const params = new URLSearchParams(location.search);
-      params.set("i", String(idx));
-      history.replaceState(null, "", "?" + params.toString());
-    }
-    function next(){ if (idx < order.length-1) { idx++; render(); pushURLIndex(); } }
-    function prev(){ if (idx > 0) { idx--; render(); pushURLIndex(); } }
-    function doGrade(g){
-      const entry = currentCardEntry(); if(!entry) return;
-      schedule(entry.deckName, entry.card, g);
-      // safety snapshot every 25 grades
-      window._gradesSinceBackup = (window._gradesSinceBackup||0) + 1;
-      if(window._gradesSinceBackup % 25 === 0) createBackup();
-      if(settings.auto){ next(); rebuildAndRender(); }
-      else { rebuildAndRender(); }
-    }
-
-    $("revealBtn").onclick = showAnswer;
-    $("prevBtn").onclick   = prev;
-    $("nextBtn").onclick   = next;
-    $("restartBtn").onclick= () => { idx = 0; render(); };
-
-    $("againBtn").onclick = () => doGrade("again");
-    $("hardBtn").onclick  = () => doGrade("hard");
-    $("goodBtn").onclick  = () => doGrade("good");
-    $("easyBtn").onclick  = () => doGrade("easy");
-
-    $("statusSelect").onchange = rebuildAndRender;
-    $("tagFilterInput").addEventListener("keyup", (e)=>{ if(e.key==="Enter"){ rebuildAndRender(); }});
-    $("tagFilterInput").addEventListener("blur", rebuildAndRender);
-    $("globalTagsMode").onchange = rebuildAndRender;
-
-    // Grade filter
-    $("gradeSelect").onchange = rebuildAndRender;
-
-    // Tag editing
-    function addTagTo(entry, tag){
-      const deckName = entry.deckName, card = entry.card; if(!tag) return;
-      const uid = uidFor(card);
-      const tags = loadTags(deckName, uid);
-      if(!tags.map(s=>s.toLowerCase()).includes(tag.toLowerCase())){
-        tags.push(tag);
-        saveTags(deckName, uid, tags);
-      }
-    }
-    function removeTagFrom(entry, tag){
-      const deckName = entry.deckName, card = entry.card;
-      const uid = uidFor(card);
-      const tags = loadTags(deckName, uid).filter(t => t.toLowerCase() !== tag.toLowerCase());
-      saveTags(deckName, uid, tags);
-    }
-
-    $("addTagBtn").onclick = ()=>{
-      const entry = currentCardEntry(); if(!entry) return;
-      const val = $("newTagInput").value.trim(); if(!val) return;
-      val.split(/[,\s]+/).forEach(t=> addTagTo(entry, t.trim()));
-      $("newTagInput").value = "";
-      render();
-    };
-    $("newTagInput").addEventListener("keydown",(e)=>{
-      if(e.key==="Enter"){ e.preventDefault(); $("addTagBtn").click(); }
-    });
-    document.addEventListener("click",(e)=>{
-      if(e.target && e.target.classList.contains("removeTagBtn")){
-        const tag = e.target.dataset.tag;
-        const entry = currentCardEntry(); if(!entry) return;
-        removeTagFrom(entry, tag);
-        render();
-      }
-    });
-
-    // Suspend / Unsuspend
-    $("suspendBtn").onclick = ()=>{
-      const entry = currentCardEntry(); if(!entry) return;
-      const {deckName, card} = entry;
-      const uid = uidFor(card);
-      const st = loadState(deckName, uid) || { phase:"new", ease:2.5, interval:0, reps:0, lapses:0 };
-      st.suspended = true;
-      saveState(deckName, uid, st);
-      rebuildAndRender();
-    };
-    $("unsuspendBtn").onclick = ()=>{
-      const entry = currentCardEntry(); if(!entry) return;
-      const {deckName, card} = entry;
-      const uid = uidFor(card);
-      const st = loadState(deckName, uid) || {};
-      st.suspended = false;
-      saveState(deckName, uid, st);
-      rebuildAndRender();
-    };
-
-    // Upload / download decks
-    function validateDeck(obj){
-      const err = [];
-      if(!obj || typeof obj!=="object") err.push("Root must be an object.");
-      if(!Array.isArray(obj.cards)) err.push("cards[] missing or not an array.");
-      else obj.cards.forEach((c,i)=>{
-        if(typeof c.Front!=="string") err.push(`cards[${i}].Front must be string`);
-        if(typeof c.Back!=="string")  err.push(`cards[${i}].Back must be string`);
-      });
-      return err;
-    }
-
-    $("uploadDeckBtn").onclick = () => $("fileInput").click();
-    $("fileInput").onchange = e => {
-      const f = e.target.files[0]; if(!f) return;
-      const r = new FileReader();
-      r.onload = () => {
-        try{
-          const obj = JSON.parse(r.result);
-          const errors = validateDeck(obj);
-          if(errors.length){ alert("Deck validation failed:\n" + errors.join("\n")); e.target.value=""; return; }
-          const s = getStore();
-          let name = obj.name || f.name.replace(/\.json$/i,"");
-          const seen = new Set(s.items.map(x=>x.name));
-          let k=2, base=name; while(seen.has(name)) name = base + " (" + (k++) + ")";
-          s.items.push({name, data:obj}); s.last=name; setStore(s);
-          refreshDeckSelect().then(()=>{
-            $("deckSelect").value = "local:" + encodeURIComponent(name);
-            loadDeckObject(obj);
+        const data = JSON.parse(r.result);
+        if(data.cards){
+          // Load as current deck (local)
+          deck = data; deck.cards.forEach((c,i)=> c.__id = cardId(deck.name||"deck", i));
+          deckURL = null; settings.lastDeckURL=null; saveJSON(SETTINGS_KEY, settings);
+          rebuildOrder(); renderCard(); renderCounts();
+        }else if(data.decks){
+          manifest = data;
+          // Rebuild deck select from local manifest (relative URLs won't work from file://)
+          els.deckSelect.innerHTML = "";
+          manifest.decks.forEach(d=>{
+            const opt = document.createElement("option");
+            opt.value = d.file;
+            opt.textContent = d.name || d.file;
+            els.deckSelect.appendChild(opt);
           });
-        }catch{ alert("Invalid JSON deck file."); }
-        e.target.value="";
-      };
-      r.readAsText(f);
+        }else throw new Error("JSON is neither a deck nor a manifest");
+      }catch(err){ alert("Import failed: "+err.message); }
     };
+    r.readAsText(f);
+  });
 
-    $("deckSelect").onchange = () => {
-      $("globalTagsMode").checked = false; // leaving global mode when switching deck
-      const val = $("deckSelect").value;
-      if (val.startsWith("local:")){
-        const name = decodeURIComponent(val.slice("local:".length));
-        const it = getStore().items.find(x=>x.name===name);
-        if(it){ loadDeckObject(it.data); const s=getStore(); s.last=name; setStore(s); }
-      } else {
-        loadDeck(decodeURIComponent(val));
-        const s=getStore(); s.last=""; setStore(s);
-      }
+  els.backupBtn.addEventListener("click", ()=>{
+    const payload = {
+      settings, grades, suspended:[...suspended], tags: tagOver, timestamp:new Date().toISOString()
     };
-    $("downloadDeckBtn").onclick = () => {
-      const blob = new Blob([JSON.stringify(deck,null,2)], {type:"application/json"});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url; a.download = (deck.name || "deck") + ".json";
-      document.body.appendChild(a); a.click();
-      setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },0);
-    };
-
-    // Keyboard shortcuts
-    document.addEventListener("keydown",(e)=>{
-      if(e.code === "Space"){ e.preventDefault(); showAnswer(); }
-      if(e.key === "ArrowRight") next();
-      if(e.key === "ArrowLeft")  prev();
-      if(e.key === "1") $("againBtn").click();
-      if(e.key === "2") $("hardBtn").click();
-      if(e.key === "3") $("goodBtn").click();
-      if(e.key === "4") $("easyBtn").click();
-      if(e.key==="/"){ e.preventDefault(); openSearch(); }
-      if(e.key==="?"){ alert("Shortcuts:\nSpace Reveal/Hide\n←/→ Prev/Next\n1–4 Grade\n/ Search\nU Undo\n"); }
-    });
-
-    // ---------- Backups ----------
-    function collectAllProgress(){
-      const out = {};
-      for(let i=0;i<localStorage.length;i++){
-        const k = localStorage.key(i);
-        if(k && (k.startsWith(STATE_PREFIX) || k.startsWith(TAGS_PREFIX) || k.startsWith(DECKS_KEY))){
-          out[k] = localStorage.getItem(k);
-        }
-      }
-      return out;
-    }
-    function applyProgressDump(obj){
-      const toRemove = [];
-      for(let i=0;i<localStorage.length;i++){
-        const k = localStorage.key(i);
-        if(k && (k.startsWith(STATE_PREFIX) || k.startsWith(TAGS_PREFIX) || k.startsWith(DECKS_KEY))){
-          toRemove.push(k);
-        }
-      }
-      toRemove.forEach(k=>localStorage.removeItem(k));
-      Object.entries(obj).forEach(([k,v])=>{
-        localStorage.setItem(k, v);
-      });
-    }
-    function refreshBackupsDropdown(){
-      const sel = $("backupSelect");
-      const keys = [];
-      for(let i=0;i<localStorage.length;i++){
-        const k = localStorage.key(i);
-        if(k && k.startsWith(BACKUP_NS)) keys.push(k);
-      }
-      keys.sort(); // chronological by suffix
-      sel.innerHTML = keys.map(k=>`<option value="${k}">${k.slice(BACKUP_NS.length)}</option>`).join("");
-    }
-    function createBackup(){
-      const stamp = new Date().toISOString().replace(/[:.]/g,"-");
-      const data = JSON.stringify(collectAllProgress());
-      localStorage.setItem(BACKUP_NS + stamp, data);
-      // prune
-      const keys = [];
-      for(let i=0;i<localStorage.length;i++){
-        const k = localStorage.key(i);
-        if(k && k.startsWith(BACKUP_NS)) keys.push(k);
-      }
-      keys.sort();
-      while(keys.length > MAX_BACKUPS){
-        const k = keys.shift();
-        localStorage.removeItem(k);
-      }
-      refreshBackupsDropdown();
-    }
-
-    $("exportBtn").onclick = ()=>{
-      const blob = new Blob([JSON.stringify(collectAllProgress(), null, 2)], {type:"application/json"});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url; a.download = "flashcards-progress.json";
-      document.body.appendChild(a); a.click();
-      setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },0);
-    };
-    $("importBtn").onclick = ()=> $("importInput").click();
-    $("importInput").onchange = e=>{
-      const f = e.target.files[0]; if(!f) return;
+    download("flashcards-backup.json", payload);
+  });
+  els.restoreBtn.addEventListener("click", ()=>{
+    const inp = document.createElement("input");
+    inp.type="file"; inp.accept=".json,application/json";
+    inp.onchange = e=>{
+      const f = e.target.files?.[0]; if(!f) return;
       const r = new FileReader();
       r.onload = ()=>{
         try{
-          const obj = JSON.parse(r.result);
-          applyProgressDump(obj);
-          rebuildAndRender();
-          alert("Progress imported.");
-        }catch{ alert("Invalid progress file."); }
+          const data = JSON.parse(r.result);
+          if(data.settings) Object.assign(settings, data.settings);
+          if(data.grades) Object.assign(grades, data.grades);
+          if(Array.isArray(data.suspended)){ suspended.clear(); data.suspended.forEach(x=>suspended.add(x)); }
+          if(data.tags) Object.assign(tagOver, data.tags);
+          saveJSON(SETTINGS_KEY, settings); saveJSON(GRADES_KEY, grades); saveJSON(SUSP_KEY, [...suspended]); saveJSON(TAGS_KEY, tagOver);
+          rebuildOrder(); renderCounts(); renderCard();
+          alert("Backup restored.");
+        }catch(err){ alert("Restore failed: "+err.message); }
       };
       r.readAsText(f);
-      e.target.value = "";
     };
-    $("backupNowBtn").onclick = ()=>{ createBackup(); alert("Backup created."); };
-    $("restoreBtn").onclick   = ()=>{
-      const k = $("backupSelect").value; if(!k){ alert("No backup selected."); return; }
-      const raw = localStorage.getItem(k); if(!raw){ alert("Backup not found."); return; }
-      try{ const obj = JSON.parse(raw); applyProgressDump(obj); rebuildAndRender(); alert("Backup restored."); }
-      catch{ alert("Backup corrupted."); }
-    };
-    $("deleteBackupBtn").onclick = ()=>{
-      const k = $("backupSelect").value; if(!k) return;
-      if(!confirm("Delete this backup?")) return;
-      localStorage.removeItem(k); refreshBackupsDropdown();
-    };
+    inp.click();
+  });
+  els.reloadManifestBtn.addEventListener("click", ()=> loadManifest());
 
-    // Auto-backup timer (6 hours) + safety backups
-    setInterval(()=>{ if(!document.hidden) createBackup(); }, 6*60*60*1000);
-    document.addEventListener("visibilitychange", ()=>{ if(document.hidden) createBackup(); });
-    window.addEventListener("beforeunload", ()=>{ try{ createBackup(); }catch{} });
+  // Keyboard shortcuts on main card
+  document.addEventListener("keydown", (e)=>{
+    if(e.key===" "){ e.preventDefault(); if(els.back.style.display==="block") step(+1); else reveal(); }
+    if(e.key==="ArrowRight"){ step(+1); }
+    if(e.key==="ArrowLeft"){ step(-1); }
+    if(e.key==="1"){ grade("again"); }
+    if(e.key==="2"){ grade("hard"); }
+    if(e.key==="3"){ grade("good"); }
+    if(e.key==="4"){ grade("easy"); }
+  });
 
-    // ---------- Global Search UI ----------
-    const searchModal = $("searchModal");
-    const searchInput  = $("searchInput");
-    const searchResults = $("searchResults");
+  // Close modal on ESC
+  document.addEventListener("keydown", (e)=>{ if(e.key==="Escape" && els.modal.style.display==="block") closeSearchModal(); });
 
-    function openSearch(){ searchModal.classList.remove("hidden"); searchInput.focus(); }
-    function closeSearch(){ searchModal.classList.add("hidden"); }
-
-    $("searchBtn").onclick = openSearch;
-    $("closeSearchBtn").onclick = closeSearch;
-
-    let searchTimer = null;
-    $("runSearchBtn").onclick = runSearch;
-    searchInput.addEventListener("keyup", (e)=>{
-      if(e.key==="Enter") runSearch();
-      else { clearTimeout(searchTimer); searchTimer = setTimeout(runSearch, 250); }
-    });
-
-    async function searchAcrossDecks(query){
-      const {terms, tags} = parseSearchQuery(query);
-      if(terms.length===0 && tags.length===0) return [];
-      const hits = [];
-
-      // Public decks
-      for(const d of (publicManifest.decks||[])){
-        try{
-          const obj = await getDeckJSON(d.file);
-          const dn = obj.name || d.name || d.file;
-          (obj.cards||[]).forEach((card, i)=>{
-            if(!matchesSearchCard(dn, card, terms, tags)) return;
-            hits.push({source:"public", file:d.file, deckName:dn, card, index:i});
-          });
-        }catch{}
-      }
-      // Local decks
-      const local = getStore();
-      for(const it of (local.items||[])){
-        const dn = it.name;
-        (it.data?.cards||[]).forEach((card, i)=>{
-          if(!matchesSearchCard(dn, card, terms, tags)) return;
-          hits.push({source:"local", deckName:dn, card, index:i});
-        });
-      }
-      return hits;
+  // ---------- Init ----------
+  (async function init(){
+    els.diffFilter.value = settings.diffFilter || "all";
+    // Load manifest & default deck
+    try{
+      await loadManifest();
+      // Preload all decks for search when opening modal (on demand)
+      els.searchBtn.addEventListener("click", async ()=>{ await ensureAllDecksLoaded(); openSearchModal(); });
+      els.modalInput.addEventListener("focus", ensureAllDecksLoaded, {once:true});
+    }catch(err){
+      alert("Failed to load manifest: "+err.message);
     }
-    function matchesSearchCard(deckName, card, terms, tagFilters){
-      const uid = uidFor(card);
-      const own = (card.Tag ? [String(card.Tag)] : []).concat(card.Tags || []);
-      const overlay = loadTags(deckName, uid);
-      const allTags = new Set(own.concat(overlay).map(t=>String(t).toLowerCase()));
-      if(tagFilters.length && !tagFilters.every(t => allTags.has(t))) return false;
-      const hay = [card.Front||"", card.Back||"", card.Section||"", card.Chapter||""].join(" ").toLowerCase();
-      return terms.every(t => hay.includes(t.toLowerCase()));
-    }
+  })();
 
-    async function runSearch(){
-      const q = searchInput.value.trim();
-      searchResults.innerHTML = `<div class="muted">Searching…</div>`;
-      try{
-        const hits = await searchAcrossDecks(q);
-        if(hits.length===0){ searchResults.innerHTML = `<div class="muted">No matches.</div>`; return; }
-        const {terms} = parseSearchQuery(q);
-        const parts = hits.slice(0,500).map((h, idx)=>{
-          const front = highlight(h.card.Front||"", terms);
-          const back  = highlight((h.card.Back||"").slice(0,240), terms);
-          const tags = (h.card.Tags||[]).concat(h.card.Tag?[h.card.Tag]:[]);
-          const tagTxt = tags.length ? `<span class="muted">Tags: ${escapeHTML(tags.join(", "))}</span>` : "";
-          return `
-            <div class="hit" style="border:1px solid var(--b); border-radius:.7rem; padding:.6rem; margin:.35rem 0; background:#0b1224">
-              <h4 style="margin:.1rem 0 .25rem; font-size:1rem">${escapeHTML(h.deckName)} • #${h.index+1}</h4>
-              <p><strong>Q:</strong> ${front}</p>
-              <p class="muted"><strong>A (preview):</strong> ${back}${(h.card.Back||"").length>240?"…":""}</p>
-              ${tagTxt}
-              <div class="row" style="margin-top:.35rem; gap:.4rem">
-                <button class="openHitBtn" data-i="${idx}">Open</button>
-              </div>
-            </div>`;
-        });
-        searchResults.innerHTML = parts.join("");
-        [...searchResults.querySelectorAll(".openHitBtn")].forEach(btn=>{
-          btn.addEventListener("click", async ()=>{
-            const h = hits[Number(btn.dataset.i)];
-            await jumpToSearchHit(h);
-            closeSearch();
-          });
-        });
-      }catch{
-        searchResults.innerHTML = `<div class="muted">Search failed. Check console.</div>`;
-      }
-    }
-
-    async function jumpToSearchHit(h){
-      $("statusSelect").value = "all";
-      const gradeSel = $("gradeSelect"); if(gradeSel) gradeSel.value = "all";
-      $("tagFilterInput").value = "";
-      $("globalTagsMode").checked = false;
-
-      if(h.source==="public"){
-        $("deckSelect").value = encodeURIComponent(h.file);
-        await loadDeck(h.file);
-      } else if(h.source==="local"){
-        const local = getStore();
-        const it = (local.items||[]).find(x=>x.name===h.deckName);
-        if(it){
-          $("deckSelect").value = "local:" + encodeURIComponent(h.deckName);
-          loadDeckObject(it.data);
-        }
-      } else { return; }
-
-      buildOrderCurrentDeck();
-      const targetUID = uidFor(h.card);
-      const absoluteIndex = (deck.cards||[]).findIndex(c => uidFor(c)===targetUID);
-      const posInOrder = order.indexOf(absoluteIndex);
-      if(posInOrder >= 0){ idx = posInOrder; render(); }
-      else { idx = 0; render(); }
-    }
-
-    // Undo button + hotkey
-    $("undoBtn").onclick = ()=>{
-      const e = currentCardEntry(); if(!e) return;
-      const uid = uidFor(e.card);
-      const snap = loadUndo(e.deckName, uid); if(!snap) return;
-      saveState(e.deckName, uid, snap); 
-      rebuildAndRender();
-    };
-    document.addEventListener("keydown",(ev)=>{ if(ev.key.toLowerCase()==="u") $("undoBtn").click(); });
-
-    // ---------- Boot ----------
-    document.addEventListener("DOMContentLoaded", async ()=>{
-      await refreshDeckSelect();
-      // URL override ?deck=path.json
-      const params = new URLSearchParams(location.search);
-      const urlDeck = params.get("deck");
-      if (urlDeck){ await loadDeck(urlDeck); }
-      else {
-        const val = $("deckSelect").value;
-        if (val && !val.startsWith("local:")) await loadDeck(decodeURIComponent(val));
-        else await loadDeck("cards.json");
-      }
-      refreshBackupsDropdown();
-    });
-
-    // Register SW (offline)
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", ()=> navigator.serviceWorker.register("sw.js").catch(()=>{}));
-    }
-  </script>
+})();
+</script>
 </body>
 </html>
