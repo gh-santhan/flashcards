@@ -1,310 +1,148 @@
 {
-  "name": "Chapter 1 \u2013 Introduction to Lifestyle Medicine (ACLM)",
+  "name": "Chapter 1 - Foundations of Lifestyle Medicine",
   "cards": [
-    {
-      "Front": "Define Lifestyle Medicine (per ACLM).",
-      "Back": "A medical specialty using therapeutic lifestyle interventions as a primary modality to treat chronic conditions (e.g., CVD, type 2 diabetes, obesity). Clinicians apply evidence\u2011based, whole\u2011person, prescriptive lifestyle change; when used intensively, these interventions can often reverse disease. Applying the six pillars also provides prevention.",
-      "Tag": "ACLM-Core"
-    },
-    {
-      "Front": "List the six pillars of Lifestyle Medicine.",
-      "Back": "1) Whole\u2011food, plant\u2011predominant eating pattern\n2) Physical activity\n3) Restorative sleep\n4) Stress management\n5) Avoidance of risky substances\n6) Positive social connections",
-      "Tag": "ACLM-Core"
-    },
-    {
-      "Front": "What are Intensive Therapeutic Lifestyle Change (ITLC) programs?",
-      "Back": "Multimodal, team\u2011based treatment programs that encourage dramatic changes in daily routine across diet, physical activity, sleep, and stress; typically group\u2011based visits, 60\u2011min sessions, 1\u20133\u00d7/week for 8\u201318 weeks (or shorter immersion). Evidence\u2011based programs include Pritikin, Ornish, and CHIP/Pivio.",
-      "Tag": "ACLM-Core"
-    },
-    {
-      "Front": "Name the five core competency categories for prescribing lifestyle medicine (JAMA 2010).",
-      "Back": "1) Leadership\n2) Knowledge\n3) Assessment skills\n4) Management skills\n5) Use of office & community support systems",
-      "Tag": "ACLM-Core"
-    },
-    {
-      "Front": "Give 2 examples of actions under the Leadership competency.",
-      "Back": "Examples: Promote healthy behaviors as foundational to medical care; lead by example (personal healthy behaviors); create environments that support healthy behaviors at school, work, and home.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Give 3 examples of actions under the Knowledge competency.",
-      "Back": "Know the evidence that specific lifestyle changes affect health outcomes (e.g., smoking cessation and lung disease/cancer; exercise and breast cancer; fitness and CVD outcomes; plant\u2011based dietary patterns and BP/lipids/cancer). Know how engagement with patients/families affects behavior.",
-      "Tag": "General"
-    },
-    {
-      "Front": "What are key Assessment skills in Lifestyle Medicine?",
-      "Back": "Assess biopsychosocial predispositions to behaviors and outcomes; assess readiness/willingness/ability to change (stages of change); take a lifestyle\u2011focused history/exam including lifestyle vital signs (tobacco, alcohol, diet, activity, BMI, stress, sleep, emotional well\u2011being); order/interpret tests to screen/diagnose/monitor lifestyle\u2011related disease.",
-      "Tag": "General"
-    },
-    {
-      "Front": "What are examples of Management skills in LM?",
-      "Back": "Use nationally recognized practice guidelines; collaborate within interdisciplinary teams; co\u2011create prescriptions, SMART goals, and follow\u2011ups; track outcomes and adjust plans; integrate behavior\u2011change techniques and referrals to community programs.",
-      "Tag": "General"
-    },
-    {
-      "Front": "What does \u2018Use of office & community support systems\u2019 entail?",
-      "Back": "Integrate systems that support behavior change: EMR prompts/vital signs, care pathways, group visits, health coaching, dietitian partnerships, and links to community resources (e.g., cooking classes, walking groups).",
-      "Tag": "General"
-    },
-    {
-      "Front": "Define disease reversal (per the manual).",
-      "Back": "All laboratory markers or diagnostic tests of a disease are within normal range, without current use of any medications, and with no present signs or symptoms of disease.",
-      "Tag": "ACLM-Core"
-    },
-    {
-      "Front": "How is disease \u2018control\u2019 different from \u2018reversal\u2019?",
-      "Back": "Control = improvement to accepted standard levels but without complete normalization; may occur with or without medications/interventions. Reversal = normalization without meds and no signs/symptoms.",
-      "Tag": "ACLM-Core"
-    },
-    {
-      "Front": "Define disease remission.",
-      "Back": "Disappearance of the signs and symptoms of disease (can be temporary or permanent).",
-      "Tag": "General"
-    },
-    {
-      "Front": "Define a whole\u2011food, plant\u2011predominant dietary pattern.",
-      "Back": "Mostly foods from plants (whole grains, vegetables, fruits, beans/legumes) with little to no animal products (dairy, meat, eggs).",
-      "Tag": "General"
-    },
-    {
-      "Front": "Define Planetary Health (manual glossary).",
-      "Back": "A solutions\u2011oriented, transdisciplinary field and social movement focused on addressing impacts of human disruptions to Earth\u2019s systems on human health and all life on Earth.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Which LM prescriptions support both personal and planetary health? Name examples.",
-      "Back": "Plant\u2011predominant diet reduces carbon/environmental footprint and provides antioxidants; physical activity as active transport lowers carbon footprint and bolsters immunity; stress management for climate anxiety/trauma; social connection for resilience; restorative sleep for immunity; avoidance of toxic substances to reduce pollutant load.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Who is often (incorrectly) credited with 'Let food be thy medicine...' and what\u2019s the nuance?",
-      "Back": "The quote is often attributed to Hippocrates; best evidence indicates it\u2019s not actually his, though he advocated healthy diet and physical activity to prevent/combat disease.",
-      "Tag": "General"
-    },
-    {
-      "Front": "What did Thomas Edison famously say about the 'doctor of the future'?",
-      "Back": "He said the doctor would \u2018interest his patients in the care of the human frame, in diet, and in the cause and prevention of disease.\u2019",
-      "Tag": "General"
-    },
-    {
-      "Front": "What was the Pritikin Longevity Center known for (1970s)?",
-      "Back": "A residential program using nutrition, exercise, and education to treat and reverse heart disease.",
-      "Tag": "General"
-    },
-    {
-      "Front": "What did the John McDougall Program emphasize (1970s)?",
-      "Back": "Unlimited whole\u2011food, plant\u2011based diet, stress reduction, and exercise to treat/reverse disease.",
-      "Tag": "General"
-    },
-    {
-      "Front": "What was shown in the Ornish Lifestyle Heart Trial (1980s)?",
-      "Back": "Regression of coronary artery stenosis at 1 year and continued improvement at 5 years using low\u2011fat vegetarian diet, stress management, exercise, and smoking cessation in small\u2011group settings emphasizing positive psychology/connectedness.",
-      "Tag": "ACLM-Core"
-    },
-    {
-      "Front": "What long\u2011term work did Caldwell Esselstyn lead at Cleveland Clinic (1990s)?",
-      "Back": "A >20\u2011year longitudinal study on arresting/reversing heart disease in critically ill patients.",
-      "Tag": "General"
-    },
-    {
-      "Front": "What is CHIP (now Pivio)?",
-      "Back": "An outpatient ITLC program promoting a whole\u2011food, plant\u2011based diet and exercise to prevent, treat, and reverse lifestyle\u2011related chronic disease.",
-      "Tag": "General"
-    },
-    {
-      "Front": "What did the WHO (1990) report on diet and chronic disease address?",
-      "Back": "Links between poor diet quality/excess calories and chronic disease; included nutrient guidance on fats, proteins, carbohydrates, and salt.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Who authored the first comprehensive Lifestyle Medicine text (1990s)?",
-      "Back": "James Rippe authored a comprehensive medical text focused on Lifestyle Medicine.",
-      "Tag": "General"
-    },
-    {
-      "Front": "When was ACLM founded and by whom?",
-      "Back": "Founded in early 2004 by John Kelly, MD, MPH (Loma Linda University), with a small group of providers.",
-      "Tag": "ACLM-Core"
-    },
-    {
-      "Front": "How large is ACLM (as of 2023)?",
-      "Back": "More than 10,000 members and rapidly expanding.",
-      "Tag": "ACLM-Core"
-    },
-    {
-      "Front": "What is ABLM and when was it organized?",
-      "Back": "American Board of Lifestyle Medicine (ABLM), organized in 2016 to develop a credible LM certification exam process.",
-      "Tag": "ACLM-Core"
-    },
-    {
-      "Front": "What is IBLM and how does it relate to ABLM?",
-      "Back": "International Board of Lifestyle Medicine (IBLM), organized in 2016 to provide an international certification exam consistent with ABLM to ensure global standardization.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Distinguish Lifestyle Medicine vs Allopathic (Conventional) Medicine.",
-      "Back": "Allopathic medicine emphasizes diagnosing/treating disease with conventional evidence\u2011based measures (drugs/surgery). Lifestyle Medicine uses therapeutic lifestyle interventions as a primary modality; lifestyle approaches are often included in conventional guidelines as first\u2011line for chronic disease.",
-      "Tag": "ACLM-Core"
-    },
-    {
-      "Front": "What is Preventive Medicine, and how does it overlap with LM?",
-      "Back": "Promotes preventive health to improve well\u2011being and prevent disease/disability/death at individual and population levels; many public health recommendations (exercise, dietary pattern, substance exposure) overlap with LM pillars.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Define Integrative Medicine (per table) in contrast to LM.",
-      "Back": "Brings conventional and complementary approaches together in a coordinated way; emphasizes multimodal interventions and treating the whole person; may utilize LM domains but differs in scope/approach.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Define Mind\u2011Body Medicine in contrast to LM.",
-      "Back": "Grounded in the mind\u2011body connection and self\u2011responsibility; utilizes practices like relaxation, imagery, meditation, yoga, biofeedback; overlaps with LM but is a distinct focus.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Define Functional Medicine in contrast to LM.",
-      "Back": "Individualized, patient\u2011centered approach focused on underlying causes using detailed genetic/biochemical/lifestyle data to direct personalized treatment; may use LM domains but differs in framework.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Define Complementary & Alternative Medicine (CAM) in contrast to LM.",
-      "Back": "Non\u2011mainstream approaches; \u2018complementary\u2019 when used with conventional care, \u2018alternative\u2019 when used in place of it; may use LM domains but differs in evidence pathways and scope.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Vignette: A 55\u2011year\u2011old with new T2D asks for \u2018natural options first.\u2019 What aligns with Lifestyle Medicine\u2019s role?",
-      "Back": "Offer an LM\u2011first plan (dietary pattern change, physical activity, sleep, stress, substance avoidance, social support) with close follow\u2011up, while integrating guideline\u2011based monitoring; add medications as adjuncts if needed.",
-      "Tag": "Vignette"
-    },
-    {
-      "Front": "Vignette: Clinic wants to \u2018do LM.\u2019 First step to align team messages?",
-      "Back": "Hold an interdisciplinary meeting (physician, RD, PT/coach, etc.) to agree on LM pillars and specific counseling content (e.g., shared nutrition framework) before launching services.",
-      "Tag": "Vignette"
-    },
-    {
-      "Front": "Vignette: You\u2019re designing LM workflow. Which vital signs/check\u2011ins belong at every visit?",
-      "Back": "Brief lifestyle \u2018vital signs\u2019: tobacco/alcohol use, dietary pattern, physical activity, BMI/weight, sleep, stress/emotional well\u2011being; with EMR prompts and referrals as needed.",
-      "Tag": "Vignette"
-    },
-    {
-      "Front": "Vignette: Your hospital asks for a program that catalyzes rapid change for severe cardiometabolic disease. Best LM\u2011aligned option?",
-      "Back": "Implement or refer to an ITLC program (e.g., Ornish/Pritikin/CHIP), then transition to maintenance/support phases.",
-      "Tag": "Vignette"
-    },
-    {
-      "Front": "Why is \u2018lifestyle\u2011first\u2019 prioritized in chronic lifestyle\u2011related disease?",
-      "Back": "Because evidence shows intensive lifestyle change can prevent, treat, and often reverse disease, with medications as adjuncts when appropriate.",
-      "Tag": "ACLM-Core"
-    },
-    {
-      "Front": "Name 3 system\u2011level supports that enhance LM delivery.",
-      "Back": "Group visits; EMR prompts/templates for LM vital signs; partnerships with community resources (e.g., cooking classes, walking groups).",
-      "Tag": "General"
-    },
-    {
-      "Front": "What is meant by \u2018whole\u2011person\u2019 in LM?",
-      "Back": "Plans integrate multiple domains (nutrition, activity, sleep, stress, social connection, substance avoidance) tailored to biopsychosocial context.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Leadership competency: give 3 ways clinicians can lead beyond the clinic.",
-      "Back": "Give grand rounds/community talks; advocate to policymakers for environments that support healthy behaviors; model healthy personal behaviors.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Assessment competency: what is meant by assessing \u2018readiness, willingness, and ability\u2019 to change?",
-      "Back": "Identify stage of change and practical barriers/facilitators; co\u2011create goals appropriate to current stage and capacity.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Management competency: why use nationally recognized guidelines in LM?",
-      "Back": "They anchor prescriptions to evidence\u2011based targets and safety thresholds while LM provides the therapeutic lifestyle framework.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Systems competency: why are group visits powerful in LM?",
-      "Back": "They increase access, peer support, and outcomes; allow longer education + brief 1:1 time; and improve satisfaction for patients/providers.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Name at least 5 ACLM presidents from early years to recent.",
-      "Back": "Examples: John Kelly, Marc Braman, Wayne Dysinger, Liana Lianov, David Katz, George Guthrie, Dexter Shurney, Cate Collings, Beth Frates.",
-      "Tag": "General"
-    },
-    {
-      "Front": "What is the role of ABLM/IBLM in LM certification?",
-      "Back": "They provide standardized exams (ABLM US; IBLM international) to ensure core LM knowledge and skills.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Planetary: How does diet pillar contribute to planetary health?",
-      "Back": "Plant\u2011predominant dietary patterns reduce personal carbon/environmental footprints and provide antioxidants against pollutant\u2011related oxidative stress.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Planetary: How does the physical activity pillar support the planet?",
-      "Back": "Active transport (walking/cycling) reduces carbon footprint and supports immune health.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Planetary: How does \u2018avoidance of risky substances\u2019 relate to planetary health?",
-      "Back": "Reduces toxic exposures and overall pollutant load at an individual level.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Planetary: How can stress management & social connection help communities?",
-      "Back": "They address climate\u2011related anxiety/trauma and build resilience and mutual support structures.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Planetary: How does restorative sleep fit in?",
-      "Back": "Supports immune function and overall resilience, enabling sustained engagement in healthy/planet\u2011friendly behaviors.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Which field: \u2018coordinated use of conventional and complementary approaches; multimodal; whole\u2011person\u2019?",
-      "Back": "Integrative Medicine.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Which field: \u2018focus on underlying causes using detailed genetic/biochemical/lifestyle data to direct personalized plans\u2019?",
-      "Back": "Functional Medicine.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Which field: \u2018mind\u2011body interconnection; practices include relaxation, imagery, meditation, yoga, biofeedback\u2019?",
-      "Back": "Mind\u2011Body Medicine.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Which field: \u2018population\u2011based prevention; immunizations, screening, bioterrorism preparedness\u2019?",
-      "Back": "Preventive/Allopathic public health focus (not LM per se).",
-      "Tag": "General"
-    },
-    {
-      "Front": "True or False: Lifestyle Medicine is primarily the promotion of vegetarianism as a cure for disease.",
-      "Back": "False. LM is evidence\u2011based therapeutic lifestyle interventions across multiple domains; medications/supplements are adjuncts as needed.",
-      "Tag": "ACLM-Core"
-    },
-    {
-      "Front": "True or False: \u2018There are few rigorous studies showing lifestyle change can treat or reverse disease.\u2019",
-      "Back": "False. Decades of rigorous studies show intensive lifestyle changes can prevent, treat, and often reverse disease.",
-      "Tag": "ACLM-Core"
-    },
-    {
-      "Front": "List 3 components of an LM office/community support system.",
-      "Back": "EMR prompts & templates; group visits; partnerships with RDs, health coaches, community programs.",
-      "Tag": "General"
-    },
-    {
-      "Front": "Give examples of positive social connections as an LM target.",
-      "Back": "Family engagement, peer groups, group classes, community walking or cooking programs.",
-      "Tag": "General"
-    },
-    {
-      "Front": "What is the aim of LM becoming the \u2018foundation of healthcare\u2019?",
-      "Back": "To integrate lifestyle\u2011first principles into all care pathways while collaborating with other specialties.",
-      "Tag": "General"
-    }
+
+    {"Front":"Lifestyle Medicine—give the ACLM definition used in this manual (include the six pillars).","Back":"A medical specialty using therapeutic lifestyle interventions as a primary modality to treat chronic conditions; clinicians apply evidence-based, whole-person, prescriptive lifestyle change to treat and, when intensive, often reverse disease. The six pillars: whole-food, plant-predominant eating; physical activity; restorative sleep; stress management; avoidance of risky substances; positive social connection.","Chapter":"Ch1 – Foundations","Section":"Obj1: Definitions (ACLM)","Tags":["Objective1","Definition","Six-Pillars","High-Yield"]},
+
+    {"Front":"What clarifying note does the chapter add about a whole-food plant-based dietary pattern?","Back":"It consists mostly of foods from plants (whole grains, vegetables, fruits, beans, legumes) with little to no animal products (dairy, meat, eggs).","Chapter":"Ch1 – Foundations","Section":"Obj1: Definitions (Diet Note)","Tags":["Objective1","Diet","Plant-Based"]},
+
+    {"Front":"Exam recall—state the 2018 LM Core Competencies one-liner about what LM leverages.","Back":"LM leverages a whole-food plant-based dietary pattern, physical activity, sleep, emotional well-being, and avoiding risky substances to prevent, treat, and reverse lifestyle-related diseases.","Chapter":"Ch1 – Foundations","Section":"Obj1: Definitions (2018 LMCC)","Tags":["Objective1","Core-Competencies","High-Yield"]},
+
+    {"Front":"How does Egger’s text define Lifestyle Medicine (clinical emphasis)?","Back":"Application of medical, behavioral, motivational, and environmental principles to manage lifestyle-related problems in clinic; teaching self-care and self-management is central.","Chapter":"Ch1 – Foundations","Section":"Obj1: Definitions (Egger)","Tags":["Objective1","Definition"]},
+
+    {"Front":"Vignette—You’re proposing an ITLC program. What are the **typical visit cadence and duration** and possible **residential** options?","Back":"Outpatient visits ~60 minutes, 1–3×/week for 8–18 weeks. Residential programs ~7–21 days; immersion programs 3–10 days.","Chapter":"Ch1 – Foundations","Section":"Obj1: ITLC Structure","Tags":["Objective1","ITLC","Operations"]},
+
+    {"Front":"Name three **published** ITLC programs the chapter lists.","Back":"Pritikin; Ornish; Diehl CHIP (now Pivio).","Chapter":"Ch1 – Foundations","Section":"Obj1: ITLC Programs","Tags":["Objective1","ITLC","Programs"]},
+
+    {"Front":"Induction–maintenance model—what role do ITLC programs play according to the chapter?","Back":"Provide an essential **induction phase** enabling dramatic lifestyle change and firsthand health improvements, transforming patient beliefs; ideally precedes maintenance/support phases.","Chapter":"Ch1 – Foundations","Section":"Obj1: ITLC Rationale","Tags":["Objective1","Behavior-Change"]},
+
+    {"Front":"Timeline—list four historical LM milestones highlighted (beyond Hippocrates).","Back":"Pritikin Center (1970s); McDougall Program (1970s); Ornish Lifestyle Heart Trial (1980s); Esselstyn long-term CVD reversal cohort (1990s); CHIP/Pivio (1990s); WHO 1990 diet report; first comprehensive LM text by Rippe (1990s).","Chapter":"Ch1 – Foundations","Section":"Obj1: History","Tags":["Objective1","History"]},
+
+    {"Front":"ABLM and IBLM—what happened in 2016 and why does it matter for exams?","Back":"ABLM and IBLM were organized to provide credible certification exams; IBLM aligns with ABLM content for global standardization and now runs exams worldwide.","Chapter":"Ch1 – Foundations","Section":"Obj1: Boards (ABLM/IBLM)","Tags":["Objective1","Certification"]},
+
+    {"Front":"2010 JAMA ‘Physician competencies for prescribing LM’—why is it called ‘landmark’ here?","Back":"First description of the competencies needed to practice primary-care LM; developed by a multidisciplinary panel (ACPM + ACLM).","Chapter":"Ch1 – Foundations","Section":"Obj2: Provenance","Tags":["Objective2","JAMA","Competencies"]},
+
+    {"Front":"Core competencies—**Leadership** domain: cite three exam-worthy actions.","Back":"Promote healthy behaviors as foundational (e.g., grand rounds/community advocacy); model healthy personal behaviors; create supportive environments at school/work/home.","Chapter":"Ch1 – Foundations","Section":"Obj2: Competencies – Leadership","Tags":["Objective2","Leadership"]},
+
+    {"Front":"Core competencies—**Knowledge** domain: list four content areas you must ‘know.’","Back":"Smoking cessation effects; exercise and breast cancer occurrence/recurrence; fitness and MI/stroke survival; plant-based diet effects (BP, lipids, prostate cancer regression).","Chapter":"Ch1 – Foundations","Section":"Obj2: Competencies – Knowledge","Tags":["Objective2","Knowledge"]},
+
+    {"Front":"Core competencies—**Assessment** domain: what are ‘lifestyle vital signs’ you should document?","Back":"Tobacco use; alcohol consumption; dietary pattern; physical activity; BMI; stress level; sleep; emotional well-being.","Chapter":"Ch1 – Foundations","Section":"Obj2: Competencies – Assessment","Tags":["Objective2","Assessment","Vitals"]},
+
+    {"Front":"Core competencies—**Management** domain: list four skills called out.","Back":"Use national guidelines; build effective relationships and use evidence-based counseling with follow-up; co-create specific written action plans (lifestyle prescriptions); refer to other professionals and programs as needed.","Chapter":"Ch1 – Foundations","Section":"Obj2: Competencies – Management","Tags":["Objective2","Management","Counseling"]},
+
+    {"Front":"Core competencies—**Office & community support**: name three system-level expectations.","Back":"Interdisciplinary team practice; office systems/EMR/decision support to flag at-risk behaviors; measure processes/outcomes; leverage community resources, including induction-phase programs.","Chapter":"Ch1 – Foundations","Section":"Obj2: Competencies – Systems","Tags":["Objective2","Quality","Team-Based Care"]},
+
+    {"Front":"LM vs other fields—state the chapter’s **distinctive** stance that separates LM in practice.","Back":"LM prescribes lifestyle change as **first-line and most important therapy** for treatment and reversal; meds/other modalities are added as needed.","Chapter":"Ch1 – Foundations","Section":"Obj3: Distinction","Tags":["Objective3","Compare/Contrast","High-Yield"]},
+
+    {"Front":"List the **six LM elements** the chapter treats as intervention modalities.","Back":"Plant-predominant diet; physical activity; stress management & emotional wellness; sleep; smoking cessation/avoid risky substances; positive psychology & connectedness.","Chapter":"Ch1 – Foundations","Section":"Obj3: Elements","Tags":["Objective3","Six-Pillars"]},
+
+    {"Front":"Table thinking—how does LM overlap with integrative, preventive, mind-body, functional, and CAM according to the chapter?","Back":"All may incorporate lifestyle domains; LM is positioned as the **foundation** and first-line therapy; related fields share philosophies but clinical application varies widely by clinician/context.","Chapter":"Ch1 – Foundations","Section":"Obj3: Overlap & Table 1.1","Tags":["Objective3","Overlap","Table"]},
+
+    {"Front":"Disease reversal—what exact definition does this manual adopt?","Back":"All labs/diagnostics in normal range **without current medications** and **no current signs/symptoms** of disease.","Chapter":"Ch1 – Foundations","Section":"Obj3: Notes on Disease Reversal","Tags":["Objective3","Definition","Reversal"]},
+
+    {"Front":"Vignette—patient asks if ‘controlled’ diabetes equals reversal. How does the manual distinguish **control** vs **reversal**?","Back":"Control: labs improved to accepted levels, not fully normalized and/or may require meds/interventions. Reversal: normalization **off meds** with no signs/symptoms.","Chapter":"Ch1 – Foundations","Section":"Obj3: Reversal vs Control","Tags":["Objective3","Counseling"]},
+
+    {"Front":"Why prioritize lifestyle?—state the chapter’s first sentence under Objective 4.","Back":"Lifestyle practices/health habits are the **most important determinants** of positive health outcomes; improving unhealthy behaviors is foundational to prevention and medical care.","Chapter":"Ch1 – Foundations","Section":"Obj4: Thesis","Tags":["Objective4","Determinants"]},
+
+    {"Front":"Population burden—what share of **premature deaths** is attributable to three behaviors, and which ones?","Back":"~40% attributable to tobacco (18.1%), poor diet & physical inactivity (16.6%), and alcohol (2.5%).","Chapter":"Ch1 – Foundations","Section":"Obj4: Mortality Attribution","Tags":["Objective4","Epi","High-Yield"]},
+
+    {"Front":"Only **what percent** of adults had all four healthy behaviors in BRFSS data? List the four.","Back":"Only **3%**. Behaviors: non-smoking, BMI <25, ≥5 servings fruits/vegetables/day, regular physical activity.","Chapter":"Ch1 – Foundations","Section":"Obj4: BRFSS Snapshot","Tags":["Objective4","BRFSS","Numbers"]},
+
+    {"Front":"Quick stats—what fractions does the chapter give for smoking, diet, and PA shortfalls?","Back":"~1 in 7 still smoke; ~3 in 4 have low fruit/veg intake; ~4 in 5 don’t get enough physical activity.","Chapter":"Ch1 – Foundations","Section":"Obj4: BRFSS Details","Tags":["Objective4","BRFSS"]},
+
+    {"Front":"Determinants—name four non-behavioral determinants discussed that shape outcomes.","Back":"Adverse childhood events; genetics/epigenetics; health literacy; local environment (pollutants, air, secondhand smoke, water, food deserts, disasters); socioeconomic status; disparities (care quality, access, trust, language).","Chapter":"Ch1 – Foundations","Section":"Obj4: Determinants","Tags":["Objective4","Determinants","Equity"]},
+
+    {"Front":"INTERHEART—what nine risk factors drove >90% of first-MI risk?","Back":"Smoking, lipids, hypertension, diabetes, obesity, diet pattern, physical inactivity, alcohol, psychosocial factors; five (smoking, lipids, HTN, DM, obesity) accounted for ~80% PAR.","Chapter":"Ch1 – Foundations","Section":"Obj4: INTERHEART","Tags":["Objective4","Cardio","Landmark"]},
+
+    {"Front":"INTERSTROKE—what ten risk factors accounted for ~90% of stroke risk?","Back":"Hypertension, current smoking, abdominal obesity, unhealthy diet, physical inactivity, diabetes, alcohol, psychological stress, depression, cardiac causes, abnormal lipids.","Chapter":"Ch1 – Foundations","Section":"Obj4: INTERSTROKE","Tags":["Objective4","Neuro","Landmark"]},
+
+    {"Front":"Chicago Heart Association Project—what two economic outcomes for low-risk adults?","Back":"Men at low risk: <⅔ total charges (−$1,615 vs controls); Women at low risk: <½ total charges (−$1,885).","Chapter":"Ch1 – Foundations","Section":"Obj4: Chicago Project","Tags":["Objective4","Costs"]},
+
+    {"Front":"Table 1.3—match six modifiable changes to overall CHD risk reduction ranges (ballpark).","Back":"↓TC 50% → ~50% CHD reduction; −6 mmHg DBP → ~16% CHD (and ~42% stroke) reduction; smoking cessation → ~50% lower sudden MI; ideal weight/waist → 35–55%; ≥150 min/wk moderate exercise → 35–55%; ≥5 fruit/veg/day → 20–25%.","Chapter":"Ch1 – Foundations","Section":"Obj4: Table 1.3","Tags":["Objective4","Prevention","Numbers"]},
+
+    {"Front":"Framingham lifetime risk—contrast optimal risk vs ≥2 risk factors at age 50.","Back":"Men: 5% vs 69% ASCVD lifetime risk; Women: 8% vs 50%. Optimal-risk adults lived ~11+ (men) and ~8+ (women) years longer than those with ≥2 risk factors.","Chapter":"Ch1 – Foundations","Section":"Obj4: Framingham","Tags":["Objective4","ASCVD","Numbers"]},
+
+    {"Front":"MRFIT—what gradients in outcomes did ‘low-risk’ status confer?","Back":"CVD mortality 73–85% lower; total mortality 40–60% lower; life expectancy +6–10 years.","Chapter":"Ch1 – Foundations","Section":"Obj4: MRFIT","Tags":["Objective4","Risk","Outcomes"]},
+
+    {"Front":"Nurses’ Health Study (Stampfer 2000)—which **five** low-risk factors and what relative risk when **all five** present?","Back":"Nonsmoking; BMI<25; 30 min/d moderate-vigorous exercise; moderate alcohol (5–30 g/d); healthy diet score (upper 40%). All five → RR ~0.17 (≈82% lower CHD risk).","Chapter":"Ch1 – Foundations","Section":"Obj4: NHS – 5 Factors","Tags":["Objective4","CHD","Numbers"]},
+
+    {"Front":"Healthy- vs unhealthy-plant patterns across three cohorts—what direction of CHD risk?","Back":"Healthy plant pattern → lower CHD (HR ~0.75 extreme deciles); Unhealthy plant pattern → higher CHD (HR ~1.32).","Chapter":"Ch1 – Foundations","Section":"Obj4: Plant Patterns & CHD","Tags":["Objective4","Diet","Epi"]},
+
+    {"Front":"Adventist Health Study—how did mortality compare for vegetarians vs non-vegetarians overall?","Back":"Vegetarian diets showed lower all-cause mortality (adj HR ~0.88). Pescovegetarian ~0.81, vegan ~0.85, lacto-ovo ~0.91, semi-veg ~0.92 vs non-vegetarian.","Chapter":"Ch1 – Foundations","Section":"Obj4: Adventist Health","Tags":["Objective4","Mortality","Diet"]},
+
+    {"Front":"Adventist Health—how did a vegan pattern relate to BMI and odds of DM/HTN/METs?","Back":"Lower BMI (≈23.6 vs 28.8 kg/m²) and lower odds of diabetes (OR ~0.51), hypertension (OR ~0.37), metabolic syndrome (OR ~0.44) vs non-vegetarian.","Chapter":"Ch1 – Foundations","Section":"Obj4: Adventist – BMI & ORs","Tags":["Objective4","Numbers"]},
+
+    {"Front":"Lyon Diet Heart (secondary prevention)—what diet and what durable outcome?","Back":"Mediterranean diet vs AHA Step 1; sustained protection up to 4 years after first MI; improved survival curves.","Chapter":"Ch1 – Foundations","Section":"Obj4: Lyon Diet Heart","Tags":["Objective4","Secondary Prevention"]},
+
+    {"Front":"Objective 5 headline—state the three **tenets** of LM the chapter advances.","Back":"(1) Decreases reliance on meds and thus side-effects; (2) Often more effective than conventional treatments for chronic disease and improves progression; (3) Offers safer control of some biomarkers than some medications.","Chapter":"Ch1 – Foundations","Section":"Obj5: Tenets","Tags":["Objective5","Principles","High-Yield"]},
+
+    {"Front":"Diabetes—what HbA1c reduction did the exercise meta-analysis show (vs many meds)?","Back":"~0.8% mean HbA1c reduction across 27 studies—comparable to many glucose-lowering medications.","Chapter":"Ch1 – Foundations","Section":"Obj5: DM – Exercise Meta-analysis","Tags":["Objective5","Diabetes","Numbers"]},
+
+    {"Front":"Diabetes—give the RCT result for plant-based diet vs ADA diet on HbA1c.","Back":"Plant-based diet improved HbA1c by ~1.23% (≈15% relative reduction), superior to ADA diet and most glucose-lowering meds.","Chapter":"Ch1 – Foundations","Section":"Obj5: DM – Plant-Based RCT","Tags":["Objective5","Diabetes","Diet"]},
+
+    {"Front":"Diabetes—what rapid medication-sparing result did the chapter cite with plant-based care?","Back":">90% of patients could reduce or discontinue glucose-lowering meds within **7 days** while maintaining/improving control in one series.","Chapter":"Ch1 – Foundations","Section":"Obj5: DM – Med De-escalation","Tags":["Objective5","Diabetes","Medication"]},
+
+    {"Front":"Diabetes—what does the chapter say about **remission** feasibility and the roles of diet vs exercise?","Back":"Remission using lifestyle as primary treatment is feasible; dietary pattern is the key driver (remission can occur without increased exercise), though PA improves insulin resistance and beta-cell function.","Chapter":"Ch1 – Foundations","Section":"Obj5: DM – Remission","Tags":["Objective5","Diabetes","Remission"]},
+
+    {"Front":"Cardiovascular disease—name three LM findings the chapter stacks together.","Back":"Portfolio/very-low-sat-fat diet can match low-dose statin LDL lowering without statin side-effects; DPP lifestyle outperformed metformin for prevention; exercise was ~26% more effective than PTCA in CAD in one trial.","Chapter":"Ch1 – Foundations","Section":"Obj5: CVD – Comparative","Tags":["Objective5","CVD","Comparative"]},
+
+    {"Front":"Ornish + Esselstyn—what core claim does the chapter make about CVD?","Back":"Intensive LM can **halt or reverse** atherosclerosis; whole-food plant-based eating tied to ~25% lower incident CVD and favorable endothelial/oxidation/inflammation effects via polyphenols.","Chapter":"Ch1 – Foundations","Section":"Obj5: CVD – Reversal","Tags":["Objective5","CVD","Reversal"]},
+
+    {"Front":"Post-MI behavior change—quantify benefits of cessation + diet/exercise adherence from the cited cohort.","Back":"Smoking cessation → ~43% lower MI risk; adherence to healthy diet & exercise → ~48% lower MI risk; non-adherence + smoking → ~3.8× increased MI risk.","Chapter":"Ch1 – Foundations","Section":"Obj5: CVD – Secondary Prevention","Tags":["Objective5","CVD","Numbers"]},
+
+    {"Front":"Objective 6—where does LM sit in treatment algorithms across the lifespan?","Back":"As **first-line, foundational therapy** for chronic, lifestyle-related disease; deploy across prevention, treatment, and—when feasible—reversal; integrate induction-phase programs when needed and support long-term maintenance.","Chapter":"Ch1 – Foundations","Section":"Obj6: Priority in Algorithms","Tags":["Objective6","Therapeutic Priority"]},
+
+    {"Front":"US health system paradox—how does the chapter contrast US spending vs performance?","Back":"US spends ~17% of GDP on healthcare but has the worst composite performance among peers in the comparative chart/table.","Chapter":"Ch1 – Foundations","Section":"Obj6/7: System Context","Tags":["Objective6","Objective7","Health-Systems"]},
+
+    {"Front":"Objective 7—give two headline **cost** figures the chapter cites for obesity and diabetes.","Back":"Obesity ≈ $147–173B/yr; Type 2 diabetes ≈ $327B (medical + productivity).","Chapter":"Ch1 – Foundations","Section":"Obj7: Costs – Obesity & DM","Tags":["Objective7","Costs","Numbers"]},
+
+    {"Front":"Fill-in-the-table—match conditions to prevalence/cost (ballpark from chapter): hyperlipidemia, CVD, prediabetes, HTN, cancer.","Back":"Hyperlipidemia ~12% (2018), ~$26.4B (2016); CVD ~48% (2016), ~$216–226B + ~$147B productivity loss; Prediabetes ~45% (2020), ~$43B; Hypertension ~45% (2020), ~$131–198B; Cancer ~1.9M new cases (2022), >$200B costs.","Chapter":"Ch1 – Foundations","Section":"Obj7: Burden Table","Tags":["Objective7","Epidemiology","Costs"]},
+
+    {"Front":"COVID-19 line—what association did the chapter cite between diet pattern and COVID-19 severity among clinicians?","Back":"Healthy dietary pattern associated with ~3.5-fold lower odds of moderate-to-severe COVID-19 in a six-country clinician sample.","Chapter":"Ch1 – Foundations","Section":"Obj7: Diet & COVID","Tags":["Objective7","COVID","Diet"]},
+
+    {"Front":"ROI—name two program-level economic outcomes supporting LM’s sustainability.","Back":"Community weight-loss program ROI ≈ $16.70 per $1 invested; CHIP workplace cohort ROI ≈ 2.1:1 at six months (savings mainly from reduced medical utilization/medications).","Chapter":"Ch1 – Foundations","Section":"Obj7/8: ROI","Tags":["Objective7","Objective8","ROI"]},
+
+    {"Front":"Objective 8—give the **Planetary Health Alliance** definition quoted.","Back":"A solutions-oriented, transdisciplinary field and social movement analyzing and addressing the impacts of human disruptions to Earth’s natural systems on human health and all life on Earth.","Chapter":"Ch1 – Foundations","Section":"Obj8: Planetary Health – Definition","Tags":["Objective8","Definition","Planetary Health"]},
+
+    {"Front":"Planetary health threats—state the two ‘threat multiplier’ messages you must remember.","Back":"(1) Accelerating climate/environmental disruptions add preventable danger to an aging, NCD-burdened population. (2) They act as ‘threat multipliers,’ undermining pillars of prevention and increasing chronic disease risk.","Chapter":"Ch1 – Foundations","Section":"Obj8: Threat Multipliers","Tags":["Objective8","Climate","NCD"]},
+
+    {"Front":"Counseling pivot—why are LM clinicians ‘uniquely positioned’ in planetary health?","Back":"LM competencies enable coaching toward **climate-healthy behaviors** that co-benefit people and planet and help communities build resilience.","Chapter":"Ch1 – Foundations","Section":"Obj8: Role of LM Clinicians","Tags":["Objective8","Counseling","Co-benefits"]},
+
+    {"Front":"Lifestyle levers with the **largest** planetary impact per chapter—name the two.","Back":"Dietary pattern and mode of transport are the major modifiable contributors to GHG emissions and other environmental degradation (per planetary boundaries framework).","Chapter":"Ch1 – Foundations","Section":"Obj8: Levers (Diet & Transport)","Tags":["Objective8","Environment","GHG"]},
+
+    {"Front":"MCQ—Which statement best reflects the manual’s definition of **disease reversal**?\nA) LDL <70 on a statin\nB) Normal labs/diagnostics on meds but asymptomatic\nC) All labs/diagnostics normalized **off meds** with no signs/symptoms\nD) A1c <7% regardless of therapy","Back":"**C** — Normalization **off medications** with no current signs/symptoms.","Chapter":"Ch1 – Foundations","Section":"Obj3: MCQ – Reversal","Tags":["Objective3","MCQ"]},
+
+    {"Front":"MCQ—Which set lists the **six pillars**?\nA) Diet, PA, sleep, stress mgmt, risky substance avoidance, social connection\nB) Diet, meds, surgery, rehab, sleep, yoga\nC) PA, hydration, supplements, CAM, hope, sun\nD) Diet, PA, meds, surgery, imaging, labs","Back":"**A** — The chapter defines six pillars exactly as in A.","Chapter":"Ch1 – Foundations","Section":"Obj1: MCQ – Pillars","Tags":["Objective1","MCQ"]},
+
+    {"Front":"MCQ—Which office practice aligns with **Office & Community Support** competency?\nA) Rely on memory for counseling\nB) Build EMR prompts for tobacco/PA/diet ‘vital signs’ and track outcomes\nC) Avoid community programs to reduce liability\nD) Counsel once; no follow-up needed","Back":"**B** — Decision-support systems and outcomes tracking are explicitly called out.","Chapter":"Ch1 – Foundations","Section":"Obj2: MCQ – Systems","Tags":["Objective2","MCQ"]},
+
+    {"Front":"MCQ—Which risk-factor bundle explained ~80% of INTERHEART’s MI PAR?\nA) Smoking, lipids, HTN, DM, obesity\nB) Genetics, air pollution, age, sex, race\nC) Sleep, stress alone\nD) Alcohol alone","Back":"**A** — Five risk factors accounted for ~80% of first-MI PAR; nine factors explained >90%.","Chapter":"Ch1 – Foundations","Section":"Obj4: MCQ – INTERHEART","Tags":["Objective4","MCQ"]},
+
+    {"Front":"MCQ—In the Nurses’ Health analysis, what was the **relative risk** of CHD with **all five** low-risk factors vs none?\nA) 1.32\nB) 0.92\nC) 0.75\nD) ~0.17","Back":"**D** — ≈0.17 (about 82% lower risk).","Chapter":"Ch1 – Foundations","Section":"Obj4: MCQ – NHS","Tags":["Objective4","MCQ","Numbers"]},
+
+    {"Front":"MCQ—Which statement about LM priority is **most** consistent with Objective 6?\nA) LM is optional if meds fail\nB) LM is first-line, foundational across prevention → treatment → reversal\nC) LM applies only to pediatrics\nD) LM should wait until after procedures","Back":"**B** — The chapter positions LM as the foundation and first-line therapy.","Chapter":"Ch1 – Foundations","Section":"Obj6: MCQ – Priority","Tags":["Objective6","MCQ"]},
+
+    {"Front":"MCQ—Which pair best captures planetary co-benefits emphasized in this chapter?\nA) Supplements + sauna\nB) Diet shift toward plant-predominant + active/low-carbon transport\nC) MRI + statins\nD) Yoga only","Back":"**B** — Diet and transport are the two highest-impact lifestyle levers for climate/health.","Chapter":"Ch1 – Foundations","Section":"Obj8: MCQ – Co-benefits","Tags":["Objective8","MCQ"]},
+
+    {"Front":"Vignette—55-year-old with prior NSTEMI smokes intermittently and skips rehab; asks if ‘small changes matter.’ What **data-anchored** answer from Obj5 can you give?","Back":"Yes. Smoking cessation alone cuts MI risk ~43%; adherence to healthy diet & exercise cuts MI risk ~48%; failure to do both with continued smoking raises MI risk ~3.8×.","Chapter":"Ch1 – Foundations","Section":"Obj5: Vignette – Secondary Prevention","Tags":["Objective5","Vignette","Numbers"]},
+
+    {"Front":"Vignette—New T2D, A1c 8.9%; patient prefers non-pharmacologic start. What **evidence-based** plan do you outline from Obj5?","Back":"Intensive diet and exercise: exercise alone can lower A1c ~0.8%; plant-based diet RCT lowered A1c ~1.23%; rapid med-sparing seen within **7 days** in plant-based clinical programs; close follow-up and safety labs.","Chapter":"Ch1 – Foundations","Section":"Obj5: Vignette – T2D Start","Tags":["Objective5","Vignette","Diabetes"]},
+
+    {"Front":"Vignette—Primary care start-up: What **lifestyle vital signs** and **system supports** should your clinic implement on day one?","Back":"Vitals: tobacco, alcohol, diet, PA, BMI, sleep, stress, emotional well-being. Systems: EMR prompts/registries, SBIRT/USPSTF workflows, outcomes dashboards, referral pathways to ITLC/community programs.","Chapter":"Ch1 – Foundations","Section":"Obj2: Vignette – Clinic Build","Tags":["Objective2","Vignette","Quality"]},
+
+    {"Front":"Short answer—state the chapter’s **two keys** for improving health behaviors and outcomes.","Back":"(1) A trusting provider–patient relationship; (2) Support from a multidisciplinary team, loved ones, and community.","Chapter":"Ch1 – Foundations","Section":"Obj4: Keys to Change","Tags":["Objective4","Counseling"]},
+
+    {"Front":"Short answer—give the chapter’s headline on **primary care** and lifestyle-related conditions.","Back":"~80% of lifestyle-related conditions are seen in primary care (obesity, metabolic syndrome, HTN, CVD, dyslipidemia, arthritis, diabetes, osteoporosis).","Chapter":"Ch1 – Foundations","Section":"Obj4: Primary Care Burden","Tags":["Objective4","Primary Care"]},
+
+    {"Front":"Short answer—name three **disparity drivers** the chapter lists that clinicians should address.","Back":"Local environmental conditions; lower-quality care/access; different care-seeking behaviors; linguistic barriers; lack of trust; socioeconomic status and education.","Chapter":"Ch1 – Foundations","Section":"Obj4: Disparities","Tags":["Objective4","Equity"]},
+
+    {"Front":"Short answer—what two LM-economics examples support program adoption?","Back":"DPP cost offsets via reduced non-intervention medical care; workplace/CHIP and community weight-loss programs with favorable ROI (2.1:1 and ~16.7:1).","Chapter":"Ch1 – Foundations","Section":"Obj7/8: Economics","Tags":["Objective7","ROI"]},
+
+    {"Front":"Glossary—Lifestyle Medicine (exam phrasing).","Back":"A specialty using therapeutic lifestyle change as first-line to prevent, treat, and often reverse chronic disease via six pillars (diet, PA, sleep, stress mgmt, risky substance avoidance, social connection).","Chapter":"Ch1 – Foundations","Section":"Glossary","Tags":["Glossary","Definition"]},
+
+    {"Front":"Glossary—Intensive Therapeutic Lifestyle Change (ITLC).","Back":"Structured, often group-based programs delivering frequent, multi-modal lifestyle therapy (clinic or residential/immersion) functioning as induction for dramatic change.","Chapter":"Ch1 – Foundations","Section":"Glossary","Tags":["Glossary","ITLC"]},
+
+    {"Front":"Glossary—Disease reversal vs control (one line each).","Back":"Reversal: normalized labs/diagnostics **off meds** with no signs/symptoms. Control: improved to accepted standards, not fully normalized and/or may require meds.","Chapter":"Ch1 – Foundations","Section":"Glossary","Tags":["Glossary","Reversal"]}
+
   ]
 }
