@@ -1,190 +1,65 @@
 {
-  "name": "Ch2 – Fundamentals of Health Behavior Change (ACLM)",
+  "name": "Chapter 2 – Behavior Change",
   "cards": [
-    {
-      "Front": "Health Belief Model (HBM): What does it primarily propose about why people adopt a preventive behavior?",
-      "Back": "Personal beliefs/perceptions (threat + accessible, low-risk preventive measure) mostly drive adoption of preventive behaviors.",
-      "Tags": ["HBM", "ACLM-Core", "High-Yield"]
-    },
-    {
-      "Front": "HBM: List the six key constructs.",
-      "Back": "Perceived susceptibility; perceived severity; perceived benefits; perceived barriers; cues to action; self-efficacy.",
-      "Tags": ["HBM", "High-Yield", "ACLM-Core"]
-    },
-    {
-      "Front": "Theory of Planned Behavior: What two pillars determine behavioral achievement?",
-      "Back": "Motivation (intention) and ability (behavioral control).",
-      "Tags": ["TPB", "ACLM-Core", "High-Yield"]
-    },
-    {
-      "Front": "TPB: Name the six constructs used to represent control over behavior.",
-      "Back": "Attitude; behavioral intention; subjective norms; social norms; perceived power; perceived behavioral control.",
-      "Tags": ["TPB", "Checklist", "High-Yield"]
-    },
-    {
-      "Front": "Social Learning vs Social Cognitive Theory: What extra idea does Social Cognitive Theory add?",
-      "Back": "Reciprocal determinism: behavior, personal factors, and environment influence one another.",
-      "Tags": ["SCT", "Theory", "High-Yield", "ACLM-Core"]
-    },
-    {
-      "Front": "SCT: List its major constructs.",
-      "Back": "Reciprocal determinism; behavioral capability; observational learning; reinforcement; expectations; self-efficacy.",
-      "Tags": ["SCT", "Checklist", "High-Yield"]
-    },
-    {
-      "Front": "Transtheoretical Model (TTM): Core insight about change?",
-      "Back": "Change is a non-linear process across stages; different interventions fit different stages.",
-      "Tags": ["TTM", "ACLM-Core", "High-Yield"]
-    },
-    {
-      "Front": "TTM: Name the stages (classic 6).",
-      "Back": "Precontemplation; Contemplation; Preparation; Action; Maintenance; Termination.",
-      "Tags": ["TTM", "Stages", "Checklist"]
-    },
-    {
-      "Front": "TTM: Quick stage cues — give the time horizons for Precontemplation, Contemplation, Preparation, Action, Maintenance.",
-      "Back": "Precontemplation: not in next 6 mo; Contemplation: considering within 6 mo; Preparation: intends within 1 mo; Action: <6 mo since change; Maintenance: ≥6 mo.",
-      "Tags": ["TTM", "Timing", "High-Yield"]
-    },
-    {
-      "Front": "Self-Determination Theory: The 3 basic psychological needs that drive autonomous motivation?",
-      "Back": "Autonomy, competence, relatedness.",
-      "Tags": ["SDT", "ACLM-Core", "High-Yield"]
-    },
-    {
-      "Front": "Common components across behavior models (name four).",
-      "Back": "Beliefs about risk/benefit; motivation; self-efficacy; environmental/social influence.",
-      "Tags": ["Theory", "Synthesis", "High-Yield"]
-    },
-    {
-      "Front": "SDOH: Define and list at least five examples.",
-      "Back": "Conditions in which people are born, grow, live, work, age. Examples: income, education, food security, housing, transport, neighborhood safety, environment, social support.",
-      "Tags": ["SDOH", "ACLM-Core", "High-Yield"]
-    },
-    {
-      "Front": "Nonadherence: Define and give the typical range for chronic med regimens.",
-      "Back": "Not following through with prescribed treatment; ~50–80% for chronic medication regimens.",
-      "Tags": ["Adherence", "Stats", "High-Yield", "ACLM-Core"]
-    },
-    {
-      "Front": "People-first language: Give two examples of preferred phrasing.",
-      "Back": "“A patient with diabetes” (not “a diabetic”); “a patient with obesity” (not “an obese patient”).",
-      "Tags": ["Communication", "Therapeutic-Alliance", "High-Yield", "ACLM-Core"]
-    },
-    {
-      "Front": "Motivational Interviewing (MI): The four guiding principles.",
-      "Back": "Express empathy; support self-efficacy; roll with resistance; develop discrepancy.",
-      "Tags": ["MI", "High-Yield", "ACLM-Core"]
-    },
-    {
-      "Front": "MI: OARS skills — expand the acronym.",
-      "Back": "Open questions, Affirmations, Reflections, Summaries.",
-      "Tags": ["MI", "Skills", "High-Yield"]
-    },
-    {
-      "Front": "CBT in behavior change: When is it most useful and what’s the emphasis?",
-      "Back": "Preparation, Action, Maintenance; reframing nonproductive thoughts, problem-solving, ABCDE approaches.",
-      "Tags": ["CBT", "Technique", "High-Yield"]
-    },
-    {
-      "Front": "SMART goals: Expand and give a sample phrasing.",
-      "Back": "Specific, Measurable, Achievable, Relevant, Time-bound. Example: “Walk 10 min after dinner, 3×/week, for 4 weeks.”",
-      "Tags": ["SMART", "Action-Planning", "ACLM-Core", "High-Yield"]
-    },
-    {
-      "Front": "Action planning follow-up: Name three things to do on subsequent visits.",
-      "Back": "Review progress & challenges; affirm strengths; co-create updated action plan (resources, barriers, confidence).",
-      "Tags": ["Follow-up", "Action-Planning", "Therapeutic-Alliance"]
-    },
-    {
-      "Front": "Stage-matched: What to focus on in Precontemplation?",
-      "Back": "Provide information on risks/benefits; ask autonomy-supportive open questions (e.g., “How will you know it’s time to think about change?”).",
-      "Tags": ["TTM", "Stage-Matched", "High-Yield", "ACLM-Core"]
-    },
-    {
-      "Front": "Stage-matched: Contemplation — two key tasks.",
-      "Back": "Explore pros/cons; address barriers; don’t rush to action.",
-      "Tags": ["TTM", "Stage-Matched"]
-    },
-    {
-      "Front": "Stage-matched: Preparation — list three steps.",
-      "Back": "Co-create written action plan; assess confidence; schedule follow-up.",
-      "Tags": ["TTM", "Stage-Matched", "Action-Planning"]
-    },
-    {
-      "Front": "Stage-matched: Action — common risks and supports.",
-      "Back": "High relapse vulnerability; add supports, self-monitoring, problem-solving, celebrate wins.",
-      "Tags": ["TTM", "Stage-Matched"]
-    },
-    {
-      "Front": "Stage-matched: Maintenance — two aims.",
-      "Back": "Reconnect to ‘why’ (values/vision); continue specific, clear goals to sustain behavior.",
-      "Tags": ["TTM", "Stage-Matched"]
-    },
-    {
-      "Front": "Therapeutic alliance: Expert vs Coach roles — what’s the difference?",
-      "Back": "Expert: assess/prescribe; Coach: collaborative style that elicits patient leadership and buy-in.",
-      "Tags": ["Therapeutic-Alliance", "Communication"]
-    },
-    {
-      "Front": "Confidence & Importance rulers: How do you use a score <7?",
-      "Back": "Explore what would raise it to 8–10; ask why not a lower number to elicit change talk.",
-      "Tags": ["MI", "Coaching", "High-Yield"]
-    },
-    {
-      "Front": "Vignette: A patient says, “I don’t need to change and I won’t.” Identify the stage and give a best next step.",
-      "Back": "Precontemplation. Offer information on risks/benefits; ask open, autonomy-supportive questions (no push to action).",
-      "Tags": ["Vignette", "TTM", "Stage-ID", "ACLM-Important"]
-    },
-    {
-      "Front": "Vignette: Patient plans to start walking next week; asks you to help write the plan. Stage and action?",
-      "Back": "Preparation. Co-create SMART plan; assess confidence; set follow-up.",
-      "Tags": ["Vignette", "TTM", "Action-Planning", "ACLM-Important"]
-    },
-    {
-      "Front": "Vignette: Patient quit smoking 2 months ago but is struggling with urges. Stage and one technique?",
-      "Back": "Action. Use CBT reframing and coping strategies; add supports and self-monitoring.",
-      "Tags": ["Vignette", "TTM", "CBT", "ACLM-Important"]
-    },
-    {
-      "Front": "Vignette: Patient has walked 30 min daily for 8 months and feels confident during travel. Stage and focus?",
-      "Back": "Maintenance. Reconnect to values, set sustaining goals, anticipate barriers.",
-      "Tags": ["Vignette", "TTM"]
-    },
-    {
-      "Front": "CBT: Name three common cognitive distortions you might reframe with a patient.",
-      "Back": "All-or-nothing; overgeneralization; mental filter (others: mind reading, fortune telling, magnification/minimization, personalization…).",
-      "Tags": ["CBT", "High-Yield", "Checklist"]
-    },
-    {
-      "Front": "Communication in weight discussions: name two best practices.",
-      "Back": "Ask permission; avoid shame; use MI to enhance self-efficacy; weigh in private.",
-      "Tags": ["Communication", "Weight", "Therapeutic-Alliance", "ACLM-Important"]
-    },
-    {
-      "Front": "Cues to Action (HBM): Give three examples in clinic.",
-      "Back": "Reminder messages; brief risk feedback; handouts/referrals that prompt a concrete first step.",
-      "Tags": ["HBM", "Clinic-Pearls"]
-    },
-    {
-      "Front": "Reinforcement & expectations (SCT): Clinical lever you can use?",
-      "Back": "Celebrate wins; explicitly connect behavior to valued outcomes the patient expects.",
-      "Tags": ["SCT", "Coaching", "Clinic-Pearls"]
-    },
-    {
-      "Front": "When is MI most helpful along TTM?",
-      "Back": "Precontemplation and Contemplation (to elicit change talk and resolve ambivalence).",
-      "Tags": ["MI", "TTM", "High-Yield", "ACLM-Core"]
-    },
-    {
-      "Front": "Action Plan elements (example from exercise prescription): list at least five fields to fill.",
-      "Back": "What; how much/intensity; how long; how often; with whom/where/when; support; biggest barrier; solution; confidence rating.",
-      "Tags": ["Action-Planning", "Template", "High-Yield"]
-    },
-    {
-      "Front": "Global influences on behavior (ecologic levels): list four levels beyond the individual.",
-      "Back": "Interpersonal; institutional; community; public policy.",
-      "Tags": ["Ecologic", "Systems", "ACLM-Core"]
-    }
+    {"Front":"Health Belief Model (HBM)—which six constructs does the chapter require you to assess?","Back":"Perceived susceptibility; perceived severity; perceived benefit; perceived barriers; cues to action; self-efficacy.","Chapter":"Ch2 – Behavior Change","Section":"Objective 1 – HBM Constructs","Difficulty":null,"Tags":["High-Yield","HBM","Definitions"]},
+    {"Front":"Exam stem: A patient declines screening unless they believe the test is low risk and will truly help. Which HBM constructs are driving their decision?","Back":"Perceived barriers (risk/cost) and perceived benefits (effectiveness in avoiding the threat).","Chapter":"Ch2 – Behavior Change","Section":"Objective 1 – HBM Application","Difficulty":null,"Tags":["Vignette","HBM"]},
+    {"Front":"Theory of Planned Behavior—list the six constructs and the two drivers of behavioral achievement in this chapter.","Back":"Constructs: Attitude; Behavioral intention; Subjective norms; Social norms; Perceived power; Perceived behavioral control. Achievement depends on motivation (intention) and ability (behavioral control).","Chapter":"Ch2 – Behavior Change","Section":"Objective 1 – TPB","Difficulty":null,"Tags":["High-Yield","TPB","Definitions"]},
+    {"Front":"Social Learning vs Social Cognitive—how does the chapter distinguish them, and what key SCT elements must you recall?","Back":"Social Learning: observe others → imitation, influenced by identification and rewards. Social Cognitive (evolved from SLT): reciprocal determinism (person–behavior–environment); behavioral capability; observational learning; reinforcements; expectations; self-efficacy.","Chapter":"Ch2 – Behavior Change","Section":"Objective 1 – SLT vs SCT","Difficulty":null,"Tags":["High-Yield","SCT","Compare"]},
+    {"Front":"TTM—name the five working stages with their timing rules from the text.","Back":"Precontemplation (no action in next 6 months); Contemplation (considering change within 6 months); Preparation (intends to act within 1 month); Action (<6 months performing new behavior); Maintenance (≥6 months without relapse).","Chapter":"Ch2 – Behavior Change","Section":"Objective 1 – TTM Stages","Difficulty":null,"Tags":["High-Yield","TTM","Stages"]},
+    {"Front":"TTM—when does the chapter allow ‘Termination,’ and what general guideline is mentioned?","Back":"Termination when no longer tempted to the old behavior; a general guideline is being “free” from causes of the behavior for ~5 years without relapse (contextual, sometimes omitted).","Chapter":"Ch2 – Behavior Change","Section":"Objective 1 – TTM Termination","Difficulty":null,"Tags":["TTM","Nuance"]},
+    {"Front":"Self-Determination Theory—what three psychological needs fuel autonomous motivation per the chapter?","Back":"Autonomy, competence, relatedness (autonomous motivation predicts sustained change).","Chapter":"Ch2 – Behavior Change","Section":"Objective 1 – SDT","Difficulty":null,"Tags":["High-Yield","SDT","Motivation"]},
+    {"Front":"Other behavior models—what two named in this chapter should you recognize and how do they differ from TTM?","Back":"Precaution Adoption Model: 7 linear stages from unawareness to maintenance (non-cyclical). Diffusion of Innovation: population adoption categories (innovators → laggards).","Chapter":"Ch2 – Behavior Change","Section":"Objective 1 – Other Models","Difficulty":null,"Tags":["Models","Compare"]},
+    {"Front":"Social determinants & multilevel influences—list the levels you must screen or plan for according to the chapter.","Back":"Intrapersonal; Interpersonal; Institutional; Community; Public policy (plus SDOH as the conditions of life/work/age).","Chapter":"Ch2 – Behavior Change","Section":"Objective 1 – Influences on Behavior","Difficulty":null,"Tags":["High-Yield","SDOH","Systems"]},
+
+    {"Front":"Stage-matching 101—according to the chapter, which technique aligns best with earlier vs later TTM stages?","Back":"MI is most helpful in **precontemplation/contemplation**; CBT is most useful in **preparation/action/maintenance**.","Chapter":"Ch2 – Behavior Change","Section":"Objective 2 – Stage-Matched Techniques","Difficulty":null,"Tags":["High-Yield","TTM","MI","CBT"]},
+    {"Front":"Vignette (stage ID): No intent in 6 months, but open to talk. Which stage? Initial approach?","Back":"**Precontemplation**; use MI (open inquiry, reflections, empathy) to explore ambivalence—avoid premature directives.","Chapter":"Ch2 – Behavior Change","Section":"Objective 2 – Stage Identification","Difficulty":null,"Tags":["Vignette","TTM","MI"]},
+    {"Front":"Vignette (stage ID): Plans to start within 1 month and bought shoes. Which stage? First tools?","Back":"**Preparation**; co-create written action plan with SMART and learning goals; consider CBT for problem-solving barriers.","Chapter":"Ch2 – Behavior Change","Section":"Objective 2 – Stage Identification","Difficulty":null,"Tags":["Vignette","TTM","SMART"]},
+
+    {"Front":"Alliance skills—what are the three headline skills the chapter asks you to demonstrate in visits?","Back":"Open inquiry (what/how/tell-me-more prompts), reflections (simple, amplified, double-sided), empathy (explicit, warm presence).","Chapter":"Ch2 – Behavior Change","Section":"Objective 7 – Core Skills","Difficulty":null,"Tags":["High-Yield","Skills","Alliance"]},
+    {"Front":"Write three exam-ready open-ended prompts from the chapter’s guidance.","Back":"“What makes this change important to you?” • “How might you adjust your schedule to make that activity possible?” • “When do you feel your best?”","Chapter":"Ch2 – Behavior Change","Section":"Objective 7 – Open Inquiry","Difficulty":null,"Tags":["Skills","PromptBank"]},
+    {"Front":"Reflections—define simple, amplified, and double-sided, with one example each (as in the text).","Back":"Simple: paraphrase without opinion (e.g., “You stayed on schedule with your new medication every day.”). Amplified: accurate but exaggerated to evoke change talk (e.g., “You’ve never been able to exercise at all.”). Double-sided: acknowledge both sides (e.g., “Healthy weight matters to you, and summer family events with ice cream matter too.”).","Chapter":"Ch2 – Behavior Change","Section":"Objective 7 – Reflections Types","Difficulty":null,"Tags":["Skills","MI","Reflections"]},
+
+    {"Front":"SMART goals—what does SMART stand for **as printed** and what companion does the chapter suggest?","Back":"Specific, Measurable, Achievable, Relevant, Time-bound; pair SMART with **learning goals** to build skills for the behavior.","Chapter":"Ch2 – Behavior Change","Section":"Objective 4 – SMART + Learning","Difficulty":null,"Tags":["High-Yield","SMART","Planning"]},
+    {"Front":"Readiness/Importance/Confidence scales—what numeric cue predicts goal success and how do you coach sub-threshold scores?","Back":"≥7 predicts higher likelihood of success; if <7, explore what would raise it to 8–10 and why they chose the higher current number (elicits change talk and strengths).","Chapter":"Ch2 – Behavior Change","Section":"Objective 4 – Scales","Difficulty":null,"Tags":["Coaching","Assessment"]},
+    {"Front":"Patient summary at the end of goal-setting—what are you asking them to state explicitly per the figure section?","Back":"Summarize their goals, needed resources, and how they’ll stay focused; then formalize as SMART (and learning) goals.","Chapter":"Ch2 – Behavior Change","Section":"Objective 4 – Close the Loop","Difficulty":null,"Tags":["Workflow","SMART"]},
+
+    {"Front":"Motivational Interviewing—give the chapter’s **definition** verbatim-concept and list the 4 principles.","Back":"MI: collaborative, goal-oriented communication that strengthens motivation/commitment by eliciting one’s own reasons for change within acceptance/compassion. Principles: express empathy; support self-efficacy; roll with resistance; develop discrepancy.","Chapter":"Ch2 – Behavior Change","Section":"Objective 5 – MI Core","Difficulty":null,"Tags":["High-Yield","MI","Principles"]},
+    {"Front":"OARS—write an exam-tight line for each component and the key nuance on affirmations.","Back":"Open-ended questions; **Affirmations** (genuine, “you” language, highlight strengths/intentions/effort to build self-efficacy); Reflections (active, empathic); Summaries (recap/transition).","Chapter":"Ch2 – Behavior Change","Section":"Objective 5 – OARS","Difficulty":null,"Tags":["MI","Skills"]},
+    {"Front":"CBT—when is it **most useful** in TTM according to the chapter, and what two benefits does it target?","Back":"Most useful in **preparation/action/maintenance**; assists with problem-solving and deeper understanding of underlying challenges, addressing distorted/unhelpful perceptions.","Chapter":"Ch2 – Behavior Change","Section":"Objective 5 – CBT Use","Difficulty":null,"Tags":["High-Yield","CBT","TTM"]},
+    {"Front":"Health coaching—what credentialing body and directory does the chapter name for collaboration/referral?","Back":"National Board for Health & Wellness Coaching (NBHWC) with a directory of NBC-HWC coaches for collaboration and referral.","Chapter":"Ch2 – Behavior Change","Section":"Objective 5 – Coaching","Difficulty":null,"Tags":["Coaching","NBHWC"]},
+
+    {"Front":"Evidence check—what weight change is reported with brief MI training vs usual practice, and over what period?","Back":"Patients counseled by MI-trained physicians lost **~1.6 kg at 3 months**, whereas patients of non-MI physicians gained or maintained weight.","Chapter":"Ch2 – Behavior Change","Section":"Objective 6 – MI Evidence","Difficulty":null,"Tags":["High-Yield","Evidence","MI"]},
+    {"Front":"Evidence check—summarize the chapter’s findings on behavior-change coaching across outcomes.","Back":"Behavior change coaching lowers **BMI/weight**, can reduce **binge eating**, lowers **HbA1c**, and supports **smoking cessation**.","Chapter":"Ch2 – Behavior Change","Section":"Objective 6 – Coaching Evidence","Difficulty":null,"Tags":["High-Yield","Evidence","Coaching"]},
+    {"Front":"Provider–patient interaction trials—what did the systematic review find about altering the consultation and outcomes?","Back":"Out of 30 trials, **22 (73%)** showed the interventions altered interactions; **11/25 (44%)** had positive health outcomes, **5/25 (20%)** negative; evidence on specific consultation style is inconclusive, but enhancing provider approach fostered collaboration with more positive outcomes.","Chapter":"Ch2 – Behavior Change","Section":"Objective 6 – Consultation Evidence","Difficulty":null,"Tags":["Evidence","Alliance"]},
+    {"Front":"Empathy training dose—what is the concise takeaway?","Back":"**~10 hours** of empathy-skills training can achieve similar empathy outcomes as longer training, improving consultation process and perceived attentiveness.","Chapter":"Ch2 – Behavior Change","Section":"Objective 6/7 – Empathy Dose","Difficulty":null,"Tags":["High-Yield","Empathy","Training"]},
+
+    {"Front":"Positive psychology—how does the chapter frame its role and what downstream construct does it strengthen?","Back":"Values positive emotions, engagement, meaning, relationships, accomplishment; used to **affirm strengths** and bolster **self-confidence** supporting change.","Chapter":"Ch2 – Behavior Change","Section":"Objective 8 – Positive Emotions","Difficulty":null,"Tags":["PositivePsych","Counseling"]},
+
+    {"Front":"Written action plans—beyond SMART, what **learning goal** add-on does the chapter recommend and why?","Back":"Add **learning goals** (skills acquisition required for the new behavior) alongside SMART to build capability and confidence.","Chapter":"Ch2 – Behavior Change","Section":"Objective 9 – Action Plans","Difficulty":null,"Tags":["Planning","SMART","LearningGoals"]},
+    {"Front":"Vignette (action plan): Patient wants weight loss; what does the chapter say about **goal framing** today?","Back":"Favor **behavior-oriented** goals (e.g., walk 30 min 3×/wk) rather than scale-weight goals, which patients cannot directly control.","Chapter":"Ch2 – Behavior Change","Section":"Objective 4/9 – Goal Framing","Difficulty":null,"Tags":["Vignette","Goals"]},
+
+    {"Front":"Step-by-step follow-up—list the six elements you must cover at subsequent visits per the chapter.","Back":"1) Reiterate your support/role; 2) Review/update diagnosis and lifestyle recommendations; 3) Review last plan (successes → challenges → overall experience); 4) Listen/reflect/summarize; 5) Use positive psychology questions (“benefits? what learned? how do you feel?”) and affirm strengths; 6) Set/clarify **new goals** (resources, challenges, confidence, plan copy) and confirm commitment (3–6 mo timeline mentioned).","Chapter":"Ch2 – Behavior Change","Section":"Objective 10 – Follow-Up Workflow","Difficulty":null,"Tags":["High-Yield","Follow-Up","RelapsePrevention"]},
+    {"Front":"Relapse (recycling)—what stance and strategy does the chapter recommend?","Back":"Normalize setbacks as part of the path; use them to surface learning opportunities; re-affirm autonomy, rebuild confidence, and re-plan with stage-matched tools.","Chapter":"Ch2 – Behavior Change","Section":"Objective 10 – Relapse Frame","Difficulty":null,"Tags":["Counseling","Relapse"]},
+
+    {"Front":"Sustained change—define self-motivation and list two coach strategies to enhance it (as printed).","Back":"Self-motivation (autonomous/internal) arises from values, meaning, purpose. Strategies: connect deeper values/meaning/purpose to the behavior; highlight positive intentions/actions/strengths to build momentum.","Chapter":"Ch2 – Behavior Change","Section":"Objective 11 – Self-Motivation","Difficulty":null,"Tags":["High-Yield","SDT","Sustain"]},
+    {"Front":"Self-confidence & self-efficacy—how does the chapter link them, and what feeds self-efficacy?","Back":"Self-motivation and self-confidence support **self-efficacy** (confidence to perform behavior). Self-efficacy is influenced by **behavioral capability** and environmental facilitators/inhibitors; it’s central to successful change.","Chapter":"Ch2 – Behavior Change","Section":"Objective 11 – Self-Efficacy","Difficulty":null,"Tags":["High-Yield","Self-Efficacy"]},
+    {"Front":"Family and other support—what levels beyond the individual must your plan address per the chapter’s framework?","Back":"Interpersonal (family/friends/providers), Institutional (rules/policies), Community (networks/norms/built environment), Public policy (laws/regulations) — in addition to intrapersonal and SDOH.","Chapter":"Ch2 – Behavior Change","Section":"Objective 12 – Support & Context","Difficulty":null,"Tags":["Support","Systems"]},
+
+    {"Front":"Therapeutic alliance—define **trust** in the chapter’s terms and list its five domains.","Back":"Trust = willingness to be vulnerable based on confidence that the other is **benevolent, honest, open, reliable, competent**.","Chapter":"Ch2 – Behavior Change","Section":"Objective 13 – Trust Domains","Difficulty":null,"Tags":["High-Yield","Alliance","Trust"]},
+    {"Front":"Rupture & repair—what four-step script does the chapter recommend when trust is broken?","Back":"Admit it (acknowledge harm, accept responsibility) → Apologize (intend to make it right) → Ask forgiveness → Honor autonomy (re-check goals, choices; remind patient they’re in charge).","Chapter":"Ch2 – Behavior Change","Section":"Objective 13 – Repair Script","Difficulty":null,"Tags":["Alliance","Repair"]},
+    {"Front":"Vignette (alliance): Patient says, “You never listen.” What is your **first** move per the chapter?","Back":"Use **reflection** and empathy to show understanding, then summarize; avoid defensiveness; move to repair steps if a rupture is evident.","Chapter":"Ch2 – Behavior Change","Section":"Objective 7/13 – Skills in Rupture","Difficulty":null,"Tags":["Vignette","Empathy","Repair"]},
+
+    {"Front":"Resources by pillar—how does the chapter instruct you to align resources for sustainable change?","Back":"Identify resources aligned to the LM pillars (and the patient’s stage/readiness): e.g., coaching referral (NBC-HWC), printed SMART worksheets, community programs, and policy-level supports relevant to the behavior targeted.","Chapter":"Ch2 – Behavior Change","Section":"Objective 14 – Resource Mapping","Difficulty":null,"Tags":["Resources","Pillars","Planning"]},
+
+    {"Front":"MCQ—Which pairing is most accurate per the chapter? \nA) MI→Action; CBT→Precontemplation \nB) MI→Precontemplation/Contemplation; CBT→Preparation/Action/Maintenance \nC) MI superior to CBT in all stages \nD) CBT only for relapse","Back":"**B** — MI is emphasized for earlier stages; CBT for later stages.","Chapter":"Ch2 – Behavior Change","Section":"Objective 2/5 – Stage Match","Difficulty":null,"Tags":["MCQ","TTM","MI","CBT"]},
+    {"Front":"MCQ—Which is **not** a TPB construct listed in this chapter? \nA) Attitude \nB) Behavioral intention \nC) Perceived behavioral control \nD) Decisional balance","Back":"**D** — Decisional balance is not listed under TPB here.","Chapter":"Ch2 – Behavior Change","Section":"Objective 1 – TPB","Difficulty":null,"Tags":["MCQ","TPB"]},
+    {"Front":"MCQ—Which reflection is **double-sided**? \nA) “You stayed on schedule with your meds.” \nB) “You never exercise at all.” \nC) “Healthy weight matters to you, and so do summer ice-cream gatherings with family.” \nD) “You said you were busy.”","Back":"**C** — Balances two sides of the patient’s perspective.","Chapter":"Ch2 – Behavior Change","Section":"Objective 7 – Reflections","Difficulty":null,"Tags":["MCQ","MI"]},
+    {"Front":"MCQ—Empathy training dose: which statement matches the chapter? \nA) Benefits only after 40 hours \nB) ~10 hours can match longer training and improve consult process \nC) Training reduces patient satisfaction \nD) No evidence","Back":"**B**.","Chapter":"Ch2 – Behavior Change","Section":"Objective 6/7 – Empathy","Difficulty":null,"Tags":["MCQ","Empathy"]},
+    {"Front":"MCQ—Consultation trials: what proportion altered interactions? What proportion showed positive health outcomes? \nA) 22/30 (73%); 11/25 (44%) \nB) 15/30 (50%); 25/25 (100%) \nC) 30/30 (100%); 5/25 (20%) \nD) 11/25 (44%); 22/30 (73%)","Back":"**A** — 22/30 altered interactions; 11/25 positive outcomes; 5/25 negative.","Chapter":"Ch2 – Behavior Change","Section":"Objective 6 – Evidence","Difficulty":null,"Tags":["MCQ","Evidence"]},
+    {"Front":"MCQ—Which statement about behavior change coaching is supported here? \nA) Raises HbA1c \nB) Lowers BMI/weight; reduces binge eating; lowers HbA1c; supports smoking cessation \nC) Only works for athletes \nD) Evidence is absent","Back":"**B**.","Chapter":"Ch2 – Behavior Change","Section":"Objective 6 – Coaching Evidence","Difficulty":null,"Tags":["MCQ","Evidence"]},
+
+    {"Front":"Vignette—Your patient rates confidence **5/10** to start walking. Per the scales section, what two coaching moves come next?","Back":"Ask what would raise it to **8–10**; ask why they chose **5 and not 3** to elicit strengths/change talk; then adjust plan/resources accordingly.","Chapter":"Ch2 – Behavior Change","Section":"Objective 4 – Confidence Coaching","Difficulty":null,"Tags":["Vignette","Coaching"]},
+    {"Front":"Vignette—‘I want to lose 10 kg by next month.’ Convert to a chapter-consistent plan today.","Back":"Reframe to **behavior** goals (e.g., 30-min walk 3×/wk); add **SMART** details and a **learning goal** (e.g., learn to use step-tracker/app); confirm resources and confidence; schedule follow-up.","Chapter":"Ch2 – Behavior Change","Section":"Objective 4/9 – SMART Reframe","Difficulty":null,"Tags":["Vignette","SMART"]},
+    {"Front":"Vignette—3-month follow-up: patient had setbacks. Walk through the chapter’s 6-step visit structure.","Back":"Support role → update diagnosis/recs → review last plan (successes→challenges→overall) → reflect/summarize → positive psychology Qs & affirm → set **new** goals and confirm commitment (copy the new plan).","Chapter":"Ch2 – Behavior Change","Section":"Objective 10 – Visit Flow","Difficulty":null,"Tags":["Vignette","Follow-Up"]}
   ]
 }
