@@ -39,6 +39,8 @@
     <span id="deckName" class="muted">Deck: loading…</span>
     <span class="pill" id="duePill">Due: 0</span>
     <span class="pill" id="posPill">Card 0 / 0</span>
+    <span id="gradePill" class="pill">A 0 · H 0 · G 0 · E 0</span>
+<button id="searchBtn" title="Search all decks (/)">Search (/)</button>
   </header>
 
   <main>
@@ -65,11 +67,13 @@
         </div>
 
         <div id="gradeBar" class="btnbar hidden">
-          <button class="again" id="againBtn">Again (1)</button>
-          <button class="hard"  id="hardBtn">Hard (2)</button>
-          <button class="good"  id="goodBtn">Good (3)</button>
-          <button class="easy"  id="easyBtn">Easy (4)</button>
-        </div>
+  <button class="again" id="againBtn">Again (1)</button>
+  <button class="hard"  id="hardBtn">Hard (2)</button>
+  <button class="good"  id="goodBtn">Good (3)</button>
+  <button class="easy"  id="easyBtn">Easy (4)</button>
+  <button id="undoBtn" title="Undo last grade">Undo (U)</button>
+</div>
+
       </section>
 
       <aside>
@@ -137,6 +141,18 @@
     const MANIFEST_URL = "decks.json";
     const BACKUP_NS = APP_NS + ":backup:";          // rolling snapshots
     const MAX_BACKUPS = 10;
+
+    // App settings (default: exam OFF, auto-advance ON)
+const SETTINGS_KEY = APP_NS + ":settings";
+const settings = (()=>{ 
+  try { 
+    return JSON.parse(localStorage.getItem(SETTINGS_KEY)) || { exam:false, auto:true }; 
+  } catch { 
+    return { exam:false, auto:true }; 
+  } 
+})();
+function saveSettings(){ localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings)); }
+
 
     let deck = { name:"Demo", cards:[] };
     let order = [];          // visible indices (or virtual list in global mode)
@@ -614,8 +630,11 @@
       localStorage.removeItem(k); refreshBackupsDropdown();
     };
 
-    // Auto-backup timer (~2 minutes)
-    setInterval(()=>{ createBackup(); }, 2*60*1000);
+   // Auto-backup every 6 hours (skip if tab is hidden) + safety backups on exit
+setInterval(()=>{ if(!document.hidden) createBackup(); }, 6*60*60*1000);
+document.addEventListener("visibilitychange", ()=>{ if(document.hidden) createBackup(); });
+window.addEventListener("beforeunload", ()=>{ try{ createBackup(); }catch{} });
+
 
     // ---------- Boot ----------
     document.addEventListener("DOMContentLoaded", async ()=>{
@@ -631,6 +650,25 @@
       }
       refreshBackupsDropdown();
     });
+    if ("serviceWorker" in navigator) {
+  window.addEventListener("load", ()=> navigator.serviceWorker.register("sw.js").catch(()=>{}));
+}
   </script>
+  <div id="searchModal" class="hidden" role="dialog" aria-modal="true" aria-label="Global Search"
+     style="position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:50">
+  <div class="panel" style="width:min(950px,96vw); max-height:80vh; overflow:auto">
+    <div class="row" style="justify-content:space-between; align-items:center">
+      <h3 class="section-title" style="margin:.2rem 0">Global Search</h3>
+      <button id="closeSearchBtn" aria-label="Close search">✕</button>
+    </div>
+    <div class="row" style="gap:.5rem; margin:.25rem 0 .5rem">
+      <input id="searchInput" placeholder="Type keywords… use #tag for tags (e.g., diabetes #Vignette)" />
+      <button id="runSearchBtn">Search</button>
+    </div>
+    <div class="muted" style="margin:.25rem 0 .5rem">Searches: Front, Back, Tags, Section, Chapter (all decks)</div>
+    <div id="searchResults"></div>
+  </div>
+</div>
+
 </body>
 </html>
