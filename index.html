@@ -1,636 +1,1269 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Flashcards – SRS</title>
-  <style>
-    :root { --bg:#0f172a; --panel:#111827; --text:#e5e7eb; --muted:#94a3b8; --accent:#22d3ee; --b:#334155; }
-    *{box-sizing:border-box}
-    body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial; background:linear-gradient(135deg,#0b1024,var(--bg) 35%,#0b1024 70%); color:var(--text); min-height:100vh; display:flex; flex-direction:column}
-    header, footer{padding:.75rem 1rem; display:flex; gap:.6rem; align-items:center; flex-wrap:wrap}
-    header h1{font-size:1.05rem; margin:0}
-    .muted{color:var(--muted)}
-    main{flex:1; display:flex; align-items:center; justify-content:center; padding:1rem}
-    .container{width:100%; max-width:1100px; display:grid; gap:1rem; grid-template-columns:1fr}
-    @media(min-width:980px){ .container{grid-template-columns:2fr 1.1fr} }
-    .card{background:radial-gradient(1200px 600px at 10% 0%, #0b1224, var(--panel) 40%); border:1px solid var(--b); border-radius:1rem; padding:1rem; min-height:48vh; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 10px 30px rgba(0,0,0,.2)}
-    .front{font-size:1.15rem; line-height:1.5; white-space:pre-wrap}
-    .back{display:none; opacity:.95; white-space:pre-wrap; margin-top:.6rem}
-    .btnbar{display:grid; gap:.5rem; grid-template-columns:repeat(4,1fr); margin-top:.75rem}
-    button{background:#1f2937; color:var(--text); border:1px solid var(--b); border-radius:.7rem; padding:.7rem .8rem; font-size:1rem; cursor:pointer}
-    .again{background:rgba(220,38,38,.12); border-color:#7f1d1d}
-    .hard{ background:rgba(234,88,12,.12); border-color:#7c2d12}
-    .good{ background:rgba(22,163,74,.12); border-color:#14532d}
-    .easy{ background:rgba(37,99,235,.12); border-color:#1e3a8a}
-    aside .panel{background:var(--panel); border:1px solid var(--b); border-radius:.8rem; padding:.75rem}
-    input, select{background:#0b1224; color:var(--text); border:1px solid var(--b); border-radius:.6rem; padding:.55rem .6rem; width:100%}
-    .row{display:flex; gap:.5rem; align-items:center; flex-wrap:wrap}
-    .hidden{display:none !important}
-    .pill{padding:.25rem .5rem; border:1px solid var(--b); border-radius:.5rem}
-    .chip{display:inline-flex; align-items:center; gap:.35rem; padding:.2rem .45rem; border:1px solid var(--b); border-radius:.6rem; margin:.15rem .25rem .15rem 0; font-size:.9rem}
-    .chip button{padding:.2rem .35rem; border-radius:.4rem}
-    .section-title{margin:.2rem 0 .6rem}
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Flashcards V1 (Chapters/Topics)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --bg:#0B0E13; --panel:#0F131A; --ink:#F4F6FA; --muted:#A6B0C2; --line:rgba(255,255,255,.08);
+    --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px; --sp-6:24px; --sp-7:28px; --sp-8:32px;
+    --radius-card:14px; --radius-chip:999px;
+    --again:#DC2626; --hard:#EA580C; --good:#16A34A; --easy:#3B82F6; --star:#EAB308;
+  }
+  *{box-sizing:border-box} html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;line-height:1.55}
+  header{display:flex;gap:8px;align-items:center;padding:12px 12px 8px;border-bottom:1px solid var(--line);position:sticky;top:0;background:linear-gradient(to bottom,var(--bg),rgba(11,14,19,.9));backdrop-filter:saturate(1.1) blur(6px);z-index:5}
+  h1{font-size:20px;margin:0 8px 0 0}
+  .muted{color:var(--muted)}
+  .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .pill{display:inline-flex;align-items:center;gap:6px;background:#121820;border:1px solid var(--line);padding:6px 10px;border-radius:var(--radius-chip);font-size:12px;cursor:pointer}
+  .pill.active{outline:2px solid #3b82f680}
+  .tab{padding:6px 10px;border-radius:10px;border:1px solid var(--line);cursor:pointer}
+  .tab.active{background:#121820}
+  .btn{padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#131a22;color:var(--ink);cursor:pointer}
+  .btn.ghost{background:transparent}
+  .btn.primary{background:#1f2937}
+  .btn.again{background:var(--again)} .btn.hard{background:var(--hard)} .btn.good{background:var(--good)} .btn.easy{background:var(--easy)}
+  .btn.small{padding:6px 10px;font-size:12px}
+  .input, select{background:#0f141b;border:1px solid var(--line);padding:10px 12px;border-radius:10px;color:var(--ink)}
+  .grid{display:grid;gap:12px}
+  main{padding:12px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius-card);padding:16px;max-width:800px;margin:12px auto}
+  .meta{display:flex;align-items:center;gap:8px;justify-content:space-between;color:var(--muted);font-size:12px}
+  .star{color:var(--star);cursor:pointer;user-select:none}
+  .media img{max-width:100%;border-radius:12px;border:1px solid var(--line)}
+  .media video{width:100%;max-height:50vh;border-radius:12px;border:1px solid var(--line)}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:8px auto;justify-content:center}
+  .footerBar{position:sticky;bottom:0;display:flex;gap:8px;justify-content:center;background:linear-gradient(to top,var(--bg),rgba(11,14,19,.7));padding:10px 8px;border-top:1px solid var(--line)}
+  .list{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .list > div{display:flex;align-items:center;gap:8px;padding:10px 12px;border-top:1px solid var(--line)}
+  .list > div:first-child{border-top:none}
+  .modal{position:fixed;inset:0;background:#000;display:none;align-items:center;justify-content:center;z-index:20}
+  .modal .box{background:#0f131a;border:1px solid var(--line);border-radius:16px;width:min(960px,95vw);max-height:85vh;padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .hidden{display:none}
+  .sectionTitle{font-weight:600;margin:8px 0}
+  .table{width:100%;border-collapse:collapse;font-size:14px}
+  .table th,.table td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+  .kbd{border:1px solid var(--line);padding:0 6px;border-radius:6px;background:#121820}
+  td.muted:empty::before { content: attr(data-placeholder); color: var(--muted); }
+  @media (max-width:720px){
+    .modal .box{grid-template-columns:1fr}
+  }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-  <header>
-    <h1>Flashcards – SRS</h1>
-    <span id="deckName" class="muted">Deck: loading…</span>
-    <span class="pill" id="duePill">Due: 0</span>
-    <span class="pill" id="posPill">Card 0 / 0</span>
-  </header>
 
-  <main>
-    <div class="container">
-      <section class="card">
-        <div>
-          <div class="row muted" id="meta"></div>
-          <div class="front" id="front">Loading…</div>
-          <div class="back" id="back"></div>
-          <div id="tagsRow" class="row" style="margin-top:.6rem"></div>
-          <div class="row" style="gap:.4rem; margin-top:.4rem">
-            <input id="newTagInput" placeholder="Add tag (Enter)" />
-            <button id="addTagBtn">Add tag</button>
-            <button id="suspendBtn" title="Hide this card on this device">Suspend</button>
-            <button id="unsuspendBtn" class="hidden" title="Show again on this device">Unsuspend</button>
-          </div>
-        </div>
+<header>
+  <h1>Flashcards</h1>
+  <div class="row">
+    <button class="tab active" id="tabStudy">Study</button>
+    <button class="tab" id="tabEdit">Editor</button>
+    <button class="tab" id="tabAdmin">Admin</button>
+  </div>
+  <span class="muted" id="whoami" style="margin-left:auto">Not signed in</span>
+  <button id="loginBtn" class="btn small ghost">Login</button>
+  <button id="logoutBtn" class="btn small ghost hidden">Logout</button>
+</header>
 
-        <div class="btnbar">
-          <button id="revealBtn">Show Answer (Space)</button>
-          <button id="prevBtn">⟵ Prev</button>
-          <button id="nextBtn">Next ⟶</button>
-          <button id="restartBtn">Restart</button>
-        </div>
-
-        <div id="gradeBar" class="btnbar hidden">
-          <button class="again" id="againBtn">Again (1)</button>
-          <button class="hard"  id="hardBtn">Hard (2)</button>
-          <button class="good"  id="goodBtn">Good (3)</button>
-          <button class="easy"  id="easyBtn">Easy (4)</button>
-        </div>
-      </section>
-
-      <aside>
-        <div class="panel">
-          <h3 class="section-title">Decks</h3>
-          <div class="row" style="gap:.5rem">
-            <button id="uploadDeckBtn">Upload Deck (JSON)</button>
-            <button id="downloadDeckBtn">Download Current</button>
-          </div>
-          <div style="margin-top:.6rem">
-            <label class="muted" for="deckSelect">Switch deck</label>
-            <select id="deckSelect"></select>
-          </div>
-          <input id="fileInput" type="file" accept=".json,application/json" class="hidden">
-        </div>
-
-        <div class="panel">
-          <h3 class="section-title">Filters</h3>
-          <label class="row"><input type="checkbox" id="globalTagsMode"> <span class="muted">Global tags view (all public decks)</span></label>
-          <div class="row" style="width:100%">
-            <label class="muted" style="min-width:90px">Status</label>
-            <select id="statusSelect">
-              <option value="due">Due only</option>
-              <option value="all">All</option>
-              <option value="new">New</option>
-              <option value="learn">Learn</option>
-              <option value="review">Review</option>
-              <option value="suspended">Suspended</option>
-            </select>
-          </div>
-          <div class="row" style="width:100%">
-            <label class="muted" style="min-width:90px">Tags</label>
-            <input id="tagFilterInput" placeholder="e.g. ACLM-Core, Vignette" />
-          </div>
-        </div>
-
-        <div class="panel">
-          <h3 class="section-title">Backups & Sync</h3>
-          <div class="row" style="gap:.5rem">
-            <button id="exportBtn">Export Progress</button>
-            <button id="importBtn">Import Progress</button>
-            <input id="importInput" type="file" accept=".json" class="hidden">
-          </div>
-          <div class="row" style="gap:.5rem; margin-top:.5rem">
-            <button id="backupNowBtn">Create Backup Now</button>
-            <select id="backupSelect" style="flex:1; min-width:220px"></select>
-            <button id="restoreBtn">Restore</button>
-            <button id="deleteBackupBtn" title="Delete selected backup">🗑</button>
-          </div>
-          <p class="muted" style="margin:.5rem 0 0">Auto-backup runs every ~2 minutes and keeps the 10 latest snapshots.</p>
-        </div>
-      </aside>
+<main id="viewStudy">
+  <!-- Scope row -->
+  <div class="grid" style="max-width:980px;margin:0 auto">
+    <div class="row">
+      <label>Chapter</label>
+      <select id="selChapter"><option value="">All</option></select>
+      <label>Topic</label>
+      <select id="selTopic"><option value="">All</option></select>
+      <label>Tag</label>
+      <select id="selTag"><option value="">All</option></select>
+      <button class="btn small" id="btnMix">Mix</button>
+      <button class="btn small" id="btnStats">Stats</button>
+      <button class="btn small" id="btnSearch">Search</button>
+      <button class="btn small" id="btnExam">Exam</button>
     </div>
-  </main>
 
-  <footer class="row" style="justify-content:space-between">
-    <span class="muted">Space: Reveal/Hide · ←/→: Prev/Next · 1–4: Grade</span>
-    <a href="decks.json" class="muted" target="_blank" rel="noopener">Open decks.json</a>
-  </footer>
+    <!-- Chips -->
+    <div class="chips">
+      <div class="pill"   id="chipAll">All</div>
+      <div class="pill"   id="chipAgain">Again <b id="cntAgain">0</b></div>
+      <div class="pill"   id="chipHard">Hard <b id="cntHard">0</b></div>
+      <div class="pill"   id="chipGood">Good <b id="cntGood">0</b></div>
+      <div class="pill"   id="chipEasy">Easy <b id="cntEasy">0</b></div>
+      <div class="pill"   id="chipNone">Ungraded <b id="cntNone">0</b></div>
+      <div class="pill"   id="chipStar">★ Starred <b id="cntStar">0</b></div>
+      <div class="pill"   id="chipSusp">Suspended <b id="cntSusp">0</b></div>
+    </div>
 
-  <script>
-    const APP_NS = "flashcards.srs.v3";
-    const STATE_PREFIX = APP_NS + ":card:";         // per-card schedule state
-    const TAGS_PREFIX  = APP_NS + ":tags:";         // per-card tags overlay
-    const MANIFEST_URL = "decks.json";
-    const BACKUP_NS = APP_NS + ":backup:";          // rolling snapshots
-    const MAX_BACKUPS = 10;
+    <!-- Card -->
+    <div class="card" id="studyCard">
+      <div class="meta">
+        <div class="row">
+          <span id="cardScope" class="muted"></span>
+          <span id="editedBadge" class="pill hidden">Edited since last review</span>
+        </div>
+        <div class="row">
+          <span id="pos" class="muted">0/0</span>
+          <span id="star" class="star" title="Toggle star">☆</span>
+        </div>
+      </div>
 
-    let deck = { name:"Demo", cards:[] };
-    let order = [];          // visible indices (or virtual list in global mode)
-    let idx = 0;
-    let publicManifest = { decks: [] };
-    const $ = id => document.getElementById(id);
+      <div id="front" style="margin:12px 0;font-size:18px;line-height:1.7"></div>
+      <div id="back" class="hidden" style="margin:12px 0;font-size:18px;line-height:1.7;opacity:.98"></div>
 
-    // ---------- IDs, State, Tags ----------
-    function uidFor(card){
-      const s = (card.Front||"") + "::" + (card.Back||"");
-      let h = 0; for (let i=0;i<s.length;i++){ h = ((h<<5)-h) + s.charCodeAt(i); h|=0; }
-      return String(h);
-    }
-    function stKey(deckName, uid){ return STATE_PREFIX + deckName + ":" + uid; }
-    function loadState(deckName, uid){ try{ const raw = localStorage.getItem(stKey(deckName, uid)); return raw ? JSON.parse(raw) : null; } catch { return null; } }
-    function saveState(deckName, uid, st){ localStorage.setItem(stKey(deckName, uid), JSON.stringify(st)); }
+      <div class="media" id="mediaBox"></div>
 
-    function tagKey(deckName, uid){ return TAGS_PREFIX + deckName + ":" + uid; }
-    function loadTags(deckName, uid){ try{ const raw = localStorage.getItem(tagKey(deckName, uid)); return raw ? JSON.parse(raw) : []; } catch { return []; } }
-    function saveTags(deckName, uid, tags){ localStorage.setItem(tagKey(deckName, uid), JSON.stringify(tags)); }
+      <div class="row" style="justify-content:space-between;margin-top:8px">
+        <div class="row">
+          <button id="btnPrev" class="btn small ghost">← Prev</button>
+          <button id="btnNext" class="btn small ghost">Next →</button>
+        </div>
+        <div class="row">
+          <input id="tagInput" class="input" placeholder="Add personal tag… (Enter)"/>
+          <button id="btnClearTags" class="btn small ghost">Clear tags</button>
+        </div>
+      </div>
+    </div>
 
-    // ---------- Scheduler ----------
-    function isDue(deckName, card){
-      const st = loadState(deckName, uidFor(card));
-      if(!st) return true;
-      if(st.suspended) return false;
-      if(!st.due) return true;
-      return new Date(st.due) <= new Date();
-    }
-    function schedule(deckName, card, grade){
-      const uid = uidFor(card);
-      let st = loadState(deckName, uid) || { interval:0, ease:2.5, reps:0, lapses:0, phase:"new", suspended:false };
-      const now = new Date();
-      if(grade === "again"){
-        st.lapses += 1; st.reps = Math.max(0, st.reps - 1); st.interval = 0; st.phase = "learn";
-        st.due = new Date(now.getTime() + 10*60*1000).toISOString();
+    <!-- Footer grading bar -->
+    <div class="footerBar">
+      <button id="btnReveal" class="btn primary">Reveal <span class="muted">(Space)</span></button>
+      <button id="gAgain" class="btn again hidden">Again (1)</button>
+      <button id="gHard" class="btn hard hidden">Hard (2)</button>
+      <button id="gGood" class="btn good hidden">Good (3)</button>
+      <button id="gEasy" class="btn easy hidden">Easy (4)</button>
+      <button id="btnSuspend" class="btn ghost hidden">Suspend</button>
+    </div>
+  </div>
+</main>
+
+<!-- EDITOR VIEW -->
+<main id="viewEdit" class="hidden">
+  <div class="grid" style="max-width:1100px;margin:0 auto">
+    <h2>Chapters & Topics</h2>
+    <div class="row">
+      <input id="newChapter" class="input" placeholder="New chapter title"/>
+      <button id="addChapter" class="btn small">Add</button>
+      <input id="newTopic" class="input" placeholder="New topic title"/>
+      <button id="addTopic" class="btn small">Add</button>
+    </div>
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <div class="sectionTitle">Chapters</div>
+        <div id="chapList" class="list"></div>
+      </div>
+      <div>
+        <div class="sectionTitle">Topics</div>
+        <div id="topicList" class="list"></div>
+      </div>
+    </div>
+
+    <h2>Cards</h2>
+    <div class="row">
+      <button id="btnNewCard" class="btn small">New Card</button>
+      <select id="filterChapter"><option value="">All chapters</option></select>
+      <select id="filterTopic"><option value="">All topics</option></select>
+      <select id="filterStatus">
+        <option value="">Any status</option>
+        <option>draft</option><option>published</option><option>archived</option>
+      </select>
+      <input id="filterText" class="input" placeholder="Search text…"/>
+      <button id="btnReloadCards" class="btn small ghost">Reload</button>
+    </div>
+    <table class="table" id="cardTable">
+      <thead><tr>
+        <th>Front</th><th>Back</th><th>Chapter</th><th>Topics</th><th>Tags</th>
+        <th>Status</th><th>Visibility</th><th>Auth Suspend</th><th>Media/Links</th><th>Save</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</main>
+
+<!-- ADMIN VIEW -->
+<main id="viewAdmin" class="hidden">
+  <div class="grid" style="max-width:900px;margin:0 auto">
+    <h2>Admin</h2>
+
+    <h3>Download JSON schema & LLM instructions</h3>
+    <div class="row">
+      <button id="btnDownloadSchema" class="btn small">Download JSON template</button>
+      <button id="btnDownloadPrompt" class="btn small">Download LLM prompt</button>
+    </div>
+
+    <h3>Import cards (JSON)</h3>
+    <div class="row">
+      <input type="file" id="jsonFile" class="input"/>
+      <label class="row" style="gap:6px"><input type="checkbox" id="chkCreateTaxa"/> Create missing chapters/topics</label>
+      <button id="btnImport" class="btn small">Import</button>
+    </div>
+    <pre id="importLog" class="muted" style="white-space:pre-wrap"></pre>
+
+    <h3>Uncategorized cards</h3>
+    <div class="row">
+      <button id="btnFindNoChapter" class="btn small">Find: no Chapter</button>
+      <button id="btnFindNoTopics" class="btn small">Find: no Topics</button>
+      <button id="btnFindBoth" class="btn small">Find: neither</button>
+    </div>
+    <div id="uncatList" class="list"></div>
+
+    <h3>Scheduler settings</h3>
+    <div class="row">
+      <label>Again →</label><input id="schedAgain" class="input" style="width:120px" value="1 hour"/>
+      <label>Hard →</label><input id="schedHard" class="input" style="width:120px" value="1 day"/>
+      <label>Good →</label><input id="schedGood" class="input" style="width:120px" value="3 days"/>
+      <label>Easy →</label><input id="schedEasy" class="input" style="width:120px" value="never"/>
+      <button id="btnSaveSched" class="btn small">Save</button>
+    </div>
+
+  </div>
+</main>
+
+<!-- SEARCH MODAL -->
+<div class="modal" id="searchModal" role="dialog" aria-modal="true">
+  <div class="box">
+    <div>
+      <div class="row">
+        <input id="searchInput" class="input" placeholder="Search… (use #tag)" style="flex:1"/>
+        <button id="btnDoSearch" class="btn small">Search</button>
+        <button id="btnCloseSearch" class="btn small ghost">Close (Esc)</button>
+      </div>
+      <div id="searchResults" class="list" style="margin-top:10px"></div>
+    </div>
+    <div>
+      <div class="sectionTitle">Preview</div>
+      <div class="card" id="searchPreview" style="margin:0">
+        <div id="spFront"></div>
+        <hr style="border:0;border-top:1px solid var(--line);margin:10px 0">
+        <div id="spBack" class="muted"></div>
+        <div class="row" style="margin-top:10px;justify-content:space-between">
+          <div class="row">
+            <button id="btnPrevRes" class="btn small ghost">Prev</button>
+            <button id="btnNextRes" class="btn small ghost">Next</button>
+          </div>
+          <div class="row">
+            <button id="btnReviewAll" class="btn small">Review all</button>
+            <button id="btnOpenInMain" class="btn small">Open in main</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDITOR: Card Form Modal -->
+<div class="modal" id="editorModal" role="dialog" aria-modal="true">
+  <div class="box" style="grid-template-columns:1fr">
+    <h3 style="margin:6px 0">Card Editor</h3>
+    <div class="grid" style="grid-template-columns:1fr 1fr; gap:12px">
+      <div>
+        <div class="sectionTitle">Front (question)</div>
+        <textarea id="emFront" class="input" style="width:100%;height:180px"></textarea>
+      </div>
+      <div>
+        <div class="sectionTitle">Back (answer)</div>
+        <textarea id="emBack" class="input" style="width:100%;height:180px"></textarea>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:8px; flex-wrap:wrap">
+      <label>Chapter</label>
+      <select id="emChapter" class="input" style="min-width:200px"></select>
+
+      <label style="margin-left:8px">Topics</label>
+      <select id="emTopics" class="input" multiple size="4" style="min-width:220px"></select>
+
+      <label style="margin-left:8px">Tags (comma-separated)</label>
+      <input id="emTags" class="input" style="min-width:220px" placeholder="High-Yield, Screening"/>
+    </div>
+
+    <div class="row" style="margin-top:8px; flex-wrap:wrap">
+      <label>Status</label>
+      <select id="emStatus" class="input">
+        <option>draft</option><option>published</option><option>archived</option>
+      </select>
+
+      <label style="margin-left:8px">Visibility</label>
+      <select id="emVisibility" class="input">
+        <option>public</option><option>private</option>
+      </select>
+
+      <label class="row" style="margin-left:8px; gap:6px">
+        <input type="checkbox" id="emSuspend"/> Author-hide
+      </label>
+    </div>
+
+    <div class="row" style="justify-content:flex-end; margin-top:12px">
+      <button id="emCancel" class="btn small ghost">Cancel (Esc)</button>
+      <button id="emSave" class="btn small">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ====== CONFIG ====== */
+const SUPA_URL  = "https://vzcgdpedoyiqzgguitum.supabase.co";   // <-- paste
+const SUPA_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ6Y2dkcGVkb3lpcXpnZ3VpdHVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkxNDA1MjksImV4cCI6MjA3NDcxNjUyOX0.hHMkwcrROCQHGlYPdfbVYmPffVHUiE838GktgXaRAzI";                        // <-- paste your anon key
+const supa = window.supabase.createClient(SUPA_URL, SUPA_ANON);
+
+/* ====== STATE ====== */
+let user=null;
+let chapters=[], topics=[], tags=[];
+let scope = { chapter:null, topic:null, tag:null, mix:false };
+let filter = { grade:'all', starred:false, suspended:false };
+let cards=[], order=[], idx=0;
+let ucs = new Map(); // user_card_state by card_id
+let sessionResults = null; // search session
+let sessionIdx = 0;
+let tableCards = []; // editor table rows
+
+/* ====== AUTH ====== */
+async function initAuth(){
+  const { data:{ session } } = await supa.auth.getSession();
+  user = session?.user || null;
+  renderAuth();
+  supa.auth.onAuthStateChange((_e, s)=>{ user=s?.user||null; renderAuth(); if(user) boot(); });
+  document.getElementById('loginBtn').onclick = async ()=>{
+    const email = prompt("Email for magic link:");
+    if(!email) return;
+    const { error } = await supa.auth.signInWithOtp({
+      email,
+      options:{ emailRedirectTo: `${location.origin}${location.pathname}` }
+    });
+    if(error) alert(error.message); else alert('Check your email.');
+  };
+  document.getElementById('logoutBtn').onclick = async ()=>{ await supa.auth.signOut(); location.reload(); };
+}
+function renderAuth(){
+  document.getElementById('whoami').textContent = user ? `Signed in: ${user.email}` : 'Not signed in';
+  document.getElementById('loginBtn').classList.toggle('hidden', !!user);
+  document.getElementById('logoutBtn').classList.toggle('hidden', !user);
+}
+
+/* ====== BOOT ====== */
+async function boot(){
+  await loadTaxonomy();
+  await loadTags();
+  await loadCards();
+  await pullUserState();
+  await checkEditor();
+  buildScopePickers();
+  rebuildOrder(); renderCounts(); renderCard();
+}
+
+/* ====== LOADERS ====== */
+async function loadTaxonomy(){
+  const [c,t] = await Promise.all([
+    supa.from('chapters').select('*').order('position',{ascending:true}),
+    supa.from('topics').select('*').order('title',{ascending:true})
+  ]);
+  chapters = c.data||[]; topics = t.data||[];
+}
+async function loadTags(){
+  const r = await supa.from('tags').select('*').order('name');
+  tags = r.data||[];
+}
+async function loadCards(){
+  const q = supa.from('cards').select(`
+    id, front, back, meta, chapter_id, status, visibility, is_author_suspended, content_version, created_at,
+    card_topics ( topic_id ),
+    card_tags ( tag_id ),
+    card_media ( id, type, provider, storage_path, playback_url, poster_path, title, caption, status, position ),
+    card_links ( id, title, url, notes, position )
+  `);
+  const { data, error } = await q;
+  if(error){ console.error(error); return; }
+  cards = data||[];
+}
+async function pullUserState(){
+  if(!user) return;
+  const { data } = await supa.from('user_card_state')
+    .select('card_id,last_grade,is_suspended,user_tags,user_starred,last_seen_version,due_at,ease,ivl_days')
+    .limit(200000);
+  ucs.clear();
+  (data||[]).forEach(r=> ucs.set(r.card_id, r));
+}
+
+/* ====== SCOPE PICKERS ====== */
+function buildScopePickers(){
+  const selC = document.getElementById('selChapter');
+  const selT = document.getElementById('selTopic');
+  const selTag = document.getElementById('selTag');
+  selC.innerHTML = '<option value="">All</option>' + chapters.map(c=>`<option value="${c.id}">${escapeHTML(c.title)}</option>`).join('');
+  selT.innerHTML = '<option value="">All</option>' + topics.map(t=>`<option value="${t.id}">${escapeHTML(t.title)}</option>`).join('');
+  selTag.innerHTML = '<option value="">All</option>' + tags.map(t=>`<option value="${t.id}">${escapeHTML(t.name)}</option>`).join('');
+  selC.onchange = ()=>{ scope.chapter = selC.value||null; scope.mix=false; rebuildOrder(); renderCounts(); renderCard(); };
+  selT.onchange = ()=>{ scope.topic = selT.value||null; scope.mix=false; rebuildOrder(); renderCounts(); renderCard(); };
+  selTag.onchange = ()=>{ scope.tag = selTag.value||null; scope.mix=false; rebuildOrder(); renderCounts(); renderCard(); };
+  document.getElementById('btnMix').onclick = ()=>{ scope={chapter:null,topic:null,tag:null,mix:true}; rebuildOrder(); renderCounts(); renderCard(); };
+}
+
+/* ====== FILTERING & ORDER ====== */
+function matchesScope(c){
+  if(scope.mix) return true;
+  if(scope.chapter && c.chapter_id !== scope.chapter) return false;
+  if(scope.topic){
+    if(!(c.card_topics||[]).some(ct=>ct.topic_id===scope.topic)) return false;
+  }
+  if(scope.tag){
+    if(!(c.card_tags||[]).some(ct=>ct.tag_id===scope.tag)) return false;
+  }
+  return true;
+}
+function matchesChips(c){
+  const state = ucs.get(c.id);
+  if(filter.suspended){ return !!state?.is_suspended; }
+  if(state?.is_suspended) return false;
+  if(filter.starred && !state?.user_starred) return false;
+  if(filter.grade==='again' && state?.last_grade!=='again') return false;
+  if(filter.grade==='hard'  && state?.last_grade!=='hard')  return false;
+  if(filter.grade==='good'  && state?.last_grade!=='good')  return false;
+  if(filter.grade==='easy'  && state?.last_grade!=='easy')  return false;
+  if(filter.grade==='none'  && state?.last_grade)           return false;
+  return true;
+}
+function rebuildOrder(){
+  let arr = cards.filter(c=>{
+    const visibleToLearner = (c.status==='published' && c.visibility==='public' && !c.is_author_suspended);
+    return matchesScope(c) && matchesChips(c) && (visibleToLearner || isEditor());
+  });
+  if(scope.mix) shuffle(arr); else arr.sort((a,b)=> new Date(a.created_at) - new Date(b.created_at));
+  order = arr.map(c=>c.id);
+  idx = Math.min(idx, Math.max(0, order.length-1));
+}
+
+/* ====== COUNTS ====== */
+function renderCounts(){
+  let a=0,h=0,g=0,e=0,n=0, s=0, star=0;
+  cards.forEach(c=>{
+    if(!matchesScope(c)) return;
+
+    const visibleToLearner = (c.status==='published' && c.visibility==='public' && !c.is_author_suspended);
+    if(!(visibleToLearner || isEditor())) return;
+
+    const st = ucs.get(c.id);
+    if(st?.is_suspended){ s++; return; }
+    if(st?.user_starred) star++;
+    const gval = st?.last_grade||'none';
+    if(gval==='again') a++; else if(gval==='hard') h++; else if(gval==='good') g++; else if(gval==='easy') e++; else n++;
+  });
+  setText('cntAgain',a); setText('cntHard',h); setText('cntGood',g); setText('cntEasy',e); setText('cntNone',n); setText('cntSusp',s); setText('cntStar',star);
+}
+
+/* ====== RENDER CARD ====== */
+function curCard(){ const id = order[idx]; return cards.find(c=>c.id===id); }
+function renderCard(){
+  const c = curCard();
+  const pos = document.getElementById('pos'), cardScope = document.getElementById('cardScope');
+  const front = document.getElementById('front'), back = document.getElementById('back');
+  const mediaBox = document.getElementById('mediaBox');
+  const star = document.getElementById('star'), edited = document.getElementById('editedBadge');
+
+  if(!c){ pos.textContent='0/0'; front.textContent='No cards in this view.'; back.classList.add('hidden'); document.getElementById('btnReveal').classList.remove('hidden'); hideGrades(); return; }
+
+  pos.textContent = `${idx+1}/${order.length}`;
+  const ch = chapters.find(x=>x.id===c.chapter_id)?.title || '—';
+  const tlist = (c.card_topics||[]).map(ct=> topics.find(t=>t.id===ct.topic_id)?.title).filter(Boolean);
+  cardScope.textContent = `Chapter: ${ch} • Topics: ${tlist.join(', ') || '—'}`;
+
+  front.innerHTML = c.front;
+  back.innerHTML  = c.back;
+  document.getElementById('btnReveal').classList.remove('hidden');
+  back.classList.add('hidden'); showGrades(false);
+
+  // media
+  mediaBox.innerHTML = '';
+  (c.card_media||[]).sort((a,b)=>a.position-b.position).forEach(m=>{
+    if(m.type==='image'){
+      const img = new Image();
+      img.alt = m.title||'';
+      if(m.provider==='supabase' && m.storage_path){
+        supa.storage.from('media').createSignedUrl(m.storage_path, 3600).then(({data})=>{
+          img.src = data?.signedUrl || ''; mediaBox.appendChild(img);
+        });
+      } else if(m.playback_url) { img.src = m.playback_url; mediaBox.appendChild(img); }
+    } else if(m.type==='pdf'){
+      const a=document.createElement('a'); a.textContent=m.title||'Open PDF'; a.className='btn small'; a.target='_blank';
+      if(m.provider==='supabase' && m.storage_path){
+        supa.storage.from('media').createSignedUrl(m.storage_path, 3600).then(({data})=>{
+          a.href=data?.signedUrl||'#'; mediaBox.appendChild(a);
+        });
+      } else if(m.playback_url){ a.href=m.playback_url; mediaBox.appendChild(a); }
+    } else if(m.type==='video'){
+      if(m.provider==='youtube' || m.provider==='vimeo'){
+        const iframe = document.createElement('iframe');
+        iframe.width='100%'; iframe.style.aspectRatio='16/9'; iframe.allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"; iframe.allowFullscreen=true;
+        iframe.src = m.playback_url; mediaBox.appendChild(iframe);
       } else {
-        st.reps += 1; st.ease = st.ease || 2.5;
-        if(grade === "hard") st.ease = Math.max(1.3, st.ease - 0.15);
-        if(grade === "good") st.ease = Math.max(1.3, st.ease - 0.05);
-        if(grade === "easy") st.ease = Math.min(3.2, st.ease + 0.15);
-        if(st.phase === "new"){ st.interval = (grade==="easy")?3:(grade==="hard"?1:2); st.phase="review"; }
-        else if(st.phase === "learn"){ st.interval = (grade==="hard")?1:2; st.phase="review"; }
-        else {
-          const mult = (grade==="easy")?1.5:(grade==="hard"?0.7:1.0);
-          st.interval = Math.ceil(Math.max(1, st.interval) * st.ease * mult);
-          st.interval = Math.max(st.interval, (grade==="easy"?3:(grade==="good"?2:1)));
-        }
-        st.due = new Date(now.getTime() + st.interval*24*60*60*1000).toISOString();
-      }
-      if(st.lapses >= 8) st.suspended = true;
-      saveState(deckName, uid, st);
-    }
-
-    // ---------- Build order (filters, tags, global) ----------
-    function cardPhase(deckName, card){
-      const st = loadState(deckName, uidFor(card));
-      if(!st) return "new";
-      if(st.suspended) return "suspended";
-      return st.phase || "review";
-    }
-    function parseTagFilter(){
-      const raw = $("tagFilterInput").value.trim();
-      if(!raw) return [];
-      return raw.split(/[,\s]+/).map(t=>t.trim().toLowerCase()).filter(Boolean);
-    }
-    function hasAllTags(deckName, card){
-      const need = parseTagFilter(); if(need.length===0) return true;
-      const uid = uidFor(card);
-      const own = (card.Tag ? [String(card.Tag)] : []).concat(card.Tags || []);
-      const overlay = loadTags(deckName, uid);
-      const have = new Set(own.concat(overlay).map(t=>String(t).toLowerCase()));
-      return need.every(t => have.has(t));
-    }
-
-    function buildOrderCurrentDeck(){
-      const status = $("statusSelect").value;  // due, all, new, learn, review, suspended
-      const arr = [];
-      for(let i=0;i<(deck.cards||[]).length;i++){
-        const c = deck.cards[i];
-        if(!hasAllTags(deck.name, c)) continue;
-        const phase = cardPhase(deck.name, c);
-        if(status === "due"){ if(!isDue(deck.name,c)) continue; }
-        else if(status !== "all"){ if(phase !== status) continue; }
-        arr.push(i);
-      }
-      order = arr;
-      if(idx >= order.length) idx = Math.max(0, order.length-1);
-    }
-
-    // In Global Tags View we build a virtual list of entries:
-    // { deckName, card, source: "public" }
-    let globalList = [];
-    async function buildGlobalList(){
-      const status = $("statusSelect").value;
-      const list = [];
-      for(const d of publicManifest.decks){
-        try{
-          const res = await fetch(d.file, {cache:"no-store"});
-          if(!res.ok) continue;
-          const obj = await res.json();
-          const dn = obj.name || d.name || d.file;
-          (obj.cards||[]).forEach(card=>{
-            if(!hasAllTags(dn, card)) return;
-            const ph = cardPhase(dn, card);
-            if(status === "due"){ if(!isDue(dn, card)) return; }
-            else if(status !== "all"){ if(ph !== status) return; }
-            list.push({ deckName: dn, card });
+        const v=document.createElement('video'); v.controls=true; v.playsInline=true; v.preload='metadata';
+        if(m.poster_path){
+          supa.storage.from('media').createSignedUrl(m.poster_path,3600).then(({data})=>{
+            if(data?.signedUrl) v.setAttribute('poster', data.signedUrl);
           });
-        }catch{}
-      }
-      globalList = list;
-      order = list.map((_,i)=>i);
-      if(idx >= order.length) idx = Math.max(0, order.length-1);
-    }
-
-    function updateHeader(){
-      $("deckName").textContent = ($("globalTagsMode").checked)
-        ? "Global tags view"
-        : ("Deck: " + (deck.name || "Deck"));
-      const total = order.length;
-      $("posPill").textContent  = `Card ${ total ? (idx+1) : 0 } / ${ total }`;
-
-      // Due count for current deck only (in global mode, show total due across all public decks)
-      if($("globalTagsMode").checked){
-        let dueCount = 0;
-        globalList.forEach(({deckName,card})=>{ if(isDue(deckName,card)) dueCount++; });
-        $("duePill").textContent = `Due: ${dueCount}`;
-      } else {
-        const dueCount = (deck.cards||[]).filter(c => isDue(deck.name, c)).length;
-        $("duePill").textContent = `Due: ${dueCount}`;
-      }
-    }
-
-    function currentCardEntry(){
-      if(!$("globalTagsMode").checked){
-        if(!order.length) return null;
-        return { deckName: deck.name, card: deck.cards[order[idx]] };
-      } else {
-        if(!order.length) return null;
-        return globalList[order[idx]] || null;
-      }
-    }
-
-    function render(){
-      updateHeader();
-      const entry = currentCardEntry();
-      const back = $("back");
-      const gradeBar = $("gradeBar");
-      const suspendBtn = $("suspendBtn");
-      const unsuspendBtn = $("unsuspendBtn");
-      const tagsRow = $("tagsRow");
-
-      if(!entry){
-        $("front").textContent = "No cards match this view.";
-        back.style.display = "none"; $("revealBtn").disabled = true; gradeBar.classList.add("hidden"); $("meta").textContent = "";
-        suspendBtn.classList.add("hidden"); unsuspendBtn.classList.add("hidden");
-        tagsRow.innerHTML = "";
-        return;
-      }
-
-      const { deckName, card } = entry;
-      $("revealBtn").disabled = false;
-      $("front").textContent = card.Front || "";
-      $("back").textContent  = card.Back  || "";
-      back.style.display = "none";
-      gradeBar.classList.add("hidden");
-
-      // meta + suspend/unsuspend
-      const st = loadState(deckName, uidFor(card)) || {};
-      const phase = st.suspended ? "suspended" : (st.phase || "new");
-      $("meta").textContent = `Phase: ${phase}` + (st.due ? ` · Due: ${new Date(st.due).toLocaleString()}` : "");
-
-      suspendBtn.classList.toggle("hidden", !!st.suspended);
-      unsuspendBtn.classList.toggle("hidden", !st.suspended);
-
-      // tags view (own + overlay)
-      const own = (card.Tag ? [String(card.Tag)] : []).concat(card.Tags || []);
-      const overlay = loadTags(deckName, uidFor(card));
-      const allTags = Array.from(new Set(own.concat(overlay)));
-      tagsRow.innerHTML = allTags.map(t => `
-        <span class="chip">${t}<button data-tag="${encodeURIComponent(t)}" class="removeTagBtn">×</button></span>
-      `).join("");
-
-      // Disable grading in global mode? We CAN allow it: schedule against source deckName.
-      gradeBar.classList.add("hidden");
-    }
-
-    function rebuildAndRender(){
-      if($("globalTagsMode").checked){
-        buildGlobalList().then(()=>{ updateHeader(); render(); });
-      } else {
-        buildOrderCurrentDeck(); updateHeader(); render();
-      }
-    }
-
-    // ---------- Deck loading & manifest ----------
-    async function fetchManifest(){
-      try{
-        const res = await fetch(MANIFEST_URL, {cache:"no-store"});
-        if(!res.ok) return { decks: [] };
-        const json = await res.json();
-        return Array.isArray(json.decks) ? json : { decks: [] };
-      }catch{ return { decks: [] }; }
-    }
-    async function loadDeck(url="cards.json"){
-      const res = await fetch(url, { cache:"no-store" });
-      deck = await res.json();
-      idx = 0; buildOrderCurrentDeck(); render();
-    }
-    function loadDeckObject(obj){
-      deck = obj || {name:"Untitled", cards:[]};
-      idx = 0; buildOrderCurrentDeck(); render();
-    }
-
-    // Local user decks
-    const DECKS_KEY = APP_NS + ":userDecks";
-    function getStore(){ try{ return JSON.parse(localStorage.getItem(DECKS_KEY)) || {items:[], last:"__default__"} } catch { return {items:[], last:"__default__"} } }
-    function setStore(s){ localStorage.setItem(DECKS_KEY, JSON.stringify(s)); }
-
-    async function refreshDeckSelect(){
-      publicManifest = await fetchManifest();
-      const local = getStore();
-      const sel = $("deckSelect");
-      const parts = [];
-
-      parts.push('<optgroup label="Public (GitHub)">');
-      const pub = (publicManifest.decks||[]);
-      if(pub.length===0) parts.push('<option disabled>(No public decks found)</option>');
-      pub.forEach(d => parts.push(`<option value="${encodeURIComponent(d.file)}">${d.name}</option>`));
-      parts.push('</optgroup>');
-
-      parts.push('<optgroup label="Local (This device)">');
-      const items = (local.items||[]);
-      if(items.length===0) parts.push('<option disabled>(No local decks)</option>');
-      items.forEach(it => parts.push(`<option value="local:${encodeURIComponent(it.name)}">${it.name}</option>`));
-      parts.push('</optgroup>');
-
-      sel.innerHTML = parts.join("");
-      // Prefer last local selection if exists
-      const last = local.last || "";
-      if (last){
-        const localVal = "local:" + encodeURIComponent(last);
-        if ([...sel.options].some(o=>o.value===localVal)) sel.value = localVal;
-      } else if (pub.length > 0){
-        sel.value = encodeURIComponent(pub[0].file);
-      }
-    }
-
-    // ---------- Actions & UI wiring ----------
-    function showAnswer(){
-      const back = $("back"); const gradeBar = $("gradeBar");
-      if(back.style.display === "block"){ back.style.display = "none"; gradeBar.classList.add("hidden"); }
-      else { back.style.display = "block"; gradeBar.classList.remove("hidden"); }
-    }
-    function next(){ if (idx < order.length-1) { idx++; render(); } }
-    function prev(){ if (idx > 0) { idx--; render(); } }
-    function doGrade(g){
-      const entry = currentCardEntry(); if(!entry) return;
-      schedule(entry.deckName, entry.card, g);
-      rebuildAndRender();
-    }
-
-    $("revealBtn").onclick = showAnswer;
-    $("prevBtn").onclick   = prev;
-    $("nextBtn").onclick   = next;
-    $("restartBtn").onclick= () => { idx = 0; render(); };
-
-    $("againBtn").onclick = () => doGrade("again");
-    $("hardBtn").onclick  = () => doGrade("hard");
-    $("goodBtn").onclick  = () => doGrade("good");
-    $("easyBtn").onclick  = () => doGrade("easy");
-
-    $("statusSelect").onchange = rebuildAndRender;
-    $("tagFilterInput").addEventListener("keyup", (e)=>{ if(e.key==="Enter"){ rebuildAndRender(); }});
-    $("tagFilterInput").addEventListener("blur", rebuildAndRender);
-    $("globalTagsMode").onchange = rebuildAndRender;
-
-    // Tag editing
-    function addTagTo(entry, tag){
-      const deckName = entry.deckName, card = entry.card; if(!tag) return;
-      const uid = uidFor(card);
-      const tags = loadTags(deckName, uid);
-      if(!tags.map(s=>s.toLowerCase()).includes(tag.toLowerCase())){
-        tags.push(tag);
-        saveTags(deckName, uid, tags);
-      }
-    }
-    function removeTagFrom(entry, tag){
-      const deckName = entry.deckName, card = entry.card;
-      const uid = uidFor(card);
-      const tags = loadTags(deckName, uid).filter(t => t.toLowerCase() !== tag.toLowerCase());
-      saveTags(deckName, uid, tags);
-    }
-
-    $("addTagBtn").onclick = ()=>{
-      const entry = currentCardEntry(); if(!entry) return;
-      const val = $("newTagInput").value.trim(); if(!val) return;
-      val.split(/[,\s]+/).forEach(t=> addTagTo(entry, t.trim()));
-      $("newTagInput").value = "";
-      render();
-    };
-    $("newTagInput").addEventListener("keydown",(e)=>{
-      if(e.key==="Enter"){ e.preventDefault(); $("addTagBtn").click(); }
-    });
-    document.addEventListener("click",(e)=>{
-      if(e.target && e.target.classList.contains("removeTagBtn")){
-        const tag = decodeURIComponent(e.target.dataset.tag);
-        const entry = currentCardEntry(); if(!entry) return;
-        removeTagFrom(entry, tag);
-        render();
-      }
-    });
-
-    // Suspend / Unsuspend
-    $("suspendBtn").onclick = ()=>{
-      const entry = currentCardEntry(); if(!entry) return;
-      const {deckName, card} = entry;
-      const uid = uidFor(card);
-      const st = loadState(deckName, uid) || { phase:"new", ease:2.5, interval:0, reps:0, lapses:0 };
-      st.suspended = true;
-      saveState(deckName, uid, st);
-      rebuildAndRender();
-    };
-    $("unsuspendBtn").onclick = ()=>{
-      const entry = currentCardEntry(); if(!entry) return;
-      const {deckName, card} = entry;
-      const uid = uidFor(card);
-      const st = loadState(deckName, uid) || {};
-      st.suspended = false;
-      saveState(deckName, uid, st);
-      rebuildAndRender();
-    };
-
-    // Upload / download decks
-    $("uploadDeckBtn").onclick = () => $("fileInput").click();
-    $("fileInput").onchange = e => {
-      const f = e.target.files[0]; if(!f) return;
-      const r = new FileReader();
-      r.onload = () => {
-        try{
-          const obj = JSON.parse(r.result);
-          const s = getStore();
-          let name = obj.name || f.name.replace(/\.json$/i,"");
-          const seen = new Set(s.items.map(x=>x.name));
-          let k=2, base=name; while(seen.has(name)) name = base + " (" + (k++) + ")";
-          s.items.push({name, data:obj}); s.last=name; setStore(s);
-          refreshDeckSelect().then(()=>{
-            $("deckSelect").value = "local:" + encodeURIComponent(name);
-            loadDeckObject(obj);
-          });
-        }catch{ alert("Invalid JSON deck file."); }
-        e.target.value="";
-      };
-      r.readAsText(f);
-    };
-
-    $("deckSelect").onchange = () => {
-      $("globalTagsMode").checked = false; // leaving global mode when switching deck
-      const val = $("deckSelect").value;
-      if (val.startsWith("local:")){
-        const name = decodeURIComponent(val.slice("local:".length));
-        const it = getStore().items.find(x=>x.name===name);
-        if(it){ loadDeckObject(it.data); const s=getStore(); s.last=name; setStore(s); }
-      } else {
-        loadDeck(decodeURIComponent(val));
-        const s=getStore(); s.last=""; setStore(s);
-      }
-    };
-    $("downloadDeckBtn").onclick = () => {
-      const blob = new Blob([JSON.stringify(deck,null,2)], {type:"application/json"});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url; a.download = (deck.name || "deck") + ".json";
-      document.body.appendChild(a); a.click();
-      setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },0);
-    };
-
-    // Keyboard shortcuts
-    document.addEventListener("keydown",(e)=>{
-      if(e.code === "Space"){ e.preventDefault(); showAnswer(); }
-      if(e.key === "ArrowRight") next();
-      if(e.key === "ArrowLeft")  prev();
-      if(e.key === "1") $("againBtn").click();
-      if(e.key === "2") $("hardBtn").click();
-      if(e.key === "3") $("goodBtn").click();
-      if(e.key === "4") $("easyBtn").click();
-    });
-
-    // ---------- Backups ----------
-    function collectAllProgress(){
-      const out = {};
-      for(let i=0;i<localStorage.length;i++){
-        const k = localStorage.key(i);
-        if(k && (k.startsWith(STATE_PREFIX) || k.startsWith(TAGS_PREFIX) || k.startsWith(DECKS_KEY))){
-          out[k] = localStorage.getItem(k);
         }
+        supa.storage.from('media').createSignedUrl(m.storage_path,3600).then(({data})=>{
+          const src=document.createElement('source'); src.src=data?.signedUrl||''; src.type='video/mp4'; v.appendChild(src); mediaBox.appendChild(v);
+        });
       }
-      return out;
     }
-    function applyProgressDump(obj){
-      // Clear only our namespaces, then restore
-      const toRemove = [];
-      for(let i=0;i<localStorage.length;i++){
-        const k = localStorage.key(i);
-        if(k && (k.startsWith(STATE_PREFIX) || k.startsWith(TAGS_PREFIX) || k.startsWith(DECKS_KEY))){
-          toRemove.push(k);
-        }
+  });
+
+  const st = ucs.get(c.id);
+  star.textContent = st?.user_starred ? '★' : '☆';
+  star.onclick = ()=> toggleStar();
+
+  if(st && c.content_version> (st.last_seen_version||1)) edited.classList.remove('hidden'); else edited.classList.add('hidden');
+}
+
+/* ====== GRADING / SUSPEND / STAR ====== */
+function showGrades(show=true){
+  ['gAgain','gHard','gGood','gEasy','btnSuspend'].forEach(id=> document.getElementById(id).classList.toggle('hidden', !show));
+}
+function hideGrades(){ showGrades(false); }
+document.getElementById('btnReveal').onclick = ()=>{
+  const back = document.getElementById('back');
+  back.classList.toggle('hidden');
+  const showing = !back.classList.contains('hidden');
+  document.getElementById('btnReveal').classList.toggle('hidden', showing);
+  showGrades(showing);
+};
+document.getElementById('gAgain').onclick = ()=> grade('again');
+document.getElementById('gHard').onclick  = ()=> grade('hard');
+document.getElementById('gGood').onclick  = ()=> grade('good');
+document.getElementById('gEasy').onclick  = ()=> grade('easy');
+document.getElementById('btnSuspend').onclick=()=> toggleSuspend();
+
+async function loadScheduler(){
+  const { data } = await supa.from('settings').select('value').eq('key','scheduler').maybeSingle();
+  return data?.value || {again:"1 hour",hard:"1 day",good:"3 days",easy:"never"};
+}
+async function grade(kind){
+  const c = curCard(); if(!c || !user) return;
+  const sched = await loadScheduler();
+  let due = null;
+  const now = new Date();
+  function plus(ms){ return new Date(now.getTime()+ms); }
+  const map = {
+    again: parseInterval(sched.again),
+    hard:  parseInterval(sched.hard),
+    good:  parseInterval(sched.good),
+    easy:  null
+  };
+  const ms = map[kind];
+  due = ms ? plus(ms) : null;
+
+  const newRow = {
+    card_id: c.id,
+    last_grade: kind,
+    is_suspended: false,
+    user_tags: (ucs.get(c.id)?.user_tags)||[],
+    user_starred: !!ucs.get(c.id)?.user_starred,
+    last_seen_version: c.content_version,
+    due_at: due ? due.toISOString() : null
+  };
+  await supa.from('user_card_state').upsert(newRow);
+  await supa.from('reviews').insert({ card_id:c.id, grade:kind, content_version_at_review:c.content_version });
+
+  ucs.set(c.id, {...ucs.get(c.id), ...newRow});
+  step(1);
+  rebuildOrder();   // keep order in sync
+  renderCounts();   // update chips immediately
+  renderCard();     // reflect current card view
+}
+
+async function toggleSuspend(){
+  const c = curCard(); if(!c || !user) return;
+  const row = ucs.get(c.id)||{card_id:c.id};
+  row.is_suspended = !row.is_suspended;
+  await supa.from('user_card_state').upsert(row);
+  ucs.set(c.id,row);
+  rebuildOrder(); renderCounts(); renderCard();
+}
+
+async function toggleStar(){
+  const c = curCard(); if(!c || !user) return;
+  const row = ucs.get(c.id)||{card_id:c.id};
+  row.user_starred = !row.user_starred;
+  await supa.from('user_card_state').upsert(row);
+  ucs.set(c.id,row);
+  renderCounts(); renderCard();
+}
+
+function step(dir=1){ if(order.length===0) return; idx = (idx + dir + order.length) % order.length; renderCard(); }
+
+/* ====== CHIPS ====== */
+function clearChipActive(){
+  ['chipAll','chipAgain','chipHard','chipGood','chipEasy','chipNone','chipSusp','chipStar'].forEach(id=>$(id).classList.remove('active'));
+}
+function setChipHandlers(){
+  const chip = (id, fn)=> $(id).onclick = ()=>{ clearChipActive(); $(id).classList.add('active'); fn(); rebuildOrder(); renderCounts(); renderCard(); };
+  chip('chipAll', ()=>{ filter={grade:'all', starred:false, suspended:false}; });
+  chip('chipAgain', ()=>{ filter={grade:'again', starred:false, suspended:false}; });
+  chip('chipHard', ()=>{ filter={grade:'hard',  starred:false, suspended:false}; });
+  chip('chipGood', ()=>{ filter={grade:'good',  starred:false, suspended:false}; });
+  chip('chipEasy', ()=>{ filter={grade:'easy',  starred:false, suspended:false}; });
+  chip('chipNone', ()=>{ filter={grade:'none',  starred:false, suspended:false}; });
+  chip('chipSusp', ()=>{ filter={grade:'all', starred:false, suspended:true}; });
+  chip('chipStar', ()=>{ filter={grade:'all', starred:true, suspended:false}; });
+}
+setChipHandlers();
+
+/* ====== SEARCH ====== */
+const searchModal = $('searchModal');
+$('btnSearch').onclick = ()=>{ searchModal.style.display='flex'; $('searchInput').focus(); };
+$('btnCloseSearch').onclick = ()=>{ searchModal.style.display='none'; };
+$('btnDoSearch').onclick = doSearch;
+$('btnPrevRes').onclick = ()=> previewResult(-1);
+$('btnNextRes').onclick = ()=> previewResult(1);
+$('btnReviewAll').onclick = ()=> startSearchSession();
+$('btnOpenInMain').onclick = ()=> openResultInMain();
+
+document.addEventListener('keydown', (e)=>{
+  const ae = document.activeElement;
+  const inForm = ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA' || ae.tagName === 'SELECT' || ae.isContentEditable);
+
+  if(e.key==='Escape') searchModal.style.display='none';
+  if(e.key===' ' && !inForm){ e.preventDefault(); $('btnReveal').click(); }
+  if(e.key==='ArrowRight'){ $('btnNext').click(); }
+  if(e.key==='ArrowLeft'){ $('btnPrev').click(); }
+  if(e.key==='1'){ $('gAgain').click(); }
+  if(e.key==='2'){ $('gHard').click(); }
+  if(e.key==='3'){ $('gGood').click(); }
+  if(e.key==='4'){ $('gEasy').click(); }
+});
+
+let results=[], resIdx=0;
+async function doSearch(){
+  const q = $('searchInput').value.trim();
+  if(!q){ results=[]; renderResults(); return; }
+
+  const tagMatch = q.match(/#([a-zA-Z0-9_\-]+)/g) || [];
+  const tagNames = tagMatch.map(x=>x.slice(1).toLowerCase());
+  const text = q.replace(/#([a-zA-Z0-9_\-]+)/g,'').trim();
+
+  let r1 = [];
+  if(text){
+    const { data } = await supa.from('cards')
+      .select('id,front,back,card_topics(topic_id),card_tags(tag_id),status,visibility,is_author_suspended')
+      .ilike('front', `%${text}%`);
+    r1 = data||[];
+  }else{
+    const { data } = await supa.from('cards').select('id,front,back,card_topics(topic_id),card_tags(tag_id),status,visibility,is_author_suspended');
+    r1 = data||[];
+  }
+
+  // learner visibility unless editor
+  const visible = r1.filter(c=>{
+    const pub = (c.status==='published' && c.visibility==='public' && !c.is_author_suspended);
+    return pub || isEditor();
+  });
+
+  let ids = visible;
+  if(tagNames.length){
+    const tagRows = tags.filter(t=> tagNames.includes(String(t.name).toLowerCase()));
+    const tagIds = tagRows.map(t=>t.id);
+    ids = visible.filter(c => (c.card_tags||[]).some(ct=> tagIds.includes(ct.tag_id)));
+  }
+
+  results = ids;
+  resIdx = 0;
+  renderResults();
+  renderPreview();
+}
+function renderResults(){
+  const box = $('searchResults');
+  box.innerHTML = (results||[]).map((r,i)=>`<div data-i="${i}" style="cursor:pointer">${escapeHTML(stripHTML(r.front).slice(0,120))}</div>`).join('') || '<div class="muted">No results</div>';
+  [...box.children].forEach(div=> div.onclick = ()=>{ resIdx = +div.dataset.i; renderPreview(); });
+}
+function renderPreview(){
+  const r = results[resIdx]; if(!r){ $('spFront').innerHTML=''; $('spBack').innerHTML=''; return; }
+  $('spFront').innerHTML = r.front; $('spBack').innerHTML = r.back;
+}
+function previewResult(delta){ if(!results.length) return; resIdx = (resIdx + delta + results.length) % results.length; renderPreview(); }
+function startSearchSession(){
+  if(!results.length) return;
+  sessionResults = results.map(r=>r.id);
+  sessionIdx = 0;
+  order = [...sessionResults];
+  idx = 0;
+  renderCard(); renderCounts();
+  searchModal.style.display='none';
+}
+function openResultInMain(){
+  if(!results.length) return;
+  const id = results[resIdx].id;
+  const pos = order.indexOf(id);
+  if(pos>=0){ idx=pos; renderCard(); }
+  else { order = [id]; idx=0; renderCard(); }
+  searchModal.style.display='none';
+}
+
+/* ====== EXAM ====== */
+$('btnExam').onclick = ()=>{
+  const N = Number(prompt('How many cards? (e.g., 40)', '20'))||20;
+  const pool = cards.filter(matchesScope);
+  shuffle(pool);
+  order = pool.slice(0,N).map(c=>c.id); idx=0; renderCard(); renderCounts();
+};
+
+/* ====== STATS ====== */
+$('btnStats').onclick = async ()=>{
+  const countsByChapter = new Map();
+  cards.forEach(c=>{
+    const visibleToLearner = (c.status==='published'&&c.visibility==='public'&&!c.is_author_suspended);
+    if(!(visibleToLearner || isEditor())) return;
+    if(c.is_author_suspended) return;
+    const key = c.chapter_id || 'none';
+    const st = ucs.get(c.id);
+    const b = countsByChapter.get(key) || {again:0,hard:0,good:0,easy:0,none:0,star:0,total:0};
+    if(st?.is_suspended) { /* skip */ } else {
+      b.total++; if(st?.user_starred) b.star++;
+      const g = st?.last_grade||'none'; b[g] = (b[g]||0)+1;
+    }
+    countsByChapter.set(key,b);
+  });
+  const lines = [...countsByChapter.entries()].map(([cid,b])=>{
+    const name = chapters.find(c=>c.id===cid)?.title || '—';
+    return `${name}: Again ${b.again} | Hard ${b.hard} | Good ${b.good} | Easy ${b.easy} | Ungraded ${b.none} | Starred ${b.star} | Total ${b.total}`;
+  }).join('\n');
+  alert(lines || 'No data');
+};
+
+/* ====== EDITOR ====== */
+function isEditor(){ return !!userIsEditor; }
+let userIsEditor=false;
+
+async function checkEditor(){
+  if(!user){ userIsEditor=false; return; }
+  const { data } = await supa.from('app_roles').select('role').eq('user_id', user.id).maybeSingle();
+  userIsEditor = !!(data && (data.role==='owner'||data.role==='editor'));
+}
+
+$('tabStudy').onclick = ()=> switchTab('Study');
+$('tabEdit').onclick  = ()=> switchTab('Edit');
+$('tabAdmin').onclick = ()=> switchTab('Admin');
+
+async function switchTab(name){
+  ['Study','Edit','Admin'].forEach(x=>{
+    $('tab'+x).classList.toggle('active', x===name);
+    $('view'+x).classList.toggle('hidden', x!==name);
+  });
+
+  if(name === 'Study'){
+    await loadTaxonomy();
+    await loadTags();
+    await loadCards();
+    await pullUserState();
+    buildScopePickers();
+    rebuildOrder();
+    renderCounts();
+    renderCard();
+  }
+
+  if(name === 'Edit'){
+    await loadTaxonomy();
+    renderChapTopicLists();
+    renderCardTable();
+  }
+}
+
+/* Chapters/Topics CRUD */
+$('addChapter').onclick = async ()=>{
+  const title = $('newChapter').value.trim(); if(!title) return;
+  await supa.from('chapters').insert({ title, slug: slugify(title) });
+  $('newChapter').value=''; await loadTaxonomy(); buildScopePickers(); renderChapTopicLists();
+};
+$('addTopic').onclick = async ()=>{
+  const title = $('newTopic').value.trim(); if(!title) return;
+  await supa.from('topics').insert({ title, slug: slugify(title) });
+  $('newTopic').value=''; await loadTaxonomy(); buildScopePickers(); renderChapTopicLists();
+};
+function renderChapTopicLists(){
+  const cl = $('chapList'); cl.innerHTML='';
+  chapters.forEach(c=>{
+    const row = document.createElement('div');
+    row.innerHTML = `<b>${escapeHTML(c.title)}</b> <span class="muted">(${c.slug||''})</span>
+      <span style="margin-left:auto"></span>
+      <button class="btn small ghost" data-id="${c.id}">Delete</button>`;
+    row.querySelector('button').onclick = async ()=>{
+      if(!confirm('Delete chapter?')) return;
+      await supa.from('chapters').delete().eq('id', c.id);
+      await loadTaxonomy(); renderChapTopicLists(); buildScopePickers();
+    };
+    cl.appendChild(row);
+  });
+  const tl = $('topicList'); tl.innerHTML='';
+  topics.forEach(t=>{
+    const row = document.createElement('div');
+    row.innerHTML = `<b>${escapeHTML(t.title)}</b> <span class="muted">(${t.slug||''})</span>
+      <span style="margin-left:auto"></span>
+      <button class="btn small ghost" data-id="${t.id}">Delete</button>`;
+    row.querySelector('button').onclick = async ()=>{
+      if(!confirm('Delete topic?')) return;
+      await supa.from('topics').delete().eq('id', t.id);
+      await loadTaxonomy(); renderChapTopicLists(); buildScopePickers();
+    };
+    tl.appendChild(row);
+  });
+}
+$('btnReloadCards').onclick = async ()=>{ await loadCards(); renderCardTable(); };
+
+/* Cards table */
+$('btnNewCard').onclick = async ()=>{
+  const r = await supa.from('cards').insert({ front:'', back:'', status:'draft', visibility:'public' }).select().single();
+  if(r.error) return alert(r.error.message);
+  cards.unshift(r.data); renderCardTable();
+};
+async function renderCardTable(){
+  const tb = $('cardTable').querySelector('tbody'); 
+  tb.innerHTML='';
+  tableCards = [];
+
+  const fc = $('filterChapter').value||null;
+  const ft = $('filterTopic').value||null;
+  const fs = $('filterStatus').value||null;
+  const tx = $('filterText').value.trim().toLowerCase();
+
+  $('filterChapter').innerHTML = '<option value="">All chapters</option>' + chapters.map(c=>`<option value="${c.id}">${escapeHTML(c.title)}</option>`).join('');
+  $('filterTopic').innerHTML   = '<option value="">All topics</option>'   + topics.map(t=>`<option value="${t.id}">${escapeHTML(t.title)}</option>`).join('');
+
+  tableCards = cards.filter(c=>{
+    if(fc && c.chapter_id!==fc) return false;
+    if(ft && !(c.card_topics||[]).some(ct=>ct.topic_id===ft)) return false;
+    if(fs && c.status!==fs) return false;
+    if(tx && !(`${stripHTML(c.front)} ${stripHTML(c.back)}`.toLowerCase().includes(tx))) return false;
+    return true;
+  }).slice(0,500);
+
+  tableCards.forEach(c=>{
+    const tr = document.createElement('tr');
+
+    const tdF = document.createElement('td'); tdF.contentEditable=true; tdF.innerHTML=c.front;
+    const tdB = document.createElement('td'); tdB.contentEditable=true; tdB.innerHTML=c.back;
+
+    // placeholders for empty fields
+    if(!c.front){ tdF.dataset.placeholder = 'Front (question)…'; tdF.classList.add('muted'); }
+    if(!c.back){  tdB.dataset.placeholder = 'Back (answer)…';    tdB.classList.add('muted'); }
+    [tdF,tdB].forEach(td=>{
+      td.addEventListener('focus', ()=>{
+        if(td.classList.contains('muted')){ td.textContent=''; td.classList.remove('muted'); }
+      });
+      td.addEventListener('blur', ()=>{
+        if(!td.textContent.trim()){ td.textContent=''; td.classList.add('muted'); }
+      });
+    });
+
+    const tdC = document.createElement('td');
+    tdC.innerHTML = `<select>${['',...chapters.map(ch=>ch.id)].map(id=>{
+      const t = chapters.find(x=>x.id===id)?.title || '—';
+      return `<option value="${id}" ${c.chapter_id===id?'selected':''}>${t}</option>`;
+    }).join('')}</select>`;
+
+    const tdT = document.createElement('td');
+    tdT.innerHTML = `<select multiple size="3" style="min-width:160px;max-width:200px"></select>`;
+    const selT = tdT.querySelector('select');
+    topics.forEach(t=>{
+      const opt = document.createElement('option'); opt.value=t.id; opt.textContent=t.title;
+      if((c.card_topics||[]).some(ct=>ct.topic_id===t.id)) opt.selected=true;
+      selT.appendChild(opt);
+    });
+
+    const tdTags = document.createElement('td');
+    tdTags.innerHTML = `<input class="input" placeholder="tag1, tag2" value="${(c.card_tags||[]).map(ct=> tags.find(t=>t.id===ct.tag_id)?.name).filter(Boolean).join(', ')}"/>`;
+
+    const tdS = document.createElement('td'); tdS.innerHTML = `<select><option>draft</option><option>published</option><option>archived</option></select>`;
+    tdS.querySelector('select').value=c.status;
+
+    const tdV = document.createElement('td'); tdV.innerHTML = `<select><option>public</option><option>private</option></select>`;
+    tdV.querySelector('select').value=c.visibility;
+
+    const tdAS = document.createElement('td'); tdAS.innerHTML = `<label><input type="checkbox" ${c.is_author_suspended?'checked':''}/> Hide</label>`;
+
+    const tdM = document.createElement('td');
+    tdM.innerHTML = `
+      <div class="row">
+        <input type="file" class="input" style="max-width:220px"/>
+        <button class="btn small" data-up>Upload</button>
+      </div>
+      <div class="row" style="margin-top:6px">
+        <input placeholder="YouTube/Vimeo URL" class="input" style="max-width:220px"/>
+        <button class="btn small" data-add-ext>Add</button>
+      </div>
+      <div class="muted" style="margin-top:6px">${(c.card_media||[]).length} items</div>
+    `;
+
+    const tdSave = document.createElement('td');
+    tdSave.innerHTML = `<button class="btn small" data-save>Save</button> <button class="btn small ghost" data-edit>Edit</button>`;
+
+    tr.append(tdF,tdB,tdC,tdT,tdTags,tdS,tdV,tdAS,tdM,tdSave); tb.appendChild(tr);
+
+    tdM.querySelector('[data-up]').onclick = async ()=>{
+      const inp = tdM.querySelector('input[type=file]'); const file = inp.files?.[0]; if(!file) return;
+      const key = `media/${c.id}/${crypto.randomUUID()}-${file.name}`;
+      const { error } = await supa.storage.from('media').upload(key, file);
+      if(error) return alert(error.message);
+      await supa.from('card_media').insert({ card_id:c.id, type: file.type.includes('pdf')?'pdf':(file.type.includes('image')?'image':'video'), provider:'supabase', storage_path:key, title:file.name });
+      await loadCards(); renderCardTable();
+    };
+    tdM.querySelector('[data-add-ext]').onclick = async ()=>{
+      const url = tdM.querySelector('input[placeholder^="YouTube"]').value.trim(); if(!url) return;
+      await supa.from('card_media').insert({ card_id:c.id, type:'video', provider: url.includes('vimeo')?'vimeo':'youtube', playback_url:url, title:'Video' });
+      await loadCards(); renderCardTable();
+    };
+
+    tdSave.querySelector('[data-save]').onclick = async ()=>{
+      const front = tdF.innerHTML, back = tdB.innerHTML;
+      const chapter_id = tdC.querySelector('select').value || null;
+      const status = tdS.querySelector('select').value;
+      const visibility = tdV.querySelector('select').value;
+      const is_author_suspended = tdAS.querySelector('input').checked;
+
+      const tagStr = tdTags.querySelector('input').value;
+      const names = tagStr.split(',').map(s=>s.trim()).filter(Boolean);
+
+      for(const name of names){
+        await supa.from('tags').insert({ name }).select().maybeSingle().then(res=>{
+          if(res.error && !String(res.error.message).includes('duplicate')) console.warn(res.error.message);
+        });
       }
-      toRemove.forEach(k=>localStorage.removeItem(k));
-      Object.entries(obj).forEach(([k,v])=>{
-        localStorage.setItem(k, v);
+      await loadTags();
+
+      await supa.from('card_tags').delete().eq('card_id', c.id);
+      const tagIds = tags.filter(t=> names.map(x=>x.toLowerCase()).includes(String(t.name).toLowerCase())).map(t=>t.id);
+      for(const tid of tagIds){ await supa.from('card_tags').insert({ card_id:c.id, tag_id:tid }); }
+
+      await supa.from('card_topics').delete().eq('card_id', c.id);
+      [...selT.selectedOptions].forEach(async opt=>{
+        await supa.from('card_topics').insert({ card_id:c.id, topic_id: opt.value });
+      });
+
+      const { error } = await supa.from('cards').update({ front, back, chapter_id, status, visibility, is_author_suspended }).eq('id', c.id);
+      if(error) return alert(error.message);
+      await loadCards(); renderCardTable();
+      await loadTags(); buildScopePickers(); renderCounts();
+      alert('Saved ✓');
+    };
+  });
+
+  // One-time event delegation for Edit buttons
+  if (!tb._editHooked) {
+    tb.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-edit]');
+      if(!btn) return;
+      const tr = btn.closest('tr');
+      const rowIndex = Array.from(tb.children).indexOf(tr);
+      const card = tableCards[rowIndex];
+      if(card) openEditorModal(card);
+    });
+    tb._editHooked = true;
+  }
+}
+
+/* ====== EDITOR MODAL (Card Form) ====== */
+let editingCard = null;
+
+function openEditorModal(card){
+  editingCard = card;
+  // Fill fields
+  $('emFront').value = stripHTML(card.front || '');
+  $('emBack').value  = stripHTML(card.back  || '');
+  // Chapter
+  const chSel = $('emChapter');
+  chSel.innerHTML = '<option value="">(none)</option>' + chapters.map(c=>`<option value="${c.id}">${escapeHTML(c.title)}</option>`).join('');
+  chSel.value = card.chapter_id || '';
+  // Topics
+  const tSel = $('emTopics');
+  tSel.innerHTML = '';
+  topics.forEach(t=>{
+    const opt = document.createElement('option');
+    opt.value = t.id; opt.textContent = t.title;
+    if((card.card_topics||[]).some(ct=> ct.topic_id===t.id)) opt.selected = true;
+    tSel.appendChild(opt);
+  });
+  // Tags (global)
+  const names = (card.card_tags||[]).map(ct=> tags.find(x=>x.id===ct.tag_id)?.name).filter(Boolean);
+  $('emTags').value = names.join(', ');
+  // Status/visibility/suspend
+  $('emStatus').value = card.status || 'draft';
+  $('emVisibility').value = card.visibility || 'public';
+  $('emSuspend').checked = !!card.is_author_suspended;
+
+  // Show modal
+  $('editorModal').style.display = 'flex';
+
+  // Bind buttons
+  $('emCancel').onclick = closeEditorModal;
+  $('editorModal').onclick = (e)=>{ if(e.target.id==='editorModal') closeEditorModal(); };
+  document.addEventListener('keydown', escCloseOnce, { once:true });
+  $('emSave').onclick = saveEditorModal;
+}
+
+function escCloseOnce(e){ if(e.key==='Escape') closeEditorModal(); }
+function closeEditorModal(){
+  $('editorModal').style.display = 'none';
+  $('emSave').onclick = null;
+  $('emCancel').onclick = null;
+  editingCard = null;
+}
+
+function textToHtml(s){
+  const safe = escapeHTML(s);
+  return '<p>' + safe.replace(/\r\n/g,'\n')
+                     .split(/\n{2,}/).map(p=>p.replace(/\n/g,'<br>')).join('</p><p>') + '</p>';
+}
+
+async function saveEditorModal(){
+  if(!editingCard) return;
+  const cid = editingCard.id;
+
+  // Read form
+  const frontHTML = textToHtml($('emFront').value.trim());
+  const backHTML  = textToHtml($('emBack').value.trim());
+  const chapter_id = $('emChapter').value || null;
+  const status = $('emStatus').value;
+  const visibility = $('emVisibility').value;
+  const is_author_suspended = $('emSuspend').checked;
+
+  const selTopics = [...$('emTopics').selectedOptions].map(o=>o.value);
+  const tagNames = $('emTags').value.split(',').map(s=>s.trim()).filter(Boolean);
+
+  // Upsert tags
+  for(const name of tagNames){
+    const r = await supa.from('tags').insert({ name }).select().maybeSingle();
+    if(r.error && !String(r.error.message).toLowerCase().includes('duplicate')) {
+      alert(r.error.message); return;
+    }
+  }
+  await loadTags();
+
+  // Update card
+  const upd = await supa.from('cards').update({
+    front: frontHTML, back: backHTML,
+    chapter_id, status, visibility, is_author_suspended
+  }).eq('id', cid);
+  if(upd.error){ alert(upd.error.message); return; }
+
+  // Replace topics
+  await supa.from('card_topics').delete().eq('card_id', cid);
+  for(const tid of selTopics){ await supa.from('card_topics').insert({ card_id:cid, topic_id:tid }); }
+
+  // Replace tags
+  await supa.from('card_tags').delete().eq('card_id', cid);
+  const tagIds = tags.filter(t=> tagNames.map(x=>x.toLowerCase()).includes(String(t.name).toLowerCase())).map(t=>t.id);
+  for(const tid of tagIds){ await supa.from('card_tags').insert({ card_id:cid, tag_id:tid }); }
+
+  // Refresh UI
+  await loadCards();
+  await loadTags();
+  renderCardTable();
+  buildScopePickers();
+  renderCounts();
+  closeEditorModal();
+  alert('Saved ✓');
+}
+
+/* ADMIN: Import / Uncategorized / Scheduler */
+$('btnDownloadSchema').onclick = ()=>{
+  const template = {
+    cards:[{
+      front:"<p>Question…</p>", back:"<p>Answer…</p>",
+      meta:{ Section:"", Objective:"" },
+      chapter:null,
+      topics:[],
+      tags:[],
+      status:"draft",
+      visibility:"public",
+      author_suspended:false
+    }]
+  };
+  downloadJSON('cards-template.json', template);
+};
+$('btnDownloadPrompt').onclick = ()=>{
+  const text = `You are generating flashcards in JSON.
+
+Output EXACTLY this JSON shape (no prose):
+
+{
+  "cards":[
+    {
+      "front": "<p>Question text...</p>",
+      "back": "<p>Answer text...</p>",
+      "meta": { "Section":"", "Objective":"" },
+      "chapter": "Exact Chapter Title or null",
+      "topics": ["Topic Title 1","Topic Title 2"],
+      "tags": ["High-Yield"],
+      "status": "draft|published",
+      "visibility": "public|private",
+      "author_suspended": false
+    }
+  ]
+}
+
+Rules:
+- Fronts are questions (exam-ready); include vignette-style when appropriate.
+- Keep answers concise, structured (lists are fine as <ul><li>).
+- Do NOT include external links.
+- Use the provided chapter/topic titles verbatim; or leave null if unknown.
+- Avoid duplicates; merge near-duplicates into one clearer card.
+`;
+  downloadText('llm-prompt.txt', text);
+};
+
+$('btnImport').onclick = async ()=>{
+  const file = $('jsonFile').files?.[0]; if(!file) return alert('Pick a file');
+  const txt = await file.text();
+  let data; try{ data = JSON.parse(txt); }catch(e){ return alert('Invalid JSON'); }
+  const createTaxa = $('chkCreateTaxa').checked;
+  const log = [];
+
+  const topicByTitle = new Map(topics.map(t=>[t.title, t]));
+  const chapByTitle  = new Map(chapters.map(c=>[c.title, c]));
+
+  for(const card of (data.cards||[])){
+    let chapter_id = null;
+    if(card.chapter){
+      let ch = chapByTitle.get(card.chapter);
+      if(!ch && createTaxa){
+        const r = await supa.from('chapters').insert({ title: card.chapter, slug: slugify(card.chapter) }).select().single();
+        ch = r.data; chapters.push(ch); chapByTitle.set(ch.title,ch);
+      }
+      chapter_id = ch?.id || null;
+    }
+    const topic_ids=[];
+    for(const tTitle of (card.topics||[])){
+      let t = topicByTitle.get(tTitle);
+      if(!t && createTaxa){
+        const r = await supa.from('topics').insert({ title: tTitle, slug: slugify(tTitle) }).select().single();
+        t = r.data; topics.push(t); topicByTitle.set(t.title,t);
+      }
+      if(t) topic_ids.push(t.id);
+    }
+
+    const ins = await supa.from('cards').insert({
+      front: card.front, back: card.back, meta: card.meta||{},
+      chapter_id, status: card.status||'draft', visibility: card.visibility||'public',
+      is_author_suspended: !!card.author_suspended
+    }).select().single();
+
+    if(ins.error){ log.push(`Error: ${ins.error.message}`); continue; }
+    const cid = ins.data.id;
+
+    for(const name of (card.tags||[])){
+      await supa.from('tags').insert({ name }).select().maybeSingle().then(res=>{
+        if(res.error && !String(res.error.message).includes('duplicate')) console.warn(res.error.message);
       });
     }
-    function refreshBackupsDropdown(){
-      const sel = $("backupSelect");
-      const keys = [];
-      for(let i=0;i<localStorage.length;i++){
-        const k = localStorage.key(i);
-        if(k && k.startsWith(BACKUP_NS)) keys.push(k);
-      }
-      keys.sort(); // chronological by suffix
-      sel.innerHTML = keys.map(k=>`<option value="${k}">${k.slice(BACKUP_NS.length)}</option>`).join("");
+    await loadTags();
+    for(const name of (card.tags||[])){
+      const tag = tags.find(t=> String(t.name).toLowerCase()===String(name).toLowerCase());
+      if(tag) await supa.from('card_tags').insert({ card_id:cid, tag_id: tag.id });
     }
-    function createBackup(){
-      const stamp = new Date().toISOString().replace(/[:.]/g,"-");
-      const data = JSON.stringify(collectAllProgress());
-      localStorage.setItem(BACKUP_NS + stamp, data);
-      // prune
-      const keys = [];
-      for(let i=0;i<localStorage.length;i++){
-        const k = localStorage.key(i);
-        if(k && k.startsWith(BACKUP_NS)) keys.push(k);
-      }
-      keys.sort();
-      while(keys.length > MAX_BACKUPS){
-        const k = keys.shift();
-        localStorage.removeItem(k);
-      }
-      refreshBackupsDropdown();
+    for(const tid of topic_ids){ await supa.from('card_topics').insert({ card_id:cid, topic_id:tid }); }
+
+    log.push(`+ Card ${cid} (${stripHTML(card.front).slice(0,60)}…)`);
+  }
+  $('importLog').textContent = log.join('\n') || 'Nothing imported';
+  await loadCards(); renderCardTable(); buildScopePickers();
+};
+
+$('btnFindNoChapter').onclick = ()=> findUncat('noChapter');
+$('btnFindNoTopics').onclick = ()=> findUncat('noTopics');
+$('btnFindBoth').onclick = ()=> findUncat('both');
+
+async function findUncat(kind){
+  let list = cards.filter(c=> (c.status==='published' && c.visibility==='public'));
+  if(kind==='noChapter') list = list.filter(c=> !c.chapter_id);
+  if(kind==='noTopics')  list = list.filter(c=> !(c.card_topics||[]).length);
+  if(kind==='both')      list = list.filter(c=> !c.chapter_id && !(c.card_topics||[]).length);
+  const box = $('uncatList'); box.innerHTML='';
+  list.forEach(c=>{
+    const row = document.createElement('div');
+    const chSel = document.createElement('select');
+    chSel.innerHTML = '<option value="">(no chapter)</option>' + chapters.map(ch=>`<option value="${ch.id}">${ch.title}</option>`).join('');
+    const tSel = document.createElement('select'); tSel.multiple=true; tSel.size=3;
+    topics.forEach(t=>{ const opt=document.createElement('option'); opt.value=t.id; opt.textContent=t.title; tSel.appendChild(opt); });
+
+    row.innerHTML = `<div style="flex:1">${escapeHTML(stripHTML(c.front).slice(0,140))}</div>`;
+    row.appendChild(chSel); row.appendChild(tSel);
+    const save = document.createElement('button'); save.className='btn small'; save.textContent='Link';
+    save.onclick = async ()=>{
+      const chapter_id = chSel.value||null;
+      await supa.from('cards').update({ chapter_id }).eq('id', c.id);
+      await supa.from('card_topics').delete().eq('card_id', c.id);
+      [...tSel.selectedOptions].forEach(async opt=>{
+        await supa.from('card_topics').insert({ card_id:c.id, topic_id: opt.value });
+      });
+      await loadCards(); findUncat(kind);
+    };
+    const wrap = document.createElement('div'); wrap.append(row, save);
+    box.appendChild(wrap);
+  });
+}
+
+/* Scheduler settings */
+$('btnSaveSched').onclick = async ()=>{
+  const value = {
+    again:$('schedAgain').value.trim()||"1 hour",
+    hard:$('schedHard').value.trim()||"1 day",
+    good:$('schedGood').value.trim()||"3 days",
+    easy:$('schedEasy').value.trim()||"never"
+  };
+  const { error } = await supa.from('settings').upsert({ key:'scheduler', value });
+  if(error) alert(error.message); else alert('Saved ✓');
+};
+
+/* ====== HELPERS ====== */
+function $(id){ return document.getElementById(id); }
+function setText(id,v){ $(id).textContent = v; }
+function escapeHTML(s){ return String(s).replace(/[&<>]/g, c=> ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+function stripHTML(s){ const div=document.createElement('div'); div.innerHTML=s||''; return div.textContent||''; }
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=(Math.random()* (i+1))|0; [a[i],a[j]]=[a[j],a[i]]; } }
+function slugify(s){ return s.toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+function downloadJSON(name, obj){ const blob = new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; a.click(); }
+function downloadText(name, text){ const blob = new Blob([text],{type:'text/plain'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; a.click(); }
+
+function parseInterval(s){
+  if(!s || s==='never') return null;
+  const m = String(s).trim().match(/^(\d+)\s*(min|mins|minute|minutes|hour|hours|day|days)$/i);
+  if(!m) return null;
+  const n = +m[1]; const unit = m[2].toLowerCase();
+  if(unit.startsWith('min')) return n*60*1000;
+  if(unit.startsWith('hour')) return n*60*60*1000;
+  if(unit.startsWith('day')) return n*24*60*60*1000;
+  return null;
+}
+
+/* ====== INIT ====== */
+(async function(){
+  await initAuth();
+  if(user) await boot();
+  renderChapTopicLists();
+  renderCardTable();
+
+  document.getElementById('btnPrev').onclick = ()=> step(-1);
+  document.getElementById('btnNext').onclick = ()=> step(1);
+  document.getElementById('tagInput').addEventListener('keydown', async (e)=>{
+    if(e.key==='Enter'){
+      const c = curCard(); if(!c || !user) return;
+      const row = ucs.get(c.id)||{card_id:c.id,user_tags:[]};
+      const tag = e.target.value.trim(); if(!tag) return;
+      row.user_tags = [...new Set([...(row.user_tags||[]), tag])];
+      await supa.from('user_card_state').upsert(row);
+      ucs.set(c.id,row); e.target.value=''; renderCard();
     }
+  });
+  document.getElementById('btnClearTags').onclick = async ()=>{
+    const c = curCard(); if(!c || !user) return;
+    const row = ucs.get(c.id)||{card_id:c.id};
+    row.user_tags = [];
+    await supa.from('user_card_state').upsert(row);
+    ucs.set(c.id,row); renderCard();
+  };
 
-    $("exportBtn").onclick = ()=>{
-      const blob = new Blob([JSON.stringify(collectAllProgress(), null, 2)], {type:"application/json"});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url; a.download = "flashcards-progress.json";
-      document.body.appendChild(a); a.click();
-      setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },0);
-    };
-    $("importBtn").onclick = ()=> $("importInput").click();
-    $("importInput").onchange = e=>{
-      const f = e.target.files[0]; if(!f) return;
-      const r = new FileReader();
-      r.onload = ()=>{
-        try{
-          const obj = JSON.parse(r.result);
-          applyProgressDump(obj);
-          rebuildAndRender();
-          alert("Progress imported.");
-        }catch{ alert("Invalid progress file."); }
-      };
-      r.readAsText(f);
-      e.target.value = "";
-    };
-    $("backupNowBtn").onclick = ()=>{ createBackup(); alert("Backup created."); };
-    $("restoreBtn").onclick   = ()=>{
-      const k = $("backupSelect").value; if(!k){ alert("No backup selected."); return; }
-      const raw = localStorage.getItem(k); if(!raw){ alert("Backup not found."); return; }
-      try{ const obj = JSON.parse(raw); applyProgressDump(obj); rebuildAndRender(); alert("Backup restored."); }
-      catch{ alert("Backup corrupted."); }
-    };
-    $("deleteBackupBtn").onclick = ()=>{
-      const k = $("backupSelect").value; if(!k) return;
-      localStorage.removeItem(k); refreshBackupsDropdown();
-    };
-
-    // Auto-backup timer (~2 minutes)
-    setInterval(()=>{ createBackup(); }, 2*60*1000);
-
-    // ---------- Boot ----------
-    document.addEventListener("DOMContentLoaded", async ()=>{
-      await refreshDeckSelect();
-      // URL override ?deck=path.json
-      const params = new URLSearchParams(location.search);
-      const urlDeck = params.get("deck");
-      if (urlDeck){ await loadDeck(urlDeck); }
-      else {
-        const val = $("deckSelect").value;
-        if (val && !val.startsWith("local:")) await loadDeck(decodeURIComponent(val));
-        else await loadDeck("cards.json");
-      }
-      refreshBackupsDropdown();
-    });
-  </script>
+  document.getElementById('chipAll').click();
+})();
+</script>
 </body>
 </html>
