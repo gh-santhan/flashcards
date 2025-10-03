@@ -1,172 +1,152 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Flashcards — Study + Editor</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Flashcards</title>
 <style>
-  :root{
-    --bg:#0b0b0b; --fg:#f8f8f8; --muted:#a9a9a9; --line:#202020; --accent:#4f8cff;
-    --chip:#151515; --chipOn:#1e293b; --danger:#ef4444; --ok:#10b981; --warn:#f59e0b;
-  }
+  :root{--bg:#0b0b0b;--fg:#f7f7f7;--muted:#a9a9a9;--line:#1c1c1c;--accent:#4f8cff;--chip:#141414;--chipOn:#1f2937;--danger:#ef4444}
   *{box-sizing:border-box}
   html,body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
-  a{color:#9ec1ff}
-  header{padding:16px 16px 8px;border-bottom:1px solid var(--line)}
-  h1{margin:0 0 8px;font-size:20px}
+  a{color:#cde1ff}
+  header{border-bottom:1px solid var(--line);padding:10px 14px}
+  h1{margin:0;font-size:20px}
+  .wrap{max-width:980px;margin:0 auto;padding:12px}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .tabs{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:8px}
+  .tab{background:#101010;border:1px solid var(--line);border-radius:10px;padding:6px 10px;cursor:pointer}
+  .tab.on{background:#182030}
   .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-  select, input[type="text"], textarea{
-    background:#0f0f0f;color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:8px 10px;width:100%;
-  }
+  select,input,textarea{background:#0f0f0f;color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+  textarea{width:100%}
   button{background:#111;color:var(--fg);border:1px solid var(--line);border-radius:12px;padding:8px 12px;cursor:pointer}
   button.primary{background:var(--accent);border-color:#6aa1ff;color:#fff}
   button.ghost{background:#0f0f0f}
   button.danger{background:#3a0f12;border-color:#7f1d1d}
-  .wrap{max-width:900px;margin:0 auto;padding:12px}
   .chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
   .chip{border:1px solid var(--line);background:var(--chip);border-radius:999px;padding:6px 10px;font-size:13px;cursor:pointer}
   .chip.on{background:var(--chipOn)}
   .chip .count{opacity:.8;margin-left:6px}
-  .bar{display:flex;align-items:center;justify-content:space-between;gap:8px}
-  .card{
-    margin-top:12px;background:#0f0f0f;border:1px solid var(--line);border-radius:14px;padding:16px;
-  }
+  .card{margin-top:12px;background:#0f0f0f;border:1px solid var(--line);border-radius:14px;padding:16px}
   .meta{display:flex;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-bottom:8px}
   .badge{border:1px solid var(--line);border-radius:999px;padding:2px 8px;background:#121212}
-  .q{font-size:18px;margin:6px 0 6px}
-  .ans{margin-top:10px;padding:12px;border-top:1px dashed #222;display:none}
+  .q{font-size:18px;margin:6px 0}
+  .ans{margin-top:10px;padding-top:10px;border-top:1px dashed #222;display:none}
   .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-  .grade{display:flex;gap:8px;flex-wrap:wrap}
+  .grade{display:none;gap:8px;flex-wrap:wrap;margin-top:10px}
   .g{border-radius:999px;padding:10px 14px;border:1px solid #2a2a2a}
   .g.again{background:#1f2937} .g.hard{background:#2a1f3a} .g.good{background:#1f3a2a} .g.easy{background:#193a33}
-  .toggle{display:flex;gap:8px;align-items:center}
-  .muted{color:var(--muted)}
-  .divider{height:1px;background:var(--line);margin:12px 0}
-  .menu{position:fixed;right:12px;top:12px}
-  .toolbar{display:flex;gap:8px;align-items:center}
-  .pill{padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:#111;font-size:12px}
+  .divider{height:1px;background:var(--line);margin:16px 0}
+  .small{font-size:12px;color:var(--muted)}
+  table{width:100%;border-collapse:collapse}
+  th,td{border-bottom:1px solid #1a1a1a;padding:8px 6px;text-align:left;vertical-align:top}
+  th{color:#c0c0c0;font-weight:600}
+  /* resources */
   .resources{margin-top:10px;border-top:1px dashed #222;padding-top:8px}
   .res-list{display:flex;gap:8px;flex-wrap:wrap}
   .res{border:1px solid var(--line);border-radius:10px;padding:6px 8px;background:#111;display:flex;gap:6px;align-items:center}
   .thumb{width:52px;height:52px;object-fit:cover;border-radius:8px;border:1px solid #222}
-  .icon{font-size:12px;opacity:.9}
-  .linkish{color:#cde1ff}
-  /* modal base */
+  /* modals */
   .modal{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center}
-  .shade{position:absolute;inset:0;background:#000;opacity:.9}
-  .panel{position:relative;background:#0f0f0f;border:1px solid #1f2937;border-radius:14px;width:min(820px,94vw);max-height:92vh;overflow:auto;padding:16px}
-  .panel h3{margin:0 0 10px}
-  .grid{display:grid;gap:10px}
-  .g2{grid-template-columns:1fr 1fr}
-  .g3{grid-template-columns:1fr 1fr 1fr}
-  .right{display:flex;justify-content:flex-end;gap:8px}
-  /* tables */
-  table{width:100%;border-collapse:collapse}
-  th,td{border-bottom:1px solid #1a1a1a;padding:8px 6px;text-align:left}
-  th{color:#c0c0c0;font-weight:600}
-  .small{font-size:12px}
-  /* mobile */
-  @media (max-width:640px){
-    .g2,.g3{grid-template-columns:1fr}
-    .q{font-size:17px}
-  }
+  .shade{position:absolute;inset:0;background:#000;opacity:.92}
+  .panel{position:relative;background:#0f0f0f;border:1px solid #1f2937;border-radius:14px;width:min(860px,94vw);max-height:92vh;overflow:auto;padding:16px}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  @media (max-width:640px){.q{font-size:17px}}
 </style>
 </head>
 <body>
 <header>
-  <div class="wrap bar">
+  <div class="wrap topbar">
     <h1>Flashcards</h1>
-    <div class="toolbar">
-      <button id="btnMenu" class="pill">☰ Menu</button>
-      <button id="btnLogin" class="pill">Log in</button>
-      <span id="whoami" class="muted"></span>
+    <div class="row">
+      <button id="btnLogin" class="ghost">Log in</button>
+      <span id="whoami" class="small"></span>
+      <button id="btnLogout" class="ghost" style="display:none">Log out</button>
     </div>
+  </div>
+  <div class="wrap tabs">
+    <div class="tab on" data-tab="study">Study</div>
+    <div class="tab" data-tab="editor">Editor</div>
+    <div class="tab" data-tab="admin">Admin</div>
   </div>
 </header>
 
 <main class="wrap">
-  <!-- selectors -->
-  <div class="row">
-    <label style="min-width:220px">Chapter
-      <select id="selChapter"></select>
-    </label>
-    <label style="min-width:220px">Topic
-      <select id="selTopic"></select>
-    </label>
-    <button id="btnMix" class="ghost">Mix All</button>
-    <button id="btnSearch" class="ghost">Search</button>
-  </div>
-
-  <!-- difficulty chips as filters -->
-  <div class="chips" id="diffChips">
-    <span class="chip" data-diff="again">Again <span class="count" id="cnt-again">0</span></span>
-    <span class="chip" data-diff="hard">Hard <span class="count" id="cnt-hard">0</span></span>
-    <span class="chip" data-diff="good">Good <span class="count" id="cnt-good">0</span></span>
-    <span class="chip" data-diff="easy">Easy <span class="count" id="cnt-easy">0</span></span>
-    <span class="chip" data-diff="ungraded">Ungraded <span class="count" id="cnt-ungraded">0</span></span>
-    <span class="chip" id="chip-star">★ Starred <span class="count" id="cnt-star">0</span></span>
-  </div>
-
-  <!-- the card -->
-  <section class="card">
-    <div class="meta">
-      <span id="metaChap" class="badge">—</span>
-      <span id="metaTopics" class="badge">—</span>
-      <span id="metaSection" class="badge">—</span>
-      <span id="metaTags" class="badge">—</span>
-      <span id="metaIndex" class="badge">0/0</span>
-      <span id="metaResources" class="badge" style="display:none">Resources • <span id="resCount">0</span></span>
-      <span id="metaEditor" style="margin-left:auto; display:none">
-        <button id="btnEditCard" class="pill">✎ Edit</button>
-        <button id="btnDeleteCard" class="pill danger">🗑 Delete</button>
-      </span>
+  <!-- STUDY -->
+  <section id="tab-study">
+    <div class="row">
+      <label>Chapter <select id="selChapter"></select></label>
+      <label>Topic <select id="selTopic"></select></label>
+      <button id="btnMix" class="ghost">Mix All</button>
+      <button id="btnSearch" class="ghost">Search</button>
     </div>
 
-    <div class="q" id="q">—</div>
-
-    <div class="actions">
-      <button id="btnReveal" class="primary">Reveal</button>
-      <button id="btnPrev" class="ghost">◀ Prev</button>
-      <button id="btnNext" class="ghost">Next ▶</button>
-      <button id="btnSuspend" class="ghost" title="Suspend/Unsuspend">⏸ Suspend</button>
-      <button id="btnStar" class="ghost" title="Star/Unstar">☆ Star</button>
+    <div class="chips" id="diffChips">
+      <span class="chip" data-diff="again">Again <span class="count" id="cnt-again">0</span></span>
+      <span class="chip" data-diff="hard">Hard <span class="count" id="cnt-hard">0</span></span>
+      <span class="chip" data-diff="good">Good <span class="count" id="cnt-good">0</span></span>
+      <span class="chip" data-diff="easy">Easy <span class="count" id="cnt-easy">0</span></span>
+      <span class="chip" data-diff="ungraded">Ungraded <span class="count" id="cnt-ungraded">0</span></span>
+      <span class="chip" id="chip-star">★ Starred <span class="count" id="cnt-star">0</span></span>
     </div>
 
-    <div id="ans" class="ans"></div>
+    <section class="card">
+      <div class="meta">
+        <span id="metaChap" class="badge">—</span>
+        <span id="metaTopics" class="badge">—</span>
+        <span id="metaSection" class="badge">—</span>
+        <span id="metaTags" class="badge">—</span>
+        <span id="metaIndex" class="badge">0/0</span>
+        <span id="metaResources" class="badge" style="display:none">Resources • <span id="resCount">0</span></span>
+        <span id="metaEditor" style="margin-left:auto; display:none">
+          <button id="btnEditCard" class="ghost">✎ Edit</button>
+          <button id="btnDeleteCard" class="danger">🗑 Delete</button>
+        </span>
+      </div>
 
-    <div id="gradeRow" class="grade" style="display:none">
-      <button class="g again" id="gAgain">Again</button>
-      <button class="g hard" id="gHard">Hard</button>
-      <button class="g good" id="gGood">Good</button>
-      <button class="g easy" id="gEasy">Easy</button>
-    </div>
+      <div class="q" id="q">—</div>
 
-    <div class="resources" id="resWrap" style="display:none">
-      <div class="muted small">Resources</div>
-      <div id="resList" class="res-list"></div>
-    </div>
+      <div class="actions">
+        <button id="btnReveal" class="primary">Reveal</button>
+        <button id="btnPrev" class="ghost">◀ Prev</button>
+        <button id="btnNext" class="ghost">Next ▶</button>
+        <button id="btnSuspend" class="ghost" title="Suspend/Unsuspend">⏸ Suspend</button>
+        <button id="btnStar" class="ghost" title="Star/Unstar">☆ Star</button>
+      </div>
+
+      <div id="ans" class="ans"></div>
+
+      <div id="gradeRow" class="grade">
+        <button class="g again" id="gAgain">Again</button>
+        <button class="g hard" id="gHard">Hard</button>
+        <button class="g good" id="gGood">Good</button>
+        <button class="g easy" id="gEasy">Easy</button>
+      </div>
+
+      <div class="resources" id="resWrap" style="display:none">
+        <div class="small">Resources</div>
+        <div id="resList" class="res-list"></div>
+      </div>
+    </section>
   </section>
 
-  <!-- Editor panel: manage names + card table -->
-  <section id="editorPanel" style="display:none; margin-top:16px">
+  <!-- EDITOR -->
+  <section id="tab-editor" style="display:none">
     <div class="divider"></div>
-    <div class="bar">
-      <h3 style="margin:0">Editor</h3>
+    <section>
+      <h3 style="margin:0 0 8px">Manage Names</h3>
       <div class="row">
-        <button id="btnAdminImport" class="ghost">Import JSON</button>
-        <button id="btnBulkDelete" class="danger">Bulk Delete…</button>
-      </div>
-    </div>
-
-    <section id="editor-manage" style="margin-top:10px">
-      <div class="grid g2">
-        <div>
+        <div style="flex:1;min-width:300px">
           <h4>Chapters</h4>
           <div id="listChapters"></div>
         </div>
-        <div>
+        <div style="flex:1;min-width:300px">
           <h4>Topics</h4>
           <div id="listTopics"></div>
+        </div>
+        <div style="align-self:flex-start">
+          <h4>Bulk</h4>
+          <button id="btnBulkDelete" class="danger">Bulk Delete…</button>
         </div>
       </div>
     </section>
@@ -177,11 +157,22 @@
       <h4>Cards</h4>
       <table id="tblCards">
         <thead><tr>
-          <th>Front</th><th>Chapter</th><th>Topics</th><th>Tags</th><th class="small">Actions</th>
+          <th>Front</th><th>Chapter</th><th>Topics</th><th>Tags</th><th>Actions</th>
         </tr></thead>
         <tbody></tbody>
       </table>
     </section>
+  </section>
+
+  <!-- ADMIN -->
+  <section id="tab-admin" style="display:none">
+    <div class="divider"></div>
+    <h3>Import JSON</h3>
+    <div class="row">
+      <input id="fileImport" type="file" accept=".json"/>
+      <button id="btnImport" class="primary">Import</button>
+    </div>
+    <div class="small" style="margin-top:6px">Tip: use “Create missing chapters/topics” in your importer workflow if needed.</div>
   </section>
 </main>
 
@@ -189,17 +180,14 @@
 <div id="searchModal" class="modal">
   <div class="shade"></div>
   <div class="panel">
-    <div class="bar">
-      <h3>Search</h3>
-      <button id="searchClose" class="ghost">✕</button>
-    </div>
-    <div class="grid g2" style="margin-top:8px">
-      <input id="searchInput" type="text" placeholder="keyword or #tag" />
+    <div class="bar"><h3>Search</h3><button id="searchClose" class="ghost">✕</button></div>
+    <div class="row" style="margin-top:8px">
+      <input id="searchInput" type="text" placeholder="keyword or #tag" style="flex:1"/>
       <button id="searchGo" class="primary">Search</button>
     </div>
-    <div class="small muted" style="margin-top:6px">Tip: use <code>#tag</code> to filter by tag.</div>
+    <div class="small" style="margin-top:6px">Use <code>#tag</code> to filter by tag.</div>
     <div id="searchResults" style="margin-top:12px"></div>
-    <div class="right" style="margin-top:10px">
+    <div style="text-align:right;margin-top:10px">
       <button id="searchReviewAll" class="primary" disabled>Review All</button>
     </div>
   </div>
@@ -209,47 +197,33 @@
 <div id="editModal" class="modal">
   <div class="shade"></div>
   <div class="panel">
-    <div class="bar">
-      <h3>Edit Card</h3>
-      <button id="editClose" class="ghost">✕</button>
-    </div>
-    <div class="grid g2" style="margin-top:10px">
-      <div>
+    <div class="bar"><h3>Edit Card</h3><button id="editClose" class="ghost">✕</button></div>
+    <div class="row" style="margin-top:10px">
+      <div style="flex:1">
         <label>Front<textarea id="edFront" rows="6" placeholder="Question…"></textarea></label>
       </div>
-      <div>
+      <div style="flex:1">
         <label>Back<textarea id="edBack" rows="6" placeholder="Answer…"></textarea></label>
       </div>
     </div>
-
-    <div class="grid g3" style="margin-top:10px">
-      <div>
-        <label>Chapter
-          <select id="edChapter"></select>
-        </label>
-      </div>
-      <div>
-        <label>Topics (hold ⌘/Ctrl for multi)
-          <select id="edTopics" multiple size="5"></select>
-        </label>
-      </div>
-      <div>
-        <label>Tags (comma-separated)
-          <input id="edTags" type="text" placeholder="MCQ, Diagnosis, Protocol" />
-        </label>
-      </div>
-    </div>
-
-    <div class="grid" style="margin-top:10px">
-      <label>Additional Notes (optional)
-        <textarea id="edNotes" rows="3" placeholder="Any extra info you want to show under Resources…"></textarea>
+    <div class="row" style="margin-top:10px">
+      <label>Chapter <select id="edChapter"></select></label>
+      <label>Topics (⌘/Ctrl for multi)
+        <select id="edTopics" multiple size="5" style="min-width:220px"></select>
+      </label>
+      <label style="flex:1">Tags (comma-separated)
+        <input id="edTags" type="text" placeholder="MCQ, Diagnosis, Protocol"/>
       </label>
     </div>
-
+    <div style="margin-top:10px">
+      <label>Additional Notes (optional)
+        <textarea id="edNotes" rows="3" placeholder="Show under Resources…"></textarea>
+      </label>
+    </div>
     <div style="margin-top:10px">
       <div class="bar"><h4 style="margin:0">Resources</h4></div>
-      <div class="small muted">Add external links or upload images/PDFs.</div>
-      <div class="grid g2" style="margin-top:6px">
+      <div class="small">Add external links or upload images/PDFs.</div>
+      <div class="row" style="margin-top:6px">
         <div>
           <label>New link — Title<input id="edLinkTitle" type="text" placeholder="e.g., AASM guideline"/></label>
           <label>New link — URL<input id="edLinkUrl" type="text" placeholder="https://…"/></label>
@@ -259,13 +233,12 @@
           <label>Upload file (image/PDF)
             <input id="edFile" type="file" accept="image/*,application/pdf"/>
           </label>
-          <div class="small muted">Uploaded to Storage bucket; added to this card’s resources.</div>
+          <div class="small">Uploaded to Storage and added to this card.</div>
         </div>
       </div>
       <div id="edResList" class="res-list" style="margin-top:10px"></div>
     </div>
-
-    <div class="right" style="margin-top:12px">
+    <div style="text-align:right;margin-top:12px">
       <button id="btnSaveCard" class="primary">Save</button>
     </div>
   </div>
@@ -276,7 +249,7 @@
   <div class="shade"></div>
   <div class="panel">
     <div class="bar"><h3>Bulk Delete Cards</h3><button id="bdClose" class="ghost">✕</button></div>
-    <div class="grid g2" style="margin-top:10px">
+    <div class="row" style="margin-top:10px">
       <label>Mode
         <select id="bdMode"><option value="chapter">By Chapter</option><option value="topic">By Topic</option></select>
       </label>
@@ -285,189 +258,127 @@
       </label>
     </div>
     <div class="small" style="margin-top:8px">Selection preview: <b id="bdCount">0</b> card(s) will be deleted.</div>
-    <div class="muted small" style="margin-top:4px;color:#fca5a5">This permanently deletes cards + joins (topics/tags/reviews). No undo.</div>
+    <div class="small" style="margin-top:4px;color:#fca5a5">Permanently deletes cards + joins (topics/tags/reviews). No undo.</div>
     <div style="margin-top:8px">Type <code>DELETE</code> to enable: <input id="bdConfirm" type="text" style="width:160px;margin-left:8px"></div>
-    <div class="right" style="margin-top:10px"><button id="bdRun" class="danger" disabled>Delete Selected</button></div>
-  </div>
-</div>
-
-<!-- Menu Modal (other options tucked away) -->
-<div id="menuModal" class="modal">
-  <div class="shade"></div>
-  <div class="panel">
-    <div class="bar"><h3>Menu</h3><button id="menuClose" class="ghost">✕</button></div>
-    <div class="grid" style="margin-top:8px">
-      <button id="menuToggleEditor" class="ghost">Toggle Editor Panel</button>
-      <button id="menuLogout" class="ghost">Log out</button>
-    </div>
+    <div style="text-align:right;margin-top:10px"><button id="bdRun" class="danger" disabled>Delete Selected</button></div>
   </div>
 </div>
 
 <script src="https://unpkg.com/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
-/*** CONFIG — fill these ***/
-const SUPABASE_URL = "https://YOUR-PROJECT.supabase.co";
-const SUPABASE_ANON_KEY = "YOUR-ANON-KEY";
-const STORAGE_BUCKET = "card-media"; // change to your bucket name
+/* === CONFIG: UPDATE THESE === */
+const SUPABASE_URL = "https://vzcgdpedoyiqzgguitum.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ6Y2dkcGVkb3lpcXpnZ3VpdHVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkxNDA1MjksImV4cCI6MjA3NDcxNjUyOX0.hHMkwcrROCQHGlYPdfbVYmPffVHUiE838GktgXaRAzI";
+const STORAGE_BUCKET = "media"; // your Storage bucket
 
-/*** Supabase init ***/
+/* === Supabase init === */
 const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-/*** State ***/
-let session = null;
-let user = null;
+/* === State === */
+let session=null,user=null;
+let chapters=[], topics=[], tags=[], cards=[];
+let scope={chapter:null,topic:null,mix:false,diff:null,starred:false};
+let order=[], idx=0, currentCard=null;
+let searchResults=[];
 
-let chapters = []; // [{id,title}]
-let topics = [];   // [{id,title}]
-let tags = [];     // [{id,name}]
-let cards = [];    // raw from DB with joins
-let order = [];    // indices of cards under current filter
-let idx = 0;       // current index in order
-let scope = { chapter:null, topic:null, mix:false, diff:null, starred:false };
+/* === Helpers === */
+const $ = id=>document.getElementById(id);
+const escapeHTML = (s='')=>s.replace(/[&<>"']/g,m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
+function visibleToLearner(c){ const pub=(c.status==='published' && c.visibility==='public' && !c.author_suspended); return pub || !!user; }
 
-let currentCard = null; // object for rendering
-let searchResults = []; // ids in search deck
+/* === Tabs === */
+document.querySelectorAll('.tab').forEach(t=>{
+  t.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+    t.classList.add('on');
+    const which=t.dataset.tab;
+    ['study','editor','admin'].forEach(k=>{
+      $('tab-'+k).style.display = (k===which)?'block':'none';
+    });
+  };
+});
 
-/*** Utils ***/
-const $ = id => document.getElementById(id);
-const escapeHTML = (s='') => s.replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m]));
-const toast = (msg)=>console.log("[i]",msg);
-
-function isEditor(){
-  return !!user; // simple: any logged-in user can edit; tighten with RLS/role later
-}
-
-/*** Auth ***/
+/* === Auth === */
 async function initAuth(){
-  const { data: { session: s } } = await supabase.auth.getSession();
-  session = s; user = s?.user || null;
-  refreshAuthUI();
-
-  supabase.auth.onAuthStateChange((evt, sess)=>{
-    session = sess; user = sess?.user || null;
-    refreshAuthUI();
-    if(user){ loadEverything(); }
-  });
+  const { data:{ session:s } } = await supabase.auth.getSession();
+  session=s; user=s?.user||null; syncAuthUI();
+  supabase.auth.onAuthStateChange((evt,sess)=>{session=sess;user=sess?.user||null;syncAuthUI();if(user) loadAll();});
 }
-
-function refreshAuthUI(){
-  $('btnLogin').style.display = user ? 'none':'inline-block';
-  $('whoami').textContent = user ? (user.email||'editor') : '';
-  $('editorPanel').style.display = user ? 'block':'none';
-  $('metaEditor').style.display = user ? 'inline-block':'none';
+function siteRedirect(){ return location.origin + location.pathname; }
+function syncAuthUI(){
+  $('btnLogin').style.display = user?'none':'inline-block';
+  $('btnLogout').style.display = user?'inline-block':'none';
+  $('whoami').textContent = user?(user.email||''):'';
+  $('metaEditor').style.display = user?'inline-block':'none';
+  $('tab-editor').style.display = user?$('tab-editor').style.display:'none'; // keep hidden until selected
 }
-
-$('btnLogin').onclick = async ()=>{
-  const email = prompt("Enter email for magic link:");
-  if(!email) return;
-  const { error } = await supabase.auth.signInWithOtp({ email, options:{ emailRedirectTo: location.href } });
-  if(error) alert(error.message); else alert("Magic link sent.");
+$('btnLogin').onclick=async()=>{
+  const email=prompt('Enter email for magic link:'); if(!email) return;
+  const { error } = await supabase.auth.signInWithOtp({ email, options:{ emailRedirectTo: siteRedirect() }});
+  if(error) alert(error.message); else alert('Magic link sent.');
 };
-async function logout(){ await supabase.auth.signOut(); location.reload(); }
+$('btnLogout').onclick=async()=>{ await supabase.auth.signOut(); location.reload(); };
 
-/*** DB Loads ***/
+/* === DB Loads === */
 async function loadTaxonomy(){
-  const { data: ch } = await supabase.from('chapters').select('*').order('title');
-  const { data: tp } = await supabase.from('topics').select('*').order('title');
-  const { data: tg } = await supabase.from('tags').select('*').order('name');
-  chapters = ch||[]; topics = tp||[]; tags = tg||[];
-  buildScopePickers();
-  buildEditorPickers();
-  renderEditorManage();
+  const { data:ch }=await supabase.from('chapters').select('*').order('title');
+  const { data:tp }=await supabase.from('topics').select('*').order('title');
+  const { data:tg }=await supabase.from('tags').select('*').order('name');
+  chapters=ch||[]; topics=tp||[]; tags=tg||[];
+  buildScopePickers(); buildEditorPickers(); renderEditorManage();
 }
-
 async function loadCards(){
-  // Pull cards and joins
-  const { data: cs } = await supabase.from('cards')
-    .select(`
-      *,
-      card_topics ( topic_id, topics (id, title) ),
-      card_tags ( tag_id, tags (id, name) )
-    `)
-    .order('created_at', { ascending:true });
+  const { data: cs, error } = await supabase.from('cards')
+    .select(`*, card_topics(topic_id, topics(id,title)), card_tags(tag_id, tags(id,name))`)
+    .order('created_at',{ascending:true});
+  if(error){ console.error(error); }
   cards = (cs||[]).map(c=>{
-    c.card_topics = (c.card_topics||[]).map(ct=>({topic_id: ct.topic_id, title: ct.topics?.title}));
-    c.card_tags   = (c.card_tags||[]).map(ct=>({tag_id: ct.tag_id, name: ct.tags?.name}));
-    c.meta = c.meta || {};
+    c.card_topics=(c.card_topics||[]).map(ct=>({topic_id:ct.topic_id,title:ct.topics?.title}));
+    c.card_tags=(c.card_tags||[]).map(ct=>({tag_id:ct.tag_id,name:ct.tags?.name}));
+    c.meta=c.meta||{};
+    // tolerate either column name
+    c.author_suspended = (typeof c.author_suspended==='boolean')? c.author_suspended : (c.is_author_suspended||false);
     return c;
   });
 }
 
+/* === Pickers & counts === */
 function buildScopePickers(){
-  // derive counts
-  const selC = $('selChapter'), selT = $('selTopic');
-  const visCards = cards.filter(c => visibleToLearner(c));
-  const byChap = new Map(), byTopic = new Map();
-  visCards.forEach(c=>{
-    byChap.set(c.chapter_id, (byChap.get(c.chapter_id)||0)+1);
-    (c.card_topics||[]).forEach(ct=> byTopic.set(ct.topic_id, (byTopic.get(ct.topic_id)||0)+1));
+  const selC=$('selChapter'), selT=$('selTopic');
+  const vis=cards.filter(visibleToLearner);
+  const byChap=new Map(), byTopic=new Map();
+  vis.forEach(c=>{
+    byChap.set(c.chapter_id,(byChap.get(c.chapter_id)||0)+1);
+    (c.card_topics||[]).forEach(ct=>byTopic.set(ct.topic_id,(byTopic.get(ct.topic_id)||0)+1));
   });
-
-  selC.innerHTML = `<option value="">All Chapters (${visCards.length})</option>` +
+  selC.innerHTML = `<option value="">All Chapters (${vis.length})</option>` +
     chapters.map(ch=>`<option value="${ch.id}">${escapeHTML(ch.title)} (${byChap.get(ch.id)||0})</option>`).join('');
-
-  // Topic list filtered by chapter (if selected)
-  const chap = selC.value || scope.chapter;
+  const chapVal = selC.value || scope.chapter;
   let topicOpts = topics;
-  if(chap){
-    const tset = new Set();
-    visCards.filter(c=>c.chapter_id===chap).forEach(c=>(c.card_topics||[]).forEach(ct=>tset.add(ct.topic_id)));
+  if(chapVal){
+    const tset=new Set();
+    vis.filter(c=>c.chapter_id===chapVal).forEach(c=>(c.card_topics||[]).forEach(ct=>tset.add(ct.topic_id)));
     topicOpts = topics.filter(t=>tset.has(t.id));
   }
   selT.innerHTML = `<option value="">All Topics</option>` +
     topicOpts.map(tp=>`<option value="${tp.id}">${escapeHTML(tp.title)} (${byTopic.get(tp.id)||0})</option>`).join('');
-
-  selC.onchange = ()=>{ scope.chapter = selC.value||null; scope.mix=false; rebuildOrder(); renderCounts(); renderCard(); buildScopePickers(); };
-  selT.onchange = ()=>{ scope.topic = selT.value||null; scope.mix=false; rebuildOrder(); renderCounts(); renderCard(); };
-  $('btnMix').onclick = ()=>{ scope={chapter:null,topic:null,mix:true,diff:null,starred:false}; rebuildOrder(); renderCounts(); renderCard(); };
+  selC.onchange=()=>{ scope.chapter=selC.value||null; scope.mix=false; rebuildOrder(); renderCounts(); renderCard(); buildScopePickers(); };
+  selT.onchange=()=>{ scope.topic=selT.value||null; scope.mix=false; rebuildOrder(); renderCounts(); renderCard(); };
+  $('btnMix').onclick=()=>{ scope={chapter:null,topic:null,mix:true,diff:null,starred:false}; rebuildOrder(); renderCounts(); renderCard(); };
 }
-
-/*** Filtering / ordering ***/
-function visibleToLearner(c){
-  const pub = (c.status==='published' && c.visibility==='public' && !c.is_author_suspended);
-  return pub || isEditor();
-}
-
-function inScope(c){
-  if(!visibleToLearner(c)) return false;
-  if(scope.chapter && c.chapter_id!==scope.chapter) return false;
-  if(scope.topic && !(c.card_topics||[]).some(ct=>ct.topic_id===scope.topic)) return false;
-  if(scope.diff){
-    const g = c.user_grade||'ungraded';
-    if(g!==scope.diff) return false;
-  }
-  if(scope.starred && !c.user_starred) return false;
-  return true;
-}
-
-function rebuildOrder(){
-  const pool = cards.filter(inScope);
-  order = pool.map((c,i)=>i); // index in filtered pool; we will store pool
-  window._pool = pool;
-  idx = Math.min(idx, Math.max(0, order.length-1));
-}
-
 function renderCounts(){
-  const pool = cards.filter(c=>visibleToLearner(c) && (!scope.chapter || c.chapter_id===scope.chapter) && (!scope.topic || (c.card_topics||[]).some(ct=>ct.topic_id===scope.topic)));
-  const counts = {again:0, hard:0, good:0, easy:0, ungraded:0, star:0};
-  pool.forEach(c=>{
-    const g = c.user_grade || 'ungraded';
-    counts[g]++; if(c.user_starred) counts.star++;
-  });
-  $('cnt-again').textContent = counts.again;
-  $('cnt-hard').textContent = counts.hard;
-  $('cnt-good').textContent = counts.good;
-  $('cnt-easy').textContent = counts.easy;
-  $('cnt-ungraded').textContent = counts.ungraded;
-  $('cnt-star').textContent = counts.star;
+  const pool=cards.filter(c=>visibleToLearner(c) && (!scope.chapter||c.chapter_id===scope.chapter) && (!scope.topic||(c.card_topics||[]).some(ct=>ct.topic_id===scope.topic)));
+  const counts={again:0,hard:0,good:0,easy:0,ungraded:0,star:0};
+  pool.forEach(c=>{ const g=c.user_grade||'ungraded'; counts[g]++; if(c.user_starred) counts.star++; });
+  $('cnt-again').textContent=counts.again; $('cnt-hard').textContent=counts.hard; $('cnt-good').textContent=counts.good;
+  $('cnt-easy').textContent=counts.easy; $('cnt-ungraded').textContent=counts.ungraded; $('cnt-star').textContent=counts.star;
 }
-
 function bindDiffChips(){
-  [...$('diffChips').querySelectorAll('.chip')].forEach(ch=>{
-    ch.onclick = ()=>{
-      const d = ch.dataset.diff;
-      if(d){ scope.diff = (scope.diff===d? null: d); }
-      if(ch.id==='chip-star'){ scope.starred = !scope.starred; }
+  [...$('diffChips').children].forEach(ch=>{
+    ch.onclick=()=>{
+      const d=ch.dataset.diff;
+      if(d){ scope.diff=(scope.diff===d?null:d); }
+      if(ch.id==='chip-star'){ scope.starred=!scope.starred; }
       [...$('diffChips').children].forEach(x=>x.classList.remove('on'));
       if(scope.diff){ $('diffChips').querySelector(`.chip[data-diff="${scope.diff}"]`).classList.add('on'); }
       if(scope.starred){ $('chip-star').classList.add('on'); }
@@ -476,273 +387,202 @@ function bindDiffChips(){
   });
 }
 
-/*** Render one card ***/
+/* === Filtering & render === */
+function inScope(c){
+  if(!visibleToLearner(c)) return false;
+  if(scope.chapter && c.chapter_id!==scope.chapter) return false;
+  if(scope.topic && !(c.card_topics||[]).some(ct=>ct.topic_id===scope.topic)) return false;
+  if(scope.diff){ const g=c.user_grade||'ungraded'; if(g!==scope.diff) return false; }
+  if(scope.starred && !c.user_starred) return false;
+  return true;
+}
+function rebuildOrder(){
+  const pool=cards.filter(inScope);
+  order=pool.map((c,i)=>i); window._pool=pool; idx=0;
+  $('metaIndex').textContent=`${order.length?1:0}/${order.length}`;
+}
 function renderCard(){
-  const pool = window._pool || [];
-  $('metaIndex').textContent = `${order.length? (idx+1):0}/${order.length}`;
-  if(!order.length){
-    $('q').innerHTML = 'No cards match.';
-    $('ans').style.display='none';
-    $('gradeRow').style.display='none';
-    $('metaChap').textContent = '—';
-    $('metaTopics').textContent = '—';
-    $('metaSection').textContent = '—';
-    $('metaTags').textContent = '—';
-    $('metaResources').style.display='none';
-    $('resWrap').style.display='none';
-    return;
-  }
-  const c = pool[order[idx]];
-  currentCard = c;
+  const pool=window._pool||[];
+  $('metaIndex').textContent=`${order.length?(idx+1):0}/${order.length}`;
+  if(!order.length){ $('q').innerHTML='No cards match.'; $('ans').style.display='none'; $('gradeRow').style.display='none'; $('resWrap').style.display='none'; return; }
+  const c=pool[order[idx]]; currentCard=c;
+  const chap=chapters.find(x=>x.id===c.chapter_id)?.title||'—';
+  const tps=(c.card_topics||[]).map(x=>x.title).filter(Boolean);
+  const tgs=(c.card_tags||[]).map(x=>x.name).filter(Boolean);
 
-  const chap = chapters.find(x=>x.id===c.chapter_id)?.title || '—';
-  const tps = (c.card_topics||[]).map(x=>x.title).filter(Boolean);
-  const tgs = (c.card_tags||[]).map(x=>x.name).filter(Boolean);
-  $('metaChap').textContent = chap;
-  $('metaTopics').textContent = tps.length? tps.join(' • ') : '—';
-  $('metaSection').textContent = c.meta?.Section || '—';
-  $('metaTags').textContent = tgs.length? tgs.join(', ') : '—';
+  $('metaChap').textContent=chap;
+  $('metaTopics').textContent=tps.length? tps.join(' • '):'—';
+  $('metaSection').textContent=c.meta?.Section||'—';
+  $('metaTags').textContent=tgs.length? tgs.join(', '):'—';
 
-  $('q').innerHTML = c.front || '—';
-  $('ans').innerHTML = c.back || '';
-  $('ans').style.display = 'none';
+  $('q').innerHTML=c.front||'—';
+  $('ans').innerHTML=c.back||'';
+  $('ans').style.display='none';
   $('gradeRow').style.display='none';
 
-  // resources
-  const res = (c.meta?.resources)||[];
-  $('resCount').textContent = res.length + (c.meta?.notes?1:0);
-  $('metaResources').style.display = (res.length || c.meta?.notes) ? 'inline-block':'none';
+  const res=(c.meta?.resources)||[]; $('resCount').textContent=res.length+(c.meta?.notes?1:0);
+  $('metaResources').style.display=(res.length||c.meta?.notes)?'inline-block':'none';
   renderResources(c);
 
-  // editor action visibility
-  $('btnDeleteCard').style.display = isEditor() ? 'inline-block' : 'none';
-  $('btnEditCard').style.display    = isEditor() ? 'inline-block' : 'none';
+  $('btnDeleteCard').style.display = user?'inline-block':'none';
+  $('btnEditCard').style.display = user?'inline-block':'none';
 
-  // star/suspend states (simple UI)
-  $('btnStar').textContent = c.user_starred ? '★ Unstar' : '☆ Star';
-  $('btnSuspend').textContent = c.is_author_suspended ? '▶ Unsuspend' : '⏸ Suspend';
+  $('btnStar').textContent = c.user_starred?'★ Unstar':'☆ Star';
+  $('btnSuspend').textContent = c.author_suspended?'▶ Unsuspend':'⏸ Suspend';
 }
-
 function renderResources(c){
-  const list = $('resList');
-  list.innerHTML = '';
-  const res = (c.meta?.resources)||[];
+  const list=$('resList'); list.innerHTML='';
   if(c.meta?.notes){
-    const div = document.createElement('div');
-    div.className='res';
-    div.innerHTML = `<span class="icon">📝</span><span>${escapeHTML(String(c.meta.notes).slice(0,180))}${String(c.meta.notes).length>180?'…':''}</span>`;
-    list.appendChild(div);
+    const n=document.createElement('div'); n.className='res';
+    n.innerHTML=`<span>📝</span><span>${escapeHTML(String(c.meta.notes).slice(0,180))}${String(c.meta.notes).length>180?'…':''}</span>`;
+    list.appendChild(n);
   }
-  res.forEach(r=>{
-    const d = document.createElement('div');
-    d.className='res';
-    if(r.type==='image'){
-      d.innerHTML = `<img class="thumb" src="${r.url}" alt="image"/><a class="linkish" href="${r.url}" target="_blank">${escapeHTML(r.title||'Image')}</a>`;
-    } else if(r.type==='pdf'){
-      d.innerHTML = `<span class="icon">📄</span><a class="linkish" href="${r.url}" target="_blank">${escapeHTML(r.title||'PDF')}</a>`;
-    } else {
-      d.innerHTML = `<span class="icon">🔗</span><a class="linkish" href="${r.url}" target="_blank">${escapeHTML(r.title||r.url)}</a>`;
-    }
+  (c.meta?.resources||[]).forEach(r=>{
+    const d=document.createElement('div'); d.className='res';
+    if(r.type==='image'){ d.innerHTML=`<img class="thumb" src="${r.url}" alt="image"/><a target="_blank" href="${r.url}">${escapeHTML(r.title||'Image')}</a>`; }
+    else if(r.type==='pdf'){ d.innerHTML=`<span>📄</span><a target="_blank" href="${r.url}">${escapeHTML(r.title||'PDF')}</a>`; }
+    else { d.innerHTML=`<span>🔗</span><a target="_blank" href="${r.url}">${escapeHTML(r.title||r.url)}</a>`; }
     list.appendChild(d);
   });
-  $('resWrap').style.display = (res.length || c.meta?.notes) ? 'block':'none';
 }
 
-/*** Nav + actions ***/
-$('btnPrev').onclick = ()=>{ if(order.length){ idx = (idx-1+order.length)%order.length; renderCard(); } };
-$('btnNext').onclick = ()=>{ if(order.length){ idx = (idx+1)%order.length; renderCard(); } };
-$('btnReveal').onclick = ()=>{ $('ans').style.display = 'block'; $('gradeRow').style.display='flex'; };
-
-$('gAgain').onclick = ()=> grade('again');
-$('gHard').onclick  = ()=> grade('hard');
-$('gGood').onclick  = ()=> grade('good');
-$('gEasy').onclick  = ()=> grade('easy');
-
-async function grade(level){
-  if(!currentCard || !user) { toast('Sign in to grade.'); return; }
-  // Persist in a simple per-user grades table or store in card.user_grade via a RPC; here we patch local + optimistic upsert
-  currentCard.user_grade = level;
-  renderCounts();
-  $('diffChips').querySelectorAll('.chip').forEach(x=>{ if(x.dataset.diff===level) x.classList.add('on'); });
-  // TODO: write to your reviews table if you have one; for now skip DB write to keep this file self-contained
-  nextCard();
-}
-function nextCard(){ $('btnNext').click(); }
-
-$('btnSuspend').onclick = async ()=>{
-  if(!isEditor() || !currentCard) return;
-  const newVal = !currentCard.is_author_suspended;
-  const { error } = await supabase.from('cards').update({ is_author_suspended:newVal }).eq('id', currentCard.id);
+/* === Study actions === */
+$('btnPrev').onclick=()=>{ if(order.length){ idx=(idx-1+order.length)%order.length; renderCard(); } };
+$('btnNext').onclick=()=>{ if(order.length){ idx=(idx+1)%order.length; renderCard(); } };
+$('btnReveal').onclick=()=>{ $('ans').style.display='block'; $('gradeRow').style.display='flex'; };
+$('gAgain').onclick=()=>grade('again'); $('gHard').onclick=()=>grade('hard'); $('gGood').onclick=()=>grade('good'); $('gEasy').onclick=()=>grade('easy');
+function grade(level){ if(!currentCard){return;} currentCard.user_grade=level; renderCounts(); $('btnNext').click(); }
+$('btnStar').onclick=()=>{ if(!currentCard) return; currentCard.user_starred=!currentCard.user_starred; renderCounts(); renderCard(); };
+$('btnSuspend').onclick=async()=>{
+  if(!user||!currentCard) return;
+  const newVal=!currentCard.author_suspended;
+  // If your column is is_author_suspended, change the key below:
+  const { error } = await supabase.from('cards').update({ author_suspended:newVal }).eq('id', currentCard.id);
   if(error){ alert(error.message); return; }
-  currentCard.is_author_suspended = newVal;
-  renderCard(); renderCounts();
+  currentCard.author_suspended=newVal; renderCard(); renderCounts();
 };
 
-$('btnStar').onclick = ()=>{
-  if(!currentCard) return;
-  currentCard.user_starred = !currentCard.user_starred; // local; implement server-side later if needed
-  renderCounts(); renderCard();
-};
-
-/*** Search ***/
-$('btnSearch').onclick = ()=>{ $('searchModal').style.display='flex'; $('searchInput').focus(); };
-$('searchClose').onclick = ()=>{ $('searchModal').style.display='none'; };
-$('searchGo').onclick = runSearch;
-$('searchInput').addEventListener('keydown', e=>{ if(e.key==='Enter') runSearch(); });
-
+/* === Search === */
+$('btnSearch').onclick=()=>{$('searchModal').style.display='flex'; $('searchInput').focus();};
+$('searchClose').onclick=()=>{$('searchModal').style.display='none';};
+$('searchGo').onclick=runSearch;
+$('searchInput').addEventListener('keydown',e=>{ if(e.key==='Enter') runSearch(); });
 function runSearch(){
-  const q = $('searchInput').value.trim();
+  const q=$('searchInput').value.trim();
   if(!q){ $('searchResults').innerHTML=''; $('searchReviewAll').disabled=true; return; }
-  let results = cards.filter(visibleToLearner);
-  // tag search if starts with #
-  if(q.startsWith('#')){
-    const tag = q.slice(1).toLowerCase();
-    results = results.filter(c=>(c.card_tags||[]).some(t=> (t.name||'').toLowerCase().includes(tag)));
-  } else {
-    const s = q.toLowerCase();
-    results = results.filter(c=>(c.front||'').toLowerCase().includes(s) || (c.back||'').toLowerCase().includes(s) || (c.meta?.Section||'').toLowerCase().includes(s));
-  }
-  searchResults = results.map(c=>c.id);
-  $('searchResults').innerHTML = results.map(c=>`
+  let res=cards.filter(visibleToLearner);
+  if(q.startsWith('#')){ const tag=q.slice(1).toLowerCase(); res=res.filter(c=>(c.card_tags||[]).some(t=>(t.name||'').toLowerCase().includes(tag))); }
+  else{ const s=q.toLowerCase(); res=res.filter(c=>(c.front||'').toLowerCase().includes(s)||(c.back||'').toLowerCase().includes(s)||(c.meta?.Section||'').toLowerCase().includes(s)); }
+  searchResults=res.map(c=>c.id);
+  $('searchResults').innerHTML = res.map(c=>`
     <div style="padding:8px;border:1px solid #1b1b1b;border-radius:10px;margin:6px 0;background:#0b0b0b">
-      <div class="small muted">${escapeHTML(chapters.find(x=>x.id===c.chapter_id)?.title||'—')} • ${(c.card_topics||[]).map(t=>escapeHTML(t.title)).join(', ')||'—'}</div>
+      <div class="small">${escapeHTML(chapters.find(x=>x.id===c.chapter_id)?.title||'—')} • ${(c.card_topics||[]).map(t=>escapeHTML(t.title)).join(', ')||'—'}</div>
       <div style="margin:6px 0">${c.front}</div>
-      <div class="small muted">${(c.card_tags||[]).map(t=>escapeHTML(t.name)).join(', ')}</div>
-    </div>
-  `).join('') || '<div class="muted">No matches.</div>';
-  $('searchReviewAll').disabled = !results.length;
+      <div class="small">${(c.card_tags||[]).map(t=>escapeHTML(t.name)).join(', ')}</div>
+    </div>`).join('') || '<div class="small">No matches.</div>';
+  $('searchReviewAll').disabled=!res.length;
 }
-
-$('searchReviewAll').onclick = ()=>{
+$('searchReviewAll').onclick=()=>{
   if(!searchResults.length) return;
-  // build a temporary order from these ids
-  const idset = new Set(searchResults);
-  const pool = cards.filter(c=>idset.has(c.id) && visibleToLearner(c));
-  window._pool = pool;
-  order = pool.map((c,i)=>i);
-  idx = 0;
-  $('searchModal').style.display='none';
-  scope = { chapter:null, topic:null, mix:false, diff:null, starred:false };
-  renderCounts(); buildScopePickers(); renderCard();
+  const idset=new Set(searchResults); const pool=cards.filter(c=>idset.has(c.id)&&visibleToLearner(c));
+  window._pool=pool; order=pool.map((c,i)=>i); idx=0; $('searchModal').style.display='none';
+  scope={chapter:null,topic:null,mix:false,diff:null,starred:false}; renderCounts(); buildScopePickers(); renderCard();
 };
 
-/*** Editor: Manage Names (rename) ***/
+/* === Editor: Manage Names === */
 function renderEditorManage(){
-  const cwrap = $('listChapters'), twrap = $('listTopics');
-  if(!cwrap || !twrap) return;
-
-  const byChap = new Map(), byTopic = new Map();
-  cards.forEach(c=>{
-    byChap.set(c.chapter_id, (byChap.get(c.chapter_id)||0)+1);
-    (c.card_topics||[]).forEach(ct=> byTopic.set(ct.topic_id, (byTopic.get(ct.topic_id)||0)+1));
-  });
-
+  const cwrap=$('listChapters'), twrap=$('listTopics'); if(!cwrap||!twrap) return;
+  const byChap=new Map(), byTopic=new Map();
+  cards.forEach(c=>{ byChap.set(c.chapter_id,(byChap.get(c.chapter_id)||0)+1); (c.card_topics||[]).forEach(ct=>byTopic.set(ct.topic_id,(byTopic.get(ct.topic_id)||0)+1)); });
   cwrap.innerHTML = chapters.map(ch=>{
-    const n = byChap.get(ch.id)||0;
-    return `<div data-id="${ch.id}" style="display:flex;justify-content:space-between;gap:8px;align-items:center;padding:6px;border:1px solid var(--line);border-radius:8px;background:#0b1220">
-      <span class="ch-title">${escapeHTML(ch.title)}</span><span class="muted">(${n})</span>
-      <span style="margin-left:auto"></span>
+    const n=byChap.get(ch.id)||0;
+    return `<div style="display:flex;gap:8px;align-items:center;justify-content:space-between;padding:6px;border:1px solid var(--line);border-radius:8px;background:#0b1220">
+      <span>${escapeHTML(ch.title)}</span><span class="small">(${n})</span>
       <button class="ghost" onclick="renameChapter('${ch.id}','${escapeHTML(ch.title)}')">✎ Rename</button>
     </div>`;
-  }).join('') || '<div class="muted small">No chapters.</div>';
-
+  }).join('')||'<div class="small">No chapters.</div>';
   twrap.innerHTML = topics.map(tp=>{
-    const n = byTopic.get(tp.id)||0;
-    return `<div data-id="${tp.id}" style="display:flex;justify-content:space-between;gap:8px;align-items:center;padding:6px;border:1px solid var(--line);border-radius:8px;background:#0b1220">
-      <span class="tp-title">${escapeHTML(tp.title)}</span><span class="muted">(${n})</span>
-      <span style="margin-left:auto"></span>
+    const n=byTopic.get(tp.id)||0;
+    return `<div style="display:flex;gap:8px;align-items:center;justify-content:space-between;padding:6px;border:1px solid var(--line);border-radius:8px;background:#0b1220">
+      <span>${escapeHTML(tp.title)}</span><span class="small">(${n})</span>
       <button class="ghost" onclick="renameTopic('${tp.id}','${escapeHTML(tp.title)}')">✎ Rename</button>
     </div>`;
-  }).join('') || '<div class="muted small">No topics.</div>';
-
+  }).join('')||'<div class="small">No topics.</div>';
   renderCardTable();
 }
-
-async function renameChapter(id, oldTitle){
-  const t = prompt("New chapter name:", oldTitle);
-  if(!t || t===oldTitle) return;
+async function renameChapter(id,oldTitle){
+  const t=prompt('New chapter name:',oldTitle); if(!t||t===oldTitle) return;
   const { error } = await supabase.from('chapters').update({ title:t }).eq('id', id);
   if(error){ alert(error.message); return; }
   await loadTaxonomy(); await loadCards(); rebuildOrder(); renderCounts(); renderCard(); renderEditorManage();
 }
-async function renameTopic(id, oldTitle){
-  const t = prompt("New topic name:", oldTitle);
-  if(!t || t===oldTitle) return;
+async function renameTopic(id,oldTitle){
+  const t=prompt('New topic name:',oldTitle); if(!t||t===oldTitle) return;
   const { error } = await supabase.from('topics').update({ title:t }).eq('id', id);
   if(error){ alert(error.message); return; }
   await loadTaxonomy(); await loadCards(); rebuildOrder(); renderCounts(); renderCard(); renderEditorManage();
 }
 
-/*** Editor: Cards table (with per-card delete) ***/
+/* === Editor: Card table & actions === */
 function renderCardTable(){
-  const tb = $('tblCards').querySelector('tbody');
-  tb.innerHTML = cards.slice(0,500).map(c=>{
-    const chap = chapters.find(x=>x.id===c.chapter_id)?.title || '—';
-    const tps = (c.card_topics||[]).map(x=>x.title).filter(Boolean).join(', ');
-    const tgs = (c.card_tags||[]).map(x=>x.name).filter(Boolean).join(', ');
+  const tb=$('tblCards').querySelector('tbody');
+  tb.innerHTML = cards.slice(0,800).map(c=>{
+    const chap=chapters.find(x=>x.id===c.chapter_id)?.title||'—';
+    const tps=(c.card_topics||[]).map(x=>x.title).filter(Boolean).join(', ');
+    const tgs=(c.card_tags||[]).map(x=>x.name).filter(Boolean).join(', ');
     return `<tr>
       <td class="small">${c.front}</td>
       <td class="small">${escapeHTML(chap)}</td>
       <td class="small">${escapeHTML(tps||'—')}</td>
       <td class="small">${escapeHTML(tgs||'—')}</td>
-      <td class="small">
-        <button class="ghost" onclick="openEdit('${c.id}')">✎</button>
-        <button class="danger" onclick="deleteCardById('${c.id}')">🗑</button>
-      </td>
+      <td class="small"><button class="ghost" onclick="openEdit('${c.id}')">✎</button> <button class="danger" onclick="deleteCardById('${c.id}')">🗑</button></td>
     </tr>`;
   }).join('');
 }
-
-/*** Delete helpers ***/
 async function deleteCardById(cardId){
-  if(!confirm("Delete this card permanently?")) return;
+  if(!confirm('Delete this card permanently?')) return;
   await supabase.from('card_topics').delete().eq('card_id', cardId);
   await supabase.from('card_tags').delete().eq('card_id', cardId);
-  try{ await supabase.from('reviews').delete().eq('card_id', cardId); }catch(e){}
+  try{ await supabase.from('reviews').delete().eq('card_id', cardId);}catch(e){}
   const { error } = await supabase.from('cards').delete().eq('id', cardId);
   if(error){ alert(error.message); return; }
   await loadCards(); rebuildOrder(); renderCounts(); renderCard(); renderEditorManage();
 }
 
-/*** Bulk delete ***/
-$('btnBulkDelete').onclick = ()=>{ $('bulkDeleteModal').style.display='flex'; setupBulkDeleteUI(); };
-$('bdClose').onclick = ()=> $('bulkDeleteModal').style.display='none';
+/* === Bulk delete === */
+$('btnBulkDelete').onclick=()=>{ $('bulkDeleteModal').style.display='flex'; setupBulkDeleteUI(); };
+$('bdClose').onclick=()=>{$('bulkDeleteModal').style.display='none';};
 function setupBulkDeleteUI(){
-  const modeEl = $('bdMode'), pickEl = $('bdPicker'), cntEl = $('bdCount'), confirmEl = $('bdConfirm'), runEl = $('bdRun');
+  const modeEl=$('bdMode'), pickEl=$('bdPicker'), cntEl=$('bdCount'), confirmEl=$('bdConfirm'), runEl=$('bdRun');
   function buildPicker(){
-    const mode = modeEl.value;
-    if(mode==='chapter'){
-      pickEl.innerHTML = chapters.map(ch=>{
-        const n = cards.filter(c=>c.chapter_id===ch.id).length;
+    if(modeEl.value==='chapter'){
+      pickEl.innerHTML=chapters.map(ch=>{
+        const n=cards.filter(c=>c.chapter_id===ch.id).length;
         return `<option value="${ch.id}">${escapeHTML(ch.title)} (${n})</option>`;
       }).join('');
     }else{
-      pickEl.innerHTML = topics.map(tp=>{
-        const n = cards.filter(c=>(c.card_topics||[]).some(ct=>ct.topic_id===tp.id)).length;
+      pickEl.innerHTML=topics.map(tp=>{
+        const n=cards.filter(c=>(c.card_topics||[]).some(ct=>ct.topic_id===tp.id)).length;
         return `<option value="${tp.id}">${escapeHTML(tp.title)} (${n})</option>`;
       }).join('');
     }
     refreshPreview();
   }
   function refreshPreview(){
-    const mode = modeEl.value, id = pickEl.value;
-    let n = 0;
-    if(mode==='chapter') n = cards.filter(c=>c.chapter_id===id).length;
-    else n = cards.filter(c=>(c.card_topics||[]).some(ct=>ct.topic_id===id)).length;
-    cntEl.textContent = n;
-    runEl.disabled = !(confirmEl.value.trim()==='DELETE' && n>0);
+    let n=0;
+    if(modeEl.value==='chapter'){ n = cards.filter(c=>c.chapter_id===pickEl.value).length; }
+    else { n = cards.filter(c=>(c.card_topics||[]).some(ct=>ct.topic_id===pickEl.value)).length; }
+    cntEl.textContent=n; runEl.disabled = !(confirmEl.value.trim()==='DELETE' && n>0);
   }
-  modeEl.onchange = buildPicker; pickEl.onchange = refreshPreview; confirmEl.oninput = refreshPreview; buildPicker();
-
-  runEl.onclick = async ()=>{
-    const mode = modeEl.value, id = pickEl.value;
-    let ids = [];
-    if(mode==='chapter') ids = cards.filter(c=>c.chapter_id===id).map(c=>c.id);
-    else ids = cards.filter(c=>(c.card_topics||[]).some(ct=>ct.topic_id===id)).map(c=>c.id);
+  modeEl.onchange=buildPicker; pickEl.onchange=refreshPreview; confirmEl.oninput=refreshPreview; buildPicker();
+  runEl.onclick=async()=>{
+    let ids=[];
+    if(modeEl.value==='chapter'){ ids = cards.filter(c=>c.chapter_id===pickEl.value).map(c=>c.id); }
+    else { ids = cards.filter(c=>(c.card_topics||[]).some(ct=>ct.topic_id===pickEl.value)).map(c=>c.id); }
     if(!ids.length) return;
     await supabase.from('card_topics').delete().in('card_id', ids);
     await supabase.from('card_tags').delete().in('card_id', ids);
-    try{ await supabase.from('reviews').delete().in('card_id', ids); }catch(e){}
+    try{ await supabase.from('reviews').delete().in('card_id', ids);}catch(e){}
     const { error } = await supabase.from('cards').delete().in('id', ids);
     if(error){ alert(error.message); return; }
     $('bulkDeleteModal').style.display='none';
@@ -751,190 +591,144 @@ function setupBulkDeleteUI(){
   };
 }
 
-/*** Study-mode Edit button ***/
-$('btnEditCard').onclick = ()=>{ if(currentCard) openEdit(currentCard.id); };
-$('btnDeleteCard').onclick = ()=>{ if(currentCard) deleteCardById(currentCard.id); };
-
+/* === Edit modal === */
+$('btnEditCard').onclick=()=>{ if(currentCard) openEdit(currentCard.id); };
+$('btnDeleteCard').onclick=()=>{ if(currentCard) deleteCardById(currentCard.id); };
 function openEdit(cardId){
-  const c = cards.find(x=>x.id===cardId);
-  if(!c) return;
+  const c=cards.find(x=>x.id===cardId); if(!c) return;
   $('editModal').style.display='flex';
-  $('edFront').value = stripHTML(c.front||'');
-  $('edBack').value  = stripHTML(c.back||'');
-  $('edTags').value  = (c.card_tags||[]).map(t=>t.name).join(', ');
-  $('edNotes').value = c.meta?.notes || '';
-  // Chapter picker
-  $('edChapter').innerHTML = chapters.map(ch=>`<option value="${ch.id}" ${c.chapter_id===ch.id?'selected':''}>${escapeHTML(ch.title)}</option>`).join('');
-  // Topics multiple
-  const selTopic = $('edTopics');
-  selTopic.innerHTML = topics.map(tp=>{
-    const on = (c.card_topics||[]).some(ct=>ct.topic_id===tp.id);
+  $('edFront').value=stripHTML(c.front||''); $('edBack').value=stripHTML(c.back||'');
+  $('edTags').value=(c.card_tags||[]).map(t=>t.name).join(', ');
+  $('edNotes').value=c.meta?.notes||'';
+  $('edChapter').innerHTML=chapters.map(ch=>`<option value="${ch.id}" ${c.chapter_id===ch.id?'selected':''}>${escapeHTML(ch.title)}</option>`).join('');
+  $('edTopics').innerHTML=topics.map(tp=>{
+    const on=(c.card_topics||[]).some(ct=>ct.topic_id===tp.id);
     return `<option value="${tp.id}" ${on?'selected':''}>${escapeHTML(tp.title)}</option>`;
   }).join('');
-  // Resources list
   renderEditResources(c);
-  // bind file
-  $('edFile').value = '';
-  $('edFile').onchange = ()=> uploadResourceFile(c.id, $('edFile').files[0]);
-  $('btnAddLink').onclick = ()=> addLinkResource(c.id);
-  $('btnSaveCard').onclick = ()=> saveCardEdits(c.id);
-  $('editClose').onclick = ()=> $('editModal').style.display='none';
+  $('edFile').value=''; $('edFile').onchange=()=>uploadResourceFile(c.id,$('edFile').files[0]);
+  $('btnAddLink').onclick=()=>addLinkResource(c.id);
+  $('btnSaveCard').onclick=()=>saveCardEdits(c.id);
+  $('editClose').onclick=()=>{$('editModal').style.display='none';};
 }
-
-function stripHTML(s){ return (s||'').replace(/<[^>]*>/g,''); }
-
+function stripHTML(s){return (s||'').replace(/<[^>]*>/g,'');}
 function renderEditResources(c){
-  const list = $('edResList'); list.innerHTML='';
-  const res = (c.meta?.resources)||[];
-  if(c.meta?.notes){
-    const n = document.createElement('div');
-    n.className='res';
-    n.innerHTML = `<span>📝</span><span>${escapeHTML(String(c.meta.notes).slice(0,120))}${String(c.meta.notes).length>120?'…':''}</span>`;
-    list.appendChild(n);
-  }
-  res.forEach((r,i)=>{
+  const list=$('edResList'); list.innerHTML='';
+  if(c.meta?.notes){ const d=document.createElement('div'); d.className='res'; d.innerHTML=`<span>📝</span><span>${escapeHTML(String(c.meta.notes).slice(0,120))}${String(c.meta.notes).length>120?'…':''}</span>`; list.appendChild(d); }
+  (c.meta?.resources||[]).forEach((r,i)=>{
     const d=document.createElement('div'); d.className='res';
-    let label = r.title || r.url || r.path || 'resource';
-    d.innerHTML = `<span>${r.type==='image'?'🖼':'🔗'}</span><a class="linkish" href="${r.url||'#'}" target="_blank">${escapeHTML(label)}</a>
-      <button class="danger" style="margin-left:6px" onclick="removeResource('${c.id}', ${i})">Remove</button>`;
+    d.innerHTML=`<span>${r.type==='image'?'🖼':'🔗'}</span><a target="_blank" href="${r.url||'#'}">${escapeHTML(r.title||r.url||r.path||'resource')}</a>
+                 <button class="danger" onclick="removeResource('${c.id}',${i})">Remove</button>`;
     list.appendChild(d);
   });
 }
-
 async function saveCardEdits(cardId){
-  const front = $('edFront').value.trim();
-  const back  = $('edBack').value.trim();
-  const chapter_id = $('edChapter').value || null;
-  const notes = $('edNotes').value.trim();
-
-  // tags split
-  const tagNames = $('edTags').value.split(',').map(s=>s.trim()).filter(Boolean);
-
-  // topics collect
-  const sel = $('edTopics');
-  const topicIds = [...sel.selectedOptions].map(o=>o.value);
-
-  const c = cards.find(x=>x.id===cardId);
-  const meta = Object.assign({}, c.meta||{});
-  if(notes) meta.notes = notes; else delete meta.notes;
-
-  const { error: e1 } = await supabase.from('cards').update({
-    front, back, chapter_id, meta
-  }).eq('id', cardId);
-  if(e1){ alert(e1.message); return; }
-
-  // update tags (upsert names → ids)
-  // 1) ensure tags
+  const front=$('edFront').value.trim(), back=$('edBack').value.trim();
+  const chapter_id=$('edChapter').value||null, notes=$('edNotes').value.trim();
+  const tagNames=$('edTags').value.split(',').map(s=>s.trim()).filter(Boolean);
+  const topicIds=[...$('edTopics').selectedOptions].map(o=>o.value);
+  const c=cards.find(x=>x.id===cardId); const meta=Object.assign({},c.meta||{}); if(notes) meta.notes=notes; else delete meta.notes;
+  let res=await supabase.from('cards').update({ front,back,chapter_id,meta }).eq('id',cardId); if(res.error){alert(res.error.message);return;}
+  // ensure tags
   for(const nm of tagNames){
-    const { data: existing } = await supabase.from('tags').select('id').eq('name', nm).maybeSingle();
-    if(!existing){
-      await supabase.from('tags').insert({ name:nm });
-    }
+    const { data:ex } = await supabase.from('tags').select('id').eq('name',nm).maybeSingle();
+    if(!ex){ await supabase.from('tags').insert({ name:nm }); }
   }
-  // 2) fetch ids
-  const { data: tagRows } = await supabase.from('tags').select('id,name').in('name', tagNames);
-  const tagIds = (tagRows||[]).map(r=>r.id);
-
-  // reset joins
-  await supabase.from('card_tags').delete().eq('card_id', cardId);
-  if(tagIds.length){
-    await supabase.from('card_tags').insert(tagIds.map(tid=>({card_id: cardId, tag_id: tid})));
-  }
-
-  // topics join
-  await supabase.from('card_topics').delete().eq('card_id', cardId);
-  if(topicIds.length){
-    await supabase.from('card_topics').insert(topicIds.map(tid=>({card_id: cardId, topic_id: tid})));
-  }
-
-  // reload
+  const { data:tagRows } = await supabase.from('tags').select('id,name').in('name',tagNames);
+  const tagIds=(tagRows||[]).map(r=>r.id);
+  await supabase.from('card_tags').delete().eq('card_id',cardId);
+  if(tagIds.length) await supabase.from('card_tags').insert(tagIds.map(id=>({card_id:cardId,tag_id:id})));
+  await supabase.from('card_topics').delete().eq('card_id',cardId);
+  if(topicIds.length) await supabase.from('card_topics').insert(topicIds.map(id=>({card_id:cardId,topic_id:id})));
   await loadCards(); rebuildOrder(); renderCounts(); renderCard(); renderEditorManage();
   $('editModal').style.display='none';
 }
-
 async function addLinkResource(cardId){
-  const title = $('edLinkTitle').value.trim();
-  const url = $('edLinkUrl').value.trim();
-  if(!url){ alert('Enter a URL'); return; }
-  const c = cards.find(x=>x.id===cardId);
-  const meta = Object.assign({}, c.meta||{});
-  meta.resources = meta.resources || [];
+  const title=$('edLinkTitle').value.trim(); const url=$('edLinkUrl').value.trim(); if(!url){alert('Enter URL');return;}
+  const c=cards.find(x=>x.id===cardId); const meta=Object.assign({},c.meta||{}); meta.resources=meta.resources||[];
   meta.resources.push({ type:'link', title, url });
-  const { error } = await supabase.from('cards').update({ meta }).eq('id', cardId);
-  if(error){ alert(error.message); return; }
+  const { error } = await supabase.from('cards').update({ meta }).eq('id',cardId);
+  if(error){alert(error.message);return;}
   $('edLinkTitle').value=''; $('edLinkUrl').value='';
   await loadCards(); openEdit(cardId); renderCard();
 }
-
-async function removeResource(cardId, idxRes){
-  const c = cards.find(x=>x.id===cardId);
-  const meta = Object.assign({}, c.meta||{});
-  const arr = meta.resources||[];
-  arr.splice(idxRes,1);
-  meta.resources = arr;
-  const { error } = await supabase.from('cards').update({ meta }).eq('id', cardId);
-  if(error){ alert(error.message); return; }
+async function removeResource(cardId, i){
+  const c=cards.find(x=>x.id===cardId); const meta=Object.assign({},c.meta||{}); const arr=meta.resources||[]; arr.splice(i,1); meta.resources=arr;
+  const { error } = await supabase.from('cards').update({ meta }).eq('id',cardId);
+  if(error){alert(error.message);return;}
   await loadCards(); openEdit(cardId); renderCard();
 }
-
-async function uploadResourceFile(cardId, file){
-  if(!file) return;
-  const ext = (file.name.split('.').pop()||'').toLowerCase();
-  const isImg = ['png','jpg','jpeg','webp','gif'].includes(ext);
-  const isPdf = ext==='pdf';
-  const path = `${cardId}/${Date.now()}_${file.name.replace(/\s+/g,'_')}`;
-  const { error: upErr } = await supabase.storage.from(STORAGE_BUCKET).upload(path, file, { upsert:false });
-  if(upErr){ alert("Upload failed: "+upErr.message); return; }
-  const { data: pub } = supabase.storage.from(STORAGE_BUCKET).getPublicUrl(path);
-  const url = pub?.publicUrl;
-
-  const c = cards.find(x=>x.id===cardId);
-  const meta = Object.assign({}, c.meta||{});
-  meta.resources = meta.resources || [];
+async function uploadResourceFile(cardId,file){
+  if(!file) return; const ext=(file.name.split('.').pop()||'').toLowerCase();
+  const isImg=['png','jpg','jpeg','webp','gif'].includes(ext), isPdf=ext==='pdf';
+  const path=`${cardId}/${Date.now()}_${file.name.replace(/\s+/g,'_')}`;
+  const up=await supabase.storage.from(STORAGE_BUCKET).upload(path,file,{ upsert:false });
+  if(up.error){ alert('Upload failed: '+up.error.message); return; }
+  const { data:pub } = supabase.storage.from(STORAGE_BUCKET).getPublicUrl(path);
+  const url=pub?.publicUrl;
+  const c=cards.find(x=>x.id===cardId); const meta=Object.assign({},c.meta||{}); meta.resources=meta.resources||[];
   meta.resources.push({ type:isImg?'image':(isPdf?'pdf':'file'), title:file.name, path, url });
-  const { error } = await supabase.from('cards').update({ meta }).eq('id', cardId);
+  const { error } = await supabase.from('cards').update({ meta }).eq('id',cardId);
   if(error){ alert(error.message); return; }
-
   await loadCards(); openEdit(cardId); renderCard();
 }
 
-/*** Menu ***/
-$('btnMenu').onclick = ()=> $('menuModal').style.display='flex';
-$('menuClose').onclick = ()=> $('menuModal').style.display='none';
-$('menuLogout').onclick = logout;
-$('menuToggleEditor').onclick = ()=>{
-  const s = $('editorPanel').style.display;
-  $('editorPanel').style.display = (s==='none'?'block':'none');
-  $('menuModal').style.display='none';
+/* === Admin: Import (simple passthrough to your existing import flow) === */
+$('btnImport').onclick=async()=>{
+  const f=$('fileImport').files[0]; if(!f){alert('Pick a JSON file');return;}
+  const txt=await f.text(); let j; try{ j=JSON.parse(txt); }catch(e){ alert('Bad JSON: '+e.message); return; }
+  // naive importer: expects {cards:[...]} with front/back/meta/chapter/topics/tags
+  const list = Array.isArray(j.cards)? j.cards : (Array.isArray(j)? j: []);
+  if(!list.length){ alert('No cards found. Expect { "cards": [...] }.'); return; }
+  alert(`Ready to import ${list.length} cards. Importing will create missing tags/topics/chapters.`);
+  // This is a placeholder; if your app already has a serverless import, use that.
+  // For now we just create chapters/topics/tags and insert cards minimally.
+  for(const c of list){
+    // chapter
+    let chapId = null;
+    if(c.chapter){
+      let { data: ex } = await supabase.from('chapters').select('id').eq('title', c.chapter).maybeSingle();
+      if(!ex){ await supabase.from('chapters').insert({ title:c.chapter }); ({ data: ex } = await supabase.from('chapters').select('id').eq('title', c.chapter).maybeSingle()); }
+      chapId = ex.id;
+    }
+    // insert card
+    const payload = { front:c.front, back:c.back, chapter_id:chapId, meta:c.meta||{}, status:c.status||'published', visibility:c.visibility||'public', author_suspended: !!c.author_suspended };
+    const { data: ins, error } = await supabase.from('cards').insert(payload).select('id').single();
+    if(error){ console.error('Card insert',error); continue; }
+    const cardId = ins.id;
+    // topics
+    if(Array.isArray(c.topics)&&c.topics.length){
+      for(const t of c.topics){
+        let { data: tx } = await supabase.from('topics').select('id').eq('title', t).maybeSingle();
+        if(!tx){ await supabase.from('topics').insert({ title:t }); ({ data: tx } = await supabase.from('topics').select('id').eq('title', t).maybeSingle()); }
+        await supabase.from('card_topics').insert({ card_id:cardId, topic_id:tx.id });
+      }
+    }
+    // tags
+    if(Array.isArray(c.tags)&&c.tags.length){
+      for(const g of c.tags){
+        let { data: gx } = await supabase.from('tags').select('id').eq('name', g).maybeSingle();
+        if(!gx){ await supabase.from('tags').insert({ name:g }); ({ data: gx } = await supabase.from('tags').select('id').eq('name', g).maybeSingle()); }
+        await supabase.from('card_tags').insert({ card_id:cardId, tag_id:gx.id });
+      }
+    }
+  }
+  await loadTaxonomy(); await loadCards(); rebuildOrder(); renderCounts(); renderCard(); renderEditorManage();
+  alert('Import complete.');
 };
 
-/*** Search modal close on shade click ***/
-[ 'searchModal','editModal','bulkDeleteModal','menuModal' ].forEach(id=>{
-  $(id).addEventListener('click', (e)=>{ if(e.target.classList.contains('modal')) e.currentTarget.style.display='none'; });
-});
-
-/*** Build chapter/topic pickers for editor form ***/
-function buildEditorPickers(){
-  const edC = $('edChapter'), edT = $('edTopics');
-  if(edC) edC.innerHTML = chapters.map(ch=>`<option value="${ch.id}">${escapeHTML(ch.title)}</option>`).join('');
-  if(edT) edT.innerHTML = topics.map(tp=>`<option value="${tp.id}">${escapeHTML(tp.title)}</option>`).join('');
+/* === Boot === */
+function bindStudyChips(){ bindDiffChips(); }
+function buildEditorPickers(){ // used by edit modal, filled when opening modal
+  $('edChapter').innerHTML = chapters.map(ch=>`<option value="${ch.id}">${escapeHTML(ch.title)}</option>`).join('');
+  $('edTopics').innerHTML  = topics.map(tp=>`<option value="${tp.id}">${escapeHTML(tp.title)}</option>`).join('');
 }
-
-/*** Boot ***/
-async function loadEverything(){
-  await loadTaxonomy();
-  await loadCards();
-  bindDiffChips();
-  rebuildOrder(); renderCounts(); renderCard(); renderEditorManage();
-}
+async function loadAll(){ await loadTaxonomy(); await loadCards(); rebuildOrder(); renderCounts(); renderCard(); bindStudyChips(); }
 
 window.addEventListener('DOMContentLoaded', async ()=>{
   await initAuth();
-  await loadEverything();
-  // Search modal button
-  $('btnSearch').onclick = ()=>{ $('searchModal').style.display='flex'; $('searchInput').focus(); };
+  await loadAll();
 });
-
 </script>
 </body>
 </html>
