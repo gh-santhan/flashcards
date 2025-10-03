@@ -826,44 +826,111 @@ function setupBulkDeleteUI(){
 }
 
 /* === Admin: Import === */
-$('btnImport').onclick=async()=>{
-  const f=$('fileImport').files[0]; if(!f){alert('Pick a JSON file');return;}
-  const txt=await f.text(); let j; try{ j=JSON.parse(txt); }catch(e){ alert('Bad JSON: '+e.message); return; }
-  const list = Array.isArray(j.cards)? j.cards : (Array.isArray(j)? j: []);
-  if(!list.length){ alert('No cards found. Expect { "cards": [...] }.'); return; }
-  alert(`Importing ${list.length} cards…`);
+$('btnImport').onclick = async ()=>{
+  const file = $('fileImport').files[0];
+  if(!file){ alert('Pick a JSON file'); return; }
+
+  const raw = await file.text();
+
+  // Pre-clean: BOM, smart quotes, comments, trailing commas
+  let cleaned = raw
+    .replace(/\uFEFF/g, '')                    // BOM
+    .replace(/[“”]/g, '"')                     // curly double quotes -> "
+    .replace(/[‘’]/g, "'")                     // curly single quotes -> '
+    .replace(/\/\/.*$/mg, '')                  // // comments
+    .replace(/\/\*[\s\S]*?\*\//g, '')          // /* block comments */
+    .replace(/,\s*([}\]])/g, '$1');            // trailing commas
+
+  let json;
+  try{
+    json = JSON.parse(cleaned);
+  }catch(e){
+    // Helpful snippet (approximate): show 3 lines around where it failed if we can guess the line
+    // Try to read "line X column Y" out of the error message
+    const m = /line\s+(\d+)\s+column\s+(\d+)/i.exec(e.message) || /position\s+(\d+)/i.exec(e.message);
+    let snippet = '';
+    if(m){
+      const text = cleaned;
+      let line = 0, col = 0, idx = 0;
+      if(m.length===2){ // position only
+        idx = parseInt(m[1],10);
+      } else { // line/column provided
+        const targetLine = parseInt(m[1],10);
+        const targetCol = parseInt(m[2],10);
+        // compute index from line/col
+        const lines = text.split(/\r?\n/);
+        const before = Math.max(0, targetLine-2), after = Math.min(lines.length, targetLine+1);
+        snippet = lines.slice(before, after).map((ln, i)=>{
+          const actual = before + i + 1;
+          return (actual===targetLine ? '➡ ' : '  ') + actual.toString().padStart(5,' ') + ' | ' + ln;
+        }).join('\n');
+      }
+    }
+    console.error('JSON parse failed:', e.message, '\n', snippet || '');
+    alert('Bad JSON: '+ e.message + (snippet?('\n\nContext:\n'+snippet):''));
+    return;
+  }
+
+  // Accept either {cards:[...]} or [...] at top level
+  const list = Array.isArray(json.cards) ? json.cards : (Array.isArray(json) ? json : []);
+  if(!list.length){ alert('No cards found. Expect { "cards": [...] }'); return; }
+
+  alert(`Importing ${list.length} cards… This may take a moment.`);
+
   for(const c of list){
-    // chapter
+    // Chapter
     let chapId = null;
     if(c.chapter){
       let { data: ex } = await supabase.from('chapters').select('id').eq('title', c.chapter).maybeSingle();
-      if(!ex){ await supabase.from('chapters').insert({ title:c.chapter }); ({ data: ex } = await supabase.from('chapters').select('id').eq('title', c.chapter).maybeSingle()); }
+      if(!ex){
+        await supabase.from('chapters').insert({ title:c.chapter });
+        ({ data: ex } = await supabase.from('chapters').select('id').eq('title', c.chapter).maybeSingle());
+      }
       chapId = ex.id;
     }
-    const payload = { front:c.front, back:c.back, chapter_id:chapId, meta:c.meta||{}, status:c.status||'published', visibility:c.visibility||'public', author_suspended: !!c.author_suspended };
+
+    // Insert card
+    const payload = {
+      front: c.front, back: c.back,
+      chapter_id: chapId,
+      meta: c.meta || {},
+      status: c.status || 'published',
+      visibility: c.visibility || 'public',
+      author_suspended: !!c.author_suspended
+    };
     const { data: ins, error } = await supabase.from('cards').insert(payload).select('id').single();
-    if(error){ console.error('Card insert',error); continue; }
+    if(error){ console.error('Card insert', error, c.front); continue; }
     const cardId = ins.id;
-    // topics
-    if(Array.isArray(c.topics)&&c.topics.length){
+
+    // Topics
+    if(Array.isArray(c.topics) && c.topics.length){
       for(const t of c.topics){
         let { data: tx } = await supabase.from('topics').select('id').eq('title', t).maybeSingle();
-        if(!tx){ await supabase.from('topics').insert({ title:t }); ({ data: tx } = await supabase.from('topics').select('id').eq('title', t).maybeSingle()); }
+        if(!tx){
+          await supabase.from('topics').insert({ title:t });
+          ({ data: tx } = await supabase.from('topics').select('id').eq('title', t).maybeSingle());
+        }
         await supabase.from('card_topics').insert({ card_id:cardId, topic_id:tx.id });
       }
     }
-    // tags
-    if(Array.isArray(c.tags)&&c.tags.length){
+
+    // Tags
+    if(Array.isArray(c.tags) && c.tags.length){
       for(const g of c.tags){
         let { data: gx } = await supabase.from('tags').select('id').eq('name', g).maybeSingle();
-        if(!gx){ await supabase.from('tags').insert({ name:g }); ({ data: gx } = await supabase.from('tags').select('id').eq('name', g).maybeSingle()); }
+        if(!gx){
+          await supabase.from('tags').insert({ name:g });
+          ({ data: gx } = await supabase.from('tags').select('id').eq('name', g).maybeSingle());
+        }
         await supabase.from('card_tags').insert({ card_id:cardId, tag_id:gx.id });
       }
     }
   }
+
   await loadTaxonomy(); await loadCards(); rebuildOrder(); renderCounts(); renderCard(); buildEditorTables();
   alert('Import complete.');
 };
+  
 
 /* === Boot === */
 function bindStudyChips(){ bindDiffChips(); }
