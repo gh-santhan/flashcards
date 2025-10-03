@@ -159,7 +159,7 @@
 
     <!-- Chapters page -->
     <section id="editor-chapters" style="display:none">
-      <p class="subtitle">Rename a chapter or delete it. Deleting a chapter will NOT delete cards — their <b>chapter</b> will be set to <b>Uncategorised</b>.</p>
+      <p class="subtitle">Rename a chapter or delete it. Deleting a chapter will NOT delete cards — their chapter will be set to <b>Uncategorised</b>.</p>
       <table id="tblChapters">
         <thead><tr><th>Chapter</th><th>Cards</th><th>Actions</th></tr></thead>
         <tbody></tbody>
@@ -193,7 +193,16 @@
       <input id="fileImport" type="file" accept=".json"/>
       <button id="btnImport" class="primary">Import</button>
     </div>
-    <div class="small" style="margin-top:6px">Note: Chapter deletion leaves cards uncategorised; Topic/Tag deletion only removes links.</div>
+
+    <div class="divider"></div>
+    <h3>Authoring Aids</h3>
+    <div class="row">
+      <button id="btnDownloadTemplate" class="ghost">Download JSON Template</button>
+      <button id="btnOpenLLM" class="ghost">LLM Instructions</button>
+    </div>
+    <div class="small" style="margin-top:6px">
+      The template matches the importer format. The LLM guide explains how to write <b>front</b>/<b>back</b>, split cards, expand acronyms, choose tags, and attach resources via <code>meta</code>.
+    </div>
   </section>
 </main>
 
@@ -282,6 +291,20 @@
     <div class="small" style="margin-top:4px;color:#fca5a5">Permanently deletes cards + joins (topics/tags/reviews). No undo.</div>
     <div style="margin-top:8px">Type <code>DELETE</code> to enable: <input id="bdConfirm" type="text" style="width:160px;margin-left:8px"></div>
     <div style="text-align:right;margin-top:10px"><button id="bdRun" class="danger" disabled>Delete Selected</button></div>
+  </div>
+</div>
+
+<!-- LLM Instructions Modal -->
+<div id="llmModal" class="modal">
+  <div class="shade"></div>
+  <div class="panel">
+    <div class="bar"><h3>LLM Authoring Instructions</h3><button id="llmClose" class="ghost">✕</button></div>
+    <div class="small" style="margin:6px 0 10px">Use this prompt to generate a valid JSON file you can import directly.</div>
+    <textarea id="llmText" rows="18" style="width:100%;white-space:pre;overflow:auto"></textarea>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
+      <button id="llmCopy" class="ghost">Copy</button>
+      <button id="llmDownload" class="primary">Download .txt</button>
+    </div>
   </div>
 </div>
 
@@ -613,10 +636,8 @@ async function renameChapter(id, oldTitle){
 }
 async function deleteChapter(id, title, count){
   if(!confirm(`Delete chapter "${title}"?\nCards (${count}) will be left as Uncategorised.`)) return;
-  // 1) set related cards.chapter_id = null
   const u = await supabase.from('cards').update({ chapter_id: null }).eq('chapter_id', id);
   if(u.error){ alert('Failed to uncategorise cards: '+u.error.message); return; }
-  // 2) delete chapter row
   const d = await supabase.from('chapters').delete().eq('id', id);
   if(d.error){ alert('Delete failed: '+d.error.message); return; }
   await loadTaxonomy(); await loadCards(); rebuildOrder(); renderCounts(); renderCard(); buildEditorTables();
@@ -785,54 +806,12 @@ async function uploadResourceFile(cardId,file){
   await loadCards(); openEdit(cardId); renderCard();
 }
 
-/* === Bulk delete cards === */
-function setupBulkDeleteUI(){
-  const modeEl=$('bdMode'), pickEl=$('bdPicker'), cntEl=$('bdCount'), confirmEl=$('bdConfirm'), runEl=$('bdRun');
-  function buildPicker(){
-    if(modeEl.value==='chapter'){
-      pickEl.innerHTML=chapters.map(ch=>{
-        const n=cards.filter(c=>c.chapter_id===ch.id).length;
-        return `<option value="${ch.id}">${escapeHTML(ch.title)} (${n})</option>`;
-      }).join('');
-    }else{
-      pickEl.innerHTML=topics.map(tp=>{
-        const n=cards.filter(c=>(c.card_topics||[]).some(ct=>ct.topic_id===tp.id)).length;
-        return `<option value="${tp.id}">${escapeHTML(tp.title)} (${n})</option>`;
-      }).join('');
-    }
-    refreshPreview();
-  }
-  function refreshPreview(){
-    let n=0;
-    if(modeEl.value==='chapter'){ n = cards.filter(c=>c.chapter_id===pickEl.value).length; }
-    else { n = cards.filter(c=>(c.card_topics||[]).some(ct=>ct.topic_id===pickEl.value)).length; }
-    cntEl.textContent=n; runEl.disabled = !(confirmEl.value.trim()==='DELETE' && n>0);
-  }
-  modeEl.onchange=buildPicker; pickEl.onchange=refreshPreview; confirmEl.oninput=refreshPreview; buildPicker();
-  runEl.onclick=async()=>{
-    let ids=[];
-    if(modeEl.value==='chapter'){ ids = cards.filter(c=>c.chapter_id===pickEl.value).map(c=>c.id); }
-    else { ids = cards.filter(c=>(c.card_topics||[]).some(ct=>ct.topic_id===pickEl.value)).map(c=>c.id); }
-    if(!ids.length) return;
-    await supabase.from('card_topics').delete().in('card_id', ids);
-    await supabase.from('card_tags').delete().in('card_id', ids);
-    try{ await supabase.from('reviews').delete().in('card_id', ids);}catch(e){}
-    const { error } = await supabase.from('cards').delete().in('id', ids);
-    if(error){ alert(error.message); return; }
-    $('bulkDeleteModal').style.display='none';
-    await loadCards(); rebuildOrder(); renderCounts(); renderCard(); buildEditorTables();
-    alert(`Deleted ${ids.length} card(s).`);
-  };
-}
-
-/* === Admin: Import === */
+/* === Admin: Import (tolerant parser) === */
 $('btnImport').onclick = async ()=>{
   const file = $('fileImport').files[0];
   if(!file){ alert('Pick a JSON file'); return; }
 
   const raw = await file.text();
-
-  // Pre-clean: BOM, smart quotes, comments, trailing commas
   let cleaned = raw
     .replace(/\uFEFF/g, '')                    // BOM
     .replace(/[“”]/g, '"')                     // curly double quotes -> "
@@ -845,35 +824,24 @@ $('btnImport').onclick = async ()=>{
   try{
     json = JSON.parse(cleaned);
   }catch(e){
-    // Helpful snippet (approximate): show 3 lines around where it failed if we can guess the line
-    // Try to read "line X column Y" out of the error message
-    const m = /line\s+(\d+)\s+column\s+(\d+)/i.exec(e.message) || /position\s+(\d+)/i.exec(e.message);
+    const m = /line\s+(\d+)\s+column\s+(\d+)/i.exec(e.message);
     let snippet = '';
     if(m){
-      const text = cleaned;
-      let line = 0, col = 0, idx = 0;
-      if(m.length===2){ // position only
-        idx = parseInt(m[1],10);
-      } else { // line/column provided
-        const targetLine = parseInt(m[1],10);
-        const targetCol = parseInt(m[2],10);
-        // compute index from line/col
-        const lines = text.split(/\r?\n/);
-        const before = Math.max(0, targetLine-2), after = Math.min(lines.length, targetLine+1);
-        snippet = lines.slice(before, after).map((ln, i)=>{
-          const actual = before + i + 1;
-          return (actual===targetLine ? '➡ ' : '  ') + actual.toString().padStart(5,' ') + ' | ' + ln;
-        }).join('\n');
-      }
+      const lines = cleaned.split(/\r?\n/);
+      const tl = parseInt(m[1],10);
+      const before = Math.max(0, tl-2), after = Math.min(lines.length, tl+1);
+      snippet = lines.slice(before, after).map((ln, i)=>{
+        const actual = before + i + 1;
+        return (actual===tl ? '➡ ' : '  ') + actual.toString().padStart(5,' ') + ' | ' + ln;
+      }).join('\n');
     }
     console.error('JSON parse failed:', e.message, '\n', snippet || '');
     alert('Bad JSON: '+ e.message + (snippet?('\n\nContext:\n'+snippet):''));
     return;
   }
 
-  // Accept either {cards:[...]} or [...] at top level
   const list = Array.isArray(json.cards) ? json.cards : (Array.isArray(json) ? json : []);
-  if(!list.length){ alert('No cards found. Expect { "cards": [...] }'); return; }
+  if(!list.length){ alert('No cards found. Expect { "cards": [...] }.'); return; }
 
   alert(`Importing ${list.length} cards… This may take a moment.`);
 
@@ -930,7 +898,126 @@ $('btnImport').onclick = async ()=>{
   await loadTaxonomy(); await loadCards(); rebuildOrder(); renderCounts(); renderCard(); buildEditorTables();
   alert('Import complete.');
 };
-  
+
+/* === Admin: Download JSON Template + LLM Instructions === */
+$('btnDownloadTemplate').onclick = ()=>{
+  const template = {
+    cards: [
+      {
+        front: "Define Sleep duration, timing, and quality (why do all three matter?).",
+        back: "Duration = total sleep time; Timing = when sleep occurs; Quality = continuity/efficiency/architecture. All three independently affect health and chronic disease risk; don’t ask only ‘how many hours.’",
+        chapter: "Chapter 8 – Sleep",
+        topics: ["Sleep Basics","Sleep Quality"],
+        tags: ["Definition","Mechanism","Population:Adult","Format:Recall"],
+        meta: {
+          Section: "Obj1: Foundations",
+          high_yield: true,
+          notes: "Keep this card atomic. Avoid combining with circadian effects.",
+          resources: [
+            { type:"link", title:"AASM: Sleep Guidelines", url:"https://example.com/guideline" }
+          ]
+        },
+        status: "published",
+        visibility: "public",
+        author_suspended: false
+      },
+      {
+        front: "Vignette: A 36-year-old reports an afternoon energy dip (2–4 pm) after short sleep. What neurochemical explains this pattern?",
+        back: "Adenosine accumulation during wake increases sleep pressure; insufficient nocturnal sleep leaves residual pressure → afternoon dip. Caffeine antagonizes adenosine.",
+        chapter: "Chapter 8 – Sleep",
+        topics: ["Homeostatic Drive","Daytime Sleepiness"],
+        tags: ["Mechanism","Format:Vignette","Population:Adult"],
+        meta: {
+          Section: "Obj1: Homeostatic Drive",
+          high_yield: false,
+          resources: []
+        },
+        status: "published",
+        visibility: "public",
+        author_suspended: false
+      }
+    ]
+  };
+  const blob = new Blob([JSON.stringify(template, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = "cards-template.json";
+  a.click();
+  URL.revokeObjectURL(a.href);
+};
+
+$('btnOpenLLM').onclick = ()=>{
+  const text = [
+`You are generating flashcards for a Supabase-backed study app. Output MUST be valid JSON with this top-level shape:
+
+{
+  "cards": [ { <card>, <card>, ... } ]
+}
+
+### For each card object:
+- "front": string — Write as a recall-style question. Use natural exam phrasing. For acronyms, write the full term followed by the acronym in parentheses on FIRST mention (e.g., "Electroencephalography (EEG)").
+- "back": string — Concise, correct answer. If using the acronym later in the answer, it's fine once the expansion has appeared at least once.
+- "chapter": string — The chapter name (creates it if not present).
+- "topics": [string] — 0+ topics; cards can have multiple topics; topics are created if missing.
+- "tags": [string] — Choose from these tag families (free text allowed, but keep prefixes for clarity):
+  • Knowledge: Definition, Mechanism, Pathophysiology, Risk, Differential, Diagnosis, Management, Prognosis
+  • Process: Screening, Counseling, Protocol, First-line, Next-step, Red-flag
+  • Population: Population:Adult, Population:Adolescent, Population:OlderAdult, Population:Pregnancy, Population:Pediatric
+  • Evidence: Evidence:RCT, Evidence:SystematicReview, Evidence:Guideline, Evidence:Cohort
+  • Format: Format:Recall, Format:Vignette, Format:MCQ
+- "meta": object (optional)
+    { "Section": "ObjX: …", "high_yield": boolean, "notes": "optional", "resources": [
+        { "type":"link"|"image"|"pdf", "title":"...", "url":"https://..." }
+      ]
+    }
+- "status": "published" | "draft"  (default "published")
+- "visibility": "public" | "private" (default "public")
+- "author_suspended": false (default false)
+
+### Writing rules:
+1) Make cards ATOMIC. Split multi-idea sentences into separate cards. It's okay to produce many small cards.
+2) Prefer exam-ready prompts: direct “what/which/how/next step” questions; include a few vignette-style cases.
+3) Acronyms: expand once in the question, then you may use the acronym in the answer.
+4) Avoid duplication: do not repeat identical facts across cards; if two cards overlap, rewrite to make each unique.
+5) Avoid markdown-only quirks; plain text is preferred.
+6) If creating MCQs:
+   - Put the full question and options (A–D) in "front" with newline breaks.
+   - Put "**Answer: B** — rationale..." in "back".
+7) Use resources only for URLs or media; do NOT embed images in text.
+8) Keep JSON strictly valid — no comments, no trailing commas, straight quotes.
+
+### Example:
+{
+  "cards": [
+    {
+      "front": "Define Sleep duration, timing, and quality (why do all three matter?).",
+      "back": "Duration = total sleep time; Timing = when sleep occurs; Quality = continuity/efficiency/architecture. All three independently affect health and chronic disease risk.",
+      "chapter": "Chapter 8 – Sleep",
+      "topics": ["Sleep Basics","Sleep Quality"],
+      "tags": ["Definition","Format:Recall","Population:Adult"],
+      "meta": { "Section":"Obj1: Foundations", "high_yield": true, "resources":[] },
+      "status":"published","visibility":"public","author_suspended":false
+    }
+  ]
+}
+
+Return ONLY the JSON (no prose).`
+  ].join('\n');
+  $('llmText').value = text;
+  $('llmModal').style.display = 'flex';
+};
+$('llmClose').onclick = ()=> $('llmModal').style.display='none';
+$('llmCopy').onclick = async ()=>{
+  try{ await navigator.clipboard.writeText($('llmText').value); alert('Copied to clipboard.'); }catch(e){ alert('Copy failed: '+e.message); }
+};
+$('llmDownload').onclick = ()=>{
+  const blob = new Blob([$('llmText').value], {type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = "LLM-instructions.txt";
+  a.click();
+  URL.revokeObjectURL(a.href);
+};
 
 /* === Boot === */
 function bindStudyChips(){ bindDiffChips(); }
