@@ -379,17 +379,36 @@ async function loadTaxonomy(){
   buildScopePickers(); buildEditorTables();
 }
 async function loadCards(){
+  // 1) load base cards
   const { data: cs } = await supabase.from('cards')
     .select(`*, card_topics(topic_id, topics(id,title)), card_tags(tag_id, tags(id,name))`)
     .order('created_at',{ascending:true});
-  cards = (cs||[]).map(c=>{
+
+  const base = (cs||[]).map(c=>{
     c.card_topics=(c.card_topics||[]).map(ct=>({topic_id:ct.topic_id,title:ct.topics?.title}));
     c.card_tags=(c.card_tags||[]).map(ct=>({tag_id:ct.tag_id,name:ct.tags?.name}));
     c.meta=c.meta||{};
     c.author_suspended = (typeof c.author_suspended==='boolean')? c.author_suspended : (c.is_author_suspended||false);
+    // defaults (used if user not logged in or has no review)
+    c.user_grade = 'ungraded';
+    c.user_starred = false;
     return c;
   });
+
+  // 2) if logged in, merge per-user reviews
+  const { data:{ user: me } } = await supabase.auth.getUser();
+  if(me){
+    const { data: rv } = await supabase.from('reviews').select('*').eq('user_id', me.id);
+    const rmap = new Map((rv||[]).map(r => [r.card_id, r]));
+    base.forEach(c=>{
+      const r=rmap.get(c.id);
+      if(r){ c.user_grade = r.grade; c.user_starred = !!r.starred; }
+    });
+  }
+
+  cards = base;
 }
+
 
 /* === Pickers & counts (+ Uncategorised / No Topics) === */
 function buildScopePickers(){
