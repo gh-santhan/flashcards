@@ -122,10 +122,10 @@
       <div id="ans" class="ans"></div>
 
       <div id="gradeRow" class="grade">
-        <button class="g again" id="gAgain">Again</button>
-        <button class="g hard" id="gHard">Hard</button>
-        <button class="g good" id="gGood">Good</button>
-        <button class="g easy" id="gEasy">Easy</button>
+       <button id="btnAgain" data-grade="again">Again</button>
+<button id="btnHard"  data-grade="hard">Hard</button>
+<button id="btnGood"  data-grade="good">Good</button>
+<button id="btnEasy"  data-grade="easy">Easy</button>
       </div>
 
       <div class="resources" id="resWrap" style="display:none">
@@ -1047,5 +1047,108 @@ window.addEventListener('DOMContentLoaded', async ()=>{
   await loadAll();
 });
 </script>
+  <script>
+// --- Assumptions ---
+// - You already have a global `supabase` client.
+// - Your card objects have a stable `id` (UUID) in `window.cards`.
+// - The currently shown card is `window.currentCard`.
+// - Your UI functions `renderCounts()` and `renderCard()` exist (if not, guards handle it).
+
+async function getUser() {
+  const { data: { user } } = await supabase.auth.getUser();
+  return user || null;
+}
+
+// Hydrate reviews on load (merge DB progress into in-memory cards)
+async function hydrateReviews() {
+  try {
+    const user = await getUser();
+    if (!user || !Array.isArray(window.cards)) return;
+
+    const { data: rv, error } = await supabase
+      .from('reviews')
+      .select('*')
+      .eq('user_id', user.id);
+
+    if (error) { console.warn('hydrateReviews error', error); return; }
+
+    const map = new Map((rv || []).map(r => [r.card_id, r]));
+    window.cards.forEach(c => {
+      const r = map.get(c.id);
+      if (r) {
+        c.user_grade = r.grade || 'ungraded';
+        c.user_starred = !!r.starred;
+      } else {
+        c.user_grade = c.user_grade || 'ungraded';
+        c.user_starred = !!c.user_starred;
+      }
+    });
+
+    if (typeof renderCounts === 'function') renderCounts();
+    if (typeof renderCard === 'function') renderCard();
+  } catch (e) {
+    console.warn('hydrateReviews exception', e);
+  }
+}
+
+// Persist one review row (grade and/or star)
+async function upsertReview(status) {
+  try {
+    const user = await getUser();
+    if (!user || !window.currentCard) return;
+
+    const payload = {
+      user_id: user.id,
+      card_id: window.currentCard.id,
+      grade: status ?? (window.currentCard.user_grade || 'ungraded'),
+      starred: !!window.currentCard.user_starred,
+      last_reviewed_at: new Date().toISOString()
+    };
+    const { error } = await supabase.from('reviews').upsert(payload);
+    if (error) console.error('upsertReview failed', error);
+  } catch (e) {
+    console.error('upsertReview exception', e);
+  }
+}
+
+// Event delegation: catch all clicks on [data-grade] buttons
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('[data-grade]');
+  if (!btn) return;
+
+  const status = btn.getAttribute('data-grade');  // 'again'|'hard'|'good'|'easy'
+  if (!window.currentCard) return;
+
+  // Optimistic UI
+  window.currentCard.user_grade = status;
+  if (typeof renderCounts === 'function') renderCounts();
+
+  // Persist
+  await upsertReview(status);
+
+  // If your UI expects to advance after grading, you can trigger Next:
+  const nextBtn = document.getElementById('btnNext');
+  if (nextBtn && typeof nextBtn.click === 'function') nextBtn.click();
+});
+
+// Star toggle (if you have a Star button with id="btnStar")
+document.addEventListener('click', async (e) => {
+  const star = e.target.closest('#btnStar');
+  if (!star || !window.currentCard) return;
+
+  window.currentCard.user_starred = !window.currentCard.user_starred;
+  if (typeof renderCounts === 'function') renderCounts();
+  if (typeof renderCard === 'function') renderCard();
+
+  await upsertReview(); // persist current grade + new starred state
+});
+
+// Run hydration after the app loads cards
+document.addEventListener('DOMContentLoaded', () => {
+  // If your app loads cards asynchronously, this small delay helps.
+  setTimeout(hydrateReviews, 300);
+});
+</script>
+
 </body>
 </html>
