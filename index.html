@@ -2,429 +2,328 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>LM Learner</title>
+  <title>LM Study – Flashcards</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    :root {
-      --bg:#0b0c10; --panel:#16181d; --muted:#9aa4b2; --text:#e6edf3; --accent:#3ea6ff;
-      --good:#2ecc71; --hard:#f1c40f; --again:#e74c3c; --border:#222; --panel2:#0f1116;
+    :root{
+      --bg:#0b0c10; --panel:#12141a; --panel2:#0e1015; --border:#1e2128;
+      --text:#e6edf3; --muted:#9aa4b2; --accent:#3ea6ff;
+      --good:#2ecc71; --hard:#f1c40f; --again:#e74c3c;
+      --pill:#2d333b; --pillText:#c9d1d9;
     }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial; background:var(--bg); color:var(--text); }
-    header, footer { padding:12px 16px; background: var(--panel2); border-bottom:1px solid var(--border); }
-    header h1 { margin:0; font-size:16px; font-weight:600; }
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 16px; }
-    .row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
-    .col { display:flex; flex-direction:column; gap:12px; }
-    .card { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:20px; min-height:220px; }
-    .front { font-size:18px; line-height:1.5; white-space:pre-wrap; }
-    .back  { margin-top:14px; padding:14px; border-top:1px dashed #333; color:#cbd5e1; white-space:pre-wrap; display:none; }
-    .controls { display:flex; gap:10px; margin-top:16px; flex-wrap:wrap; }
-    button { background:#1e232b; color:var(--text); border:1px solid #2a2f37; border-radius:10px; padding:10px 12px; cursor:pointer; }
-    .btn-primary { background:#16314a; border-color:#244e73; }
-    button:hover { border-color:#3b4250; }
-    .pill { padding:4px 8px; border-radius:999px; font-size:12px; border:1px solid #2a2f37; }
-    .muted { color:var(--muted); }
-    .good { border-color: var(--good); color: var(--good); }
-    .hard { border-color: var(--hard); color: var(--hard); }
-    .again { border-color: var(--again); color: var(--again); }
-    .nav { display:flex; gap:8px; margin-top:8px; }
-    .grid { display:grid; grid-template-columns: 1fr 340px; gap:16px; }
-    .side { background:var(--panel2); border:1px solid var(--border); border-radius:12px; padding:12px; }
-    .side h3 { margin:0 0 8px 0; font-size:14px; }
-    .list { max-height: 320px; overflow:auto; border-top:1px solid var(--border); margin-top:8px; padding-top:8px; }
-    .list div { font-size:13px; color:#c3cad3; display:flex; justify-content:space-between; padding:4px 0; border-bottom:1px dashed #1f232b; }
-    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; background:#151922; border:1px solid #2a2f37; padding:2px 6px; border-radius:6px; font-size:12px; color: #b7c2cf; }
-    .hint { font-size:12px; color:#8e98a4; }
-    .badge { background:#10131a; border:1px solid #27303a; border-radius:8px; padding:4px 6px; font-size:12px; color:#9fb2c6; }
-    .auth { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-    input[type="email"] { background:#11141a; border:1px solid #2a2f37; color:var(--text); border-radius:8px; padding:8px 10px; min-width:260px; }
-    .note { font-size:12px; color:#9aa4b2; }
-    .hidden { display:none; }
-    .error { color:#ff6b6b; }
-    .success { color:#2ecc71; }
-    .warn { color:#f39c12; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;background:var(--bg);color:var(--text)}
+    header,footer{background:var(--panel2);border-bottom:1px solid var(--border);padding:12px 16px}
+    header .row{display:flex;align-items:center;gap:12px;justify-content:space-between;max-width:1200px;margin:0 auto}
+    .brand{font-weight:700;letter-spacing:.2px}
+    .status{font-size:12px;color:var(--muted)}
+    .status strong{color:var(--text)}
+    main{max-width:1200px;margin:0 auto;padding:16px}
+    .bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+    .pill{background:var(--pill);color:var(--pillText);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:12px}
+    .tabs{display:flex;gap:8px;margin:10px 0 16px}
+    .tab{padding:8px 12px;border:1px solid var(--border);background:var(--panel);border-radius:8px;cursor:pointer}
+    .tab.active{outline:2px solid var(--accent)}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px;margin:10px 0}
+    .q{font-weight:600;margin:0 0 8px 0}
+    .a{margin:12px 0 0 0;white-space:pre-wrap}
+    .controls{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+    button{background:#1f6feb;color:#fff;border:none;border-radius:8px;padding:8px 12px;cursor:pointer}
+    button.sec{background:transparent;border:1px solid var(--border);color:var(--text)}
+    button.good{background:var(--good)}
+    button.hard{background:var(--hard);color:#000}
+    button.again{background:var(--again)}
+    input,select,textarea{background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    .hidden{display:none}
+    .sep{height:1px;background:var(--border);margin:12px 0}
+    .muted{color:var(--muted)}
+    .warning{color:#ffb86b}
+    .danger{color:#ff6b6b}
+    .ok{color:#2ecc71}
+    .list{display:flex;flex-direction:column;gap:8px}
+    code.inline{background:#0b1020;border:1px solid #1a2030;padding:2px 6px;border-radius:6px}
+    .login-box{display:flex;gap:8px;flex-wrap:wrap}
   </style>
-  <script src="https://unpkg.com/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 </head>
 <body>
-  <header>
-    <div class="row">
-      <h1>LM Learner</h1>
-      <div class="badge" id="contentVersion">content: C01-v1</div>
-      <div class="muted">•</div>
-      <div id="userInfo" class="muted">Checking session…</div>
+<header>
+  <div class="row">
+    <div>
+      <div class="brand">LM Study</div>
+      <div class="status" id="authStatus">Not signed in</div>
     </div>
-  </header>
+    <div class="login-box">
+      <input id="email" type="email" placeholder="you@example.com" />
+      <button id="sendLink">Send magic link</button>
+      <button id="logout" class="sec hidden">Logout</button>
+    </div>
+  </div>
+</header>
 
-  <div class="wrap">
-    <!-- Auth Panel -->
-    <section id="authPanel" class="card">
-      <div class="col">
-        <div class="row">
-          <strong>Sign in to save your grading progress</strong>
-          <div id="redirectWarn" class="note warn hidden"></div>
-        </div>
-        <div class="auth">
-          <input id="email" type="email" placeholder="you@example.com" />
-          <button class="btn-primary" id="sendMagic">Send magic link</button>
-          <button id="signOut" class="hidden">Sign out</button>
-        </div>
-        <div id="authMsg" class="note"></div>
-        <div class="note">
-          The magic link redirects to the URL configured below. Ensure it’s added in Supabase → Authentication → URL Configuration.
-        </div>
-      </div>
-    </section>
-
-    <!-- Study UI -->
-    <section id="studyUI" class="grid" style="margin-top:16px;">
-      <main>
-        <div class="row">
-          <div class="pill">Chapter: <span id="chapterName" class="muted">—</span></div>
-          <div class="pill">Topic: <span id="topicName" class="muted">—</span></div>
-          <div class="pill">Card <span id="idx">0</span>/<span id="total">0</span></div>
-          <div class="pill">Grade: <span id="grade" class="muted">ungraded</span></div>
-          <div class="pill">Star: <span id="star" class="muted">no</span></div>
-        </div>
-
-        <section class="card" id="card">
-          <div class="front" id="front">Loading…</div>
-          <div class="back" id="back"></div>
-          <div class="controls">
-            <button id="btnShow">Show answer</button>
-            <button id="btnStar" title="Toggle star">⭐ Star</button>
-            <button class="again" id="btnAgain" data-grade="again">Again</button>
-            <button class="hard" id="btnHard" data-grade="hard">Hard</button>
-            <button class="good" id="btnGood" data-grade="good">Good</button>
-            <button class="good" id="btnEasy" data-grade="easy">Easy</button>
-          </div>
-          <div class="nav">
-            <button id="btnPrev">← Prev</button>
-            <button id="btnNext">Next →</button>
-          </div>
-          <div class="hint">Keyboard: <span class="kbd">Space</span> show/hide, <span class="kbd">A/H/G/E</span> grade, <span class="kbd">←/→</span> nav, <span class="kbd">S</span> star.</div>
-        </section>
-      </main>
-
-      <aside class="side">
-        <h3>Filters</h3>
-        <div class="row">
-          <label><input type="checkbox" id="fltUngraded" checked> Ungraded</label>
-          <label><input type="checkbox" id="fltGraded" checked> Graded</label>
-          <label><input type="checkbox" id="fltStarred" checked> Starred</label>
-        </div>
-        <h3 style="margin-top:10px;">Counts</h3>
-        <div class="list" id="counts"></div>
-        <h3 style="margin-top:10px;">Session</h3>
-        <div class="list" id="sessionInfo"></div>
-      </aside>
-    </section>
+<main>
+  <div class="bar">
+    <span class="pill">Redirect: <code class="inline" id="redir"></code></span>
+    <span class="pill">Role: <strong id="rolePill">—</strong></span>
+    <span class="pill">User: <strong id="userPill">—</strong></span>
   </div>
 
-  <footer>
-    <div class="row">
-      <div class="muted">Set Supabase URL, anon key, and redirect URL in the config below. Ensure your redirect is whitelisted in Supabase.</div>
-    </div>
-  </footer>
+  <div class="tabs">
+    <button class="tab active" data-tab="study">Study</button>
+    <button class="tab" data-tab="editor">Editor</button>
+    <button class="tab" data-tab="admin">Admin</button>
+  </div>
 
-<script>
-/* === CONFIG: UPDATE THESE === */
+  <!-- STUDY -->
+  <section id="study" class="">
+    <div class="grid">
+      <div>
+        <label>Chapter</label>
+        <select id="chapterFilter"></select>
+      </div>
+      <div>
+        <label>Search</label>
+        <input id="search" placeholder="front/back contains…" />
+      </div>
+    </div>
+    <div class="sep"></div>
+    <div id="deck"></div>
+  </section>
+
+  <!-- EDITOR -->
+  <section id="editor" class="hidden">
+    <p class="muted">Upload a <code class="inline">{"cards":[...]}</code> JSON. Only roles <b>editor</b> or <b>admin</b> can write.</p>
+    <textarea id="jsonInput" rows="12" style="width:100%;" placeholder='{"cards":[...]}'></textarea>
+    <div class="controls">
+      <button id="preview">Preview</button>
+      <button id="import">Import to DB</button>
+    </div>
+    <div id="previewOut"></div>
+  </section>
+
+  <!-- ADMIN -->
+  <section id="admin" class="hidden">
+    <h3>Users</h3>
+    <div id="users" class="list"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="row" style="justify-content:space-between">
+    <span class="muted">Persisted grades; no auto-refresh. Build: ui-stable</span>
+    <span class="muted">If the magic link still opens localhost, check Supabase “Redirect URLs”.</span>
+  </div>
+</footer>
+
+<script type="module">
+  // ======= CONFIG =======
+  /* === CONFIG: UPDATE THESE === */
 const SUPABASE_URL = "https://vzcgdpedoyiqzgguitum.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ6Y2dkcGVkb3lpcXpnZ3VpdHVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkxNDA1MjksImV4cCI6MjA3NDcxNjUyOX0.hHMkwcrROCQHGlYPdfbVYmPffVHUiE838GktgXaRAzI";
 const STORAGE_BUCKET = "media"; // your Storage bucket
-// IMPORTANT: set this to your deployed page (e.g., GitHub Pages URL)
-const REDIRECT_URL = 'https://gh-santhan.github.io/flashcards/'; // <-- change me (must match Supabase Auth → URL Configuration)
+  // Redirect ALWAYS uses current origin (fixes “localhost” issue)
+  const REDIRECT_URL = `${window.location.origin}${window.location.pathname}`;
+  document.getElementById('redir').textContent = REDIRECT_URL;
 
-const CONTENT_VERSION = 'C01-v1';
-document.getElementById('contentVersion').textContent = `content: ${CONTENT_VERSION}`;
-
-/* ==================== Supabase client ==================== */
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-const $ = (id) => document.getElementById(id);
-
-/* ==================== State ==================== */
-let cards = [];     // all cards loaded from DB
-let view = [];      // filtered subset
-let idx = 0;        // current index
-let current = null; // current card
-
-/* ==================== Auth helpers ==================== */
-function show(el, on=true){ el.classList.toggle('hidden', !on); }
-function setAuthMsg(txt, kind='info'){
-  const el = $('authMsg');
-  el.textContent = txt || '';
-  el.classList.remove('error','success','warn');
-  if(kind==='error') el.classList.add('error');
-  if(kind==='success') el.classList.add('success');
-  if(kind==='warn') el.classList.add('warn');
-}
-
-function warnIfLocalhost(){
-  const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
-  const mismatch = isLocal && !REDIRECT_URL.includes('localhost');
-  if(mismatch){
-    $('redirectWarn').classList.remove('hidden');
-    $('redirectWarn').textContent = `You are on localhost, but magic-link redirect is set to ${REDIRECT_URL}. Links will open that URL.`;
-  } else if (!isLocal && (REDIRECT_URL.includes('localhost') || REDIRECT_URL.startsWith('file://'))) {
-    $('redirectWarn').classList.remove('hidden');
-    $('redirectWarn').textContent = `You are on ${location.origin}, but magic-link redirect is set to ${REDIRECT_URL}. Update REDIRECT_URL to your deployed domain.`;
-  }
-}
-
-async function refreshUserUI(){
-  const { data: { user }, error } = await supabase.auth.getUser();
-  const userInfo = $('userInfo');
-  const sessionInfo = $('sessionInfo');
-  sessionInfo.innerHTML = '';
-  if(error || !user){
-    userInfo.textContent = 'Not signed in';
-    $('signOut').classList.add('hidden');
-    setAuthMsg('Sign in with a magic link to save your grading progress.');
-    sessionInfo.insertAdjacentHTML('beforeend', `<div><span>Status</span><span>Anonymous</span></div>`);
-  } else {
-    userInfo.textContent = `Signed in: ${user.email ?? user.id}`;
-    $('signOut').classList.remove('hidden');
-    setAuthMsg('Signed in. Your changes are saved automatically.', 'success');
-    sessionInfo.insertAdjacentHTML('beforeend', `<div><span>User</span><span>${user.email ?? user.id}</span></div>`);
-  }
-}
-
-/* Magic-link sender (HARD-CODED redirect) */
-$('sendMagic').onclick = async () => {
-  const email = $('email').value.trim();
-  if(!email){ setAuthMsg('Please enter your email address.', 'error'); return; }
-  setAuthMsg(`Sending magic link to ${email}…`);
-  const { error } = await supabase.auth.signInWithOtp({
-    email,
-    options: {
-      emailRedirectTo: REDIRECT_URL,   // <-- always use your production page
-      shouldCreateUser: true
-    }
+  // ======= INIT =======
+  import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+  const sb = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    auth: { autoRefreshToken: true, persistSession: true, detectSessionInUrl: true }
   });
-  if(error){ setAuthMsg(`Error: ${error.message}`, 'error'); return; }
-  setAuthMsg('Magic link sent. Check your inbox and click the link to return here.', 'success');
-};
 
-/* Sign out */
-$('signOut').onclick = async () => {
-  await supabase.auth.signOut();
-  await refreshUserUI();
-};
+  const $ = (id)=>document.getElementById(id);
+  const tabs = document.querySelectorAll(".tab");
+  const panes = { study: $("study"), editor: $("editor"), admin: $("admin") };
+  let session = null, profile = null;
 
-/* Handle magic-link return (clean URL) */
-async function restoreSessionFromURL(){
-  // supabase-js v2 parses tokens automatically on init
-  const hash = window.location.hash || '';
-  // remove auth fragments for a cleaner URL
-  setTimeout(() => {
-    if (hash.includes('access_token') || hash.includes('refresh_token') || hash.includes('type=recovery') || hash.includes('code=')) {
-      history.replaceState({}, document.title, REDIRECT_URL);
-    }
-  }, 800);
-}
-
-/* Auth state changes */
-supabase.auth.onAuthStateChange(async () => {
-  await refreshUserUI();
-  await mergeReviewsIntoCards();
-  applyFilters();
-  render();
-});
-
-/* ==================== Data loading ==================== */
-async function loadCards() {
-  const { data: cs, error } = await supabase
-    .from('cards')
-    .select(`id, front, back, chapter, topics, tags, status, visibility, author_suspended`)
-    .order('created_at', { ascending: true });
-
-  if (error) {
-    $('front').textContent = 'Error loading cards.';
-    console.error('cards load error:', error);
-    return;
-  }
-
-  cards = (cs || []).map(c => ({
-    ...c,
-    user_grade: 'ungraded',
-    user_starred: false
-  }));
-
-  await mergeReviewsIntoCards();
-  applyFilters();
-  renderCounts();
-  render();
-}
-
-async function mergeReviewsIntoCards(){
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return;
-
-  const { data: rv, error: e2 } = await supabase
-    .from('reviews')
-    .select('*')
-    .eq('user_id', user.id);
-
-  if (e2) {
-    console.warn('reviews load error:', e2);
-    return;
-  }
-
-  if (!rv?.length) return;
-  const rmap = new Map(rv.map(r => [r.card_id, r]));
-  cards.forEach(c => {
-    const r = rmap.get(c.id);
-    if (r) {
-      c.user_grade = r.grade || 'ungraded';
-      c.user_starred = !!r.starred;
-    }
+  // ======= UI NAV =======
+  tabs.forEach(t=>{
+    t.onclick = ()=>{
+      tabs.forEach(x=>x.classList.remove("active"));
+      t.classList.add("active");
+      Object.values(panes).forEach(p=>p.classList.add("hidden"));
+      panes[t.dataset.tab].classList.remove("hidden");
+    };
   });
-}
 
-/* ==================== Persistence ==================== */
-async function upsertReview(card) {
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return; // allow anon usage
-
-  const payload = {
-    user_id: user.id,
-    card_id: card.id,
-    grade: card.user_grade || 'ungraded',
-    starred: !!card.user_starred,
-    last_reviewed_at: new Date().toISOString()
+  // ======= AUTH =======
+  $("sendLink").onclick = async ()=>{
+    const email = $("email").value.trim();
+    if(!email) return alert("Enter email");
+    const { error } = await sb.auth.signInWithOtp({ email, options:{ emailRedirectTo: REDIRECT_URL }});
+    if(error) alert(error.message); else alert("Magic link sent. Please check your email.");
   };
-  const { error } = await supabase.from('reviews').upsert(payload);
-  if (error) console.error('review upsert failed', error);
-}
+  $("logout").onclick = async ()=>{
+    await sb.auth.signOut();
+    location.reload();
+  };
 
-/* ==================== Filters & Render ==================== */
-function applyFilters() {
-  const wantUngraded = $('fltUngraded').checked;
-  const wantGraded   = $('fltGraded').checked;
-  const wantStarred  = $('fltStarred').checked;
-
-  view = cards.filter(c => {
-    const isUngraded = (c.user_grade === 'ungraded');
-    const isGraded = !isUngraded;
-    const isStar = !!c.user_starred;
-
-    const passGrade =
-      (wantUngraded && isUngraded) ||
-      (wantGraded && isGraded);
-
-    const passStar =
-      (wantStarred ? true : !isStar);
-
-    return passGrade && passStar;
+  sb.auth.onAuthStateChange(async (_event, sess)=>{
+    session = sess;
+    updateAuthStatus();
+    if(session?.user) {
+      await ensureProfile(session.user);
+      await loadChapters();
+      await loadDeck();
+      $("logout").classList.remove("hidden");
+    }
   });
 
-  if (idx >= view.length) idx = Math.max(0, view.length - 1);
-  current = view[idx] || null;
-  renderCounts();
-}
+  async function ensureProfile(user){
+    const { data } = await sb.from("profiles").select("*").eq("id", user.id).maybeSingle();
+    profile = data || { role:"user", email:user.email };
+    $("rolePill").textContent = profile.role || "user";
+    $("userPill").textContent = user.email || user.id;
 
-function renderCounts() {
-  const total = cards.length;
-  const ungraded = cards.filter(c => c.user_grade === 'ungraded').length;
-  const graded = total - ungraded;
-  const starred = cards.filter(c => !!c.user_starred).length;
+    // Gate Editor/Admin
+    panes.editor.classList.toggle("hidden", !["editor","admin"].includes(profile.role));
+    panes.admin.classList.toggle("hidden", profile.role!=="admin");
+    document.querySelector('.tab[data-tab="editor"]').classList.toggle("hidden", !["editor","admin"].includes(profile.role));
+    document.querySelector('.tab[data-tab="admin"]').classList.toggle("hidden", profile.role!=="admin");
 
-  const el = $('counts');
-  el.innerHTML = '';
-  const row = (k,v) => `<div><span>${k}</span><span>${v}</span></div>`;
-  el.insertAdjacentHTML('beforeend', row('Total', total));
-  el.insertAdjacentHTML('beforeend', row('Ungraded', ungraded));
-  el.insertAdjacentHTML('beforeend', row('Graded', graded));
-  el.insertAdjacentHTML('beforeend', row('Starred', starred));
-
-  $('total').textContent = String(view.length);
-  $('idx').textContent = String(view.length ? (idx+1) : 0);
-}
-
-function render() {
-  const backEl = $('back');
-  if (!current) {
-    $('front').textContent = 'No cards match current filters.';
-    backEl.style.display = 'none';
-    $('chapterName').textContent = '—';
-    $('topicName').textContent = '—';
-    $('grade').textContent = '—';
-    $('star').textContent = '—';
-    return;
+    if(profile.role==="admin") loadUsers();
   }
-  $('front').textContent = current.front || '—';
-  backEl.textContent  = current.back || '—';
-  backEl.style.display = 'none';
-  $('chapterName').textContent = current.chapter || '—';
-  $('topicName').textContent = (Array.isArray(current.topics) && current.topics[0]) ? current.topics[0] : '—';
-  $('grade').textContent = current.user_grade || 'ungraded';
-  $('star').textContent  = current.user_starred ? 'yes' : 'no';
-  $('idx').textContent = String(view.length ? (idx+1) : 0);
-  $('total').textContent = String(view.length);
-}
 
-/* ==================== UI Actions ==================== */
-$('btnShow').onclick = () => {
-  const s = $('back').style.display;
-  $('back').style.display = (s === 'none' ? 'block' : 'none');
-};
+  function updateAuthStatus(){
+    const el = $("authStatus");
+    if(!session?.user){ el.innerHTML = `Not signed in`; return; }
+    const u = session.user;
+    el.innerHTML = `Signed in as <strong>${u.email || u.id}</strong>`;
+  }
 
-$('btnPrev').onclick = () => { if (idx > 0) idx--; current = view[idx] || null; render(); };
-$('btnNext').onclick = () => { if (idx < view.length-1) idx++; else idx = 0; current = view[idx] || null; render(); };
+  // ======= STUDY DECK =======
+  let allCards = [];
+  let gradesMap = new Map(); // card_id -> {grade, updated_at}
 
-document.addEventListener('click', async (e) => {
-  const btn = e.target.closest('[data-grade]');
-  if (!btn || !current) return;
-  const status = btn.getAttribute('data-grade'); // again | hard | good | easy
-  current.user_grade = status;
-  $('grade').textContent = status;
-  renderCounts();
-  await upsertReview(current);       // persist
-  $('btnNext').click();              // advance
-});
+  $("chapterFilter").onchange = loadDeck;
+  $("search").oninput = debounce(loadDeck, 300);
 
-$('btnStar').onclick = async () => {
-  if (!current) return;
-  current.user_starred = !current.user_starred;
-  $('star').textContent = current.user_starred ? 'yes' : 'no';
-  renderCounts(); render();
-  await upsertReview(current);
-};
+  async function loadChapters(){
+    const { data } = await sb.from("cards").select("chapter").neq("status","archived");
+    const chapters = Array.from(new Set((data||[]).map(x=>x.chapter))).sort();
+    const sel = $("chapterFilter");
+    sel.innerHTML = `<option value="">All chapters</option>` + chapters.map(c=>`<option>${c||"Unfiled"}</option>`).join("");
+  }
 
-/* Filters */
-$('fltUngraded').onchange = () => { applyFilters(); render(); };
-$('fltGraded').onchange   = () => { applyFilters(); render(); };
-$('fltStarred').onchange  = () => { applyFilters(); render(); };
+  async function loadDeck(){
+    const ch = $("chapterFilter").value;
+    const q = $("search").value.trim();
+    let query = sb.from("cards").select("id,front,back,chapter,tags,topics,status,visibility,meta").neq("status","archived").order("id",{ascending:true});
+    if(ch) query = query.eq("chapter", ch);
+    if(q) query = query.ilike("front", `%${q}%`);
 
-/* Keyboard shortcuts */
-document.addEventListener('keydown', async (e) => {
-  if (!current) return;
-  const k = e.key.toLowerCase();
-  if (e.code === 'Space') { e.preventDefault(); $('btnShow').click(); }
-  if (k === 'arrowleft')  $('btnPrev').click();
-  if (k === 'arrowright') $('btnNext').click();
-  if (k === 's') $('btnStar').click();
-  if (k === 'a') { current.user_grade='again'; $('grade').textContent='again'; await upsertReview(current); $('btnNext').click(); }
-  if (k === 'h') { current.user_grade='hard';  $('grade').textContent='hard';  await upsertReview(current); $('btnNext').click(); }
-  if (k === 'g') { current.user_grade='good';  $('grade').textContent='good';  await upsertReview(current); $('btnNext').click(); }
-  if (k === 'e') { current.user_grade='easy';  $('grade').textContent='easy';  await upsertReview(current); $('btnNext').click(); }
-});
+    const { data:cards, error } = await query.limit(5000);
+    if(error){ alert("Load cards error: "+error.message); return; }
+    allCards = cards || [];
+    await loadGrades();
+    renderDeck();
+  }
 
-/* ==================== Boot ==================== */
-(async function boot(){
-  // warn if redirect mismatch
-  warnIfLocalhost();
+  async function loadGrades(){
+    if(!session?.user){ gradesMap.clear(); return; }
+    const { data } = await sb.from("card_grades").select("card_id, grade, updated_at").eq("user_id", session.user.id).limit(10000);
+    gradesMap = new Map((data||[]).map(r=>[r.card_id, r]));
+  }
 
-  // handle magic-link callback & clean URL
-  await restoreSessionFromURL();
+  function renderDeck(){
+    const container = $("deck");
+    container.innerHTML = "";
+    if(allCards.length===0){ container.innerHTML = `<p class="muted">No cards.</p>`; return; }
 
-  // show session
-  await refreshUserUI();
+    allCards.forEach(card=>{
+      const row = document.createElement("div");
+      row.className = "card";
+      const g = gradesMap.get(card.id)?.grade || null;
+      const badge = g? `<span class="pill">Your grade: <strong>${g}</strong></span>` : `<span class="pill">Not graded</span>`;
+      row.innerHTML = `
+        <div class="q">${escapeHTML(card.front || "")}</div>
+        <div class="muted">${badge} • Chapter: ${escapeHTML(card.chapter||"")}</div>
+        <div class="controls">
+          <button class="sec" data-act="show">Show answer</button>
+          <button class="again" data-grade="again">Again</button>
+          <button class="hard" data-grade="hard">Hard</button>
+          <button class="good" data-grade="good">Good</button>
+          <button class="sec" data-act="star">⭐</button>
+        </div>
+        <div class="a hidden">${escapeHTML(card.back || "")}</div>
+      `;
+      row.querySelector('[data-act="show"]').onclick = ()=> row.querySelector('.a').classList.toggle('hidden');
+      row.querySelectorAll('[data-grade]').forEach(btn=>{
+        btn.onclick = ()=> gradeCard(card.id, btn.dataset.grade, row);
+      });
+      row.querySelector('[data-act="star"]').onclick = ()=> starCard(card.id, row);
+      container.appendChild(row);
+    });
+  }
 
-  // load cards + merge progress
-  await loadCards();
-})();
+  async function gradeCard(cardId, grade, row){
+    if(!session?.user){ alert("Sign in to save grades."); return; }
+    const payload = { user_id: session.user.id, card_id: cardId, grade, updated_at: new Date().toISOString() };
+    // Optimistic update
+    gradesMap.set(cardId, { card_id:cardId, grade, updated_at:payload.updated_at });
+    row.querySelector('.muted').innerHTML = `<span class="pill">Your grade: <strong>${grade}</strong></span>`;
+    try{
+      await sb.from("card_grades").upsert(payload, { onConflict:"user_id,card_id" });
+    }catch(e){
+      console.error(e);
+      alert("Failed to save grade.");
+    }
+  }
+
+  async function starCard(cardId, row){
+    // You can implement a stars table; here we just toggle a class visually.
+    row.style.outline = row.style.outline ? "" : "2px solid #ffd54f";
+  }
+
+  // ======= EDITOR =======
+  $("preview").onclick = ()=>{
+    try{
+      const j = JSON.parse($("jsonInput").value);
+      const arr = (j.cards||[]).slice(0,10);
+      $("previewOut").innerHTML = arr.map(c=>`<div class="card"><div class="q">${escapeHTML(c.front||"")}</div><div class="a">${escapeHTML(c.back||"")}</div><div class="muted">Chapter: ${escapeHTML(c.chapter||"")}</div></div>`).join("") || "<p class='muted'>No cards</p>";
+    }catch(e){ alert("Invalid JSON: "+e.message); }
+  };
+
+  $("import").onclick = async ()=>{
+    if(!["editor","admin"].includes(profile?.role)) return alert("Editor/Admin only.");
+    let parsed;
+    try{ parsed = JSON.parse($("jsonInput").value); }catch(e){ return alert("Invalid JSON: "+e.message); }
+    const cards = parsed.cards||[];
+    if(cards.length===0) return alert("No cards found.");
+    // Normalize and upsert in batches
+    const batchSize = 200;
+    for(let i=0;i<cards.length;i+=batchSize){
+      const chunk = cards.slice(i,i+batchSize).map(c=>({
+        front: c.front, back: c.back, chapter: c.chapter||null,
+        topics: c.topics||[], tags: c.tags||[], status: c.status||"published",
+        visibility: c.visibility||"public", author_suspended: !!c.author_suspended,
+        meta: c.meta||{}
+      }));
+      const { error } = await sb.from("cards").upsert(chunk);
+      if(error){ console.error(error); return alert("Import error: "+error.message); }
+    }
+    alert("Import complete.");
+    await loadChapters(); await loadDeck();
+  };
+
+  // ======= ADMIN =======
+  async function loadUsers(){
+    const { data, error } = await sb.from("profiles").select("email, display_name, role").order("email",{ascending:true});
+    if(error){ $("users").innerHTML = `<div class='danger'>${error.message}</div>`; return;}
+    $("users").innerHTML = (data||[]).map(u=>`<div class="card"><div><b>${escapeHTML(u.email||"")}</b></div><div class="muted">${escapeHTML(u.display_name||"")}</div><div>Role: <b>${escapeHTML(u.role||"user")}</b></div></div>`).join("");
+  }
+
+  // ======= HELPERS =======
+  function escapeHTML(s){ return (s||"").replace(/[&<>"']/g, m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m])); }
+  function debounce(fn, ms){ let t; return (...a)=>{ clearTimeout(t); t=setTimeout(()=>fn(...a), ms); }; }
+
+  // Boot: ensure we render if already logged in
+  (async ()=>{
+    const { data:{ session:s } } = await sb.auth.getSession();
+    session = s; updateAuthStatus();
+    if(session?.user){ await ensureProfile(session.user); await loadChapters(); await loadDeck(); $("logout").classList.remove("hidden"); }
+  })();
 </script>
 </body>
 </html>
