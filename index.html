@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>LM Study – Persistent Cards + Magic Link Login</title>
+  <title>LM Learner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
@@ -37,12 +37,13 @@
     .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; background:#151922; border:1px solid #2a2f37; padding:2px 6px; border-radius:6px; font-size:12px; color: #b7c2cf; }
     .hint { font-size:12px; color:#8e98a4; }
     .badge { background:#10131a; border:1px solid #27303a; border-radius:8px; padding:4px 6px; font-size:12px; color:#9fb2c6; }
-    .auth { display:flex; gap:10px; align-items:center; }
+    .auth { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
     input[type="email"] { background:#11141a; border:1px solid #2a2f37; color:var(--text); border-radius:8px; padding:8px 10px; min-width:260px; }
     .note { font-size:12px; color:#9aa4b2; }
     .hidden { display:none; }
     .error { color:#ff6b6b; }
     .success { color:#2ecc71; }
+    .warn { color:#f39c12; }
   </style>
   <script src="https://unpkg.com/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 </head>
@@ -62,6 +63,7 @@
       <div class="col">
         <div class="row">
           <strong>Sign in to save your grading progress</strong>
+          <div id="redirectWarn" class="note warn hidden"></div>
         </div>
         <div class="auth">
           <input id="email" type="email" placeholder="you@example.com" />
@@ -70,8 +72,7 @@
         </div>
         <div id="authMsg" class="note"></div>
         <div class="note">
-          After clicking the email link, you will be redirected back here and your session will restore automatically.
-          If your app is running on <span class="kbd">localhost</span>, set your Supabase site URL accordingly in the Dashboard (Authentication → URL Configuration).
+          The magic link redirects to the URL configured below. Ensure it’s added in Supabase → Authentication → URL Configuration.
         </div>
       </div>
     </section>
@@ -123,7 +124,7 @@
 
   <footer>
     <div class="row">
-      <div class="muted">Configure Supabase URL and anon key below. Ensure Auth → URL settings include your site (and localhost if testing).</div>
+      <div class="muted">Set Supabase URL, anon key, and redirect URL in the config below. Ensure your redirect is whitelisted in Supabase.</div>
     </div>
   </footer>
 
@@ -132,7 +133,10 @@
 const SUPABASE_URL = "https://vzcgdpedoyiqzgguitum.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ6Y2dkcGVkb3lpcXpnZ3VpdHVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkxNDA1MjksImV4cCI6MjA3NDcxNjUyOX0.hHMkwcrROCQHGlYPdfbVYmPffVHUiE838GktgXaRAzI";
 const STORAGE_BUCKET = "media"; // your Storage bucket
-const CONTENT_VERSION = 'C01-v1'; // bump when content changes materially
+// IMPORTANT: set this to your deployed page (e.g., GitHub Pages URL)
+const REDIRECT_URL = 'https://your-name.github.io/your-repo/'; // <-- change me (must match Supabase Auth → URL Configuration)
+
+const CONTENT_VERSION = 'C01-v1';
 document.getElementById('contentVersion').textContent = `content: ${CONTENT_VERSION}`;
 
 /* ==================== Supabase client ==================== */
@@ -150,9 +154,22 @@ function show(el, on=true){ el.classList.toggle('hidden', !on); }
 function setAuthMsg(txt, kind='info'){
   const el = $('authMsg');
   el.textContent = txt || '';
-  el.classList.remove('error','success');
+  el.classList.remove('error','success','warn');
   if(kind==='error') el.classList.add('error');
   if(kind==='success') el.classList.add('success');
+  if(kind==='warn') el.classList.add('warn');
+}
+
+function warnIfLocalhost(){
+  const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+  const mismatch = isLocal && !REDIRECT_URL.includes('localhost');
+  if(mismatch){
+    $('redirectWarn').classList.remove('hidden');
+    $('redirectWarn').textContent = `You are on localhost, but magic-link redirect is set to ${REDIRECT_URL}. Links will open that URL.`;
+  } else if (!isLocal && (REDIRECT_URL.includes('localhost') || REDIRECT_URL.startsWith('file://'))) {
+    $('redirectWarn').classList.remove('hidden');
+    $('redirectWarn').textContent = `You are on ${location.origin}, but magic-link redirect is set to ${REDIRECT_URL}. Update REDIRECT_URL to your deployed domain.`;
+  }
 }
 
 async function refreshUserUI(){
@@ -162,26 +179,26 @@ async function refreshUserUI(){
   sessionInfo.innerHTML = '';
   if(error || !user){
     userInfo.textContent = 'Not signed in';
-    show($('signOut'), false);
+    $('signOut').classList.add('hidden');
     setAuthMsg('Sign in with a magic link to save your grading progress.');
     sessionInfo.insertAdjacentHTML('beforeend', `<div><span>Status</span><span>Anonymous</span></div>`);
   } else {
     userInfo.textContent = `Signed in: ${user.email ?? user.id}`;
-    show($('signOut'), true);
+    $('signOut').classList.remove('hidden');
     setAuthMsg('Signed in. Your changes are saved automatically.', 'success');
     sessionInfo.insertAdjacentHTML('beforeend', `<div><span>User</span><span>${user.email ?? user.id}</span></div>`);
   }
 }
 
-/* Magic-link sender */
+/* Magic-link sender (HARD-CODED redirect) */
 $('sendMagic').onclick = async () => {
   const email = $('email').value.trim();
   if(!email){ setAuthMsg('Please enter your email address.', 'error'); return; }
-  setAuthMsg('Sending magic link…');
+  setAuthMsg(`Sending magic link to ${email}…`);
   const { error } = await supabase.auth.signInWithOtp({
     email,
     options: {
-      emailRedirectTo: window.location.origin, // ensure this is allowed in Supabase Auth → URL config
+      emailRedirectTo: REDIRECT_URL,   // <-- always use your production page
       shouldCreateUser: true
     }
   });
@@ -193,26 +210,23 @@ $('sendMagic').onclick = async () => {
 $('signOut').onclick = async () => {
   await supabase.auth.signOut();
   await refreshUserUI();
-  // Keep studying UI visible; progress just won't persist while anon
 };
 
-/* Handle hash/callback & session restore on load */
+/* Handle magic-link return (clean URL) */
 async function restoreSessionFromURL(){
-  // Supabase v2 handles URL fragments internally, but we can force a check:
+  // supabase-js v2 parses tokens automatically on init
   const hash = window.location.hash || '';
-  // If returning via magic link, there may be access_token fragments; supabase-js will parse them.
-  // After a beat, clean URL for nicer UX.
+  // remove auth fragments for a cleaner URL
   setTimeout(() => {
-    if (hash.includes('access_token') || hash.includes('type=recovery') || hash.includes('code=')) {
-      history.replaceState({}, document.title, window.location.pathname);
+    if (hash.includes('access_token') || hash.includes('refresh_token') || hash.includes('type=recovery') || hash.includes('code=')) {
+      history.replaceState({}, document.title, REDIRECT_URL);
     }
   }, 800);
 }
 
-/* React to auth state changes (login via magic link, logout, token refresh) */
-supabase.auth.onAuthStateChange(async (event, session) => {
+/* Auth state changes */
+supabase.auth.onAuthStateChange(async () => {
   await refreshUserUI();
-  // Rehydrate reviews so grades/stars appear immediately after login
   await mergeReviewsIntoCards();
   applyFilters();
   render();
@@ -220,7 +234,6 @@ supabase.auth.onAuthStateChange(async (event, session) => {
 
 /* ==================== Data loading ==================== */
 async function loadCards() {
-  // base cards
   const { data: cs, error } = await supabase
     .from('cards')
     .select(`id, front, back, chapter, topics, tags, status, visibility, author_suspended`)
@@ -272,7 +285,7 @@ async function mergeReviewsIntoCards(){
 /* ==================== Persistence ==================== */
 async function upsertReview(card) {
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return; // allow anon use without crashing
+  if (!user) return; // allow anon usage
 
   const payload = {
     user_id: user.id,
@@ -400,9 +413,17 @@ document.addEventListener('keydown', async (e) => {
 
 /* ==================== Boot ==================== */
 (async function boot(){
-  await restoreSessionFromURL();       // handle magic-link callback URL
-  await refreshUserUI();               // show session state
-  await loadCards();                   // load cards + merge progress
+  // warn if redirect mismatch
+  warnIfLocalhost();
+
+  // handle magic-link callback & clean URL
+  await restoreSessionFromURL();
+
+  // show session
+  await refreshUserUI();
+
+  // load cards + merge progress
+  await loadCards();
 })();
 </script>
 </body>
