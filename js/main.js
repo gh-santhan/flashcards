@@ -357,7 +357,6 @@ function bindSearch(){
     scope={chapter:null,topic:null,mix:false,diff:null,starred:false};
     renderCounts(); buildScopePickers(); renderCard();
   };
-}
 
 // -------- Editor TABLES (the missing function) --------
 function renderCardTable(){
