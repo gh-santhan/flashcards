@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Flashcards</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 <header>
@@ -26,7 +26,7 @@
 <main class="wrap">
   <!-- STUDY -->
   <section id="tab-study">
-    <details id="filters" class="filters" open>
+    <details class="filters" id="filtersBox">
       <summary>Filters & Tools</summary>
       <div class="row">
         <label>Chapter <select id="selChapter"></select></label>
@@ -97,7 +97,9 @@
     <section id="editor-cards">
       <p class="subtitle">Edit cards inline or open a card to modify front, back, tags, topics, notes/resources.</p>
       <table id="tblCards">
-        <thead><tr><th>Front</th><th>Chapter</th><th>Topics</th><th>Tags</th><th>Actions</th></tr></thead>
+        <thead><tr>
+          <th>Front</th><th>Chapter</th><th>Topics</th><th>Tags</th><th>Actions</th>
+        </tr></thead>
         <tbody></tbody>
       </table>
       <div class="divider"></div>
@@ -255,8 +257,7 @@
   </div>
 </div>
 
-<!-- Supabase UMD + App modules -->
-<script src="https://unpkg.com/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
-<script type="module" src="/js/main.js"></script>
+<!-- Load as ES modules in the correct order -->
+<script type="module" src="js/main.js"></script>
 </body>
 </html>
