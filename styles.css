@@ -56,3 +56,8 @@ th{color:#c0c0c0;font-weight:600}
 .filters > summary{list-style:none;cursor:pointer;padding:6px 4px;font-weight:600}
 .filters > summary::-webkit-details-marker{display:none}
 .filters[open] > summary{border-bottom:1px dashed #1e1e1e;margin-bottom:8px}
+
+/* keep your file; append */
+.summary-btn {cursor:pointer; display:inline-block; padding:6px 10px; border:1px solid #1c1c1c; border-radius:10px; background:#101010;}
+details[open] > .summary-btn {background:#182030;}
+.controls {margin-top:10px}
