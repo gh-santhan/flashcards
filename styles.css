@@ -61,3 +61,27 @@ th{color:#c0c0c0;font-weight:600}
 .summary-btn {cursor:pointer; display:inline-block; padding:6px 10px; border:1px solid #1c1c1c; border-radius:10px; background:#101010;}
 details[open] > .summary-btn {background:#182030;}
 .controls {margin-top:10px}
+
+/* --- Study Controls Accordion --- */
+details.accordion{
+  background:#0f0f0f;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:6px 8px;
+  margin-bottom:12px;
+}
+details.accordion[open]{ padding-bottom:12px; }
+details.accordion > summary{
+  cursor:pointer;
+  list-style:none;
+  font-weight:600;
+  color:#c0c0c0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+details.accordion > summary::-webkit-details-marker{ display:none; }
+details.accordion .controls{ margin-top:8px; display:flex; flex-direction:column; gap:8px; }
+@media (min-width: 700px){
+  details.accordion .controls{ gap:10px; }
+}
