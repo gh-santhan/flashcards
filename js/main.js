@@ -416,3 +416,42 @@ async function boot(){
   }
 }
 window.addEventListener('DOMContentLoaded', boot);
+
+// --- Inject Study Controls Accordion (non-destructive wrapper) ---
+(function(){
+  const tab = document.getElementById('tab-study');
+  if(!tab) return;
+
+  // find the existing elements
+  const firstRow = tab.querySelector(':scope > .row');        // chapter/topic/mix/search row (first row inside #tab-study)
+  const chips    = document.getElementById('diffChips');      // difficulty chips
+  const card     = tab.querySelector(':scope > .card');       // main card section
+
+  if(!firstRow || !chips || !card) return; // nothing to do
+
+  // create accordion
+  const acc = document.createElement('details');
+  acc.className = 'accordion';
+  acc.id = 'studyAccordion';
+
+  // restore persisted state (default open once)
+  const KEY = 'ui.studyAccordionOpen';
+  const saved = localStorage.getItem(KEY);
+  acc.open = saved === null ? true : saved === '1';
+  acc.addEventListener('toggle', ()=> localStorage.setItem(KEY, acc.open ? '1':'0'));
+
+  const sum = document.createElement('summary');
+  sum.textContent = 'Study controls';
+  acc.appendChild(sum);
+
+  const controls = document.createElement('div');
+  controls.className = 'controls';
+
+  // move existing nodes into accordion
+  controls.appendChild(firstRow);
+  controls.appendChild(chips);
+  acc.appendChild(controls);
+
+  // insert accordion right before the card
+  tab.insertBefore(acc, card);
+})();
