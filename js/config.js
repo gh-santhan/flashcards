@@ -2,6 +2,7 @@
 export const SUPABASE_URL = "https://vzcgdpedoyiqzgguitum.supabase.co";
 export const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ6Y2dkcGVkb3lpcXpnZ3VpdHVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkxNDA1MjksImV4cCI6MjA3NDcxNjUyOX0.hHMkwcrROCQHGlYPdfbVYmPffVHUiE838GktgXaRAzI";
 export const STORAGE_BUCKET = "media";
+export const EMAIL_REDIRECT = `${location.origin}${location.pathname}`;
 
 // NOTE: Ensure this table exists (run once):
 // create table if not exists public.card_grades (
