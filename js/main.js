@@ -259,10 +259,74 @@ function bindStudyActions(){
 
 // -------- Search modal --------
 function bindSearch(){
-  $('btnSearch').onclick=()=>{$('searchModal').style.display='flex'; $('searchInput').focus();};
-  $('searchClose').onclick=()=>{$('searchModal').style.display='none';};
-  $('searchGo').onclick=runSearch;
-  $('searchInput').addEventListener('keydown',e=>{ if(e.key==='Enter') runSearch(); });
+  const btn = $('btnSearch');
+  const modal = $('searchModal');
+  const closeBtn = $('searchClose');
+  const input = $('searchInput');
+  const goBtn = $('searchGo');
+  const reviewAll = $('searchReviewAll');
+  const results = $('searchResults');
+
+  // If Search UI isn't present in this build, just no-op so the app keeps running.
+  if(!btn || !modal || !closeBtn || !input || !goBtn || !reviewAll || !results){
+    console.warn('[bindSearch] Search UI not found in DOM — skipping wiring.');
+    return;
+  }
+
+  btn.onclick = ()=>{
+    modal.style.display='flex';
+    input.focus();
+  };
+  closeBtn.onclick = ()=>{ modal.style.display='none'; };
+
+  function runSearch(){
+    const q = input.value.trim();
+    if(!q){
+      results.innerHTML='';
+      reviewAll.disabled = true;
+      return;
+    }
+    let res = cards.filter(visibleToLearner);
+    if(q.startsWith('#')){
+      const tag = q.slice(1).toLowerCase();
+      res = res.filter(c => (c.card_tags||[]).some(t => (t.name||'').toLowerCase().includes(tag)));
+    }else{
+      const s = q.toLowerCase();
+      res = res.filter(c =>
+        (c.front||'').toLowerCase().includes(s) ||
+        (c.back||'').toLowerCase().includes(s) ||
+        (c.meta?.Section||'').toLowerCase().includes(s)
+      );
+    }
+    searchResults = res.map(c => c.id);
+    results.innerHTML = res.map(c => `
+      <div style="padding:8px;border:1px solid #1b1b1b;border-radius:10px;margin:6px 0;background:#0b0b0b">
+        <div class="small">
+          ${escapeHTML(chapters.find(x=>x.id===c.chapter_id)?.title||'(Uncategorised)')} •
+          ${(c.card_topics||[]).map(t=>escapeHTML(t.title)).join(', ')||'(No Topics)'}
+        </div>
+        <div style="margin:6px 0">${c.front}</div>
+        <div class="small">${(c.card_tags||[]).map(t=>escapeHTML(t.name)).join(', ')}</div>
+      </div>
+    `).join('') || '<div class="small">No matches.</div>';
+    reviewAll.disabled = !res.length;
+  }
+
+  goBtn.onclick = runSearch;
+  input.addEventListener('keydown', e => { if(e.key==='Enter') runSearch(); });
+
+  reviewAll.onclick = ()=>{
+    if(!searchResults.length) return;
+    const idset = new Set(searchResults);
+    const pool = cards.filter(c => idset.has(c.id) && visibleToLearner(c));
+    window._pool = pool;
+    order = pool.map((c,i)=>i);
+    idx = 0;
+    modal.style.display = 'none';
+    scope = {chapter:null, topic:null, mix:false, diff:null, starred:false};
+    renderCounts(); buildScopePickers(); renderCard();
+  };
+}
 
   function runSearch(){
     const q=$('searchInput').value.trim();
