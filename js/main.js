@@ -22,6 +22,28 @@ const setText = (id, s='') => { const el = $(id); if (el) el.textContent = s; };
 const show = (id, yes) => { const el = $(id); if (el) el.style.display = yes ? '' : 'none'; };
 const escapeHtml = (s='') => s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 
+// --- study state persistence ---
+const STATE_KEY = 'study.state.v1';
+function saveStudyState() {
+  try {
+    const state = {
+      chapter: scope.chapter,
+      topic: scope.topic,
+      mix: !!scope.mix,
+      diff: scope.diff || null,
+      starred: !!scope.starred,
+      cardId: currentCard?.id || null
+    };
+    localStorage.setItem(STATE_KEY, JSON.stringify(state));
+  } catch {}
+}
+function loadStudyState() {
+  try {
+    const raw = localStorage.getItem(STATE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch { return null; }
+}
+
 // ------- app state -------
 let session=null,user=null;
 let chapters=[], topics=[], tags=[], cards=[];
