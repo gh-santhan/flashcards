@@ -251,6 +251,57 @@ async function saveCurrentCardEdits(){
   buildEditorTables();
   alert('Saved.');
 }
+
+import * as repo from './repo.js'; // make sure this import is at the top of main.js
+
+async function saveCurrentCardEdits(){
+  const c = currentCard;
+  if(!c){ alert('No card selected.'); return; }
+
+  // Read modal fields
+  const front = (document.getElementById('edFront')?.value || '').trim();
+  const back  = (document.getElementById('edBack')?.value  || '').trim();
+  const notes = (document.getElementById('edNotes')?.value || '').trim();
+
+  const edChapter = document.getElementById('edChapter');
+  const chapter_id = edChapter && edChapter.value ? edChapter.value : null;
+
+  const edTopics = document.getElementById('edTopics');
+  const topicIds = edTopics ? Array.from(edTopics.selectedOptions).map(o => o.value) : [];
+
+  const edTags = document.getElementById('edTags');
+  const tagNames = edTags ? edTags.value.split(',').map(s => s.trim()).filter(Boolean) : [];
+
+  // Meta: merge notes
+  const meta = Object.assign({}, c.meta || {});
+  if(notes) meta.notes = notes; else delete meta.notes;
+
+  // 1) Update core card fields
+  const { error: uErr } = await repo.updateCard(c.id, { front, back, chapter_id, meta });
+  if(uErr){ alert('Update failed: ' + uErr.message); return; }
+
+  // 2) Replace topics
+  const { error: tErr } = await repo.replaceCardTopics(c.id, topicIds);
+  if(tErr){ alert('Topic update failed: ' + tErr.message); return; }
+
+  // 3) Replace tags (create if missing)
+  const { error: gErr } = await repo.replaceCardTags(c.id, tagNames);
+  if(gErr){ alert('Tag update failed: ' + gErr.message); return; }
+
+  // Close modal + refresh UI
+  const modal = document.getElementById('editModal');
+  if(modal) modal.style.display = 'none';
+
+  await loadCards();
+  rebuildOrder();
+  renderCounts();
+  renderCard();
+  buildEditorTables();
+
+  alert('Saved.');
+}
+
+
 // ------- render -------
 function renderCard(){
   setText('metaIndex', `${order.length?(idx+1):0}/${order.length}`);
