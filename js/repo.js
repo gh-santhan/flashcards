@@ -150,3 +150,42 @@ export async function listCardsByTopic(topicId){
   if (error) { console.error('[listCardsByTopic]', error); return []; }
   return (data||[]).map(r=>r.card_id);
 }
+
+/* ---------------- Edit: update core card fields ---------------- */
+export async function updateCard(cardId, payload){
+  const { data, error } = await supabase.from('cards').update(payload).eq('id', cardId);
+  if (error) console.error('[updateCard]', error);
+  return { data, error };
+}
+
+/* ---------------- Edit: replace topics (by topic IDs) ---------------- */
+export async function replaceCardTopics(cardId, topicIds){
+  // wipe existing joins
+  let { error: delErr } = await supabase.from('card_topics').delete().eq('card_id', cardId);
+  if (delErr) { console.error('[replaceCardTopics/delete]', delErr); return { error: delErr }; }
+
+  // insert new
+  if (Array.isArray(topicIds) && topicIds.length){
+    const rows = topicIds.map(id => ({ card_id: cardId, topic_id: id }));
+    const { error: insErr } = await supabase.from('card_topics').insert(rows);
+    if (insErr) { console.error('[replaceCardTopics/insert]', insErr); return { error: insErr }; }
+  }
+  return { data: true, error: null };
+}
+
+/* ---------------- Edit: replace tags (by tag names) ---------------- */
+export async function replaceCardTags(cardId, tagNames){
+  // ensure tag IDs for each name
+  const tagIds = await ensureTagsByNames(tagNames);
+  // wipe existing joins
+  let { error: delErr } = await supabase.from('card_tags').delete().eq('card_id', cardId);
+  if (delErr) { console.error('[replaceCardTags/delete]', delErr); return { error: delErr }; }
+
+  // insert new
+  if (Array.isArray(tagIds) && tagIds.length){
+    const rows = tagIds.map(id => ({ card_id: cardId, tag_id: id }));
+    const { error: insErr } = await supabase.from('card_tags').insert(rows);
+    if (insErr) { console.error('[replaceCardTags/insert]', insErr); return { error: insErr }; }
+  }
+  return { data: true, error: null };
+}
