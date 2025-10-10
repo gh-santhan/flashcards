@@ -1,4 +1,4 @@
-// repo.js — Supabase data access layer
+// repo.js — Supabase data access layer (deduplicated + aligned with main.js)
 import { supabase } from './supabaseClient.js';
 
 /* ---------------- Taxonomy ---------------- */
@@ -12,7 +12,7 @@ export async function fetchTaxonomy(){
   return { chapters: ch || [], topics: tp || [], tags: tg || [] };
 }
 
-/* ---------------- Cards ---------------- */
+/* ---------------- Cards (read) ---------------- */
 
 export async function fetchCards(){
   const { data, error } = await supabase
@@ -21,7 +21,6 @@ export async function fetchCards(){
     .order('created_at', { ascending: true });
   if (error) { console.error('[fetchCards]', error); return []; }
 
-  // normalize nested joins and meta
   return (data || []).map(c => {
     c.card_topics = (c.card_topics || []).map(ct => ({
       topic_id: ct.topic_id,
@@ -71,7 +70,7 @@ export async function saveCardMeta(cardId, meta){
 }
 
 export async function unlinkResourcesForCard(cardId){
-  // convenience: wipe resources array in meta (keeps other meta fields)
+  // wipe resources array in meta (keep other meta fields)
   const { data, error: e1 } = await supabase.from('cards').select('meta').eq('id', cardId).maybeSingle();
   if (e1) { console.error('[unlinkResourcesForCard/select]', e1); return { error: e1 }; }
   const meta = Object.assign({}, data?.meta || {});
@@ -124,7 +123,7 @@ export async function ensureTagsByNames(names){
   return out;
 }
 
-/* ---------------- Editor helpers (optional) ---------------- */
+/* ---------------- Editor helpers ---------------- */
 
 export async function deleteCardRecord(cardId){
   // remove joins first, then card
@@ -150,61 +149,6 @@ export async function listCardsByTopic(topicId){
   if (error) { console.error('[listCardsByTopic]', error); return []; }
   return (data||[]).map(r=>r.card_id);
 }
-
-// --- Editor update helpers ---
-
-// 1) Update core card fields
-export async function updateCard(cardId, fields){
-  // fields may include: { front, back, chapter_id, meta, status, visibility, author_suspended }
-  const { error } = await supabase
-    .from('cards')
-    .update(fields)
-    .eq('id', cardId);
-  if (error) console.error('[updateCard]', error);
-  return { error };
-}
-
-// 2) Replace topics (wipe old joins, then insert)
-export async function replaceCardTopics(cardId, topicIds){
-  const del = await supabase.from('card_topics').delete().eq('card_id', cardId);
-  if (del.error) { console.error('[replaceCardTopics/delete]', del.error); return { error: del.error }; }
-
-  if (!Array.isArray(topicIds) || !topicIds.length) return { error: null };
-  const rows = topicIds.map(id => ({ card_id: cardId, topic_id: id }));
-  const ins = await supabase.from('card_topics').insert(rows);
-  if (ins.error) console.error('[replaceCardTopics/insert]', ins.error);
-  return { error: ins.error || null };
-}
-
-// 3) Replace tags by names (ensure existence, wipe, insert)
-export async function replaceCardTags(cardId, tagNames){
-  const del = await supabase.from('card_tags').delete().eq('card_id', cardId);
-  if (del.error) { console.error('[replaceCardTags/delete]', del.error); return { error: del.error }; }
-
-  if (!Array.isArray(tagNames) || !tagNames.length) return { error: null };
-
-  // ensure tags exist, collect ids
-  const ids = [];
-  for (const name of tagNames){
-    let { data: ex, error: selErr } = await supabase.from('tags').select('id').eq('name', name).maybeSingle();
-    if (selErr) { console.error('[replaceCardTags/select]', selErr); continue; }
-    if (!ex){
-      const ins = await supabase.from('tags').insert({ name }).select('id').maybeSingle();
-      if (ins.error) { console.error('[replaceCardTags/ensure/insert]', ins.error); continue; }
-      ex = ins.data;
-    }
-    ids.push(ex.id);
-  }
-
-  if (!ids.length) return { error: null };
-  const rows = ids.map(id => ({ card_id: cardId, tag_id: id }));
-  const insJoin = await supabase.from('card_tags').insert(rows);
-  if (insJoin.error) console.error('[replaceCardTags/insertJoin]', insJoin.error);
-  return { error: insJoin.error || null };
-}
-
-
-// --- add below existing exports in repo.js ---
 
 /* ---------------- Card updates (used by Edit modal) ---------------- */
 
