@@ -434,6 +434,36 @@ function bindStudyButtons(){
 }
 async function grade(level){ if(!currentCard||!user){ renderCounts(); return; } currentCard.user_grade=level; grades.set(currentCard.id, level); await upsertGrade(user.id, currentCard.id, level); renderCounts(); $('btnNext')?.click(); }
 
+function bindShortcuts(){
+  document.addEventListener('keydown', (e)=>{
+    // don’t trigger if a modal is open or user is typing
+    if (isModalOpen() || isTypingInForm()) return;
+
+    // Space = Reveal (if hidden) else Next
+    if (e.key === ' ') {
+      e.preventDefault();
+      const ans = document.getElementById('ans');
+      if (ans && ans.style.display !== 'block') {
+        document.getElementById('btnReveal')?.click();
+      } else {
+        document.getElementById('btnNext')?.click();
+      }
+      return;
+    }
+
+    // 1/2/3/4 = Again/Hard/Good/Easy
+    if (e.key === '1' || e.key === '2' || e.key === '3' || e.key === '4') {
+      e.preventDefault();
+      const map = { '1':'gAgain', '2':'gHard', '3':'gGood', '4':'gEasy' };
+      const ans = document.getElementById('ans');
+      if (ans && ans.style.display !== 'block') {
+        document.getElementById('btnReveal')?.click();
+      }
+      document.getElementById(map[e.key])?.click();
+    }
+  });
+}
+
 // ------- search -------
 function bindSearch(){
   const modal=$('searchModal'); if(!modal){ console.warn('[search] modal not found'); return; }
@@ -657,6 +687,7 @@ async function boot(){
     bindAuthButtons();
     bindTabs();
     bindStudyButtons();
+    bindShortcuts();
     bindSearch();
     await initAuth();
     await initializeData();
