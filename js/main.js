@@ -206,13 +206,28 @@ function handleEditClick(){
 }
 
 
-function handleDeleteClick(){
+async function handleDeleteClick(){
   const c = currentCard;
   if(!c){ alert('No card selected.'); return; }
-  const ok = confirm('Delete this card permanently?');
-  if(ok){
-    alert('Confirmed delete');
-  }
+
+  const preview = (c.front || '').replace(/<[^>]*>/g,'').slice(0,120);
+  const ok = confirm(`Delete this card permanently?\n\n“${preview}”`);
+  if(!ok) return;
+
+  // remove from DB (joins + card)
+  const { error } = await repo.deleteCardRecord(c.id);
+  if(error){ alert('Delete failed: ' + (error.message || error)); return; }
+
+  // refresh everything and keep UX coherent
+  await initializeData();
+
+  // if there are still cards visible, make sure index is in range
+  if(idx >= order.length) idx = Math.max(0, order.length - 1);
+
+  renderCounts();
+  renderCard();
+  alert('Card deleted.');
+}
 }
 
 async function saveCurrentCardEdits(){
