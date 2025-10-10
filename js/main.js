@@ -151,6 +151,8 @@ function buildScopePickers(){
     chapters.map(ch=>`<option value="${ch.id}">${escapeHtml(ch.title)} (${byChap.get(ch.id)||0})</option>`).join('') +
     `<option value="__null__">(Uncategorised) (${uncat})</option>`;
 
+  selC.value = scope.chapter ?? '';
+
   const chapVal=selC.value || scope.chapter;
   let topicOpts=topics;
   if(chapVal && chapVal!=='__null__'){
@@ -163,6 +165,8 @@ function buildScopePickers(){
   selT.innerHTML = `<option value="">All Topics</option>` +
     topicOpts.map(tp=>`<option value="${tp.id}">${escapeHtml(tp.title)} (${byTopic.get(tp.id)||0})</option>`).join('') +
     `<option value="__none__">(No Topics) (${noTopic})</option>`;
+
+  selT.value = scope.topic ?? '';
 
   // reflect current scope in the pickers
   if(scope.chapter !== undefined && scope.chapter !== null) selC.value = scope.chapter;
