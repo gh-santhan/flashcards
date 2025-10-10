@@ -189,3 +189,53 @@ export async function replaceCardTags(cardId, tagNames){
   }
   return { data: true, error: null };
 }
+
+// --- add below existing exports in repo.js ---
+
+/* ---------------- Card updates (used by Edit modal) ---------------- */
+
+export async function updateCard(cardId, fields){
+  // Allowed fields: front, back, chapter_id, meta, status, visibility, author_suspended
+  const payload = {};
+  for (const k of ['front','back','chapter_id','meta','status','visibility','author_suspended']){
+    if (k in fields) payload[k] = fields[k];
+  }
+  const { error } = await supabase.from('cards').update(payload).eq('id', cardId);
+  if (error) console.error('[updateCard]', error);
+  return { error };
+}
+
+export async function replaceCardTopics(cardId, topicIds){
+  // wipe and re-add joins
+  const del = await supabase.from('card_topics').delete().eq('card_id', cardId);
+  if (del.error){ console.error('[replaceCardTopics/delete]', del.error); return { error: del.error }; }
+  if (Array.isArray(topicIds) && topicIds.length){
+    const rows = topicIds.map(id => ({ card_id: cardId, topic_id: id }));
+    const ins = await supabase.from('card_topics').insert(rows);
+    if (ins.error){ console.error('[replaceCardTopics/insert]', ins.error); return { error: ins.error }; }
+  }
+  return { error: null };
+}
+
+export async function replaceCardTags(cardId, tagNames){
+  // ensure tags exist, then replace joins
+  const names = (Array.isArray(tagNames) ? tagNames : []).filter(Boolean);
+  const ids = [];
+  for (const name of names){
+    let { data: ex } = await supabase.from('tags').select('id').eq('name', name).maybeSingle();
+    if(!ex){
+      const ins = await supabase.from('tags').insert({ name }).select('id').maybeSingle();
+      if (ins.error){ console.error('[replaceCardTags/ensure]', ins.error); continue; }
+      ex = ins.data;
+    }
+    ids.push(ex.id);
+  }
+  const del = await supabase.from('card_tags').delete().eq('card_id', cardId);
+  if (del.error){ console.error('[replaceCardTags/delete]', del.error); return { error: del.error }; }
+  if (ids.length){
+    const rows = ids.map(id => ({ card_id: cardId, tag_id: id }));
+    const ins = await supabase.from('card_tags').insert(rows);
+    if (ins.error){ console.error('[replaceCardTags/insert]', ins.error); return { error: ins.error }; }
+  }
+  return { error: null };
+}
