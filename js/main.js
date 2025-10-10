@@ -147,7 +147,14 @@ function rebuildOrder(){ pool=cards.filter(c=>inScope(c)); order=pool.map((_,i)=
 
 function handleEditClick(){
   const c = currentCard;
-  if(!c){ alert('No card selected.'); return; }
+  if(!c){ alert('No card selected.'); return; 
+    // Save button (bind once)
+  const saveBtn = document.getElementById('btnSaveCard');
+  if(saveBtn && !saveBtn._bound){
+    saveBtn.addEventListener('click', saveCurrentCardEdits);
+    saveBtn._bound = true;
+  }      
+        }
 
   const modal = document.getElementById('editModal');
   if(!modal){ alert('Edit modal not found.'); return; }
@@ -199,7 +206,51 @@ function handleDeleteClick(){
     alert('Confirmed delete');
   }
 }
+async function saveCurrentCardEdits(){
+  const c = currentCard;
+  if(!c){ alert('No card selected.'); return; }
 
+  // read fields
+  const front = (document.getElementById('edFront')?.value || '').trim();
+  const back  = (document.getElementById('edBack')?.value  || '').trim();
+  const notes = (document.getElementById('edNotes')?.value || '').trim();
+
+  const edChapter = document.getElementById('edChapter');
+  const chapter_id = edChapter && edChapter.value ? edChapter.value : null;
+
+  const edTopics = document.getElementById('edTopics');
+  const topicIds = edTopics ? Array.from(edTopics.selectedOptions).map(o => o.value) : [];
+
+  const edTags = document.getElementById('edTags');
+  const tagNames = edTags ? edTags.value.split(',').map(s => s.trim()).filter(Boolean) : [];
+
+  // build meta
+  const meta = Object.assign({}, c.meta || {});
+  if(notes) meta.notes = notes; else delete meta.notes;
+
+  // 1) update card
+  const { error: uErr } = await repo.updateCard(c.id, { front, back, chapter_id, meta });
+  if(uErr){ alert('Update failed: ' + uErr.message); return; }
+
+  // 2) replace topics
+  const { error: rtErr } = await repo.replaceCardTopics(c.id, topicIds);
+  if(rtErr){ alert('Topic update failed: ' + rtErr.message); return; }
+
+  // 3) replace tags (create if missing)
+  const { error: rgErr } = await repo.replaceCardTags(c.id, tagNames);
+  if(rgErr){ alert('Tag update failed: ' + rgErr.message); return; }
+
+  // close modal and refresh UI
+  const modal = document.getElementById('editModal');
+  if(modal) modal.style.display = 'none';
+
+  await loadCards();
+  rebuildOrder();
+  renderCounts();
+  renderCard();
+  buildEditorTables();
+  alert('Saved.');
+}
 // ------- render -------
 function renderCard(){
   setText('metaIndex', `${order.length?(idx+1):0}/${order.length}`);
