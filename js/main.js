@@ -145,6 +145,61 @@ function renderCounts(){
 }
 function rebuildOrder(){ pool=cards.filter(c=>inScope(c)); order=pool.map((_,i)=>i); idx=0; setText('metaIndex', `${order.length?1:0}/${order.length}`); }
 
+function handleEditClick(){
+  const c = window.currentCard;
+  if(!c){ alert('No card selected.'); return; }
+
+  const modal = document.getElementById('editModal');
+  if(!modal){ alert('Edit modal not found.'); return; }
+  modal.style.display = 'flex';
+
+  // Fill fields (read-only for now; DB wiring next step)
+  const edFront = document.getElementById('edFront');
+  const edBack  = document.getElementById('edBack');
+  const edTags  = document.getElementById('edTags');
+  const edNotes = document.getElementById('edNotes');
+
+  if(edFront) edFront.value = (c.front || '').replace(/<[^>]*>/g,'');
+  if(edBack)  edBack.value  = (c.back  || '').replace(/<[^>]*>/g,'');
+  if(edTags)  edTags.value  = (c.card_tags || []).map(t => t.name).join(', ');
+  if(edNotes) edNotes.value = c.meta?.notes ? String(c.meta.notes) : '';
+
+  // Chapter dropdown
+  const edChapter = document.getElementById('edChapter');
+  if(edChapter){
+    const chs = window.chapters || [];
+    edChapter.innerHTML = chs.map(ch => 
+      `<option value="${ch.id}" ${c.chapter_id===ch.id?'selected':''}>${(ch.title||'').replace(/</g,'&lt;')}</option>`
+    ).join('') + `<option value="" ${!c.chapter_id?'selected':''}>(Uncategorised)</option>`;
+  }
+
+  // Topics multi-select
+  const edTopics = document.getElementById('edTopics');
+  if(edTopics){
+    const tps = window.topics || [];
+    const on = new Set((c.card_topics||[]).map(x=>x.topic_id));
+    edTopics.innerHTML = tps.map(tp => 
+      `<option value="${tp.id}" ${on.has(tp.id)?'selected':''}>${(tp.title||'').replace(/</g,'&lt;')}</option>`
+    ).join('');
+  }
+
+  // Close button (bind once)
+  const closeBtn = document.getElementById('editClose');
+  if(closeBtn && !closeBtn._bound){
+    closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
+    closeBtn._bound = true;
+  }
+}
+
+function handleDeleteClick(){
+  const c = window.currentCard;
+  if(!c){ alert('No card selected.'); return; }
+  const ok = confirm('Delete this card permanently?');
+  if(ok){
+    alert('Confirmed. We will wire the actual delete next.');
+  }
+}
+
 // ------- render -------
 function renderCard(){
   setText('metaIndex', `${order.length?(idx+1):0}/${order.length}`);
@@ -169,19 +224,14 @@ function renderCard(){
   if(starBtn) starBtn.textContent = c.user_starred?'★ Unstar':'☆ Star';
   if(suspBtn) suspBtn.textContent = c.author_suspended?'▶ Unsuspend':'⏸ Suspend';
 
-  // --- probe: ensure buttons are wired each render (temporary) ---
-(function bindProbes(){
+// --- bind: card action buttons (UI-only handlers) ---
+(function bindCardActions(){
   const e = document.getElementById('btnEditCard');
   const d = document.getElementById('btnDeleteCard');
-  if(e && !e._probe){
-    e._probe = true;
-    e.addEventListener('click', () => alert('Edit clicked (probe)'));
-  }
-  if(d && !d._probe){
-    d._probe = true;
-    d.addEventListener('click', () => alert('Delete clicked (probe)'));
-  }
+  if(e && !e._bound){ e._bound = true; e.addEventListener('click', handleEditClick); }
+  if(d && !d._bound){ d._bound = true; d.addEventListener('click', handleDeleteClick); }
 })();
+  
 }
 function renderResources(c){
   const list=$('resList'); if(!list) return;
