@@ -214,11 +214,28 @@ function bindDiffChips(){
   });
 }
 function renderCounts(){
-  const poolX=cards.filter(c=>inScope(c));
-  const counts={again:0,hard:0,good:0,easy:0,ungraded:0,star:0};
-  poolX.forEach(c=>{ const g=c.user_grade||'ungraded'; if(counts[g]!==undefined) counts[g]++; if(c.user_starred) counts.star++; });
-  setText('cnt-again', counts.again); setText('cnt-hard', counts.hard); setText('cnt-good', counts.good);
-  setText('cnt-easy', counts.easy); setText('cnt-ungraded', counts.ungraded); setText('cnt-star', counts.star);
+  // build a pool for counts that ignores the difficulty filter
+  const poolForCounts = cards.filter(c=>{
+    if(!visibleToLearner(c)) return false;
+    if(!chapMatch(c)) return false;
+    if(!topicMatch(c)) return false;
+    if(scope.starred && !c.user_starred) return false;
+    return true;
+  });
+
+  const counts={ again:0, hard:0, good:0, easy:0, ungraded:0, star:0 };
+  poolForCounts.forEach(c=>{
+    const g = c.user_grade || 'ungraded';
+    if(counts[g] !== undefined) counts[g]++;
+    if(c.user_starred) counts.star++;
+  });
+
+  setText('cnt-again', counts.again);
+  setText('cnt-hard', counts.hard);
+  setText('cnt-good', counts.good);
+  setText('cnt-easy', counts.easy);
+  setText('cnt-ungraded', counts.ungraded);
+  setText('cnt-star', counts.star);
 }
 function rebuildOrder(){ pool=cards.filter(c=>inScope(c)); order=pool.map((_,i)=>i); idx=0; setText('metaIndex', `${order.length?1:0}/${order.length}`); }
 
