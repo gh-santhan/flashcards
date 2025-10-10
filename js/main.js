@@ -147,58 +147,64 @@ function renderCounts(){
 }
 function rebuildOrder(){ pool=cards.filter(c=>inScope(c)); order=pool.map((_,i)=>i); idx=0; setText('metaIndex', `${order.length?1:0}/${order.length}`); }
 
+
 function handleEditClick(){
   const c = currentCard;
-  if(!c){ alert('No card selected.'); return; 
-    // Save button (bind once)
-  const saveBtn = document.getElementById('btnSaveCard');
-  if(saveBtn && !saveBtn._bound){
-    saveBtn.addEventListener('click', saveCurrentCardEdits);
-    saveBtn._bound = true;
-  }      
-        }
+  if (!c) {
+    alert('No card selected.');
+    return; // early exit
+  }
 
   const modal = document.getElementById('editModal');
-  if(!modal){ alert('Edit modal not found.'); return; }
+  if (!modal) { alert('Edit modal not found.'); return; }
   modal.style.display = 'flex';
 
-  // Fill fields (read-only for now; DB wiring next step)
+  // fill fields
   const edFront = document.getElementById('edFront');
   const edBack  = document.getElementById('edBack');
   const edTags  = document.getElementById('edTags');
   const edNotes = document.getElementById('edNotes');
 
-  if(edFront) edFront.value = (c.front || '').replace(/<[^>]*>/g,'');
-  if(edBack)  edBack.value  = (c.back  || '').replace(/<[^>]*>/g,'');
-  if(edTags)  edTags.value  = (c.card_tags || []).map(t => t.name).join(', ');
-  if(edNotes) edNotes.value = c.meta?.notes ? String(c.meta.notes) : '';
+  if (edFront) edFront.value = (c.front || '').replace(/<[^>]*>/g,'');
+  if (edBack)  edBack.value  = (c.back  || '').replace(/<[^>]*>/g,'');
+  if (edTags)  edTags.value  = (c.card_tags || []).map(t => t.name).join(', ');
+  if (edNotes) edNotes.value = c.meta?.notes ? String(c.meta.notes) : '';
 
-  // Chapter dropdown
+  // chapter dropdown
   const edChapter = document.getElementById('edChapter');
-  if(edChapter){
-    const chs = window.chapters || [];
-    edChapter.innerHTML = chs.map(ch => 
-      `<option value="${ch.id}" ${c.chapter_id===ch.id?'selected':''}>${(ch.title||'').replace(/</g,'&lt;')}</option>`
-    ).join('') + `<option value="" ${!c.chapter_id?'selected':''}>(Uncategorised)</option>`;
+  if (edChapter) {
+    edChapter.innerHTML =
+      (window.chapters || []).map(ch =>
+        `<option value="${ch.id}" ${c.chapter_id===ch.id?'selected':''}>${(ch.title||'').replace(/</g,'&lt;')}</option>`
+      ).join('')
+      + `<option value="" ${!c.chapter_id?'selected':''}>(Uncategorised)</option>`;
   }
 
-  // Topics multi-select
+  // topics multi-select
   const edTopics = document.getElementById('edTopics');
-  if(edTopics){
-    const tps = window.topics || [];
-    const on = new Set((c.card_topics||[]).map(x=>x.topic_id));
-    edTopics.innerHTML = tps.map(tp => 
-      `<option value="${tp.id}" ${on.has(tp.id)?'selected':''}>${(tp.title||'').replace(/</g,'&lt;')}</option>`
-    ).join('');
+  if (edTopics) {
+    const on = new Set((c.card_topics||[]).map(x => x.topic_id));
+    edTopics.innerHTML =
+      (window.topics || []).map(tp =>
+        `<option value="${tp.id}" ${on.has(tp.id)?'selected':''}>${(tp.title||'').replace(/</g,'&lt;')}</option>`
+      ).join('');
   }
 
-  // Close button (bind once)
+  // close button (bind once)
   const closeBtn = document.getElementById('editClose');
-  if(closeBtn && !closeBtn._bound){
+  if (closeBtn && !closeBtn._bound) {
     closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
     closeBtn._bound = true;
   }
+
+  // SAVE button (bind once) — **outside** the no-card guard
+  const saveBtn = document.getElementById('btnSaveCard');
+  if (saveBtn && !saveBtn._bound) {
+    saveBtn.addEventListener('click', saveCurrentCardEdits);
+    saveBtn._bound = true;
+  }
 }
+
 
 function handleDeleteClick(){
   const c = currentCard;
