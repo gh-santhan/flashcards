@@ -22,6 +22,13 @@ const setText = (id, s='') => { const el = $(id); if (el) el.textContent = s; };
 const show = (id, yes) => { const el = $(id); if (el) el.style.display = yes ? '' : 'none'; };
 const escapeHtml = (s='') => s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 
+function saveStudyState(){
+  try{
+    localStorage.setItem('study.scope', JSON.stringify(scope));
+    localStorage.setItem('study.idx', String(idx));
+  }catch(e){}
+}
+
 // --- study state persistence ---
 const STATE_KEY = 'study.state.v1';
 function saveStudyState() {
@@ -163,13 +170,36 @@ function buildScopePickers(){
     topicOpts.map(tp=>`<option value="${tp.id}">${escapeHtml(tp.title)} (${byTopic.get(tp.id)||0})</option>`).join('') +
     `<option value="__none__">(No Topics) (${noTopic})</option>`;
 
-  selC.onchange=()=>{ scope.chapter=selC.value||null; scope.mix=false; rebuildOrder(); renderCounts(); renderCard(); buildScopePickers(); };
-  selT.onchange=()=>{ scope.topic=selT.value||null; scope.mix=false; rebuildOrder(); renderCounts(); renderCard(); };
+  // reflect current scope in the pickers
+  if(scope.chapter !== undefined && scope.chapter !== null) selC.value = scope.chapter;
+  if(scope.topic   !== undefined && scope.topic   !== null) selT.value = scope.topic;
 
-  const btnMix=$('btnMix'); if(btnMix) btnMix.onclick=()=>{ scope={chapter:null,topic:null,mix:true,diff:null,starred:false}; rebuildOrder(); renderCounts(); renderCard(); };
+  // handlers
+  selC.onchange=()=>{
+    scope.chapter=selC.value||null;
+    scope.mix=false;
+    rebuildOrder(); renderCounts(); renderCard(); buildScopePickers();
+    saveStudyState();
+  };
+
+  selT.onchange=()=>{
+    scope.topic=selT.value||null;
+    scope.mix=false;
+    rebuildOrder(); renderCounts(); renderCard();
+    saveStudyState();
+  };
+
+  const btnMix=$('btnMix');
+  if(btnMix) btnMix.onclick=()=>{
+    scope={chapter:null,topic:null,mix:true,diff:null,starred:false};
+    rebuildOrder(); renderCounts(); renderCard();
+    saveStudyState();
+  };
 
   bindDiffChips();
 }
+
+
 function bindDiffChips(){
   const wrap=$('diffChips'); if(!wrap) return;
   [...wrap.children].forEach(ch=>{
@@ -351,7 +381,7 @@ function renderCard(){
   if(e && !e._bound){ e._bound = true; e.addEventListener('click', handleEditClick); }
   if(d && !d._bound){ d._bound = true; d.addEventListener('click', handleDeleteClick); }
 })();
-  
+  saveStudyState();
 }
 function renderResources(c){
   const list=$('resList'); if(!list) return;
