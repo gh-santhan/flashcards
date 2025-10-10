@@ -1,4 +1,6 @@
 // main.js — hardened boot + tabs + editor actions
+import * as repo from './repo.js';
+
 import { supabase } from './supabaseClient.js';
 import {
   fetchTaxonomy, fetchCards,
