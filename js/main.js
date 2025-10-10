@@ -432,6 +432,15 @@ function buildEditorTablesSafe(){
     }).join('') || '<tr><td colspan="3" class="small">No tags.</td></tr>';
   }
 }
+
+function openEdit(id){
+  const c = cards.find(x => x.id === id);
+  if(!c){ alert('Card not found.'); return; }
+  // set as current & reuse the same modal logic
+  currentCard = c;
+  handleEditClick();
+}
+
 function bindEditorActions(){
   // Cards table actions (delegate)
   const tbl=$('tblCards'); if(tbl){
