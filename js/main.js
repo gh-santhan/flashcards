@@ -228,7 +228,6 @@ async function handleDeleteClick(){
   renderCard();
   alert('Card deleted.');
 }
-}
 
 async function saveCurrentCardEdits(){
   const c = currentCard;
