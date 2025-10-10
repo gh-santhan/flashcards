@@ -170,25 +170,25 @@ function handleEditClick(){
   if (edTags)  edTags.value  = (c.card_tags || []).map(t => t.name).join(', ');
   if (edNotes) edNotes.value = c.meta?.notes ? String(c.meta.notes) : '';
 
-  // chapter dropdown
-  const edChapter = document.getElementById('edChapter');
-  if (edChapter) {
-    edChapter.innerHTML =
-      (window.chapters || []).map(ch =>
-        `<option value="${ch.id}" ${c.chapter_id===ch.id?'selected':''}>${(ch.title||'').replace(/</g,'&lt;')}</option>`
-      ).join('')
-      + `<option value="" ${!c.chapter_id?'selected':''}>(Uncategorised)</option>`;
-  }
+  // chapter dropdown 
+const edChapter = document.getElementById('edChapter');
+if (edChapter) {
+  edChapter.innerHTML =
+    (chapters || []).map(ch =>
+      `<option value="${ch.id}" ${c.chapter_id===ch.id ? 'selected' : ''}>${(ch.title||'').replace(/</g,'&lt;')}</option>`
+    ).join('') +
+    `<option value="" ${!c.chapter_id ? 'selected' : ''}>(Uncategorised)</option>`;
+}
 
-  // topics multi-select
-  const edTopics = document.getElementById('edTopics');
-  if (edTopics) {
-    const on = new Set((c.card_topics||[]).map(x => x.topic_id));
-    edTopics.innerHTML =
-      (window.topics || []).map(tp =>
-        `<option value="${tp.id}" ${on.has(tp.id)?'selected':''}>${(tp.title||'').replace(/</g,'&lt;')}</option>`
-      ).join('');
-  }
+// topics multi-select 
+const edTopics = document.getElementById('edTopics');
+if (edTopics) {
+  const on = new Set((c.card_topics || []).map(x => x.topic_id));
+  edTopics.innerHTML =
+    (topics || []).map(tp =>
+      `<option value="${tp.id}" ${on.has(tp.id) ? 'selected' : ''}>${(tp.title||'').replace(/</g,'&lt;')}</option>`
+    ).join('');
+}
 
   // close button (bind once)
   const closeBtn = document.getElementById('editClose');
