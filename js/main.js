@@ -22,12 +22,6 @@ const setText = (id, s='') => { const el = $(id); if (el) el.textContent = s; };
 const show = (id, yes) => { const el = $(id); if (el) el.style.display = yes ? '' : 'none'; };
 const escapeHtml = (s='') => s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 
-function saveStudyState(){
-  try{
-    localStorage.setItem('study.scope', JSON.stringify(scope));
-    localStorage.setItem('study.idx', String(idx));
-  }catch(e){}
-}
 
 // --- study state persistence ---
 const STATE_KEY = 'study.state.v1';
