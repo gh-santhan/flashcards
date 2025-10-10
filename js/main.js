@@ -249,17 +249,13 @@ async function saveCurrentCardEdits(){
   const { error: gErr } = await repo.replaceCardTags(c.id, tagNames);
   if(gErr){ alert('Tag update failed: ' + gErr.message); return; }
 
-  // Close modal + refresh UI
-  const modal = document.getElementById('editModal');
-  if(modal) modal.style.display = 'none';
+ // close modal and refresh UI
+const modal = document.getElementById('editModal');
+if (modal) modal.style.display = 'none';
 
-  await loadCards();
-  rebuildOrder();
-  renderCounts();
-  renderCard();
-  buildEditorTables();
-
-  alert('Saved.');
+// re-fetch everything and rebuild tables/UI in one place
+await initializeData();
+alert('Saved.');
 }
 
 
