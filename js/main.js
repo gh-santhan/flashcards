@@ -146,7 +146,7 @@ function renderCounts(){
 function rebuildOrder(){ pool=cards.filter(c=>inScope(c)); order=pool.map((_,i)=>i); idx=0; setText('metaIndex', `${order.length?1:0}/${order.length}`); }
 
 function handleEditClick(){
-  const c = window.currentCard;
+  const c = currentCard;
   if(!c){ alert('No card selected.'); return; }
 
   const modal = document.getElementById('editModal');
@@ -192,11 +192,11 @@ function handleEditClick(){
 }
 
 function handleDeleteClick(){
-  const c = window.currentCard;
+  const c = currentCard;
   if(!c){ alert('No card selected.'); return; }
   const ok = confirm('Delete this card permanently?');
   if(ok){
-    alert('Confirmed. We will wire the actual delete next.');
+    alert('Confirmed delete');
   }
 }
 
@@ -205,7 +205,9 @@ function renderCard(){
   setText('metaIndex', `${order.length?(idx+1):0}/${order.length}`);
   const qEl=$('q'), ansEl=$('ans'), gradeRow=$('gradeRow');
   if(!order.length){ if(qEl) qEl.innerHTML='No cards match.'; if(ansEl) ansEl.style.display='none'; if(gradeRow) gradeRow.style.display='none'; show('metaResources', false); return; }
-  const c=pool[order[idx]]; currentCard=c;
+  const c=pool[order[idx]]; 
+  currentCard=c;
+  window.currentCard = c; // debug-friendly
   const chapTitle=chapters.find(x=>x.id===c.chapter_id)?.title||'(Uncategorised)';
   setText('metaChap', chapTitle);
   const tps=(c.card_topics||[]).map(x=>x.title).filter(Boolean);
