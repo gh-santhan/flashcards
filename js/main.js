@@ -22,6 +22,18 @@ const setText = (id, s='') => { const el = $(id); if (el) el.textContent = s; };
 const show = (id, yes) => { const el = $(id); if (el) el.style.display = yes ? '' : 'none'; };
 const escapeHtml = (s='') => s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 
+function isModalOpen(){
+  return ['searchModal','editModal','bulkDeleteModal','llmModal'].some(id=>{
+    const m = document.getElementById(id);
+    return m && m.style.display === 'flex';
+  });
+}
+function isTypingInForm(){
+  const ae = document.activeElement;
+  if(!ae) return false;
+  const tag = (ae.tagName||'').toLowerCase();
+  return tag === 'input' || tag === 'textarea' || tag === 'select' || ae.isContentEditable;
+}
 
 // --- study state persistence ---
 const STATE_KEY = 'study.state.v1';
