@@ -168,6 +168,20 @@ function renderCard(){
   const starBtn=$('btnStar'), suspBtn=$('btnSuspend');
   if(starBtn) starBtn.textContent = c.user_starred?'★ Unstar':'☆ Star';
   if(suspBtn) suspBtn.textContent = c.author_suspended?'▶ Unsuspend':'⏸ Suspend';
+
+  // --- probe: ensure buttons are wired each render (temporary) ---
+(function bindProbes(){
+  const e = document.getElementById('btnEditCard');
+  const d = document.getElementById('btnDeleteCard');
+  if(e && !e._probe){
+    e._probe = true;
+    e.addEventListener('click', () => alert('Edit clicked (probe)'));
+  }
+  if(d && !d._probe){
+    d._probe = true;
+    d.addEventListener('click', () => alert('Delete clicked (probe)'));
+  }
+})();
 }
 function renderResources(c){
   const list=$('resList'); if(!list) return;
