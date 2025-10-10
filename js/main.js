@@ -99,11 +99,34 @@ async function initializeData(){
   cards = await fetchCards();
 
   grades = new Map();
-  if(user) grades = await fetchUserGrades(user.id);
-  cards.forEach(c=>{ c.user_grade = grades.get(c.id)||null; });
+if (user) grades = await fetchUserGrades(user.id);
+cards.forEach(c => { c.user_grade = grades.get(c.id) || null; });
 
-  buildScopePickers(); rebuildOrder(); renderCounts(); renderCard();
-  buildEditorTablesSafe(); bindEditorActions(); bindAdminActions(); bindEditorSubTabs();
+// Try to restore prior study state
+const saved = loadStudyState();
+if (saved) {
+  scope = {
+    chapter: saved.chapter ?? null,
+    topic: saved.topic ?? null,
+    mix: !!saved.mix,
+    diff: saved.diff ?? null,
+    starred: !!saved.starred
+  };
+}
+
+// build UI and order based on (possibly restored) scope
+buildScopePickers();
+rebuildOrder();
+
+// if we have a saved cardId, jump to it if present in current pool
+if (saved?.cardId) {
+  const pos = (pool||[]).findIndex(c => c.id === saved.cardId);
+  if (pos >= 0) idx = pos;
+}
+
+renderCounts();
+renderCard();
+buildEditorTablesSafe(); bindEditorActions(); bindAdminActions(); bindEditorSubTabs();
 }
 
 // ------- scope & counts -------
