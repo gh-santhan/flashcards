@@ -953,7 +953,6 @@ function setupBulkDeleteUI(){
   };
 }
 
-// Render the Admin → Feedback table using the current schema (card_feedback.comment/status)
 async function loadFeedbackAdmin(){
   // Only render if Admin UI exists, and only for admin
   const tbody = document.querySelector('#tblFeedback tbody');
@@ -964,7 +963,7 @@ async function loadFeedbackAdmin(){
     && (user.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase();
   if (!isAdminUser) return;
 
-  // Fetch list from repo (must return rows with: id, created_at, status, comment, card_front?, user_email?)
+  // Fetch list (id, created_at, status, comment, user_email, card_id)
   let items = [];
   try {
     items = await repo.listFeedback(); // admin-only via RLS; empty array if none/blocked
@@ -979,44 +978,46 @@ async function loadFeedbackAdmin(){
   summary.style.display = '';
   summary.textContent = items.length ? `${items.length} feedback item(s)` : 'No feedback yet.';
 
-  const fmtWhen = (iso) => {
-    try { return new Date(iso).toLocaleString(); } catch { return iso || '—'; }
-  };
+  const fmtWhen = (iso) => { try { return new Date(iso).toLocaleString(); } catch { return iso || '—'; } };
   const esc = (s='') => String(s).replace(/</g,'&lt;');
 
-  // Enrich rows with card front from in-memory cards[] and normalize fields
-const itemsEnriched = items.map(f => {
-  const card = (Array.isArray(cards) ? cards : []).find(c => c.id === f.card_id);
-  return {
-    ...f,
-    card_front: card?.front || '(No preview)',
-    user_email: f.user_email ?? '—',
-   message: f.comment || f.message || ''   // ensure message populates from comment
-  };
-});
+  // Enrich with card front from in-memory cards[] and normalize fields
+  const itemsEnriched = items.map(f => {
+    const card = (Array.isArray(cards) ? cards : []).find(c => c.id === f.card_id);
+    return {
+      ...f,
+      card_front: card?.front || '(No preview)',
+      user_email: f.user_email ?? '—',
+      message: f.comment || f.message || '' // prefer "comment", fallback "message"
+    };
+  });
 
-// Build rows (When | User | Card (front) | Message | Status | Actions)
-tbody.innerHTML = itemsEnriched.map(f => {
-  const when   = fmtWhen(f.created_at);
-  const who    = esc(f.user_email);
-  const front  = esc(f.card_front);
-  const msg    = esc(f.message);
-  const status = esc(f.status ?? 'open');
-  return `
-    <tr data-id="${f.id}" data-card="${f.card_id}">
-      <td class="small">${when}</td>
-      <td class="small">${who}</td>
-      <td class="small">${front}</td>
-      <td class="small" style="max-width:420px">${msg}</td>
-      <td class="small">${status}</td>
-      <td class="small">
-        <button class="ghost fb-toggle" data-id="${f.id}" data-status="${status}">
-          ${status === 'open' ? 'Mark Resolved' : 'Reopen'}
-        </button>
-      </td>
-    </tr>
-  `;
-}).join('');
+  // Build rows (When | User | Card (front) | Message | Status | Actions)
+  tbody.innerHTML = itemsEnriched.map(f => {
+    const when   = fmtWhen(f.created_at);
+    const who    = esc(f.user_email);
+    const front  = esc(f.card_front);
+    const msg    = esc(f.message);
+    const status = esc(f.status ?? 'open');
+    return `
+      <tr data-id="${f.id}" data-card="${f.card_id}">
+        <td class="small">${when}</td>
+        <td class="small">${who}</td>
+        <td class="small">${front}</td>
+        <td class="small" style="max-width:420px">${msg}</td>
+        <td class="small">${status}</td>
+        <td class="small">
+          <button class="ghost fb-open" data-card="${f.card_id}">Open Card</button>
+          <button class="ghost fb-toggle" data-id="${f.id}" data-status="${status}">
+            ${status === 'open' ? 'Mark Resolved' : 'Reopen'}
+          </button>
+        </td>
+      </tr>
+    `;
+  }).join('');
+
+  // (Keep any existing delegate binding for .fb-toggle elsewhere; we'll wire .fb-open next.)
+}
 
   // Delegate: toggle status (bind once)
   const table = document.getElementById('tblFeedback');
