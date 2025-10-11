@@ -38,26 +38,33 @@ function isTypingInForm(){
 }
 
 async function refreshFeedbackBadge(){
-  const el = document.getElementById('fbBadge');
+  const el = document.getElementById('adminFeedbackBadge');
   if(!el) return;
 
-  // Show count only for admin; others just see the label.
-  if(!(typeof isAdmin === 'function' && isAdmin())){
-    el.textContent = 'Feedback';
-    el.style.display = 'inline-block';
+  // show badge only for admin
+  const isAdmin = user && typeof ADMIN_EMAIL === 'string'
+    && (user.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase();
+  if(!isAdmin){
+    el.style.display = 'none';
     return;
   }
 
-  try{
-    const n = await repo.fetchFeedbackOpenCount(); // relies on repo.js
-    el.textContent = n > 0 ? `Feedback • ${n}` : 'Feedback';
-    el.style.display = 'inline-block';
-    el.title = `Open feedback items: ${n}`;
-  }catch(e){
-    console.error('[refreshFeedbackBadge]', e);
-    el.textContent = 'Feedback';
-    el.title = 'Feedback count unavailable (see console).';
+  // try exact count (head:true) — if RLS blocks count, fall back to sample rows
+  let { count, error } = await supabase
+    .from('card_feedback')
+    .select('id', { count: 'exact', head: true });
+
+  if (count == null) {
+    const { data: rows, error: rErr } = await supabase
+      .from('card_feedback')
+      .select('id')
+      .limit(5);
+    if (rErr) console.warn('[feedback] sample fetch error', rErr);
+    count = Array.isArray(rows) ? rows.length : 0;
   }
+
+  el.textContent = String(count ?? 0);
+  el.style.display = ''; // ensure visible
 }
 
 // --- study state persistence ---
