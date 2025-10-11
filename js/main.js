@@ -625,6 +625,74 @@ function runSearch(){
   const btn=$('searchReviewAll'); if(btn) btn.disabled=!res.length;
 }
 
+// --- Feedback: open/close + submit ---
+function bindFeedbackUI(){
+  const openBtn = document.getElementById('btnFeedback');
+  if(openBtn && !openBtn._bound){
+    openBtn._bound = true;
+    openBtn.addEventListener('click', ()=>{
+      const m = document.getElementById('feedbackModal');
+      const ta = document.getElementById('fbText');
+      const prev = document.getElementById('fbCardPreview');
+      if(!m) return;
+      if(ta) ta.value = '';
+      if(prev && window.currentCard){
+        const chap = (window.chapters || []).find(x=>x.id===window.currentCard.chapter_id)?.title || '(Uncategorised)';
+        prev.textContent = `About: ${chap} — ${(window.currentCard.front||'').replace(/<[^>]*>/g,'').slice(0,140)}${(window.currentCard.front||'').length>140?'…':''}`;
+      }
+      m.style.display = 'flex';
+    });
+  }
+
+  const close = ()=>{ const m=document.getElementById('feedbackModal'); if(m) m.style.display='none'; };
+  const x1 = document.getElementById('fbClose');   if(x1 && !x1._bound){ x1._bound=true; x1.addEventListener('click', close); }
+  const x2 = document.getElementById('fbCancel');  if(x2 && !x2._bound){ x2._bound=true; x2.addEventListener('click', close); }
+
+  const sub = document.getElementById('fbSubmit');
+  if(sub && !sub._bound){
+    sub._bound = true;
+    sub.addEventListener('click', submitFeedback);
+  }
+}
+
+async function submitFeedback(){
+  if(!window.user){ alert('Please log in to send feedback.'); return; }
+  if(!window.currentCard){ alert('No card selected.'); return; }
+
+  const ta = document.getElementById('fbText');
+  const txt = (ta?.value || '').trim();
+  if(!txt){ alert('Please enter a comment.'); return; }
+
+  const sub = document.getElementById('fbSubmit');
+  if(sub){ sub.disabled = true; sub.textContent = 'Submitting…'; }
+
+  // Must include user_id to satisfy RLS: with_check (user_id = auth.uid())
+  const payload = {
+    card_id: window.currentCard.id,
+    user_id: window.user.id,
+    comment: txt,
+    status: 'open'
+  };
+
+  const { error } = await supabase.from('card_feedback').insert(payload);
+
+  if(sub){ sub.disabled = false; sub.textContent = 'Submit'; }
+
+  if(error){
+    console.error('[feedback] insert error', error);
+    alert('Feedback not saved: ' + (error.message || 'unknown error'));
+    return;
+  }
+
+  // close modal, clear textarea, bump badge
+  const m = document.getElementById('feedbackModal');
+  if(m) m.style.display = 'none';
+  if(ta) ta.value = '';
+  if(typeof refreshFeedbackBadge === 'function') refreshFeedbackBadge();
+
+  alert('Thanks! Your feedback was submitted.');
+}
+
 // ------- editor sub-tabs + actions -------
 function bindEditorSubTabs(){
   const wrap = document.querySelector('.etabs'); if(!wrap) return;
