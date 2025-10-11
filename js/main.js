@@ -7,7 +7,8 @@ import {
   fetchUserGrades, upsertGrade,
   saveCardMeta, unlinkResourcesForCard,
   ensureChapterByTitle, ensureTopicsByTitles, ensureTagsByNames,
-  deleteCardRecord, listCardsByChapter, listCardsByTopic
+  deleteCardRecord, listCardsByChapter, listCardsByTopic,
+  checkIsAdmin
 } from './repo.js';
 
 // ------- tiny helpers -------
@@ -65,12 +66,43 @@ let scope={chapter:null,topic:null,mix:false,diff:null,starred:false};
 let order=[], idx=0, pool=[], currentCard=null;
 let searchIds=[];
 
+let isAdmin = false;
+
+async function refreshAdminFlag(){
+  isAdmin = user ? await checkIsAdmin(user.id) : false;
+  syncAdminUI();
+}
+
+function syncAdminUI(){
+  // Hide/show any element marked admin-only
+  document.querySelectorAll('[data-admin-only]').forEach(el=>{
+    el.style.display = (user && isAdmin) ? '' : 'none';
+  });
+  // Also control the inline editor controls shown on the study card header
+  const metaEditor = document.getElementById('metaEditor');
+  if (metaEditor) metaEditor.style.display = (user && isAdmin) ? 'inline-block' : 'none';
+}
+
 // ------- auth -------
 function siteRedirect(){ return location.origin + location.pathname; }
+
 async function initAuth(){
   const { data:{ session:s } } = await supabase.auth.getSession();
-  session=s; user=s?.user??null; syncAuthUI();
-  supabase.auth.onAuthStateChange((_evt,sess)=>{ session=sess; user=sess?.user??null; syncAuthUI(); if(user) initializeData(); });
+  session = s;
+  user    = s?.user ?? null;
+
+  syncAuthUI();            // existing: updates basic login/logout UI
+  await refreshAdminFlag(); // NEW: set window.isAdmin and (internally) toggle admin-only UI bits
+
+  supabase.auth.onAuthStateChange(async (_evt, sess)=>{
+    session = sess;
+    user    = sess?.user ?? null;
+
+    syncAuthUI();             // existing
+    await refreshAdminFlag(); // NEW: keep admin flag in sync on login/logout
+
+    if (user) initializeData(); // existing
+  });
 }
 function syncAuthUI(){
   show('btnLogin', !user);
