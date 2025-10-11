@@ -205,8 +205,9 @@ export async function replaceCardTags(cardId, tagNames){
   return { error: null };
 }
 
-// Save a feedback row (RLS: user_id must equal auth.uid(); no SELECT on return)
-export async function saveFeedback({ cardId, userId, comment }) {
+// Save a feedback row (works for any logged-in user)
+// Adds user_email at insert time so Admin can see it later.
+export async function saveFeedback({ cardId, userId, comment, userEmail }) {
   if (!cardId || !userId || !comment?.trim()) {
     return { error: new Error('Missing cardId/userId/comment') };
   }
@@ -214,18 +215,15 @@ export async function saveFeedback({ cardId, userId, comment }) {
     card_id: cardId,
     user_id: userId,
     comment: comment.trim(),
-    status: 'open'
+    status: 'open',
+    user_email: userEmail || null // store sender’s email
   };
-
-  // IMPORTANT: do NOT chain .select() here; non-admins can't SELECT
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from('card_feedback')
-    .insert(payload); // default returning is row data, but RLS on SELECT will block; we ignore it
-
-  // If you want to be explicit (and avoid any row return attempt), use:
-  // const { error } = await supabase.from('card_feedback').insert(payload, { returning: 'minimal' });
-
-  return { error };
+    .insert(payload)
+    .select('id')
+    .single();
+  return { data, error };
 }
 
 // --- Admin helpers: feedback count ---
