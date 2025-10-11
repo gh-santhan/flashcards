@@ -918,19 +918,23 @@ window.addEventListener('DOMContentLoaded', boot);
 
   // --- Admin: refresh the feedback badge count ---
 async function refreshFeedbackBadge(){
-  // only admins see the badge
-  try{
-    if (!(user && typeof isAdmin === 'function' && isAdmin(user))) return;
+  // Only try to count if logged in
+  if(!user){ return; }
 
-    const el = document.getElementById('fbBadge');
-    if (!el) return;
+  // Use Supabase's count with HEAD request for speed
+  const { count, error } = await supabase
+    .from('card_feedback')
+    .select('*', { count: 'exact', head: true });
 
-    // uses repo.js helpers you just added
-    const { pendingCount } = await repo.getFeedbackSummary();
-    el.textContent = String(pendingCount || 0);
-    el.style.display = (pendingCount && pendingCount > 0) ? 'inline-block' : 'none';
-  }catch(e){
-    console.warn('[feedback badge]', e);
+  if(error){
+    console.warn('[feedback] count error', error);
+  }
+
+  const n = (typeof count === 'number') ? count : 0;
+  const el = document.getElementById('adminFeedbackCount');
+  if(el){
+    el.textContent = String(n);
+    el.style.display = n > 0 ? '' : ''; // keep visible even if 0
   }
 }
   
