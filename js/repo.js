@@ -307,17 +307,16 @@ export async function markFeedbackReviewed(feedbackId, reviewed=true){
 
 /* ---------------- Feedback (Admin UI helpers) ---------------- */
 
-// List all feedback rows (newest first)
+// Admin: list all feedback (newest first)
 export async function listFeedback(){
   const { data, error } = await supabase
     .from('card_feedback')
-    .select('id, card_id, user_id, comment, status, created_at, reviewed_at, reviewer_id')
+    .select('id, card_id, user_id, comment, status, created_at')
     .order('created_at', { ascending: false });
 
-  if (error) {
-    console.error('[listFeedback]', error);
-    return [];
-  }
+  if (error){ console.error('[repo.listFeedback]', error); return []; }
+  return data || [];
+}
 
   // Normalize shape expected by Admin table renderer
   return (data || []).map(r => ({
