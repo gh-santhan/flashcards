@@ -527,17 +527,27 @@ function bindStudyButtons(){
   on('btnStar','click', ()=>{ if(!currentCard) return; currentCard.user_starred=!currentCard.user_starred; renderCounts(); renderCard(); });
   on('btnSuspend','click', async ()=>{ if(!user||!currentCard) return; const newVal=!currentCard.author_suspended; const { error } = await supabase.from('cards').update({ author_suspended:newVal }).eq('id', currentCard.id); if(error){ alert(error.message); return; } currentCard.author_suspended=newVal; renderCard(); renderCounts(); });
   on('btnFeedback','click', async ()=>{
-  if(!currentCard){ alert('No card selected.'); return; }
-  if(!user){ alert('Please log in to send feedback.'); return; }
-  const body = prompt('Feedback for this card? (be as specific as possible)');
-  if(!body) return;
-  const { error } = await supabase.from('card_feedback').insert({
+  if (!currentCard) { alert('No card selected.'); return; }
+  if (!user) { alert('Please log in to send feedback.'); return; }
+
+  const msg = prompt('Feedback for this card? (be as specific as possible)');
+  if (!msg) return;
+
+  const payload = {
     card_id: currentCard.id,
-    user_id: user.id,
-    body
-  });
-  if(error){ console.error('[feedback.insert]', error); alert('Sorry, feedback failed to save.'); }
-  else { alert('Thanks! Your feedback was submitted.'); }
+    user_id: user.id,          // required by your RLS
+    comment: msg,              // <-- correct column name
+    status: 'open'
+  };
+
+  const { error } = await supabase.from('card_feedback').insert(payload);
+  if (error) {
+    console.error('[feedback.insert]', error);
+    alert('Sorry, feedback failed to save.');
+  } else {
+    alert('Thanks! Your feedback was submitted.');
+    try { await refreshFeedbackBadge(); } catch {}
+  }
 });
 }
 async function grade(level){ if(!currentCard||!user){ renderCounts(); return; } currentCard.user_grade=level; grades.set(currentCard.id, level); await upsertGrade(user.id, currentCard.id, level); renderCounts(); $('btnNext')?.click(); }
