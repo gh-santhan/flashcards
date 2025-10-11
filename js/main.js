@@ -948,6 +948,7 @@ async function boot(){
     bindStudyButtons();
     bindShortcuts();
     bindSearch();
+    bindFeedbackUI();
     await initAuth();
     await initializeData();
     await refreshFeedbackBadge(); 
