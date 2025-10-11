@@ -918,34 +918,51 @@ window.addEventListener('DOMContentLoaded', boot);
   tab.insertBefore(acc, card);
 
   // --- Admin: refresh the feedback badge count ---
-async function refreshFeedbackBadge(){
+
+  async function refreshFeedbackBadge(){
   const el = document.getElementById('fbBadge');
   if(!el){ console.warn('[feedback] badge element not found'); return; }
 
-  // Only show a real count to admin; others just see the button with no count
+  // Only show a real count to admin; others just see the button label
   if(!isAdmin()){
     el.textContent = 'Feedback';
     return;
   }
 
-  console.log('[feedback] fetching count…');
-  const q = supabase
+  console.log('[feedback] diagnostic fetch…');
+
+  // 1) Try exact count via head:true
+  let { data: hData, error: hErr, count } = await supabase
     .from('card_feedback')
-    .select('id', { count: 'exact', head: true }); // head:true returns only headers with count
+    .select('id', { count: 'exact', head: true });
 
-  const { data, error, count } = await q;
-  console.log('[feedback] result', { error, count, data });
+  console.log('[feedback] head:true result =>', { error: hErr, count, data: hData });
 
-  if(error){
-    console.warn('[feedback] select failed:', error);
-    // show a visible hint something is wrong
-    el.textContent = 'Feedback • !';
-    el.title = `Feedback load error: ${error.message}`;
-    return;
+  // 2) If count is null/undefined (often due to RLS), fetch a few rows to see visibility
+  let visibleRows = [];
+  if (count == null) {
+    const { data: rows, error: rErr } = await supabase
+      .from('card_feedback')
+      .select('id, card_id, user_id, created_at')
+      .order('created_at', { ascending: false })
+      .limit(5);
+    console.log('[feedback] sample rows =>', { error: rErr, rows });
+    visibleRows = Array.isArray(rows) ? rows : [];
   }
 
-  const n = typeof count === 'number' ? count : 0;
+  // 3) Derive a number to display
+  let n;
+  if (typeof count === 'number') n = count;
+  else if (visibleRows.length > 0) n = visibleRows.length; // fallback just to prove visibility
+  else n = 0;
+
+  // 4) Update badge
   el.textContent = n > 0 ? `Feedback • ${n}` : 'Feedback';
+
+  // 5) Helpful tooltip for admin
+  if (hErr) el.title = `Feedback load error: ${hErr.message}`;
+  else if (count == null) el.title = 'Count unavailable (RLS?). See console logs.';
+  else el.title = `Total feedback rows visible: ${n}`;
 }
   
 })();
