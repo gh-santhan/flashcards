@@ -305,45 +305,39 @@ export async function markFeedbackReviewed(feedbackId, reviewed=true){
   return { error };
 }
 
-/* ---------------- Feedback (Admin UI helpers) ---------------- */
+/* ---------------- Feedback (admin) ---------------- */
 
-// Admin: list all feedback (newest first)
+// List feedback rows for Admin (RLS must allow admin SELECT)
 export async function listFeedback(){
   const { data, error } = await supabase
     .from('card_feedback')
-    .select('id, card_id, user_id, comment, status, created_at')
+    .select('id, created_at, status, comment, card_id, user_id')
     .order('created_at', { ascending: false });
 
-  if (error){ console.error('[repo.listFeedback]', error); return []; }
-  return data || [];
-}
+  if (error){
+    console.error('[repo.listFeedback]', error);
+    return [];
+  }
 
-  // Normalize shape expected by Admin table renderer
+  // normalize (room to enrich later with joins)
   return (data || []).map(r => ({
     id: r.id,
     created_at: r.created_at,
     status: r.status || 'open',
-    message: r.comment || '',
-    user_email: null,     // optional: can be filled later if you add a profiles join
+    comment: r.comment || '',
+    user_email: null,     // optional: fill later if you add a profiles join
     card_id: r.card_id,
-    card_front: ''        // optional: can be filled via a join to cards.front later
+    card_front: ''        // optional: fill via a join to cards.front later
   }));
 }
 
-// Update a feedback row (e.g., mark resolved / reopen)
-export async function updateFeedback(id, patch){
-  // allow only safe fields
-  const allowed = {};
-  if ('status' in patch) allowed.status = patch.status;
-  if ('reviewed_at' in patch) allowed.reviewed_at = patch.reviewed_at;
-  if ('reviewer_id' in patch) allowed.reviewer_id = patch.reviewer_id;
-
+// Update a feedback row’s fields (e.g., status)
+export async function updateFeedback(id, fields){
   const { error } = await supabase
     .from('card_feedback')
-    .update(allowed)
+    .update(fields)
     .eq('id', id);
-
-  if (error) console.error('[updateFeedback]', error);
+  if (error) console.error('[repo.updateFeedback]', error);
   return { error };
 }
 
