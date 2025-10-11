@@ -42,7 +42,6 @@ async function refreshFeedbackBadge(){
   const el = document.getElementById('adminFeedbackBadge');
   if(!el) return;
 
-  // show badge only to admin
   const isAdmin = user
     && typeof ADMIN_EMAIL === 'string'
     && (user.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase();
@@ -53,12 +52,27 @@ async function refreshFeedbackBadge(){
   }
 
   try{
+    // 1) exact count via repo helper
     const n = await repo.fetchFeedbackOpenCount();
-    el.textContent = String(n);
-    el.style.display = '';   // make it visible even when 0
+    console.log('[feedback] repo.count(open)=', n);
+
+    // 2) sample rows to confirm visibility + filter correctness
+    const { data: rows, error: rErr } = await supabase
+      .from('card_feedback')
+      .select('id, status, created_at')
+      .eq('status','open')
+      .order('created_at', { ascending:false })
+      .limit(10);
+
+    if(rErr) console.warn('[feedback] sample rows error', rErr);
+    console.log('[feedback] sample rows (open)=', rows);
+
+    // 3) set badge
+    el.textContent = String(n ?? 0);
+    el.style.display = '';
   }catch(e){
     console.error('[refreshFeedbackBadge]', e);
-    el.style.display = '';   // still show, but keep whatever text it has
+    el.style.display = '';
   }
 }
 
