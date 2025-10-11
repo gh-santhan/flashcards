@@ -527,38 +527,36 @@ function bindStudyButtons(){
   on('btnStar','click', ()=>{ if(!currentCard) return; currentCard.user_starred=!currentCard.user_starred; renderCounts(); renderCard(); });
   on('btnSuspend','click', async ()=>{ if(!user||!currentCard) return; const newVal=!currentCard.author_suspended; const { error } = await supabase.from('cards').update({ author_suspended:newVal }).eq('id', currentCard.id); if(error){ alert(error.message); return; } currentCard.author_suspended=newVal; renderCard(); renderCounts(); });
 // --- Feedback: minimal, RLS-safe handler using repo.saveFeedback ---
-on('btnFeedback', 'click', async () => {
-  if (!currentCard) { alert('No card selected.'); return; }
-  if (!user) { alert('Please log in to send feedback.'); return; }
 
-  const message = prompt('Feedback for this card? (be as specific as possible)');
-  if (!message) return;
+  on('btnFeedback','click', async ()=>{
+  if(!currentCard){ alert('No card selected.'); return; }
+  if(!user){ alert('Please log in to send feedback.'); return; }
 
-  try {
-    // inside the feedback submit handler in main.js
-const { error } = await repo.saveFeedback({
-  cardId: currentCard.id,
-  userId: user.id,
-  comment: body,            // or whatever your textarea/prompt variable is
-  userEmail: user.email     // <-- add this
-});
+  // Collect the feedback text (use your modal textarea if you have one)
+  const commentText = prompt('Feedback for this card? (be as specific as possible)');
+  if(!commentText || !commentText.trim()) return;
 
-    if (error) {
-      console.error('[feedback] insert failed', error);
-      alert('Sorry, feedback failed to save: ' + (error.message || 'Unknown error'));
-      return;
+  try{
+    const { error } = await repo.saveFeedback({
+      cardId: currentCard.id,
+      userId: user.id,
+      comment: commentText.trim(),
+      userEmail: user.email
+    });
+    if(error){
+      console.error('[feedback.insert]', error);
+      alert('Sorry, feedback failed to save.');
+    }else{
+      alert('Thanks! Your feedback was submitted.');
+      // optionally refresh the admin badge (if present)
+      if (typeof refreshFeedbackBadge === 'function') refreshFeedbackBadge();
     }
-
-    alert('Thanks! Your feedback was submitted.');
-    // optional: refresh the admin badge if present
-    if (typeof refreshFeedbackBadge === 'function') {
-      refreshFeedbackBadge();
-    }
-  } catch (e) {
+  }catch(e){
     console.error('[feedback] unexpected error', e);
-    alert('Sorry, feedback failed to save (unexpected error).');
+    alert('Sorry, feedback failed to save.');
   }
 });
+  
 }
 async function grade(level){ if(!currentCard||!user){ renderCounts(); return; } currentCard.user_grade=level; grades.set(currentCard.id, level); await upsertGrade(user.id, currentCard.id, level); renderCounts(); $('btnNext')?.click(); }
 
