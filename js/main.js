@@ -905,65 +905,6 @@ function setupBulkDeleteUI(){
   };
 }
 
-// Admin: load + render feedback table
-async function loadFeedbackAdmin(){
-  const table = document.getElementById('tblFeedback');
-  const tbody = table ? table.querySelector('tbody') : null;
-  const summary = document.getElementById('fbSummary');
-
-  if(!tbody || !summary){
-    console.warn('[feedback] UI pieces missing; skipping wiring');
-    return;
-  }
-
-  // fetch latest feedback (admin-only via RLS)
-  const { data, error } = await supabase
-    .from('card_feedback')
-    .select('id, created_at, user_id, card_id, comment, status, cards!inner(front)')
-    .order('created_at', { ascending: false })
-    .limit(200);
-
-  if(error){
-    console.error('[feedback] load failed', error);
-    alert('Failed to load feedback.');
-    return;
-  }
-
-  const rows = Array.isArray(data) ? data : [];
-  summary.style.display = '';
-  summary.textContent = `${rows.length} feedback item(s)`;
-
-  // render rows
-  tbody.innerHTML = rows.map(r => `
-    <tr>
-      <td>${new Date(r.created_at).toLocaleString()}</td>
-      <td>${r.user_id ? r.user_id.slice(0,8) + '…' : '—'}</td>
-      <td class="small">${escapeHtml(r.cards?.front || '(deleted card)')}</td>
-      <td class="small">${escapeHtml(r.comment || '')}</td>
-      <td>${r.status}</td>
-      <td>
-        <button class="ghost fb-act" data-act="review" data-id="${r.id}">Mark reviewed</button>
-      </td>
-    </tr>
-  `).join('') || '<tr><td colspan="6" class="small">No feedback.</td></tr>';
-
-  // action: mark reviewed (delegated)
-  table.onclick = async (e)=>{
-    const btn = e.target.closest('.fb-act');
-    if(!btn) return;
-    const id = btn.dataset.id;
-    if(btn.dataset.act === 'review'){
-      const { error: uErr } = await supabase
-        .from('card_feedback')
-        .update({ status:'reviewed', reviewed_at: new Date().toISOString(), reviewer_id: user?.id || null })
-        .eq('id', id);
-      if(uErr){ alert('Update failed.'); return; }
-      await loadFeedbackAdmin();
-      if(typeof refreshFeedbackBadge === 'function') await refreshFeedbackBadge();
-    }
-  };
-}
-
 // Render the Admin → Feedback table using the current schema (card_feedback.comment/status)
 async function loadFeedbackAdmin(){
   // Only render if Admin UI exists, and only for admin
