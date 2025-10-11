@@ -535,11 +535,13 @@ on('btnFeedback', 'click', async () => {
   if (!message) return;
 
   try {
-    const { error } = await repo.saveFeedback({
-      cardId: currentCard.id,
-      userId: user.id,
-      comment: message
-    });
+    // inside the feedback submit handler in main.js
+const { error } = await repo.saveFeedback({
+  cardId: currentCard.id,
+  userId: user.id,
+  comment: body,            // or whatever your textarea/prompt variable is
+  userEmail: user.email     // <-- add this
+});
 
     if (error) {
       console.error('[feedback] insert failed', error);
