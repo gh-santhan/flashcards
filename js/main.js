@@ -943,7 +943,7 @@ const itemsEnriched = items.map(f => {
     ...f,
     card_front: card?.front || '(No preview)',
     user_email: f.user_email ?? '—',
-    message: f.comment ?? ''   // repo.listFeedback returns "comment"
+   message: f.comment || f.message || ''   // ensure message populates from comment
   };
 });
 
