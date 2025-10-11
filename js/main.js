@@ -919,24 +919,33 @@ window.addEventListener('DOMContentLoaded', boot);
 
   // --- Admin: refresh the feedback badge count ---
 async function refreshFeedbackBadge(){
-  if(!user){ return; }
+  const el = document.getElementById('fbBadge');
+  if(!el){ console.warn('[feedback] badge element not found'); return; }
 
-  const { data, count, error } = await supabase
+  // Only show a real count to admin; others just see the button with no count
+  if(!isAdmin()){
+    el.textContent = 'Feedback';
+    return;
+  }
+
+  console.log('[feedback] fetching count…');
+  const q = supabase
     .from('card_feedback')
-    .select('id', { count: 'exact' }); // no head -> we can log data length
+    .select('id', { count: 'exact', head: true }); // head:true returns only headers with count
+
+  const { data, error, count } = await q;
+  console.log('[feedback] result', { error, count, data });
 
   if(error){
-    console.warn('[feedback] count error', error);
-  } else {
-    console.log('[feedback] rows:', Array.isArray(data) ? data.length : 'null', 'count:', count);
+    console.warn('[feedback] select failed:', error);
+    // show a visible hint something is wrong
+    el.textContent = 'Feedback • !';
+    el.title = `Feedback load error: ${error.message}`;
+    return;
   }
 
-  const n = (typeof count === 'number') ? count : 0;
-  const el = document.getElementById('adminFeedbackCount');
-  if(el){
-    el.textContent = String(n);
-    el.style.display = ''; // keep visible even if zero
-  }
+  const n = typeof count === 'number' ? count : 0;
+  el.textContent = n > 0 ? `Feedback • ${n}` : 'Feedback';
 }
   
 })();
