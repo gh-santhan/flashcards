@@ -526,29 +526,26 @@ function bindStudyButtons(){
   on('gAgain','click', ()=>grade('again')); on('gHard','click', ()=>grade('hard')); on('gGood','click', ()=>grade('good')); on('gEasy','click', ()=>grade('easy'));
   on('btnStar','click', ()=>{ if(!currentCard) return; currentCard.user_starred=!currentCard.user_starred; renderCounts(); renderCard(); });
   on('btnSuspend','click', async ()=>{ if(!user||!currentCard) return; const newVal=!currentCard.author_suspended; const { error } = await supabase.from('cards').update({ author_suspended:newVal }).eq('id', currentCard.id); if(error){ alert(error.message); return; } currentCard.author_suspended=newVal; renderCard(); renderCounts(); });
-  on('btnFeedback','click', async ()=>{
-  if (!currentCard) { alert('No card selected.'); return; }
-  if (!user) { alert('Please log in to send feedback.'); return; }
+ on('btnFeedback','click', async ()=>{
+  if(!currentCard){ alert('No card selected.'); return; }
+  if(!user){ alert('Please log in to send feedback.'); return; }
 
-  const msg = prompt('Feedback for this card? (be as specific as possible)');
-  if (!msg) return;
+  const comment = prompt('Feedback for this card? (be as specific as possible)');
+  if(!comment) return;
 
-  const payload = {
-    card_id: currentCard.id,
-    user_id: user.id,          // required by your RLS
-    comment: msg,              // <-- correct column name
-    status: 'open'
-  };
+  const { error } = await repo.saveFeedback({
+    cardId: currentCard.id,
+    userId: user.id,
+    userEmail: user.email || null,
+    comment
+  });
 
-  const { error } = await supabase
-  .from('card_feedback')
-  .insert(payload, { returning: 'minimal' }); // avoid SELECT after insert (RLS-safe)
-  if (error) {
+  if(error){
     console.error('[feedback.insert]', error);
     alert('Sorry, feedback failed to save.');
-  } else {
+  }else{
     alert('Thanks! Your feedback was submitted.');
-    try { await refreshFeedbackBadge(); } catch {}
+    refreshFeedbackBadge?.(); // optional: bump the badge immediately
   }
 });
 }
