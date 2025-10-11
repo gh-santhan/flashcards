@@ -37,6 +37,48 @@ function isTypingInForm(){
   return tag === 'input' || tag === 'textarea' || tag === 'select' || ae.isContentEditable;
 }
 
+// Jump from Admin → specific card in Study (and show it)
+function jumpToCard(cardId){
+  // 1) find the card
+  const card = (Array.isArray(cards) ? cards : []).find(c => c.id === cardId);
+  if(!card){ alert('Card not found.'); return; }
+
+  // 2) set scope so the card is visible (chapter only; clear filters)
+  scope = {
+    chapter: card.chapter_id || null,
+    topic: null,
+    mix: false,
+    diff: null,
+    starred: false
+  };
+
+  // 3) rebuild UI lists and pool
+  buildScopePickers();
+  rebuildOrder();
+
+  // 4) position index to this card inside the current pool
+  const pos = (pool || []).findIndex(c => c.id === cardId);
+  if (pos >= 0) idx = pos;
+
+  // 5) switch to Study tab
+  const tabsWrap = document.getElementById('headerTabs');
+  if (tabsWrap){
+    tabsWrap.querySelectorAll('.tab').forEach(x => x.classList.remove('on'));
+    const studyTab = tabsWrap.querySelector('[data-tab="study"]');
+    if (studyTab) studyTab.classList.add('on');
+  }
+  ['study','editor','admin'].forEach(k=>{
+    const sec = document.getElementById('tab-'+k);
+    if (sec) sec.style.display = (k === 'study') ? 'block' : 'none';
+  });
+
+  // 6) render the card now in view
+  renderCounts();
+  renderCard();
+}
+
+
+
   // --- feedback badge updater ---
 async function refreshFeedbackBadge(){
   const el = document.getElementById('adminFeedbackBadge');
