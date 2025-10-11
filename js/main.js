@@ -49,6 +49,31 @@ async function refreshFeedbackBadge(){
     return;
   }
 
+  // --- feedback badge updater ---
+async function refreshFeedbackBadge(){
+  const el = document.getElementById('adminFeedbackBadge');
+  if(!el) return;
+
+  // show badge only to admin
+  const isAdmin = user
+    && typeof ADMIN_EMAIL === 'string'
+    && (user.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase();
+
+  if(!isAdmin){
+    el.style.display = 'none';
+    return;
+  }
+
+  try{
+    const n = await repo.fetchFeedbackOpenCount();
+    el.textContent = String(n);
+    el.style.display = '';   // make it visible even when 0
+  }catch(e){
+    console.error('[refreshFeedbackBadge]', e);
+    el.style.display = '';   // still show, but keep whatever text it has
+  }
+}
+
   // try exact count (head:true) — if RLS blocks count, fall back to sample rows
   let { count, error } = await supabase
     .from('card_feedback')
