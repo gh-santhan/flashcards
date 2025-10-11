@@ -304,3 +304,48 @@ export async function markFeedbackReviewed(feedbackId, reviewed=true){
   if (error){ console.error('[markFeedbackReviewed]', error); }
   return { error };
 }
+
+/* ---------------- Feedback (Admin UI helpers) ---------------- */
+
+// List all feedback rows (newest first)
+export async function listFeedback(){
+  const { data, error } = await supabase
+    .from('card_feedback')
+    .select('id, card_id, user_id, comment, status, created_at, reviewed_at, reviewer_id')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('[listFeedback]', error);
+    return [];
+  }
+
+  // Normalize shape expected by Admin table renderer
+  return (data || []).map(r => ({
+    id: r.id,
+    created_at: r.created_at,
+    status: r.status || 'open',
+    message: r.comment || '',
+    user_email: null,     // optional: can be filled later if you add a profiles join
+    card_id: r.card_id,
+    card_front: ''        // optional: can be filled via a join to cards.front later
+  }));
+}
+
+// Update a feedback row (e.g., mark resolved / reopen)
+export async function updateFeedback(id, patch){
+  // allow only safe fields
+  const allowed = {};
+  if ('status' in patch) allowed.status = patch.status;
+  if ('reviewed_at' in patch) allowed.reviewed_at = patch.reviewed_at;
+  if ('reviewer_id' in patch) allowed.reviewer_id = patch.reviewer_id;
+
+  const { error } = await supabase
+    .from('card_feedback')
+    .update(allowed)
+    .eq('id', id);
+
+  if (error) console.error('[updateFeedback]', error);
+  return { error };
+}
+
+
