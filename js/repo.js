@@ -130,16 +130,6 @@ export async function ensureTagsByNames(names){
   return out;
 }
 
-// Count open feedback rows (status = 'open')
-export async function fetchFeedbackOpenCount(){
-  const { count, error } = await supabase
-    .from('card_feedback')
-    .select('id', { count: 'exact', head: true })
-    .eq('status', 'open');
-  if (error) { console.error('[fetchFeedbackOpenCount]', error); return 0; }
-  return count || 0;
-}
-
 /* ---------------- Editor helpers ---------------- */
 
 export async function deleteCardRecord(cardId){
@@ -215,19 +205,18 @@ export async function replaceCardTags(cardId, tagNames){
   return { error: null };
 }
 
-// --- Feedback helpers ---
+// --- Admin helpers: feedback count ---
 export async function fetchFeedbackOpenCount(){
-  // Try to get an exact count; if RLS blocks head counts, fall back to data length.
-  const { data, count, error } = await supabase
+  const { count, error } = await supabase
     .from('card_feedback')
-    .select('id', { count: 'exact' })   // no head:true so we still get rows
+    .select('id', { count: 'exact', head: true })
     .eq('status', 'open');
 
   if (error) {
-    console.error('[fetchFeedbackOpenCount]', error);
+    console.error('[repo.fetchFeedbackOpenCount]', error);
     return 0;
   }
-  return (typeof count === 'number') ? count : (Array.isArray(data) ? data.length : 0);
+  return typeof count === 'number' ? count : 0;
 }
 
 /* ---------------- Feedback (admin) ---------------- */
