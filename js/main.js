@@ -104,12 +104,31 @@ async function initAuth(){
     if (user) initializeData(); // existing
   });
 }
+
 function syncAuthUI(){
   show('btnLogin', !user);
   show('btnLogout', !!user);
   setText('whoami', user ? (user.email||'') : '');
-  const metaEditor=$('metaEditor'); if(metaEditor) metaEditor.style.display = user?'inline-block':'none';
+
+  // compute admin once and expose for other modules
+  const isAdmin = !!(user && user.email && ADMIN_EMAIL &&
+                     user.email.toLowerCase() === ADMIN_EMAIL.toLowerCase());
+  window.isAdmin = isAdmin;
+
+  // Study-mode edit/delete controls: only for admin
+  const metaEditor = $('metaEditor');
+  if (metaEditor) metaEditor.style.display = isAdmin ? 'inline-block' : 'none';
+
+  // Header tabs: hide Editor/Admin for non-admins
+  const headerTabs = document.getElementById('headerTabs');
+  if (headerTabs) {
+    const editorTab = headerTabs.querySelector('[data-tab="editor"]');
+    const adminTab  = headerTabs.querySelector('[data-tab="admin"]');
+    if (editorTab) editorTab.style.display = isAdmin ? '' : 'none';
+    if (adminTab)  adminTab.style.display  = isAdmin ? '' : 'none';
+  }
 }
+
 function bindAuthButtons(){
   on('btnLogin','click', async ()=>{
     const email=prompt('Enter email for magic link:'); if(!email) return;
