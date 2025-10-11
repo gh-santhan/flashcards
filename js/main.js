@@ -964,6 +964,84 @@ async function loadFeedbackAdmin(){
   };
 }
 
+// Render the Admin → Feedback table using the current schema (card_feedback.comment/status)
+async function loadFeedbackAdmin(){
+  // Only render if Admin UI exists, and only for admin
+  const tbody = document.querySelector('#tblFeedback tbody');
+  const summary = document.getElementById('fbSummary');
+  if (!tbody || !summary) return;
+
+  const isAdminUser = user && typeof ADMIN_EMAIL === 'string'
+    && (user.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase();
+  if (!isAdminUser) return;
+
+  // Fetch list from repo (must return rows with: id, created_at, status, comment, card_front?, user_email?)
+  let items = [];
+  try {
+    items = await repo.listFeedback(); // admin-only via RLS; empty array if none/blocked
+  } catch (e) {
+    console.error('[feedback] list failed', e);
+    summary.style.display = '';
+    summary.textContent = 'Failed to load feedback.';
+    return;
+  }
+
+  // Summary
+  summary.style.display = '';
+  summary.textContent = items.length ? `${items.length} feedback item(s)` : 'No feedback yet.';
+
+  const fmtWhen = (iso) => {
+    try { return new Date(iso).toLocaleString(); } catch { return iso || '—'; }
+  };
+  const esc = (s='') => String(s).replace(/</g,'&lt;');
+
+  // Build rows (defensive: fields may be null depending on RLS/projection)
+  tbody.innerHTML = items.map(f => {
+    const when = fmtWhen(f.created_at);
+    const who  = esc(f.user_email ?? '—');
+    const front = esc(f.card_front ?? '(No preview)');
+    const msg = esc(f.comment ?? '');
+    const status = esc(f.status ?? 'open');
+    return `
+      <tr data-id="${f.id}">
+        <td class="small">${when}</td>
+        <td class="small">${who}</td>
+        <td class="small">${front}</td>
+        <td class="small" style="max-width:420px">${msg}</td>
+        <td class="small">${status}</td>
+        <td class="small">
+          <button class="ghost fb-toggle" data-id="${f.id}" data-status="${status}">
+            ${status === 'open' ? 'Mark Resolved' : 'Reopen'}
+          </button>
+        </td>
+      </tr>
+    `;
+  }).join('');
+
+  // Delegate: toggle status (bind once)
+  const table = document.getElementById('tblFeedback');
+  if (table && !table._fbBound){
+    table.addEventListener('click', async (e)=>{
+      const btn = e.target.closest('.fb-toggle');
+      if(!btn) return;
+      const id = btn.dataset.id;
+      const curr = btn.dataset.status || 'open';
+      const next = curr === 'open' ? 'resolved' : 'open';
+      btn.disabled = true;
+      try{
+        const { error } = await repo.updateFeedback(id, { status: next });
+        if (error) { alert('Update failed: '+error.message); btn.disabled = false; return; }
+        await loadFeedbackAdmin(); // re-render after update
+      }catch(err){
+        console.error('[feedback] toggle failed', err);
+        btn.disabled = false;
+      }
+    });
+    table._fbBound = true;
+  }
+}
+
+
 // ------- admin actions (template & LLM prompt) -------
 function bindAdminActions(){
   on('btnDownloadTemplate','click', ()=>{
