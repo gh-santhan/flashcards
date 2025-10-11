@@ -516,6 +516,27 @@ function bindShortcuts(){
   });
 }
 
+async function handleFeedback(){
+  if(!user){ alert('Please log in to send feedback.'); return; }
+  if(!currentCard){ alert('No card selected.'); return; }
+
+  const body = prompt('Your feedback about this card:');
+  if(!body || !body.trim()) return;
+
+  const { error } = await supabase.from('card_comments').insert({
+    card_id: currentCard.id,
+    user_id: user.id,
+    body: body.trim()
+  });
+
+  if(error){
+    console.error('[feedback/insert]', error);
+    alert('Failed to submit feedback: ' + error.message);
+  }else{
+    alert('Thanks! Your comment was submitted.');
+  }
+}
+
 // ------- search -------
 function bindSearch(){
   const modal=$('searchModal'); if(!modal){ console.warn('[search] modal not found'); return; }
