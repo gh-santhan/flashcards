@@ -842,6 +842,8 @@ async function boot(){
     bindSearch();
     await initAuth();
     await initializeData();
+    await refreshFeedbackBadge(); 
+    
   }catch(err){
     console.error('[boot] fatal', err);
     alert('App failed to initialize. See console for details.');
