@@ -213,7 +213,7 @@ export async function saveFeedback({ cardId, userId, userEmail, comment }) {
   const payload = {
     card_id: cardId,
     user_id: userId,
-    user_email: userEmail || null, // <-- add this line
+    user_email: userEmail || null, // <-- store email
     comment: comment.trim(),
     status: 'open'
   };
