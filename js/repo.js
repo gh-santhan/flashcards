@@ -308,38 +308,46 @@ export async function markFeedbackReviewed(feedbackId, reviewed=true){
 
 /* ---------------- Feedback (admin) ---------------- */
 
-// Admin: list all feedback rows (project fields used by Admin UI)
+/* ---------------- Admin: feedback listing + updates ---------------- */
+
+// List all feedback rows used by the Admin UI
 export async function listFeedback(){
+  // Try to also pull a short preview of the card's front via a left-join.
+  // This works if card_feedback.card_id -> cards.id exists (FK not required).
+  const selectCols = `
+    id, created_at, status, comment, user_email, card_id,
+    cards!left(id,front)
+  `;
+
   const { data, error } = await supabase
     .from('card_feedback')
-    .select('id, created_at, status, comment, user_email, card_id')
+    .select(selectCols)
     .order('created_at', { ascending: false });
 
   if (error){
     console.error('[repo.listFeedback]', error);
     return [];
   }
-  return data || [];
-}
 
-  // normalize (room to enrich later with joins)
+  // Normalize for the Admin table renderer
   return (data || []).map(r => ({
     id: r.id,
     created_at: r.created_at,
-    status: r.status || 'open',
-    comment: r.comment || '',
-    user_email: null,     // optional: fill later if you add a profiles join
-    card_id: r.card_id,
-    card_front: ''        // optional: fill via a join to cards.front later
+    status: r.status ?? 'open',
+    comment: r.comment ?? '',
+    user_email: r.user_email ?? '—',
+    card_id: r.card_id ?? null,
+    card_front: r.cards?.front ?? ''  // may be empty if join fails/no FK
   }));
 }
 
-// Update a feedback row’s fields (e.g., status)
+// Update a feedback row’s fields (e.g., status: 'open' | 'resolved')
 export async function updateFeedback(id, fields){
   const { error } = await supabase
     .from('card_feedback')
     .update(fields)
     .eq('id', id);
+
   if (error) console.error('[repo.updateFeedback]', error);
   return { error };
 }
