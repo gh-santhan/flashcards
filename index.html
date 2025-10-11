@@ -147,6 +147,7 @@
     </div>
 
     <div class="divider"></div>
+    
     <h3>Authoring Aids</h3>
     <div class="row">
       <button id="btnDownloadTemplate" class="ghost">Download JSON Template</button>
@@ -155,6 +156,28 @@
     <div class="small" style="margin-top:6px">
       The template matches the importer format. The LLM guide explains how to write <b>front</b>/<b>back</b>, split cards, expand acronyms, choose tags, and attach resources via <code>meta</code>.
     </div>
+
+  <div class="divider"></div>
+<h3>Feedback</h3>
+<div class="row" style="margin-bottom:6px">
+  <button id="btnLoadFeedback" class="primary">Load Feedback</button>
+  <button id="btnClearBadge" class="ghost" title="Mark all as seen">Mark All Seen</button>
+</div>
+<div id="fbSummary" class="small" style="margin:6px 0; display:none"></div>
+<table id="tblFeedback">
+  <thead>
+    <tr>
+      <th>When</th>
+      <th>User</th>
+      <th>Card (front)</th>
+      <th>Message</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+    
   </section>
 </main>
 
