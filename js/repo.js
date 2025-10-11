@@ -205,8 +205,7 @@ export async function replaceCardTags(cardId, tagNames){
   return { error: null };
 }
 
-// Save a feedback row (RLS allows INSERT for any authenticated user;
-// avoid .select() because SELECT is admin-only under RLS)
+// Save a feedback row (RLS: user_id must equal auth.uid(); no SELECT on return)
 export async function saveFeedback({ cardId, userId, comment }) {
   if (!cardId || !userId || !comment?.trim()) {
     return { error: new Error('Missing cardId/userId/comment') };
@@ -218,8 +217,14 @@ export async function saveFeedback({ cardId, userId, comment }) {
     status: 'open'
   };
 
-  // IMPORTANT: no .select() here — INSERT only
-  const { error } = await supabase.from('card_feedback').insert(payload);
+  // IMPORTANT: do NOT chain .select() here; non-admins can't SELECT
+  const { error } = await supabase
+    .from('card_feedback')
+    .insert(payload); // default returning is row data, but RLS on SELECT will block; we ignore it
+
+  // If you want to be explicit (and avoid any row return attempt), use:
+  // const { error } = await supabase.from('card_feedback').insert(payload, { returning: 'minimal' });
+
   return { error };
 }
 
