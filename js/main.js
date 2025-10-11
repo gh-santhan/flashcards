@@ -1021,6 +1021,7 @@ function bindAdminActions(){
     }
     await initializeData(); alert('Import complete.');
   });
+  on('btnLoadFeedback','click', () => { loadFeedbackAdmin(); });
 }
 
 // ------- boot -------
