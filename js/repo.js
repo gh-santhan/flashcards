@@ -204,3 +204,25 @@ export async function replaceCardTags(cardId, tagNames){
   }
   return { error: null };
 }
+
+/* ---------------- Feedback (admin) ---------------- */
+
+export async function fetchAllFeedback(){
+  // newest first; keep it simple and join card/question text in UI using the in-memory cards[]
+  const { data, error } = await supabase
+    .from('card_feedback')
+    .select('id, card_id, user_id, body, created_at, status')
+    .order('created_at', { ascending: false });
+  if (error) { console.error('[fetchAllFeedback]', error); return []; }
+  return data || [];
+}
+
+export async function fetchFeedbackForCard(cardId){
+  const { data, error } = await supabase
+    .from('card_feedback')
+    .select('id, card_id, user_id, body, created_at, status')
+    .eq('card_id', cardId)
+    .order('created_at', { ascending: false });
+  if (error) { console.error('[fetchFeedbackForCard]', error); return []; }
+  return data || [];
+}
