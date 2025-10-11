@@ -206,13 +206,14 @@ export async function replaceCardTags(cardId, tagNames){
 }
 
 // Save a feedback row (RLS requires user_id == auth.uid())
-export async function saveFeedback({ cardId, userId, comment }) {
+export async function saveFeedback({ cardId, userId, userEmail, comment }) {
   if (!cardId || !userId || !comment?.trim()) {
     return { error: new Error('Missing cardId/userId/comment') };
   }
   const payload = {
     card_id: cardId,
     user_id: userId,
+    user_email: userEmail || null, // <-- add this line
     comment: comment.trim(),
     status: 'open'
   };
