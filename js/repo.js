@@ -226,3 +226,48 @@ export async function fetchFeedbackForCard(cardId){
   if (error) { console.error('[fetchFeedbackForCard]', error); return []; }
   return data || [];
 }
+
+/* ---------------- Admin: feedback queries ---------------- */
+
+/** Pending feedback rows with a small card preview */
+export async function getFeedbackPending(){
+  const { data, error } = await supabase
+    .from('card_feedback')
+    .select('id, card_id, user_id, message, created_at, reviewed, cards!inner(id,front)')
+    .eq('reviewed', false)
+    .order('created_at', { ascending: false });
+
+  if (error){ console.error('[getFeedbackPending]', error); return []; }
+
+  // normalize shape
+  return (data||[]).map(r => ({
+    id: r.id,
+    card_id: r.card_id,
+    user_id: r.user_id,
+    message: r.message,
+    created_at: r.created_at,
+    reviewed: r.reviewed,
+    front: r.cards?.front || ''
+  }));
+}
+
+/** Simple summary: total pending count (for the header badge) */
+export async function getFeedbackSummary(){
+  const { count, error } = await supabase
+    .from('card_feedback')
+    .select('id', { count: 'exact', head: true })
+    .eq('reviewed', false);
+
+  if (error){ console.error('[getFeedbackSummary]', error); return { pendingCount: 0 }; }
+  return { pendingCount: count || 0 };
+}
+
+/** Mark one feedback row reviewed/unreviewed */
+export async function markFeedbackReviewed(feedbackId, reviewed=true){
+  const { error } = await supabase
+    .from('card_feedback')
+    .update({ reviewed })
+    .eq('id', feedbackId);
+  if (error){ console.error('[markFeedbackReviewed]', error); }
+  return { error };
+}
