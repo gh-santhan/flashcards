@@ -130,6 +130,16 @@ export async function ensureTagsByNames(names){
   return out;
 }
 
+// Count open feedback rows (status = 'open')
+export async function fetchFeedbackOpenCount(){
+  const { count, error } = await supabase
+    .from('card_feedback')
+    .select('id', { count: 'exact', head: true })
+    .eq('status', 'open');
+  if (error) { console.error('[fetchFeedbackOpenCount]', error); return 0; }
+  return count || 0;
+}
+
 /* ---------------- Editor helpers ---------------- */
 
 export async function deleteCardRecord(cardId){
