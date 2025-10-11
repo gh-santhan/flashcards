@@ -886,4 +886,23 @@ window.addEventListener('DOMContentLoaded', boot);
 
   // insert accordion right before the card
   tab.insertBefore(acc, card);
+
+  // --- Admin: refresh the feedback badge count ---
+async function refreshFeedbackBadge(){
+  // only admins see the badge
+  try{
+    if (!(user && typeof isAdmin === 'function' && isAdmin(user))) return;
+
+    const el = document.getElementById('fbBadge');
+    if (!el) return;
+
+    // uses repo.js helpers you just added
+    const { pendingCount } = await repo.getFeedbackSummary();
+    el.textContent = String(pendingCount || 0);
+    el.style.display = (pendingCount && pendingCount > 0) ? 'inline-block' : 'none';
+  }catch(e){
+    console.warn('[feedback badge]', e);
+  }
+}
+  
 })();
