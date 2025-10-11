@@ -936,28 +936,39 @@ async function loadFeedbackAdmin(){
   };
   const esc = (s='') => String(s).replace(/</g,'&lt;');
 
-  // Build rows (defensive: fields may be null depending on RLS/projection)
-  tbody.innerHTML = items.map(f => {
-    const when = fmtWhen(f.created_at);
-    const who  = esc(f.user_email ?? '—');
-    const front = esc(f.card_front ?? '(No preview)');
-    const msg = esc(f.comment ?? '');
-    const status = esc(f.status ?? 'open');
-    return `
-      <tr data-id="${f.id}">
-        <td class="small">${when}</td>
-        <td class="small">${who}</td>
-        <td class="small">${front}</td>
-        <td class="small" style="max-width:420px">${msg}</td>
-        <td class="small">${status}</td>
-        <td class="small">
-          <button class="ghost fb-toggle" data-id="${f.id}" data-status="${status}">
-            ${status === 'open' ? 'Mark Resolved' : 'Reopen'}
-          </button>
-        </td>
-      </tr>
-    `;
-  }).join('');
+  // Enrich rows with card front from in-memory cards[] and normalize fields
+const itemsEnriched = items.map(f => {
+  const card = (Array.isArray(cards) ? cards : []).find(c => c.id === f.card_id);
+  return {
+    ...f,
+    card_front: card?.front || '(No preview)',
+    user_email: f.user_email ?? '—',
+    message: f.comment ?? ''   // repo.listFeedback returns "comment"
+  };
+});
+
+// Build rows (When | User | Card (front) | Message | Status | Actions)
+tbody.innerHTML = itemsEnriched.map(f => {
+  const when   = fmtWhen(f.created_at);
+  const who    = esc(f.user_email);
+  const front  = esc(f.card_front);
+  const msg    = esc(f.message);
+  const status = esc(f.status ?? 'open');
+  return `
+    <tr data-id="${f.id}" data-card="${f.card_id}">
+      <td class="small">${when}</td>
+      <td class="small">${who}</td>
+      <td class="small">${front}</td>
+      <td class="small" style="max-width:420px">${msg}</td>
+      <td class="small">${status}</td>
+      <td class="small">
+        <button class="ghost fb-toggle" data-id="${f.id}" data-status="${status}">
+          ${status === 'open' ? 'Mark Resolved' : 'Reopen'}
+        </button>
+      </td>
+    </tr>
+  `;
+}).join('');
 
   // Delegate: toggle status (bind once)
   const table = document.getElementById('tblFeedback');
