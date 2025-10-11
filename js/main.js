@@ -59,6 +59,33 @@ function loadStudyState() {
   } catch { return null; }
 }
 
+// --- feedback badge updater ---
+async function refreshFeedbackBadge(){
+  const badge = document.getElementById('adminFeedbackBadge');
+  if(!badge) return;
+
+  // only show to admin
+  const isAdmin = user && typeof ADMIN_EMAIL === 'string' &&
+                  (user.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase();
+  if(!isAdmin){
+    badge.style.display = 'none';
+    return;
+  }
+
+  // count all feedback rows
+  const { count, error } = await supabase
+    .from('card_feedback')
+    .select('*', { count: 'exact', head: true });
+
+  if(error){
+    console.error('[feedback] badge count error', error);
+    return;
+  }
+
+  badge.textContent = String(count ?? 0);
+  badge.style.display = ''; // ensure visible
+}
+
 // ------- app state -------
 let session=null,user=null;
 let chapters=[], topics=[], tags=[], cards=[];
