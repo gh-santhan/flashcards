@@ -308,17 +308,19 @@ export async function markFeedbackReviewed(feedbackId, reviewed=true){
 
 /* ---------------- Feedback (admin) ---------------- */
 
-// List feedback rows for Admin (RLS must allow admin SELECT)
+// Admin: list all feedback rows (project fields used by Admin UI)
 export async function listFeedback(){
   const { data, error } = await supabase
     .from('card_feedback')
-    .select('id, created_at, status, comment, card_id, user_id')
+    .select('id, created_at, status, comment, user_email, card_id')
     .order('created_at', { ascending: false });
 
   if (error){
     console.error('[repo.listFeedback]', error);
     return [];
   }
+  return data || [];
+}
 
   // normalize (room to enrich later with joins)
   return (data || []).map(r => ({
