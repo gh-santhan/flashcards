@@ -38,6 +38,13 @@ export async function fetchCards(){
   });
 }
 
+// --- Admin helper ---
+export async function checkIsAdmin(){
+  const { data, error } = await supabase.rpc('is_admin');
+  if (error) { console.warn('[is_admin]', error); return false; }
+  return !!data;
+}
+
 /* ---------------- Grades (per user) ---------------- */
 
 export async function fetchUserGrades(userId){
