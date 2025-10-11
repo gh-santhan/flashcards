@@ -918,23 +918,23 @@ window.addEventListener('DOMContentLoaded', boot);
 
   // --- Admin: refresh the feedback badge count ---
 async function refreshFeedbackBadge(){
-  // Only try to count if logged in
   if(!user){ return; }
 
-  // Use Supabase's count with HEAD request for speed
-  const { count, error } = await supabase
+  const { data, count, error } = await supabase
     .from('card_feedback')
-    .select('*', { count: 'exact', head: true });
+    .select('id', { count: 'exact' }); // no head -> we can log data length
 
   if(error){
     console.warn('[feedback] count error', error);
+  } else {
+    console.log('[feedback] rows:', Array.isArray(data) ? data.length : 'null', 'count:', count);
   }
 
   const n = (typeof count === 'number') ? count : 0;
   const el = document.getElementById('adminFeedbackCount');
   if(el){
     el.textContent = String(n);
-    el.style.display = n > 0 ? '' : ''; // keep visible even if 0
+    el.style.display = ''; // keep visible even if zero
   }
 }
   
