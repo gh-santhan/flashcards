@@ -78,7 +78,6 @@ async function refreshFeedbackBadge(){
 
   el.textContent = String(count ?? 0);
   el.style.display = ''; // ensure visible
-}
 
 // --- study state persistence ---
 const STATE_KEY = 'study.state.v1';
