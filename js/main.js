@@ -62,23 +62,6 @@ async function refreshFeedbackBadge(){
   }
 }
 
-  // try exact count (head:true) — if RLS blocks count, fall back to sample rows
-  let { count, error } = await supabase
-    .from('card_feedback')
-    .select('id', { count: 'exact', head: true });
-
-  if (count == null) {
-    const { data: rows, error: rErr } = await supabase
-      .from('card_feedback')
-      .select('id')
-      .limit(5);
-    if (rErr) console.warn('[feedback] sample fetch error', rErr);
-    count = Array.isArray(rows) ? rows.length : 0;
-  }
-
-  el.textContent = String(count ?? 0);
-  el.style.display = ''; // ensure visible
-
 // --- study state persistence ---
 const STATE_KEY = 'study.state.v1';
 function saveStudyState() {
