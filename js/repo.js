@@ -205,24 +205,22 @@ export async function replaceCardTags(cardId, tagNames){
   return { error: null };
 }
 
-// Save a feedback row (RLS requires user_id == auth.uid())
-export async function saveFeedback({ cardId, userId, userEmail, comment }) {
+// Save a feedback row (RLS allows INSERT for any authenticated user;
+// avoid .select() because SELECT is admin-only under RLS)
+export async function saveFeedback({ cardId, userId, comment }) {
   if (!cardId || !userId || !comment?.trim()) {
     return { error: new Error('Missing cardId/userId/comment') };
   }
   const payload = {
     card_id: cardId,
     user_id: userId,
-    user_email: userEmail || null, // <-- store email
     comment: comment.trim(),
     status: 'open'
   };
-  const { data, error } = await supabase
-    .from('card_feedback')
-    .insert(payload)
-    .select('id')
-    .single();
-  return { data, error };
+
+  // IMPORTANT: no .select() here — INSERT only
+  const { error } = await supabase.from('card_feedback').insert(payload);
+  return { error };
 }
 
 // --- Admin helpers: feedback count ---
