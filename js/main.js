@@ -526,26 +526,35 @@ function bindStudyButtons(){
   on('gAgain','click', ()=>grade('again')); on('gHard','click', ()=>grade('hard')); on('gGood','click', ()=>grade('good')); on('gEasy','click', ()=>grade('easy'));
   on('btnStar','click', ()=>{ if(!currentCard) return; currentCard.user_starred=!currentCard.user_starred; renderCounts(); renderCard(); });
   on('btnSuspend','click', async ()=>{ if(!user||!currentCard) return; const newVal=!currentCard.author_suspended; const { error } = await supabase.from('cards').update({ author_suspended:newVal }).eq('id', currentCard.id); if(error){ alert(error.message); return; } currentCard.author_suspended=newVal; renderCard(); renderCounts(); });
-on('btnFeedback','click', async ()=>{
-  if(!currentCard){ alert('No card selected.'); return; }
-  if(!user){ alert('Please log in to send feedback.'); return; }
+// --- Feedback: minimal, RLS-safe handler using repo.saveFeedback ---
+on('btnFeedback', 'click', async () => {
+  if (!currentCard) { alert('No card selected.'); return; }
+  if (!user) { alert('Please log in to send feedback.'); return; }
 
-  const comment = prompt('Feedback for this card? (be as specific as possible)');
-  if(!comment) return;
+  const message = prompt('Feedback for this card? (be as specific as possible)');
+  if (!message) return;
 
-  const { error } = await repo.saveFeedback({
-    cardId: currentCard.id,
-    userId: user.id,
-    userEmail: user.email || null,   // <-- pass email
-    comment
-  });
+  try {
+    const { error } = await repo.saveFeedback({
+      cardId: currentCard.id,
+      userId: user.id,
+      comment: message
+    });
 
-  if(error){
-    console.error('[feedback.insert]', error);
-    alert('Sorry, feedback failed to save.');
-  }else{
+    if (error) {
+      console.error('[feedback] insert failed', error);
+      alert('Sorry, feedback failed to save: ' + (error.message || 'Unknown error'));
+      return;
+    }
+
     alert('Thanks! Your feedback was submitted.');
-    refreshFeedbackBadge?.(); // optional: bump badge immediately
+    // optional: refresh the admin badge if present
+    if (typeof refreshFeedbackBadge === 'function') {
+      refreshFeedbackBadge();
+    }
+  } catch (e) {
+    console.error('[feedback] unexpected error', e);
+    alert('Sorry, feedback failed to save (unexpected error).');
   }
 });
 }
