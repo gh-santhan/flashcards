@@ -1,4 +1,5 @@
 // main.js — hardened boot + tabs + editor actions
+import { ADMIN_EMAIL } from './config.js';
 import * as repo from './repo.js';
 
 import { supabase } from './supabaseClient.js';
