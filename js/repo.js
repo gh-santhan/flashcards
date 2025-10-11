@@ -215,6 +215,21 @@ export async function replaceCardTags(cardId, tagNames){
   return { error: null };
 }
 
+// --- Feedback helpers ---
+export async function fetchFeedbackOpenCount(){
+  // Try to get an exact count; if RLS blocks head counts, fall back to data length.
+  const { data, count, error } = await supabase
+    .from('card_feedback')
+    .select('id', { count: 'exact' })   // no head:true so we still get rows
+    .eq('status', 'open');
+
+  if (error) {
+    console.error('[fetchFeedbackOpenCount]', error);
+    return 0;
+  }
+  return (typeof count === 'number') ? count : (Array.isArray(data) ? data.length : 0);
+}
+
 /* ---------------- Feedback (admin) ---------------- */
 
 export async function fetchAllFeedback(){
