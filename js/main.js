@@ -192,6 +192,9 @@ if (saved?.cardId) {
 renderCounts();
 renderCard();
 buildEditorTablesSafe(); bindEditorActions(); bindAdminActions(); bindEditorSubTabs();
+  
+  // kick the admin feedback table (safe-guarded)
+if (typeof isAdmin === 'function' && isAdmin()) { try { await loadFeedbackAdmin(); } catch {} }
 }
 
 // ------- scope & counts -------
