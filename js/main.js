@@ -542,6 +542,61 @@ function bindStudyButtons(){
 }
 async function grade(level){ if(!currentCard||!user){ renderCounts(); return; } currentCard.user_grade=level; grades.set(currentCard.id, level); await upsertGrade(user.id, currentCard.id, level); renderCounts(); $('btnNext')?.click(); }
 
+// -- Feedback modal wiring (open + submit)
+(function setupFeedbackUI(){
+  const btn = document.getElementById('btnFeedback');
+  const modal = document.getElementById('fbModal');
+  const txt = document.getElementById('fbText');
+  const close = document.getElementById('fbClose');
+  const submit = document.getElementById('fbSubmit');
+
+  if(!btn || !modal || !txt || !submit){
+    console.warn('[feedback] UI pieces missing; skipping wiring');
+    return;
+  }
+
+  // Open modal
+  btn.addEventListener('click', ()=>{
+    if(!user){ alert('Please log in to submit feedback.'); return; }
+    txt.value = '';
+    modal.style.display = 'flex';
+  });
+
+  // Close modal
+  if(close && !close._bound){
+    close._bound = true;
+    close.addEventListener('click', ()=>{ modal.style.display='none'; });
+  }
+
+  // Submit
+  if(!submit._bound){
+    submit._bound = true;
+    submit.addEventListener('click', async ()=>{
+      if(!user){ alert('Please log in first.'); return; }
+      const c = currentCard;
+      const comment = (txt.value || '').trim();
+      if(!c){ alert('No card selected.'); return; }
+      if(!comment){ alert('Please write a comment.'); return; }
+
+      const { error } = await repo.saveFeedback({
+        cardId: c.id,
+        userId: user.id,
+        comment
+      });
+
+      if(error){
+        alert('Feedback not saved: ' + (error.message || 'Unknown error'));
+        return;
+      }
+
+      modal.style.display = 'none';
+      alert('Feedback submitted. Thank you!');
+      // refresh the admin badge count if admin
+      if (typeof refreshFeedbackBadge === 'function') refreshFeedbackBadge();
+    });
+  }
+})();
+
 function bindShortcuts(){
   document.addEventListener('keydown', (e)=>{
     // don’t trigger if a modal is open or user is typing
