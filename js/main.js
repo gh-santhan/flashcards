@@ -526,7 +526,7 @@ function bindStudyButtons(){
   on('gAgain','click', ()=>grade('again')); on('gHard','click', ()=>grade('hard')); on('gGood','click', ()=>grade('good')); on('gEasy','click', ()=>grade('easy'));
   on('btnStar','click', ()=>{ if(!currentCard) return; currentCard.user_starred=!currentCard.user_starred; renderCounts(); renderCard(); });
   on('btnSuspend','click', async ()=>{ if(!user||!currentCard) return; const newVal=!currentCard.author_suspended; const { error } = await supabase.from('cards').update({ author_suspended:newVal }).eq('id', currentCard.id); if(error){ alert(error.message); return; } currentCard.author_suspended=newVal; renderCard(); renderCounts(); });
- on('btnFeedback','click', async ()=>{
+on('btnFeedback','click', async ()=>{
   if(!currentCard){ alert('No card selected.'); return; }
   if(!user){ alert('Please log in to send feedback.'); return; }
 
@@ -536,7 +536,7 @@ function bindStudyButtons(){
   const { error } = await repo.saveFeedback({
     cardId: currentCard.id,
     userId: user.id,
-    userEmail: user.email || null,
+    userEmail: user.email || null,   // <-- pass email
     comment
   });
 
@@ -545,7 +545,7 @@ function bindStudyButtons(){
     alert('Sorry, feedback failed to save.');
   }else{
     alert('Thanks! Your feedback was submitted.');
-    refreshFeedbackBadge?.(); // optional: bump the badge immediately
+    refreshFeedbackBadge?.(); // optional: bump badge immediately
   }
 });
 }
