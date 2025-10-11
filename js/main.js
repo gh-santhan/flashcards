@@ -37,18 +37,6 @@ function isTypingInForm(){
   return tag === 'input' || tag === 'textarea' || tag === 'select' || ae.isContentEditable;
 }
 
-async function refreshFeedbackBadge(){
-  const el = document.getElementById('adminFeedbackBadge');
-  if(!el) return;
-
-  // show badge only for admin
-  const isAdmin = user && typeof ADMIN_EMAIL === 'string'
-    && (user.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase();
-  if(!isAdmin){
-    el.style.display = 'none';
-    return;
-  }
-
   // --- feedback badge updater ---
 async function refreshFeedbackBadge(){
   const el = document.getElementById('adminFeedbackBadge');
