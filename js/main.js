@@ -540,7 +540,9 @@ function bindStudyButtons(){
     status: 'open'
   };
 
-  const { error } = await supabase.from('card_feedback').insert(payload);
+  const { error } = await supabase
+  .from('card_feedback')
+  .insert(payload, { returning: 'minimal' }); // avoid SELECT after insert (RLS-safe)
   if (error) {
     console.error('[feedback.insert]', error);
     alert('Sorry, feedback failed to save.');
