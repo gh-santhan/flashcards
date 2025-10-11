@@ -37,6 +37,20 @@ function isTypingInForm(){
   return tag === 'input' || tag === 'textarea' || tag === 'select' || ae.isContentEditable;
 }
 
+// Show the count of open feedback items in the header badge
+async function refreshFeedbackBadge(){
+  try{
+    const n = await repo.fetchFeedbackOpenCount(); // from repo.js
+    const el = document.getElementById('fbBadge');
+    if(el){
+      el.textContent = String(n);
+      el.style.display = 'inline-block'; // ensure visible even when 0
+    }
+  }catch(e){
+    console.error('[refreshFeedbackBadge]', e);
+  }
+}
+
 // --- study state persistence ---
 const STATE_KEY = 'study.state.v1';
 function saveStudyState() {
