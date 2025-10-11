@@ -1004,68 +1004,6 @@ function bindAdminActions(){
   });
 }
 
-// --- Admin: load + render feedback list ---
-async function loadFeedbackAdmin(){
-  // only render if Admin UI exists (and only for admins)
-  const tbody = document.querySelector('#tblFeedback tbody');
-  const summary = document.getElementById('fbSummary');
-  if (!tbody || !summary) return;
-  if (typeof isAdmin === 'function' && !isAdmin()) return;
-
-  // fetch
-  let items = [];
-  try {
-    items = await repo.listFeedback(); // [{ id, created_at, status, message, user_email, card_id, card_front }]
-  } catch (e) {
-    console.error('[feedback] list failed', e);
-    summary.textContent = 'Failed to load feedback.';
-    return;
-  }
-
-  // render summary
-  summary.textContent = items.length ? `${items.length} feedback item(s)` : 'No feedback yet.';
-
-  // render rows
-  const fmt = (iso)=> new Date(iso).toLocaleString();
-  tbody.innerHTML = items.map(f => `
-    <tr data-id="${f.id}">
-      <td class="small">${fmt(f.created_at)}</td>
-      <td class="small">${(f.card_front||'(No preview)').replace(/</g,'&lt;').slice(0,140)}${(f.card_front||'').length>140?'…':''}
-        <div class="small" style="color:#a9a9a9; margin-top:4px">${(f.message||'').replace(/</g,'&lt;')}</div>
-      </td>
-      <td class="small">${(f.user_email||'—').replace(/</g,'&lt;')}</td>
-      <td class="small">${f.status||'open'}</td>
-      <td class="small">
-        <button class="ghost fb-toggle" data-id="${f.id}" data-status="${f.status||'open'}">
-          ${ (f.status||'open') === 'open' ? 'Mark Resolved' : 'Reopen' }
-        </button>
-      </td>
-    </tr>
-  `).join('');
-
-  // delegate: toggle status
-  const table = document.getElementById('tblFeedback');
-  if (table && !table._fbBound){
-    table.addEventListener('click', async (e)=>{
-      const btn = e.target.closest('.fb-toggle');
-      if(!btn) return;
-      const id = btn.dataset.id;
-      const curr = btn.dataset.status || 'open';
-      const next = curr === 'open' ? 'resolved' : 'open';
-      btn.disabled = true;
-      try{
-        const { error } = await repo.updateFeedback(id, { status: next });
-        if (error) { alert('Update failed: '+error.message); btn.disabled = false; return; }
-        await loadFeedbackAdmin(); // re-render
-      }catch(err){
-        console.error('[feedback] toggle failed', err);
-        btn.disabled = false;
-      }
-    });
-    table._fbBound = true;
-  }
-}
-
 // ------- boot -------
 async function boot(){
   try{
