@@ -1016,64 +1016,56 @@ async function loadFeedbackAdmin(){
     `;
   }).join('');
 
- // Delegate: open card / toggle status (bind once)
+// Delegate: open card + toggle status (bind once)
 const table = document.getElementById('tblFeedback');
-if (table && !table._fbBound){
-  table.addEventListener('click', async (e)=>{
+if (table && !table._fbBound) {
+  table.addEventListener('click', async (e) => {
     // 1) Open Card
     const openBtn = e.target.closest('.fb-open');
-    if (openBtn){
+    if (openBtn) {
       const cardId = openBtn.dataset.card;
-      const card = (Array.isArray(cards) ? cards : []).find(c => c.id === cardId);
-      if (!card){ alert('Card not found'); return; }
-
-      // switch to Study tab
-      document.querySelector('#headerTabs .tab[data-tab="study"]')?.click();
-
-      // show all cards, then jump to this one
-      scope = { chapter:null, topic:null, mix:false, diff:null, starred:false };
-      rebuildOrder();
-      const pos = pool.findIndex(c => c.id === cardId);
-      if (pos >= 0){ idx = pos; renderCounts(); renderCard(); }
-
-      // open edit modal for this card
-      handleEditClick();
+      if (!cardId) return;
+      // jump to study tab & show the card
+      const tabsWrap = document.getElementById('headerTabs');
+      tabsWrap?.querySelector('[data-tab="study"]')?.click();
+      const pos = (pool || []).findIndex(c => c.id === cardId);
+      if (pos >= 0) { idx = pos; renderCard(); }
       return;
     }
 
     // 2) Toggle status
-const btn = e.target.closest('.fb-toggle');
-if(!btn) return;
+    const btn = e.target.closest('.fb-toggle');
+    if (!btn) return;
 
-const id = btn.dataset.id;
-const curr = (btn.dataset.status || 'open').toLowerCase();
-const next = curr === 'open' ? 'resolved' : 'open';
+    const id = btn.dataset.id;
+    const curr = (btn.dataset.status || 'open').toLowerCase();
+    const next = curr === 'open' ? 'resolved' : 'open';
 
-btn.disabled = true;
-try{
-  const { error } = await repo.updateFeedback(id, { status: next });
-  if (error) { alert('Update failed: ' + error.message); return; }
+    btn.disabled = true;
+    try {
+      const { error } = await repo.updateFeedback(id, { status: next });
+      if (error) { alert('Update failed: ' + error.message); return; }
 
-  // Update this row in-place (no full reload)
-  const tr = btn.closest('tr');
-  if (tr){
-    // update the Status cell (5th td)
-    const cells = tr.querySelectorAll('td');
-    if (cells[4]) cells[4].textContent = next;
+      // Update row in-place
+      const tr = btn.closest('tr');
+      if (tr) {
+        const cells = tr.querySelectorAll('td');
+        if (cells[4]) cells[4].textContent = next;            // Status column
+        btn.dataset.status = next;
+        btn.textContent = next === 'open' ? 'Mark Resolved' : 'Reopen';
+      }
 
-    // update button label + data-status
-    btn.dataset.status = next;
-    btn.textContent = next === 'open' ? 'Mark Resolved' : 'Reopen';
-  }
-
-  // refresh the header badge count
-  if (typeof refreshFeedbackBadge === 'function') {
-    refreshFeedbackBadge();
-  }
-} catch(err){
-  console.error('[feedback] toggle failed', err);
-} finally {
-  btn.disabled = false;
+      // Refresh header badge
+      if (typeof refreshFeedbackBadge === 'function') {
+        refreshFeedbackBadge();
+      }
+    } catch (err) {
+      console.error('[feedback] toggle failed', err);
+    } finally {
+      btn.disabled = false;
+    }
+  });
+  table._fbBound = true;
 }
 }
 
