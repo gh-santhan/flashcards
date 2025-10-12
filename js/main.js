@@ -1039,7 +1039,7 @@ async function loadFeedbackAdmin(){
       }catch(err){
         console.error('[feedback] toggle failed', err);
         btn.disabled = false;
-    });
+    );
     table._fbBound = true;
   }
 }
