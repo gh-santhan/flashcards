@@ -1015,12 +1015,6 @@ async function loadFeedbackAdmin(){
       </tr>
     `;
   }).join('');
-}
-
-
-
-
-  // (Keep any existing delegate binding for .fb-toggle elsewhere; we'll wire .fb-open next.)
 
   // Delegate: toggle status (bind once)
   const table = document.getElementById('tblFeedback');
@@ -1028,18 +1022,22 @@ async function loadFeedbackAdmin(){
     table.addEventListener('click', async (e)=>{
       const btn = e.target.closest('.fb-toggle');
       if(!btn) return;
+
       const id = btn.dataset.id;
       const curr = btn.dataset.status || 'open';
       const next = curr === 'open' ? 'resolved' : 'open';
+
       btn.disabled = true;
       try{
         const { error } = await repo.updateFeedback(id, { status: next });
-        if (error) { alert('Update failed: '+error.message); btn.disabled = false; return; }
+        if (error) { alert('Update failed: ' + error.message); return; }
         await loadFeedbackAdmin(); // re-render after update
       }catch(err){
         console.error('[feedback] toggle failed', err);
+      } finally {
         btn.disabled = false;
-      };
+      }
+    });
     table._fbBound = true;
   }
 }
