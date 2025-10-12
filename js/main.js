@@ -1020,36 +1020,32 @@ async function loadFeedbackAdmin(){
 const table = document.getElementById('tblFeedback');
 if (table) {
   // Remove old handler if present, then attach a fresh one
-  if (table._fbHandler) table.removeEventListener('click', table._fbHandler);
+  if (table._fbHandler) {
+    table.removeEventListener('click', table._fbHandler);
+    console.log('[fb] removed previous handler');
+  }
 
   table._fbHandler = async function (e) {
+    console.log('[fb] table click seen', e.target);
     const target = e.target instanceof Element ? e.target : null;
     if (!target) return;
 
     // OPEN CARD
     const openBtn = target.closest('.fb-open');
     if (openBtn) {
+      console.log('[fb] open-card clicked for card', openBtn.dataset.card);
       e.preventDefault();
       const cardId = openBtn.dataset.card;
       if (!cardId) return;
 
       try {
-        // switch to Study tab
         document.querySelector('#headerTabs .tab[data-tab="study"]')?.click();
-
-        // rebuild pool so the card is addressable
         pool  = cards.filter(c => visibleToLearner(c));
         order = pool.map((_, i) => i);
-
-        // jump to that card
         const p = pool.findIndex(c => c.id === cardId);
         idx = p >= 0 ? p : 0;
-
         renderCounts();
         renderCard();
-
-        // (optional) auto-open edit modal:
-        // handleEditClick();
       } catch (err) {
         console.error('[fb] open failed', err);
         alert('Could not open the card from feedback.');
@@ -1060,6 +1056,7 @@ if (table) {
     // TOGGLE STATUS
     const toggleBtn = target.closest('.fb-toggle');
     if (toggleBtn) {
+      console.log('[fb] toggle-status clicked for id', toggleBtn.dataset.id);
       e.preventDefault();
       const id   = toggleBtn.dataset.id;
       const curr = toggleBtn.dataset.status || 'open';
@@ -1073,7 +1070,6 @@ if (table) {
           console.error('[fb] update error', error);
           alert('Update failed: ' + error.message);
         } else {
-          // Re-render table and refresh the badge
           await loadFeedbackAdmin();
           if (typeof refreshFeedbackBadge === 'function') refreshFeedbackBadge();
         }
@@ -1086,7 +1082,9 @@ if (table) {
   };
 
   table.addEventListener('click', table._fbHandler);
+  console.log('[fb] handler attached to #tblFeedback');
 }
+  
 }
 
 
