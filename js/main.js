@@ -1016,11 +1016,14 @@ async function loadFeedbackAdmin(){
     `;
   }).join('');
 
-// Delegate: open card + toggle status (bind once)
+// Delegate: Open Card + Toggle Status (bind exactly once)
 const table = document.getElementById('tblFeedback');
-if (table && !table._fbBound) {
-  table.addEventListener('click', async (e) => {
-    // 1) Open card
+if (table) {
+  // Remove old handler if present, then attach fresh one
+  if (table._fbHandler) table.removeEventListener('click', table._fbHandler);
+
+  table._fbHandler = async function(e) {
+    // 1) Open Card
     const openBtn = e.target.closest('.fb-open');
     if (openBtn) {
       const cardId = openBtn.dataset.card;
@@ -1028,7 +1031,7 @@ if (table && !table._fbBound) {
         // switch to Study tab
         document.querySelector('#headerTabs .tab[data-tab="study"]')?.click();
 
-        // rebuild pool to include all visible-to-learner cards
+        // rebuild pool to include all visible cards
         pool = cards.filter(c => visibleToLearner(c));
         order = pool.map((_, i) => i);
 
@@ -1039,35 +1042,40 @@ if (table && !table._fbBound) {
         renderCounts();
         renderCard();
 
-        // optionally open edit modal right away:
+        // (optional) auto-open edit modal:
         // handleEditClick();
       } catch (err) {
         console.error('[feedback] open card failed', err);
         alert('Could not open the card from feedback.');
       }
-      return; // IMPORTANT: don’t fall through to toggle handler
+      return; // don’t fall through to toggle
     }
 
-    // 2) Toggle status
+    // 2) Toggle Status
     const toggleBtn = e.target.closest('.fb-toggle');
     if (toggleBtn) {
-      const id = toggleBtn.dataset.id;
+      const id   = toggleBtn.dataset.id;
       const curr = toggleBtn.dataset.status || 'open';
       const next = curr === 'open' ? 'resolved' : 'open';
+
       toggleBtn.disabled = true;
       try {
         const { error } = await repo.updateFeedback(id, { status: next });
-        if (error) { alert('Update failed: ' + error.message); return; }
-        await loadFeedbackAdmin();         // re-render table
-        refreshFeedbackBadge();            // refresh header badge
+        if (error) {
+          alert('Update failed: ' + error.message);
+        } else {
+          await loadFeedbackAdmin();  // re-render table
+          refreshFeedbackBadge();     // refresh header badge
+        }
       } catch (err) {
         console.error('[feedback] toggle failed', err);
       } finally {
         toggleBtn.disabled = false;
       }
     }
-  });
-  table._fbBound = true;
+  };
+
+  table.addEventListener('click', table._fbHandler);
 }
 }
 
