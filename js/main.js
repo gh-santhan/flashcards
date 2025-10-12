@@ -1042,25 +1042,38 @@ if (table && !table._fbBound){
     }
 
     // 2) Toggle status
-    const btn = e.target.closest('.fb-toggle');
-    if(!btn) return;
+const btn = e.target.closest('.fb-toggle');
+if(!btn) return;
 
-    const id = btn.dataset.id;
-    const curr = btn.dataset.status || 'open';
-    const next = curr === 'open' ? 'resolved' : 'open';
+const id = btn.dataset.id;
+const curr = (btn.dataset.status || 'open').toLowerCase();
+const next = curr === 'open' ? 'resolved' : 'open';
 
-    btn.disabled = true;
-    try{
-      const { error } = await repo.updateFeedback(id, { status: next });
-      if (error) { alert('Update failed: ' + error.message); return; }
-      await loadFeedbackAdmin(); // re-render after update
-    }catch(err){
-      console.error('[feedback] toggle failed', err);
-    } finally {
-      btn.disabled = false;
-    }
-  });
-  table._fbBound = true;
+btn.disabled = true;
+try{
+  const { error } = await repo.updateFeedback(id, { status: next });
+  if (error) { alert('Update failed: ' + error.message); return; }
+
+  // Update this row in-place (no full reload)
+  const tr = btn.closest('tr');
+  if (tr){
+    // update the Status cell (5th td)
+    const cells = tr.querySelectorAll('td');
+    if (cells[4]) cells[4].textContent = next;
+
+    // update button label + data-status
+    btn.dataset.status = next;
+    btn.textContent = next === 'open' ? 'Mark Resolved' : 'Reopen';
+  }
+
+  // refresh the header badge count
+  if (typeof refreshFeedbackBadge === 'function') {
+    refreshFeedbackBadge();
+  }
+} catch(err){
+  console.error('[feedback] toggle failed', err);
+} finally {
+  btn.disabled = false;
 }
 }
 
