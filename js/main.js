@@ -1031,27 +1031,37 @@ if (table) {
     if (!target) return;
 
     // OPEN CARD
-    const openBtn = target.closest('.fb-open');
-    if (openBtn) {
-      console.log('[fb] open-card clicked for card', openBtn.dataset.card);
-      e.preventDefault();
-      const cardId = openBtn.dataset.card;
-      if (!cardId) return;
+    // 1) Open Card
+const openBtn = target.closest('.fb-open');
+if (openBtn) {
+  e.preventDefault();
+  const cardId = openBtn.dataset.card;
+  if (!cardId) return;
 
-      try {
-        document.querySelector('#headerTabs .tab[data-tab="study"]')?.click();
-        pool  = cards.filter(c => visibleToLearner(c));
-        order = pool.map((_, i) => i);
-        const p = pool.findIndex(c => c.id === cardId);
-        idx = p >= 0 ? p : 0;
-        renderCounts();
-        renderCard();
-      } catch (err) {
-        console.error('[fb] open failed', err);
-        alert('Could not open the card from feedback.');
-      }
-      return; // don't fall through
-    }
+  try {
+    // Force switch to Study tab (don’t rely on a click)
+    document.querySelector('#headerTabs .tab.on')?.classList.remove('on');
+    document.querySelector('#headerTabs .tab[data-tab="study"]')?.classList.add('on');
+    ['study','editor','admin'].forEach(k=>{
+      const sec = document.getElementById('tab-'+k);
+      if (sec) sec.style.display = (k==='study') ? 'block' : 'none';
+    });
+
+    // Build a fresh pool that ignores any filters and jump to the card
+    pool  = cards.filter(c => visibleToLearner(c));
+    order = pool.map((_, i) => i);
+    const p = pool.findIndex(c => c.id === cardId);
+    idx = p >= 0 ? p : 0;
+
+    renderCounts();
+    renderCard();
+    window.scrollTo(0,0); // bring the card into view
+  } catch (err) {
+    console.error('[fb] open failed', err);
+    alert('Could not open the card from feedback.');
+  }
+  return; // don’t fall through
+}
 
     // TOGGLE STATUS
     const toggleBtn = target.closest('.fb-toggle');
