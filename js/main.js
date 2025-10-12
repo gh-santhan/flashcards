@@ -1019,72 +1019,67 @@ async function loadFeedbackAdmin(){
 // Delegate: Open Card + Toggle Status (bind exactly once)
 const table = document.getElementById('tblFeedback');
 if (table) {
-  // Remove old handler if present, then attach a fresh one
+  // remove any previous handler, then attach a fresh one
   if (table._fbHandler) {
-    table.removeEventListener('click', table._fbHandler);
     console.log('[fb] removed previous handler');
+    table.removeEventListener('click', table._fbHandler);
   }
 
   table._fbHandler = async function (e) {
-    console.log('[fb] table click seen', e.target);
-    const target = e.target instanceof Element ? e.target : null;
+    const target = e.target;                 // <— ensure we have a target
     if (!target) return;
+    console.log('[fb] table click seen', target.closest('button'));
 
-    // OPEN CARD
     // 1) Open Card
-const openBtn = target.closest('.fb-open');
-if (openBtn) {
-  e.preventDefault();
-  const cardId = openBtn.dataset.card;
-  if (!cardId) return;
+    const openBtn = target.closest('.fb-open');
+    if (openBtn) {
+      e.preventDefault();
+      const cardId = openBtn.dataset.card;
+      console.log('[fb] open-card clicked for card', cardId);
+      if (!cardId) return;
 
-  try {
-    // Force switch to Study tab (don’t rely on a click)
-    document.querySelector('#headerTabs .tab.on')?.classList.remove('on');
-    document.querySelector('#headerTabs .tab[data-tab="study"]')?.classList.add('on');
-    ['study','editor','admin'].forEach(k=>{
-      const sec = document.getElementById('tab-'+k);
-      if (sec) sec.style.display = (k==='study') ? 'block' : 'none';
-    });
+      try {
+        // Hard switch to Study tab (no reliance on .click())
+        document.querySelector('#headerTabs .tab.on')?.classList.remove('on');
+        document.querySelector('#headerTabs .tab[data-tab="study"]')?.classList.add('on');
+        ['study', 'editor', 'admin'].forEach(k => {
+          const sec = document.getElementById('tab-' + k);
+          if (sec) sec.style.display = (k === 'study') ? 'block' : 'none';
+        });
 
-    // Build a fresh pool that ignores any filters and jump to the card
-    pool  = cards.filter(c => visibleToLearner(c));
-    order = pool.map((_, i) => i);
-    const p = pool.findIndex(c => c.id === cardId);
-    idx = p >= 0 ? p : 0;
+        // Build pool ignoring filters and jump to the card
+        pool  = cards.filter(c => visibleToLearner(c));
+        order = pool.map((_, i) => i);
+        const p = pool.findIndex(c => c.id === cardId);
+        idx = (p >= 0) ? p : 0;
 
-    renderCounts();
-    renderCard();
-    window.scrollTo(0,0); // bring the card into view
-  } catch (err) {
-    console.error('[fb] open failed', err);
-    alert('Could not open the card from feedback.');
-  }
-  return; // don’t fall through
-}
+        renderCounts();
+        renderCard();
+        window.scrollTo(0, 0);
+      } catch (err) {
+        console.error('[fb] open failed', err);
+        alert('Could not open the card from feedback.');
+      }
+      return; // don’t fall through
+    }
 
-    // TOGGLE STATUS
+    // 2) Toggle Status
     const toggleBtn = target.closest('.fb-toggle');
     if (toggleBtn) {
-      console.log('[fb] toggle-status clicked for id', toggleBtn.dataset.id);
-      e.preventDefault();
       const id   = toggleBtn.dataset.id;
       const curr = toggleBtn.dataset.status || 'open';
-      const next = curr === 'open' ? 'resolved' : 'open';
-      if (!id) return;
+      const next = (curr === 'open') ? 'resolved' : 'open';
+      console.log('[fb] toggle-status clicked for id', id, '->', next);
 
       toggleBtn.disabled = true;
       try {
         const { error } = await repo.updateFeedback(id, { status: next });
         if (error) {
-          console.error('[fb] update error', error);
           alert('Update failed: ' + error.message);
         } else {
-          // success
-await loadFeedbackAdmin();  // re-render table
-if (typeof refreshFeedbackBadge === 'function') refreshFeedbackBadge();
-// subtle cue
-console.log('[fb] status updated');
+          await loadFeedbackAdmin();                // re-render table
+          if (typeof refreshFeedbackBadge === 'function') refreshFeedbackBadge();
+          console.log('[fb] status updated');
         }
       } catch (err) {
         console.error('[fb] toggle failed', err);
