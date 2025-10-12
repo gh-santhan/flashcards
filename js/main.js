@@ -1015,6 +1015,10 @@ async function loadFeedbackAdmin(){
       </tr>
     `;
   }).join('');
+}
+
+
+
 
   // (Keep any existing delegate binding for .fb-toggle elsewhere; we'll wire .fb-open next.)
 }
