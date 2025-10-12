@@ -1021,7 +1021,6 @@ async function loadFeedbackAdmin(){
 
 
   // (Keep any existing delegate binding for .fb-toggle elsewhere; we'll wire .fb-open next.)
-}
 
   // Delegate: toggle status (bind once)
   const table = document.getElementById('tblFeedback');
