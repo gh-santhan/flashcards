@@ -1030,38 +1030,39 @@ if (table) {
     if (!target) return;
     console.log('[fb] table click seen', target.closest('button'));
 
-    // 1) Open Card
-    const openBtn = target.closest('.fb-open');
-    if (openBtn) {
-      e.preventDefault();
-      const cardId = openBtn.dataset.card;
-      console.log('[fb] open-card clicked for card', cardId);
-      if (!cardId) return;
+   // 1) Open Card
+const openBtn = target.closest('.fb-open');
+if (openBtn) {
+  e.preventDefault();
+  const cardId = openBtn.dataset.card;
+  if (!cardId) return;
 
-      try {
-        // Hard switch to Study tab (no reliance on .click())
-        document.querySelector('#headerTabs .tab.on')?.classList.remove('on');
-        document.querySelector('#headerTabs .tab[data-tab="study"]')?.classList.add('on');
-        ['study', 'editor', 'admin'].forEach(k => {
-          const sec = document.getElementById('tab-' + k);
-          if (sec) sec.style.display = (k === 'study') ? 'block' : 'none';
-        });
+  try {
+    // switch to Study tab (no reliance on .click())
+    document.querySelector('#headerTabs .tab.on')?.classList.remove('on');
+    document.querySelector('#headerTabs .tab[data-tab="study"]')?.classList.add('on');
+    ['study','editor','admin'].forEach(k=>{
+      const sec=document.getElementById('tab-'+k);
+      if (sec) sec.style.display = (k==='study')?'block':'none';
+    });
 
-        // Build pool ignoring filters and jump to the card
-        pool  = cards.filter(c => visibleToLearner(c));
-        order = pool.map((_, i) => i);
-        const p = pool.findIndex(c => c.id === cardId);
-        idx = (p >= 0) ? p : 0;
+    // build pool + jump
+    pool  = cards.filter(c => visibleToLearner(c));
+    order = pool.map((_,i)=>i);
+    const p = pool.findIndex(c => c.id === cardId);
+    idx = (p>=0) ? p : 0;
 
-        renderCounts();
-        renderCard();
-        window.scrollTo(0, 0);
-      } catch (err) {
-        console.error('[fb] open failed', err);
-        alert('Could not open the card from feedback.');
-      }
-      return; // don’t fall through
-    }
+    renderCounts();
+    renderCard();
+
+    // 👉 open the editor for this card
+    handleEditClick();
+  } catch (err) {
+    console.error('[fb] open failed', err);
+    alert('Could not open the card from feedback.');
+  }
+  return; // don’t fall through
+}
 
     // 2) Toggle Status
     const toggleBtn = target.closest('.fb-toggle');
