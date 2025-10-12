@@ -1020,49 +1020,51 @@ async function loadFeedbackAdmin(){
 const table = document.getElementById('tblFeedback');
 if (table && !table._fbBound) {
   table.addEventListener('click', async (e) => {
-    // 1) Open Card
+    // 1) Open card
     const openBtn = e.target.closest('.fb-open');
     if (openBtn) {
       const cardId = openBtn.dataset.card;
-      if (!cardId) return;
-      // jump to study tab & show the card
-      const tabsWrap = document.getElementById('headerTabs');
-      tabsWrap?.querySelector('[data-tab="study"]')?.click();
-      const pos = (pool || []).findIndex(c => c.id === cardId);
-      if (pos >= 0) { idx = pos; renderCard(); }
-      return;
+      try {
+        // switch to Study tab
+        document.querySelector('#headerTabs .tab[data-tab="study"]')?.click();
+
+        // rebuild pool to include all visible-to-learner cards
+        pool = cards.filter(c => visibleToLearner(c));
+        order = pool.map((_, i) => i);
+
+        // jump to the card
+        const p = pool.findIndex(c => c.id === cardId);
+        idx = p >= 0 ? p : 0;
+
+        renderCounts();
+        renderCard();
+
+        // optionally open edit modal right away:
+        // handleEditClick();
+      } catch (err) {
+        console.error('[feedback] open card failed', err);
+        alert('Could not open the card from feedback.');
+      }
+      return; // IMPORTANT: don’t fall through to toggle handler
     }
 
     // 2) Toggle status
-    const btn = e.target.closest('.fb-toggle');
-    if (!btn) return;
-
-    const id = btn.dataset.id;
-    const curr = (btn.dataset.status || 'open').toLowerCase();
-    const next = curr === 'open' ? 'resolved' : 'open';
-
-    btn.disabled = true;
-    try {
-      const { error } = await repo.updateFeedback(id, { status: next });
-      if (error) { alert('Update failed: ' + error.message); return; }
-
-      // Update row in-place
-      const tr = btn.closest('tr');
-      if (tr) {
-        const cells = tr.querySelectorAll('td');
-        if (cells[4]) cells[4].textContent = next;            // Status column
-        btn.dataset.status = next;
-        btn.textContent = next === 'open' ? 'Mark Resolved' : 'Reopen';
+    const toggleBtn = e.target.closest('.fb-toggle');
+    if (toggleBtn) {
+      const id = toggleBtn.dataset.id;
+      const curr = toggleBtn.dataset.status || 'open';
+      const next = curr === 'open' ? 'resolved' : 'open';
+      toggleBtn.disabled = true;
+      try {
+        const { error } = await repo.updateFeedback(id, { status: next });
+        if (error) { alert('Update failed: ' + error.message); return; }
+        await loadFeedbackAdmin();         // re-render table
+        refreshFeedbackBadge();            // refresh header badge
+      } catch (err) {
+        console.error('[feedback] toggle failed', err);
+      } finally {
+        toggleBtn.disabled = false;
       }
-
-      // Refresh header badge
-      if (typeof refreshFeedbackBadge === 'function') {
-        refreshFeedbackBadge();
-      }
-    } catch (err) {
-      console.error('[feedback] toggle failed', err);
-    } finally {
-      btn.disabled = false;
     }
   });
   table._fbBound = true;
