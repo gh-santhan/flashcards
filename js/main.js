@@ -1086,6 +1086,18 @@ if (toggleBtn) {
       toggleBtn.dataset.status = curr;
       alert('Update failed: ' + error.message);
     } else {
+
+      // reflect change immediately in the current row
+const row = toggleBtn.closest('tr');
+if (row) {
+  // Status column is the 5th <td>
+  const statusCell = row.querySelector('td:nth-child(5)');
+  if (statusCell) statusCell.textContent = next;
+
+  // Update the button label + dataset
+  toggleBtn.dataset.status = next;
+  toggleBtn.textContent = (next === 'open') ? 'Mark Resolved' : 'Reopen';
+}
       // re-render and refresh badge on success
       await loadFeedbackAdmin();
       if (typeof refreshFeedbackBadge === 'function') refreshFeedbackBadge();
