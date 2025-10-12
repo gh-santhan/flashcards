@@ -1080,8 +1080,11 @@ if (openBtn) {
           console.error('[fb] update error', error);
           alert('Update failed: ' + error.message);
         } else {
-          await loadFeedbackAdmin();
-          if (typeof refreshFeedbackBadge === 'function') refreshFeedbackBadge();
+          // success
+await loadFeedbackAdmin();  // re-render table
+if (typeof refreshFeedbackBadge === 'function') refreshFeedbackBadge();
+// subtle cue
+console.log('[fb] status updated');
         }
       } catch (err) {
         console.error('[fb] toggle failed', err);
