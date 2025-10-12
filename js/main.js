@@ -1019,23 +1019,29 @@ async function loadFeedbackAdmin(){
 // Delegate: Open Card + Toggle Status (bind exactly once)
 const table = document.getElementById('tblFeedback');
 if (table) {
-  // Remove old handler if present, then attach fresh one
+  // Remove old handler if present, then attach a fresh one
   if (table._fbHandler) table.removeEventListener('click', table._fbHandler);
 
-  table._fbHandler = async function(e) {
-    // 1) Open Card
-    const openBtn = e.target.closest('.fb-open');
+  table._fbHandler = async function (e) {
+    const target = e.target instanceof Element ? e.target : null;
+    if (!target) return;
+
+    // OPEN CARD
+    const openBtn = target.closest('.fb-open');
     if (openBtn) {
+      e.preventDefault();
       const cardId = openBtn.dataset.card;
+      if (!cardId) return;
+
       try {
         // switch to Study tab
         document.querySelector('#headerTabs .tab[data-tab="study"]')?.click();
 
-        // rebuild pool to include all visible cards
-        pool = cards.filter(c => visibleToLearner(c));
+        // rebuild pool so the card is addressable
+        pool  = cards.filter(c => visibleToLearner(c));
         order = pool.map((_, i) => i);
 
-        // jump to the card
+        // jump to that card
         const p = pool.findIndex(c => c.id === cardId);
         idx = p >= 0 ? p : 0;
 
@@ -1045,30 +1051,34 @@ if (table) {
         // (optional) auto-open edit modal:
         // handleEditClick();
       } catch (err) {
-        console.error('[feedback] open card failed', err);
+        console.error('[fb] open failed', err);
         alert('Could not open the card from feedback.');
       }
-      return; // don’t fall through to toggle
+      return; // don't fall through
     }
 
-    // 2) Toggle Status
-    const toggleBtn = e.target.closest('.fb-toggle');
+    // TOGGLE STATUS
+    const toggleBtn = target.closest('.fb-toggle');
     if (toggleBtn) {
+      e.preventDefault();
       const id   = toggleBtn.dataset.id;
       const curr = toggleBtn.dataset.status || 'open';
       const next = curr === 'open' ? 'resolved' : 'open';
+      if (!id) return;
 
       toggleBtn.disabled = true;
       try {
         const { error } = await repo.updateFeedback(id, { status: next });
         if (error) {
+          console.error('[fb] update error', error);
           alert('Update failed: ' + error.message);
         } else {
-          await loadFeedbackAdmin();  // re-render table
-          refreshFeedbackBadge();     // refresh header badge
+          // Re-render table and refresh the badge
+          await loadFeedbackAdmin();
+          if (typeof refreshFeedbackBadge === 'function') refreshFeedbackBadge();
         }
       } catch (err) {
-        console.error('[feedback] toggle failed', err);
+        console.error('[fb] toggle failed', err);
       } finally {
         toggleBtn.disabled = false;
       }
