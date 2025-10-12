@@ -1100,9 +1100,12 @@ if (toggleBtn) {
     toggleBtn.disabled = false;
   }
   return;
+}  
+};
+  table.addEventListener('click', table._fbHandler);
+  console.log('[fb] handler attached to #tblFeedback');
 }
-  
-}
+} // <— closes async function loadFeedbackAdmin
 
 
 // ------- admin actions (template & LLM prompt) -------
