@@ -1064,34 +1064,42 @@ if (openBtn) {
   return; // don’t fall through
 }
 
-    // 2) Toggle Status
-    const toggleBtn = target.closest('.fb-toggle');
-    if (toggleBtn) {
-      const id   = toggleBtn.dataset.id;
-      const curr = toggleBtn.dataset.status || 'open';
-      const next = (curr === 'open') ? 'resolved' : 'open';
-      console.log('[fb] toggle-status clicked for id', id, '->', next);
+// 2) Toggle Status
+const toggleBtn = target.closest('.fb-toggle');
+if (toggleBtn) {
+  const id   = toggleBtn.dataset.id;
+  const curr = toggleBtn.dataset.status || 'open';
+  const next = (curr === 'open') ? 'resolved' : 'open';
+  console.log('[fb] toggle-status clicked for id', id, '->', next);
 
-      toggleBtn.disabled = true;
-      try {
-        const { error } = await repo.updateFeedback(id, { status: next });
-        if (error) {
-          alert('Update failed: ' + error.message);
-        } else {
-          await loadFeedbackAdmin();                // re-render table
-          if (typeof refreshFeedbackBadge === 'function') refreshFeedbackBadge();
-          console.log('[fb] status updated');
-        }
-      } catch (err) {
-        console.error('[fb] toggle failed', err);
-      } finally {
-        toggleBtn.disabled = false;
-      }
+  // Optimistic UI hint
+  toggleBtn.disabled = true;
+  const originalLabel = toggleBtn.textContent;
+  toggleBtn.textContent = (next === 'resolved') ? 'Reopen' : 'Mark Resolved';
+  toggleBtn.dataset.status = next;
+
+  try {
+    const { error } = await repo.updateFeedback(id, { status: next });
+    if (error) {
+      // rollback UI on failure
+      toggleBtn.textContent = originalLabel;
+      toggleBtn.dataset.status = curr;
+      alert('Update failed: ' + error.message);
+    } else {
+      // re-render and refresh badge on success
+      await loadFeedbackAdmin();
+      if (typeof refreshFeedbackBadge === 'function') refreshFeedbackBadge();
+      console.log('[fb] status updated');
     }
-  };
-
-  table.addEventListener('click', table._fbHandler);
-  console.log('[fb] handler attached to #tblFeedback');
+  } catch (err) {
+    // rollback UI on exception
+    toggleBtn.textContent = originalLabel;
+    toggleBtn.dataset.status = curr;
+    console.error('[fb] toggle failed', err);
+  } finally {
+    toggleBtn.disabled = false;
+  }
+  return;
 }
   
 }
