@@ -543,13 +543,6 @@ function renderCard(){
   if(starBtn) starBtn.textContent = c.user_starred?'★ Unstar':'☆ Star';
   if(suspBtn) suspBtn.textContent = c.author_suspended?'▶ Unsuspend':'⏸ Suspend';
 
-// --- bind: card action buttons (UI-only handlers) ---
-(function bindCardActions(){
-  const e = document.getElementById('btnEditCard');
-  const d = document.getElementById('btnDeleteCard');
-  if(e && !e._bound){ e._bound = true; e.addEventListener('click', handleEditClick); }
-  if(d && !d._bound){ d._bound = true; d.addEventListener('click', handleDeleteClick); }
-})();
   saveStudyState();
 }
 function renderResources(c){
@@ -1254,6 +1247,20 @@ on('btnImport', async () => {
   on('btnLoadFeedback','click', () => { loadFeedbackAdmin(); });
 }
 
+// Bind Edit/Delete buttons exactly once (no rebinding per render)
+function bindCardActionButtonsOnce(){
+  const edit = document.getElementById('btnEditCard');
+  if (edit && !edit._bound) {
+    edit.addEventListener('click', handleEditClick);
+    edit._bound = true;
+  }
+  const del = document.getElementById('btnDeleteCard');
+  if (del && !del._bound) {
+    del.addEventListener('click', handleDeleteClick);
+    del._bound = true;
+  }
+}
+
 // ------- boot -------
 async function boot(){
   try{
@@ -1261,12 +1268,14 @@ async function boot(){
     bindTabs();
     bindStudyButtons();
     bindShortcuts();
+    bindCardActionButtonsOnce();   // one-time bind for Edit/Delete buttons
     bindSearch();
     bindFeedbackUI();
-    await initAuth();
-    await initializeData();
-    await refreshFeedbackBadge(); 
-    
+
+    await initAuth();              // set user/session
+    await initializeData();        // load chapters/topics/cards and render
+
+    await refreshFeedbackBadge();  // update admin badge (after auth + data)
   }catch(err){
     console.error('[boot] fatal', err);
     alert('App failed to initialize. See console for details.');
