@@ -966,15 +966,50 @@ function openEdit(id){
 }
 
 function bindEditorActions(){
-  // Cards table actions (delegate)
-  const tbl=$('tblCards'); if(tbl){
-    tbl.addEventListener('click', async (e)=>{
-      const btn=e.target.closest('.ed-act'); if(!btn) return;
-      const id=btn.dataset.id, act=btn.dataset.act;
-      if(act==='edit'){ openEdit(id); }
-      if(act==='del'){ await deleteCardById(id); }
-    });
+  const tbl = document.getElementById('tblCards');
+  if(!tbl) return;
+
+  // Remove any previous handler so we only ever have ONE
+  if (tbl._edHandler) {
+    tbl.removeEventListener('click', tbl._edHandler);
   }
+
+  tbl._edHandler = async (e) => {
+    const btn = e.target.closest('.ed-act');
+    if(!btn) return;
+
+    const id  = btn.dataset.id;
+    const act = btn.dataset.act;
+
+    if (act === 'edit') {
+      const c = (Array.isArray(cards) ? cards : []).find(x => x.id === id);
+      if (c) { currentCard = c; renderCard(); handleEditClick(); }
+      return;
+    }
+
+    if (act === 'del') {
+      // guard: block re-entry so one click == one delete flow
+      if (bindEditorActions._busy) return;
+      const ok = confirm('Delete this card permanently?');
+      if (!ok) return;
+
+      bindEditorActions._busy = true;
+      try {
+        const { error } = await deleteCardRecord(id);
+        if (error) { alert('Delete failed: ' + (error.message||'unknown')); return; }
+        await initializeData(); // refresh once
+        alert('Card deleted.');
+      } catch (err) {
+        console.error('[editor delete] failed', err);
+        alert('Delete failed. See console for details.');
+      } finally {
+        bindEditorActions._busy = false;
+      }
+    }
+  };
+
+  tbl.addEventListener('click', tbl._edHandler);
+}
   // Bulk delete modal
   on('btnBulkDelete','click', ()=>{ const m=$('bulkDeleteModal'); if(!m) return; m.style.display='flex'; setupBulkDeleteUI(); });
   on('bdClose','click', ()=>{ const m=$('bulkDeleteModal'); if(m) m.style.display='none'; });
