@@ -15,8 +15,13 @@ import {
 // ------- tiny helpers -------
 const $ = (id) => document.getElementById(id);
 const on = (id, evt, fn) => {
-  const el = $(id);
+  const el = document.getElementById(id);
   if (!el) { console.warn(`[bind] #${id} missing; skipped ${evt}`); return { ok:false }; }
+  el._handlers ??= {};
+  if (el._handlers[evt]) {
+    el.removeEventListener(evt, el._handlers[evt]); // prevent stacking
+  }
+  el._handlers[evt] = fn;
   el.addEventListener(evt, fn);
   return { ok:true, el };
 };
