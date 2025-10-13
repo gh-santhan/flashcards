@@ -1196,114 +1196,74 @@ function bindAdminActions(){
     a.href=URL.createObjectURL(blob); a.download='LLM-instructions.txt'; a.click(); URL.revokeObjectURL(a.href);
   });
 
-// Import JSON (dedupe chapters/topics during one import)
-on('btnImport', async () => {
-  const f = $('fileImport')?.files?.[0];
-  if (!f) { alert('Pick a JSON file'); return; }
+// Import JSON (idempotent; no double fires)
+on('btnImport','click', async ()=>{
+  const btn = $('btnImport');
+  if (!btn) return;
 
-  const raw = await f.text();
+  // prevent accidental double-runs
+  if (btn._busy) return;
+  btn._busy = true;
 
-  // Keep strings intact. Just strip BOM/comments and allow trailing commas.
-  const cleaned = raw
-    .replace(/\uFEFF/g, '')           // BOM
-    .replace(/\/\/.*$/mg, '')         // // line comments
-    .replace(/\/\*[\s\S]*?\*\//g, '') // /* block comments */
-    .replace(/,\s*([}\]])/g, '$1');   // trailing commas
-
-  let json;
   try {
-    json = JSON.parse(cleaned);
-  } catch (e) {
-    alert('Bad JSON: ' + e.message);
-    return;
-  }
+    const f = $('fileImport')?.files?.[0];
+    if(!f){ alert('Pick a JSON file'); return; }
 
-  const list = Array.isArray(json?.cards) ? json.cards : (Array.isArray(json) ? json : []);
-  if (!list.length) { alert('No cards found. Expect { "cards": [...] }.'); return; }
+    const raw = await f.text();
 
-  alert(`Importing ${list.length} cards…`);
+    // Keep content intact; only strip BOM/comments and trailing commas
+    const cleaned = raw
+      .replace(/\uFEFF/g, '')           // BOM
+      .replace(/\/\/.*$/mg, '')         // // comments
+      .replace(/\/\*[\s\S]*?\*\//g, '') // /* */ comments
+      .replace(/,\s*([}\]])/g, '$1');   // trailing commas
 
-  // --- helpers & caches to re-use chapter/topic IDs (no dupes)
-  const norm = s => (s ?? '')
-    .normalize('NFKC')       // unify unicode dashes/quotes
-    .replace(/\s+/g, ' ')    // collapse whitespace
-    .trim()
-    .toLowerCase();
+    let json;
+    try { json = JSON.parse(cleaned); }
+    catch(e){ alert('Bad JSON: '+e.message); return; }
 
-  const chCache = new Map(); // norm(title) -> id
-  const tpCache = new Map(); // norm(title) -> id
+    const list = Array.isArray(json?.cards) ? json.cards
+                : (Array.isArray(json) ? json : []);
+    if(!list.length){ alert('No cards found. Expect { "cards": [...] }.'); return; }
 
-  // Seed caches from DB so reruns also re-use existing rows
-  {
-    const { data: chRows } = await supabase.from('chapters').select('id,title');
-    (chRows || []).forEach(r => chCache.set(norm(r.title), r.id));
+    btn.disabled = true;
+    const oldLabel = btn.textContent;
+    btn.textContent = 'Importing…';
 
-    const { data: tpRows } = await supabase.from('topics').select('id,title');
-    (tpRows || []).forEach(r => tpCache.set(norm(r.title), r.id));
-  }
+    for (const c of list){
+      const chapId   = await ensureChapterByTitle(c.chapter || null);
+      const topicIds = await ensureTopicsByTitles(Array.isArray(c.topics) ? c.topics : []);
+      const tagIds   = await ensureTagsByNames(Array.isArray(c.tags) ? c.tags : []);
 
-  // Process cards
-  for (const c of list) {
-    try {
-      // Chapter (reuse or create once)
-      let chapter_id = null;
-      if (c.chapter) {
-        const key = norm(c.chapter);
-        chapter_id = chCache.get(key) || null;
-        if (!chapter_id) {
-          const ins = await supabase.from('chapters').insert({ title: c.chapter }).select('id').single();
-          if (ins.error) { console.error('[import] chapter insert failed', ins.error, c.chapter); }
-          else { chapter_id = ins.data.id; chCache.set(key, chapter_id); }
-        }
-      }
-
-      // Topics (reuse or create each unique title once)
-      const topicIds = [];
-      if (Array.isArray(c.topics)) {
-        for (const t of c.topics) {
-          const key = norm(t);
-          let tid = tpCache.get(key) || null;
-          if (!tid) {
-            const ins = await supabase.from('topics').insert({ title: t }).select('id').single();
-            if (ins.error) { console.error('[import] topic insert failed', ins.error, t); continue; }
-            tid = ins.data.id;
-            tpCache.set(key, tid);
-          }
-          topicIds.push(tid);
-        }
-      }
-
-      // Tags (can reuse your helper)
-      const tagIds = Array.isArray(c.tags) ? await ensureTagsByNames(c.tags) : [];
-
-      // Insert card
       const payload = {
         front: c.front,
         back: c.back,
-        chapter_id,
+        chapter_id: chapId,
         meta: c.meta || {},
         status: c.status || 'published',
         visibility: c.visibility || 'public',
         author_suspended: !!c.author_suspended
       };
-      const insCard = await supabase.from('cards').insert(payload).select('id').single();
-      if (insCard.error) { console.error('[import] card insert failed', insCard.error, c.front); continue; }
-      const cardId = insCard.data.id;
 
-      // Joins
-      if (topicIds.length) {
-        await supabase.from('card_topics').insert(topicIds.map(id => ({ card_id: cardId, topic_id: id })));
-      }
-      if (tagIds.length) {
-        await supabase.from('card_tags').insert(tagIds.map(id => ({ card_id: cardId, tag_id: id })));
-      }
-    } catch (err) {
-      console.error('[import] unexpected error for card:', c.front, err);
+      const ins = await supabase.from('cards').insert(payload).select('id').single();
+      if(ins.error){ console.error('Card insert', ins.error, c.front); continue; }
+
+      const cardId = ins.data.id;
+      if (topicIds.length) await supabase.from('card_topics').insert(topicIds.map(id => ({ card_id: cardId, topic_id: id })));
+      if (tagIds.length)   await supabase.from('card_tags').insert(tagIds.map(id => ({ card_id: cardId, tag_id: id })));
+    }
+
+    await initializeData();
+    alert('Import complete.');
+    btn.textContent = oldLabel;
+  } finally {
+    const b = $('btnImport');
+    if (b){
+      b._busy = false;
+      b.disabled = false;
+      // leave label as-is if an early return occurred before oldLabel set
     }
   }
-
-  await initializeData();
-  alert('Import complete.');
 });
 
   
