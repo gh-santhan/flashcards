@@ -1330,9 +1330,9 @@ async function boot(){
     bindAuthButtons();
     bindTabs();
     bindStudyButtons();
-    bindStudyEditDelete()
+    // bindStudyEditDelete(); // ← REMOVE this line
     bindShortcuts();
-    bindCardActionButtonsOnce();   // one-time bind for Edit/Delete buttons
+    bindCardActionButtonsOnce();   // one-time bind (safe to keep)
     bindSearch();
     bindFeedbackUI();
 
@@ -1345,6 +1345,8 @@ async function boot(){
     alert('App failed to initialize. See console for details.');
   }
 }
+
+
 window.addEventListener('DOMContentLoaded', boot);
 
 // --- Inject Study Controls Accordion (non-destructive wrapper) ---
