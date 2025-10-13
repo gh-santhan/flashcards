@@ -1134,30 +1134,76 @@ function bindAdminActions(){
     const blob=new Blob([$('llmText').value],{type:'text/plain'}); const a=document.createElement('a');
     a.href=URL.createObjectURL(blob); a.download='LLM-instructions.txt'; a.click(); URL.revokeObjectURL(a.href);
   });
-  // Import JSON
-  on('btnImport','click', async ()=>{
-    const f=$('fileImport')?.files?.[0]; if(!f){ alert('Pick a JSON file'); return; }
-    const raw=await f.text();
-    let cleaned=raw.replace(/\uFEFF/g,'').replace(/[“”]/g,'"').replace(/[‘’]/g,"'").replace(/\/\/.*$/mg,'').replace(/\/\*[\s\S]*?\*\//g,'').replace(/,\s*([}\]])/g,'$1');
-    let json; try{ json=JSON.parse(cleaned); }catch(e){ alert('Bad JSON: '+e.message); return; }
-    const list = Array.isArray(json.cards)? json.cards : (Array.isArray(json)? json : []);
-    if(!list.length){ alert('No cards found. Expect { "cards": [...] }.'); return; }
-    alert(`Importing ${list.length} cards…`);
 
-    for(const c of list){
-      // ensure chapter/topics/tags and insert card & joins
-      const chapId = await ensureChapterByTitle(c.chapter||null);
-      const topicIds = await ensureTopicsByTitles(Array.isArray(c.topics)?c.topics:[]);
-      const tagIds = await ensureTagsByNames(Array.isArray(c.tags)?c.tags:[]);
-      const payload = { front:c.front, back:c.back, chapter_id:chapId, meta:c.meta||{}, status:c.status||'published', visibility:c.visibility||'public', author_suspended: !!c.author_suspended };
-      const ins = await supabase.from('cards').insert(payload).select('id').single();
-      if(ins.error){ console.error('Card insert', ins.error, c.front); continue; }
-      const cardId = ins.data.id;
-      if(topicIds.length) await supabase.from('card_topics').insert(topicIds.map(id=>({ card_id:cardId, topic_id:id })));
-      if(tagIds.length)   await supabase.from('card_tags').insert(tagIds.map(id=>({ card_id:cardId, tag_id:id })));
+// Import JSON
+on('btnImport','click', async ()=>{
+  const f = $('fileImport')?.files?.[0];
+  if(!f){ alert('Pick a JSON file'); return; }
+
+  const raw = await f.text();
+
+  // Keep JSON content intact. Only remove BOM and JS-style comments, and
+  // allow trailing commas. Do NOT touch curly quotes inside strings.
+  const cleaned = raw
+    .replace(/\uFEFF/g, '')                 // strip BOM
+    .replace(/\/\/.*$/mg, '')               // remove // line comments
+    .replace(/\/\*[\s\S]*?\*\//g, '')       // remove /* block comments */
+    .replace(/,\s*([}\]])/g, '$1');         // remove trailing commas
+
+  let json;
+  try {
+    json = JSON.parse(cleaned);
+  } catch (e) {
+    alert('Bad JSON: ' + e.message);
+    return;
+  }
+
+  const list = Array.isArray(json?.cards) ? json.cards
+              : (Array.isArray(json) ? json : []);
+
+  if(!list.length){
+    alert('No cards found. Expect { "cards": [...] }.');
+    return;
+  }
+
+  alert(`Importing ${list.length} cards…`);
+
+  for (const c of list){
+    // ensure chapter/topics/tags and insert card & joins
+    const chapId   = await ensureChapterByTitle(c.chapter || null);
+    const topicIds = await ensureTopicsByTitles(Array.isArray(c.topics) ? c.topics : []);
+    const tagIds   = await ensureTagsByNames(Array.isArray(c.tags) ? c.tags : []);
+
+    const payload = {
+      front: c.front,
+      back: c.back,
+      chapter_id: chapId,
+      meta: c.meta || {},
+      status: c.status || 'published',
+      visibility: c.visibility || 'public',
+      author_suspended: !!c.author_suspended
+    };
+
+    const ins = await supabase.from('cards').insert(payload).select('id').single();
+    if (ins.error){
+      console.error('Card insert', ins.error, c.front);
+      continue;
     }
-    await initializeData(); alert('Import complete.');
-  });
+
+    const cardId = ins.data.id;
+    if (topicIds.length){
+      await supabase.from('card_topics').insert(topicIds.map(id => ({ card_id: cardId, topic_id: id })));
+    }
+    if (tagIds.length){
+      await supabase.from('card_tags').insert(tagIds.map(id => ({ card_id: cardId, tag_id: id })));
+    }
+  }
+
+  await initializeData();
+  alert('Import complete.');
+});
+
+  
   on('btnLoadFeedback','click', () => { loadFeedbackAdmin(); });
 }
 
