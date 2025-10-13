@@ -1135,20 +1135,19 @@ function bindAdminActions(){
     a.href=URL.createObjectURL(blob); a.download='LLM-instructions.txt'; a.click(); URL.revokeObjectURL(a.href);
   });
 
-// Import JSON
-on('btnImport','click', async ()=>{
+// Import JSON (dedupe chapters/topics during one import)
+on('btnImport', async () => {
   const f = $('fileImport')?.files?.[0];
-  if(!f){ alert('Pick a JSON file'); return; }
+  if (!f) { alert('Pick a JSON file'); return; }
 
   const raw = await f.text();
 
-  // Keep JSON content intact. Only remove BOM and JS-style comments, and
-  // allow trailing commas. Do NOT touch curly quotes inside strings.
+  // Keep strings intact. Just strip BOM/comments and allow trailing commas.
   const cleaned = raw
-    .replace(/\uFEFF/g, '')                 // strip BOM
-    .replace(/\/\/.*$/mg, '')               // remove // line comments
-    .replace(/\/\*[\s\S]*?\*\//g, '')       // remove /* block comments */
-    .replace(/,\s*([}\]])/g, '$1');         // remove trailing commas
+    .replace(/\uFEFF/g, '')           // BOM
+    .replace(/\/\/.*$/mg, '')         // // line comments
+    .replace(/\/\*[\s\S]*?\*\//g, '') // /* block comments */
+    .replace(/,\s*([}\]])/g, '$1');   // trailing commas
 
   let json;
   try {
@@ -1158,44 +1157,87 @@ on('btnImport','click', async ()=>{
     return;
   }
 
-  const list = Array.isArray(json?.cards) ? json.cards
-              : (Array.isArray(json) ? json : []);
-
-  if(!list.length){
-    alert('No cards found. Expect { "cards": [...] }.');
-    return;
-  }
+  const list = Array.isArray(json?.cards) ? json.cards : (Array.isArray(json) ? json : []);
+  if (!list.length) { alert('No cards found. Expect { "cards": [...] }.'); return; }
 
   alert(`Importing ${list.length} cards…`);
 
-  for (const c of list){
-    // ensure chapter/topics/tags and insert card & joins
-    const chapId   = await ensureChapterByTitle(c.chapter || null);
-    const topicIds = await ensureTopicsByTitles(Array.isArray(c.topics) ? c.topics : []);
-    const tagIds   = await ensureTagsByNames(Array.isArray(c.tags) ? c.tags : []);
+  // --- helpers & caches to re-use chapter/topic IDs (no dupes)
+  const norm = s => (s ?? '')
+    .normalize('NFKC')       // unify unicode dashes/quotes
+    .replace(/\s+/g, ' ')    // collapse whitespace
+    .trim()
+    .toLowerCase();
 
-    const payload = {
-      front: c.front,
-      back: c.back,
-      chapter_id: chapId,
-      meta: c.meta || {},
-      status: c.status || 'published',
-      visibility: c.visibility || 'public',
-      author_suspended: !!c.author_suspended
-    };
+  const chCache = new Map(); // norm(title) -> id
+  const tpCache = new Map(); // norm(title) -> id
 
-    const ins = await supabase.from('cards').insert(payload).select('id').single();
-    if (ins.error){
-      console.error('Card insert', ins.error, c.front);
-      continue;
-    }
+  // Seed caches from DB so reruns also re-use existing rows
+  {
+    const { data: chRows } = await supabase.from('chapters').select('id,title');
+    (chRows || []).forEach(r => chCache.set(norm(r.title), r.id));
 
-    const cardId = ins.data.id;
-    if (topicIds.length){
-      await supabase.from('card_topics').insert(topicIds.map(id => ({ card_id: cardId, topic_id: id })));
-    }
-    if (tagIds.length){
-      await supabase.from('card_tags').insert(tagIds.map(id => ({ card_id: cardId, tag_id: id })));
+    const { data: tpRows } = await supabase.from('topics').select('id,title');
+    (tpRows || []).forEach(r => tpCache.set(norm(r.title), r.id));
+  }
+
+  // Process cards
+  for (const c of list) {
+    try {
+      // Chapter (reuse or create once)
+      let chapter_id = null;
+      if (c.chapter) {
+        const key = norm(c.chapter);
+        chapter_id = chCache.get(key) || null;
+        if (!chapter_id) {
+          const ins = await supabase.from('chapters').insert({ title: c.chapter }).select('id').single();
+          if (ins.error) { console.error('[import] chapter insert failed', ins.error, c.chapter); }
+          else { chapter_id = ins.data.id; chCache.set(key, chapter_id); }
+        }
+      }
+
+      // Topics (reuse or create each unique title once)
+      const topicIds = [];
+      if (Array.isArray(c.topics)) {
+        for (const t of c.topics) {
+          const key = norm(t);
+          let tid = tpCache.get(key) || null;
+          if (!tid) {
+            const ins = await supabase.from('topics').insert({ title: t }).select('id').single();
+            if (ins.error) { console.error('[import] topic insert failed', ins.error, t); continue; }
+            tid = ins.data.id;
+            tpCache.set(key, tid);
+          }
+          topicIds.push(tid);
+        }
+      }
+
+      // Tags (can reuse your helper)
+      const tagIds = Array.isArray(c.tags) ? await ensureTagsByNames(c.tags) : [];
+
+      // Insert card
+      const payload = {
+        front: c.front,
+        back: c.back,
+        chapter_id,
+        meta: c.meta || {},
+        status: c.status || 'published',
+        visibility: c.visibility || 'public',
+        author_suspended: !!c.author_suspended
+      };
+      const insCard = await supabase.from('cards').insert(payload).select('id').single();
+      if (insCard.error) { console.error('[import] card insert failed', insCard.error, c.front); continue; }
+      const cardId = insCard.data.id;
+
+      // Joins
+      if (topicIds.length) {
+        await supabase.from('card_topics').insert(topicIds.map(id => ({ card_id: cardId, topic_id: id })));
+      }
+      if (tagIds.length) {
+        await supabase.from('card_tags').insert(tagIds.map(id => ({ card_id: cardId, tag_id: id })));
+      }
+    } catch (err) {
+      console.error('[import] unexpected error for card:', c.front, err);
     }
   }
 
