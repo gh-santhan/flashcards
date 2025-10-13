@@ -637,6 +637,13 @@ function bindStudyButtons(){
 });
   
 }
+
+// Bind Study-mode Edit/Delete exactly once (and dedupe via `on`)
+function bindStudyEditDelete(){
+  on('btnEditCard',   'click', handleEditClick);
+  on('btnDeleteCard', 'click', handleDeleteClick);
+}
+
 async function grade(level){ if(!currentCard||!user){ renderCounts(); return; } currentCard.user_grade=level; grades.set(currentCard.id, level); await upsertGrade(user.id, currentCard.id, level); renderCounts(); $('btnNext')?.click(); }
 
 // -- Feedback modal wiring (open + submit)
@@ -1306,6 +1313,7 @@ async function boot(){
     bindAuthButtons();
     bindTabs();
     bindStudyButtons();
+    bindStudyEditDelete()
     bindShortcuts();
     bindCardActionButtonsOnce();   // one-time bind for Edit/Delete buttons
     bindSearch();
