@@ -518,33 +518,72 @@ alert('Saved.');
 
 
 // ------- render -------
-function renderCard(){
-  setText('metaIndex', `${order.length?(idx+1):0}/${order.length}`);
-  const qEl=$('q'), ansEl=$('ans'), gradeRow=$('gradeRow');
-  if(!order.length){ if(qEl) qEl.innerHTML='No cards match.'; if(ansEl) ansEl.style.display='none'; if(gradeRow) gradeRow.style.display='none'; show('metaResources', false); return; }
-  const c=pool[order[idx]]; 
-  currentCard=c;
-  window.currentCard = c; // debug-friendly
-  const chapTitle=chapters.find(x=>x.id===c.chapter_id)?.title||'(Uncategorised)';
-  setText('metaChap', chapTitle);
-  const tps=(c.card_topics||[]).map(x=>x.title).filter(Boolean);
-  setText('metaTopics', tps.length? tps.join(' • '):'(No Topics)');
-  setText('metaSection', c.meta?.Section || '—');
-  setText('metaTags', (c.card_tags||[]).map(x=>x.name).filter(Boolean).join(', ')||'—');
-  if(qEl) qEl.innerHTML=c.front||'—';
-  if(ansEl){ ansEl.innerHTML=c.back||''; ansEl.style.display='none'; }
-  if(gradeRow) gradeRow.style.display='none';
-  const resources=c.meta?.resources||[]; const resCount=(c.meta?.notes?1:0)+resources.length;
-  setText('resCount', String(resCount)); show('metaResources', !!resCount); renderResources(c);
-  const del=$('btnDeleteCard'), edit=$('btnEditCard');
-  if(del) del.style.display = user?'inline-block':'none';
-  if(edit) edit.style.display = user?'inline-block':'none';
-  const starBtn=$('btnStar'), suspBtn=$('btnSuspend');
-  if(starBtn) starBtn.textContent = c.user_starred?'★ Unstar':'☆ Star';
-  if(suspBtn) suspBtn.textContent = c.author_suspended?'▶ Unsuspend':'⏸ Suspend';
 
+function renderCard(){
+  // guard: normalize idx against current pool
+  if (!Array.isArray(pool)) pool = [];
+  if (pool.length === 0) {
+    setText('metaIndex', '0/0');
+    const qEl = $('q'), ansEl = $('ans'), gradeRow = $('gradeRow');
+    if (qEl) qEl.innerHTML = 'No cards match.';
+    if (ansEl) ansEl.style.display = 'none';
+    if (gradeRow) gradeRow.style.display = 'none';
+    show('metaResources', false);
+    saveStudyState();
+    return;
+  }
+  if (idx < 0 || idx >= pool.length) idx = 0;
+
+  // pick card & expose
+  const c = pool[order[idx]];
+  currentCard = c;
+  window.currentCard = c; // debug-friendly
+
+  // index label
+  setText('metaIndex', `${order.length ? (idx + 1) : 0}/${order.length}`);
+
+  // meta fields
+  const chapTitle = chapters.find(x => x.id === c.chapter_id)?.title || '(Uncategorised)';
+  setText('metaChap', chapTitle);
+
+  const tps = (c.card_topics || []).map(x => x.title).filter(Boolean);
+  setText('metaTopics', tps.length ? tps.join(' • ') : '(No Topics)');
+
+  setText('metaSection', c.meta?.Section || '—');
+  setText('metaTags', (c.card_tags || []).map(x => x.name).filter(Boolean).join(', ') || '—');
+
+  // question / answer
+  const qEl = $('q'), ansEl = $('ans'), gradeRow = $('gradeRow');
+  if (qEl) qEl.innerHTML = c.front || '—';
+  if (ansEl) { ansEl.innerHTML = c.back || ''; ansEl.style.display = 'none'; }
+  if (gradeRow) gradeRow.style.display = 'none';
+
+  // resources
+  const resources = c.meta?.resources || [];
+  const resCount = (c.meta?.notes ? 1 : 0) + resources.length;
+  setText('resCount', String(resCount));
+  show('metaResources', !!resCount);
+  renderResources(c);
+
+  // admin-only controls: Edit / Delete
+  const isAdminUser = (function(){
+    return user && typeof ADMIN_EMAIL === 'string'
+      && (user.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase();
+  })();
+
+  const del = $('btnDeleteCard'), edit = $('btnEditCard');
+  if (del) del.style.display  = isAdminUser ? 'inline-block' : 'none';
+  if (edit) edit.style.display = isAdminUser ? 'inline-block' : 'none';
+
+  // other buttons’ labels
+  const starBtn = $('btnStar'), suspBtn = $('btnSuspend');
+  if (starBtn) starBtn.textContent = c.user_starred ? '★ Unstar' : '☆ Star';
+  if (suspBtn) suspBtn.textContent = c.author_suspended ? '▶ Unsuspend' : '⏸ Suspend';
+
+  // persist study position & filters
   saveStudyState();
 }
+
 function renderResources(c){
   const list=$('resList'); if(!list) return;
   list.innerHTML='';
