@@ -580,6 +580,23 @@ function renderCard(){
   if (starBtn) starBtn.textContent = c.user_starred ? '★ Unstar' : '☆ Star';
   if (suspBtn) suspBtn.textContent = c.author_suspended ? '▶ Unsuspend' : '⏸ Suspend';
 
+// --- sanitize and bind edit/delete (prevents stacked listeners) ---
+{
+  const hook = (id, handler) => {
+    const oldEl = document.getElementById(id);
+    if (!oldEl) return;
+    // replace with a fresh clone to drop any prior listeners
+    const fresh = oldEl.cloneNode(true);
+    oldEl.replaceWith(fresh);
+    // bind exactly once on the fresh node
+    fresh.addEventListener('click', handler);
+  };
+
+  // only show to signed-in users (you already toggle display above)
+  hook('btnEditCard', handleEditClick);
+  hook('btnDeleteCard', handleDeleteClick);
+}
+  
   // persist study position & filters
   saveStudyState();
 }
