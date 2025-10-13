@@ -1010,6 +1010,7 @@ function bindEditorActions(){
 
   tbl.addEventListener('click', tbl._edHandler);
 }
+}
   // Bulk delete modal
   on('btnBulkDelete','click', ()=>{ const m=$('bulkDeleteModal'); if(!m) return; m.style.display='flex'; setupBulkDeleteUI(); });
   on('bdClose','click', ()=>{ const m=$('bulkDeleteModal'); if(m) m.style.display='none'; });
